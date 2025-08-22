@@ -138,6 +138,24 @@ coverage_reports/*.json
 !test_results.py
 !configuration.py
 
+# Keep small model configuration files (< 1MB) needed for downloading
+!models/*/config.json
+!models/*/configuration.json
+!models/*/generation_config.json
+!models/*/generation_config_for_conversational.json
+!models/*/tokenizer_config.json
+!models/*/special_tokens_map.json
+!models/*/tokenizer.json
+!models/*/vocab.json
+!models/*/merges.txt
+!models/*/*.index.json
+!models/*/README.md
+!models/*/assets/*.png
+!models/*/assets/*.jpg
+!models/*/examples/*.jpg
+!models/*/examples/*.JPG
+!models/cache_info.json
+
 # Demo and temporary states
 demo_cache/
 demo_states/
