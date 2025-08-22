@@ -1,0 +1,1398 @@
+{
+  "start_time": "2025-08-15T21:27:17.061963",
+  "hardware_profile": {
+    "cpu_model": "AMD64 Family 25 Model 8 Stepping 2, AuthenticAMD",
+    "cpu_cores": 64,
+    "total_memory_gb": 128,
+    "gpu_model": "NVIDIA GeForce RTX 4080",
+    "vram_gb": 16,
+    "is_rtx_4080": true,
+    "is_threadripper_pro": false
+  },
+  "optimization_settings": {
+    "vae_tile_size": [
+      256,
+      256
+    ],
+    "batch_size": 2,
+    "memory_fraction": 0.9,
+    "enable_tensor_cores": true,
+    "use_bf16": true,
+    "enable_xformers": true,
+    "cpu_offload": true
+  },
+  "generation_tests": [
+    {
+      "test_type": "model_loading",
+      "result": {
+        "success": true,
+        "loading_time_seconds": 2.0019991397857666,
+        "loading_time_minutes": 0.033366652329762776,
+        "model_name": "stabilityai/stable-video-diffusion-img2vid-xt-1-1",
+        "optimization_applied": true,
+        "load_parameters": {
+          "torch_dtype": "bfloat16",
+          "enable_model_cpu_offload": true,
+          "enable_vae_slicing": false,
+          "enable_attention_slicing": true
+        },
+        "meets_target": true
+      }
+    },
+    {
+      "test_type": "standard_generation",
+      "result": {
+        "success": true,
+        "generation_time_seconds": 63.0779070854187,
+        "generation_time_minutes": 1.051298451423645,
+        "parameters": {
+          "prompt": "A beautiful sunset over mountains with flowing clouds",
+          "num_frames": 16,
+          "width": 512,
+          "height": 512,
+          "num_inference_steps": 25,
+          "guidance_scale": 7.5,
+          "batch_size": 2,
+          "enable_vae_slicing": true,
+          "enable_attention_slicing": true
+        },
+        "optimization_applied": true,
+        "performance_metrics": [
+          {
+            "timestamp": 0.0009996891021728516,
+            "gpu_temperature": 48,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7893,
+            "cpu_usage_percent": 0.2
+          },
+          {
+            "timestamp": 1.0025439262390137,
+            "gpu_temperature": 48,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7893,
+            "cpu_usage_percent": 0.2
+          },
+          {
+            "timestamp": 2.0185210704803467,
+            "gpu_temperature": 48,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7893,
+            "cpu_usage_percent": 0.2
+          },
+          {
+            "timestamp": 3.0198357105255127,
+            "gpu_temperature": 48,
+            "gpu_utilization": 1,
+            "vram_usage_mb": 7902,
+            "cpu_usage_percent": 0.7
+          },
+          {
+            "timestamp": 4.020135164260864,
+            "gpu_temperature": 48,
+            "gpu_utilization": 1,
+            "vram_usage_mb": 7902,
+            "cpu_usage_percent": 0.7
+          },
+          {
+            "timestamp": 5.020483493804932,
+            "gpu_temperature": 48,
+            "gpu_utilization": 1,
+            "vram_usage_mb": 7901,
+            "cpu_usage_percent": 0.3
+          },
+          {
+            "timestamp": 6.020679235458374,
+            "gpu_temperature": 48,
+            "gpu_utilization": 1,
+            "vram_usage_mb": 7901,
+            "cpu_usage_percent": 0.3
+          },
+          {
+            "timestamp": 7.0208141803741455,
+            "gpu_temperature": 47,
+            "gpu_utilization": 4,
+            "vram_usage_mb": 7902,
+            "cpu_usage_percent": 0.4
+          },
+          {
+            "timestamp": 8.02192497253418,
+            "gpu_temperature": 47,
+            "gpu_utilization": 4,
+            "vram_usage_mb": 7902,
+            "cpu_usage_percent": 0.4
+          },
+          {
+            "timestamp": 9.022605180740356,
+            "gpu_temperature": 46,
+            "gpu_utilization": 7,
+            "vram_usage_mb": 7902,
+            "cpu_usage_percent": 0.3
+          },
+          {
+            "timestamp": 10.022814512252808,
+            "gpu_temperature": 46,
+            "gpu_utilization": 7,
+            "vram_usage_mb": 7902,
+            "cpu_usage_percent": 0.3
+          },
+          {
+            "timestamp": 11.022869348526001,
+            "gpu_temperature": 46,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7902,
+            "cpu_usage_percent": 0.4
+          },
+          {
+            "timestamp": 12.023605823516846,
+            "gpu_temperature": 46,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7902,
+            "cpu_usage_percent": 0.4
+          },
+          {
+            "timestamp": 13.023961782455444,
+            "gpu_temperature": 46,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7902,
+            "cpu_usage_percent": 0.0
+          },
+          {
+            "timestamp": 14.024937868118286,
+            "gpu_temperature": 46,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7902,
+            "cpu_usage_percent": 0.0
+          },
+          {
+            "timestamp": 15.025289535522461,
+            "gpu_temperature": 46,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7902,
+            "cpu_usage_percent": 0.7
+          },
+          {
+            "timestamp": 16.0255868434906,
+            "gpu_temperature": 46,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7902,
+            "cpu_usage_percent": 0.7
+          },
+          {
+            "timestamp": 17.025861740112305,
+            "gpu_temperature": 46,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7902,
+            "cpu_usage_percent": 0.1
+          },
+          {
+            "timestamp": 18.026219606399536,
+            "gpu_temperature": 46,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7902,
+            "cpu_usage_percent": 0.1
+          },
+          {
+            "timestamp": 19.02664875984192,
+            "gpu_temperature": 46,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7902,
+            "cpu_usage_percent": 0.4
+          },
+          {
+            "timestamp": 20.027106285095215,
+            "gpu_temperature": 46,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7902,
+            "cpu_usage_percent": 0.4
+          },
+          {
+            "timestamp": 21.027337789535522,
+            "gpu_temperature": 46,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7902,
+            "cpu_usage_percent": 0.0
+          },
+          {
+            "timestamp": 22.028334856033325,
+            "gpu_temperature": 46,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7902,
+            "cpu_usage_percent": 0.0
+          },
+          {
+            "timestamp": 23.028409957885742,
+            "gpu_temperature": 46,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7902,
+            "cpu_usage_percent": 0.0
+          },
+          {
+            "timestamp": 24.028958559036255,
+            "gpu_temperature": 46,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7902,
+            "cpu_usage_percent": 0.0
+          },
+          {
+            "timestamp": 25.029804229736328,
+            "gpu_temperature": 46,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7902,
+            "cpu_usage_percent": 0.0
+          },
+          {
+            "timestamp": 26.029978036880493,
+            "gpu_temperature": 46,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7902,
+            "cpu_usage_percent": 0.0
+          },
+          {
+            "timestamp": 27.030489206314087,
+            "gpu_temperature": 46,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7902,
+            "cpu_usage_percent": 0.0
+          },
+          {
+            "timestamp": 28.030739068984985,
+            "gpu_temperature": 46,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7902,
+            "cpu_usage_percent": 0.0
+          },
+          {
+            "timestamp": 29.031894207000732,
+            "gpu_temperature": 46,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7902,
+            "cpu_usage_percent": 0.1
+          },
+          {
+            "timestamp": 30.0319983959198,
+            "gpu_temperature": 46,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7902,
+            "cpu_usage_percent": 0.1
+          },
+          {
+            "timestamp": 31.032164335250854,
+            "gpu_temperature": 46,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7902,
+            "cpu_usage_percent": 0.0
+          },
+          {
+            "timestamp": 32.03266930580139,
+            "gpu_temperature": 46,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7902,
+            "cpu_usage_percent": 0.0
+          },
+          {
+            "timestamp": 33.033177614212036,
+            "gpu_temperature": 46,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7899,
+            "cpu_usage_percent": 0.0
+          },
+          {
+            "timestamp": 34.03419518470764,
+            "gpu_temperature": 46,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7899,
+            "cpu_usage_percent": 0.0
+          },
+          {
+            "timestamp": 35.034671783447266,
+            "gpu_temperature": 46,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.1
+          },
+          {
+            "timestamp": 36.03542494773865,
+            "gpu_temperature": 46,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.1
+          },
+          {
+            "timestamp": 37.036038875579834,
+            "gpu_temperature": 46,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.3
+          },
+          {
+            "timestamp": 38.036627531051636,
+            "gpu_temperature": 46,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.3
+          },
+          {
+            "timestamp": 39.0375394821167,
+            "gpu_temperature": 46,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.0
+          },
+          {
+            "timestamp": 40.03797769546509,
+            "gpu_temperature": 46,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.0
+          },
+          {
+            "timestamp": 41.03845524787903,
+            "gpu_temperature": 46,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.1
+          },
+          {
+            "timestamp": 42.03887677192688,
+            "gpu_temperature": 46,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.1
+          },
+          {
+            "timestamp": 43.039063692092896,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.1
+          },
+          {
+            "timestamp": 44.03941297531128,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.1
+          },
+          {
+            "timestamp": 45.039923906326294,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.0
+          },
+          {
+            "timestamp": 46.040815591812134,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.0
+          },
+          {
+            "timestamp": 47.04126286506653,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.1
+          },
+          {
+            "timestamp": 48.04144072532654,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.1
+          },
+          {
+            "timestamp": 49.042412519454956,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.1
+          },
+          {
+            "timestamp": 50.04329323768616,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.1
+          },
+          {
+            "timestamp": 51.043779134750366,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.0
+          },
+          {
+            "timestamp": 52.04438376426697,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.0
+          },
+          {
+            "timestamp": 53.04450821876526,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.7
+          },
+          {
+            "timestamp": 54.04516530036926,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.7
+          },
+          {
+            "timestamp": 55.045496702194214,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.1
+          },
+          {
+            "timestamp": 56.04560875892639,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.1
+          },
+          {
+            "timestamp": 57.04582905769348,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.0
+          },
+          {
+            "timestamp": 58.04651713371277,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.0
+          },
+          {
+            "timestamp": 59.0475959777832,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.1
+          },
+          {
+            "timestamp": 60.04873085021973,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.1
+          },
+          {
+            "timestamp": 61.04976415634155,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.0
+          },
+          {
+            "timestamp": 62.050759077072144,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.0
+          },
+          {
+            "timestamp": 63.05178213119507,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.0
+          },
+          {
+            "timestamp": 64.05270051956177,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.0
+          },
+          {
+            "timestamp": 65.0529854297638,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.1
+          },
+          {
+            "timestamp": 66.05305743217468,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.1
+          },
+          {
+            "timestamp": 67.05317306518555,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.1
+          },
+          {
+            "timestamp": 68.05329036712646,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.1
+          },
+          {
+            "timestamp": 69.0534782409668,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.2
+          },
+          {
+            "timestamp": 70.05437707901001,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.2
+          },
+          {
+            "timestamp": 71.05451846122742,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.0
+          },
+          {
+            "timestamp": 72.055410861969,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.0
+          },
+          {
+            "timestamp": 73.05643057823181,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.3
+          },
+          {
+            "timestamp": 74.05670189857483,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.3
+          },
+          {
+            "timestamp": 75.05728220939636,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.0
+          },
+          {
+            "timestamp": 76.05814862251282,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.0
+          },
+          {
+            "timestamp": 77.05882143974304,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.2
+          },
+          {
+            "timestamp": 78.05934023857117,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.2
+          },
+          {
+            "timestamp": 79.05998873710632,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.2
+          },
+          {
+            "timestamp": 80.06022357940674,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.2
+          },
+          {
+            "timestamp": 81.06115055084229,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.2
+          },
+          {
+            "timestamp": 82.06211304664612,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.2
+          },
+          {
+            "timestamp": 83.06250739097595,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.0
+          },
+          {
+            "timestamp": 84.06296014785767,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.0
+          },
+          {
+            "timestamp": 85.06348609924316,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.6
+          },
+          {
+            "timestamp": 86.06427931785583,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.6
+          },
+          {
+            "timestamp": 87.06455063819885,
+            "gpu_temperature": 45,
+            "gpu_utilization": 8,
+            "vram_usage_mb": 7900,
+            "cpu_usage_percent": 1.0
+          },
+          {
+            "timestamp": 88.06523060798645,
+            "gpu_temperature": 45,
+            "gpu_utilization": 8,
+            "vram_usage_mb": 7900,
+            "cpu_usage_percent": 1.0
+          },
+          {
+            "timestamp": 89.06545186042786,
+            "gpu_temperature": 45,
+            "gpu_utilization": 12,
+            "vram_usage_mb": 7951,
+            "cpu_usage_percent": 2.3
+          },
+          {
+            "timestamp": 90.06605887413025,
+            "gpu_temperature": 45,
+            "gpu_utilization": 12,
+            "vram_usage_mb": 7951,
+            "cpu_usage_percent": 2.3
+          },
+          {
+            "timestamp": 91.06632566452026,
+            "gpu_temperature": 45,
+            "gpu_utilization": 10,
+            "vram_usage_mb": 7940,
+            "cpu_usage_percent": 0.3
+          },
+          {
+            "timestamp": 92.06657314300537,
+            "gpu_temperature": 45,
+            "gpu_utilization": 10,
+            "vram_usage_mb": 7940,
+            "cpu_usage_percent": 0.3
+          },
+          {
+            "timestamp": 93.0670907497406,
+            "gpu_temperature": 45,
+            "gpu_utilization": 10,
+            "vram_usage_mb": 7936,
+            "cpu_usage_percent": 0.4
+          },
+          {
+            "timestamp": 94.06714510917664,
+            "gpu_temperature": 45,
+            "gpu_utilization": 10,
+            "vram_usage_mb": 7936,
+            "cpu_usage_percent": 0.4
+          },
+          {
+            "timestamp": 95.0673360824585,
+            "gpu_temperature": 45,
+            "gpu_utilization": 10,
+            "vram_usage_mb": 7900,
+            "cpu_usage_percent": 0.2
+          },
+          {
+            "timestamp": 96.0683856010437,
+            "gpu_temperature": 45,
+            "gpu_utilization": 10,
+            "vram_usage_mb": 7900,
+            "cpu_usage_percent": 0.2
+          },
+          {
+            "timestamp": 97.06887865066528,
+            "gpu_temperature": 44,
+            "gpu_utilization": 9,
+            "vram_usage_mb": 7900,
+            "cpu_usage_percent": 0.4
+          },
+          {
+            "timestamp": 98.06916737556458,
+            "gpu_temperature": 44,
+            "gpu_utilization": 9,
+            "vram_usage_mb": 7900,
+            "cpu_usage_percent": 0.4
+          },
+          {
+            "timestamp": 99.06946039199829,
+            "gpu_temperature": 44,
+            "gpu_utilization": 10,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.4
+          },
+          {
+            "timestamp": 100.06982898712158,
+            "gpu_temperature": 44,
+            "gpu_utilization": 10,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.4
+          },
+          {
+            "timestamp": 101.0701687335968,
+            "gpu_temperature": 44,
+            "gpu_utilization": 3,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.3
+          },
+          {
+            "timestamp": 102.07096481323242,
+            "gpu_temperature": 44,
+            "gpu_utilization": 3,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.3
+          },
+          {
+            "timestamp": 103.0710928440094,
+            "gpu_temperature": 44,
+            "gpu_utilization": 3,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.2
+          },
+          {
+            "timestamp": 104.07141923904419,
+            "gpu_temperature": 44,
+            "gpu_utilization": 3,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.2
+          },
+          {
+            "timestamp": 105.07243633270264,
+            "gpu_temperature": 44,
+            "gpu_utilization": 3,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.5
+          },
+          {
+            "timestamp": 106.07311487197876,
+            "gpu_temperature": 44,
+            "gpu_utilization": 3,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.5
+          },
+          {
+            "timestamp": 107.07328033447266,
+            "gpu_temperature": 44,
+            "gpu_utilization": 3,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.3
+          },
+          {
+            "timestamp": 108.07432270050049,
+            "gpu_temperature": 44,
+            "gpu_utilization": 3,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.3
+          },
+          {
+            "timestamp": 109.07533001899719,
+            "gpu_temperature": 44,
+            "gpu_utilization": 3,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.3
+          },
+          {
+            "timestamp": 110.0754816532135,
+            "gpu_temperature": 44,
+            "gpu_utilization": 3,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.3
+          },
+          {
+            "timestamp": 111.07951307296753,
+            "gpu_temperature": 44,
+            "gpu_utilization": 3,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.3
+          },
+          {
+            "timestamp": 112.08060693740845,
+            "gpu_temperature": 44,
+            "gpu_utilization": 3,
+            "vram_usage_mb": 7900,
+            "cpu_usage_percent": 0.6
+          },
+          {
+            "timestamp": 113.08081316947937,
+            "gpu_temperature": 44,
+            "gpu_utilization": 3,
+            "vram_usage_mb": 7900,
+            "cpu_usage_percent": 0.6
+          },
+          {
+            "timestamp": 114.08103680610657,
+            "gpu_temperature": 44,
+            "gpu_utilization": 3,
+            "vram_usage_mb": 7904,
+            "cpu_usage_percent": 0.3
+          },
+          {
+            "timestamp": 115.0813615322113,
+            "gpu_temperature": 44,
+            "gpu_utilization": 3,
+            "vram_usage_mb": 7904,
+            "cpu_usage_percent": 0.3
+          },
+          {
+            "timestamp": 116.08163142204285,
+            "gpu_temperature": 44,
+            "gpu_utilization": 3,
+            "vram_usage_mb": 7904,
+            "cpu_usage_percent": 0.5
+          },
+          {
+            "timestamp": 117.0823061466217,
+            "gpu_temperature": 44,
+            "gpu_utilization": 3,
+            "vram_usage_mb": 7904,
+            "cpu_usage_percent": 0.5
+          },
+          {
+            "timestamp": 118.08298254013062,
+            "gpu_temperature": 44,
+            "gpu_utilization": 4,
+            "vram_usage_mb": 7929,
+            "cpu_usage_percent": 0.8
+          },
+          {
+            "timestamp": 119.0831356048584,
+            "gpu_temperature": 44,
+            "gpu_utilization": 4,
+            "vram_usage_mb": 7929,
+            "cpu_usage_percent": 0.8
+          }
+        ],
+        "meets_target": true,
+        "output_info": {
+          "frames": 16,
+          "resolution": "512x512",
+          "duration_seconds": 2.0
+        }
+      }
+    },
+    {
+      "test_type": "high_quality_generation",
+      "result": {
+        "success": true,
+        "generation_time_seconds": 63.01746940612793,
+        "generation_time_minutes": 1.050291156768799,
+        "parameters": {
+          "prompt": "A serene lake with reflections and gentle ripples",
+          "num_frames": 24,
+          "width": 512,
+          "height": 512,
+          "num_inference_steps": 25,
+          "guidance_scale": 7.5,
+          "batch_size": 2,
+          "enable_vae_slicing": true,
+          "enable_attention_slicing": true
+        },
+        "optimization_applied": true,
+        "performance_metrics": [
+          {
+            "timestamp": 0.0010006427764892578,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.0
+          },
+          {
+            "timestamp": 1.0019984245300293,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.0
+          },
+          {
+            "timestamp": 2.002173900604248,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.1
+          },
+          {
+            "timestamp": 3.002408266067505,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.1
+          },
+          {
+            "timestamp": 4.002997636795044,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.1
+          },
+          {
+            "timestamp": 5.003341197967529,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.1
+          },
+          {
+            "timestamp": 6.0038628578186035,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.2
+          },
+          {
+            "timestamp": 7.004481315612793,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.2
+          },
+          {
+            "timestamp": 8.005200386047363,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.0
+          },
+          {
+            "timestamp": 9.00602412223816,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.0
+          },
+          {
+            "timestamp": 10.006771802902222,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.3
+          },
+          {
+            "timestamp": 11.007794857025146,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.3
+          },
+          {
+            "timestamp": 12.007993221282959,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.0
+          },
+          {
+            "timestamp": 13.00825309753418,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.0
+          },
+          {
+            "timestamp": 14.009146213531494,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.2
+          },
+          {
+            "timestamp": 15.009445190429688,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.2
+          },
+          {
+            "timestamp": 16.01015543937683,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.2
+          },
+          {
+            "timestamp": 17.010369062423706,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.2
+          },
+          {
+            "timestamp": 18.010836362838745,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.2
+          },
+          {
+            "timestamp": 19.01129460334778,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.2
+          },
+          {
+            "timestamp": 20.0117130279541,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.0
+          },
+          {
+            "timestamp": 21.012064456939697,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.0
+          },
+          {
+            "timestamp": 22.012340784072876,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.6
+          },
+          {
+            "timestamp": 23.012930870056152,
+            "gpu_temperature": 45,
+            "gpu_utilization": 0,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.6
+          },
+          {
+            "timestamp": 24.01356601715088,
+            "gpu_temperature": 45,
+            "gpu_utilization": 8,
+            "vram_usage_mb": 7900,
+            "cpu_usage_percent": 1.0
+          },
+          {
+            "timestamp": 25.013843774795532,
+            "gpu_temperature": 45,
+            "gpu_utilization": 8,
+            "vram_usage_mb": 7900,
+            "cpu_usage_percent": 1.0
+          },
+          {
+            "timestamp": 26.01475763320923,
+            "gpu_temperature": 45,
+            "gpu_utilization": 12,
+            "vram_usage_mb": 7951,
+            "cpu_usage_percent": 2.3
+          },
+          {
+            "timestamp": 27.015164852142334,
+            "gpu_temperature": 45,
+            "gpu_utilization": 12,
+            "vram_usage_mb": 7951,
+            "cpu_usage_percent": 2.3
+          },
+          {
+            "timestamp": 28.015970945358276,
+            "gpu_temperature": 45,
+            "gpu_utilization": 10,
+            "vram_usage_mb": 7940,
+            "cpu_usage_percent": 0.3
+          },
+          {
+            "timestamp": 29.016949892044067,
+            "gpu_temperature": 45,
+            "gpu_utilization": 10,
+            "vram_usage_mb": 7940,
+            "cpu_usage_percent": 0.3
+          },
+          {
+            "timestamp": 30.017876386642456,
+            "gpu_temperature": 45,
+            "gpu_utilization": 10,
+            "vram_usage_mb": 7936,
+            "cpu_usage_percent": 0.4
+          },
+          {
+            "timestamp": 31.018152713775635,
+            "gpu_temperature": 45,
+            "gpu_utilization": 10,
+            "vram_usage_mb": 7936,
+            "cpu_usage_percent": 0.4
+          },
+          {
+            "timestamp": 32.01904010772705,
+            "gpu_temperature": 45,
+            "gpu_utilization": 10,
+            "vram_usage_mb": 7900,
+            "cpu_usage_percent": 0.2
+          },
+          {
+            "timestamp": 33.01924538612366,
+            "gpu_temperature": 45,
+            "gpu_utilization": 10,
+            "vram_usage_mb": 7900,
+            "cpu_usage_percent": 0.2
+          },
+          {
+            "timestamp": 34.01990866661072,
+            "gpu_temperature": 44,
+            "gpu_utilization": 9,
+            "vram_usage_mb": 7900,
+            "cpu_usage_percent": 0.4
+          },
+          {
+            "timestamp": 35.02009105682373,
+            "gpu_temperature": 44,
+            "gpu_utilization": 9,
+            "vram_usage_mb": 7900,
+            "cpu_usage_percent": 0.4
+          },
+          {
+            "timestamp": 36.02070879936218,
+            "gpu_temperature": 44,
+            "gpu_utilization": 10,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.4
+          },
+          {
+            "timestamp": 37.021718978881836,
+            "gpu_temperature": 44,
+            "gpu_utilization": 10,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.4
+          },
+          {
+            "timestamp": 38.02187514305115,
+            "gpu_temperature": 44,
+            "gpu_utilization": 3,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.3
+          },
+          {
+            "timestamp": 39.022098541259766,
+            "gpu_temperature": 44,
+            "gpu_utilization": 3,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.3
+          },
+          {
+            "timestamp": 40.022753953933716,
+            "gpu_temperature": 44,
+            "gpu_utilization": 3,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.2
+          },
+          {
+            "timestamp": 41.023093938827515,
+            "gpu_temperature": 44,
+            "gpu_utilization": 3,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.2
+          },
+          {
+            "timestamp": 42.024158239364624,
+            "gpu_temperature": 44,
+            "gpu_utilization": 3,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.5
+          },
+          {
+            "timestamp": 43.0242977142334,
+            "gpu_temperature": 44,
+            "gpu_utilization": 3,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.5
+          },
+          {
+            "timestamp": 44.024937868118286,
+            "gpu_temperature": 44,
+            "gpu_utilization": 3,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.3
+          },
+          {
+            "timestamp": 45.0255708694458,
+            "gpu_temperature": 44,
+            "gpu_utilization": 3,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.3
+          },
+          {
+            "timestamp": 46.02564263343811,
+            "gpu_temperature": 44,
+            "gpu_utilization": 3,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.3
+          },
+          {
+            "timestamp": 47.02616214752197,
+            "gpu_temperature": 44,
+            "gpu_utilization": 3,
+            "vram_usage_mb": 7898,
+            "cpu_usage_percent": 0.3
+          },
+          {
+            "timestamp": 48.02722382545471,
+            "gpu_temperature": 44,
+            "gpu_utilization": 3,
+            "vram_usage_mb": 7900,
+            "cpu_usage_percent": 0.6
+          },
+          {
+            "timestamp": 49.02776765823364,
+            "gpu_temperature": 44,
+            "gpu_utilization": 3,
+            "vram_usage_mb": 7900,
+            "cpu_usage_percent": 0.6
+          },
+          {
+            "timestamp": 50.02801990509033,
+            "gpu_temperature": 44,
+            "gpu_utilization": 3,
+            "vram_usage_mb": 7904,
+            "cpu_usage_percent": 0.3
+          },
+          {
+            "timestamp": 51.02813243865967,
+            "gpu_temperature": 44,
+            "gpu_utilization": 3,
+            "vram_usage_mb": 7904,
+            "cpu_usage_percent": 0.3
+          },
+          {
+            "timestamp": 52.03854942321777,
+            "gpu_temperature": 44,
+            "gpu_utilization": 3,
+            "vram_usage_mb": 7904,
+            "cpu_usage_percent": 0.3
+          },
+          {
+            "timestamp": 53.039992570877075,
+            "gpu_temperature": 44,
+            "gpu_utilization": 3,
+            "vram_usage_mb": 7904,
+            "cpu_usage_percent": 0.5
+          },
+          {
+            "timestamp": 54.05695986747742,
+            "gpu_temperature": 44,
+            "gpu_utilization": 3,
+            "vram_usage_mb": 7904,
+            "cpu_usage_percent": 0.5
+          },
+          {
+            "timestamp": 55.05722117424011,
+            "gpu_temperature": 44,
+            "gpu_utilization": 4,
+            "vram_usage_mb": 7929,
+            "cpu_usage_percent": 0.8
+          },
+          {
+            "timestamp": 56.057331800460815,
+            "gpu_temperature": 44,
+            "gpu_utilization": 4,
+            "vram_usage_mb": 7929,
+            "cpu_usage_percent": 0.8
+          },
+          {
+            "timestamp": 57.057722330093384,
+            "gpu_temperature": 44,
+            "gpu_utilization": 5,
+            "vram_usage_mb": 7966,
+            "cpu_usage_percent": 1.5
+          },
+          {
+            "timestamp": 58.05868220329285,
+            "gpu_temperature": 44,
+            "gpu_utilization": 5,
+            "vram_usage_mb": 7966,
+            "cpu_usage_percent": 1.5
+          },
+          {
+            "timestamp": 59.05965065956116,
+            "gpu_temperature": 44,
+            "gpu_utilization": 2,
+            "vram_usage_mb": 7933,
+            "cpu_usage_percent": 0.6
+          },
+          {
+            "timestamp": 60.06001806259155,
+            "gpu_temperature": 44,
+            "gpu_utilization": 2,
+            "vram_usage_mb": 7933,
+            "cpu_usage_percent": 0.6
+          },
+          {
+            "timestamp": 61.06014060974121,
+            "gpu_temperature": 44,
+            "gpu_utilization": 3,
+            "vram_usage_mb": 7932,
+            "cpu_usage_percent": 2.8
+          },
+          {
+            "timestamp": 62.06034255027771,
+            "gpu_temperature": 44,
+            "gpu_utilization": 3,
+            "vram_usage_mb": 7932,
+            "cpu_usage_percent": 2.8
+          }
+        ],
+        "meets_target": true,
+        "output_info": {
+          "frames": 24,
+          "resolution": "512x512",
+          "duration_seconds": 3.0
+        }
+      }
+    }
+  ],
+  "performance_metrics": {
+    "total_test_time_seconds": 128.54345750808716,
+    "total_tests": 3,
+    "successful_tests": 3,
+    "success_rate_percent": 100.0,
+    "average_generation_time_seconds": 63.047688245773315,
+    "average_generation_time_minutes": 1.0507948040962218,
+    "optimization_enabled": true,
+    "hardware_optimization_applied": true
+  },
+  "health_monitoring": [],
+  "recommendations": [
+    "\u2705 RTX 4080 detected - optimizations applied",
+    "\ud83c\udf89 Excellent success rate - system is performing well",
+    "\ud83d\ude80 Generation time meets target (<2 minutes)"
+  ],
+  "end_time": "2025-08-15T21:29:25.628431",
+  "total_duration_seconds": 128.54345750808716
+}

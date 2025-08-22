@@ -1,0 +1,301 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wan22-ui-variant
+  namespace: wan22
+  labels:
+    app: wan22-ui-variant
+    version: v1.0.0
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: wan22-ui-variant
+  template:
+    metadata:
+      labels:
+        app: wan22-ui-variant
+        version: v1.0.0
+    spec:
+      containers:
+        - name: wan22-app
+          image: wan22/ui-variant:latest
+          imagePullPolicy: Always
+
+          ports:
+            - containerPort: 8080
+              name: http
+            - containerPort: 8081
+              name: api
+            - containerPort: 9090
+              name: metrics
+
+          env:
+            - name: HF_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: wan22-secrets
+                  key: hf-token
+            - name: CUDA_VISIBLE_DEVICES
+              value: "0"
+            - name: PYTORCH_CUDA_ALLOC_CONF
+              value: "max_split_size_mb:512"
+            - name: LOG_LEVEL
+              value: "INFO"
+            - name: ENABLE_METRICS
+              value: "true"
+            - name: PROMETHEUS_ENABLED
+              value: "true"
+
+          resources:
+            requests:
+              memory: "16Gi"
+              cpu: "4"
+              nvidia.com/gpu: 1
+            limits:
+              memory: "32Gi"
+              cpu: "8"
+              nvidia.com/gpu: 1
+
+          volumeMounts:
+            - name: config-volume
+              mountPath: /app/config.json
+              subPath: config.json
+            - name: models-storage
+              mountPath: /app/models
+            - name: outputs-storage
+              mountPath: /app/outputs
+            - name: cache-storage
+              mountPath: /app/cache
+            - name: logs-storage
+              mountPath: /app/logs
+
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 60
+            periodSeconds: 30
+            timeoutSeconds: 10
+            failureThreshold: 3
+
+          readinessProbe:
+            exec:
+              command:
+                - python
+                - -m
+                - local_testing_framework
+                - validate-env
+                - --quick
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+
+          startupProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 30
+
+      volumes:
+        - name: config-volume
+          configMap:
+            name: wan22-config
+        - name: models-storage
+          persistentVolumeClaim:
+            claimName: wan22-models-pvc
+        - name: outputs-storage
+          persistentVolumeClaim:
+            claimName: wan22-outputs-pvc
+        - name: cache-storage
+          persistentVolumeClaim:
+            claimName: wan22-cache-pvc
+        - name: logs-storage
+          persistentVolumeClaim:
+            claimName: wan22-logs-pvc
+
+      nodeSelector:
+        accelerator: nvidia-tesla-v100
+
+      tolerations:
+        - key: "nvidia.com/gpu"
+          operator: "Exists"
+          effect: "NoSchedule"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: wan22-service
+  namespace: wan22
+  labels:
+    app: wan22-ui-variant
+spec:
+  selector:
+    app: wan22-ui-variant
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8080
+      protocol: TCP
+    - name: api
+      port: 8081
+      targetPort: 8081
+      protocol: TCP
+    - name: metrics
+      port: 9090
+      targetPort: 9090
+      protocol: TCP
+  type: ClusterIP
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: wan22-ingress
+  namespace: wan22
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/proxy-body-size: "100m"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "600"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "600"
+spec:
+  tls:
+    - hosts:
+        - wan22.example.com
+      secretName: wan22-tls
+  rules:
+    - host: wan22.example.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: wan22-service
+                port:
+                  number: 80
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: wan22-service
+                port:
+                  number: 8081
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: wan22-config
+  namespace: wan22
+data:
+  config.json: |
+    {
+      "system": {
+        "platform": "linux",
+        "gpu_memory_fraction": 0.9,
+        "cpu_cores": "auto"
+      },
+      "directories": {
+        "models": "/app/models",
+        "outputs": "/app/outputs",
+        "cache": "/app/cache",
+        "logs": "/app/logs"
+      },
+      "optimization": {
+        "enable_attention_slicing": true,
+        "enable_vae_tiling": true,
+        "vae_tile_size": 256
+      },
+      "performance": {
+        "target_720p_time_minutes": 8.0,
+        "target_1080p_time_minutes": 15.0,
+        "max_vram_usage_gb": 12.0
+      },
+      "ui": {
+        "port": 8080,
+        "host": "0.0.0.0",
+        "enable_auth": true
+      },
+      "api": {
+        "enable_api": true,
+        "api_port": 8081
+      },
+      "monitoring": {
+        "enable_metrics": true,
+        "metrics_port": 9090
+      }
+    }
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: wan22-secrets
+  namespace: wan22
+type: Opaque
+data:
+  hf-token: <base64-encoded-huggingface-token>
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: wan22-models-pvc
+  namespace: wan22
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 100Gi
+  storageClassName: fast-ssd
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: wan22-outputs-pvc
+  namespace: wan22
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 500Gi
+  storageClassName: standard
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: wan22-cache-pvc
+  namespace: wan22
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 50Gi
+  storageClassName: fast-ssd
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: wan22-logs-pvc
+  namespace: wan22
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Gi
+  storageClassName: standard

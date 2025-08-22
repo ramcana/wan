@@ -1,0 +1,171 @@
+{
+  "summary": {
+    "total_operations": 12,
+    "total_time": 0.1345806121826172,
+    "average_time": 0.0112150510152181,
+    "peak_memory_mb": 45.23828125,
+    "total_memory_mb": 3.5546875,
+    "bottlenecks": [],
+    "recommendations": [
+      "Consider caching validation results for repeated operations"
+    ]
+  },
+  "metrics": [
+    {
+      "operation_name": "validation_512x512",
+      "execution_time": 0.01798725128173828,
+      "memory_usage_mb": 0.234375,
+      "peak_memory_mb": 26.78125,
+      "cpu_usage_percent": 54.7,
+      "image_size": [
+        512,
+        512
+      ],
+      "file_size_bytes": 786432,
+      "timestamp": "2025-08-13T20:19:43.488865"
+    },
+    {
+      "operation_name": "thumbnail_512x512",
+      "execution_time": 0.00451350212097168,
+      "memory_usage_mb": 0.35546875,
+      "peak_memory_mb": 27.0234375,
+      "cpu_usage_percent": 3.6500000000000004,
+      "image_size": [
+        512,
+        512
+      ],
+      "file_size_bytes": 786432,
+      "timestamp": "2025-08-13T20:19:43.594211"
+    },
+    {
+      "operation_name": "format_conversion_512x512",
+      "execution_time": 0.030096769332885742,
+      "memory_usage_mb": 1.96484375,
+      "peak_memory_mb": 27.38671875,
+      "cpu_usage_percent": 53.4,
+      "image_size": [
+        512,
+        512
+      ],
+      "file_size_bytes": 786432,
+      "timestamp": "2025-08-13T20:19:43.726162"
+    },
+    {
+      "operation_name": "validation_1024x1024",
+      "execution_time": 0.011950969696044922,
+      "memory_usage_mb": 0.0234375,
+      "peak_memory_mb": 32.37109375,
+      "cpu_usage_percent": 2.35,
+      "image_size": [
+        1024,
+        1024
+      ],
+      "file_size_bytes": 3145728,
+      "timestamp": "2025-08-13T20:19:43.839899"
+    },
+    {
+      "operation_name": "thumbnail_1024x1024",
+      "execution_time": 0.0059986114501953125,
+      "memory_usage_mb": 0.0,
+      "peak_memory_mb": 32.3984375,
+      "cpu_usage_percent": 4.0,
+      "image_size": [
+        1024,
+        1024
+      ],
+      "file_size_bytes": 3145728,
+      "timestamp": "2025-08-13T20:19:43.947332"
+    },
+    {
+      "operation_name": "format_conversion_1024x1024",
+      "execution_time": 0.003001689910888672,
+      "memory_usage_mb": 0.046875,
+      "peak_memory_mb": 32.3984375,
+      "cpu_usage_percent": 52.7,
+      "image_size": [
+        1024,
+        1024
+      ],
+      "file_size_bytes": 3145728,
+      "timestamp": "2025-08-13T20:19:44.050934"
+    },
+    {
+      "operation_name": "validation_1920x1080",
+      "execution_time": 0.012000799179077148,
+      "memory_usage_mb": 0.0234375,
+      "peak_memory_mb": 36.40234375,
+      "cpu_usage_percent": 6.1,
+      "image_size": [
+        1920,
+        1080
+      ],
+      "file_size_bytes": 6220800,
+      "timestamp": "2025-08-13T20:19:44.166641"
+    },
+    {
+      "operation_name": "thumbnail_1920x1080",
+      "execution_time": 0.006998538970947266,
+      "memory_usage_mb": 0.1875,
+      "peak_memory_mb": 36.4296875,
+      "cpu_usage_percent": 2.9,
+      "image_size": [
+        1920,
+        1080
+      ],
+      "file_size_bytes": 6220800,
+      "timestamp": "2025-08-13T20:19:44.275549"
+    },
+    {
+      "operation_name": "format_conversion_1920x1080",
+      "execution_time": 0.004999637603759766,
+      "memory_usage_mb": 0.046875,
+      "peak_memory_mb": 36.6171875,
+      "cpu_usage_percent": 3.7,
+      "image_size": [
+        1920,
+        1080
+      ],
+      "file_size_bytes": 6220800,
+      "timestamp": "2025-08-13T20:19:44.382667"
+    },
+    {
+      "operation_name": "validation_2048x2048",
+      "execution_time": 0.017011404037475586,
+      "memory_usage_mb": 0.02734375,
+      "peak_memory_mb": 44.75390625,
+      "cpu_usage_percent": 52.9,
+      "image_size": [
+        2048,
+        2048
+      ],
+      "file_size_bytes": 12582912,
+      "timestamp": "2025-08-13T20:19:44.507937"
+    },
+    {
+      "operation_name": "thumbnail_2048x2048",
+      "execution_time": 0.011009454727172852,
+      "memory_usage_mb": 0.4453125,
+      "peak_memory_mb": 44.7890625,
+      "cpu_usage_percent": 53.25,
+      "image_size": [
+        2048,
+        2048
+      ],
+      "file_size_bytes": 12582912,
+      "timestamp": "2025-08-13T20:19:44.620373"
+    },
+    {
+      "operation_name": "format_conversion_2048x2048",
+      "execution_time": 0.009011983871459961,
+      "memory_usage_mb": 0.19921875,
+      "peak_memory_mb": 45.23828125,
+      "cpu_usage_percent": 4.15,
+      "image_size": [
+        2048,
+        2048
+      ],
+      "file_size_bytes": 12582912,
+      "timestamp": "2025-08-13T20:19:44.730743"
+    }
+  ]
+}

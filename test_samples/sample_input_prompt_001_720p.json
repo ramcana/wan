@@ -1,0 +1,12 @@
+{
+  "input": "Ocean waves crashing against rocky cliffs during sunset, close-up, epic scale, dramatic atmosphere, cinematic lighting",
+  "resolution": "720p",
+  "output_path": "outputs/test_video_prompt_001_720p_20250730_192853.mp4",
+  "metadata": {
+    "prompt_id": "prompt_001",
+    "category": "nature",
+    "complexity": "medium",
+    "generated_at": "2025-07-30T19:28:53.414715",
+    "test_session": "97ad7c03-d266-4719-9611-c9a4b8644841"
+  }
+}

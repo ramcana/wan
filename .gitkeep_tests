@@ -1,0 +1,19 @@
+# Important test directories and files to keep in Git
+
+# Test structure directories (keep empty directories)
+test_samples/
+test_logs/
+test_results/
+integration_test_results/
+coverage_reports/
+
+# Test configuration files
+test_samples/*.json
+config_templates/*.json
+config_templates/*.txt
+
+# Test scripts and validation
+*test*.py
+*validation*.py
+validate_*.py
+run_*_tests.py

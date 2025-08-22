@@ -1,0 +1,108 @@
+{
+    "system": {
+        "platform": "linux",
+        "gpu_memory_fraction": 0.9,
+        "cpu_cores": "auto",
+        "memory_limit_gb": null
+    },
+    "directories": {
+        "models": "/opt/wan22/models",
+        "outputs": "/opt/wan22/outputs",
+        "cache": "/opt/wan22/cache",
+        "logs": "/var/log/wan22"
+    },
+    "optimization": {
+        "enable_attention_slicing": true,
+        "enable_cpu_offload": false,
+        "enable_vae_tiling": true,
+        "enable_sequential_cpu_offload": false,
+        "vae_tile_size": 256,
+        "attention_slice_size": "auto",
+        "low_mem_mode": false,
+        "enable_xformers": true
+    },
+    "performance": {
+        "target_720p_time_minutes": 8.0,
+        "target_1080p_time_minutes": 15.0,
+        "max_vram_usage_gb": 12.0,
+        "vram_warning_threshold": 0.9,
+        "cpu_warning_percent": 80,
+        "memory_warning_percent": 85,
+        "stats_refresh_interval": 5
+    },
+    "testing_framework": {
+        "performance_targets": {
+            "target_720p_time_minutes": 8.0,
+            "target_1080p_time_minutes": 15.0,
+            "max_vram_usage_gb": 12.0,
+            "vram_warning_threshold": 0.9,
+            "cpu_warning_threshold": 80.0,
+            "expected_vram_reduction_percent": 80.0
+        },
+        "environment_requirements": {
+            "min_python_version": "3.9.0",
+            "required_cuda_version": "11.8",
+            "min_memory_gb": 32,
+            "min_vram_gb": 12
+        },
+        "reporting_options": {
+            "default_format": "json",
+            "include_charts": true,
+            "chart_types": [
+                "line",
+                "bar"
+            ],
+            "export_formats": [
+                "json",
+                "html",
+                "pdf"
+            ],
+            "archive_reports": true,
+            "report_retention_days": 30
+        },
+        "diagnostic_settings": {
+            "enable_auto_recovery": true,
+            "log_level": "INFO",
+            "monitoring_interval": 5,
+            "cleanup_interval": 300,
+            "enable_alerting": true,
+            "alert_endpoints": [
+                "http://monitoring.company.com/alerts"
+            ]
+        }
+    },
+    "ui": {
+        "port": 8080,
+        "host": "0.0.0.0",
+        "enable_auth": true,
+        "theme": "default",
+        "max_concurrent_users": 50,
+        "enable_queue": true,
+        "queue_size": 100,
+        "enable_ssl": true,
+        "ssl_cert": "/etc/ssl/certs/wan22.crt",
+        "ssl_key": "/etc/ssl/private/wan22.key"
+    },
+    "api": {
+        "enable_api": true,
+        "api_port": 8081,
+        "rate_limit": 1000,
+        "timeout_seconds": 300,
+        "enable_caching": true,
+        "enable_ssl": true,
+        "api_key_required": true
+    },
+    "security": {
+        "enable_https": true,
+        "require_authentication": true,
+        "session_timeout": 3600,
+        "max_login_attempts": 5,
+        "enable_audit_logging": true
+    },
+    "monitoring": {
+        "enable_metrics": true,
+        "metrics_port": 9090,
+        "health_check_interval": 30,
+        "enable_prometheus": true
+    }
+}

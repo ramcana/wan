@@ -1,0 +1,7 @@
+cd e:\wan
+.\venv\scripts\activate.ps1
+cd e:\wan\frontend
+npm run dev
+Backend:
+cd e:\wan\backend
+python app.py

@@ -1,0 +1,12 @@
+{
+  "input": "Industrial district with warehouses and factory buildings, high angle, photorealistic, high detail",
+  "resolution": "720p",
+  "output_path": "outputs/test_video_prompt_002_720p_20250730_192853.mp4",
+  "metadata": {
+    "prompt_id": "prompt_002",
+    "category": "urban",
+    "complexity": "medium",
+    "generated_at": "2025-07-30T19:28:53.407713",
+    "test_session": "7a862ef3-d602-4091-9bff-c5ffdd3a1185"
+  }
+}

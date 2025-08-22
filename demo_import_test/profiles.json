@@ -1,0 +1,73 @@
+{
+  "profiles": {
+    "rtx_4080_fallback": {
+      "name": "rtx_4080_fallback",
+      "description": "Fallback config for RTX 4080 when detection fails",
+      "manual_vram_gb": {
+        "0": 16
+      },
+      "preferred_gpu": null,
+      "enable_multi_gpu": false,
+      "memory_fraction": 0.9,
+      "enable_memory_growth": true,
+      "created_at": "2025-08-15T09:37:42.954607",
+      "last_used": null
+    },
+    "multi_gpu_fallback": {
+      "name": "multi_gpu_fallback",
+      "description": "Fallback config for RTX 4080 + RTX 3090 setup",
+      "manual_vram_gb": {
+        "0": 16,
+        "1": 24
+      },
+      "preferred_gpu": null,
+      "enable_multi_gpu": false,
+      "memory_fraction": 0.9,
+      "enable_memory_growth": true,
+      "created_at": "2025-08-15T09:37:42.957607",
+      "last_used": null
+    },
+    "gaming_setup": {
+      "name": "gaming_setup",
+      "description": "Gaming configuration with RTX 4080",
+      "manual_vram_gb": {
+        "0": 16
+      },
+      "preferred_gpu": null,
+      "enable_multi_gpu": false,
+      "memory_fraction": 0.9,
+      "enable_memory_growth": true,
+      "created_at": "2025-08-15T09:37:42.965607",
+      "last_used": "2025-08-15T09:37:42.980193"
+    },
+    "workstation": {
+      "name": "workstation",
+      "description": "Workstation with dual RTX 3090",
+      "manual_vram_gb": {
+        "0": 24,
+        "1": 24
+      },
+      "preferred_gpu": null,
+      "enable_multi_gpu": false,
+      "memory_fraction": 0.9,
+      "enable_memory_growth": true,
+      "created_at": "2025-08-15T09:37:42.969616",
+      "last_used": null
+    },
+    "budget_setup": {
+      "name": "budget_setup",
+      "description": "Budget setup with GTX 1660",
+      "manual_vram_gb": {
+        "0": 6
+      },
+      "preferred_gpu": null,
+      "enable_multi_gpu": false,
+      "memory_fraction": 0.9,
+      "enable_memory_growth": true,
+      "created_at": "2025-08-15T09:37:42.972615",
+      "last_used": null
+    }
+  },
+  "current_profile": "gaming_setup",
+  "last_updated": "2025-08-15T09:37:43.035245"
+}

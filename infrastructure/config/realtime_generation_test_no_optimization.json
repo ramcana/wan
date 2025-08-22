@@ -1,0 +1,83 @@
+{
+  "start_time": "2025-08-15T21:30:15.054602",
+  "hardware_profile": null,
+  "optimization_settings": {},
+  "generation_tests": [
+    {
+      "test_type": "model_loading",
+      "result": {
+        "success": true,
+        "loading_time_seconds": 2.0172359943389893,
+        "loading_time_minutes": 0.03362059990564982,
+        "model_name": "stabilityai/stable-video-diffusion-img2vid-xt-1-1",
+        "optimization_applied": false,
+        "load_parameters": {},
+        "meets_target": true
+      }
+    },
+    {
+      "test_type": "standard_generation",
+      "result": {
+        "success": true,
+        "generation_time_seconds": 90.01714944839478,
+        "generation_time_minutes": 1.5002858241399128,
+        "parameters": {
+          "prompt": "A beautiful sunset over mountains with flowing clouds",
+          "num_frames": 16,
+          "width": 512,
+          "height": 512,
+          "num_inference_steps": 25,
+          "guidance_scale": 7.5
+        },
+        "optimization_applied": false,
+        "performance_metrics": [],
+        "meets_target": true,
+        "output_info": {
+          "frames": 16,
+          "resolution": "512x512",
+          "duration_seconds": 2.0
+        }
+      }
+    },
+    {
+      "test_type": "high_quality_generation",
+      "result": {
+        "success": true,
+        "generation_time_seconds": 90.01809453964233,
+        "generation_time_minutes": 1.5003015756607057,
+        "parameters": {
+          "prompt": "A serene lake with reflections and gentle ripples",
+          "num_frames": 24,
+          "width": 512,
+          "height": 512,
+          "num_inference_steps": 25,
+          "guidance_scale": 7.5
+        },
+        "optimization_applied": false,
+        "performance_metrics": [],
+        "meets_target": true,
+        "output_info": {
+          "frames": 24,
+          "resolution": "512x512",
+          "duration_seconds": 3.0
+        }
+      }
+    }
+  ],
+  "performance_metrics": {
+    "total_test_time_seconds": 182.05348134040833,
+    "total_tests": 3,
+    "successful_tests": 3,
+    "success_rate_percent": 100.0,
+    "average_generation_time_seconds": 90.01762199401855,
+    "average_generation_time_minutes": 1.5002936999003091,
+    "optimization_enabled": false,
+    "hardware_optimization_applied": false
+  },
+  "health_monitoring": [],
+  "recommendations": [
+    "\ud83d\udd27 Enable optimization for better performance"
+  ],
+  "end_time": "2025-08-15T21:33:17.109083",
+  "total_duration_seconds": 182.05348134040833
+}

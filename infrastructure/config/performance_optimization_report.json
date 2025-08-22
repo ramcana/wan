@@ -1,0 +1,437 @@
+{
+  "session_time": 9.631113767623901,
+  "optimization_phases": {
+    "rtx4080": {
+      "results": [
+        {
+          "component": "vae",
+          "parameter": "tile_size",
+          "original_value": [
+            256,
+            256
+          ],
+          "optimized_value": [
+            384,
+            384
+          ],
+          "performance_improvement_percent": 55.66668084281954,
+          "memory_savings_mb": -2560.0,
+          "meets_targets": true,
+          "recommendations": [
+            "Optimal tile size for RTX 4080: 384x384",
+            "Expected performance improvement: 55.7%",
+            "VRAM usage: 12800MB"
+          ]
+        },
+        {
+          "component": "model",
+          "parameter": "batch_size",
+          "original_value": 2,
+          "optimized_value": 1,
+          "performance_improvement_percent": 8.329920378725086,
+          "memory_savings_mb": 1024,
+          "meets_targets": true,
+          "recommendations": [
+            "Optimal batch size for RTX 4080: 1",
+            "Expected throughput improvement: 8.3%",
+            "Throughput: 4.51 images/second"
+          ]
+        },
+        {
+          "component": "memory",
+          "parameter": "memory_settings",
+          "original_value": {
+            "memory_fraction": 0.9,
+            "gradient_checkpointing": false,
+            "cpu_offload": false
+          },
+          "optimized_value": {
+            "memory_fraction": 0.95,
+            "gradient_checkpointing": false,
+            "cpu_offload": false,
+            "attention_slicing": false,
+            "vae_slicing": false,
+            "model_cpu_offload": false,
+            "sequential_cpu_offload": false
+          },
+          "performance_improvement_percent": 25,
+          "memory_savings_mb": 1024,
+          "meets_targets": true,
+          "recommendations": [
+            "RTX 4080 has sufficient VRAM to disable CPU offloading",
+            "Gradient checkpointing disabled for maximum speed",
+            "Memory fraction increased to 95% for better utilization",
+            "All processing kept on GPU for optimal performance"
+          ]
+        }
+      ],
+      "settings": {
+        "vae_tile_size": [
+          384,
+          384
+        ],
+        "batch_size": 1,
+        "memory_fraction": 0.95,
+        "enable_tensor_cores": true,
+        "use_bf16": true,
+        "enable_xformers": true,
+        "enable_flash_attention": true,
+        "gradient_checkpointing": false,
+        "cpu_offload": false,
+        "attention_slicing": false,
+        "vae_slicing": false,
+        "model_cpu_offload": false,
+        "sequential_cpu_offload": false
+      }
+    },
+    "threadripper_pro": {
+      "results": [
+        {
+          "component": "cpu",
+          "parameter": "num_threads",
+          "original_value": 32,
+          "optimized_value": 48,
+          "performance_improvement_percent": 26.072879260611053,
+          "memory_savings_mb": 0,
+          "meets_targets": true,
+          "recommendations": [
+            "Optimal thread count for Threadripper PRO: 48",
+            "Utilizes 75.0% of available cores",
+            "Expected performance improvement: 26.1%"
+          ]
+        },
+        {
+          "component": "numa",
+          "parameter": "numa_optimization",
+          "original_value": true,
+          "optimized_value": true,
+          "performance_improvement_percent": 20,
+          "memory_savings_mb": 512,
+          "meets_targets": true,
+          "recommendations": [
+            "NUMA optimization enabled for Threadripper PRO",
+            "Memory allocation strategy set to NUMA-aware",
+            "Thread affinity configured per NUMA node",
+            "Expected 20% performance improvement in memory-intensive operations"
+          ]
+        }
+      ],
+      "settings": {
+        "num_threads": 48,
+        "parallel_workers": 8,
+        "preprocessing_threads": 16,
+        "enable_numa_optimization": true,
+        "numa_nodes": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "cpu_affinity": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31
+        ],
+        "memory_allocation_strategy": "numa_aware",
+        "batch_processing": true,
+        "async_preprocessing": true,
+        "thread_affinity_per_node": true
+      }
+    },
+    "system_overhead": {
+      "results": [
+        {
+          "component": "monitoring",
+          "parameter": "monitoring_interval",
+          "original_value": 1.0,
+          "optimized_value": 2.0,
+          "performance_improvement_percent": 50.0,
+          "memory_savings_mb": 50,
+          "meets_targets": true,
+          "recommendations": [
+            "Optimal monitoring interval: 2.0s",
+            "Overhead reduced by 50.0%",
+            "Monitoring overhead: 5.0ms per cycle"
+          ]
+        },
+        {
+          "component": "metrics",
+          "parameter": "retention_hours",
+          "original_value": 24,
+          "optimized_value": 72,
+          "performance_improvement_percent": 5,
+          "memory_savings_mb": -168.75,
+          "meets_targets": true,
+          "recommendations": [
+            "Optimal metrics retention: 72 hours",
+            "Memory usage: 253.1MB",
+            "Memory savings: -168.8MB"
+          ]
+        }
+      ],
+      "settings": {
+        "monitoring_interval": 2.0,
+        "metrics_retention_hours": 72,
+        "detailed_profiling": true,
+        "background_optimization": true
+      }
+    }
+  },
+  "benchmark_validation": {
+    "validation_time": 4.059647560119629,
+    "total_targets": 4,
+    "passed_targets": 2,
+    "failed_targets": 2,
+    "success_rate": 50.0,
+    "weighted_success_rate": 44.44444444444444,
+    "results": [
+      {
+        "target": {
+          "component": "model",
+          "operation": "ti2v_loading",
+          "target_duration_ms": 300000,
+          "max_memory_mb": 12288,
+          "max_cpu_percent": 80,
+          "max_gpu_percent": 100.0,
+          "max_vram_mb": 12288,
+          "priority": 1
+        },
+        "metrics": {
+          "timestamp": "2025-08-15T21:18:17.070361",
+          "component": "model",
+          "operation": "benchmark",
+          "duration_ms": 2401.1600017547607,
+          "memory_usage_mb": 45.53125,
+          "cpu_usage_percent": 1.6,
+          "gpu_usage_percent": 100.0,
+          "vram_usage_mb": 14518.9609375,
+          "success": true,
+          "error_message": "",
+          "metadata": {
+            "target": {
+              "component": "model",
+              "operation": "ti2v_loading",
+              "target_duration_ms": 300000,
+              "max_memory_mb": 12288,
+              "max_cpu_percent": 80,
+              "max_gpu_percent": 100.0,
+              "max_vram_mb": 12288,
+              "priority": 1
+            },
+            "benchmark_validation": true
+          }
+        },
+        "targets_met": {
+          "duration": true,
+          "memory": true,
+          "cpu": true,
+          "vram": false
+        },
+        "all_targets_met": false,
+        "performance_margin": {
+          "duration_margin_percent": 99.19961333274841,
+          "memory_margin_mb": 12242.46875,
+          "cpu_margin_percent": 78.4,
+          "vram_margin_mb": -2230.9609375
+        }
+      },
+      {
+        "target": {
+          "component": "generation",
+          "operation": "video_2s",
+          "target_duration_ms": 120000,
+          "max_memory_mb": 16384,
+          "max_cpu_percent": 90,
+          "max_gpu_percent": 100.0,
+          "max_vram_mb": 15360,
+          "priority": 1
+        },
+        "metrics": {
+          "timestamp": "2025-08-15T21:18:18.073173",
+          "component": "generation",
+          "operation": "benchmark",
+          "duration_ms": 900.6509780883789,
+          "memory_usage_mb": 45.53515625,
+          "cpu_usage_percent": 1.6,
+          "gpu_usage_percent": 100.0,
+          "vram_usage_mb": 14523.0859375,
+          "success": true,
+          "error_message": "",
+          "metadata": {
+            "target": {
+              "component": "generation",
+              "operation": "video_2s",
+              "target_duration_ms": 120000,
+              "max_memory_mb": 16384,
+              "max_cpu_percent": 90,
+              "max_gpu_percent": 100.0,
+              "max_vram_mb": 15360,
+              "priority": 1
+            },
+            "benchmark_validation": true
+          }
+        },
+        "targets_met": {
+          "duration": true,
+          "memory": true,
+          "cpu": true,
+          "vram": true
+        },
+        "all_targets_met": true,
+        "performance_margin": {
+          "duration_margin_percent": 99.24945751825969,
+          "memory_margin_mb": 16338.46484375,
+          "cpu_margin_percent": 88.4,
+          "vram_margin_mb": 836.9140625
+        }
+      },
+      {
+        "target": {
+          "component": "vae",
+          "operation": "encoding",
+          "target_duration_ms": 5000,
+          "max_memory_mb": 8192,
+          "max_cpu_percent": 70,
+          "max_gpu_percent": 100.0,
+          "max_vram_mb": 8192,
+          "priority": 2
+        },
+        "metrics": {
+          "timestamp": "2025-08-15T21:18:18.475190",
+          "component": "vae",
+          "operation": "benchmark",
+          "duration_ms": 301.44453048706055,
+          "memory_usage_mb": 45.5390625,
+          "cpu_usage_percent": 1.8,
+          "gpu_usage_percent": 100.0,
+          "vram_usage_mb": 14515.0859375,
+          "success": true,
+          "error_message": "",
+          "metadata": {
+            "target": {
+              "component": "vae",
+              "operation": "encoding",
+              "target_duration_ms": 5000,
+              "max_memory_mb": 8192,
+              "max_cpu_percent": 70,
+              "max_gpu_percent": 100.0,
+              "max_vram_mb": 8192,
+              "priority": 2
+            },
+            "benchmark_validation": true
+          }
+        },
+        "targets_met": {
+          "duration": true,
+          "memory": true,
+          "cpu": true,
+          "vram": false
+        },
+        "all_targets_met": false,
+        "performance_margin": {
+          "duration_margin_percent": 93.97110939025879,
+          "memory_margin_mb": 8146.4609375,
+          "cpu_margin_percent": 68.2,
+          "vram_margin_mb": -6323.0859375
+        }
+      },
+      {
+        "target": {
+          "component": "monitoring",
+          "operation": "metrics_collection",
+          "target_duration_ms": 100,
+          "max_memory_mb": 512,
+          "max_cpu_percent": 5,
+          "max_gpu_percent": 100.0,
+          "max_vram_mb": 16384.0,
+          "priority": 3
+        },
+        "metrics": {
+          "timestamp": "2025-08-15T21:18:18.627159",
+          "component": "monitoring",
+          "operation": "benchmark",
+          "duration_ms": 51.07903480529785,
+          "memory_usage_mb": 45.5390625,
+          "cpu_usage_percent": 2.7,
+          "gpu_usage_percent": 100.0,
+          "vram_usage_mb": 14513.3984375,
+          "success": true,
+          "error_message": "",
+          "metadata": {
+            "target": {
+              "component": "monitoring",
+              "operation": "metrics_collection",
+              "target_duration_ms": 100,
+              "max_memory_mb": 512,
+              "max_cpu_percent": 5,
+              "max_gpu_percent": 100.0,
+              "max_vram_mb": 16384.0,
+              "priority": 3
+            },
+            "benchmark_validation": true
+          }
+        },
+        "targets_met": {
+          "duration": true,
+          "memory": true,
+          "cpu": true,
+          "vram": true
+        },
+        "all_targets_met": true,
+        "performance_margin": {
+          "duration_margin_percent": 48.92096519470215,
+          "memory_margin_mb": 466.4609375,
+          "cpu_margin_percent": 2.3,
+          "vram_margin_mb": 1870.6015625
+        }
+      }
+    ],
+    "recommendations": [
+      "Optimize VRAM usage in model ti2v_loading",
+      "Optimize VRAM usage in vae encoding"
+    ]
+  },
+  "summary": {
+    "total_optimizations": 7,
+    "successful_optimizations": 7,
+    "success_rate": 100.0,
+    "total_performance_improvement": 190.06948048215568,
+    "total_memory_savings_mb": -118.75,
+    "benchmarks_passed": 2,
+    "benchmark_success_rate": 50.0
+  },
+  "recommendations": [
+    "All optimizations successful - system is optimally tuned",
+    "Significant performance improvement achieved: 190.1%",
+    "Several benchmarks failing - significant optimization needed"
+  ]
+}

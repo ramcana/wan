@@ -1,0 +1,340 @@
+{
+  "validation_summary": {
+    "overall_success": true,
+    "total_duration": 25.6679630279541,
+    "total_tests": 8,
+    "passed_tests": 8,
+    "failed_tests": 0,
+    "timestamp": 1754874368.0407784
+  },
+  "test_results": [
+    {
+      "test_name": "System Initialization",
+      "success": true,
+      "duration": 25.234260320663452,
+      "error_count": 0,
+      "warning_count": 0,
+      "errors": [],
+      "warnings": [],
+      "details": {
+        "default_config": {
+          "system": {
+            "initialized": true,
+            "components": {
+              "architecture_detector": true,
+              "pipeline_manager": true,
+              "compatibility_registry": true,
+              "error_handler": true,
+              "optimization_manager": true,
+              "fallback_handler": true,
+              "safe_load_manager": true,
+              "diagnostic_collector": true,
+              "performance_profiler": true
+            },
+            "errors": [],
+            "warnings": []
+          },
+          "configuration": {
+            "enable_diagnostics": true,
+            "enable_performance_monitoring": true,
+            "enable_safe_loading": true,
+            "enable_optimization": true,
+            "enable_fallback": true,
+            "diagnostics_dir": "diagnostics",
+            "logs_dir": "logs",
+            "max_memory_usage_gb": 12.0,
+            "default_precision": "bf16",
+            "log_level": "INFO"
+          },
+          "available_components": [
+            "architecture_detector",
+            "pipeline_manager",
+            "compatibility_registry",
+            "error_handler",
+            "optimization_manager",
+            "fallback_handler",
+            "safe_load_manager",
+            "diagnostic_collector",
+            "performance_profiler"
+          ],
+          "timestamp": 1754874367.3995392
+        },
+        "minimal_config": {
+          "system": {
+            "initialized": true,
+            "components": {
+              "architecture_detector": true,
+              "pipeline_manager": true,
+              "compatibility_registry": true,
+              "error_handler": true,
+              "optimization_manager": true,
+              "fallback_handler": true,
+              "safe_load_manager": true,
+              "diagnostic_collector": true,
+              "performance_profiler": true
+            },
+            "errors": [],
+            "warnings": []
+          },
+          "configuration": {
+            "enable_diagnostics": false,
+            "enable_performance_monitoring": false,
+            "enable_safe_loading": false,
+            "enable_optimization": true,
+            "enable_fallback": true,
+            "diagnostics_dir": "diagnostics",
+            "logs_dir": "logs",
+            "max_memory_usage_gb": 12.0,
+            "default_precision": "bf16",
+            "log_level": "INFO"
+          },
+          "available_components": [
+            "architecture_detector",
+            "pipeline_manager",
+            "compatibility_registry",
+            "error_handler",
+            "optimization_manager",
+            "fallback_handler",
+            "safe_load_manager",
+            "diagnostic_collector",
+            "performance_profiler"
+          ],
+          "timestamp": 1754874367.514113
+        },
+        "constrained_config": {
+          "system": {
+            "initialized": true,
+            "components": {
+              "architecture_detector": true,
+              "pipeline_manager": true,
+              "compatibility_registry": true,
+              "error_handler": true,
+              "optimization_manager": true,
+              "fallback_handler": true,
+              "safe_load_manager": true,
+              "diagnostic_collector": true,
+              "performance_profiler": true
+            },
+            "errors": [],
+            "warnings": []
+          },
+          "configuration": {
+            "enable_diagnostics": true,
+            "enable_performance_monitoring": true,
+            "enable_safe_loading": true,
+            "enable_optimization": true,
+            "enable_fallback": true,
+            "diagnostics_dir": "diagnostics",
+            "logs_dir": "logs",
+            "max_memory_usage_gb": 2.0,
+            "default_precision": "fp16",
+            "log_level": "INFO"
+          },
+          "available_components": [
+            "architecture_detector",
+            "pipeline_manager",
+            "compatibility_registry",
+            "error_handler",
+            "optimization_manager",
+            "fallback_handler",
+            "safe_load_manager",
+            "diagnostic_collector",
+            "performance_profiler"
+          ],
+          "timestamp": 1754874367.6000755
+        }
+      }
+    },
+    {
+      "test_name": "Component Loading",
+      "success": true,
+      "duration": 0.0,
+      "error_count": 0,
+      "warning_count": 0,
+      "errors": [],
+      "warnings": [],
+      "details": {
+        "components_status": {
+          "architecture_detector": true,
+          "pipeline_manager": true,
+          "compatibility_registry": true,
+          "error_handler": true,
+          "optimization_manager": true,
+          "fallback_handler": true,
+          "safe_load_manager": true,
+          "diagnostic_collector": true,
+          "performance_profiler": true
+        },
+        "total_components": 9,
+        "loaded_components": 9
+      }
+    },
+    {
+      "test_name": "Configuration Validation",
+      "success": true,
+      "duration": 0.34304118156433105,
+      "error_count": 0,
+      "warning_count": 0,
+      "errors": [],
+      "warnings": [],
+      "details": {
+        "debug_config": {
+          "initialized": true,
+          "config": {
+            "enable_diagnostics": true,
+            "enable_performance_monitoring": true,
+            "enable_safe_loading": true,
+            "enable_optimization": true,
+            "enable_fallback": true,
+            "diagnostics_dir": "diagnostics",
+            "logs_dir": "logs",
+            "max_memory_usage_gb": 12.0,
+            "default_precision": "bf16",
+            "log_level": "DEBUG"
+          }
+        },
+        "production_config": {
+          "initialized": true,
+          "config": {
+            "enable_diagnostics": true,
+            "enable_performance_monitoring": true,
+            "enable_safe_loading": true,
+            "enable_optimization": true,
+            "enable_fallback": true,
+            "diagnostics_dir": "diagnostics",
+            "logs_dir": "logs",
+            "max_memory_usage_gb": 12.0,
+            "default_precision": "bf16",
+            "log_level": "WARNING"
+          }
+        },
+        "high_memory_config": {
+          "initialized": true,
+          "config": {
+            "enable_diagnostics": true,
+            "enable_performance_monitoring": true,
+            "enable_safe_loading": true,
+            "enable_optimization": true,
+            "enable_fallback": true,
+            "diagnostics_dir": "diagnostics",
+            "logs_dir": "logs",
+            "max_memory_usage_gb": 24.0,
+            "default_precision": "bf16",
+            "log_level": "INFO"
+          }
+        },
+        "low_memory_config": {
+          "initialized": true,
+          "config": {
+            "enable_diagnostics": true,
+            "enable_performance_monitoring": true,
+            "enable_safe_loading": true,
+            "enable_optimization": true,
+            "enable_fallback": true,
+            "diagnostics_dir": "diagnostics",
+            "logs_dir": "logs",
+            "max_memory_usage_gb": 4.0,
+            "default_precision": "bf16",
+            "log_level": "INFO"
+          }
+        }
+      }
+    },
+    {
+      "test_name": "Error Handling",
+      "success": true,
+      "duration": 0.0,
+      "error_count": 0,
+      "warning_count": 0,
+      "errors": [],
+      "warnings": [],
+      "details": {
+        "error_handler_available": true,
+        "error_handler_functional": true,
+        "system_errors": 0,
+        "system_warnings": 0
+      }
+    },
+    {
+      "test_name": "Resource Management",
+      "success": true,
+      "duration": 0.0060002803802490234,
+      "error_count": 0,
+      "warning_count": 0,
+      "errors": [],
+      "warnings": [],
+      "details": {
+        "system_memory": {
+          "total_gb": 127.83485794067383,
+          "available_gb": 99.05010604858398,
+          "percent_used": 22.5
+        },
+        "gpu_info": {
+          "available": true,
+          "name": "NVIDIA GeForce RTX 4080",
+          "total_memory_gb": 15.99169921875
+        }
+      }
+    },
+    {
+      "test_name": "Integration Points",
+      "success": true,
+      "duration": 0.0,
+      "error_count": 0,
+      "warning_count": 0,
+      "errors": [],
+      "warnings": [],
+      "details": {
+        "functionality_tests": {
+          "overall_success": true,
+          "component_tests": {
+            "architecture_detector": true,
+            "pipeline_manager": true,
+            "compatibility_registry": true,
+            "error_handler": true,
+            "optimization_manager": true,
+            "fallback_handler": true,
+            "safe_load_manager": true,
+            "diagnostic_collector": true,
+            "performance_profiler": true
+          },
+          "errors": [],
+          "warnings": []
+        },
+        "component_interactions": {
+          "detector_manager": true
+        }
+      }
+    },
+    {
+      "test_name": "Performance Monitoring",
+      "success": true,
+      "duration": 0.0,
+      "error_count": 0,
+      "warning_count": 0,
+      "errors": [],
+      "warnings": [],
+      "details": {
+        "performance_monitoring_available": true,
+        "profiler_functional": true,
+        "status_includes_performance": true
+      }
+    },
+    {
+      "test_name": "Cleanup Procedures",
+      "success": true,
+      "duration": 0.08466124534606934,
+      "error_count": 0,
+      "warning_count": 0,
+      "errors": [],
+      "warnings": [],
+      "details": {
+        "cleanup_successful": true,
+        "diagnostic_files_created": 1
+      }
+    }
+  ],
+  "recommendations": [
+    "\u2705 System validation passed - ready for production use"
+  ]
+}

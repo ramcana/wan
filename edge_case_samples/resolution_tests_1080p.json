@@ -1,0 +1,38 @@
+[
+  {
+    "id": "1080p_simple_scene",
+    "input": "A simple landscape with mountains and trees",
+    "resolution": "1080p",
+    "output_path": "outputs/test_1080p_simple_scene.mp4",
+    "expected_duration_minutes": 12.0,
+    "complexity": "low",
+    "test_type": "resolution_performance"
+  },
+  {
+    "id": "1080p_complex_scene",
+    "input": "A bustling medieval marketplace with detailed architecture, multiple characters, dynamic lighting, and atmospheric effects",
+    "resolution": "1080p",
+    "output_path": "outputs/test_1080p_complex_scene.mp4",
+    "expected_duration_minutes": 20.0,
+    "complexity": "high",
+    "test_type": "resolution_performance"
+  },
+  {
+    "id": "1080p_motion_heavy",
+    "input": "Fast-moving cars racing through city streets with motion blur and dynamic camera angles",
+    "resolution": "1080p",
+    "output_path": "outputs/test_1080p_motion_heavy.mp4",
+    "expected_duration_minutes": 24.0,
+    "complexity": "high",
+    "test_type": "resolution_performance"
+  },
+  {
+    "id": "1080p_particle_effects",
+    "input": "Magical spell casting with glowing particles, energy beams, and light effects",
+    "resolution": "1080p",
+    "output_path": "outputs/test_1080p_particle_effects.mp4",
+    "expected_duration_minutes": 22.0,
+    "complexity": "high",
+    "test_type": "resolution_performance"
+  }
+]

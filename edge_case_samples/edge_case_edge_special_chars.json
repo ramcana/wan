@@ -1,0 +1,7 @@
+{
+  "id": "edge_special_chars",
+  "category": "special_characters",
+  "prompt": "A scene with symbols: !@#$%^&*()_+-=[]{}|;':\",./<>?",
+  "expected_behavior": "should handle special characters",
+  "test_type": "special_characters"
+}

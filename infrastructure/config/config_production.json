@@ -1,0 +1,61 @@
+{
+    "api_settings": {
+        "host": "0.0.0.0",
+        "port": 8000,
+        "cors_origins": [
+            "https://your-domain.com",
+            "https://www.your-domain.com"
+        ],
+        "max_file_size_mb": 200
+    },
+    "database_settings": {
+        "url": "sqlite:///wan22_production.db",
+        "pool_size": 10
+    },
+    "model_settings": {
+        "default_model": "T2V-A14B",
+        "model_cache_dir": "/app/models",
+        "enable_model_offloading": true,
+        "quantization_mode": "fp16"
+    },
+    "generation_settings": {
+        "default_resolution": "1280x720",
+        "default_steps": 50,
+        "max_queue_size": 20,
+        "enable_progress_tracking": true
+    },
+    "optimization_settings": {
+        "vram_optimization": true,
+        "cpu_offload": true,
+        "vae_tile_size": 512,
+        "enable_attention_slicing": true
+    },
+    "storage_settings": {
+        "outputs_dir": "/app/backend/outputs",
+        "thumbnails_dir": "/app/backend/outputs/thumbnails",
+        "temp_dir": "/app/backend/temp",
+        "max_storage_gb": 100
+    },
+    "logging_settings": {
+        "log_level": "INFO",
+        "log_file": "/app/backend/logs/production.log",
+        "enable_performance_logging": true
+    },
+    "performance_settings": {
+        "max_workers": 4,
+        "worker_timeout": 600,
+        "enable_hot_reload": false
+    },
+    "security_settings": {
+        "secret_key": "${SECRET_KEY}",
+        "jwt_secret": "${JWT_SECRET}",
+        "enable_cors": true,
+        "debug_mode": false
+    },
+    "monitoring_settings": {
+        "enable_metrics": true,
+        "metrics_port": 9090,
+        "health_check_interval": 30,
+        "error_reporting": true
+    }
+}

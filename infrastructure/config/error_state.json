@@ -1,0 +1,24 @@
+{
+  "timestamp": "2025-08-06T20:16:16.901427",
+  "category": "unknown_error",
+  "error_type": "KeyError",
+  "message": "'max_percent'",
+  "user_message": "An unexpected error occurred. Please check the logs for more details.",
+  "function_name": "",
+  "system_info": {
+    "cuda_available": true,
+    "cuda_device_count": 1,
+    "cuda_memory_allocated": 0,
+    "cuda_memory_reserved": 0,
+    "cpu_percent": 0.5,
+    "memory_percent": 23.3,
+    "disk_usage_percent": 17.5
+  },
+  "recovery_suggestions": [
+    "Check the error logs for more details",
+    "Try restarting the application",
+    "Report the issue with log details",
+    "Try with minimal settings first"
+  ],
+  "traceback": "NoneType: None\n"
+}

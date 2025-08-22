@@ -1,0 +1,32 @@
+{
+  "timestamp": "2025-08-15T19:23:19.486181",
+  "reason": "manual_trigger",
+  "protection_level": "conservative",
+  "thresholds": {
+    "gpu_temperature_emergency": 75.0,
+    "gpu_temperature_critical": 70.0,
+    "vram_usage_emergency": 92.0,
+    "vram_usage_critical": 85.0,
+    "cpu_temperature_emergency": 80.0,
+    "cpu_temperature_critical": 75.0,
+    "cpu_usage_emergency": 95.0,
+    "cpu_usage_critical": 90.0,
+    "memory_usage_emergency": 98.0,
+    "memory_usage_critical": 95.0,
+    "disk_usage_emergency": 98.0,
+    "disk_usage_critical": 95.0,
+    "critical_duration_seconds": 15.0,
+    "emergency_response_seconds": 5.0,
+    "recovery_margin_percent": 10.0
+  },
+  "critical_conditions": {},
+  "actions_taken": [
+    {
+      "timestamp": "2025-08-15T19:23:19.485561",
+      "reason": "manual_trigger",
+      "severity": "emergency",
+      "action_taken": "emergency_shutdown",
+      "metrics_snapshot": {}
+    }
+  ]
+}

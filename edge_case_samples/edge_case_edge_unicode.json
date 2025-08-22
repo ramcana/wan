@@ -1,0 +1,7 @@
+{
+  "id": "edge_unicode",
+  "category": "unicode",
+  "prompt": "A beautiful scene with émojis 🌟🎨🎭 and ünïcödé characters: café, naïve, résumé",
+  "expected_behavior": "should handle Unicode characters",
+  "test_type": "unicode_input"
+}

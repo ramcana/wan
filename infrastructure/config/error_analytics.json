@@ -1,0 +1,17 @@
+{
+  "error_counts": {
+    "missing_pipeline_class": 2
+  },
+  "resolution_success": {
+    "missing_pipeline_class": {
+      "attempts": 2,
+      "successes": 1
+    }
+  },
+  "common_contexts": {
+    "Wan2.2-T2V-A14B-Diffusers": {
+      "missing_pipeline_class": 2
+    }
+  },
+  "user_feedback": []
+}

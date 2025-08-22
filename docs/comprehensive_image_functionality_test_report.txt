@@ -1,0 +1,299 @@
+Comprehensive Image Functionality Test Report
+Generated at: 2025-08-13 10:58:22
+================================================================================
+
+Test Suite: Image Validation Unit Tests
+----------------------------------------
+Tests run: 16
+Failures: 8
+Errors: 0
+Skipped: 0
+Success rate: 50.0%
+Duration: 0.06s
+
+Detailed Output:
+test_aspect_ratio_string_all_common_ratios (test_image_validation_unit_tests_complete.TestImageMetadataComplete.test_aspect_ratio_string_all_common_ratios)
+Test aspect ratio string for all common ratios ... ok
+test_file_size_mb_property_various_sizes (test_image_validation_unit_tests_complete.TestImageMetadataComplete.test_file_size_mb_property_various_sizes)
+Test file size MB calculation with various sizes ... ok
+test_image_metadata_creation_complete (test_image_validation_unit_tests_complete.TestImageMetadataComplete.test_image_metadata_creation_complete)
+Test complete ImageMetadata object creation with all fields ... ok
+test_to_dict_serialization_complete (test_image_validation_unit_tests_complete.TestImageMetadataComplete.test_to_dict_serialization_complete)
+Test complete metadata serialization to dictionary ... FAIL
+test_validation_feedback_all_severities (test_image_validation_unit_tests_complete.TestValidationFeedbackComplete.test_validation_feedback_all_severities)
+Test ValidationFeedback with all severity levels ... ok
+test_validation_feedback_html_all_severities (test_image_validation_unit_tests_complete.TestValidationFeedbackComplete.test_validation_feedback_html_all_severities)
+Test HTML generation for all severity levels ... ok
+test_validation_feedback_html_with_complete_metadata (test_image_validation_unit_tests_complete.TestValidationFeedbackComplete.test_validation_feedback_html_with_complete_metadata)
+Test HTML generation with complete metadata ... ok
+test_custom_configuration_complete (test_image_validation_unit_tests_complete.TestEnhancedImageValidatorConfiguration.test_custom_configuration_complete)
+Test validator with complete custom configuration ... ok
+test_default_configuration_complete (test_image_validation_unit_tests_complete.TestEnhancedImageValidatorConfiguration.test_default_configuration_complete)
+Test validator with complete default configuration ... ok
+test_model_requirements_complete_structure (test_image_validation_unit_tests_complete.TestEnhancedImageValidatorConfiguration.test_model_requirements_complete_structure)
+Test complete model requirements structure ... ok
+test_extract_metadata_all_color_modes (test_image_validation_unit_tests_complete.TestImageValidationMethodsComplete.test_extract_metadata_all_color_modes)
+Test metadata extraction from all color modes ... ok
+test_generate_thumbnail_various_sizes (test_image_validation_unit_tests_complete.TestImageValidationMethodsComplete.test_generate_thumbnail_various_sizes)
+Test thumbnail generation with various image sizes ... 
+  test_generate_thumbnail_various_sizes (test_image_validation_unit_tests_complete.TestImageValidationMethodsComplete.test_generate_thumbnail_various_sizes) (size=(100, 100))
+Test thumbnail generation with various image sizes ... FAIL
+  test_generate_thumbnail_various_sizes (test_image_validation_unit_tests_complete.TestImageValidationMethodsComplete.test_generate_thumbnail_various_sizes) (size=(1000, 1000))
+Test thumbnail generation with various image sizes ... FAIL
+  test_generate_thumbnail_various_sizes (test_image_validation_unit_tests_complete.TestImageValidationMethodsComplete.test_generate_thumbnail_various_sizes) (size=(1920, 1080))
+Test thumbnail generation with various image sizes ... FAIL
+  test_generate_thumbnail_various_sizes (test_image_validation_unit_tests_complete.TestImageValidationMethodsComplete.test_generate_thumbnail_various_sizes) (size=(1080, 1920))
+Test thumbnail generation with various image sizes ... FAIL
+  test_generate_thumbnail_various_sizes (test_image_validation_unit_tests_complete.TestImageValidationMethodsComplete.test_generate_thumbnail_various_sizes) (size=(3000, 2000))
+Test thumbnail generation with various image sizes ... FAIL
+  test_generate_thumbnail_various_sizes (test_image_validation_unit_tests_complete.TestImageValidationMethodsComplete.test_generate_thumbnail_various_sizes) (size=(50, 200))
+Test thumbnail generation with various image sizes ... FAIL
+  test_generate_thumbnail_various_sizes (test_image_validation_unit_tests_complete.TestImageValidationMethodsComplete.test_generate_thumbnail_various_sizes) (size=(200, 50))
+Test thumbnail generation with various image sizes ... FAIL
+test_validate_dimensions_boundary_conditions (test_image_validation_unit_tests_complete.TestImageValidationMethodsComplete.test_validate_dimensions_boundary_conditions)
+Test dimension validation with boundary conditions ... ok
+test_validate_file_size_boundary_conditions (test_image_validation_unit_tests_complete.TestImageValidationMethodsComplete.test_validate_file_size_boundary_conditions)
+Test file size validation with boundary conditions ... ok
+test_validate_format_all_supported_formats (test_image_validation_unit_tests_complete.TestImageValidationMethodsComplete.test_validate_format_all_supported_formats)
+Test format validation with all supported formats ... ok
+test_validate_format_all_unsupported_formats (test_image_validation_unit_tests_complete.TestImageValidationMethodsComplete.test_validate_format_all_unsupported_formats)
+Test format validation with unsupported formats ... ok
+
+======================================================================
+FAIL: test_to_dict_serialization_complete (test_image_validation_unit_tests_complete.TestImageMetadataComplete.test_to_dict_serialization_complete)
+Test complete metadata serialization to dictionary
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\wan\test_image_validation_unit_tests_complete.py", line 147, in test_to_dict_serialization_complete
+    self.assertEqual(metadata_dict['file_size_mb'], 1.5)
+AssertionError: 1.46 != 1.5
+
+======================================================================
+FAIL: test_generate_thumbnail_various_sizes (test_image_validation_unit_tests_complete.TestImageValidationMethodsComplete.test_generate_thumbnail_various_sizes) (size=(100, 100))
+Test thumbnail generation with various image sizes
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\wan\test_image_validation_unit_tests_complete.py", line 530, in test_generate_thumbnail_various_sizes
+    decoded = base64.b64decode(thumbnail_data)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python311\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Invalid base64-encoded string: number of data characters (401) cannot be 1 more than a multiple of 4
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\wan\test_image_validation_unit_tests_complete.py", line 543, in test_generate_thumbnail_various_sizes
+    self.fail(f"Thumbnail data is not valid: {e}")
+AssertionError: Thumbnail data is not valid: Invalid base64-encoded string: number of data characters (401) cannot be 1 more than a multiple of 4
+
+======================================================================
+FAIL: test_generate_thumbnail_various_sizes (test_image_validation_unit_tests_complete.TestImageValidationMethodsComplete.test_generate_thumbnail_various_sizes) (size=(1000, 1000))
+Test thumbnail generation with various image sizes
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\wan\test_image_validation_unit_tests_complete.py", line 530, in test_generate_thumbnail_various_sizes
+    decoded = base64.b64decode(thumbnail_data)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python311\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Incorrect padding
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\wan\test_image_validation_unit_tests_complete.py", line 543, in test_generate_thumbnail_various_sizes
+    self.fail(f"Thumbnail data is not valid: {e}")
+AssertionError: Thumbnail data is not valid: Incorrect padding
+
+======================================================================
+FAIL: test_generate_thumbnail_various_sizes (test_image_validation_unit_tests_complete.TestImageValidationMethodsComplete.test_generate_thumbnail_various_sizes) (size=(1920, 1080))
+Test thumbnail generation with various image sizes
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\wan\test_image_validation_unit_tests_complete.py", line 530, in test_generate_thumbnail_various_sizes
+    decoded = base64.b64decode(thumbnail_data)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python311\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Invalid base64-encoded string: number of data characters (389) cannot be 1 more than a multiple of 4
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\wan\test_image_validation_unit_tests_complete.py", line 543, in test_generate_thumbnail_various_sizes
+    self.fail(f"Thumbnail data is not valid: {e}")
+AssertionError: Thumbnail data is not valid: Invalid base64-encoded string: number of data characters (389) cannot be 1 more than a multiple of 4
+
+======================================================================
+FAIL: test_generate_thumbnail_various_sizes (test_image_validation_unit_tests_complete.TestImageValidationMethodsComplete.test_generate_thumbnail_various_sizes) (size=(1080, 1920))
+Test thumbnail generation with various image sizes
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\wan\test_image_validation_unit_tests_complete.py", line 530, in test_generate_thumbnail_various_sizes
+    decoded = base64.b64decode(thumbnail_data)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python311\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Incorrect padding
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\wan\test_image_validation_unit_tests_complete.py", line 543, in test_generate_thumbnail_various_sizes
+    self.fail(f"Thumbnail data is not valid: {e}")
+AssertionError: Thumbnail data is not valid: Incorrect padding
+
+======================================================================
+FAIL: test_generate_thumbnail_various_sizes (test_image_validation_unit_tests_complete.TestImageValidationMethodsComplete.test_generate_thumbnail_various_sizes) (size=(3000, 2000))
+Test thumbnail generation with various image sizes
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\wan\test_image_validation_unit_tests_complete.py", line 530, in test_generate_thumbnail_various_sizes
+    decoded = base64.b64decode(thumbnail_data)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python311\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Invalid base64-encoded string: number of data characters (437) cannot be 1 more than a multiple of 4
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\wan\test_image_validation_unit_tests_complete.py", line 543, in test_generate_thumbnail_various_sizes
+    self.fail(f"Thumbnail data is not valid: {e}")
+AssertionError: Thumbnail data is not valid: Invalid base64-encoded string: number of data characters (437) cannot be 1 more than a multiple of 4
+
+======================================================================
+FAIL: test_generate_thumbnail_various_sizes (test_image_validation_unit_tests_complete.TestImageValidationMethodsComplete.test_generate_thumbnail_various_sizes) (size=(50, 200))
+Test thumbnail generation with various image sizes
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\wan\test_image_validation_unit_tests_complete.py", line 530, in test_generate_thumbnail_various_sizes
+    decoded = base64.b64decode(thumbnail_data)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python311\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Incorrect padding
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\wan\test_image_validation_unit_tests_complete.py", line 543, in test_generate_thumbnail_various_sizes
+    self.fail(f"Thumbnail data is not valid: {e}")
+AssertionError: Thumbnail data is not valid: Incorrect padding
+
+======================================================================
+FAIL: test_generate_thumbnail_various_sizes (test_image_validation_unit_tests_complete.TestImageValidationMethodsComplete.test_generate_thumbnail_various_sizes) (size=(200, 50))
+Test thumbnail generation with various image sizes
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "E:\wan\test_image_validation_unit_tests_complete.py", line 530, in test_generate_thumbnail_various_sizes
+    decoded = base64.b64decode(thumbnail_data)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python311\Lib\base64.py", line 88, in b64decode
+    return binascii.a2b_base64(s, strict_mode=validate)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+binascii.Error: Incorrect padding
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\wan\test_image_validation_unit_tests_complete.py", line 543, in test_generate_thumbnail_various_sizes
+    self.fail(f"Thumbnail data is not valid: {e}")
+AssertionError: Thumbnail data is not valid: Incorrect padding
+
+----------------------------------------------------------------------
+Ran 16 tests in 0.062s
+
+FAILED (failures=8)
+
+================================================================================
+
+Test Suite: Image Upload and Generation Workflow Tests
+----------------------------------------
+Tests run: 7
+Failures: 0
+Errors: 0
+Skipped: 0
+Success rate: 100.0%
+Duration: 51.26s
+
+Detailed Output:
+test_generation_task_with_images (test_comprehensive_image_functionality_complete.TestImageUploadWorkflows.test_generation_task_with_images)
+Test generation task creation with images ... ok
+test_image_data_preservation_through_queue (test_comprehensive_image_functionality_complete.TestImageUploadWorkflows.test_image_data_preservation_through_queue)
+Test that image data is preserved through queue system ... ok
+test_image_pair_validation_workflow (test_comprehensive_image_functionality_complete.TestImageUploadWorkflows.test_image_pair_validation_workflow)
+Test image pair validation workflow ... ok
+test_upload_end_image_workflow (test_comprehensive_image_functionality_complete.TestImageUploadWorkflows.test_upload_end_image_workflow)
+Test complete end image upload workflow ... ok
+test_upload_start_image_workflow (test_comprehensive_image_functionality_complete.TestImageUploadWorkflows.test_upload_start_image_workflow)
+Test complete start image upload workflow ... ok
+test_complete_i2v_workflow (test_comprehensive_image_functionality_complete.TestEndToEndImageWorkflows.test_complete_i2v_workflow)
+Test complete I2V generation workflow with images ... ok
+test_complete_ti2v_workflow_with_both_images (test_comprehensive_image_functionality_complete.TestEndToEndImageWorkflows.test_complete_ti2v_workflow_with_both_images)
+Test complete TI2V workflow with both start and end images ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 51.264s
+
+OK
+
+================================================================================
+
+Test Suite: UI Model Switching and Visibility Tests
+----------------------------------------
+Tests run: 11
+Failures: 0
+Errors: 0
+Skipped: 0
+Success rate: 100.0%
+Duration: 0.00s
+
+Detailed Output:
+test_all_model_types_visibility_behavior (test_ui_model_switching_integration_complete.TestModelTypeSwitchingLogicComplete.test_all_model_types_visibility_behavior)
+Test visibility behavior for all model types ... ok
+test_model_descriptions_completeness (test_ui_model_switching_integration_complete.TestModelTypeSwitchingLogicComplete.test_model_descriptions_completeness)
+Test that all model types have descriptions ... ok
+test_resolution_options_completeness (test_ui_model_switching_integration_complete.TestModelTypeSwitchingLogicComplete.test_resolution_options_completeness)
+Test that all model types have complete resolution options ... ok
+test_ti2v_specific_resolution_option (test_ui_model_switching_integration_complete.TestModelTypeSwitchingLogicComplete.test_ti2v_specific_resolution_option)
+Test that TI2V has its specific resolution option ... ok
+test_complete_ui_update_workflow_all_models (test_ui_model_switching_integration_complete.TestUIComponentUpdatesComplete.test_complete_ui_update_workflow_all_models)
+Test complete UI update workflow for all model types ... ok
+test_resolution_value_preservation_scenarios (test_ui_model_switching_integration_complete.TestUIComponentUpdatesComplete.test_resolution_value_preservation_scenarios)
+Test resolution value preservation in various scenarios ... ok
+test_ui_component_update_call_tracking (test_ui_model_switching_integration_complete.TestUIComponentUpdatesComplete.test_ui_component_update_call_tracking)
+Test that UI component updates are properly tracked ... ok
+test_validation_message_clearing_completeness (test_ui_model_switching_integration_complete.TestUIComponentUpdatesComplete.test_validation_message_clearing_completeness)
+Test that all validation messages are cleared completely ... ok
+test_chained_event_handling (test_ui_model_switching_integration_complete.TestEventHandlerIntegration.test_chained_event_handling)
+Test chained event handling (model type -> resolution update) ... ok
+test_event_handler_execution (test_ui_model_switching_integration_complete.TestEventHandlerIntegration.test_event_handler_execution)
+Test that event handlers execute correctly ... ok
+test_event_handler_registration (test_ui_model_switching_integration_complete.TestEventHandlerIntegration.test_event_handler_registration)
+Test that event handlers can be registered ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.001s
+
+OK
+
+================================================================================
+
+Test Suite: Progress Bar and Generation Statistics Tests
+----------------------------------------
+Tests run: 22
+Failures: 3
+Errors: 15
+Skipped: 0
+Success rate: 18.2%
+Duration: 0.47s
+
+Detailed Output:

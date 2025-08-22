@@ -1,0 +1,98 @@
+[
+  {
+    "timestamp": "2025-08-15T11:05:10.609351",
+    "config_path": "C:\\Users\\RAMJIT~1\\AppData\\Local\\Temp\\tmp4ric93d6\\convenience_test.json",
+    "change_type": "merge_with_defaults",
+    "old_value": "partial_config",
+    "new_value": "merged_config",
+    "reason": "Configuration had missing values, merged with defaults"
+  },
+  {
+    "timestamp": "2025-08-15T11:05:10.614625",
+    "config_path": "C:\\Users\\RAMJIT~1\\AppData\\Local\\Temp\\tmp4ric93d6\\convenience_test.json",
+    "change_type": "update_trust_remote_code",
+    "old_value": "previous_trust_settings",
+    "new_value": "True",
+    "reason": "Updated trust_remote_code settings for 1 models"
+  },
+  {
+    "timestamp": "2025-08-15T11:27:53.876860",
+    "config_path": "C:\\Users\\RAMJIT~1\\AppData\\Local\\Temp\\tmp26l9qo65\\convenience_test.json",
+    "change_type": "merge_with_defaults",
+    "old_value": "partial_config",
+    "new_value": "merged_config",
+    "reason": "Configuration had missing values, merged with defaults"
+  },
+  {
+    "timestamp": "2025-08-15T11:27:53.881860",
+    "config_path": "C:\\Users\\RAMJIT~1\\AppData\\Local\\Temp\\tmp26l9qo65\\convenience_test.json",
+    "change_type": "update_trust_remote_code",
+    "old_value": "previous_trust_settings",
+    "new_value": "True",
+    "reason": "Updated trust_remote_code settings for 1 models"
+  },
+  {
+    "timestamp": "2025-08-15T11:29:04.675672",
+    "config_path": "C:\\Users\\RAMJIT~1\\AppData\\Local\\Temp\\tmpuvgb9hwh\\convenience.json",
+    "change_type": "merge_with_defaults",
+    "old_value": "partial_config",
+    "new_value": "merged_config",
+    "reason": "Configuration had missing values, merged with defaults"
+  },
+  {
+    "timestamp": "2025-08-15T11:29:04.679672",
+    "config_path": "C:\\Users\\RAMJIT~1\\AppData\\Local\\Temp\\tmpuvgb9hwh\\convenience.json",
+    "change_type": "update_trust_remote_code",
+    "old_value": "previous_trust_settings",
+    "new_value": "True",
+    "reason": "Updated trust_remote_code settings for 1 models"
+  },
+  {
+    "timestamp": "2025-08-15T11:47:25.558504",
+    "config_path": "C:\\Users\\RAMJIT~1\\AppData\\Local\\Temp\\tmpqodca6m7\\convenience.json",
+    "change_type": "merge_with_defaults",
+    "old_value": "partial_config",
+    "new_value": "merged_config",
+    "reason": "Configuration had missing values, merged with defaults"
+  },
+  {
+    "timestamp": "2025-08-15T11:47:25.562504",
+    "config_path": "C:\\Users\\RAMJIT~1\\AppData\\Local\\Temp\\tmpqodca6m7\\convenience.json",
+    "change_type": "update_trust_remote_code",
+    "old_value": "previous_trust_settings",
+    "new_value": "True",
+    "reason": "Updated trust_remote_code settings for 1 models"
+  },
+  {
+    "timestamp": "2025-08-15T11:47:33.797217",
+    "config_path": "C:\\Users\\RAMJIT~1\\AppData\\Local\\Temp\\tmpqxzi682x\\config.json",
+    "change_type": "merge_with_defaults",
+    "old_value": "partial_config",
+    "new_value": "merged_config",
+    "reason": "Configuration had missing values, merged with defaults"
+  },
+  {
+    "timestamp": "2025-08-15T11:47:33.801228",
+    "config_path": "C:\\Users\\RAMJIT~1\\AppData\\Local\\Temp\\tmpqxzi682x\\config.json",
+    "change_type": "update_trust_remote_code",
+    "old_value": "previous_trust_settings",
+    "new_value": "True",
+    "reason": "Updated trust_remote_code settings for 1 models"
+  },
+  {
+    "timestamp": "2025-08-15T11:47:49.150896",
+    "config_path": "C:\\Users\\RAMJIT~1\\AppData\\Local\\Temp\\tmpr5etb__5\\convenience_test.json",
+    "change_type": "merge_with_defaults",
+    "old_value": "partial_config",
+    "new_value": "merged_config",
+    "reason": "Configuration had missing values, merged with defaults"
+  },
+  {
+    "timestamp": "2025-08-15T11:47:49.156137",
+    "config_path": "C:\\Users\\RAMJIT~1\\AppData\\Local\\Temp\\tmpr5etb__5\\convenience_test.json",
+    "change_type": "update_trust_remote_code",
+    "old_value": "previous_trust_settings",
+    "new_value": "True",
+    "reason": "Updated trust_remote_code settings for 1 models"
+  }
+]

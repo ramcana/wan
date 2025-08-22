@@ -1,0 +1,60 @@
+{
+  "Wan-AI/Wan2.2-T2V-A14B-Diffusers": {
+    "pipeline_class": "WanPipeline",
+    "min_diffusers_version": "0.21.0",
+    "required_dependencies": [
+      "transformers>=4.25.0",
+      "torch>=2.0.0",
+      "accelerate>=0.20.0"
+    ],
+    "pipeline_source": "https://huggingface.co/Wan-AI/Wan2.2-T2V-A14B-Diffusers",
+    "vram_requirements": {
+      "min_mb": 8192,
+      "recommended_mb": 12288
+    },
+    "supported_optimizations": [
+      "cpu_offload",
+      "mixed_precision",
+      "chunked_processing"
+    ],
+    "trust_remote_code": true
+  },
+  "Wan-AI/Wan2.2-T2I-A14B-Diffusers": {
+    "pipeline_class": "WanPipeline",
+    "min_diffusers_version": "0.21.0",
+    "required_dependencies": [
+      "transformers>=4.25.0",
+      "torch>=2.0.0",
+      "accelerate>=0.20.0"
+    ],
+    "pipeline_source": "https://huggingface.co/Wan-AI/Wan2.2-T2I-A14B-Diffusers",
+    "vram_requirements": {
+      "min_mb": 6144,
+      "recommended_mb": 8192
+    },
+    "supported_optimizations": [
+      "cpu_offload",
+      "mixed_precision"
+    ],
+    "trust_remote_code": true
+  },
+  "Wan-AI/Wan2.2-Mini-T2V": {
+    "pipeline_class": "WanPipeline",
+    "min_diffusers_version": "0.21.0",
+    "required_dependencies": [
+      "transformers>=4.25.0",
+      "torch>=2.0.0"
+    ],
+    "pipeline_source": "https://huggingface.co/Wan-AI/Wan2.2-Mini-T2V",
+    "vram_requirements": {
+      "min_mb": 4096,
+      "recommended_mb": 6144
+    },
+    "supported_optimizations": [
+      "cpu_offload",
+      "mixed_precision",
+      "chunked_processing"
+    ],
+    "trust_remote_code": true
+  }
+}

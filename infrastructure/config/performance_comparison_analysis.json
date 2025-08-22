@@ -1,0 +1,65 @@
+{
+  "analysis": {
+    "model_loading": {
+      "optimized_time_seconds": 2.0019991397857666,
+      "non_optimized_time_seconds": 2.0172359943389893,
+      "improvement_percent": 0.7553332676980856,
+      "time_saved_seconds": 0.015236854553222656
+    },
+    "video_generation": {
+      "optimized_time_seconds": 63.047688245773315,
+      "non_optimized_time_seconds": 90.01762199401855,
+      "improvement_percent": 29.9607267453003,
+      "time_saved_seconds": 26.96993374824524,
+      "optimized_time_minutes": 1.0507948040962218,
+      "non_optimized_time_minutes": 1.5002936999003091
+    },
+    "overall": {
+      "optimized_total_time_seconds": 128.54345750808716,
+      "non_optimized_total_time_seconds": 182.05348134040833,
+      "improvement_percent": 29.3924749136034,
+      "time_saved_seconds": 53.51002383232117
+    }
+  },
+  "optimized_summary": {
+    "total_test_time_seconds": 128.54345750808716,
+    "total_tests": 3,
+    "successful_tests": 3,
+    "success_rate_percent": 100.0,
+    "average_generation_time_seconds": 63.047688245773315,
+    "average_generation_time_minutes": 1.0507948040962218,
+    "optimization_enabled": true,
+    "hardware_optimization_applied": true
+  },
+  "non_optimized_summary": {
+    "total_test_time_seconds": 182.05348134040833,
+    "total_tests": 3,
+    "successful_tests": 3,
+    "success_rate_percent": 100.0,
+    "average_generation_time_seconds": 90.01762199401855,
+    "average_generation_time_minutes": 1.5002936999003091,
+    "optimization_enabled": false,
+    "hardware_optimization_applied": false
+  },
+  "hardware_profile": {
+    "cpu_model": "AMD64 Family 25 Model 8 Stepping 2, AuthenticAMD",
+    "cpu_cores": 64,
+    "total_memory_gb": 128,
+    "gpu_model": "NVIDIA GeForce RTX 4080",
+    "vram_gb": 16,
+    "is_rtx_4080": true,
+    "is_threadripper_pro": false
+  },
+  "optimization_settings": {
+    "vae_tile_size": [
+      256,
+      256
+    ],
+    "batch_size": 2,
+    "memory_fraction": 0.9,
+    "enable_tensor_cores": true,
+    "use_bf16": true,
+    "enable_xformers": true,
+    "cpu_offload": true
+  }
+}

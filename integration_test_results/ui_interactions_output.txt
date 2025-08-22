@@ -1,0 +1,7 @@
+test_run_all_ui_integration_tests (test_ui_integration.TestUIIntegrationSuite.test_run_all_ui_integration_tests)
+Run all UI integration tests ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.007s
+
+OK

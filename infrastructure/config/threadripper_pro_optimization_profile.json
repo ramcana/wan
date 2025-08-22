@@ -1,0 +1,77 @@
+{
+  "hardware_profile": {
+    "cpu_model": "AMD Ryzen Threadripper PRO 5995WX 64-Core Processor",
+    "cpu_cores": 64,
+    "total_memory_gb": 128,
+    "gpu_model": "NVIDIA GeForce RTX 4080",
+    "vram_gb": 16,
+    "cuda_version": "12.1",
+    "driver_version": "537.13",
+    "is_rtx_4080": true,
+    "is_threadripper_pro": true
+  },
+  "optimal_settings": {
+    "tile_size": [
+      512,
+      512
+    ],
+    "batch_size": 4,
+    "enable_cpu_offload": true,
+    "enable_tensor_cores": true,
+    "memory_fraction": 0.95,
+    "num_threads": 32,
+    "enable_xformers": true,
+    "vae_tile_size": [
+      384,
+      384
+    ],
+    "text_encoder_offload": false,
+    "vae_offload": false,
+    "use_fp16": true,
+    "use_bf16": true,
+    "gradient_checkpointing": false,
+    "numa_nodes": [
+      0,
+      1
+    ],
+    "cpu_affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47
+    ],
+    "parallel_workers": 8,
+    "enable_numa_optimization": true,
+    "preprocessing_threads": 16,
+    "io_threads": 4
+  },
+  "timestamp": "2025-08-15T13:57:09.338998"
+}

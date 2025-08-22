@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Offline - Wan2.2 Video Generation</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        padding: 20px;
+      }
+
+      .offline-container {
+        text-align: center;
+        max-width: 500px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .offline-icon {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 20px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 40px;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 16px;
+        font-weight: 700;
+      }
+
+      p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin-bottom: 20px;
+        opacity: 0.9;
+      }
+
+      .features {
+        text-align: left;
+        margin: 30px 0;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        padding: 20px;
+      }
+
+      .features h3 {
+        margin-bottom: 15px;
+        font-size: 1.2rem;
+      }
+
+      .features ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .features li {
+        padding: 8px 0;
+        padding-left: 25px;
+        position: relative;
+      }
+
+      .features li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: #4ade80;
+        font-weight: bold;
+      }
+
+      .retry-button {
+        background: rgba(255, 255, 255, 0.2);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        color: white;
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin: 10px;
+      }
+
+      .retry-button:hover {
+        background: rgba(255, 255, 255, 0.3);
+        border-color: rgba(255, 255, 255, 0.5);
+        transform: translateY(-2px);
+      }
+
+      .retry-button:focus {
+        outline: 2px solid #4ade80;
+        outline-offset: 2px;
+      }
+
+      .status {
+        margin-top: 20px;
+        padding: 10px;
+        border-radius: 8px;
+        font-size: 0.9rem;
+      }
+
+      .status.online {
+        background: rgba(74, 222, 128, 0.2);
+        border: 1px solid rgba(74, 222, 128, 0.3);
+      }
+
+      .status.offline {
+        background: rgba(248, 113, 113, 0.2);
+        border: 1px solid rgba(248, 113, 113, 0.3);
+      }
+
+      .queue-info {
+        margin-top: 20px;
+        padding: 15px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 600px) {
+        .offline-container {
+          padding: 30px 20px;
+        }
+
+        h1 {
+          font-size: 2rem;
+        }
+
+        .offline-icon {
+          width: 60px;
+          height: 60px;
+          font-size: 30px;
+        }
+      }
+
+      /* High contrast mode support */
+      @media (prefers-contrast: high) {
+        body {
+          background: #000;
+          color: #fff;
+        }
+
+        .offline-container {
+          background: #222;
+          border: 2px solid #fff;
+        }
+
+        .retry-button {
+          background: #fff;
+          color: #000;
+          border: 2px solid #000;
+        }
+
+        .retry-button:hover {
+          background: #000;
+          color: #fff;
+          border: 2px solid #fff;
+        }
+      }
+
+      /* Reduced motion support */
+      @media (prefers-reduced-motion: reduce) {
+        .retry-button {
+          transition: none;
+        }
+
+        .retry-button:hover {
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="offline-container">
+      <div class="offline-icon" role="img" aria-label="Offline icon">📡</div>
+
+      <h1>You're Offline</h1>
+
+      <p>
+        Don't worry! Some features of Wan2.2 are still available while you're
+        offline.
+      </p>
+
+      <div class="features">
+        <h3>Available Offline:</h3>
+        <ul>
+          <li>Browse previously loaded content</li>
+          <li>View cached generation history</li>
+          <li>Access system information</li>
+          <li>Queue requests for when you're back online</li>
+        </ul>
+      </div>
+
+      <div
+        class="status offline"
+        id="connection-status"
+        role="status"
+        aria-live="polite"
+      >
+        <strong>Status:</strong> No internet connection detected
+      </div>
+
+      <div class="queue-info" id="queue-info" style="display: none">
+        <strong>Queued Requests:</strong> <span id="queue-count">0</span>
+        <br />
+        <small
+          >These will be processed automatically when you're back online.</small
+        >
+      </div>
+
+      <button
+        class="retry-button"
+        onclick="checkConnection()"
+        aria-describedby="retry-description"
+      >
+        Check Connection
+      </button>
+
+      <button
+        class="retry-button"
+        onclick="goHome()"
+        aria-describedby="home-description"
+      >
+        Go to Home
+      </button>
+
+      <div id="retry-description" class="sr-only">
+        Check if internet connection has been restored
+      </div>
+
+      <div id="home-description" class="sr-only">
+        Return to the main application page
+      </div>
+    </div>
+
+    <script>
+      // Check connection status
+      function updateConnectionStatus() {
+        const statusElement = document.getElementById("connection-status");
+        const isOnline = navigator.onLine;
+
+        if (isOnline) {
+          statusElement.className = "status online";
+          statusElement.innerHTML =
+            "<strong>Status:</strong> Connection restored! You can now use all features.";
+
+          // Auto-redirect after 2 seconds if online
+          setTimeout(() => {
+            window.location.href = "/";
+          }, 2000);
+        } else {
+          statusElement.className = "status offline";
+          statusElement.innerHTML =
+            "<strong>Status:</strong> No internet connection detected";
+        }
+      }
+
+      // Check for queued requests
+      function updateQueueInfo() {
+        if (
+          "serviceWorker" in navigator &&
+          navigator.serviceWorker.controller
+        ) {
+          const messageChannel = new MessageChannel();
+          messageChannel.port1.onmessage = (event) => {
+            const { count } = event.data;
+            const queueInfo = document.getElementById("queue-info");
+            const queueCount = document.getElementById("queue-count");
+
+            if (count > 0) {
+              queueCount.textContent = count;
+              queueInfo.style.display = "block";
+            } else {
+              queueInfo.style.display = "none";
+            }
+          };
+
+          navigator.serviceWorker.controller.postMessage(
+            { type: "GET_OFFLINE_QUEUE" },
+            [messageChannel.port2]
+          );
+        }
+      }
+
+      // Manual connection check
+      function checkConnection() {
+        updateConnectionStatus();
+
+        // Try to fetch a small resource to verify connection
+        fetch("/manifest.json", {
+          method: "HEAD",
+          cache: "no-cache",
+        })
+          .then(() => {
+            // Connection successful
+            window.location.href = "/";
+          })
+          .catch(() => {
+            // Still offline
+            const statusElement = document.getElementById("connection-status");
+            statusElement.innerHTML =
+              "<strong>Status:</strong> Still offline. Please check your internet connection.";
+          });
+      }
+
+      // Go to home page
+      function goHome() {
+        window.location.href = "/";
+      }
+
+      // Listen for online/offline events
+      window.addEventListener("online", updateConnectionStatus);
+      window.addEventListener("offline", updateConnectionStatus);
+
+      // Listen for service worker messages
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.addEventListener("message", (event) => {
+          const { type } = event.data;
+
+          if (type === "OFFLINE_REQUEST_PROCESSED") {
+            updateQueueInfo();
+          }
+        });
+      }
+
+      // Initialize
+      updateConnectionStatus();
+      updateQueueInfo();
+
+      // Update queue info periodically
+      setInterval(updateQueueInfo, 5000);
+
+      // Keyboard navigation
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          if (event.target.tagName === "BUTTON") {
+            event.target.click();
+          }
+        }
+      });
+
+      // Focus management
+      document.querySelector(".retry-button").focus();
+    </script>
+  </body>
+</html>

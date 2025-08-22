@@ -1,0 +1,7 @@
+{
+  "id": "edge_single_word",
+  "category": "minimal",
+  "prompt": "cat",
+  "expected_behavior": "should generate basic content",
+  "test_type": "minimal_input"
+}

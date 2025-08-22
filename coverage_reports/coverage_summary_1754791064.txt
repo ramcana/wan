@@ -1,0 +1,1333 @@
+TEST COVERAGE ANALYSIS REPORT
+==================================================
+
+Overall Coverage: 16.1%
+Total Modules: 56
+Total Functions: 1102
+Tested Functions: 177
+
+MODULE COVERAGE:
+------------------------------
+cpu_monitor: 0.0% (0/4)
+emergency_model_fix: 0.0% (0/1)
+enhanced_generation_pipeline: 0.0% (0/8)
+fix_model_loading_issues: 0.0% (0/1)
+fix_wan22_pipeline: 0.0% (0/7)
+generation_mode_router: 0.0% (0/13)
+hardware_parameter_recommender: 0.0% (0/9)
+integration_test_suite: 0.0% (0/28)
+model_override: 0.0% (0/3)
+performance_benchmark_suite: 0.0% (0/4)
+simple_test: 0.0% (0/3)
+ui: 0.0% (0/6)
+ui_event_handlers: 0.0% (0/29)
+ui_validation: 0.0% (0/15)
+wan22_compatibility_clean: 0.0% (0/5)
+wan22_compatibility_layer: 0.0% (0/5)
+utils: 4.9% (16/328)
+main: 6.2% (1/16)
+pipeline_manager: 7.1% (1/14)
+architecture_detector: 8.3% (1/12)
+lora_upload_handler: 8.3% (1/12)
+smoke_test_runner: 10.0% (1/10)
+model_validator: 11.1% (1/9)
+optimize_performance: 11.1% (1/9)
+fix_dependencies: 12.5% (1/8)
+frame_tensor_handler: 13.6% (3/22)
+fallback_handler: 14.8% (4/27)
+generation_history_manager: 16.2% (6/37)
+port_manager: 16.7% (1/6)
+model_index_schema: 17.9% (5/28)
+vae_compatibility_handler: 18.2% (2/11)
+generation_queue_manager: 18.5% (5/27)
+dependency_manager: 20.0% (2/10)
+wan_pipeline_loader: 20.0% (3/15)
+fix_diffusers_installation: 20.0% (1/5)
+run_integration_tests: 20.0% (1/5)
+simple_error_test: 20.0% (1/5)
+performance_profiler: 20.8% (5/24)
+generation_orchestrator: 22.0% (9/41)
+enhanced_model_manager: 22.7% (5/22)
+runtime_fixes: 25.0% (1/4)
+interactive_error_resolver: 29.4% (5/17)
+input_validation: 32.0% (8/25)
+validation_framework: 32.0% (8/25)
+check_missing_modules: 33.3% (1/3)
+log_analyzer: 33.3% (5/15)
+verify_model_fix: 33.3% (1/3)
+diagnostic_collector: 38.5% (5/13)
+optimization_manager: 40.0% (8/20)
+comprehensive_test_runner: 40.0% (2/5)
+generation_logger: 41.7% (15/36)
+lora_ui_state: 41.7% (10/24)
+resource_manager: 42.4% (14/33)
+error_handler: 46.7% (7/15)
+video_encoder: 47.4% (9/19)
+validate_vae_handler: 100.0% (1/1)
+
+COVERAGE GAPS:
+------------------------------
+• Low coverage in architecture_detector: 8.3%
+• Critical function not tested: architecture_detector.ArchitectureDetector.detect_model_architecture
+• Low coverage in pipeline_manager: 7.1%
+• Critical function not tested: pipeline_manager.PipelineManager.load_custom_pipeline
+• Low coverage in dependency_manager: 20.0%
+• Low coverage in wan_pipeline_loader: 20.0%
+• Critical function not tested: wan_pipeline_loader.WanPipelineLoader.load_wan_pipeline
+• Critical function not tested: wan_pipeline_loader.load_wan_pipeline
+• Low coverage in fallback_handler: 14.8%
+• Low coverage in optimization_manager: 40.0%
+• Low coverage in frame_tensor_handler: 13.6%
+• Critical function not tested: frame_tensor_handler.FrameTensorHandler.process_output_tensors
+• Low coverage in video_encoder: 47.4%
+• Critical function not tested: video_encoder.VideoEncoder.encode_frames_to_video
+• Low coverage in smoke_test_runner: 10.0%
+• Low coverage in check_missing_modules: 33.3%
+• Low coverage in comprehensive_test_runner: 40.0%
+• Low coverage in cpu_monitor: 0.0%
+• Low coverage in diagnostic_collector: 38.5%
+• Low coverage in emergency_model_fix: 0.0%
+• Low coverage in enhanced_generation_pipeline: 0.0%
+• Low coverage in enhanced_model_manager: 22.7%
+• Low coverage in error_handler: 46.7%
+• Low coverage in fix_dependencies: 12.5%
+• Low coverage in fix_diffusers_installation: 20.0%
+• Low coverage in fix_model_loading_issues: 0.0%
+• Low coverage in fix_wan22_pipeline: 0.0%
+• Low coverage in generation_history_manager: 16.2%
+• Low coverage in generation_logger: 41.7%
+• Low coverage in generation_mode_router: 0.0%
+• Low coverage in generation_orchestrator: 22.0%
+• Low coverage in generation_queue_manager: 18.5%
+• Low coverage in hardware_parameter_recommender: 0.0%
+• Low coverage in input_validation: 32.0%
+• Low coverage in integration_test_suite: 0.0%
+• Low coverage in interactive_error_resolver: 29.4%
+• Low coverage in log_analyzer: 33.3%
+• Low coverage in lora_ui_state: 41.7%
+• Low coverage in lora_upload_handler: 8.3%
+• Low coverage in main: 6.2%
+• Low coverage in model_index_schema: 17.9%
+• Low coverage in model_override: 0.0%
+• Low coverage in model_validator: 11.1%
+• Low coverage in optimize_performance: 11.1%
+• Low coverage in performance_benchmark_suite: 0.0%
+• Low coverage in performance_profiler: 20.8%
+• Low coverage in port_manager: 16.7%
+• Low coverage in resource_manager: 42.4%
+• Low coverage in runtime_fixes: 25.0%
+• Low coverage in run_integration_tests: 20.0%
+• Low coverage in simple_error_test: 20.0%
+• Low coverage in simple_test: 0.0%
+• Low coverage in ui: 0.0%
+• Low coverage in ui_event_handlers: 0.0%
+• Low coverage in ui_validation: 0.0%
+• Low coverage in utils: 4.9%
+• Low coverage in vae_compatibility_handler: 18.2%
+• Low coverage in validation_framework: 32.0%
+• Low coverage in verify_model_fix: 33.3%
+• Low coverage in wan22_compatibility_clean: 0.0%
+• Low coverage in wan22_compatibility_layer: 0.0%
+• Missing integration test file: test_pipeline_integration.py
+• Missing integration test file: test_video_processing_integration.py
+
+RECOMMENDATIONS:
+------------------------------
+1. Overall coverage is 16.1%. Target should be at least 70% for production readiness.
+2. Increase test coverage for architecture_detector (currently 8.3%)
+3. Add tests for critical functions in architecture_detector: ArchitectureDetector.detect_model_architecture, ArchitectureDetector.analyze_model_index, ArchitectureDetector.check_vae_dimensions, ArchitectureDetector.validate_component_compatibility, validate_component_compatibility
+4. Increase test coverage for pipeline_manager (currently 7.1%)
+5. Add tests for critical functions in pipeline_manager: PipelineManager.select_pipeline_class, PipelineManager.load_custom_pipeline, PipelineManager.validate_pipeline_args, PipelineManager.get_pipeline_requirements, PipelineManager.create_pipeline_mapping, PipelineManager.suggest_pipeline_alternatives, PipelineManager.validate_pipeline_compatibility, validate_pipeline_args, validate_pipeline_compatibility
+6. Increase test coverage for dependency_manager (currently 20.0%)
+7. Add tests for critical functions in dependency_manager: DependencyManager.check_remote_code_availability, DependencyManager.fetch_pipeline_code, DependencyManager.validate_code_version, DependencyManager.install_dependencies, DependencyManager.get_fallback_options
+8. Increase test coverage for wan_pipeline_loader (currently 20.0%)
+9. Add tests for critical functions in wan_pipeline_loader: WanPipelineWrapper.generate, WanPipelineLoader.load_wan_pipeline, WanPipelineLoader.get_system_info, WanPipelineLoader.clear_cache, WanPipelineLoader.preload_pipeline, load_wan_pipeline, preload_pipeline
+10. Increase test coverage for fallback_handler (currently 14.8%)
+11. Add tests for critical functions in fallback_handler: FallbackHandler.create_fallback_strategy, FallbackHandler.attempt_component_isolation, FallbackHandler.suggest_alternative_models, FallbackHandler.execute_fallback_strategy, handle_pipeline_failure
+12. Increase test coverage for optimization_manager (currently 40.0%)
+13. Add tests for critical functions in optimization_manager: OptimizationManager.analyze_system_resources, OptimizationManager.recommend_optimizations, OptimizationManager.apply_memory_optimizations, OptimizationManager.enable_chunked_processing, OptimizationManager.estimate_memory_usage, OptimizationManager.monitor_memory_usage, OptimizationManager.cleanup_memory, OptimizationManager.get_optimization_recommendations, ChunkedProcessor.process_chunked_generation, enable_chunked_processing, process_chunked_generation
+14. Increase test coverage for frame_tensor_handler (currently 13.6%)
+15. Add tests for critical functions in frame_tensor_handler: ProcessedFrames.num_frames, ProcessedFrames.height, ProcessedFrames.width, ProcessedFrames.channels, ProcessedFrames.validate_shape, FrameTensorHandler.process_output_tensors, FrameTensorHandler.validate_frame_dimensions, FrameTensorHandler.normalize_frame_data, FrameTensorHandler.handle_batch_outputs, validate_shape, validate_frame_dimensions, handle_batch_outputs
+16. Increase test coverage for video_encoder (currently 47.4%)
+17. Add tests for critical functions in video_encoder: VideoEncoder.encode_frames_to_video, VideoEncoder.configure_encoding_params, VideoEncoder.check_encoding_dependencies, VideoEncoder.provide_fallback_output
+18. Increase test coverage for smoke_test_runner (currently 10.0%)
+19. Add tests for critical functions in smoke_test_runner: SmokeTestRunner.validate_output_format, validate_output_format, MockPipeline.generate
+20. Increase test coverage for check_missing_modules (currently 33.3%)
+21. Increase test coverage for comprehensive_test_runner (currently 40.0%)
+22. Add tests for critical functions in comprehensive_test_runner: MockPipeline.generate
+23. Increase test coverage for cpu_monitor (currently 0.0%)
+24. Increase test coverage for diagnostic_collector (currently 38.5%)
+25. Increase test coverage for emergency_model_fix (currently 0.0%)
+26. Increase test coverage for enhanced_generation_pipeline (currently 0.0%)
+27. Increase test coverage for enhanced_model_manager (currently 22.7%)
+28. Add tests for critical functions in enhanced_model_manager: EnhancedModelManager.get_model_id, EnhancedModelManager.validate_model_availability, EnhancedModelManager.check_model_compatibility, EnhancedModelManager.load_model_with_fallback, EnhancedModelManager.get_model_status_report, EnhancedModelManager.repair_corrupted_model, EnhancedModelManager.unload_model, EnhancedModelManager.list_all_models, get_enhanced_model_manager, validate_model_availability, load_model_with_fallback, validate_model_availability, load_model_with_fallback, unload_model
+29. Increase test coverage for error_handler (currently 46.7%)
+30. Add tests for critical functions in error_handler: GenerationErrorHandler.handle_error, GenerationErrorHandler.attempt_automatic_recovery, handle_error_with_recovery, get_error_recovery_manager, handle_error
+31. Increase test coverage for fix_dependencies (currently 12.5%)
+32. Increase test coverage for fix_diffusers_installation (currently 20.0%)
+33. Increase test coverage for fix_model_loading_issues (currently 0.0%)
+34. Add tests for critical functions in fix_model_loading_issues: fix_model_loading_issues
+35. Increase test coverage for fix_wan22_pipeline (currently 0.0%)
+36. Add tests for critical functions in fix_wan22_pipeline: fix_wan22_pipeline_loading
+37. Increase test coverage for generation_history_manager (currently 16.2%)
+38. Add tests for critical functions in generation_history_manager: GenerationHistoryManager.add_entry, GenerationHistoryManager.update_entry_status, GenerationHistoryManager.get_entry, GenerationHistoryManager.get_recent_entries, GenerationHistoryManager.get_entries_by_status, GenerationHistoryManager.get_failed_entries, GenerationHistoryManager.get_successful_entries, GenerationHistoryManager.retry_entry, GenerationHistoryManager.add_user_rating, GenerationHistoryManager.get_statistics, GenerationHistoryManager.search_entries, GenerationHistoryManager.export_history, GenerationHistoryManager.clear_history, get_history_manager
+39. Increase test coverage for generation_logger (currently 41.7%)
+40. Add tests for critical functions in generation_logger: GenerationLogger.log_model_loading, GenerationLogger.generate_diagnostic_report, log_model_loading
+41. Increase test coverage for generation_mode_router (currently 0.0%)
+42. Add tests for critical functions in generation_mode_router: GenerationModeRouter.validate_mode_compatibility, validate_mode_compatibility
+43. Increase test coverage for generation_orchestrator (currently 22.0%)
+44. Add tests for critical functions in generation_orchestrator: ResourceManager.check_vram_availability, ResourceManager.optimize_for_available_resources, ResourceManager.prepare_generation_environment, ResourceManager.get_resource_status, GenerationOrchestrator.validate_request, validate_request
+45. Increase test coverage for generation_queue_manager (currently 18.5%)
+46. Add tests for critical functions in generation_queue_manager: GenerationQueueManager.add_status_callback, GenerationQueueManager.add_progress_callback, GenerationQueueManager.submit_request, GenerationQueueManager.get_request_status, GenerationQueueManager.cancel_request, GenerationQueueManager.pause_queue, GenerationQueueManager.resume_queue, GenerationQueueManager.clear_queue, GenerationQueueManager.get_queue_status, GenerationQueueManager.get_user_requests, GenerationQueueManager.retry_failed_request, GenerationQueueManager.shutdown, get_queue_manager
+47. Increase test coverage for hardware_parameter_recommender (currently 0.0%)
+48. Increase test coverage for input_validation (currently 32.0%)
+49. Add tests for critical functions in input_validation: PromptValidator.validate_prompt, ImageValidator.validate_image, ConfigValidator.validate_generation_params, validate_prompt, validate_image, validate_generation_params
+50. Increase test coverage for integration_test_suite (currently 0.0%)
+51. Add tests for critical functions in integration_test_suite: IntegrationTestSuite.test_architecture_detection_integration, IntegrationTestSuite.test_pipeline_management_integration, IntegrationTestSuite.test_video_processing_integration, test_architecture_detection_integration, test_pipeline_management_integration, test_video_processing_integration, mock_detect, detect_model
+52. Increase test coverage for interactive_error_resolver (currently 29.4%)
+53. Increase test coverage for log_analyzer (currently 33.3%)
+54. Increase test coverage for lora_ui_state (currently 41.7%)
+55. Add tests for critical functions in lora_ui_state: LoRAUIState.validate_selection, LoRAManager.list_available_loras
+56. Increase test coverage for lora_upload_handler (currently 8.3%)
+57. Add tests for critical functions in lora_upload_handler: LoRAUploadHandler.validate_file, LoRAUploadHandler.check_duplicate_filename, LoRAUploadHandler.process_upload, LoRAUploadHandler.extract_metadata, LoRAUploadHandler.generate_thumbnail, LoRAUploadHandler.get_upload_stats, validate_file, process_upload, get_upload_stats
+58. Increase test coverage for main (currently 6.2%)
+59. Add tests for critical functions in main: ApplicationManager.initialize, ApplicationManager.register_cleanup_handler, ApplicationManager.cleanup, ApplicationManager.launch, register_cleanup_handler
+60. Increase test coverage for model_index_schema (currently 17.9%)
+61. Add tests for critical functions in model_index_schema: ModelIndexSchema.validate_class_name, ModelIndexSchema.validate_diffusers_version, ModelIndexSchema.validate_boundary_ratio, ModelIndexSchema.detect_model_type, ModelIndexSchema.validate_wan_specific_attributes, SchemaValidator.validate_model_index, SchemaValidator.validate_model_index_dict, SchemaValidator.generate_schema_report, validate_class_name, validate_diffusers_version, validate_boundary_ratio, detect_model_type, validate_model_index
+62. Increase test coverage for model_override (currently 0.0%)
+63. Add tests for critical functions in model_override: patch_model_loading, patched_download_model
+64. Increase test coverage for model_validator (currently 11.1%)
+65. Add tests for critical functions in model_validator: load_config, validate_required_models, validate_model_files
+66. Increase test coverage for optimize_performance (currently 11.1%)
+67. Add tests for critical functions in optimize_performance: PerformanceOptimizer.analyze_system_performance, PerformanceOptimizer.benchmark_optimization_settings, PerformanceOptimizer.apply_optimal_configuration, PerformanceOptimizer.generate_optimization_report, generate_optimization_report
+68. Increase test coverage for performance_benchmark_suite (currently 0.0%)
+69. Increase test coverage for performance_profiler (currently 20.8%)
+70. Add tests for critical functions in performance_profiler: PerformanceProfiler.generate_performance_report
+71. Increase test coverage for port_manager (currently 16.7%)
+72. Add tests for critical functions in port_manager: kill_process_on_port
+73. Increase test coverage for resource_manager (currently 42.4%)
+74. Add tests for critical functions in resource_manager: VRAMOptimizer.get_vram_info, VRAMOptimizer.get_system_resource_info, VRAMOptimizer.check_vram_availability, VRAMOptimizer.estimate_resource_requirements, VRAMOptimizer.optimize_parameters_for_resources, VRAMOptimizer.cleanup_memory, VRAMOptimizer.stop_monitoring, VRAMOptimizer.get_resource_status, VRAMOptimizer.get_resource_history, optimize_parameters_for_resources, optimize_parameters_for_resources
+75. Increase test coverage for runtime_fixes (currently 25.0%)
+76. Add tests for critical functions in runtime_fixes: apply_error_handler_fixes
+77. Increase test coverage for run_integration_tests (currently 20.0%)
+78. Increase test coverage for simple_error_test (currently 20.0%)
+79. Increase test coverage for simple_test (currently 0.0%)
+80. Increase test coverage for ui (currently 0.0%)
+81. Increase test coverage for ui_event_handlers (currently 0.0%)
+82. Add tests for critical functions in ui_event_handlers: UIEventHandlers.register_components, UIEventHandlers.setup_generation_events, UIEventHandlers.handle_model_type_change, UIEventHandlers.handle_prompt_change, UIEventHandlers.handle_image_change, UIEventHandlers.handle_parameter_change, UIEventHandlers.handle_add_lora, UIEventHandlers.handle_refresh_loras, UIEventHandlers.handle_clear_all_loras, UIEventHandlers.handle_prompt_enhancement, UIEventHandlers.handle_generate_video, UIEventHandlers.handle_queue_generation, UIEventHandlers.handle_clear_notification, get_event_handlers, handle_model_type_change, handle_prompt_change, handle_image_change, handle_parameter_change, handle_add_lora, handle_refresh_loras, handle_clear_all_loras, handle_prompt_enhancement, handle_generate_video, handle_queue_generation, handle_clear_notification, validate_prompt
+83. Increase test coverage for ui_validation (currently 0.0%)
+84. Add tests for critical functions in ui_validation: UIValidationManager.register_ui_components, UIValidationManager.validate_prompt_realtime, UIValidationManager.validate_image_realtime, UIValidationManager.validate_generation_params, UIValidationManager.create_comprehensive_validation_summary, UIValidationManager.create_progress_indicator, UIValidationManager.create_error_display_with_recovery, get_validation_manager, validate_prompt_realtime, validate_image_realtime, validate_generation_params
+85. Increase test coverage for utils (currently 4.9%)
+86. Add tests for critical functions in utils: ModelCache.validate_cached_model, ModelManager.get_model_id, ModelManager.detect_model_type, ModelManager.download_model, ModelManager.load_model, ModelManager.unload_model, ModelManager.list_cached_models, ModelManager.clear_cache, ModelManager.get_model_status, get_model_manager, load_wan22_model, download_wan22_model, generate_video_enhanced, generate_video, generate_video_legacy, VRAMOptimizer.apply_quantization, VRAMOptimizer.enable_cpu_offload, VRAMOptimizer.enable_vae_tiling, VRAMOptimizer.apply_advanced_optimizations, VRAMOptimizer.optimize_for_inference, VRAMOptimizer.optimize_model, VRAMOptimizer.get_vram_usage, VRAMOptimizer.check_vram_availability, VRAMOptimizer.estimate_model_vram_usage, get_vram_optimizer, optimize_model, PromptEnhancer.detect_vace_aesthetics, PromptEnhancer.detect_style, PromptEnhancer.validate_prompt, detect_vace_aesthetics, validate_prompt, PromptEnhancer.validate_prompt, PromptEnhancer.manage_prompt_length, PromptEnhancer.detect_vace_aesthetics, PromptEnhancer.detect_style_category, validate_prompt, detect_vace_aesthetics, VideoGenerationEngine.generate_t2v, VideoGenerationEngine.generate_i2v, VideoGenerationEngine.generate_ti2v, VideoGenerationEngine.generate_video, VideoGenerationEngine.unload_pipeline, VideoGenerationEngine.unload_all_pipelines, generate_video, generate_t2v_video, generate_i2v_video, generate_ti2v_video, InputValidator.validate_prompt, InputValidator.validate_image, InputValidator.validate_resolution, InputValidator.validate_generation_parameters, InputValidator.preprocess_for_generation, validate_prompt, validate_image, validate_resolution, validate_generation_parameters, preprocess_for_generation, ErrorHandler.classify_error, ErrorHandler.create_error, ErrorHandler.handle_vram_oom_error, ErrorHandler.handle_model_loading_error, ErrorHandler.handle_generation_timeout, ErrorHandler.retry_with_backoff, ErrorHandler.with_timeout, ErrorHandler.safe_generate, ErrorHandler.get_system_health, get_error_handler, safe_generate_video, LoRAManager.list_available_loras, LoRAManager.load_lora, LoRAManager.apply_lora, LoRAManager.remove_lora, LoRAManager.adjust_lora_strength, LoRAManager.get_fallback_prompt_enhancement, LoRAManager.unload_lora, LoRAManager.get_lora_status, get_lora_manager, TaskQueue.set_processing_status, QueueProcessor.start_processing, QueueProcessor.stop_processing, QueueProcessor.is_running, QueueProcessor.get_processing_status, QueueManager.start_queue_processing, QueueManager.stop_queue_processing, QueueManager.add_task, QueueManager.get_comprehensive_status, QueueManager.pause_processing, QueueManager.resume_processing, QueueManager.clear_completed_tasks, QueueManager.clear_all_tasks, QueueManager.remove_task, QueueManager.get_task_details, get_queue_manager, start_queue_processing, stop_queue_processing, pause_queue_processing, resume_queue_processing, OutputManager.save_video_frames, OutputManager.get_video_metadata, OutputManager.list_videos, OutputManager.delete_video, OutputManager.get_video_path, OutputManager.get_thumbnail_path, OutputManager.get_storage_stats, OutputManager.cleanup_orphaned_files, OutputManager.export_metadata, get_output_manager, list_generated_videos, delete_generated_video, validate_cached_model, detect_model_type, download_model, load_model, unload_model, enable_cpu_offload, optimize_for_inference, optimize_model, detect_vace_aesthetics, detect_style, validate_prompt, validate_prompt, manage_prompt_length, detect_vace_aesthetics, detect_style_category, generate_t2v, generate_i2v, generate_ti2v, generate_video, unload_pipeline, unload_all_pipelines, validate_prompt, validate_image, validate_resolution, validate_generation_parameters, preprocess_for_generation, handle_vram_oom_error, handle_generation_timeout, safe_generate, load_lora, unload_lora, set_processing_status, start_processing, stop_processing, get_processing_status, start_queue_processing, stop_queue_processing, pause_processing, resume_processing, tiled_encode, timeout_handler
+87. Increase test coverage for vae_compatibility_handler (currently 18.2%)
+88. Add tests for critical functions in vae_compatibility_handler: VAECompatibilityHandler.detect_vae_architecture, VAECompatibilityHandler.validate_vae_weights, VAECompatibilityHandler.load_vae_with_compatibility, VAECompatibilityHandler.get_vae_error_guidance, detect_vae_architecture, validate_vae_weights, load_vae_with_compatibility
+89. Increase test coverage for validation_framework (currently 32.0%)
+90. Add tests for critical functions in validation_framework: PromptValidator.validate_prompt, ImageValidator.validate_image, ConfigValidator.validate_generation_params, validate_prompt, validate_image, validate_generation_params
+91. Increase test coverage for verify_model_fix (currently 33.3%)
+92. Add tests for critical functions in verify_model_fix: simulate_model_loading_logic
+93. Increase test coverage for wan22_compatibility_clean (currently 0.0%)
+94. Add tests for critical functions in wan22_compatibility_clean: AutoencoderKLWan.from_pretrained
+95. Increase test coverage for wan22_compatibility_layer (currently 0.0%)
+96. Add tests for critical functions in wan22_compatibility_layer: AutoencoderKLWan.from_pretrained
+97. Add test scenarios for architecture_detector.ArchitectureSignature.is_wan_architecture: valid_input_detection, invalid_input_handling, edge_case_handling, error_recovery
+98. Add test scenarios for architecture_detector.ArchitectureSignature.get_architecture_type: valid_input_detection, invalid_input_handling, edge_case_handling, error_recovery
+99. Add test scenarios for architecture_detector.ArchitectureDetector.detect_model_architecture: valid_input_detection, invalid_input_handling, edge_case_handling, error_recovery
+100. Add test scenarios for architecture_detector.ArchitectureDetector.analyze_model_index: valid_input_detection, invalid_input_handling, edge_case_handling, error_recovery
+101. Add test scenarios for architecture_detector.ArchitectureDetector.check_vae_dimensions: valid_input_detection, invalid_input_handling, edge_case_handling, error_recovery
+102. Add test scenarios for architecture_detector.ArchitectureDetector.validate_component_compatibility: valid_input_detection, invalid_input_handling, edge_case_handling, error_recovery
+103. Add test scenarios for architecture_detector.is_wan_architecture: valid_input_detection, invalid_input_handling, edge_case_handling, error_recovery
+104. Add test scenarios for architecture_detector.get_architecture_type: valid_input_detection, invalid_input_handling, edge_case_handling, error_recovery
+105. Add test scenarios for architecture_detector.detect_model_architecture: valid_input_detection, invalid_input_handling, edge_case_handling, error_recovery
+106. Add test scenarios for architecture_detector.analyze_model_index: valid_input_detection, invalid_input_handling, edge_case_handling, error_recovery
+107. Add test scenarios for architecture_detector.check_vae_dimensions: valid_input_detection, invalid_input_handling, edge_case_handling, error_recovery
+108. Add test scenarios for architecture_detector.validate_component_compatibility: valid_input_detection, invalid_input_handling, edge_case_handling, error_recovery
+109. Add test scenarios for pipeline_manager.PipelineManager.select_pipeline_class: successful_operation, failure_handling, resource_management, concurrent_access
+110. Add test scenarios for pipeline_manager.PipelineManager.load_custom_pipeline: successful_operation, failure_handling, resource_management, concurrent_access
+111. Add test scenarios for pipeline_manager.PipelineManager.validate_pipeline_args: successful_operation, failure_handling, resource_management, concurrent_access
+112. Add test scenarios for pipeline_manager.PipelineManager.get_pipeline_requirements: successful_operation, failure_handling, resource_management, concurrent_access
+113. Add test scenarios for pipeline_manager.PipelineManager.create_pipeline_mapping: successful_operation, failure_handling, resource_management, concurrent_access
+114. Add test scenarios for pipeline_manager.PipelineManager.suggest_pipeline_alternatives: successful_operation, failure_handling, resource_management, concurrent_access
+115. Add test scenarios for pipeline_manager.PipelineManager.validate_pipeline_compatibility: successful_operation, failure_handling, resource_management, concurrent_access
+116. Add test scenarios for pipeline_manager.select_pipeline_class: successful_operation, failure_handling, resource_management, concurrent_access
+117. Add test scenarios for pipeline_manager.load_custom_pipeline: successful_operation, failure_handling, resource_management, concurrent_access
+118. Add test scenarios for pipeline_manager.validate_pipeline_args: successful_operation, failure_handling, resource_management, concurrent_access
+119. Add test scenarios for pipeline_manager.get_pipeline_requirements: successful_operation, failure_handling, resource_management, concurrent_access
+120. Add test scenarios for pipeline_manager.create_pipeline_mapping: successful_operation, failure_handling, resource_management, concurrent_access
+121. Add test scenarios for pipeline_manager.suggest_pipeline_alternatives: successful_operation, failure_handling, resource_management, concurrent_access
+122. Add test scenarios for pipeline_manager.validate_pipeline_compatibility: successful_operation, failure_handling, resource_management, concurrent_access
+123. Add test scenarios for dependency_manager.DependencyManager.check_remote_code_availability: successful_operation, failure_handling, resource_management, concurrent_access
+124. Add test scenarios for dependency_manager.DependencyManager.fetch_pipeline_code: successful_operation, failure_handling, resource_management, concurrent_access
+125. Add test scenarios for dependency_manager.DependencyManager.validate_code_version: successful_operation, failure_handling, resource_management, concurrent_access
+126. Add test scenarios for dependency_manager.DependencyManager.install_dependencies: successful_operation, failure_handling, resource_management, concurrent_access
+127. Add test scenarios for dependency_manager.DependencyManager.get_fallback_options: successful_operation, failure_handling, resource_management, concurrent_access
+128. Add test scenarios for dependency_manager.check_remote_code_availability: successful_operation, failure_handling, resource_management, concurrent_access
+129. Add test scenarios for dependency_manager.fetch_pipeline_code: successful_operation, failure_handling, resource_management, concurrent_access
+130. Add test scenarios for dependency_manager.validate_code_version: successful_operation, failure_handling, resource_management, concurrent_access
+131. Add test scenarios for dependency_manager.install_dependencies: successful_operation, failure_handling, resource_management, concurrent_access
+132. Add test scenarios for dependency_manager.get_fallback_options: successful_operation, failure_handling, resource_management, concurrent_access
+133. Add test scenarios for wan_pipeline_loader.WanPipelineWrapper.generate: successful_loading, loading_failure, optimization_application, memory_management
+134. Add test scenarios for wan_pipeline_loader.WanPipelineWrapper.estimate_memory_usage: successful_loading, loading_failure, optimization_application, memory_management
+135. Add test scenarios for wan_pipeline_loader.WanPipelineWrapper.get_generation_stats: successful_loading, loading_failure, optimization_application, memory_management
+136. Add test scenarios for wan_pipeline_loader.WanPipelineLoader.load_wan_pipeline: successful_loading, loading_failure, optimization_application, memory_management
+137. Add test scenarios for wan_pipeline_loader.WanPipelineLoader.get_system_info: successful_loading, loading_failure, optimization_application, memory_management
+138. Add test scenarios for wan_pipeline_loader.WanPipelineLoader.clear_cache: successful_loading, loading_failure, optimization_application, memory_management
+139. Add test scenarios for wan_pipeline_loader.WanPipelineLoader.preload_pipeline: successful_loading, loading_failure, optimization_application, memory_management
+140. Add test scenarios for wan_pipeline_loader.generate: successful_loading, loading_failure, optimization_application, memory_management
+141. Add test scenarios for wan_pipeline_loader.estimate_memory_usage: successful_loading, loading_failure, optimization_application, memory_management
+142. Add test scenarios for wan_pipeline_loader.get_generation_stats: successful_loading, loading_failure, optimization_application, memory_management
+143. Add test scenarios for wan_pipeline_loader.load_wan_pipeline: successful_loading, loading_failure, optimization_application, memory_management
+144. Add test scenarios for wan_pipeline_loader.get_system_info: successful_loading, loading_failure, optimization_application, memory_management
+145. Add test scenarios for wan_pipeline_loader.clear_cache: successful_loading, loading_failure, optimization_application, memory_management
+146. Add test scenarios for wan_pipeline_loader.preload_pipeline: successful_loading, loading_failure, optimization_application, memory_management
+147. Add test scenarios for wan_pipeline_loader.chunk_progress_callback: successful_loading, loading_failure, optimization_application, memory_management
+148. Add test scenarios for fallback_handler.FallbackStrategy.to_dict: normal_processing, error_handling, edge_cases, resource_cleanup
+149. Add test scenarios for fallback_handler.UsableComponent.to_dict: normal_processing, error_handling, edge_cases, resource_cleanup
+150. Add test scenarios for fallback_handler.AlternativeModel.to_dict: normal_processing, error_handling, edge_cases, resource_cleanup
+151. Add test scenarios for fallback_handler.FallbackResult.to_dict: normal_processing, error_handling, edge_cases, resource_cleanup
+152. Add test scenarios for fallback_handler.ComponentAnalyzer.analyze_component: normal_processing, error_handling, edge_cases, resource_cleanup
+153. Add test scenarios for fallback_handler.AlternativeModelSuggester.suggest_alternatives: normal_processing, error_handling, edge_cases, resource_cleanup
+154. Add test scenarios for fallback_handler.AlternativeModelSuggester.add_alternative_model: normal_processing, error_handling, edge_cases, resource_cleanup
+155. Add test scenarios for fallback_handler.AlternativeModelSuggester.get_local_alternatives: normal_processing, error_handling, edge_cases, resource_cleanup
+156. Add test scenarios for fallback_handler.FallbackHandler.create_fallback_strategy: normal_processing, error_handling, edge_cases, resource_cleanup
+157. Add test scenarios for fallback_handler.FallbackHandler.attempt_component_isolation: normal_processing, error_handling, edge_cases, resource_cleanup
+158. Add test scenarios for fallback_handler.FallbackHandler.suggest_alternative_models: normal_processing, error_handling, edge_cases, resource_cleanup
+159. Add test scenarios for fallback_handler.FallbackHandler.execute_fallback_strategy: normal_processing, error_handling, edge_cases, resource_cleanup
+160. Add test scenarios for fallback_handler.handle_pipeline_failure: normal_processing, error_handling, edge_cases, resource_cleanup
+161. Add test scenarios for fallback_handler.analyze_model_components: normal_processing, error_handling, edge_cases, resource_cleanup
+162. Add test scenarios for fallback_handler.find_alternative_models: normal_processing, error_handling, edge_cases, resource_cleanup
+163. Add test scenarios for fallback_handler.to_dict: normal_processing, error_handling, edge_cases, resource_cleanup
+164. Add test scenarios for fallback_handler.to_dict: normal_processing, error_handling, edge_cases, resource_cleanup
+165. Add test scenarios for fallback_handler.to_dict: normal_processing, error_handling, edge_cases, resource_cleanup
+166. Add test scenarios for fallback_handler.to_dict: normal_processing, error_handling, edge_cases, resource_cleanup
+167. Add test scenarios for fallback_handler.analyze_component: normal_processing, error_handling, edge_cases, resource_cleanup
+168. Add test scenarios for fallback_handler.suggest_alternatives: normal_processing, error_handling, edge_cases, resource_cleanup
+169. Add test scenarios for fallback_handler.add_alternative_model: normal_processing, error_handling, edge_cases, resource_cleanup
+170. Add test scenarios for fallback_handler.get_local_alternatives: normal_processing, error_handling, edge_cases, resource_cleanup
+171. Add test scenarios for fallback_handler.create_fallback_strategy: normal_processing, error_handling, edge_cases, resource_cleanup
+172. Add test scenarios for fallback_handler.attempt_component_isolation: normal_processing, error_handling, edge_cases, resource_cleanup
+173. Add test scenarios for fallback_handler.suggest_alternative_models: normal_processing, error_handling, edge_cases, resource_cleanup
+174. Add test scenarios for fallback_handler.execute_fallback_strategy: normal_processing, error_handling, edge_cases, resource_cleanup
+175. Add test scenarios for optimization_manager.OptimizationManager.analyze_system_resources: successful_operation, failure_handling, resource_management, concurrent_access
+176. Add test scenarios for optimization_manager.OptimizationManager.recommend_optimizations: successful_operation, failure_handling, resource_management, concurrent_access
+177. Add test scenarios for optimization_manager.OptimizationManager.apply_memory_optimizations: successful_operation, failure_handling, resource_management, concurrent_access
+178. Add test scenarios for optimization_manager.OptimizationManager.enable_chunked_processing: successful_operation, failure_handling, resource_management, concurrent_access
+179. Add test scenarios for optimization_manager.OptimizationManager.estimate_memory_usage: successful_operation, failure_handling, resource_management, concurrent_access
+180. Add test scenarios for optimization_manager.OptimizationManager.monitor_memory_usage: successful_operation, failure_handling, resource_management, concurrent_access
+181. Add test scenarios for optimization_manager.OptimizationManager.cleanup_memory: successful_operation, failure_handling, resource_management, concurrent_access
+182. Add test scenarios for optimization_manager.OptimizationManager.get_optimization_recommendations: successful_operation, failure_handling, resource_management, concurrent_access
+183. Add test scenarios for optimization_manager.ChunkedProcessor.process_chunked_generation: successful_operation, failure_handling, resource_management, concurrent_access
+184. Add test scenarios for optimization_manager.get_gpu_memory_info: successful_operation, failure_handling, resource_management, concurrent_access
+185. Add test scenarios for optimization_manager.estimate_model_vram_usage: successful_operation, failure_handling, resource_management, concurrent_access
+186. Add test scenarios for optimization_manager.analyze_system_resources: successful_operation, failure_handling, resource_management, concurrent_access
+187. Add test scenarios for optimization_manager.recommend_optimizations: successful_operation, failure_handling, resource_management, concurrent_access
+188. Add test scenarios for optimization_manager.apply_memory_optimizations: successful_operation, failure_handling, resource_management, concurrent_access
+189. Add test scenarios for optimization_manager.enable_chunked_processing: successful_operation, failure_handling, resource_management, concurrent_access
+190. Add test scenarios for optimization_manager.estimate_memory_usage: successful_operation, failure_handling, resource_management, concurrent_access
+191. Add test scenarios for optimization_manager.monitor_memory_usage: successful_operation, failure_handling, resource_management, concurrent_access
+192. Add test scenarios for optimization_manager.cleanup_memory: successful_operation, failure_handling, resource_management, concurrent_access
+193. Add test scenarios for optimization_manager.get_optimization_recommendations: successful_operation, failure_handling, resource_management, concurrent_access
+194. Add test scenarios for optimization_manager.process_chunked_generation: successful_operation, failure_handling, resource_management, concurrent_access
+195. Add test scenarios for frame_tensor_handler.ValidationResult.add_error: normal_processing, error_handling, edge_cases, resource_cleanup
+196. Add test scenarios for frame_tensor_handler.ValidationResult.add_warning: normal_processing, error_handling, edge_cases, resource_cleanup
+197. Add test scenarios for frame_tensor_handler.ProcessedFrames.num_frames: normal_processing, error_handling, edge_cases, resource_cleanup
+198. Add test scenarios for frame_tensor_handler.ProcessedFrames.height: normal_processing, error_handling, edge_cases, resource_cleanup
+199. Add test scenarios for frame_tensor_handler.ProcessedFrames.width: normal_processing, error_handling, edge_cases, resource_cleanup
+200. Add test scenarios for frame_tensor_handler.ProcessedFrames.channels: normal_processing, error_handling, edge_cases, resource_cleanup
+201. Add test scenarios for frame_tensor_handler.ProcessedFrames.validate_shape: normal_processing, error_handling, edge_cases, resource_cleanup
+202. Add test scenarios for frame_tensor_handler.FrameTensorHandler.process_output_tensors: normal_processing, error_handling, edge_cases, resource_cleanup
+203. Add test scenarios for frame_tensor_handler.FrameTensorHandler.validate_frame_dimensions: normal_processing, error_handling, edge_cases, resource_cleanup
+204. Add test scenarios for frame_tensor_handler.FrameTensorHandler.normalize_frame_data: normal_processing, error_handling, edge_cases, resource_cleanup
+205. Add test scenarios for frame_tensor_handler.FrameTensorHandler.handle_batch_outputs: normal_processing, error_handling, edge_cases, resource_cleanup
+206. Add test scenarios for frame_tensor_handler.add_error: normal_processing, error_handling, edge_cases, resource_cleanup
+207. Add test scenarios for frame_tensor_handler.add_warning: normal_processing, error_handling, edge_cases, resource_cleanup
+208. Add test scenarios for frame_tensor_handler.num_frames: normal_processing, error_handling, edge_cases, resource_cleanup
+209. Add test scenarios for frame_tensor_handler.height: normal_processing, error_handling, edge_cases, resource_cleanup
+210. Add test scenarios for frame_tensor_handler.width: normal_processing, error_handling, edge_cases, resource_cleanup
+211. Add test scenarios for frame_tensor_handler.channels: normal_processing, error_handling, edge_cases, resource_cleanup
+212. Add test scenarios for frame_tensor_handler.validate_shape: normal_processing, error_handling, edge_cases, resource_cleanup
+213. Add test scenarios for frame_tensor_handler.process_output_tensors: normal_processing, error_handling, edge_cases, resource_cleanup
+214. Add test scenarios for frame_tensor_handler.validate_frame_dimensions: normal_processing, error_handling, edge_cases, resource_cleanup
+215. Add test scenarios for frame_tensor_handler.normalize_frame_data: normal_processing, error_handling, edge_cases, resource_cleanup
+216. Add test scenarios for frame_tensor_handler.handle_batch_outputs: normal_processing, error_handling, edge_cases, resource_cleanup
+217. Add test scenarios for video_encoder.EncodingConfig.to_ffmpeg_args: successful_encoding, encoding_failure, format_support, dependency_handling
+218. Add test scenarios for video_encoder.EncodingResult.add_error: successful_encoding, encoding_failure, format_support, dependency_handling
+219. Add test scenarios for video_encoder.EncodingResult.add_warning: successful_encoding, encoding_failure, format_support, dependency_handling
+220. Add test scenarios for video_encoder.FallbackResult.add_error: successful_encoding, encoding_failure, format_support, dependency_handling
+221. Add test scenarios for video_encoder.VideoEncoder.encode_frames_to_video: successful_encoding, encoding_failure, format_support, dependency_handling
+222. Add test scenarios for video_encoder.VideoEncoder.configure_encoding_params: successful_encoding, encoding_failure, format_support, dependency_handling
+223. Add test scenarios for video_encoder.VideoEncoder.check_encoding_dependencies: successful_encoding, encoding_failure, format_support, dependency_handling
+224. Add test scenarios for video_encoder.VideoEncoder.provide_fallback_output: successful_encoding, encoding_failure, format_support, dependency_handling
+225. Add test scenarios for video_encoder.encode_video_simple: successful_encoding, encoding_failure, format_support, dependency_handling
+226. Add test scenarios for video_encoder.create_fallback_frames: successful_encoding, encoding_failure, format_support, dependency_handling
+227. Add test scenarios for video_encoder.check_video_encoding_support: successful_encoding, encoding_failure, format_support, dependency_handling
+228. Add test scenarios for video_encoder.to_ffmpeg_args: successful_encoding, encoding_failure, format_support, dependency_handling
+229. Add test scenarios for video_encoder.add_error: successful_encoding, encoding_failure, format_support, dependency_handling
+230. Add test scenarios for video_encoder.add_warning: successful_encoding, encoding_failure, format_support, dependency_handling
+231. Add test scenarios for video_encoder.add_error: successful_encoding, encoding_failure, format_support, dependency_handling
+232. Add test scenarios for video_encoder.encode_frames_to_video: successful_encoding, encoding_failure, format_support, dependency_handling
+233. Add test scenarios for video_encoder.configure_encoding_params: successful_encoding, encoding_failure, format_support, dependency_handling
+234. Add test scenarios for video_encoder.check_encoding_dependencies: successful_encoding, encoding_failure, format_support, dependency_handling
+235. Add test scenarios for video_encoder.provide_fallback_output: successful_encoding, encoding_failure, format_support, dependency_handling
+236. Add test scenarios for smoke_test_runner.SmokeTestRunner.run_pipeline_smoke_test: successful_operation, failure_handling, resource_management, concurrent_access
+237. Add test scenarios for smoke_test_runner.SmokeTestRunner.validate_output_format: successful_operation, failure_handling, resource_management, concurrent_access
+238. Add test scenarios for smoke_test_runner.SmokeTestRunner.test_memory_usage: successful_operation, failure_handling, resource_management, concurrent_access
+239. Add test scenarios for smoke_test_runner.SmokeTestRunner.benchmark_generation_speed: successful_operation, failure_handling, resource_management, concurrent_access
+240. Add test scenarios for smoke_test_runner.run_pipeline_smoke_test: successful_operation, failure_handling, resource_management, concurrent_access
+241. Add test scenarios for smoke_test_runner.validate_output_format: successful_operation, failure_handling, resource_management, concurrent_access
+242. Add test scenarios for smoke_test_runner.test_memory_usage: successful_operation, failure_handling, resource_management, concurrent_access
+243. Add test scenarios for smoke_test_runner.benchmark_generation_speed: successful_operation, failure_handling, resource_management, concurrent_access
+244. Add test scenarios for smoke_test_runner.MockPipeline.generate: successful_operation, failure_handling, resource_management, concurrent_access
+245. Add test scenarios for smoke_test_runner.generate: successful_operation, failure_handling, resource_management, concurrent_access
+246. Add test scenarios for check_missing_modules.check_module: successful_operation, failure_handling, resource_management, concurrent_access
+247. Add test scenarios for check_missing_modules.install_module: successful_operation, failure_handling, resource_management, concurrent_access
+248. Add test scenarios for check_missing_modules.main: successful_operation, failure_handling, resource_management, concurrent_access
+249. Add test scenarios for comprehensive_test_runner.ComprehensiveTestRunner.run_comprehensive_tests: successful_operation, failure_handling, resource_management, concurrent_access
+250. Add test scenarios for comprehensive_test_runner.main: successful_operation, failure_handling, resource_management, concurrent_access
+251. Add test scenarios for comprehensive_test_runner.run_comprehensive_tests: successful_operation, failure_handling, resource_management, concurrent_access
+252. Add test scenarios for comprehensive_test_runner.MockPipeline.generate: successful_operation, failure_handling, resource_management, concurrent_access
+253. Add test scenarios for comprehensive_test_runner.generate: successful_operation, failure_handling, resource_management, concurrent_access
+254. Add test scenarios for cpu_monitor.CPUMonitor.get_cpu_percent: successful_operation, failure_handling, resource_management, concurrent_access
+255. Add test scenarios for cpu_monitor.get_cpu_monitor: successful_operation, failure_handling, resource_management, concurrent_access
+256. Add test scenarios for cpu_monitor.get_cpu_percent: successful_operation, failure_handling, resource_management, concurrent_access
+257. Add test scenarios for cpu_monitor.get_cpu_percent: successful_operation, failure_handling, resource_management, concurrent_access
+258. Add test scenarios for diagnostic_collector.ModelDiagnostics.collect: successful_operation, failure_handling, resource_management, concurrent_access
+259. Add test scenarios for diagnostic_collector.EnvironmentDiagnostics.to_dict: successful_operation, failure_handling, resource_management, concurrent_access
+260. Add test scenarios for diagnostic_collector.EnvironmentDiagnostics.collect: successful_operation, failure_handling, resource_management, concurrent_access
+261. Add test scenarios for diagnostic_collector.GenerationDiagnostics.to_dict: successful_operation, failure_handling, resource_management, concurrent_access
+262. Add test scenarios for diagnostic_collector.DiagnosticCollector.collect_full_diagnostics: successful_operation, failure_handling, resource_management, concurrent_access
+263. Add test scenarios for diagnostic_collector.DiagnosticCollector.export_diagnostics: successful_operation, failure_handling, resource_management, concurrent_access
+264. Add test scenarios for diagnostic_collector.get_diagnostic_collector: successful_operation, failure_handling, resource_management, concurrent_access
+265. Add test scenarios for diagnostic_collector.collect: successful_operation, failure_handling, resource_management, concurrent_access
+266. Add test scenarios for diagnostic_collector.to_dict: successful_operation, failure_handling, resource_management, concurrent_access
+267. Add test scenarios for diagnostic_collector.collect: successful_operation, failure_handling, resource_management, concurrent_access
+268. Add test scenarios for diagnostic_collector.to_dict: successful_operation, failure_handling, resource_management, concurrent_access
+269. Add test scenarios for diagnostic_collector.collect_full_diagnostics: successful_operation, failure_handling, resource_management, concurrent_access
+270. Add test scenarios for diagnostic_collector.export_diagnostics: successful_operation, failure_handling, resource_management, concurrent_access
+271. Add test scenarios for emergency_model_fix.create_model_override: successful_operation, failure_handling, resource_management, concurrent_access
+272. Add test scenarios for enhanced_generation_pipeline.EnhancedGenerationPipeline.add_progress_callback: successful_operation, failure_handling, resource_management, concurrent_access
+273. Add test scenarios for enhanced_generation_pipeline.EnhancedGenerationPipeline.add_status_callback: successful_operation, failure_handling, resource_management, concurrent_access
+274. Add test scenarios for enhanced_generation_pipeline.EnhancedGenerationPipeline.get_pipeline_status: successful_operation, failure_handling, resource_management, concurrent_access
+275. Add test scenarios for enhanced_generation_pipeline.get_enhanced_pipeline: successful_operation, failure_handling, resource_management, concurrent_access
+276. Add test scenarios for enhanced_generation_pipeline.add_progress_callback: successful_operation, failure_handling, resource_management, concurrent_access
+277. Add test scenarios for enhanced_generation_pipeline.add_status_callback: successful_operation, failure_handling, resource_management, concurrent_access
+278. Add test scenarios for enhanced_generation_pipeline.get_pipeline_status: successful_operation, failure_handling, resource_management, concurrent_access
+279. Add test scenarios for enhanced_generation_pipeline.generation_progress: successful_operation, failure_handling, resource_management, concurrent_access
+280. Add test scenarios for enhanced_model_manager.EnhancedModelManager.get_model_id: successful_operation, failure_handling, resource_management, concurrent_access
+281. Add test scenarios for enhanced_model_manager.EnhancedModelManager.validate_model_availability: successful_operation, failure_handling, resource_management, concurrent_access
+282. Add test scenarios for enhanced_model_manager.EnhancedModelManager.check_model_compatibility: successful_operation, failure_handling, resource_management, concurrent_access
+283. Add test scenarios for enhanced_model_manager.EnhancedModelManager.load_model_with_fallback: successful_operation, failure_handling, resource_management, concurrent_access
+284. Add test scenarios for enhanced_model_manager.EnhancedModelManager.get_model_status_report: successful_operation, failure_handling, resource_management, concurrent_access
+285. Add test scenarios for enhanced_model_manager.EnhancedModelManager.repair_corrupted_model: successful_operation, failure_handling, resource_management, concurrent_access
+286. Add test scenarios for enhanced_model_manager.EnhancedModelManager.unload_model: successful_operation, failure_handling, resource_management, concurrent_access
+287. Add test scenarios for enhanced_model_manager.EnhancedModelManager.list_all_models: successful_operation, failure_handling, resource_management, concurrent_access
+288. Add test scenarios for enhanced_model_manager.get_enhanced_model_manager: successful_operation, failure_handling, resource_management, concurrent_access
+289. Add test scenarios for enhanced_model_manager.validate_model_availability: successful_operation, failure_handling, resource_management, concurrent_access
+290. Add test scenarios for enhanced_model_manager.check_model_compatibility: successful_operation, failure_handling, resource_management, concurrent_access
+291. Add test scenarios for enhanced_model_manager.load_model_with_fallback: successful_operation, failure_handling, resource_management, concurrent_access
+292. Add test scenarios for enhanced_model_manager.get_model_status_report: successful_operation, failure_handling, resource_management, concurrent_access
+293. Add test scenarios for enhanced_model_manager.get_model_id: successful_operation, failure_handling, resource_management, concurrent_access
+294. Add test scenarios for enhanced_model_manager.validate_model_availability: successful_operation, failure_handling, resource_management, concurrent_access
+295. Add test scenarios for enhanced_model_manager.check_model_compatibility: successful_operation, failure_handling, resource_management, concurrent_access
+296. Add test scenarios for enhanced_model_manager.load_model_with_fallback: successful_operation, failure_handling, resource_management, concurrent_access
+297. Add test scenarios for enhanced_model_manager.get_model_status_report: successful_operation, failure_handling, resource_management, concurrent_access
+298. Add test scenarios for enhanced_model_manager.repair_corrupted_model: successful_operation, failure_handling, resource_management, concurrent_access
+299. Add test scenarios for enhanced_model_manager.unload_model: successful_operation, failure_handling, resource_management, concurrent_access
+300. Add test scenarios for enhanced_model_manager.list_all_models: successful_operation, failure_handling, resource_management, concurrent_access
+301. Add test scenarios for enhanced_model_manager.validation_worker: successful_operation, failure_handling, resource_management, concurrent_access
+302. Add test scenarios for error_handler.UserFriendlyError.to_html: normal_processing, error_handling, edge_cases, resource_cleanup
+303. Add test scenarios for error_handler.GenerationErrorHandler.handle_error: normal_processing, error_handling, edge_cases, resource_cleanup
+304. Add test scenarios for error_handler.GenerationErrorHandler.attempt_automatic_recovery: normal_processing, error_handling, edge_cases, resource_cleanup
+305. Add test scenarios for error_handler.handle_validation_error: normal_processing, error_handling, edge_cases, resource_cleanup
+306. Add test scenarios for error_handler.handle_model_loading_error: normal_processing, error_handling, edge_cases, resource_cleanup
+307. Add test scenarios for error_handler.handle_vram_error: normal_processing, error_handling, edge_cases, resource_cleanup
+308. Add test scenarios for error_handler.handle_generation_error: normal_processing, error_handling, edge_cases, resource_cleanup
+309. Add test scenarios for error_handler.handle_error_with_recovery: normal_processing, error_handling, edge_cases, resource_cleanup
+310. Add test scenarios for error_handler.log_error_with_context: normal_processing, error_handling, edge_cases, resource_cleanup
+311. Add test scenarios for error_handler.get_error_recovery_manager: normal_processing, error_handling, edge_cases, resource_cleanup
+312. Add test scenarios for error_handler.create_error_info: normal_processing, error_handling, edge_cases, resource_cleanup
+313. Add test scenarios for error_handler.to_html: normal_processing, error_handling, edge_cases, resource_cleanup
+314. Add test scenarios for error_handler.handle_error: normal_processing, error_handling, edge_cases, resource_cleanup
+315. Add test scenarios for error_handler.attempt_automatic_recovery: normal_processing, error_handling, edge_cases, resource_cleanup
+316. Add test scenarios for error_handler.wrapper: normal_processing, error_handling, edge_cases, resource_cleanup
+317. Add test scenarios for fix_dependencies.run_command: successful_operation, failure_handling, resource_management, concurrent_access
+318. Add test scenarios for fix_dependencies.check_python_version: successful_operation, failure_handling, resource_management, concurrent_access
+319. Add test scenarios for fix_dependencies.check_cuda_availability: successful_operation, failure_handling, resource_management, concurrent_access
+320. Add test scenarios for fix_dependencies.uninstall_problematic_packages: successful_operation, failure_handling, resource_management, concurrent_access
+321. Add test scenarios for fix_dependencies.install_compatible_packages: successful_operation, failure_handling, resource_management, concurrent_access
+322. Add test scenarios for fix_dependencies.install_remaining_requirements: successful_operation, failure_handling, resource_management, concurrent_access
+323. Add test scenarios for fix_dependencies.test_imports: successful_operation, failure_handling, resource_management, concurrent_access
+324. Add test scenarios for fix_dependencies.main: successful_operation, failure_handling, resource_management, concurrent_access
+325. Add test scenarios for fix_diffusers_installation.check_diffusers_version: successful_operation, failure_handling, resource_management, concurrent_access
+326. Add test scenarios for fix_diffusers_installation.fix_diffusers_installation: successful_operation, failure_handling, resource_management, concurrent_access
+327. Add test scenarios for fix_diffusers_installation.install_wan22_components: successful_operation, failure_handling, resource_management, concurrent_access
+328. Add test scenarios for fix_diffusers_installation.create_wan22_pipeline_stub: successful_operation, failure_handling, resource_management, concurrent_access
+329. Add test scenarios for fix_diffusers_installation.main: successful_operation, failure_handling, resource_management, concurrent_access
+330. Add test scenarios for fix_model_loading_issues.fix_model_loading_issues: successful_operation, failure_handling, resource_management, concurrent_access
+331. Add test scenarios for fix_wan22_pipeline.check_wan_pipeline_availability: successful_operation, failure_handling, resource_management, concurrent_access
+332. Add test scenarios for fix_wan22_pipeline.install_wan_diffusers: successful_operation, failure_handling, resource_management, concurrent_access
+333. Add test scenarios for fix_wan22_pipeline.create_fallback_pipeline: successful_operation, failure_handling, resource_management, concurrent_access
+334. Add test scenarios for fix_wan22_pipeline.patch_diffusers_for_wan: successful_operation, failure_handling, resource_management, concurrent_access
+335. Add test scenarios for fix_wan22_pipeline.fix_wan22_pipeline_loading: successful_operation, failure_handling, resource_management, concurrent_access
+336. Add test scenarios for fix_wan22_pipeline.test_wan22_pipeline: successful_operation, failure_handling, resource_management, concurrent_access
+337. Add test scenarios for fix_wan22_pipeline.patched_from_pretrained: successful_operation, failure_handling, resource_management, concurrent_access
+338. Add test scenarios for generation_history_manager.GenerationHistoryEntry.to_dict: successful_operation, failure_handling, resource_management, concurrent_access
+339. Add test scenarios for generation_history_manager.GenerationHistoryEntry.from_dict: successful_operation, failure_handling, resource_management, concurrent_access
+340. Add test scenarios for generation_history_manager.GenerationHistoryEntry.can_retry: successful_operation, failure_handling, resource_management, concurrent_access
+341. Add test scenarios for generation_history_manager.GenerationHistoryEntry.get_display_name: successful_operation, failure_handling, resource_management, concurrent_access
+342. Add test scenarios for generation_history_manager.GenerationHistoryEntry.get_status_emoji: successful_operation, failure_handling, resource_management, concurrent_access
+343. Add test scenarios for generation_history_manager.GenerationHistoryManager.add_entry: successful_operation, failure_handling, resource_management, concurrent_access
+344. Add test scenarios for generation_history_manager.GenerationHistoryManager.update_entry_status: successful_operation, failure_handling, resource_management, concurrent_access
+345. Add test scenarios for generation_history_manager.GenerationHistoryManager.get_entry: successful_operation, failure_handling, resource_management, concurrent_access
+346. Add test scenarios for generation_history_manager.GenerationHistoryManager.get_recent_entries: successful_operation, failure_handling, resource_management, concurrent_access
+347. Add test scenarios for generation_history_manager.GenerationHistoryManager.get_entries_by_status: successful_operation, failure_handling, resource_management, concurrent_access
+348. Add test scenarios for generation_history_manager.GenerationHistoryManager.get_failed_entries: successful_operation, failure_handling, resource_management, concurrent_access
+349. Add test scenarios for generation_history_manager.GenerationHistoryManager.get_successful_entries: successful_operation, failure_handling, resource_management, concurrent_access
+350. Add test scenarios for generation_history_manager.GenerationHistoryManager.retry_entry: successful_operation, failure_handling, resource_management, concurrent_access
+351. Add test scenarios for generation_history_manager.GenerationHistoryManager.add_user_rating: successful_operation, failure_handling, resource_management, concurrent_access
+352. Add test scenarios for generation_history_manager.GenerationHistoryManager.get_statistics: successful_operation, failure_handling, resource_management, concurrent_access
+353. Add test scenarios for generation_history_manager.GenerationHistoryManager.search_entries: successful_operation, failure_handling, resource_management, concurrent_access
+354. Add test scenarios for generation_history_manager.GenerationHistoryManager.export_history: successful_operation, failure_handling, resource_management, concurrent_access
+355. Add test scenarios for generation_history_manager.GenerationHistoryManager.clear_history: successful_operation, failure_handling, resource_management, concurrent_access
+356. Add test scenarios for generation_history_manager.get_history_manager: successful_operation, failure_handling, resource_management, concurrent_access
+357. Add test scenarios for generation_history_manager.to_dict: successful_operation, failure_handling, resource_management, concurrent_access
+358. Add test scenarios for generation_history_manager.from_dict: successful_operation, failure_handling, resource_management, concurrent_access
+359. Add test scenarios for generation_history_manager.can_retry: successful_operation, failure_handling, resource_management, concurrent_access
+360. Add test scenarios for generation_history_manager.get_display_name: successful_operation, failure_handling, resource_management, concurrent_access
+361. Add test scenarios for generation_history_manager.get_status_emoji: successful_operation, failure_handling, resource_management, concurrent_access
+362. Add test scenarios for generation_history_manager.add_entry: successful_operation, failure_handling, resource_management, concurrent_access
+363. Add test scenarios for generation_history_manager.update_entry_status: successful_operation, failure_handling, resource_management, concurrent_access
+364. Add test scenarios for generation_history_manager.get_entry: successful_operation, failure_handling, resource_management, concurrent_access
+365. Add test scenarios for generation_history_manager.get_recent_entries: successful_operation, failure_handling, resource_management, concurrent_access
+366. Add test scenarios for generation_history_manager.get_entries_by_status: successful_operation, failure_handling, resource_management, concurrent_access
+367. Add test scenarios for generation_history_manager.get_failed_entries: successful_operation, failure_handling, resource_management, concurrent_access
+368. Add test scenarios for generation_history_manager.get_successful_entries: successful_operation, failure_handling, resource_management, concurrent_access
+369. Add test scenarios for generation_history_manager.retry_entry: successful_operation, failure_handling, resource_management, concurrent_access
+370. Add test scenarios for generation_history_manager.add_user_rating: successful_operation, failure_handling, resource_management, concurrent_access
+371. Add test scenarios for generation_history_manager.get_statistics: successful_operation, failure_handling, resource_management, concurrent_access
+372. Add test scenarios for generation_history_manager.search_entries: successful_operation, failure_handling, resource_management, concurrent_access
+373. Add test scenarios for generation_history_manager.export_history: successful_operation, failure_handling, resource_management, concurrent_access
+374. Add test scenarios for generation_history_manager.clear_history: successful_operation, failure_handling, resource_management, concurrent_access
+375. Add test scenarios for generation_logger.GenerationContext.to_dict: successful_operation, failure_handling, resource_management, concurrent_access
+376. Add test scenarios for generation_logger.SystemDiagnostics.to_dict: successful_operation, failure_handling, resource_management, concurrent_access
+377. Add test scenarios for generation_logger.SystemDiagnostics.collect: successful_operation, failure_handling, resource_management, concurrent_access
+378. Add test scenarios for generation_logger.ErrorContext.to_dict: successful_operation, failure_handling, resource_management, concurrent_access
+379. Add test scenarios for generation_logger.GenerationLogger.generation_session: successful_operation, failure_handling, resource_management, concurrent_access
+380. Add test scenarios for generation_logger.GenerationLogger.log_generation_start: successful_operation, failure_handling, resource_management, concurrent_access
+381. Add test scenarios for generation_logger.GenerationLogger.log_generation_success: successful_operation, failure_handling, resource_management, concurrent_access
+382. Add test scenarios for generation_logger.GenerationLogger.log_generation_error: successful_operation, failure_handling, resource_management, concurrent_access
+383. Add test scenarios for generation_logger.GenerationLogger.log_pipeline_stage: successful_operation, failure_handling, resource_management, concurrent_access
+384. Add test scenarios for generation_logger.GenerationLogger.log_diagnostics: successful_operation, failure_handling, resource_management, concurrent_access
+385. Add test scenarios for generation_logger.GenerationLogger.log_model_loading: successful_operation, failure_handling, resource_management, concurrent_access
+386. Add test scenarios for generation_logger.GenerationLogger.log_vram_usage: successful_operation, failure_handling, resource_management, concurrent_access
+387. Add test scenarios for generation_logger.GenerationLogger.log_parameter_optimization: successful_operation, failure_handling, resource_management, concurrent_access
+388. Add test scenarios for generation_logger.GenerationLogger.log_recovery_attempt: successful_operation, failure_handling, resource_management, concurrent_access
+389. Add test scenarios for generation_logger.GenerationLogger.get_session_logs: successful_operation, failure_handling, resource_management, concurrent_access
+390. Add test scenarios for generation_logger.GenerationLogger.generate_diagnostic_report: successful_operation, failure_handling, resource_management, concurrent_access
+391. Add test scenarios for generation_logger.GenerationLogger.cleanup_old_logs: successful_operation, failure_handling, resource_management, concurrent_access
+392. Add test scenarios for generation_logger.get_logger: successful_operation, failure_handling, resource_management, concurrent_access
+393. Add test scenarios for generation_logger.configure_logger: successful_operation, failure_handling, resource_management, concurrent_access
+394. Add test scenarios for generation_logger.to_dict: successful_operation, failure_handling, resource_management, concurrent_access
+395. Add test scenarios for generation_logger.to_dict: successful_operation, failure_handling, resource_management, concurrent_access
+396. Add test scenarios for generation_logger.collect: successful_operation, failure_handling, resource_management, concurrent_access
+397. Add test scenarios for generation_logger.to_dict: successful_operation, failure_handling, resource_management, concurrent_access
+398. Add test scenarios for generation_logger.generation_session: successful_operation, failure_handling, resource_management, concurrent_access
+399. Add test scenarios for generation_logger.log_generation_start: successful_operation, failure_handling, resource_management, concurrent_access
+400. Add test scenarios for generation_logger.log_generation_success: successful_operation, failure_handling, resource_management, concurrent_access
+401. Add test scenarios for generation_logger.log_generation_error: successful_operation, failure_handling, resource_management, concurrent_access
+402. Add test scenarios for generation_logger.log_pipeline_stage: successful_operation, failure_handling, resource_management, concurrent_access
+403. Add test scenarios for generation_logger.log_diagnostics: successful_operation, failure_handling, resource_management, concurrent_access
+404. Add test scenarios for generation_logger.log_model_loading: successful_operation, failure_handling, resource_management, concurrent_access
+405. Add test scenarios for generation_logger.log_vram_usage: successful_operation, failure_handling, resource_management, concurrent_access
+406. Add test scenarios for generation_logger.log_parameter_optimization: successful_operation, failure_handling, resource_management, concurrent_access
+407. Add test scenarios for generation_logger.log_recovery_attempt: successful_operation, failure_handling, resource_management, concurrent_access
+408. Add test scenarios for generation_logger.get_session_logs: successful_operation, failure_handling, resource_management, concurrent_access
+409. Add test scenarios for generation_logger.generate_diagnostic_report: successful_operation, failure_handling, resource_management, concurrent_access
+410. Add test scenarios for generation_logger.cleanup_old_logs: successful_operation, failure_handling, resource_management, concurrent_access
+411. Add test scenarios for generation_mode_router.GenerationModeRouter.route_request: successful_operation, failure_handling, resource_management, concurrent_access
+412. Add test scenarios for generation_mode_router.GenerationModeRouter.get_mode_info: successful_operation, failure_handling, resource_management, concurrent_access
+413. Add test scenarios for generation_mode_router.GenerationModeRouter.list_available_modes: successful_operation, failure_handling, resource_management, concurrent_access
+414. Add test scenarios for generation_mode_router.GenerationModeRouter.validate_mode_compatibility: successful_operation, failure_handling, resource_management, concurrent_access
+415. Add test scenarios for generation_mode_router.GenerationModeRouter.suggest_mode_for_inputs: successful_operation, failure_handling, resource_management, concurrent_access
+416. Add test scenarios for generation_mode_router.GenerationModeRouter.get_mode_specific_validation_rules: successful_operation, failure_handling, resource_management, concurrent_access
+417. Add test scenarios for generation_mode_router.get_generation_mode_router: successful_operation, failure_handling, resource_management, concurrent_access
+418. Add test scenarios for generation_mode_router.route_request: successful_operation, failure_handling, resource_management, concurrent_access
+419. Add test scenarios for generation_mode_router.get_mode_info: successful_operation, failure_handling, resource_management, concurrent_access
+420. Add test scenarios for generation_mode_router.list_available_modes: successful_operation, failure_handling, resource_management, concurrent_access
+421. Add test scenarios for generation_mode_router.validate_mode_compatibility: successful_operation, failure_handling, resource_management, concurrent_access
+422. Add test scenarios for generation_mode_router.suggest_mode_for_inputs: successful_operation, failure_handling, resource_management, concurrent_access
+423. Add test scenarios for generation_mode_router.get_mode_specific_validation_rules: successful_operation, failure_handling, resource_management, concurrent_access
+424. Add test scenarios for generation_orchestrator.ResourceEstimate.to_dict: successful_operation, failure_handling, resource_management, concurrent_access
+425. Add test scenarios for generation_orchestrator.PreflightChecker.run_preflight_checks: successful_operation, failure_handling, resource_management, concurrent_access
+426. Add test scenarios for generation_orchestrator.PreflightChecker.check_model_availability: successful_operation, failure_handling, resource_management, concurrent_access
+427. Add test scenarios for generation_orchestrator.PreflightChecker.estimate_resource_requirements: successful_operation, failure_handling, resource_management, concurrent_access
+428. Add test scenarios for generation_orchestrator.ResourceManager.check_vram_availability: successful_operation, failure_handling, resource_management, concurrent_access
+429. Add test scenarios for generation_orchestrator.ResourceManager.optimize_for_available_resources: successful_operation, failure_handling, resource_management, concurrent_access
+430. Add test scenarios for generation_orchestrator.ResourceManager.prepare_generation_environment: successful_operation, failure_handling, resource_management, concurrent_access
+431. Add test scenarios for generation_orchestrator.ResourceManager.get_resource_status: successful_operation, failure_handling, resource_management, concurrent_access
+432. Add test scenarios for generation_orchestrator.PipelineRouter.route_generation_request: successful_operation, failure_handling, resource_management, concurrent_access
+433. Add test scenarios for generation_orchestrator.PipelineRouter.select_optimal_pipeline: successful_operation, failure_handling, resource_management, concurrent_access
+434. Add test scenarios for generation_orchestrator.PipelineRouter.get_pipeline_info: successful_operation, failure_handling, resource_management, concurrent_access
+435. Add test scenarios for generation_orchestrator.PipelineRouter.list_available_pipelines: successful_operation, failure_handling, resource_management, concurrent_access
+436. Add test scenarios for generation_orchestrator.GenerationOrchestrator.validate_request: successful_operation, failure_handling, resource_management, concurrent_access
+437. Add test scenarios for generation_orchestrator.GenerationOrchestrator.estimate_resources: successful_operation, failure_handling, resource_management, concurrent_access
+438. Add test scenarios for generation_orchestrator.GenerationOrchestrator.check_resource_availability: successful_operation, failure_handling, resource_management, concurrent_access
+439. Add test scenarios for generation_orchestrator.GenerationOrchestrator.prepare_generation: successful_operation, failure_handling, resource_management, concurrent_access
+440. Add test scenarios for generation_orchestrator.GenerationOrchestrator.get_generation_status: successful_operation, failure_handling, resource_management, concurrent_access
+441. Add test scenarios for generation_orchestrator.GenerationOrchestrator.run_preflight_checks: successful_operation, failure_handling, resource_management, concurrent_access
+442. Add test scenarios for generation_orchestrator.GenerationOrchestrator.get_pipeline_info: successful_operation, failure_handling, resource_management, concurrent_access
+443. Add test scenarios for generation_orchestrator.GenerationOrchestrator.list_available_pipelines: successful_operation, failure_handling, resource_management, concurrent_access
+444. Add test scenarios for generation_orchestrator.create_generation_request: successful_operation, failure_handling, resource_management, concurrent_access
+445. Add test scenarios for generation_orchestrator.to_dict: successful_operation, failure_handling, resource_management, concurrent_access
+446. Add test scenarios for generation_orchestrator.run_preflight_checks: successful_operation, failure_handling, resource_management, concurrent_access
+447. Add test scenarios for generation_orchestrator.check_model_availability: successful_operation, failure_handling, resource_management, concurrent_access
+448. Add test scenarios for generation_orchestrator.estimate_resource_requirements: successful_operation, failure_handling, resource_management, concurrent_access
+449. Add test scenarios for generation_orchestrator.check_vram_availability: successful_operation, failure_handling, resource_management, concurrent_access
+450. Add test scenarios for generation_orchestrator.optimize_for_available_resources: successful_operation, failure_handling, resource_management, concurrent_access
+451. Add test scenarios for generation_orchestrator.prepare_generation_environment: successful_operation, failure_handling, resource_management, concurrent_access
+452. Add test scenarios for generation_orchestrator.get_resource_status: successful_operation, failure_handling, resource_management, concurrent_access
+453. Add test scenarios for generation_orchestrator.route_generation_request: successful_operation, failure_handling, resource_management, concurrent_access
+454. Add test scenarios for generation_orchestrator.select_optimal_pipeline: successful_operation, failure_handling, resource_management, concurrent_access
+455. Add test scenarios for generation_orchestrator.get_pipeline_info: successful_operation, failure_handling, resource_management, concurrent_access
+456. Add test scenarios for generation_orchestrator.list_available_pipelines: successful_operation, failure_handling, resource_management, concurrent_access
+457. Add test scenarios for generation_orchestrator.validate_request: successful_operation, failure_handling, resource_management, concurrent_access
+458. Add test scenarios for generation_orchestrator.estimate_resources: successful_operation, failure_handling, resource_management, concurrent_access
+459. Add test scenarios for generation_orchestrator.check_resource_availability: successful_operation, failure_handling, resource_management, concurrent_access
+460. Add test scenarios for generation_orchestrator.prepare_generation: successful_operation, failure_handling, resource_management, concurrent_access
+461. Add test scenarios for generation_orchestrator.get_generation_status: successful_operation, failure_handling, resource_management, concurrent_access
+462. Add test scenarios for generation_orchestrator.run_preflight_checks: successful_operation, failure_handling, resource_management, concurrent_access
+463. Add test scenarios for generation_orchestrator.get_pipeline_info: successful_operation, failure_handling, resource_management, concurrent_access
+464. Add test scenarios for generation_orchestrator.list_available_pipelines: successful_operation, failure_handling, resource_management, concurrent_access
+465. Add test scenarios for generation_queue_manager.GenerationRequest.to_dict: successful_operation, failure_handling, resource_management, concurrent_access
+466. Add test scenarios for generation_queue_manager.GenerationQueueManager.add_status_callback: successful_operation, failure_handling, resource_management, concurrent_access
+467. Add test scenarios for generation_queue_manager.GenerationQueueManager.add_progress_callback: successful_operation, failure_handling, resource_management, concurrent_access
+468. Add test scenarios for generation_queue_manager.GenerationQueueManager.submit_request: successful_operation, failure_handling, resource_management, concurrent_access
+469. Add test scenarios for generation_queue_manager.GenerationQueueManager.get_request_status: successful_operation, failure_handling, resource_management, concurrent_access
+470. Add test scenarios for generation_queue_manager.GenerationQueueManager.cancel_request: successful_operation, failure_handling, resource_management, concurrent_access
+471. Add test scenarios for generation_queue_manager.GenerationQueueManager.pause_queue: successful_operation, failure_handling, resource_management, concurrent_access
+472. Add test scenarios for generation_queue_manager.GenerationQueueManager.resume_queue: successful_operation, failure_handling, resource_management, concurrent_access
+473. Add test scenarios for generation_queue_manager.GenerationQueueManager.clear_queue: successful_operation, failure_handling, resource_management, concurrent_access
+474. Add test scenarios for generation_queue_manager.GenerationQueueManager.get_queue_status: successful_operation, failure_handling, resource_management, concurrent_access
+475. Add test scenarios for generation_queue_manager.GenerationQueueManager.get_user_requests: successful_operation, failure_handling, resource_management, concurrent_access
+476. Add test scenarios for generation_queue_manager.GenerationQueueManager.retry_failed_request: successful_operation, failure_handling, resource_management, concurrent_access
+477. Add test scenarios for generation_queue_manager.GenerationQueueManager.shutdown: successful_operation, failure_handling, resource_management, concurrent_access
+478. Add test scenarios for generation_queue_manager.get_queue_manager: successful_operation, failure_handling, resource_management, concurrent_access
+479. Add test scenarios for generation_queue_manager.to_dict: successful_operation, failure_handling, resource_management, concurrent_access
+480. Add test scenarios for generation_queue_manager.add_status_callback: successful_operation, failure_handling, resource_management, concurrent_access
+481. Add test scenarios for generation_queue_manager.add_progress_callback: successful_operation, failure_handling, resource_management, concurrent_access
+482. Add test scenarios for generation_queue_manager.submit_request: successful_operation, failure_handling, resource_management, concurrent_access
+483. Add test scenarios for generation_queue_manager.get_request_status: successful_operation, failure_handling, resource_management, concurrent_access
+484. Add test scenarios for generation_queue_manager.cancel_request: successful_operation, failure_handling, resource_management, concurrent_access
+485. Add test scenarios for generation_queue_manager.pause_queue: successful_operation, failure_handling, resource_management, concurrent_access
+486. Add test scenarios for generation_queue_manager.resume_queue: successful_operation, failure_handling, resource_management, concurrent_access
+487. Add test scenarios for generation_queue_manager.clear_queue: successful_operation, failure_handling, resource_management, concurrent_access
+488. Add test scenarios for generation_queue_manager.get_queue_status: successful_operation, failure_handling, resource_management, concurrent_access
+489. Add test scenarios for generation_queue_manager.get_user_requests: successful_operation, failure_handling, resource_management, concurrent_access
+490. Add test scenarios for generation_queue_manager.retry_failed_request: successful_operation, failure_handling, resource_management, concurrent_access
+491. Add test scenarios for generation_queue_manager.shutdown: successful_operation, failure_handling, resource_management, concurrent_access
+492. Add test scenarios for hardware_parameter_recommender.HardwareParameterRecommender.get_hardware_profile: successful_operation, failure_handling, resource_management, concurrent_access
+493. Add test scenarios for hardware_parameter_recommender.HardwareParameterRecommender.get_parameter_recommendations: successful_operation, failure_handling, resource_management, concurrent_access
+494. Add test scenarios for hardware_parameter_recommender.HardwareParameterRecommender.get_generation_profiles: successful_operation, failure_handling, resource_management, concurrent_access
+495. Add test scenarios for hardware_parameter_recommender.HardwareParameterRecommender.get_optimization_suggestions: successful_operation, failure_handling, resource_management, concurrent_access
+496. Add test scenarios for hardware_parameter_recommender.get_parameter_recommender: successful_operation, failure_handling, resource_management, concurrent_access
+497. Add test scenarios for hardware_parameter_recommender.get_hardware_profile: successful_operation, failure_handling, resource_management, concurrent_access
+498. Add test scenarios for hardware_parameter_recommender.get_parameter_recommendations: successful_operation, failure_handling, resource_management, concurrent_access
+499. Add test scenarios for hardware_parameter_recommender.get_generation_profiles: successful_operation, failure_handling, resource_management, concurrent_access
+500. Add test scenarios for hardware_parameter_recommender.get_optimization_suggestions: successful_operation, failure_handling, resource_management, concurrent_access
+501. Add test scenarios for input_validation.ValidationResult.add_error: successful_operation, failure_handling, resource_management, concurrent_access
+502. Add test scenarios for input_validation.ValidationResult.add_warning: successful_operation, failure_handling, resource_management, concurrent_access
+503. Add test scenarios for input_validation.ValidationResult.add_info: successful_operation, failure_handling, resource_management, concurrent_access
+504. Add test scenarios for input_validation.ValidationResult.has_errors: successful_operation, failure_handling, resource_management, concurrent_access
+505. Add test scenarios for input_validation.ValidationResult.has_warnings: successful_operation, failure_handling, resource_management, concurrent_access
+506. Add test scenarios for input_validation.ValidationResult.get_errors: successful_operation, failure_handling, resource_management, concurrent_access
+507. Add test scenarios for input_validation.ValidationResult.get_warnings: successful_operation, failure_handling, resource_management, concurrent_access
+508. Add test scenarios for input_validation.ValidationResult.get_info: successful_operation, failure_handling, resource_management, concurrent_access
+509. Add test scenarios for input_validation.ValidationResult.to_dict: successful_operation, failure_handling, resource_management, concurrent_access
+510. Add test scenarios for input_validation.PromptValidator.validate_prompt: successful_operation, failure_handling, resource_management, concurrent_access
+511. Add test scenarios for input_validation.ImageValidator.validate_image: successful_operation, failure_handling, resource_management, concurrent_access
+512. Add test scenarios for input_validation.ConfigValidator.validate_generation_params: successful_operation, failure_handling, resource_management, concurrent_access
+513. Add test scenarios for input_validation.validate_generation_request: successful_operation, failure_handling, resource_management, concurrent_access
+514. Add test scenarios for input_validation.add_error: successful_operation, failure_handling, resource_management, concurrent_access
+515. Add test scenarios for input_validation.add_warning: successful_operation, failure_handling, resource_management, concurrent_access
+516. Add test scenarios for input_validation.add_info: successful_operation, failure_handling, resource_management, concurrent_access
+517. Add test scenarios for input_validation.has_errors: successful_operation, failure_handling, resource_management, concurrent_access
+518. Add test scenarios for input_validation.has_warnings: successful_operation, failure_handling, resource_management, concurrent_access
+519. Add test scenarios for input_validation.get_errors: successful_operation, failure_handling, resource_management, concurrent_access
+520. Add test scenarios for input_validation.get_warnings: successful_operation, failure_handling, resource_management, concurrent_access
+521. Add test scenarios for input_validation.get_info: successful_operation, failure_handling, resource_management, concurrent_access
+522. Add test scenarios for input_validation.to_dict: successful_operation, failure_handling, resource_management, concurrent_access
+523. Add test scenarios for input_validation.validate_prompt: successful_operation, failure_handling, resource_management, concurrent_access
+524. Add test scenarios for input_validation.validate_image: successful_operation, failure_handling, resource_management, concurrent_access
+525. Add test scenarios for input_validation.validate_generation_params: successful_operation, failure_handling, resource_management, concurrent_access
+526. Add test scenarios for integration_test_suite.IntegrationTestSuite.setUp: successful_operation, failure_handling, resource_management, concurrent_access
+527. Add test scenarios for integration_test_suite.IntegrationTestSuite.tearDown: successful_operation, failure_handling, resource_management, concurrent_access
+528. Add test scenarios for integration_test_suite.IntegrationTestSuite.run_all_tests: successful_operation, failure_handling, resource_management, concurrent_access
+529. Add test scenarios for integration_test_suite.IntegrationTestSuite.test_architecture_detection_integration: successful_operation, failure_handling, resource_management, concurrent_access
+530. Add test scenarios for integration_test_suite.IntegrationTestSuite.test_pipeline_management_integration: successful_operation, failure_handling, resource_management, concurrent_access
+531. Add test scenarios for integration_test_suite.IntegrationTestSuite.test_dependency_resolution_integration: successful_operation, failure_handling, resource_management, concurrent_access
+532. Add test scenarios for integration_test_suite.IntegrationTestSuite.test_optimization_integration: successful_operation, failure_handling, resource_management, concurrent_access
+533. Add test scenarios for integration_test_suite.IntegrationTestSuite.test_video_processing_integration: successful_operation, failure_handling, resource_management, concurrent_access
+534. Add test scenarios for integration_test_suite.IntegrationTestSuite.test_happy_path_workflow: successful_operation, failure_handling, resource_management, concurrent_access
+535. Add test scenarios for integration_test_suite.IntegrationTestSuite.test_fallback_scenarios: successful_operation, failure_handling, resource_management, concurrent_access
+536. Add test scenarios for integration_test_suite.IntegrationTestSuite.test_error_recovery_workflows: successful_operation, failure_handling, resource_management, concurrent_access
+537. Add test scenarios for integration_test_suite.IntegrationTestSuite.test_resource_constraint_scenarios: successful_operation, failure_handling, resource_management, concurrent_access
+538. Add test scenarios for integration_test_suite.IntegrationTestSuite.test_concurrent_operations: successful_operation, failure_handling, resource_management, concurrent_access
+539. Add test scenarios for integration_test_suite.setUp: successful_operation, failure_handling, resource_management, concurrent_access
+540. Add test scenarios for integration_test_suite.tearDown: successful_operation, failure_handling, resource_management, concurrent_access
+541. Add test scenarios for integration_test_suite.run_all_tests: successful_operation, failure_handling, resource_management, concurrent_access
+542. Add test scenarios for integration_test_suite.test_architecture_detection_integration: successful_operation, failure_handling, resource_management, concurrent_access
+543. Add test scenarios for integration_test_suite.test_pipeline_management_integration: successful_operation, failure_handling, resource_management, concurrent_access
+544. Add test scenarios for integration_test_suite.test_dependency_resolution_integration: successful_operation, failure_handling, resource_management, concurrent_access
+545. Add test scenarios for integration_test_suite.test_optimization_integration: successful_operation, failure_handling, resource_management, concurrent_access
+546. Add test scenarios for integration_test_suite.test_video_processing_integration: successful_operation, failure_handling, resource_management, concurrent_access
+547. Add test scenarios for integration_test_suite.test_happy_path_workflow: successful_operation, failure_handling, resource_management, concurrent_access
+548. Add test scenarios for integration_test_suite.test_fallback_scenarios: successful_operation, failure_handling, resource_management, concurrent_access
+549. Add test scenarios for integration_test_suite.test_error_recovery_workflows: successful_operation, failure_handling, resource_management, concurrent_access
+550. Add test scenarios for integration_test_suite.test_resource_constraint_scenarios: successful_operation, failure_handling, resource_management, concurrent_access
+551. Add test scenarios for integration_test_suite.test_concurrent_operations: successful_operation, failure_handling, resource_management, concurrent_access
+552. Add test scenarios for integration_test_suite.mock_detect: successful_operation, failure_handling, resource_management, concurrent_access
+553. Add test scenarios for integration_test_suite.detect_model: successful_operation, failure_handling, resource_management, concurrent_access
+554. Add test scenarios for interactive_error_resolver.InteractiveErrorResolver.set_callbacks: successful_operation, failure_handling, resource_management, concurrent_access
+555. Add test scenarios for interactive_error_resolver.InteractiveErrorResolver.start_resolution_session: successful_operation, failure_handling, resource_management, concurrent_access
+556. Add test scenarios for interactive_error_resolver.InteractiveErrorResolver.get_session_status: successful_operation, failure_handling, resource_management, concurrent_access
+557. Add test scenarios for interactive_error_resolver.InteractiveErrorResolver.execute_next_step: successful_operation, failure_handling, resource_management, concurrent_access
+558. Add test scenarios for interactive_error_resolver.InteractiveErrorResolver.execute_automatic_steps: successful_operation, failure_handling, resource_management, concurrent_access
+559. Add test scenarios for interactive_error_resolver.InteractiveErrorResolver.get_resolution_suggestions: successful_operation, failure_handling, resource_management, concurrent_access
+560. Add test scenarios for interactive_error_resolver.InteractiveErrorResolver.apply_user_selected_fix: successful_operation, failure_handling, resource_management, concurrent_access
+561. Add test scenarios for interactive_error_resolver.InteractiveErrorResolver.end_session: successful_operation, failure_handling, resource_management, concurrent_access
+562. Add test scenarios for interactive_error_resolver.get_error_resolver: successful_operation, failure_handling, resource_management, concurrent_access
+563. Add test scenarios for interactive_error_resolver.set_callbacks: successful_operation, failure_handling, resource_management, concurrent_access
+564. Add test scenarios for interactive_error_resolver.start_resolution_session: successful_operation, failure_handling, resource_management, concurrent_access
+565. Add test scenarios for interactive_error_resolver.get_session_status: successful_operation, failure_handling, resource_management, concurrent_access
+566. Add test scenarios for interactive_error_resolver.execute_next_step: successful_operation, failure_handling, resource_management, concurrent_access
+567. Add test scenarios for interactive_error_resolver.execute_automatic_steps: successful_operation, failure_handling, resource_management, concurrent_access
+568. Add test scenarios for interactive_error_resolver.get_resolution_suggestions: successful_operation, failure_handling, resource_management, concurrent_access
+569. Add test scenarios for interactive_error_resolver.apply_user_selected_fix: successful_operation, failure_handling, resource_management, concurrent_access
+570. Add test scenarios for interactive_error_resolver.end_session: successful_operation, failure_handling, resource_management, concurrent_access
+571. Add test scenarios for log_analyzer.LogEntry.parse: successful_operation, failure_handling, resource_management, concurrent_access
+572. Add test scenarios for log_analyzer.SessionAnalysis.to_dict: successful_operation, failure_handling, resource_management, concurrent_access
+573. Add test scenarios for log_analyzer.LogAnalysisReport.to_dict: successful_operation, failure_handling, resource_management, concurrent_access
+574. Add test scenarios for log_analyzer.LogAnalyzer.analyze_logs: successful_operation, failure_handling, resource_management, concurrent_access
+575. Add test scenarios for log_analyzer.LogAnalyzer.find_error_correlations: successful_operation, failure_handling, resource_management, concurrent_access
+576. Add test scenarios for log_analyzer.LogAnalyzer.export_analysis_report: successful_operation, failure_handling, resource_management, concurrent_access
+577. Add test scenarios for log_analyzer.LogAnalyzer.compress_old_logs: successful_operation, failure_handling, resource_management, concurrent_access
+578. Add test scenarios for log_analyzer.get_log_analyzer: successful_operation, failure_handling, resource_management, concurrent_access
+579. Add test scenarios for log_analyzer.parse: successful_operation, failure_handling, resource_management, concurrent_access
+580. Add test scenarios for log_analyzer.to_dict: successful_operation, failure_handling, resource_management, concurrent_access
+581. Add test scenarios for log_analyzer.to_dict: successful_operation, failure_handling, resource_management, concurrent_access
+582. Add test scenarios for log_analyzer.analyze_logs: successful_operation, failure_handling, resource_management, concurrent_access
+583. Add test scenarios for log_analyzer.find_error_correlations: successful_operation, failure_handling, resource_management, concurrent_access
+584. Add test scenarios for log_analyzer.export_analysis_report: successful_operation, failure_handling, resource_management, concurrent_access
+585. Add test scenarios for log_analyzer.compress_old_logs: successful_operation, failure_handling, resource_management, concurrent_access
+586. Add test scenarios for lora_ui_state.LoRASelection.to_dict: successful_operation, failure_handling, resource_management, concurrent_access
+587. Add test scenarios for lora_ui_state.LoRASelection.from_dict: successful_operation, failure_handling, resource_management, concurrent_access
+588. Add test scenarios for lora_ui_state.LoRAUIState.update_selection: successful_operation, failure_handling, resource_management, concurrent_access
+589. Add test scenarios for lora_ui_state.LoRAUIState.remove_selection: successful_operation, failure_handling, resource_management, concurrent_access
+590. Add test scenarios for lora_ui_state.LoRAUIState.clear_selection: successful_operation, failure_handling, resource_management, concurrent_access
+591. Add test scenarios for lora_ui_state.LoRAUIState.validate_selection: successful_operation, failure_handling, resource_management, concurrent_access
+592. Add test scenarios for lora_ui_state.LoRAUIState.get_selection_summary: successful_operation, failure_handling, resource_management, concurrent_access
+593. Add test scenarios for lora_ui_state.LoRAUIState.get_display_data: successful_operation, failure_handling, resource_management, concurrent_access
+594. Add test scenarios for lora_ui_state.LoRAUIState.refresh_state: successful_operation, failure_handling, resource_management, concurrent_access
+595. Add test scenarios for lora_ui_state.LoRAUIState.get_selection_for_generation: successful_operation, failure_handling, resource_management, concurrent_access
+596. Add test scenarios for lora_ui_state.LoRAUIState.estimate_memory_impact: successful_operation, failure_handling, resource_management, concurrent_access
+597. Add test scenarios for lora_ui_state.to_dict: successful_operation, failure_handling, resource_management, concurrent_access
+598. Add test scenarios for lora_ui_state.from_dict: successful_operation, failure_handling, resource_management, concurrent_access
+599. Add test scenarios for lora_ui_state.update_selection: successful_operation, failure_handling, resource_management, concurrent_access
+600. Add test scenarios for lora_ui_state.remove_selection: successful_operation, failure_handling, resource_management, concurrent_access
+601. Add test scenarios for lora_ui_state.clear_selection: successful_operation, failure_handling, resource_management, concurrent_access
+602. Add test scenarios for lora_ui_state.validate_selection: successful_operation, failure_handling, resource_management, concurrent_access
+603. Add test scenarios for lora_ui_state.get_selection_summary: successful_operation, failure_handling, resource_management, concurrent_access
+604. Add test scenarios for lora_ui_state.get_display_data: successful_operation, failure_handling, resource_management, concurrent_access
+605. Add test scenarios for lora_ui_state.refresh_state: successful_operation, failure_handling, resource_management, concurrent_access
+606. Add test scenarios for lora_ui_state.get_selection_for_generation: successful_operation, failure_handling, resource_management, concurrent_access
+607. Add test scenarios for lora_ui_state.estimate_memory_impact: successful_operation, failure_handling, resource_management, concurrent_access
+608. Add test scenarios for lora_ui_state.LoRAManager.list_available_loras: successful_operation, failure_handling, resource_management, concurrent_access
+609. Add test scenarios for lora_ui_state.list_available_loras: successful_operation, failure_handling, resource_management, concurrent_access
+610. Add test scenarios for lora_upload_handler.LoRAUploadHandler.validate_file: normal_processing, error_handling, edge_cases, resource_cleanup
+611. Add test scenarios for lora_upload_handler.LoRAUploadHandler.check_duplicate_filename: normal_processing, error_handling, edge_cases, resource_cleanup
+612. Add test scenarios for lora_upload_handler.LoRAUploadHandler.process_upload: normal_processing, error_handling, edge_cases, resource_cleanup
+613. Add test scenarios for lora_upload_handler.LoRAUploadHandler.extract_metadata: normal_processing, error_handling, edge_cases, resource_cleanup
+614. Add test scenarios for lora_upload_handler.LoRAUploadHandler.generate_thumbnail: normal_processing, error_handling, edge_cases, resource_cleanup
+615. Add test scenarios for lora_upload_handler.LoRAUploadHandler.get_upload_stats: normal_processing, error_handling, edge_cases, resource_cleanup
+616. Add test scenarios for lora_upload_handler.validate_file: normal_processing, error_handling, edge_cases, resource_cleanup
+617. Add test scenarios for lora_upload_handler.check_duplicate_filename: normal_processing, error_handling, edge_cases, resource_cleanup
+618. Add test scenarios for lora_upload_handler.process_upload: normal_processing, error_handling, edge_cases, resource_cleanup
+619. Add test scenarios for lora_upload_handler.extract_metadata: normal_processing, error_handling, edge_cases, resource_cleanup
+620. Add test scenarios for lora_upload_handler.generate_thumbnail: normal_processing, error_handling, edge_cases, resource_cleanup
+621. Add test scenarios for lora_upload_handler.get_upload_stats: normal_processing, error_handling, edge_cases, resource_cleanup
+622. Add test scenarios for main.ApplicationConfig.get_config: successful_operation, failure_handling, resource_management, concurrent_access
+623. Add test scenarios for main.ApplicationConfig.update_config: successful_operation, failure_handling, resource_management, concurrent_access
+624. Add test scenarios for main.ApplicationManager.initialize: successful_operation, failure_handling, resource_management, concurrent_access
+625. Add test scenarios for main.ApplicationManager.register_cleanup_handler: successful_operation, failure_handling, resource_management, concurrent_access
+626. Add test scenarios for main.ApplicationManager.cleanup: successful_operation, failure_handling, resource_management, concurrent_access
+627. Add test scenarios for main.ApplicationManager.launch: successful_operation, failure_handling, resource_management, concurrent_access
+628. Add test scenarios for main.parse_arguments: successful_operation, failure_handling, resource_management, concurrent_access
+629. Add test scenarios for main.setup_logging: successful_operation, failure_handling, resource_management, concurrent_access
+630. Add test scenarios for main.main: successful_operation, failure_handling, resource_management, concurrent_access
+631. Add test scenarios for main.get_config: successful_operation, failure_handling, resource_management, concurrent_access
+632. Add test scenarios for main.update_config: successful_operation, failure_handling, resource_management, concurrent_access
+633. Add test scenarios for main.initialize: successful_operation, failure_handling, resource_management, concurrent_access
+634. Add test scenarios for main.register_cleanup_handler: successful_operation, failure_handling, resource_management, concurrent_access
+635. Add test scenarios for main.cleanup: successful_operation, failure_handling, resource_management, concurrent_access
+636. Add test scenarios for main.launch: successful_operation, failure_handling, resource_management, concurrent_access
+637. Add test scenarios for main.deep_update: successful_operation, failure_handling, resource_management, concurrent_access
+638. Add test scenarios for model_index_schema.ModelIndexSchema.validate_class_name: successful_operation, failure_handling, resource_management, concurrent_access
+639. Add test scenarios for model_index_schema.ModelIndexSchema.validate_diffusers_version: successful_operation, failure_handling, resource_management, concurrent_access
+640. Add test scenarios for model_index_schema.ModelIndexSchema.validate_boundary_ratio: successful_operation, failure_handling, resource_management, concurrent_access
+641. Add test scenarios for model_index_schema.ModelIndexSchema.detect_model_type: successful_operation, failure_handling, resource_management, concurrent_access
+642. Add test scenarios for model_index_schema.ModelIndexSchema.is_wan_architecture: successful_operation, failure_handling, resource_management, concurrent_access
+643. Add test scenarios for model_index_schema.ModelIndexSchema.get_required_components: successful_operation, failure_handling, resource_management, concurrent_access
+644. Add test scenarios for model_index_schema.ModelIndexSchema.get_missing_components: successful_operation, failure_handling, resource_management, concurrent_access
+645. Add test scenarios for model_index_schema.ModelIndexSchema.validate_wan_specific_attributes: successful_operation, failure_handling, resource_management, concurrent_access
+646. Add test scenarios for model_index_schema.SchemaValidationResult.to_dict: successful_operation, failure_handling, resource_management, concurrent_access
+647. Add test scenarios for model_index_schema.SchemaValidator.validate_model_index: successful_operation, failure_handling, resource_management, concurrent_access
+648. Add test scenarios for model_index_schema.SchemaValidator.validate_model_index_dict: successful_operation, failure_handling, resource_management, concurrent_access
+649. Add test scenarios for model_index_schema.SchemaValidator.generate_schema_report: successful_operation, failure_handling, resource_management, concurrent_access
+650. Add test scenarios for model_index_schema.SchemaValidator.get_validation_history: successful_operation, failure_handling, resource_management, concurrent_access
+651. Add test scenarios for model_index_schema.SchemaValidator.clear_validation_history: successful_operation, failure_handling, resource_management, concurrent_access
+652. Add test scenarios for model_index_schema.validate_class_name: successful_operation, failure_handling, resource_management, concurrent_access
+653. Add test scenarios for model_index_schema.validate_diffusers_version: successful_operation, failure_handling, resource_management, concurrent_access
+654. Add test scenarios for model_index_schema.validate_boundary_ratio: successful_operation, failure_handling, resource_management, concurrent_access
+655. Add test scenarios for model_index_schema.detect_model_type: successful_operation, failure_handling, resource_management, concurrent_access
+656. Add test scenarios for model_index_schema.is_wan_architecture: successful_operation, failure_handling, resource_management, concurrent_access
+657. Add test scenarios for model_index_schema.get_required_components: successful_operation, failure_handling, resource_management, concurrent_access
+658. Add test scenarios for model_index_schema.get_missing_components: successful_operation, failure_handling, resource_management, concurrent_access
+659. Add test scenarios for model_index_schema.validate_wan_specific_attributes: successful_operation, failure_handling, resource_management, concurrent_access
+660. Add test scenarios for model_index_schema.to_dict: successful_operation, failure_handling, resource_management, concurrent_access
+661. Add test scenarios for model_index_schema.validate_model_index: successful_operation, failure_handling, resource_management, concurrent_access
+662. Add test scenarios for model_index_schema.validate_model_index_dict: successful_operation, failure_handling, resource_management, concurrent_access
+663. Add test scenarios for model_index_schema.generate_schema_report: successful_operation, failure_handling, resource_management, concurrent_access
+664. Add test scenarios for model_index_schema.get_validation_history: successful_operation, failure_handling, resource_management, concurrent_access
+665. Add test scenarios for model_index_schema.clear_validation_history: successful_operation, failure_handling, resource_management, concurrent_access
+666. Add test scenarios for model_override.get_local_model_path: successful_operation, failure_handling, resource_management, concurrent_access
+667. Add test scenarios for model_override.patch_model_loading: successful_operation, failure_handling, resource_management, concurrent_access
+668. Add test scenarios for model_override.patched_download_model: successful_operation, failure_handling, resource_management, concurrent_access
+669. Add test scenarios for model_validator.setup_logging: successful_operation, failure_handling, resource_management, concurrent_access
+670. Add test scenarios for model_validator.load_config: successful_operation, failure_handling, resource_management, concurrent_access
+671. Add test scenarios for model_validator.check_model_directory_structure: successful_operation, failure_handling, resource_management, concurrent_access
+672. Add test scenarios for model_validator.validate_required_models: successful_operation, failure_handling, resource_management, concurrent_access
+673. Add test scenarios for model_validator.copy_models_from_local_installation: successful_operation, failure_handling, resource_management, concurrent_access
+674. Add test scenarios for model_validator.create_model_symlinks: successful_operation, failure_handling, resource_management, concurrent_access
+675. Add test scenarios for model_validator.fix_model_paths: successful_operation, failure_handling, resource_management, concurrent_access
+676. Add test scenarios for model_validator.validate_model_files: successful_operation, failure_handling, resource_management, concurrent_access
+677. Add test scenarios for model_validator.main: successful_operation, failure_handling, resource_management, concurrent_access
+678. Add test scenarios for optimize_performance.PerformanceOptimizer.analyze_system_performance: successful_operation, failure_handling, resource_management, concurrent_access
+679. Add test scenarios for optimize_performance.PerformanceOptimizer.benchmark_optimization_settings: successful_operation, failure_handling, resource_management, concurrent_access
+680. Add test scenarios for optimize_performance.PerformanceOptimizer.apply_optimal_configuration: successful_operation, failure_handling, resource_management, concurrent_access
+681. Add test scenarios for optimize_performance.PerformanceOptimizer.generate_optimization_report: successful_operation, failure_handling, resource_management, concurrent_access
+682. Add test scenarios for optimize_performance.main: successful_operation, failure_handling, resource_management, concurrent_access
+683. Add test scenarios for optimize_performance.analyze_system_performance: successful_operation, failure_handling, resource_management, concurrent_access
+684. Add test scenarios for optimize_performance.benchmark_optimization_settings: successful_operation, failure_handling, resource_management, concurrent_access
+685. Add test scenarios for optimize_performance.apply_optimal_configuration: successful_operation, failure_handling, resource_management, concurrent_access
+686. Add test scenarios for optimize_performance.generate_optimization_report: successful_operation, failure_handling, resource_management, concurrent_access
+687. Add test scenarios for performance_benchmark_suite.PerformanceBenchmarkSuite.run_comprehensive_benchmark: successful_operation, failure_handling, resource_management, concurrent_access
+688. Add test scenarios for performance_benchmark_suite.run_comprehensive_benchmark: successful_operation, failure_handling, resource_management, concurrent_access
+689. Add test scenarios for performance_benchmark_suite.monitor_resources: successful_operation, failure_handling, resource_management, concurrent_access
+690. Add test scenarios for performance_benchmark_suite.worker: successful_operation, failure_handling, resource_management, concurrent_access
+691. Add test scenarios for performance_profiler.PerformanceProfiler.start_monitoring: successful_operation, failure_handling, resource_management, concurrent_access
+692. Add test scenarios for performance_profiler.PerformanceProfiler.stop_monitoring: successful_operation, failure_handling, resource_management, concurrent_access
+693. Add test scenarios for performance_profiler.PerformanceProfiler.profile_operation: successful_operation, failure_handling, resource_management, concurrent_access
+694. Add test scenarios for performance_profiler.PerformanceProfiler.get_system_performance_summary: successful_operation, failure_handling, resource_management, concurrent_access
+695. Add test scenarios for performance_profiler.PerformanceProfiler.get_operation_profiles_summary: successful_operation, failure_handling, resource_management, concurrent_access
+696. Add test scenarios for performance_profiler.PerformanceProfiler.generate_performance_report: successful_operation, failure_handling, resource_management, concurrent_access
+697. Add test scenarios for performance_profiler.PerformanceProfiler.clear_profiles: successful_operation, failure_handling, resource_management, concurrent_access
+698. Add test scenarios for performance_profiler.PerformanceProfiler.clear_metrics_history: successful_operation, failure_handling, resource_management, concurrent_access
+699. Add test scenarios for performance_profiler.profile_operation: successful_operation, failure_handling, resource_management, concurrent_access
+700. Add test scenarios for performance_profiler.get_performance_profiler: successful_operation, failure_handling, resource_management, concurrent_access
+701. Add test scenarios for performance_profiler.start_performance_monitoring: successful_operation, failure_handling, resource_management, concurrent_access
+702. Add test scenarios for performance_profiler.stop_performance_monitoring: successful_operation, failure_handling, resource_management, concurrent_access
+703. Add test scenarios for performance_profiler.get_performance_summary: successful_operation, failure_handling, resource_management, concurrent_access
+704. Add test scenarios for performance_profiler.generate_performance_report: successful_operation, failure_handling, resource_management, concurrent_access
+705. Add test scenarios for performance_profiler.start_monitoring: successful_operation, failure_handling, resource_management, concurrent_access
+706. Add test scenarios for performance_profiler.stop_monitoring: successful_operation, failure_handling, resource_management, concurrent_access
+707. Add test scenarios for performance_profiler.profile_operation: successful_operation, failure_handling, resource_management, concurrent_access
+708. Add test scenarios for performance_profiler.get_system_performance_summary: successful_operation, failure_handling, resource_management, concurrent_access
+709. Add test scenarios for performance_profiler.get_operation_profiles_summary: successful_operation, failure_handling, resource_management, concurrent_access
+710. Add test scenarios for performance_profiler.generate_performance_report: successful_operation, failure_handling, resource_management, concurrent_access
+711. Add test scenarios for performance_profiler.clear_profiles: successful_operation, failure_handling, resource_management, concurrent_access
+712. Add test scenarios for performance_profiler.clear_metrics_history: successful_operation, failure_handling, resource_management, concurrent_access
+713. Add test scenarios for performance_profiler.decorator: successful_operation, failure_handling, resource_management, concurrent_access
+714. Add test scenarios for performance_profiler.wrapper: successful_operation, failure_handling, resource_management, concurrent_access
+715. Add test scenarios for port_manager.is_port_in_use: successful_operation, failure_handling, resource_management, concurrent_access
+716. Add test scenarios for port_manager.find_available_port: successful_operation, failure_handling, resource_management, concurrent_access
+717. Add test scenarios for port_manager.kill_process_on_port: successful_operation, failure_handling, resource_management, concurrent_access
+718. Add test scenarios for port_manager.get_port_info: successful_operation, failure_handling, resource_management, concurrent_access
+719. Add test scenarios for port_manager.resolve_port_conflict: successful_operation, failure_handling, resource_management, concurrent_access
+720. Add test scenarios for port_manager.main: successful_operation, failure_handling, resource_management, concurrent_access
+721. Add test scenarios for resource_manager.VRAMInfo.to_dict: successful_operation, failure_handling, resource_management, concurrent_access
+722. Add test scenarios for resource_manager.SystemResourceInfo.to_dict: successful_operation, failure_handling, resource_management, concurrent_access
+723. Add test scenarios for resource_manager.ResourceRequirement.to_dict: successful_operation, failure_handling, resource_management, concurrent_access
+724. Add test scenarios for resource_manager.OptimizationSuggestion.to_dict: successful_operation, failure_handling, resource_management, concurrent_access
+725. Add test scenarios for resource_manager.VRAMOptimizer.get_vram_info: successful_operation, failure_handling, resource_management, concurrent_access
+726. Add test scenarios for resource_manager.VRAMOptimizer.get_system_resource_info: successful_operation, failure_handling, resource_management, concurrent_access
+727. Add test scenarios for resource_manager.VRAMOptimizer.check_vram_availability: successful_operation, failure_handling, resource_management, concurrent_access
+728. Add test scenarios for resource_manager.VRAMOptimizer.estimate_resource_requirements: successful_operation, failure_handling, resource_management, concurrent_access
+729. Add test scenarios for resource_manager.VRAMOptimizer.optimize_parameters_for_resources: successful_operation, failure_handling, resource_management, concurrent_access
+730. Add test scenarios for resource_manager.VRAMOptimizer.cleanup_memory: successful_operation, failure_handling, resource_management, concurrent_access
+731. Add test scenarios for resource_manager.VRAMOptimizer.stop_monitoring: successful_operation, failure_handling, resource_management, concurrent_access
+732. Add test scenarios for resource_manager.VRAMOptimizer.get_resource_status: successful_operation, failure_handling, resource_management, concurrent_access
+733. Add test scenarios for resource_manager.VRAMOptimizer.get_resource_history: successful_operation, failure_handling, resource_management, concurrent_access
+734. Add test scenarios for resource_manager.get_resource_manager: successful_operation, failure_handling, resource_management, concurrent_access
+735. Add test scenarios for resource_manager.check_vram_availability: successful_operation, failure_handling, resource_management, concurrent_access
+736. Add test scenarios for resource_manager.estimate_resource_requirements: successful_operation, failure_handling, resource_management, concurrent_access
+737. Add test scenarios for resource_manager.optimize_parameters_for_resources: successful_operation, failure_handling, resource_management, concurrent_access
+738. Add test scenarios for resource_manager.cleanup_memory: successful_operation, failure_handling, resource_management, concurrent_access
+739. Add test scenarios for resource_manager.get_system_resource_info: successful_operation, failure_handling, resource_management, concurrent_access
+740. Add test scenarios for resource_manager.to_dict: successful_operation, failure_handling, resource_management, concurrent_access
+741. Add test scenarios for resource_manager.to_dict: successful_operation, failure_handling, resource_management, concurrent_access
+742. Add test scenarios for resource_manager.to_dict: successful_operation, failure_handling, resource_management, concurrent_access
+743. Add test scenarios for resource_manager.to_dict: successful_operation, failure_handling, resource_management, concurrent_access
+744. Add test scenarios for resource_manager.get_vram_info: successful_operation, failure_handling, resource_management, concurrent_access
+745. Add test scenarios for resource_manager.get_system_resource_info: successful_operation, failure_handling, resource_management, concurrent_access
+746. Add test scenarios for resource_manager.check_vram_availability: successful_operation, failure_handling, resource_management, concurrent_access
+747. Add test scenarios for resource_manager.estimate_resource_requirements: successful_operation, failure_handling, resource_management, concurrent_access
+748. Add test scenarios for resource_manager.optimize_parameters_for_resources: successful_operation, failure_handling, resource_management, concurrent_access
+749. Add test scenarios for resource_manager.cleanup_memory: successful_operation, failure_handling, resource_management, concurrent_access
+750. Add test scenarios for resource_manager.stop_monitoring: successful_operation, failure_handling, resource_management, concurrent_access
+751. Add test scenarios for resource_manager.get_resource_status: successful_operation, failure_handling, resource_management, concurrent_access
+752. Add test scenarios for resource_manager.get_resource_history: successful_operation, failure_handling, resource_management, concurrent_access
+753. Add test scenarios for resource_manager.monitor_resources: successful_operation, failure_handling, resource_management, concurrent_access
+754. Add test scenarios for runtime_fixes.apply_model_type_fixes: successful_operation, failure_handling, resource_management, concurrent_access
+755. Add test scenarios for runtime_fixes.apply_error_handler_fixes: successful_operation, failure_handling, resource_management, concurrent_access
+756. Add test scenarios for runtime_fixes.apply_ui_fixes: successful_operation, failure_handling, resource_management, concurrent_access
+757. Add test scenarios for runtime_fixes.main: successful_operation, failure_handling, resource_management, concurrent_access
+758. Add test scenarios for run_integration_tests.IntegrationTestRunner.run_all_tests: successful_operation, failure_handling, resource_management, concurrent_access
+759. Add test scenarios for run_integration_tests.IntegrationTestRunner.run_specific_category: successful_operation, failure_handling, resource_management, concurrent_access
+760. Add test scenarios for run_integration_tests.main: successful_operation, failure_handling, resource_management, concurrent_access
+761. Add test scenarios for run_integration_tests.run_all_tests: successful_operation, failure_handling, resource_management, concurrent_access
+762. Add test scenarios for run_integration_tests.run_specific_category: successful_operation, failure_handling, resource_management, concurrent_access
+763. Add test scenarios for simple_error_test.test_basic_error_handling: successful_operation, failure_handling, resource_management, concurrent_access
+764. Add test scenarios for simple_error_test.test_decorator_functionality: successful_operation, failure_handling, resource_management, concurrent_access
+765. Add test scenarios for simple_error_test.test_error_logging: successful_operation, failure_handling, resource_management, concurrent_access
+766. Add test scenarios for simple_error_test.main: successful_operation, failure_handling, resource_management, concurrent_access
+767. Add test scenarios for simple_error_test.test_function: successful_operation, failure_handling, resource_management, concurrent_access
+768. Add test scenarios for simple_test.test_config_creation: successful_operation, failure_handling, resource_management, concurrent_access
+769. Add test scenarios for simple_test.test_directory_creation: successful_operation, failure_handling, resource_management, concurrent_access
+770. Add test scenarios for simple_test.test_logging_configuration: successful_operation, failure_handling, resource_management, concurrent_access
+771. Add test scenarios for ui.Wan22UI.launch: successful_operation, failure_handling, resource_management, concurrent_access
+772. Add test scenarios for ui.Wan22UI.close: successful_operation, failure_handling, resource_management, concurrent_access
+773. Add test scenarios for ui.create_ui: successful_operation, failure_handling, resource_management, concurrent_access
+774. Add test scenarios for ui.launch: successful_operation, failure_handling, resource_management, concurrent_access
+775. Add test scenarios for ui.close: successful_operation, failure_handling, resource_management, concurrent_access
+776. Add test scenarios for ui.progress_callback: successful_operation, failure_handling, resource_management, concurrent_access
+777. Add test scenarios for ui_event_handlers.UIEventHandlers.register_components: normal_processing, error_handling, edge_cases, resource_cleanup
+778. Add test scenarios for ui_event_handlers.UIEventHandlers.setup_generation_events: normal_processing, error_handling, edge_cases, resource_cleanup
+779. Add test scenarios for ui_event_handlers.UIEventHandlers.handle_model_type_change: normal_processing, error_handling, edge_cases, resource_cleanup
+780. Add test scenarios for ui_event_handlers.UIEventHandlers.handle_prompt_change: normal_processing, error_handling, edge_cases, resource_cleanup
+781. Add test scenarios for ui_event_handlers.UIEventHandlers.handle_image_change: normal_processing, error_handling, edge_cases, resource_cleanup
+782. Add test scenarios for ui_event_handlers.UIEventHandlers.handle_parameter_change: normal_processing, error_handling, edge_cases, resource_cleanup
+783. Add test scenarios for ui_event_handlers.UIEventHandlers.handle_add_lora: normal_processing, error_handling, edge_cases, resource_cleanup
+784. Add test scenarios for ui_event_handlers.UIEventHandlers.handle_refresh_loras: normal_processing, error_handling, edge_cases, resource_cleanup
+785. Add test scenarios for ui_event_handlers.UIEventHandlers.handle_clear_all_loras: normal_processing, error_handling, edge_cases, resource_cleanup
+786. Add test scenarios for ui_event_handlers.UIEventHandlers.handle_prompt_enhancement: normal_processing, error_handling, edge_cases, resource_cleanup
+787. Add test scenarios for ui_event_handlers.UIEventHandlers.handle_generate_video: normal_processing, error_handling, edge_cases, resource_cleanup
+788. Add test scenarios for ui_event_handlers.UIEventHandlers.handle_queue_generation: normal_processing, error_handling, edge_cases, resource_cleanup
+789. Add test scenarios for ui_event_handlers.UIEventHandlers.handle_clear_notification: normal_processing, error_handling, edge_cases, resource_cleanup
+790. Add test scenarios for ui_event_handlers.get_event_handlers: normal_processing, error_handling, edge_cases, resource_cleanup
+791. Add test scenarios for ui_event_handlers.register_components: normal_processing, error_handling, edge_cases, resource_cleanup
+792. Add test scenarios for ui_event_handlers.setup_generation_events: normal_processing, error_handling, edge_cases, resource_cleanup
+793. Add test scenarios for ui_event_handlers.handle_model_type_change: normal_processing, error_handling, edge_cases, resource_cleanup
+794. Add test scenarios for ui_event_handlers.handle_prompt_change: normal_processing, error_handling, edge_cases, resource_cleanup
+795. Add test scenarios for ui_event_handlers.handle_image_change: normal_processing, error_handling, edge_cases, resource_cleanup
+796. Add test scenarios for ui_event_handlers.handle_parameter_change: normal_processing, error_handling, edge_cases, resource_cleanup
+797. Add test scenarios for ui_event_handlers.handle_add_lora: normal_processing, error_handling, edge_cases, resource_cleanup
+798. Add test scenarios for ui_event_handlers.handle_refresh_loras: normal_processing, error_handling, edge_cases, resource_cleanup
+799. Add test scenarios for ui_event_handlers.handle_clear_all_loras: normal_processing, error_handling, edge_cases, resource_cleanup
+800. Add test scenarios for ui_event_handlers.handle_prompt_enhancement: normal_processing, error_handling, edge_cases, resource_cleanup
+801. Add test scenarios for ui_event_handlers.handle_generate_video: normal_processing, error_handling, edge_cases, resource_cleanup
+802. Add test scenarios for ui_event_handlers.handle_queue_generation: normal_processing, error_handling, edge_cases, resource_cleanup
+803. Add test scenarios for ui_event_handlers.handle_clear_notification: normal_processing, error_handling, edge_cases, resource_cleanup
+804. Add test scenarios for ui_event_handlers.validate_prompt: normal_processing, error_handling, edge_cases, resource_cleanup
+805. Add test scenarios for ui_event_handlers.progress_callback: normal_processing, error_handling, edge_cases, resource_cleanup
+806. Add test scenarios for ui_validation.UIValidationManager.register_ui_components: successful_operation, failure_handling, resource_management, concurrent_access
+807. Add test scenarios for ui_validation.UIValidationManager.validate_prompt_realtime: successful_operation, failure_handling, resource_management, concurrent_access
+808. Add test scenarios for ui_validation.UIValidationManager.validate_image_realtime: successful_operation, failure_handling, resource_management, concurrent_access
+809. Add test scenarios for ui_validation.UIValidationManager.validate_generation_params: successful_operation, failure_handling, resource_management, concurrent_access
+810. Add test scenarios for ui_validation.UIValidationManager.create_comprehensive_validation_summary: successful_operation, failure_handling, resource_management, concurrent_access
+811. Add test scenarios for ui_validation.UIValidationManager.create_progress_indicator: successful_operation, failure_handling, resource_management, concurrent_access
+812. Add test scenarios for ui_validation.UIValidationManager.create_error_display_with_recovery: successful_operation, failure_handling, resource_management, concurrent_access
+813. Add test scenarios for ui_validation.get_validation_manager: successful_operation, failure_handling, resource_management, concurrent_access
+814. Add test scenarios for ui_validation.register_ui_components: successful_operation, failure_handling, resource_management, concurrent_access
+815. Add test scenarios for ui_validation.validate_prompt_realtime: successful_operation, failure_handling, resource_management, concurrent_access
+816. Add test scenarios for ui_validation.validate_image_realtime: successful_operation, failure_handling, resource_management, concurrent_access
+817. Add test scenarios for ui_validation.validate_generation_params: successful_operation, failure_handling, resource_management, concurrent_access
+818. Add test scenarios for ui_validation.create_comprehensive_validation_summary: successful_operation, failure_handling, resource_management, concurrent_access
+819. Add test scenarios for ui_validation.create_progress_indicator: successful_operation, failure_handling, resource_management, concurrent_access
+820. Add test scenarios for ui_validation.create_error_display_with_recovery: successful_operation, failure_handling, resource_management, concurrent_access
+821. Add test scenarios for utils.GenerationTask.to_dict: successful_operation, failure_handling, resource_management, concurrent_access
+822. Add test scenarios for utils.GenerationTask.update_status: successful_operation, failure_handling, resource_management, concurrent_access
+823. Add test scenarios for utils.ModelCache.get_model_path: successful_operation, failure_handling, resource_management, concurrent_access
+824. Add test scenarios for utils.ModelCache.is_model_cached: successful_operation, failure_handling, resource_management, concurrent_access
+825. Add test scenarios for utils.ModelCache.get_cache_info: successful_operation, failure_handling, resource_management, concurrent_access
+826. Add test scenarios for utils.ModelCache.update_cache_info: successful_operation, failure_handling, resource_management, concurrent_access
+827. Add test scenarios for utils.ModelCache.validate_cached_model: successful_operation, failure_handling, resource_management, concurrent_access
+828. Add test scenarios for utils.ModelManager.get_model_id: successful_operation, failure_handling, resource_management, concurrent_access
+829. Add test scenarios for utils.ModelManager.detect_model_type: successful_operation, failure_handling, resource_management, concurrent_access
+830. Add test scenarios for utils.ModelManager.download_model: successful_operation, failure_handling, resource_management, concurrent_access
+831. Add test scenarios for utils.ModelManager.load_model: successful_operation, failure_handling, resource_management, concurrent_access
+832. Add test scenarios for utils.ModelManager.unload_model: successful_operation, failure_handling, resource_management, concurrent_access
+833. Add test scenarios for utils.ModelManager.list_cached_models: successful_operation, failure_handling, resource_management, concurrent_access
+834. Add test scenarios for utils.ModelManager.clear_cache: successful_operation, failure_handling, resource_management, concurrent_access
+835. Add test scenarios for utils.ModelManager.get_model_status: successful_operation, failure_handling, resource_management, concurrent_access
+836. Add test scenarios for utils.get_model_manager: successful_operation, failure_handling, resource_management, concurrent_access
+837. Add test scenarios for utils.load_wan22_model: successful_operation, failure_handling, resource_management, concurrent_access
+838. Add test scenarios for utils.download_wan22_model: successful_operation, failure_handling, resource_management, concurrent_access
+839. Add test scenarios for utils.get_model_status: successful_operation, failure_handling, resource_management, concurrent_access
+840. Add test scenarios for utils.list_available_models: successful_operation, failure_handling, resource_management, concurrent_access
+841. Add test scenarios for utils.get_enhanced_generation_pipeline: successful_operation, failure_handling, resource_management, concurrent_access
+842. Add test scenarios for utils.get_generation_mode_router: successful_operation, failure_handling, resource_management, concurrent_access
+843. Add test scenarios for utils.generate_video_enhanced: successful_operation, failure_handling, resource_management, concurrent_access
+844. Add test scenarios for utils.generate_video: successful_operation, failure_handling, resource_management, concurrent_access
+845. Add test scenarios for utils.generate_video_legacy: successful_operation, failure_handling, resource_management, concurrent_access
+846. Add test scenarios for utils.VRAMOptimizer.apply_quantization: successful_operation, failure_handling, resource_management, concurrent_access
+847. Add test scenarios for utils.VRAMOptimizer.enable_cpu_offload: successful_operation, failure_handling, resource_management, concurrent_access
+848. Add test scenarios for utils.VRAMOptimizer.enable_vae_tiling: successful_operation, failure_handling, resource_management, concurrent_access
+849. Add test scenarios for utils.VRAMOptimizer.apply_advanced_optimizations: successful_operation, failure_handling, resource_management, concurrent_access
+850. Add test scenarios for utils.VRAMOptimizer.optimize_for_inference: successful_operation, failure_handling, resource_management, concurrent_access
+851. Add test scenarios for utils.VRAMOptimizer.optimize_model: successful_operation, failure_handling, resource_management, concurrent_access
+852. Add test scenarios for utils.VRAMOptimizer.get_vram_usage: successful_operation, failure_handling, resource_management, concurrent_access
+853. Add test scenarios for utils.VRAMOptimizer.check_vram_availability: successful_operation, failure_handling, resource_management, concurrent_access
+854. Add test scenarios for utils.VRAMOptimizer.estimate_model_vram_usage: successful_operation, failure_handling, resource_management, concurrent_access
+855. Add test scenarios for utils.get_vram_optimizer: successful_operation, failure_handling, resource_management, concurrent_access
+856. Add test scenarios for utils.optimize_model: successful_operation, failure_handling, resource_management, concurrent_access
+857. Add test scenarios for utils.get_vram_usage: successful_operation, failure_handling, resource_management, concurrent_access
+858. Add test scenarios for utils.check_vram_availability: successful_operation, failure_handling, resource_management, concurrent_access
+859. Add test scenarios for utils.PromptEnhancer.enhance_prompt: successful_operation, failure_handling, resource_management, concurrent_access
+860. Add test scenarios for utils.PromptEnhancer.detect_vace_aesthetics: successful_operation, failure_handling, resource_management, concurrent_access
+861. Add test scenarios for utils.PromptEnhancer.detect_style: successful_operation, failure_handling, resource_management, concurrent_access
+862. Add test scenarios for utils.PromptEnhancer.validate_prompt: successful_operation, failure_handling, resource_management, concurrent_access
+863. Add test scenarios for utils.PromptEnhancer.get_enhancement_preview: successful_operation, failure_handling, resource_management, concurrent_access
+864. Add test scenarios for utils.PromptEnhancer.clean_prompt: successful_operation, failure_handling, resource_management, concurrent_access
+865. Add test scenarios for utils.get_prompt_enhancer: successful_operation, failure_handling, resource_management, concurrent_access
+866. Add test scenarios for utils.enhance_prompt: successful_operation, failure_handling, resource_management, concurrent_access
+867. Add test scenarios for utils.detect_vace_aesthetics: successful_operation, failure_handling, resource_management, concurrent_access
+868. Add test scenarios for utils.validate_prompt: successful_operation, failure_handling, resource_management, concurrent_access
+869. Add test scenarios for utils.get_enhancement_preview: successful_operation, failure_handling, resource_management, concurrent_access
+870. Add test scenarios for utils.clean_prompt: successful_operation, failure_handling, resource_management, concurrent_access
+871. Add test scenarios for utils.check_vram_availability: successful_operation, failure_handling, resource_management, concurrent_access
+872. Add test scenarios for utils.PromptEnhancer.validate_prompt: successful_operation, failure_handling, resource_management, concurrent_access
+873. Add test scenarios for utils.PromptEnhancer.manage_prompt_length: successful_operation, failure_handling, resource_management, concurrent_access
+874. Add test scenarios for utils.PromptEnhancer.detect_vace_aesthetics: successful_operation, failure_handling, resource_management, concurrent_access
+875. Add test scenarios for utils.PromptEnhancer.detect_style_category: successful_operation, failure_handling, resource_management, concurrent_access
+876. Add test scenarios for utils.PromptEnhancer.enhance_basic_quality: successful_operation, failure_handling, resource_management, concurrent_access
+877. Add test scenarios for utils.PromptEnhancer.enhance_vace_aesthetics: successful_operation, failure_handling, resource_management, concurrent_access
+878. Add test scenarios for utils.PromptEnhancer.enhance_cinematic_style: successful_operation, failure_handling, resource_management, concurrent_access
+879. Add test scenarios for utils.PromptEnhancer.enhance_by_style: successful_operation, failure_handling, resource_management, concurrent_access
+880. Add test scenarios for utils.PromptEnhancer.enhance_prompt: successful_operation, failure_handling, resource_management, concurrent_access
+881. Add test scenarios for utils.PromptEnhancer.get_enhancement_preview: successful_operation, failure_handling, resource_management, concurrent_access
+882. Add test scenarios for utils.get_prompt_enhancer: successful_operation, failure_handling, resource_management, concurrent_access
+883. Add test scenarios for utils.enhance_prompt: successful_operation, failure_handling, resource_management, concurrent_access
+884. Add test scenarios for utils.validate_prompt: successful_operation, failure_handling, resource_management, concurrent_access
+885. Add test scenarios for utils.get_enhancement_preview: successful_operation, failure_handling, resource_management, concurrent_access
+886. Add test scenarios for utils.detect_vace_aesthetics: successful_operation, failure_handling, resource_management, concurrent_access
+887. Add test scenarios for utils.VideoGenerationEngine.generate_t2v: successful_operation, failure_handling, resource_management, concurrent_access
+888. Add test scenarios for utils.VideoGenerationEngine.generate_i2v: successful_operation, failure_handling, resource_management, concurrent_access
+889. Add test scenarios for utils.VideoGenerationEngine.generate_ti2v: successful_operation, failure_handling, resource_management, concurrent_access
+890. Add test scenarios for utils.VideoGenerationEngine.generate_video: successful_operation, failure_handling, resource_management, concurrent_access
+891. Add test scenarios for utils.VideoGenerationEngine.unload_pipeline: successful_operation, failure_handling, resource_management, concurrent_access
+892. Add test scenarios for utils.VideoGenerationEngine.unload_all_pipelines: successful_operation, failure_handling, resource_management, concurrent_access
+893. Add test scenarios for utils.VideoGenerationEngine.get_pipeline_status: successful_operation, failure_handling, resource_management, concurrent_access
+894. Add test scenarios for utils.get_generation_engine: successful_operation, failure_handling, resource_management, concurrent_access
+895. Add test scenarios for utils.generate_video: successful_operation, failure_handling, resource_management, concurrent_access
+896. Add test scenarios for utils.generate_t2v_video: successful_operation, failure_handling, resource_management, concurrent_access
+897. Add test scenarios for utils.generate_i2v_video: successful_operation, failure_handling, resource_management, concurrent_access
+898. Add test scenarios for utils.generate_ti2v_video: successful_operation, failure_handling, resource_management, concurrent_access
+899. Add test scenarios for utils.InputValidator.validate_prompt: successful_operation, failure_handling, resource_management, concurrent_access
+900. Add test scenarios for utils.InputValidator.validate_image: successful_operation, failure_handling, resource_management, concurrent_access
+901. Add test scenarios for utils.InputValidator.validate_resolution: successful_operation, failure_handling, resource_management, concurrent_access
+902. Add test scenarios for utils.InputValidator.scale_image_to_resolution: successful_operation, failure_handling, resource_management, concurrent_access
+903. Add test scenarios for utils.InputValidator.validate_generation_parameters: successful_operation, failure_handling, resource_management, concurrent_access
+904. Add test scenarios for utils.InputValidator.preprocess_for_generation: successful_operation, failure_handling, resource_management, concurrent_access
+905. Add test scenarios for utils.get_input_validator: successful_operation, failure_handling, resource_management, concurrent_access
+906. Add test scenarios for utils.validate_prompt: successful_operation, failure_handling, resource_management, concurrent_access
+907. Add test scenarios for utils.validate_image: successful_operation, failure_handling, resource_management, concurrent_access
+908. Add test scenarios for utils.validate_resolution: successful_operation, failure_handling, resource_management, concurrent_access
+909. Add test scenarios for utils.validate_generation_parameters: successful_operation, failure_handling, resource_management, concurrent_access
+910. Add test scenarios for utils.preprocess_for_generation: successful_operation, failure_handling, resource_management, concurrent_access
+911. Add test scenarios for utils.ErrorHandler.classify_error: successful_operation, failure_handling, resource_management, concurrent_access
+912. Add test scenarios for utils.ErrorHandler.create_error: successful_operation, failure_handling, resource_management, concurrent_access
+913. Add test scenarios for utils.ErrorHandler.handle_vram_oom_error: successful_operation, failure_handling, resource_management, concurrent_access
+914. Add test scenarios for utils.ErrorHandler.handle_model_loading_error: successful_operation, failure_handling, resource_management, concurrent_access
+915. Add test scenarios for utils.ErrorHandler.handle_generation_timeout: successful_operation, failure_handling, resource_management, concurrent_access
+916. Add test scenarios for utils.ErrorHandler.retry_with_backoff: successful_operation, failure_handling, resource_management, concurrent_access
+917. Add test scenarios for utils.ErrorHandler.with_timeout: successful_operation, failure_handling, resource_management, concurrent_access
+918. Add test scenarios for utils.ErrorHandler.safe_generate: successful_operation, failure_handling, resource_management, concurrent_access
+919. Add test scenarios for utils.ErrorHandler.get_system_health: successful_operation, failure_handling, resource_management, concurrent_access
+920. Add test scenarios for utils.get_error_handler: successful_operation, failure_handling, resource_management, concurrent_access
+921. Add test scenarios for utils.safe_generate_video: successful_operation, failure_handling, resource_management, concurrent_access
+922. Add test scenarios for utils.handle_generation_error: successful_operation, failure_handling, resource_management, concurrent_access
+923. Add test scenarios for utils.get_system_health: successful_operation, failure_handling, resource_management, concurrent_access
+924. Add test scenarios for utils.retry_with_backoff: successful_operation, failure_handling, resource_management, concurrent_access
+925. Add test scenarios for utils.LoRAManager.list_available_loras: successful_operation, failure_handling, resource_management, concurrent_access
+926. Add test scenarios for utils.LoRAManager.load_lora: successful_operation, failure_handling, resource_management, concurrent_access
+927. Add test scenarios for utils.LoRAManager.apply_lora: successful_operation, failure_handling, resource_management, concurrent_access
+928. Add test scenarios for utils.LoRAManager.remove_lora: successful_operation, failure_handling, resource_management, concurrent_access
+929. Add test scenarios for utils.LoRAManager.adjust_lora_strength: successful_operation, failure_handling, resource_management, concurrent_access
+930. Add test scenarios for utils.LoRAManager.get_fallback_prompt_enhancement: successful_operation, failure_handling, resource_management, concurrent_access
+931. Add test scenarios for utils.LoRAManager.unload_lora: successful_operation, failure_handling, resource_management, concurrent_access
+932. Add test scenarios for utils.LoRAManager.get_lora_status: successful_operation, failure_handling, resource_management, concurrent_access
+933. Add test scenarios for utils.get_lora_manager: successful_operation, failure_handling, resource_management, concurrent_access
+934. Add test scenarios for utils.apply_lora: successful_operation, failure_handling, resource_management, concurrent_access
+935. Add test scenarios for utils.remove_lora: successful_operation, failure_handling, resource_management, concurrent_access
+936. Add test scenarios for utils.adjust_lora_strength: successful_operation, failure_handling, resource_management, concurrent_access
+937. Add test scenarios for utils.list_available_loras: successful_operation, failure_handling, resource_management, concurrent_access
+938. Add test scenarios for utils.get_fallback_prompt_enhancement: successful_operation, failure_handling, resource_management, concurrent_access
+939. Add test scenarios for utils.get_lora_status: successful_operation, failure_handling, resource_management, concurrent_access
+940. Add test scenarios for utils.TaskQueue.add_task: successful_operation, failure_handling, resource_management, concurrent_access
+941. Add test scenarios for utils.TaskQueue.get_next_task: successful_operation, failure_handling, resource_management, concurrent_access
+942. Add test scenarios for utils.TaskQueue.complete_task: successful_operation, failure_handling, resource_management, concurrent_access
+943. Add test scenarios for utils.TaskQueue.update_task_progress: successful_operation, failure_handling, resource_management, concurrent_access
+944. Add test scenarios for utils.TaskQueue.get_task_status: successful_operation, failure_handling, resource_management, concurrent_access
+945. Add test scenarios for utils.TaskQueue.get_queue_status: successful_operation, failure_handling, resource_management, concurrent_access
+946. Add test scenarios for utils.TaskQueue.clear_completed_tasks: successful_operation, failure_handling, resource_management, concurrent_access
+947. Add test scenarios for utils.TaskQueue.clear_all_tasks: successful_operation, failure_handling, resource_management, concurrent_access
+948. Add test scenarios for utils.TaskQueue.remove_task: successful_operation, failure_handling, resource_management, concurrent_access
+949. Add test scenarios for utils.TaskQueue.is_empty: successful_operation, failure_handling, resource_management, concurrent_access
+950. Add test scenarios for utils.TaskQueue.is_full: successful_operation, failure_handling, resource_management, concurrent_access
+951. Add test scenarios for utils.TaskQueue.size: successful_operation, failure_handling, resource_management, concurrent_access
+952. Add test scenarios for utils.TaskQueue.set_processing_status: successful_operation, failure_handling, resource_management, concurrent_access
+953. Add test scenarios for utils.get_task_queue: successful_operation, failure_handling, resource_management, concurrent_access
+954. Add test scenarios for utils.add_generation_task: successful_operation, failure_handling, resource_management, concurrent_access
+955. Add test scenarios for utils.get_next_generation_task: successful_operation, failure_handling, resource_management, concurrent_access
+956. Add test scenarios for utils.complete_generation_task: successful_operation, failure_handling, resource_management, concurrent_access
+957. Add test scenarios for utils.update_generation_task_progress: successful_operation, failure_handling, resource_management, concurrent_access
+958. Add test scenarios for utils.get_generation_queue_status: successful_operation, failure_handling, resource_management, concurrent_access
+959. Add test scenarios for utils.clear_completed_generation_tasks: successful_operation, failure_handling, resource_management, concurrent_access
+960. Add test scenarios for utils.clear_all_generation_tasks: successful_operation, failure_handling, resource_management, concurrent_access
+961. Add test scenarios for utils.QueueProcessor.start_processing: successful_operation, failure_handling, resource_management, concurrent_access
+962. Add test scenarios for utils.QueueProcessor.stop_processing: successful_operation, failure_handling, resource_management, concurrent_access
+963. Add test scenarios for utils.QueueProcessor.is_running: successful_operation, failure_handling, resource_management, concurrent_access
+964. Add test scenarios for utils.QueueProcessor.get_processing_status: successful_operation, failure_handling, resource_management, concurrent_access
+965. Add test scenarios for utils.QueueManager.start_queue_processing: successful_operation, failure_handling, resource_management, concurrent_access
+966. Add test scenarios for utils.QueueManager.stop_queue_processing: successful_operation, failure_handling, resource_management, concurrent_access
+967. Add test scenarios for utils.QueueManager.add_task: successful_operation, failure_handling, resource_management, concurrent_access
+968. Add test scenarios for utils.QueueManager.get_comprehensive_status: successful_operation, failure_handling, resource_management, concurrent_access
+969. Add test scenarios for utils.QueueManager.pause_processing: successful_operation, failure_handling, resource_management, concurrent_access
+970. Add test scenarios for utils.QueueManager.resume_processing: successful_operation, failure_handling, resource_management, concurrent_access
+971. Add test scenarios for utils.QueueManager.clear_completed_tasks: successful_operation, failure_handling, resource_management, concurrent_access
+972. Add test scenarios for utils.QueueManager.clear_all_tasks: successful_operation, failure_handling, resource_management, concurrent_access
+973. Add test scenarios for utils.QueueManager.remove_task: successful_operation, failure_handling, resource_management, concurrent_access
+974. Add test scenarios for utils.QueueManager.get_task_details: successful_operation, failure_handling, resource_management, concurrent_access
+975. Add test scenarios for utils.get_queue_manager: successful_operation, failure_handling, resource_management, concurrent_access
+976. Add test scenarios for utils.start_queue_processing: successful_operation, failure_handling, resource_management, concurrent_access
+977. Add test scenarios for utils.stop_queue_processing: successful_operation, failure_handling, resource_management, concurrent_access
+978. Add test scenarios for utils.add_to_generation_queue: successful_operation, failure_handling, resource_management, concurrent_access
+979. Add test scenarios for utils.get_queue_comprehensive_status: successful_operation, failure_handling, resource_management, concurrent_access
+980. Add test scenarios for utils.pause_queue_processing: successful_operation, failure_handling, resource_management, concurrent_access
+981. Add test scenarios for utils.resume_queue_processing: successful_operation, failure_handling, resource_management, concurrent_access
+982. Add test scenarios for utils.clear_completed_queue_tasks: successful_operation, failure_handling, resource_management, concurrent_access
+983. Add test scenarios for utils.clear_all_queue_tasks: successful_operation, failure_handling, resource_management, concurrent_access
+984. Add test scenarios for utils.remove_queue_task: successful_operation, failure_handling, resource_management, concurrent_access
+985. Add test scenarios for utils.get_queue_task_details: successful_operation, failure_handling, resource_management, concurrent_access
+986. Add test scenarios for utils.ResourceStats.to_dict: successful_operation, failure_handling, resource_management, concurrent_access
+987. Add test scenarios for utils.ResourceMonitor.collect_system_stats: successful_operation, failure_handling, resource_management, concurrent_access
+988. Add test scenarios for utils.ResourceMonitor.start_monitoring: successful_operation, failure_handling, resource_management, concurrent_access
+989. Add test scenarios for utils.ResourceMonitor.stop_monitoring: successful_operation, failure_handling, resource_management, concurrent_access
+990. Add test scenarios for utils.ResourceMonitor.get_current_stats: successful_operation, failure_handling, resource_management, concurrent_access
+991. Add test scenarios for utils.ResourceMonitor.refresh_stats_manually: successful_operation, failure_handling, resource_management, concurrent_access
+992. Add test scenarios for utils.ResourceMonitor.add_warning_callback: successful_operation, failure_handling, resource_management, concurrent_access
+993. Add test scenarios for utils.ResourceMonitor.remove_warning_callback: successful_operation, failure_handling, resource_management, concurrent_access
+994. Add test scenarios for utils.ResourceMonitor.set_warning_thresholds: successful_operation, failure_handling, resource_management, concurrent_access
+995. Add test scenarios for utils.ResourceMonitor.get_resource_summary: successful_operation, failure_handling, resource_management, concurrent_access
+996. Add test scenarios for utils.get_resource_monitor: successful_operation, failure_handling, resource_management, concurrent_access
+997. Add test scenarios for utils.start_resource_monitoring: successful_operation, failure_handling, resource_management, concurrent_access
+998. Add test scenarios for utils.stop_resource_monitoring: successful_operation, failure_handling, resource_management, concurrent_access
+999. Add test scenarios for utils.get_system_stats: successful_operation, failure_handling, resource_management, concurrent_access
+1000. Add test scenarios for utils.get_current_resource_stats: successful_operation, failure_handling, resource_management, concurrent_access
+1001. Add test scenarios for utils.refresh_resource_stats: successful_operation, failure_handling, resource_management, concurrent_access
+1002. Add test scenarios for utils.get_resource_summary: successful_operation, failure_handling, resource_management, concurrent_access
+1003. Add test scenarios for utils.add_resource_warning_callback: successful_operation, failure_handling, resource_management, concurrent_access
+1004. Add test scenarios for utils.set_resource_warning_thresholds: successful_operation, failure_handling, resource_management, concurrent_access
+1005. Add test scenarios for utils.is_resource_monitoring_active: successful_operation, failure_handling, resource_management, concurrent_access
+1006. Add test scenarios for utils.VideoMetadata.to_dict: successful_operation, failure_handling, resource_management, concurrent_access
+1007. Add test scenarios for utils.VideoMetadata.from_dict: successful_operation, failure_handling, resource_management, concurrent_access
+1008. Add test scenarios for utils.OutputManager.save_video_frames: successful_operation, failure_handling, resource_management, concurrent_access
+1009. Add test scenarios for utils.OutputManager.get_video_metadata: successful_operation, failure_handling, resource_management, concurrent_access
+1010. Add test scenarios for utils.OutputManager.list_videos: successful_operation, failure_handling, resource_management, concurrent_access
+1011. Add test scenarios for utils.OutputManager.delete_video: successful_operation, failure_handling, resource_management, concurrent_access
+1012. Add test scenarios for utils.OutputManager.get_video_path: successful_operation, failure_handling, resource_management, concurrent_access
+1013. Add test scenarios for utils.OutputManager.get_thumbnail_path: successful_operation, failure_handling, resource_management, concurrent_access
+1014. Add test scenarios for utils.OutputManager.get_storage_stats: successful_operation, failure_handling, resource_management, concurrent_access
+1015. Add test scenarios for utils.OutputManager.cleanup_orphaned_files: successful_operation, failure_handling, resource_management, concurrent_access
+1016. Add test scenarios for utils.OutputManager.export_metadata: successful_operation, failure_handling, resource_management, concurrent_access
+1017. Add test scenarios for utils.get_output_manager: successful_operation, failure_handling, resource_management, concurrent_access
+1018. Add test scenarios for utils.save_video_frames: successful_operation, failure_handling, resource_management, concurrent_access
+1019. Add test scenarios for utils.list_generated_videos: successful_operation, failure_handling, resource_management, concurrent_access
+1020. Add test scenarios for utils.get_video_metadata: successful_operation, failure_handling, resource_management, concurrent_access
+1021. Add test scenarios for utils.delete_generated_video: successful_operation, failure_handling, resource_management, concurrent_access
+1022. Add test scenarios for utils.get_video_file_path: successful_operation, failure_handling, resource_management, concurrent_access
+1023. Add test scenarios for utils.get_video_thumbnail_path: successful_operation, failure_handling, resource_management, concurrent_access
+1024. Add test scenarios for utils.get_output_storage_stats: successful_operation, failure_handling, resource_management, concurrent_access
+1025. Add test scenarios for utils.cleanup_orphaned_output_files: successful_operation, failure_handling, resource_management, concurrent_access
+1026. Add test scenarios for utils.export_video_metadata: successful_operation, failure_handling, resource_management, concurrent_access
+1027. Add test scenarios for utils.to_dict: successful_operation, failure_handling, resource_management, concurrent_access
+1028. Add test scenarios for utils.update_status: successful_operation, failure_handling, resource_management, concurrent_access
+1029. Add test scenarios for utils.get_model_path: successful_operation, failure_handling, resource_management, concurrent_access
+1030. Add test scenarios for utils.is_model_cached: successful_operation, failure_handling, resource_management, concurrent_access
+1031. Add test scenarios for utils.get_cache_info: successful_operation, failure_handling, resource_management, concurrent_access
+1032. Add test scenarios for utils.update_cache_info: successful_operation, failure_handling, resource_management, concurrent_access
+1033. Add test scenarios for utils.validate_cached_model: successful_operation, failure_handling, resource_management, concurrent_access
+1034. Add test scenarios for utils.get_model_id: successful_operation, failure_handling, resource_management, concurrent_access
+1035. Add test scenarios for utils.detect_model_type: successful_operation, failure_handling, resource_management, concurrent_access
+1036. Add test scenarios for utils.download_model: successful_operation, failure_handling, resource_management, concurrent_access
+1037. Add test scenarios for utils.load_model: successful_operation, failure_handling, resource_management, concurrent_access
+1038. Add test scenarios for utils.unload_model: successful_operation, failure_handling, resource_management, concurrent_access
+1039. Add test scenarios for utils.list_cached_models: successful_operation, failure_handling, resource_management, concurrent_access
+1040. Add test scenarios for utils.clear_cache: successful_operation, failure_handling, resource_management, concurrent_access
+1041. Add test scenarios for utils.get_model_status: successful_operation, failure_handling, resource_management, concurrent_access
+1042. Add test scenarios for utils.apply_quantization: successful_operation, failure_handling, resource_management, concurrent_access
+1043. Add test scenarios for utils.enable_cpu_offload: successful_operation, failure_handling, resource_management, concurrent_access
+1044. Add test scenarios for utils.enable_vae_tiling: successful_operation, failure_handling, resource_management, concurrent_access
+1045. Add test scenarios for utils.apply_advanced_optimizations: successful_operation, failure_handling, resource_management, concurrent_access
+1046. Add test scenarios for utils.optimize_for_inference: successful_operation, failure_handling, resource_management, concurrent_access
+1047. Add test scenarios for utils.optimize_model: successful_operation, failure_handling, resource_management, concurrent_access
+1048. Add test scenarios for utils.get_vram_usage: successful_operation, failure_handling, resource_management, concurrent_access
+1049. Add test scenarios for utils.check_vram_availability: successful_operation, failure_handling, resource_management, concurrent_access
+1050. Add test scenarios for utils.estimate_model_vram_usage: successful_operation, failure_handling, resource_management, concurrent_access
+1051. Add test scenarios for utils.enhance_prompt: successful_operation, failure_handling, resource_management, concurrent_access
+1052. Add test scenarios for utils.detect_vace_aesthetics: successful_operation, failure_handling, resource_management, concurrent_access
+1053. Add test scenarios for utils.detect_style: successful_operation, failure_handling, resource_management, concurrent_access
+1054. Add test scenarios for utils.validate_prompt: successful_operation, failure_handling, resource_management, concurrent_access
+1055. Add test scenarios for utils.get_enhancement_preview: successful_operation, failure_handling, resource_management, concurrent_access
+1056. Add test scenarios for utils.clean_prompt: successful_operation, failure_handling, resource_management, concurrent_access
+1057. Add test scenarios for utils.validate_prompt: successful_operation, failure_handling, resource_management, concurrent_access
+1058. Add test scenarios for utils.manage_prompt_length: successful_operation, failure_handling, resource_management, concurrent_access
+1059. Add test scenarios for utils.detect_vace_aesthetics: successful_operation, failure_handling, resource_management, concurrent_access
+1060. Add test scenarios for utils.detect_style_category: successful_operation, failure_handling, resource_management, concurrent_access
+1061. Add test scenarios for utils.enhance_basic_quality: successful_operation, failure_handling, resource_management, concurrent_access
+1062. Add test scenarios for utils.enhance_vace_aesthetics: successful_operation, failure_handling, resource_management, concurrent_access
+1063. Add test scenarios for utils.enhance_cinematic_style: successful_operation, failure_handling, resource_management, concurrent_access
+1064. Add test scenarios for utils.enhance_by_style: successful_operation, failure_handling, resource_management, concurrent_access
+1065. Add test scenarios for utils.enhance_prompt: successful_operation, failure_handling, resource_management, concurrent_access
+1066. Add test scenarios for utils.get_enhancement_preview: successful_operation, failure_handling, resource_management, concurrent_access
+1067. Add test scenarios for utils.generate_t2v: successful_operation, failure_handling, resource_management, concurrent_access
+1068. Add test scenarios for utils.generate_i2v: successful_operation, failure_handling, resource_management, concurrent_access
+1069. Add test scenarios for utils.generate_ti2v: successful_operation, failure_handling, resource_management, concurrent_access
+1070. Add test scenarios for utils.generate_video: successful_operation, failure_handling, resource_management, concurrent_access
+1071. Add test scenarios for utils.unload_pipeline: successful_operation, failure_handling, resource_management, concurrent_access
+1072. Add test scenarios for utils.unload_all_pipelines: successful_operation, failure_handling, resource_management, concurrent_access
+1073. Add test scenarios for utils.get_pipeline_status: successful_operation, failure_handling, resource_management, concurrent_access
+1074. Add test scenarios for utils.validate_prompt: successful_operation, failure_handling, resource_management, concurrent_access
+1075. Add test scenarios for utils.validate_image: successful_operation, failure_handling, resource_management, concurrent_access
+1076. Add test scenarios for utils.validate_resolution: successful_operation, failure_handling, resource_management, concurrent_access
+1077. Add test scenarios for utils.scale_image_to_resolution: successful_operation, failure_handling, resource_management, concurrent_access
+1078. Add test scenarios for utils.validate_generation_parameters: successful_operation, failure_handling, resource_management, concurrent_access
+1079. Add test scenarios for utils.preprocess_for_generation: successful_operation, failure_handling, resource_management, concurrent_access
+1080. Add test scenarios for utils.classify_error: successful_operation, failure_handling, resource_management, concurrent_access
+1081. Add test scenarios for utils.create_error: successful_operation, failure_handling, resource_management, concurrent_access
+1082. Add test scenarios for utils.handle_vram_oom_error: successful_operation, failure_handling, resource_management, concurrent_access
+1083. Add test scenarios for utils.handle_model_loading_error: successful_operation, failure_handling, resource_management, concurrent_access
+1084. Add test scenarios for utils.handle_generation_timeout: successful_operation, failure_handling, resource_management, concurrent_access
+1085. Add test scenarios for utils.retry_with_backoff: successful_operation, failure_handling, resource_management, concurrent_access
+1086. Add test scenarios for utils.with_timeout: successful_operation, failure_handling, resource_management, concurrent_access
+1087. Add test scenarios for utils.safe_generate: successful_operation, failure_handling, resource_management, concurrent_access
+1088. Add test scenarios for utils.get_system_health: successful_operation, failure_handling, resource_management, concurrent_access
+1089. Add test scenarios for utils.list_available_loras: successful_operation, failure_handling, resource_management, concurrent_access
+1090. Add test scenarios for utils.load_lora: successful_operation, failure_handling, resource_management, concurrent_access
+1091. Add test scenarios for utils.apply_lora: successful_operation, failure_handling, resource_management, concurrent_access
+1092. Add test scenarios for utils.remove_lora: successful_operation, failure_handling, resource_management, concurrent_access
+1093. Add test scenarios for utils.adjust_lora_strength: successful_operation, failure_handling, resource_management, concurrent_access
+1094. Add test scenarios for utils.get_fallback_prompt_enhancement: successful_operation, failure_handling, resource_management, concurrent_access
+1095. Add test scenarios for utils.unload_lora: successful_operation, failure_handling, resource_management, concurrent_access
+1096. Add test scenarios for utils.get_lora_status: successful_operation, failure_handling, resource_management, concurrent_access
+1097. Add test scenarios for utils.add_task: successful_operation, failure_handling, resource_management, concurrent_access
+1098. Add test scenarios for utils.get_next_task: successful_operation, failure_handling, resource_management, concurrent_access
+1099. Add test scenarios for utils.complete_task: successful_operation, failure_handling, resource_management, concurrent_access
+1100. Add test scenarios for utils.update_task_progress: successful_operation, failure_handling, resource_management, concurrent_access
+1101. Add test scenarios for utils.get_task_status: successful_operation, failure_handling, resource_management, concurrent_access
+1102. Add test scenarios for utils.get_queue_status: successful_operation, failure_handling, resource_management, concurrent_access
+1103. Add test scenarios for utils.clear_completed_tasks: successful_operation, failure_handling, resource_management, concurrent_access
+1104. Add test scenarios for utils.clear_all_tasks: successful_operation, failure_handling, resource_management, concurrent_access
+1105. Add test scenarios for utils.remove_task: successful_operation, failure_handling, resource_management, concurrent_access
+1106. Add test scenarios for utils.is_empty: successful_operation, failure_handling, resource_management, concurrent_access
+1107. Add test scenarios for utils.is_full: successful_operation, failure_handling, resource_management, concurrent_access
+1108. Add test scenarios for utils.size: successful_operation, failure_handling, resource_management, concurrent_access
+1109. Add test scenarios for utils.set_processing_status: successful_operation, failure_handling, resource_management, concurrent_access
+1110. Add test scenarios for utils.start_processing: successful_operation, failure_handling, resource_management, concurrent_access
+1111. Add test scenarios for utils.stop_processing: successful_operation, failure_handling, resource_management, concurrent_access
+1112. Add test scenarios for utils.is_running: successful_operation, failure_handling, resource_management, concurrent_access
+1113. Add test scenarios for utils.get_processing_status: successful_operation, failure_handling, resource_management, concurrent_access
+1114. Add test scenarios for utils.start_queue_processing: successful_operation, failure_handling, resource_management, concurrent_access
+1115. Add test scenarios for utils.stop_queue_processing: successful_operation, failure_handling, resource_management, concurrent_access
+1116. Add test scenarios for utils.add_task: successful_operation, failure_handling, resource_management, concurrent_access
+1117. Add test scenarios for utils.get_comprehensive_status: successful_operation, failure_handling, resource_management, concurrent_access
+1118. Add test scenarios for utils.pause_processing: successful_operation, failure_handling, resource_management, concurrent_access
+1119. Add test scenarios for utils.resume_processing: successful_operation, failure_handling, resource_management, concurrent_access
+1120. Add test scenarios for utils.clear_completed_tasks: successful_operation, failure_handling, resource_management, concurrent_access
+1121. Add test scenarios for utils.clear_all_tasks: successful_operation, failure_handling, resource_management, concurrent_access
+1122. Add test scenarios for utils.remove_task: successful_operation, failure_handling, resource_management, concurrent_access
+1123. Add test scenarios for utils.get_task_details: successful_operation, failure_handling, resource_management, concurrent_access
+1124. Add test scenarios for utils.to_dict: successful_operation, failure_handling, resource_management, concurrent_access
+1125. Add test scenarios for utils.collect_system_stats: successful_operation, failure_handling, resource_management, concurrent_access
+1126. Add test scenarios for utils.start_monitoring: successful_operation, failure_handling, resource_management, concurrent_access
+1127. Add test scenarios for utils.stop_monitoring: successful_operation, failure_handling, resource_management, concurrent_access
+1128. Add test scenarios for utils.get_current_stats: successful_operation, failure_handling, resource_management, concurrent_access
+1129. Add test scenarios for utils.refresh_stats_manually: successful_operation, failure_handling, resource_management, concurrent_access
+1130. Add test scenarios for utils.add_warning_callback: successful_operation, failure_handling, resource_management, concurrent_access
+1131. Add test scenarios for utils.remove_warning_callback: successful_operation, failure_handling, resource_management, concurrent_access
+1132. Add test scenarios for utils.set_warning_thresholds: successful_operation, failure_handling, resource_management, concurrent_access
+1133. Add test scenarios for utils.get_resource_summary: successful_operation, failure_handling, resource_management, concurrent_access
+1134. Add test scenarios for utils.to_dict: successful_operation, failure_handling, resource_management, concurrent_access
+1135. Add test scenarios for utils.from_dict: successful_operation, failure_handling, resource_management, concurrent_access
+1136. Add test scenarios for utils.save_video_frames: successful_operation, failure_handling, resource_management, concurrent_access
+1137. Add test scenarios for utils.get_video_metadata: successful_operation, failure_handling, resource_management, concurrent_access
+1138. Add test scenarios for utils.list_videos: successful_operation, failure_handling, resource_management, concurrent_access
+1139. Add test scenarios for utils.delete_video: successful_operation, failure_handling, resource_management, concurrent_access
+1140. Add test scenarios for utils.get_video_path: successful_operation, failure_handling, resource_management, concurrent_access
+1141. Add test scenarios for utils.get_thumbnail_path: successful_operation, failure_handling, resource_management, concurrent_access
+1142. Add test scenarios for utils.get_storage_stats: successful_operation, failure_handling, resource_management, concurrent_access
+1143. Add test scenarios for utils.cleanup_orphaned_files: successful_operation, failure_handling, resource_management, concurrent_access
+1144. Add test scenarios for utils.export_metadata: successful_operation, failure_handling, resource_management, concurrent_access
+1145. Add test scenarios for utils.internal_progress: successful_operation, failure_handling, resource_management, concurrent_access
+1146. Add test scenarios for utils.tiled_encode: successful_operation, failure_handling, resource_management, concurrent_access
+1147. Add test scenarios for utils.tiled_decode: successful_operation, failure_handling, resource_management, concurrent_access
+1148. Add test scenarios for utils.timeout_handler: successful_operation, failure_handling, resource_management, concurrent_access
+1149. Add test scenarios for vae_compatibility_handler.VAEDimensions.shape: normal_processing, error_handling, edge_cases, resource_cleanup
+1150. Add test scenarios for vae_compatibility_handler.VAECompatibilityHandler.detect_vae_architecture: normal_processing, error_handling, edge_cases, resource_cleanup
+1151. Add test scenarios for vae_compatibility_handler.VAECompatibilityHandler.validate_vae_weights: normal_processing, error_handling, edge_cases, resource_cleanup
+1152. Add test scenarios for vae_compatibility_handler.VAECompatibilityHandler.load_vae_with_compatibility: normal_processing, error_handling, edge_cases, resource_cleanup
+1153. Add test scenarios for vae_compatibility_handler.VAECompatibilityHandler.get_vae_error_guidance: normal_processing, error_handling, edge_cases, resource_cleanup
+1154. Add test scenarios for vae_compatibility_handler.create_vae_compatibility_handler: normal_processing, error_handling, edge_cases, resource_cleanup
+1155. Add test scenarios for vae_compatibility_handler.shape: normal_processing, error_handling, edge_cases, resource_cleanup
+1156. Add test scenarios for vae_compatibility_handler.detect_vae_architecture: normal_processing, error_handling, edge_cases, resource_cleanup
+1157. Add test scenarios for vae_compatibility_handler.validate_vae_weights: normal_processing, error_handling, edge_cases, resource_cleanup
+1158. Add test scenarios for vae_compatibility_handler.load_vae_with_compatibility: normal_processing, error_handling, edge_cases, resource_cleanup
+1159. Add test scenarios for vae_compatibility_handler.get_vae_error_guidance: normal_processing, error_handling, edge_cases, resource_cleanup
+1160. Add test scenarios for validate_vae_handler.main: normal_processing, error_handling, edge_cases, resource_cleanup
+1161. Add test scenarios for validation_framework.ValidationResult.add_error: successful_operation, failure_handling, resource_management, concurrent_access
+1162. Add test scenarios for validation_framework.ValidationResult.add_warning: successful_operation, failure_handling, resource_management, concurrent_access
+1163. Add test scenarios for validation_framework.ValidationResult.add_info: successful_operation, failure_handling, resource_management, concurrent_access
+1164. Add test scenarios for validation_framework.ValidationResult.has_errors: successful_operation, failure_handling, resource_management, concurrent_access
+1165. Add test scenarios for validation_framework.ValidationResult.has_warnings: successful_operation, failure_handling, resource_management, concurrent_access
+1166. Add test scenarios for validation_framework.ValidationResult.get_errors: successful_operation, failure_handling, resource_management, concurrent_access
+1167. Add test scenarios for validation_framework.ValidationResult.get_warnings: successful_operation, failure_handling, resource_management, concurrent_access
+1168. Add test scenarios for validation_framework.ValidationResult.get_info: successful_operation, failure_handling, resource_management, concurrent_access
+1169. Add test scenarios for validation_framework.ValidationResult.to_dict: successful_operation, failure_handling, resource_management, concurrent_access
+1170. Add test scenarios for validation_framework.PromptValidator.validate_prompt: successful_operation, failure_handling, resource_management, concurrent_access
+1171. Add test scenarios for validation_framework.ImageValidator.validate_image: successful_operation, failure_handling, resource_management, concurrent_access
+1172. Add test scenarios for validation_framework.ConfigValidator.validate_generation_params: successful_operation, failure_handling, resource_management, concurrent_access
+1173. Add test scenarios for validation_framework.validate_generation_request: successful_operation, failure_handling, resource_management, concurrent_access
+1174. Add test scenarios for validation_framework.add_error: successful_operation, failure_handling, resource_management, concurrent_access
+1175. Add test scenarios for validation_framework.add_warning: successful_operation, failure_handling, resource_management, concurrent_access
+1176. Add test scenarios for validation_framework.add_info: successful_operation, failure_handling, resource_management, concurrent_access
+1177. Add test scenarios for validation_framework.has_errors: successful_operation, failure_handling, resource_management, concurrent_access
+1178. Add test scenarios for validation_framework.has_warnings: successful_operation, failure_handling, resource_management, concurrent_access
+1179. Add test scenarios for validation_framework.get_errors: successful_operation, failure_handling, resource_management, concurrent_access
+1180. Add test scenarios for validation_framework.get_warnings: successful_operation, failure_handling, resource_management, concurrent_access
+1181. Add test scenarios for validation_framework.get_info: successful_operation, failure_handling, resource_management, concurrent_access
+1182. Add test scenarios for validation_framework.to_dict: successful_operation, failure_handling, resource_management, concurrent_access
+1183. Add test scenarios for validation_framework.validate_prompt: successful_operation, failure_handling, resource_management, concurrent_access
+1184. Add test scenarios for validation_framework.validate_image: successful_operation, failure_handling, resource_management, concurrent_access
+1185. Add test scenarios for validation_framework.validate_generation_params: successful_operation, failure_handling, resource_management, concurrent_access
+1186. Add test scenarios for verify_model_fix.verify_local_model_exists: successful_operation, failure_handling, resource_management, concurrent_access
+1187. Add test scenarios for verify_model_fix.simulate_model_loading_logic: successful_operation, failure_handling, resource_management, concurrent_access
+1188. Add test scenarios for verify_model_fix.main: successful_operation, failure_handling, resource_management, concurrent_access
+1189. Add test scenarios for wan22_compatibility_clean.WanPipeline.from_pretrained: successful_operation, failure_handling, resource_management, concurrent_access
+1190. Add test scenarios for wan22_compatibility_clean.AutoencoderKLWan.from_pretrained: successful_operation, failure_handling, resource_management, concurrent_access
+1191. Add test scenarios for wan22_compatibility_clean.apply_wan22_compatibility: successful_operation, failure_handling, resource_management, concurrent_access
+1192. Add test scenarios for wan22_compatibility_clean.from_pretrained: successful_operation, failure_handling, resource_management, concurrent_access
+1193. Add test scenarios for wan22_compatibility_clean.from_pretrained: successful_operation, failure_handling, resource_management, concurrent_access
+1194. Add test scenarios for wan22_compatibility_layer.WanPipeline.from_pretrained: successful_operation, failure_handling, resource_management, concurrent_access
+1195. Add test scenarios for wan22_compatibility_layer.AutoencoderKLWan.from_pretrained: successful_operation, failure_handling, resource_management, concurrent_access
+1196. Add test scenarios for wan22_compatibility_layer.apply_wan22_compatibility: successful_operation, failure_handling, resource_management, concurrent_access
+1197. Add test scenarios for wan22_compatibility_layer.from_pretrained: successful_operation, failure_handling, resource_management, concurrent_access
+1198. Add test scenarios for wan22_compatibility_layer.from_pretrained: successful_operation, failure_handling, resource_management, concurrent_access

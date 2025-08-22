@@ -1,0 +1,63 @@
+{
+  "system": {
+    "device": "cuda",
+    "gpu_memory_fraction": 0.9,
+    "allow_tf32": true,
+    "cudnn_benchmark": true,
+    "empty_cache_frequency": 5,
+    "max_workers": 1,
+    "log_level": "INFO"
+  },
+  "directories": {
+    "models": "models/",
+    "outputs": "outputs/",
+    "cache": "cache/",
+    "logs": "logs/",
+    "temp": "temp/"
+  },
+  "optimization": {
+    "enable_attention_slicing": true,
+    "enable_vae_tiling": true,
+    "use_fp16": true,
+    "torch_compile": false,
+    "enable_xformers": true,
+    "memory_efficient_attention": true,
+    "use_int8": false
+  },
+  "performance": {
+    "batch_size": 1,
+    "num_inference_steps": 20,
+    "guidance_scale": 7.5,
+    "scheduler": "DPMSolverMultistepScheduler",
+    "safety_checker": true,
+    "nsfw_filter": true,
+    "stats_refresh_interval": 5,
+    "vram_warning_threshold": 0.9,
+    "cpu_warning_percent": 80
+  },
+  "model": {
+    "base_model": "runwayml/stable-diffusion-v1-5",
+    "vae_model": "stabilityai/sd-vae-ft-mse",
+    "safety_model": "CompVis/stable-diffusion-safety-checker",
+    "feature_extractor": "openai/clip-vit-base-patch32",
+    "cache_models": true,
+    "offload_to_cpu": false
+  },
+  "ui": {
+    "port": 7860,
+    "host": "127.0.0.1",
+    "share": false,
+    "auth": false,
+    "theme": "default",
+    "queue_max_size": 10,
+    "show_api": true
+  },
+  "logging": {
+    "level": "INFO",
+    "file": "wan22_ui.log",
+    "error_file": "wan22_errors.log",
+    "max_size_mb": 100,
+    "backup_count": 5,
+    "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  }
+}

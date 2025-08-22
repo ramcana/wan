@@ -1,0 +1,57 @@
+{
+    "api_settings": {
+        "host": "0.0.0.0",
+        "port": 8000,
+        "cors_origins": [
+            "http://localhost:3000",
+            "http://localhost:5173",
+            "http://127.0.0.1:3000",
+            "http://127.0.0.1:5173"
+        ],
+        "max_file_size_mb": 100
+    },
+    "database_settings": {
+        "url": "sqlite:///wan22_dev.db",
+        "pool_size": 5
+    },
+    "model_settings": {
+        "default_model": "T2V-A14B",
+        "model_cache_dir": "models",
+        "enable_model_offloading": true,
+        "quantization_mode": "fp16"
+    },
+    "generation_settings": {
+        "default_resolution": "1280x720",
+        "default_steps": 50,
+        "max_queue_size": 5,
+        "enable_progress_tracking": true
+    },
+    "optimization_settings": {
+        "vram_optimization": true,
+        "cpu_offload": false,
+        "vae_tile_size": 512,
+        "enable_attention_slicing": true
+    },
+    "storage_settings": {
+        "outputs_dir": "backend/outputs",
+        "thumbnails_dir": "backend/outputs/thumbnails",
+        "temp_dir": "backend/temp",
+        "max_storage_gb": 20
+    },
+    "logging_settings": {
+        "log_level": "DEBUG",
+        "log_file": "backend/logs/dev.log",
+        "enable_performance_logging": true
+    },
+    "performance_settings": {
+        "max_workers": 2,
+        "worker_timeout": 300,
+        "enable_hot_reload": true
+    },
+    "security_settings": {
+        "secret_key": "dev-secret-key-change-in-production",
+        "jwt_secret": "dev-jwt-secret",
+        "enable_cors": true,
+        "debug_mode": true
+    }
+}

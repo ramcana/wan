@@ -1,0 +1,54 @@
+{
+    "api_settings": {
+        "host": "127.0.0.1",
+        "port": 8001,
+        "cors_origins": [
+            "*"
+        ],
+        "max_file_size_mb": 50
+    },
+    "database_settings": {
+        "url": "sqlite:///test.db",
+        "pool_size": 1
+    },
+    "model_settings": {
+        "default_model": "T2V-A14B",
+        "model_cache_dir": "test_models",
+        "enable_model_offloading": false,
+        "quantization_mode": "none"
+    },
+    "generation_settings": {
+        "default_resolution": "512x512",
+        "default_steps": 10,
+        "max_queue_size": 2,
+        "enable_progress_tracking": false
+    },
+    "optimization_settings": {
+        "vram_optimization": false,
+        "cpu_offload": false,
+        "vae_tile_size": 256,
+        "enable_attention_slicing": false
+    },
+    "storage_settings": {
+        "outputs_dir": "test_outputs",
+        "thumbnails_dir": "test_outputs/thumbnails",
+        "temp_dir": "test_temp",
+        "max_storage_gb": 1
+    },
+    "logging_settings": {
+        "log_level": "WARNING",
+        "log_file": "test.log",
+        "enable_performance_logging": false
+    },
+    "performance_settings": {
+        "max_workers": 1,
+        "worker_timeout": 60,
+        "enable_hot_reload": false
+    },
+    "security_settings": {
+        "secret_key": "test-secret-key",
+        "jwt_secret": "test-jwt-secret",
+        "enable_cors": true,
+        "debug_mode": true
+    }
+}

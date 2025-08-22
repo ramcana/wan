@@ -1,0 +1,72 @@
+[
+  {
+    "id": "stress_concurrent_requests",
+    "type": "concurrent_load",
+    "description": "Simulate 100+ concurrent generation requests",
+    "parameters": {
+      "concurrent_requests": 100,
+      "request_interval_seconds": 0.1,
+      "test_duration_minutes": 10
+    },
+    "expected_behavior": "should handle queue management gracefully",
+    "success_criteria": [
+      "No system crashes",
+      "Proper queue management",
+      "Resource usage within limits",
+      "All requests processed or properly rejected"
+    ]
+  },
+  {
+    "id": "stress_memory_exhaustion",
+    "type": "memory_stress",
+    "description": "Test system behavior under memory pressure",
+    "parameters": {
+      "large_batch_size": 10,
+      "high_resolution": "1080p",
+      "complex_prompts": true,
+      "disable_optimizations": true
+    },
+    "expected_behavior": "should handle memory pressure gracefully",
+    "success_criteria": [
+      "Proper error handling for OOM conditions",
+      "Graceful degradation",
+      "System recovery after stress",
+      "Memory cleanup after operations"
+    ]
+  },
+  {
+    "id": "stress_long_session",
+    "type": "endurance",
+    "description": "Test system stability over extended periods",
+    "parameters": {
+      "session_duration_hours": 4,
+      "requests_per_hour": 20,
+      "mixed_resolutions": true,
+      "varied_complexity": true
+    },
+    "expected_behavior": "should maintain stability over long periods",
+    "success_criteria": [
+      "No memory leaks",
+      "Consistent performance",
+      "Proper resource cleanup",
+      "No degradation over time"
+    ]
+  },
+  {
+    "id": "stress_rapid_cycling",
+    "type": "rapid_requests",
+    "description": "Test rapid request submission and cancellation",
+    "parameters": {
+      "cycle_count": 1000,
+      "request_cancel_ratio": 0.3,
+      "rapid_fire_interval": 0.05
+    },
+    "expected_behavior": "should handle rapid request changes",
+    "success_criteria": [
+      "Proper request cancellation",
+      "No resource leaks from cancelled requests",
+      "Queue state consistency",
+      "System responsiveness maintained"
+    ]
+  }
+]

@@ -1,0 +1,9 @@
+{
+  "manual_vram_gb": {
+    "0": 16
+  },
+  "preferred_gpu": null,
+  "enable_multi_gpu": false,
+  "memory_fraction": 0.9,
+  "enable_memory_growth": true
+}

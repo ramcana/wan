@@ -1,0 +1,6 @@
+{
+  "id": "invalid_json_missing_bracket",
+  "content": "{\"input\": \"A test scene\", \"resolution\": \"720p\"",
+  "error_type": "json_syntax_error",
+  "expected_behavior": "should return JSON parsing error"
+}

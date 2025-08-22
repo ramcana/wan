@@ -1,0 +1,117 @@
+{
+    "name": "Wan2.2 Video Generation",
+    "short_name": "Wan2.2",
+    "description": "Professional AI-powered video generation tool with accessibility features",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#667eea",
+    "theme_color": "#667eea",
+    "orientation": "portrait-primary",
+    "categories": [
+        "productivity",
+        "multimedia",
+        "utilities"
+    ],
+    "lang": "en",
+    "dir": "ltr",
+    "icons": [
+        {
+            "src": "/favicon.ico",
+            "sizes": "16x16 32x32",
+            "type": "image/x-icon"
+        },
+        {
+            "src": "/icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "/screenshot-desktop.png",
+            "sizes": "1280x720",
+            "type": "image/png",
+            "form_factor": "wide",
+            "label": "Desktop view of video generation interface"
+        },
+        {
+            "src": "/screenshot-mobile.png",
+            "sizes": "390x844",
+            "type": "image/png",
+            "form_factor": "narrow",
+            "label": "Mobile view of video generation interface"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "Generate Video",
+            "short_name": "Generate",
+            "description": "Start generating a new video",
+            "url": "/generation",
+            "icons": [
+                {
+                    "src": "/icon-192.png",
+                    "sizes": "192x192"
+                }
+            ]
+        },
+        {
+            "name": "View Queue",
+            "short_name": "Queue",
+            "description": "Check generation queue status",
+            "url": "/queue",
+            "icons": [
+                {
+                    "src": "/icon-192.png",
+                    "sizes": "192x192"
+                }
+            ]
+        },
+        {
+            "name": "Browse Outputs",
+            "short_name": "Outputs",
+            "description": "Browse generated videos",
+            "url": "/outputs",
+            "icons": [
+                {
+                    "src": "/icon-192.png",
+                    "sizes": "192x192"
+                }
+            ]
+        }
+    ],
+    "related_applications": [],
+    "prefer_related_applications": false,
+    "scope": "/",
+    "id": "wan22-video-generation",
+    "launch_handler": {
+        "client_mode": "navigate-existing"
+    },
+    "edge_side_panel": {
+        "preferred_width": 400
+    },
+    "handle_links": "preferred",
+    "protocol_handlers": [],
+    "file_handlers": [
+        {
+            "action": "/generation",
+            "accept": {
+                "image/*": [
+                    ".jpg",
+                    ".jpeg",
+                    ".png",
+                    ".gif",
+                    ".webp"
+                ]
+            },
+            "launch_type": "single-client"
+        }
+    ]
+}

@@ -1,0 +1,22 @@
+{
+  "0846777d-d15a-40d5-ae78-ab1b13244649": {
+    "id": "0846777d-d15a-40d5-ae78-ab1b13244649",
+    "filename": "demo-output-test_Animated_gradient_with_moving_20250729_151747.mp4",
+    "model_type": "demo-output-test",
+    "prompt": "Animated gradient with moving circle - Output Management Demo",
+    "resolution": "480x360",
+    "width": 480,
+    "height": 360,
+    "num_frames": 16,
+    "fps": 8,
+    "duration_seconds": 2.0,
+    "file_size_mb": 0.11565876007080078,
+    "num_inference_steps": 50,
+    "guidance_scale": 7.5,
+    "lora_path": null,
+    "lora_strength": null,
+    "input_image_path": null,
+    "created_at": "2025-07-29T15:17:47.600777",
+    "thumbnail_path": "outputs\\thumbnails\\0846777d-d15a-40d5-ae78-ab1b13244649_thumb.jpg"
+  }
+}

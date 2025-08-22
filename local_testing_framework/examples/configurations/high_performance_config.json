@@ -1,0 +1,89 @@
+{
+    "system": {
+        "platform": "auto",
+        "gpu_memory_fraction": 0.95,
+        "cpu_cores": "auto",
+        "memory_limit_gb": null
+    },
+    "directories": {
+        "models": "./models",
+        "outputs": "./outputs",
+        "cache": "./cache",
+        "logs": "./logs"
+    },
+    "optimization": {
+        "enable_attention_slicing": true,
+        "enable_cpu_offload": false,
+        "enable_vae_tiling": true,
+        "enable_sequential_cpu_offload": false,
+        "vae_tile_size": 128,
+        "attention_slice_size": 1,
+        "low_mem_mode": false,
+        "enable_xformers": true,
+        "enable_torch_compile": true
+    },
+    "performance": {
+        "target_720p_time_minutes": 7.0,
+        "target_1080p_time_minutes": 14.0,
+        "max_vram_usage_gb": 24.0,
+        "vram_warning_threshold": 0.95,
+        "cpu_warning_percent": 90,
+        "memory_warning_percent": 90,
+        "stats_refresh_interval": 2
+    },
+    "testing_framework": {
+        "performance_targets": {
+            "target_720p_time_minutes": 7.0,
+            "target_1080p_time_minutes": 14.0,
+            "max_vram_usage_gb": 24.0,
+            "vram_warning_threshold": 0.95,
+            "cpu_warning_threshold": 90.0,
+            "expected_vram_reduction_percent": 85.0
+        },
+        "environment_requirements": {
+            "min_python_version": "3.9.0",
+            "required_cuda_version": "11.8",
+            "min_memory_gb": 32,
+            "min_vram_gb": 16
+        },
+        "reporting_options": {
+            "default_format": "html",
+            "include_charts": true,
+            "chart_types": [
+                "line",
+                "bar",
+                "gauge",
+                "heatmap"
+            ],
+            "export_formats": [
+                "html",
+                "json",
+                "pdf"
+            ],
+            "detailed_metrics": true
+        },
+        "diagnostic_settings": {
+            "enable_auto_recovery": true,
+            "log_level": "DEBUG",
+            "monitoring_interval": 2,
+            "cleanup_interval": 180,
+            "enable_profiling": true
+        }
+    },
+    "ui": {
+        "port": 7860,
+        "host": "0.0.0.0",
+        "enable_auth": true,
+        "theme": "dark",
+        "max_concurrent_users": 10,
+        "enable_queue": true,
+        "queue_size": 20
+    },
+    "api": {
+        "enable_api": true,
+        "api_port": 7861,
+        "rate_limit": 200,
+        "timeout_seconds": 600,
+        "enable_caching": true
+    }
+}

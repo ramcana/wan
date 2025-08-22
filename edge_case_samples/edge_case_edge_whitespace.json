@@ -1,0 +1,7 @@
+{
+  "id": "edge_whitespace",
+  "category": "whitespace",
+  "prompt": "   \n\t   ",
+  "expected_behavior": "should handle whitespace-only input",
+  "test_type": "whitespace_input"
+}

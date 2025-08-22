@@ -1,0 +1,34 @@
+{
+  "timestamp": "2025-08-15T19:23:18.436080",
+  "reason": "gpu_overheat",
+  "protection_level": "normal",
+  "thresholds": {
+    "gpu_temperature_emergency": 85.0,
+    "gpu_temperature_critical": 80.0,
+    "vram_usage_emergency": 95.0,
+    "vram_usage_critical": 90.0,
+    "cpu_temperature_emergency": 85.0,
+    "cpu_temperature_critical": 80.0,
+    "cpu_usage_emergency": 98.0,
+    "cpu_usage_critical": 95.0,
+    "memory_usage_emergency": 98.0,
+    "memory_usage_critical": 95.0,
+    "disk_usage_emergency": 98.0,
+    "disk_usage_critical": 95.0,
+    "critical_duration_seconds": 5.0,
+    "emergency_response_seconds": 5.0,
+    "recovery_margin_percent": 10.0
+  },
+  "critical_conditions": {},
+  "actions_taken": [
+    {
+      "timestamp": "2025-08-15T19:23:18.436080",
+      "reason": "gpu_overheat",
+      "severity": "emergency",
+      "action_taken": "emergency_shutdown",
+      "metrics_snapshot": {
+        "gpu_temp": 95.0
+      }
+    }
+  ]
+}
