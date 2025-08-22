@@ -123,7 +123,7 @@ integration_test_results/*.json
 test_results/*.json
 coverage_reports/*.json
 
-# But keep important test files
+# But keep important test files and frameworks
 !test_samples/
 !test_samples/*.json
 !config_templates/
@@ -133,6 +133,10 @@ coverage_reports/*.json
 !*validation*.py
 !validate_*.py
 !run_*_tests.py
+!local_testing_framework/
+!local_testing_framework/**/*
+!test_results.py
+!configuration.py
 
 # Demo and temporary states
 demo_cache/
