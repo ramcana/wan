@@ -98,9 +98,12 @@ logs/
 
 # Database files
 *.db
+*.db-journal
+*.db-wal
 *.sqlite
 *.sqlite3
 wan22_tasks.db
+local_installation/logs/*.db
 
 # Large model files and caches
 model_cache/
