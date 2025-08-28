@@ -1,0 +1,24 @@
+{
+  "rtx4080_optimizations": {
+    "max_vram_usage_gb": 14,
+    "enable_memory_efficient_attention": true,
+    "use_fp16": true,
+    "enable_cpu_offload": true,
+    "chunk_size": 4,
+    "max_batch_size": 1,
+    "gradient_checkpointing": true
+  },
+  "model_loading": {
+    "low_cpu_mem_usage": true,
+    "device_map": "auto",
+    "torch_dtype": "float16",
+    "max_memory": {
+      "0": "14GB"
+    }
+  },
+  "generation_params": {
+    "default_resolution": "512x512",
+    "max_frames": 16,
+    "recommended_steps": 20
+  }
+}

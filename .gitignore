@@ -43,9 +43,6 @@ Thumbs.db
 models/
 models/*
 models/**/*
-local_installation/
-local_installation/*
-local_installation/**/*
 *.bin
 *.safetensors
 *.pt
@@ -62,6 +59,9 @@ local_installation/**/*
 *.zip
 *.7z
 *.rar
+
+# Exclude only large .safetensors files from local_installation
+local_installation/**/*.safetensors
 
 # LoRA files - ALL FORMATS
 loras/

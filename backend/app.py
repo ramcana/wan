@@ -6,21 +6,35 @@ Main FastAPI application entry point
 
 import os
 import sys
+import asyncio
+import threading
+import time
 from pathlib import Path
-from fastapi import FastAPI, HTTPException, Form, File, UploadFile
+from fastapi import FastAPI, HTTPException, Form, File, UploadFile, WebSocket, WebSocketDisconnect, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 import uvicorn
 import logging
 from datetime import datetime
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Set
 import psutil
 import platform
+import json
 
-# Add project root to Python path
-project_root = Path(__file__).parent.parent
-sys.path.insert(0, str(project_root))
+# Add current directory to Python path for relative imports
+current_dir = Path(__file__).parent
+sys.path.insert(0, str(current_dir))
+
+# Import fallback recovery system
+from core.fallback_recovery_system import (
+    get_fallback_recovery_system, FailureType, RecoveryAction
+)
+
+# Import CORS validator
+from core.cors_validator import (
+    validate_cors_configuration, get_cors_error_info, generate_cors_error_response
+)
 
 # Configure logging
 logging.basicConfig(
@@ -47,6 +61,47 @@ class GenerationRequest(BaseModel):
 # In-memory task storage (in production, use a proper database)
 task_queue: Dict[str, Dict] = {}
 
+# WebSocket connection manager
+class ConnectionManager:
+    def __init__(self):
+        self.active_connections: Set[WebSocket] = set()
+
+    async def connect(self, websocket: WebSocket):
+        await websocket.accept()
+        self.active_connections.add(websocket)
+        logger.info(f"WebSocket connected. Total connections: {len(self.active_connections)}")
+
+    def disconnect(self, websocket: WebSocket):
+        self.active_connections.discard(websocket)
+        logger.info(f"WebSocket disconnected. Total connections: {len(self.active_connections)}")
+
+    async def send_personal_message(self, message: str, websocket: WebSocket):
+        try:
+            await websocket.send_text(message)
+        except Exception as e:
+            logger.error(f"Error sending personal message: {e}")
+            self.disconnect(websocket)
+
+    async def broadcast(self, message: dict):
+        if not self.active_connections:
+            return
+        
+        message_str = json.dumps(message)
+        disconnected = set()
+        
+        for connection in self.active_connections.copy():
+            try:
+                await connection.send_text(message_str)
+            except Exception as e:
+                logger.error(f"Error broadcasting to connection: {e}")
+                disconnected.add(connection)
+        
+        # Remove disconnected connections
+        for connection in disconnected:
+            self.disconnect(connection)
+
+manager = ConnectionManager()
+
 # Create FastAPI app
 app = FastAPI(
     title="WAN22 Video Generation API",
@@ -56,23 +111,110 @@ app = FastAPI(
     redoc_url="/redoc"
 )
 
-# Configure CORS
+# Initialize database on startup
+@app.on_event("startup")
+async def startup_event():
+    """Initialize database and services on startup"""
+    try:
+        from repositories.database import reset_database
+        reset_database()  # Reset to include new end_image_path column
+        logger.info("Database reset and initialized successfully")
+    except Exception as e:
+        logger.error(f"Failed to initialize database: {e}")
+        raise
+    
+    # Initialize performance monitoring
+    try:
+        from core.performance_monitoring_system import initialize_performance_monitoring
+        await initialize_performance_monitoring()
+        logger.info("Performance monitoring system initialized successfully")
+    except Exception as e:
+        logger.warning(f"Failed to initialize performance monitoring: {e}")
+        # Don't raise - performance monitoring is optional
+    
+    # Validate CORS configuration
+    try:
+        is_valid, errors = validate_cors_configuration(app)
+        if is_valid:
+            logger.info("CORS configuration validation passed")
+        else:
+            logger.warning(f"CORS configuration issues detected: {errors}")
+    except Exception as e:
+        logger.warning(f"Failed to validate CORS configuration: {e}")
+
+
+@app.on_event("shutdown")
+async def shutdown_event():
+    """Cleanup services on shutdown"""
+    try:
+        from core.performance_monitoring_system import shutdown_performance_monitoring
+        await shutdown_performance_monitoring()
+        logger.info("Performance monitoring system shutdown successfully")
+    except Exception as e:
+        logger.warning(f"Failed to shutdown performance monitoring: {e}")
+
+
+# Include API routers
+try:
+    from api.performance import router as performance_router
+    app.include_router(performance_router)
+    logger.info("Performance API router included")
+except ImportError as e:
+    logger.warning(f"Could not import performance router: {e}")
+
+try:
+    from api.performance_dashboard import router as performance_dashboard_router
+    app.include_router(performance_dashboard_router)
+    logger.info("Performance dashboard API router included")
+except ImportError as e:
+    logger.warning(f"Could not import performance dashboard router: {e}")
+
+try:
+    from api.enhanced_model_configuration import router as config_router
+    app.include_router(config_router)
+    logger.info("Enhanced model configuration API router included")
+except ImportError as e:
+    logger.warning(f"Could not import configuration router: {e}")
+
+try:
+    from api.enhanced_model_management import router as model_mgmt_router
+    app.include_router(model_mgmt_router)
+    logger.info("Enhanced model management API router included")
+except ImportError as e:
+    logger.warning(f"Could not import model management router: {e}")
+
+# Configure CORS with enhanced validation
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://localhost:3001"],
+    allow_origins=["http://localhost:3000"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Add request logging middleware
+# Add request logging middleware with CORS error detection
 @app.middleware("http")
-async def log_requests(request, call_next):
-    logger.info(f"Request: {request.method} {request.url}")
+async def log_requests_and_cors_errors(request, call_next):
+    origin = request.headers.get('origin', 'unknown')
+    logger.info(f"Request: {request.method} {request.url} from origin: {origin}")
+    
     if request.method == "POST" and "generation/submit" in str(request.url):
         logger.info(f"Generation request headers: {dict(request.headers)}")
-    response = await call_next(request)
-    return response
+    
+    try:
+        response = await call_next(request)
+        return response
+    except Exception as e:
+        # Check if this is a CORS-related error
+        cors_error_info = get_cors_error_info(request, e)
+        if cors_error_info:
+            logger.error(f"CORS error detected: {cors_error_info}")
+            # Generate helpful CORS error response
+            cors_response = generate_cors_error_response(origin, request.method)
+            raise HTTPException(status_code=400, detail=cors_response)
+        else:
+            # Re-raise non-CORS errors
+            raise
 
 # Health check endpoint
 @app.get("/health")
@@ -84,6 +226,144 @@ async def health_check():
 async def api_health_check():
     """API health check endpoint"""
     return {"status": "healthy", "api_version": "2.2.0"}
+
+@app.get("/api/v1/system/health")
+async def system_health_check(request: Request):
+    """Enhanced system health check endpoint with port and connectivity information"""
+    # Get the current server port from environment or default
+    server_port = int(os.environ.get("PORT", "9000"))
+    
+    # Try to detect actual running port from the request
+    actual_port = server_port
+    try:
+        # Extract port from the request URL if available
+        if hasattr(request, 'url') and request.url.port:
+            actual_port = request.url.port
+        elif hasattr(request, 'headers'):
+            # Try to get port from Host header
+            host_header = request.headers.get('host', '')
+            if ':' in host_header:
+                try:
+                    actual_port = int(host_header.split(':')[1])
+                except (ValueError, IndexError):
+                    pass
+    except Exception as e:
+        logger.debug(f"Could not detect actual port from request: {e}")
+        # Fall back to environment/default port
+        pass
+    
+    return {
+        "status": "ok",
+        "port": actual_port,
+        "timestamp": datetime.now().isoformat() + 'Z',
+        "api_version": "2.2.0",
+        "system": "operational",
+        "service": "wan22-backend",
+        "endpoints": {
+            "health": "/api/v1/system/health",
+            "docs": "/docs",
+            "websocket": "/ws",
+            "api_base": "/api/v1"
+        },
+        "connectivity": {
+            "cors_enabled": True,
+            "allowed_origins": ["http://localhost:3000"],
+            "websocket_available": True,
+            "request_origin": request.headers.get('origin', 'unknown'),
+            "host_header": request.headers.get('host', 'unknown')
+        },
+        "server_info": {
+            "configured_port": server_port,
+            "detected_port": actual_port,
+            "environment": os.environ.get("NODE_ENV", "development")
+        }
+    }
+
+@app.get("/api/v1/system/cors/validate")
+async def validate_cors_config(request: Request):
+    """Validate CORS configuration and provide diagnostics"""
+    try:
+        # Validate current CORS configuration
+        is_valid, errors = validate_cors_configuration(app)
+        
+        # Get request origin for diagnostics
+        origin = request.headers.get('origin', 'unknown')
+        method = request.method
+        
+        # Check if current request would be allowed
+        allowed_origins = ["http://localhost:3000"]  # Current configuration
+        origin_allowed = origin in allowed_origins or origin == 'unknown'
+        
+        return {
+            "cors_valid": is_valid,
+            "errors": errors,
+            "current_request": {
+                "origin": origin,
+                "method": method,
+                "origin_allowed": origin_allowed,
+                "headers": dict(request.headers)
+            },
+            "configuration": {
+                "allowed_origins": allowed_origins,
+                "allowed_methods": ["*"],
+                "allowed_headers": ["*"],
+                "allow_credentials": True
+            },
+            "diagnostics": {
+                "preflight_supported": True,
+                "credentials_supported": True,
+                "wildcard_methods": True,
+                "wildcard_headers": True
+            }
+        }
+    except Exception as e:
+        logger.error(f"Error validating CORS configuration: {e}")
+        return {
+            "cors_valid": False,
+            "errors": [f"Validation error: {str(e)}"],
+            "current_request": {
+                "origin": request.headers.get('origin', 'unknown'),
+                "method": request.method
+            }
+        }
+
+@app.options("/api/v1/system/cors/test")
+async def cors_preflight_test(request: Request):
+    """Test endpoint for CORS preflight requests"""
+    origin = request.headers.get('origin', 'unknown')
+    method = request.headers.get('access-control-request-method', 'unknown')
+    headers = request.headers.get('access-control-request-headers', 'unknown')
+    
+    logger.info(f"CORS preflight test - Origin: {origin}, Method: {method}, Headers: {headers}")
+    
+    return {
+        "message": "CORS preflight test successful",
+        "origin": origin,
+        "requested_method": method,
+        "requested_headers": headers,
+        "timestamp": datetime.now().isoformat()
+    }
+
+@app.post("/api/v1/system/cors/test")
+async def cors_post_test(request: Request):
+    """Test endpoint for CORS POST requests with custom headers"""
+    origin = request.headers.get('origin', 'unknown')
+    content_type = request.headers.get('content-type', 'unknown')
+    
+    logger.info(f"CORS POST test - Origin: {origin}, Content-Type: {content_type}")
+    
+    try:
+        body = await request.json() if content_type == 'application/json' else {}
+    except:
+        body = {}
+    
+    return {
+        "message": "CORS POST test successful",
+        "origin": origin,
+        "content_type": content_type,
+        "body_received": bool(body),
+        "timestamp": datetime.now().isoformat()
+    }
 
 # Prompt enhancement endpoint
 @app.post("/api/v1/prompt/enhance")
@@ -290,24 +570,42 @@ async def get_queue():
     """Get generation queue"""
     queue_items = []
     for task_id, task_data in task_queue.items():
-        queue_items.append({
+        # Build task item, omitting optional fields that are None/empty
+        task_item = {
             "id": task_id,
             "model_type": task_data["parameters"]["model_type"],
             "prompt": task_data["parameters"]["prompt"],
-            "image_path": task_data["parameters"].get("image_path"),
             "resolution": task_data["parameters"]["resolution"],
             "steps": task_data["parameters"]["steps"],
-            "lora_path": task_data["parameters"].get("lora_path"),
             "lora_strength": task_data["parameters"]["lora_strength"],
-            "status": task_data["status"],
+            "status": task_data["status"],  # Should now be "pending" instead of "queued"
             "progress": task_data.get("progress", 0),
             "created_at": task_data["created_at"],
-            "started_at": task_data.get("started_at"),
-            "completed_at": task_data.get("completed_at"),
-            "output_path": f"outputs/{task_id}.mp4" if task_data["status"] == "completed" else None,
-            "error_message": task_data.get("error_message"),
-            "estimated_time_minutes": 10 if task_data["status"] == "queued" else None
-        })
+        }
+        
+        # Add optional fields only if they have values
+        if task_data["parameters"].get("image_path"):
+            task_item["image_path"] = task_data["parameters"]["image_path"]
+        
+        if task_data["parameters"].get("lora_path"):
+            task_item["lora_path"] = task_data["parameters"]["lora_path"]
+        
+        if task_data.get("started_at"):
+            task_item["started_at"] = task_data["started_at"]
+        
+        if task_data.get("completed_at"):
+            task_item["completed_at"] = task_data["completed_at"]
+        
+        if task_data["status"] == "completed":
+            task_item["output_path"] = f"outputs/{task_id}.mp4"
+        
+        if task_data.get("error_message"):
+            task_item["error_message"] = task_data["error_message"]
+        
+        if task_data["status"] == "pending":
+            task_item["estimated_time_minutes"] = 10
+        
+        queue_items.append(task_item)
     
     # Sort by creation time (newest first)
     queue_items.sort(key=lambda x: x["created_at"], reverse=True)
@@ -315,15 +613,16 @@ async def get_queue():
     return {
         "tasks": queue_items,
         "total_tasks": len(queue_items),
-        "pending_tasks": len([t for t in queue_items if t["status"] == "queued"]),
+        "pending_tasks": len([t for t in queue_items if t["status"] == "pending"]),  # Changed from "queued" to "pending"
         "processing_tasks": len([t for t in queue_items if t["status"] == "processing"]),
         "completed_tasks": len([t for t in queue_items if t["status"] == "completed"]),
         "failed_tasks": len([t for t in queue_items if t["status"] == "failed"])
     }
 
-# Generation endpoint with image upload support
+# Enhanced generation endpoint with real AI integration
 @app.post("/api/v1/generation/submit")
 async def submit_generation(
+    request: Request,
     prompt: str = Form(None),
     model_type: str = Form(None),
     resolution: str = Form("1280x720"),
@@ -333,148 +632,245 @@ async def submit_generation(
     image: UploadFile = File(None),
     end_image: UploadFile = File(None)
 ):
-    """Submit video generation request with optional image upload"""
+    """Submit video generation request with enhanced real AI integration"""
     
-    logger.info(f"Generation endpoint reached - prompt: '{prompt}', model_type: '{model_type}', resolution: '{resolution}', steps: {steps}")
-    logger.info(f"Prompt type: {type(prompt)}, Model type: {type(model_type)}")
+    # Handle both JSON and form data requests
+    content_type = request.headers.get("content-type", "")
     
-    # Validate required fields
-    if not prompt:
-        logger.warning("Missing prompt in generation request")
-        raise HTTPException(status_code=422, detail="Prompt is required")
+    if "application/json" in content_type:
+        # Handle JSON request
+        try:
+            json_data = await request.json()
+            prompt = json_data.get("prompt")
+            model_type = json_data.get("model_type") or json_data.get("modelType")
+            resolution = json_data.get("resolution", "1280x720")
+            steps = json_data.get("steps", 50)
+            lora_path = json_data.get("lora_path", "") or json_data.get("loraPath", "")
+            lora_strength = json_data.get("lora_strength", 1.0) or json_data.get("loraStrength", 1.0)
+            # Note: JSON requests don't support file uploads
+            image = None
+            end_image = None
+        except Exception as e:
+            logger.error(f"Error parsing JSON request: {e}")
+            raise HTTPException(status_code=400, detail="Invalid JSON request")
     
-    if not model_type:
-        logger.warning("Missing model_type in generation request")
-        raise HTTPException(status_code=422, detail="Model type is required")
+    logger.info("=" * 60)
+    logger.info("🎬 NEW ENHANCED VIDEO GENERATION REQUEST")
+    logger.info("=" * 60)
+    logger.info(f"📝 Prompt: '{prompt}'")
+    logger.info(f"🤖 Model: {model_type}")
+    logger.info(f"📐 Resolution: {resolution}")
+    logger.info(f"🔄 Steps: {steps}")
+    logger.info(f"🎨 LoRA: {lora_path if lora_path else 'None'}")
+    logger.info(f"💪 LoRA Strength: {lora_strength}")
+    logger.info(f"🖼️  Image Upload: {'Yes' if image else 'No'}")
+    logger.info("=" * 60)
     
-    # Validate prompt content
-    if not prompt.strip():
-        logger.warning("Empty prompt received in generation request")
-        raise HTTPException(status_code=422, detail="Prompt cannot be empty")
-    
-    # Validate model type
-    valid_models = ["T2V-A14B", "I2V-A14B", "TI2V-5B"]
-    if model_type not in valid_models:
-        raise HTTPException(status_code=422, detail=f"Invalid model type. Must be one of: {valid_models}")
-    
-    # Validate steps range
-    if steps < 1 or steps > 100:
-        raise HTTPException(status_code=422, detail="Steps must be between 1 and 100")
-    
-    # Validate resolution
-    valid_resolutions = ["854x480", "1024x576", "1280x720", "1920x1080"]
-    if resolution not in valid_resolutions:
-        raise HTTPException(status_code=422, detail=f"Invalid resolution. Must be one of: {valid_resolutions}")
-    
-    # Validate LoRA strength
-    if lora_strength < 0.0 or lora_strength > 2.0:
-        raise HTTPException(status_code=422, detail="LoRA strength must be between 0.0 and 2.0")
-    
-    # Check image requirements
-    image_required_models = ["I2V-A14B", "TI2V-5B"]
-    if model_type in image_required_models and not image:
-        raise HTTPException(status_code=422, detail=f"Image is required for {model_type} model")
-    
-    # Validate and save start image if provided
-    image_path = None
-    if image:
-        # Check file type
-        allowed_types = ["image/jpeg", "image/png", "image/webp"]
-        if image.content_type not in allowed_types:
-            raise HTTPException(status_code=422, detail="Invalid image format. Only JPEG, PNG, and WebP are supported")
+    try:
+        # Initialize enhanced generation service if not already done
+        if not hasattr(app.state, 'generation_service'):
+            from services.generation_service import GenerationService
+            app.state.generation_service = GenerationService()
+            await app.state.generation_service.initialize()
+            logger.info("Enhanced generation service initialized")
         
-        # Check file size (10MB limit)
-        content = await image.read()
-        if len(content) > 10 * 1024 * 1024:
-            raise HTTPException(status_code=422, detail="Image file too large. Maximum size is 10MB")
+        generation_service = app.state.generation_service
         
-        # Save uploaded image (in real implementation, save to proper location)
-        import os
-        import uuid
-        upload_dir = "uploads"
-        os.makedirs(upload_dir, exist_ok=True)
+        # Validate required fields
+        if not prompt:
+            logger.warning("Missing prompt in generation request")
+            raise HTTPException(status_code=422, detail="Prompt is required")
         
-        file_extension = image.filename.split('.')[-1] if '.' in image.filename else 'jpg'
-        image_filename = f"{uuid.uuid4()}.{file_extension}"
-        image_path = os.path.join(upload_dir, image_filename)
+        if not model_type:
+            logger.warning("Missing model_type in generation request")
+            raise HTTPException(status_code=422, detail="Model type is required")
         
-        with open(image_path, "wb") as f:
-            f.write(content)
-    
-    # Validate and save end image if provided
-    end_image_path = None
-    if end_image:
-        # Check file type
-        allowed_types = ["image/jpeg", "image/png", "image/webp"]
-        if end_image.content_type not in allowed_types:
-            raise HTTPException(status_code=422, detail="Invalid end image format. Only JPEG, PNG, and WebP are supported")
+        # Validate prompt content
+        if not prompt.strip():
+            logger.warning("Empty prompt received in generation request")
+            raise HTTPException(status_code=422, detail="Prompt cannot be empty")
         
-        # Check file size (10MB limit)
-        end_content = await end_image.read()
-        if len(end_content) > 10 * 1024 * 1024:
-            raise HTTPException(status_code=422, detail="End image file too large. Maximum size is 10MB")
+        # Validate model type
+        valid_models = ["T2V-A14B", "I2V-A14B", "TI2V-5B"]
+        if model_type not in valid_models:
+            raise HTTPException(status_code=422, detail=f"Invalid model type. Must be one of: {valid_models}")
         
-        # Save uploaded end image
-        import os
-        import uuid
-        upload_dir = "uploads"
-        os.makedirs(upload_dir, exist_ok=True)
+        # Validate steps range
+        if steps < 1 or steps > 100:
+            raise HTTPException(status_code=422, detail="Steps must be between 1 and 100")
         
-        end_file_extension = end_image.filename.split('.')[-1] if '.' in end_image.filename else 'jpg'
-        end_image_filename = f"{uuid.uuid4()}_end.{end_file_extension}"
-        end_image_path = os.path.join(upload_dir, end_image_filename)
+        # Validate resolution
+        valid_resolutions = ["854x480", "1024x576", "1280x720", "1920x1080"]
+        if resolution not in valid_resolutions:
+            raise HTTPException(status_code=422, detail=f"Invalid resolution. Must be one of: {valid_resolutions}")
         
-        with open(end_image_path, "wb") as f:
-            f.write(end_content)
-    
-    # Generate task ID
-    import uuid
-    task_id = str(uuid.uuid4())
-    
-    # Store task in queue
-    task_data = {
-        "task_id": task_id,
-        "status": "queued",
-        "created_at": datetime.now().isoformat(),
-        "progress": 0,
-        "estimated_time": "5-10 minutes",
-        "parameters": {
-            "model_type": model_type,
-            "prompt": prompt,
-            "resolution": resolution,
-            "steps": steps,
-            "image_path": image_path,
-            "end_image_path": end_image_path,
-            "lora_path": lora_path if lora_path else None,
-            "lora_strength": lora_strength
+        # Validate LoRA strength
+        if lora_strength < 0.0 or lora_strength > 2.0:
+            raise HTTPException(status_code=422, detail="LoRA strength must be between 0.0 and 2.0")
+        
+        # Check image requirements
+        image_required_models = ["I2V-A14B", "TI2V-5B"]
+        if model_type in image_required_models and not image:
+            raise HTTPException(status_code=422, detail=f"Start image is required for {model_type} model")
+        
+        # Check end image for interpolation models (optional but recommended for TI2V)
+        if model_type == "TI2V-5B" and end_image:
+            logger.info(f"End image provided for {model_type} - will enable interpolation mode")
+        
+        # Validate and save start image if provided
+        image_path = None
+        if image:
+            # Check file type
+            allowed_types = ["image/jpeg", "image/png", "image/webp"]
+            if image.content_type not in allowed_types:
+                raise HTTPException(status_code=422, detail="Invalid image format. Only JPEG, PNG, and WebP are supported")
+            
+            # Check file size (10MB limit)
+            content = await image.read()
+            if len(content) > 10 * 1024 * 1024:
+                raise HTTPException(status_code=422, detail="Image file too large. Maximum size is 10MB")
+            
+            # Save uploaded image
+            import os
+            import uuid
+            upload_dir = "uploads"
+            os.makedirs(upload_dir, exist_ok=True)
+            
+            file_extension = image.filename.split('.')[-1] if '.' in image.filename else 'jpg'
+            image_filename = f"{uuid.uuid4()}.{file_extension}"
+            image_path = os.path.join(upload_dir, image_filename)
+            
+            with open(image_path, "wb") as f:
+                f.write(content)
+        
+        # Validate and save end image if provided
+        end_image_path = None
+        if end_image:
+            # Check file type
+            allowed_types = ["image/jpeg", "image/png", "image/webp"]
+            if end_image.content_type not in allowed_types:
+                raise HTTPException(status_code=422, detail="Invalid end image format. Only JPEG, PNG, and WebP are supported")
+            
+            # Check file size (10MB limit)
+            end_content = await end_image.read()
+            if len(end_content) > 10 * 1024 * 1024:
+                raise HTTPException(status_code=422, detail="End image file too large. Maximum size is 10MB")
+            
+            # Save uploaded end image
+            import os
+            import uuid
+            upload_dir = "uploads"
+            os.makedirs(upload_dir, exist_ok=True)
+            
+            end_file_extension = end_image.filename.split('.')[-1] if '.' in end_image.filename else 'jpg'
+            end_image_filename = f"{uuid.uuid4()}_end.{end_file_extension}"
+            end_image_path = os.path.join(upload_dir, end_image_filename)
+            
+            with open(end_image_path, "wb") as f:
+                f.write(end_content)
+        
+        # Check model availability and VRAM requirements using enhanced service
+        model_type_normalized = model_type.lower().replace('-', '_')
+        
+        # Pre-flight checks using enhanced generation service
+        if generation_service.vram_monitor:
+            estimated_vram = generation_service._estimate_vram_requirements(model_type_normalized, resolution)
+            vram_available, vram_message = generation_service.vram_monitor.check_vram_availability(estimated_vram)
+            
+            if not vram_available:
+                logger.warning(f"VRAM check failed: {vram_message}")
+                # Get optimization suggestions
+                suggestions = generation_service.vram_monitor.get_optimization_suggestions()
+                suggestion_text = "; ".join(suggestions[:2]) if suggestions else "Try reducing resolution or steps"
+                raise HTTPException(
+                    status_code=422, 
+                    detail=f"Insufficient VRAM for generation. {vram_message}. Suggestions: {suggestion_text}"
+                )
+            else:
+                logger.info(f"VRAM check passed: {vram_message}")
+        
+        # Submit task to enhanced generation service
+        task_result = await generation_service.submit_generation_task(
+            prompt=prompt,
+            model_type=model_type,
+            resolution=resolution,
+            steps=steps,
+            image_path=image_path,
+            end_image_path=end_image_path,
+            lora_path=lora_path if lora_path else None,
+            lora_strength=lora_strength
+        )
+        
+        if not task_result.success:
+            logger.error(f"Failed to submit generation task: {task_result.error_message}")
+            raise HTTPException(status_code=500, detail=task_result.error_message)
+        
+        # Return enhanced response with real AI integration status
+        response = {
+            "task_id": task_result.task_id,
+            "status": "pending",
+            "message": "Generation request submitted to enhanced AI pipeline",
+            "real_ai_enabled": generation_service.use_real_generation,
+            "hardware_optimized": generation_service.optimization_applied,
+            "estimated_vram_gb": estimated_vram if generation_service.vram_monitor else None,
+            "parameters": {
+                "model_type": model_type,
+                "prompt": prompt,
+                "resolution": resolution,
+                "steps": steps,
+                "image_path": image_path,
+                "end_image_path": end_image_path,
+                "lora_path": lora_path if lora_path else None,
+                "lora_strength": lora_strength
+            }
         }
-    }
-    
-    task_queue[task_id] = task_data
-    
-    # Return generation response
-    response = {
-        "task_id": task_id,
-        "status": "queued",
-        "message": "Generation request submitted successfully",
-        "parameters": {
-            "model_type": model_type,
-            "prompt": prompt,
-            "resolution": resolution,
-            "steps": steps,
-            "image_path": image_path,
-            "end_image_path": end_image_path,
-            "lora_path": lora_path if lora_path else None,
-            "lora_strength": lora_strength
+        
+        logger.info(f"✅ Enhanced generation task submitted: {task_result.task_id}")
+        return response
+        
+    except HTTPException:
+        # Re-raise HTTP exceptions as-is
+        raise
+    except Exception as e:
+        logger.error(f"Unexpected error in enhanced generation submit: {e}")
+        # Fallback to basic task creation if enhanced service fails
+        import uuid
+        task_id = str(uuid.uuid4())
+        
+        task_data = {
+            "task_id": task_id,
+            "status": "pending",
+            "created_at": datetime.now().isoformat(),
+            "progress": 0,
+            "estimated_time": "5-10 minutes",
+            "parameters": {
+                "model_type": model_type,
+                "prompt": prompt,
+                "resolution": resolution,
+                "steps": steps,
+                "image_path": image_path,
+                "end_image_path": end_image_path,
+                "lora_path": lora_path if lora_path else None,
+                "lora_strength": lora_strength
+            }
         }
-    }
-    
-    return response
+        
+        task_queue[task_id] = task_data
+        
+        return {
+            "task_id": task_id,
+            "status": "pending",
+            "message": "Generation request submitted (fallback mode)",
+            "real_ai_enabled": False,
+            "hardware_optimized": False,
+            "error": f"Enhanced service unavailable: {str(e)}",
+            "parameters": task_data["parameters"]
+        }
 
 # System stats endpoint
 @app.get("/api/v1/system/stats")
 async def get_system_stats():
-    """Get system statistics"""
+    """Get enhanced system statistics with real model status information"""
     try:
         # CPU stats
         cpu_percent = psutil.cpu_percent(interval=1)
@@ -508,6 +904,83 @@ async def get_system_stats():
             # GPU detection failed, use fallback values
             pass
         
+        # Get real model status information
+        model_status = {}
+        real_ai_enabled = False
+        hardware_optimized = False
+        generation_service_status = "unavailable"
+        
+        try:
+            # Check if enhanced generation service is available
+            if hasattr(app.state, 'generation_service'):
+                generation_service = app.state.generation_service
+                generation_service_status = "available"
+                real_ai_enabled = generation_service.use_real_generation
+                hardware_optimized = generation_service.optimization_applied
+                
+                # Get model status from integration bridge
+                if generation_service.model_integration_bridge:
+                    try:
+                        status_dict = generation_service.model_integration_bridge.get_model_status_from_existing_system()
+                        for model_type, status in status_dict.items():
+                            model_status[model_type] = {
+                                "status": status.status.value,
+                                "is_loaded": status.is_loaded,
+                                "is_cached": status.is_cached,
+                                "size_mb": status.size_mb,
+                                "hardware_compatible": status.hardware_compatible,
+                                "optimization_applied": status.optimization_applied,
+                                "estimated_vram_usage_mb": status.estimated_vram_usage_mb
+                            }
+                    except Exception as e:
+                        logger.warning(f"Failed to get model status from integration bridge: {e}")
+            else:
+                # Try to get model status directly from model integration bridge
+                try:
+                    from core.model_integration_bridge import get_model_integration_bridge
+                    bridge = await get_model_integration_bridge()
+                    if bridge:
+                        status_dict = bridge.get_model_status_from_existing_system()
+                        for model_type, status in status_dict.items():
+                            model_status[model_type] = {
+                                "status": status.status.value,
+                                "is_loaded": status.is_loaded,
+                                "is_cached": status.is_cached,
+                                "size_mb": status.size_mb,
+                                "hardware_compatible": status.hardware_compatible,
+                                "optimization_applied": status.optimization_applied,
+                                "estimated_vram_usage_mb": status.estimated_vram_usage_mb
+                            }
+                        generation_service_status = "bridge_available"
+                except Exception as e:
+                    logger.warning(f"Failed to get model status directly: {e}")
+                    
+        except Exception as e:
+            logger.warning(f"Failed to get enhanced model status: {e}")
+        
+        # Get hardware optimization status
+        hardware_info = {
+            "platform": platform.system(),
+            "architecture": platform.architecture()[0],
+            "processor": platform.processor(),
+            "python_version": platform.python_version()
+        }
+        
+        # Add hardware optimization details if available
+        try:
+            if hasattr(app.state, 'generation_service') and app.state.generation_service.hardware_profile:
+                profile = app.state.generation_service.hardware_profile
+                hardware_info.update({
+                    "gpu_model": profile.gpu_model,
+                    "vram_gb": profile.vram_gb,
+                    "cpu_model": profile.cpu_model,
+                    "cpu_cores": profile.cpu_cores,
+                    "total_memory_gb": profile.total_memory_gb,
+                    "optimization_profile": "custom" if hardware_optimized else "default"
+                })
+        except Exception as e:
+            logger.debug(f"Hardware profile not available: {e}")
+        
         return {
             "cpu_percent": round(cpu_percent, 1),
             "ram_used_gb": round(ram_used_gb, 2),
@@ -518,15 +991,17 @@ async def get_system_stats():
             "vram_total_mb": round(vram_total_mb, 1),
             "vram_percent": round(vram_percent, 1),
             "timestamp": datetime.now().isoformat(),
-            "system_info": {
-                "platform": platform.system(),
-                "architecture": platform.architecture()[0],
-                "processor": platform.processor(),
-                "python_version": platform.python_version()
+            "system_info": hardware_info,
+            # Enhanced real AI integration status
+            "real_ai_integration": {
+                "enabled": real_ai_enabled,
+                "generation_service_status": generation_service_status,
+                "hardware_optimized": hardware_optimized,
+                "model_status": model_status
             }
         }
     except Exception as e:
-        logger.error(f"Failed to get system stats: {e}")
+        logger.error(f"Failed to get enhanced system stats: {e}")
         # Return fallback stats if system monitoring fails
         return {
             "cpu_percent": 0.0,
@@ -538,7 +1013,19 @@ async def get_system_stats():
             "vram_total_mb": 1024.0,
             "vram_percent": 0.0,
             "timestamp": datetime.now().isoformat(),
-            "error": "System monitoring unavailable"
+            "system_info": {
+                "platform": platform.system(),
+                "architecture": platform.architecture()[0],
+                "processor": platform.processor(),
+                "python_version": platform.python_version()
+            },
+            "real_ai_integration": {
+                "enabled": False,
+                "generation_service_status": "error",
+                "hardware_optimized": False,
+                "model_status": {},
+                "error": str(e)
+            }
         }
 
 # Outputs endpoint
@@ -687,6 +1174,7 @@ async def simulate_completion(task_id: str):
     # Update task status
     task_queue[task_id]["status"] = "completed"
     task_queue[task_id]["progress"] = 100
+    task_queue[task_id]["completed_at"] = datetime.now().isoformat()
     
     # Create dummy video file for demonstration
     outputs_dir = "outputs"
@@ -711,12 +1199,926 @@ async def simulate_completion(task_id: str):
         with open(thumbnail_path, "wb") as f:
             f.write(b"dummy thumbnail content" * 10)
     
+    # Broadcast completion via WebSocket
+    await manager.broadcast({
+        "type": "task_update",
+        "task_id": task_id,
+        "status": "completed",
+        "progress": 100,
+        "message": "Video generation completed!",
+        "output_path": f"outputs/{task_id}.mp4"
+    })
+    
     return {
         "message": "Video generation completed",
         "task_id": task_id,
         "video_url": f"/api/v1/outputs/{task_id}/video",
         "thumbnail_url": f"/api/v1/outputs/{task_id}/thumbnail"
     }
+
+# LoRA Management Endpoints
+@app.get("/api/v1/lora/list")
+async def get_lora_list():
+    """Get list of available LoRA files"""
+    loras_dir = "loras"
+    os.makedirs(loras_dir, exist_ok=True)
+    
+    loras = []
+    
+    # Scan for LoRA files
+    for file_path in Path(loras_dir).glob("*"):
+        if file_path.is_file() and file_path.suffix.lower() in ['.safetensors', '.pt', '.pth', '.bin']:
+            file_size = file_path.stat().st_size / (1024 * 1024)  # Size in MB
+            modified_time = datetime.fromtimestamp(file_path.stat().st_mtime).isoformat()
+            
+            loras.append({
+                "name": file_path.stem,
+                "filename": file_path.name,
+                "path": str(file_path),
+                "size_mb": round(file_size, 2),
+                "modified_time": modified_time,
+                "is_loaded": False,
+                "is_applied": False,
+                "current_strength": 0.0
+            })
+    
+    # Sort by modification time (newest first)
+    loras.sort(key=lambda x: x["modified_time"], reverse=True)
+    
+    return {
+        "loras": loras,
+        "total_count": len(loras),
+        "total_size_mb": sum(lora["size_mb"] for lora in loras)
+    }
+
+@app.post("/api/v1/lora/upload")
+async def upload_lora(file: UploadFile = File(...)):
+    """Upload a new LoRA file"""
+    # Validate file type
+    allowed_extensions = ['.safetensors', '.pt', '.pth', '.bin']
+    file_extension = Path(file.filename).suffix.lower()
+    
+    if file_extension not in allowed_extensions:
+        raise HTTPException(
+            status_code=422, 
+            detail=f"Invalid file type. Only {', '.join(allowed_extensions)} files are supported"
+        )
+    
+    # Check file size (500MB limit)
+    content = await file.read()
+    if len(content) > 500 * 1024 * 1024:
+        raise HTTPException(status_code=422, detail="File too large. Maximum size is 500MB")
+    
+    # Save file
+    loras_dir = "loras"
+    os.makedirs(loras_dir, exist_ok=True)
+    
+    file_path = Path(loras_dir) / file.filename
+    
+    # Check if file already exists
+    if file_path.exists():
+        raise HTTPException(status_code=409, detail="File already exists")
+    
+    with open(file_path, "wb") as f:
+        f.write(content)
+    
+    file_size_mb = len(content) / (1024 * 1024)
+    
+    return {
+        "success": True,
+        "message": "LoRA file uploaded successfully",
+        "lora_name": file_path.stem,
+        "file_path": str(file_path),
+        "size_mb": round(file_size_mb, 2)
+    }
+
+@app.get("/api/v1/lora/{lora_name}/status")
+async def get_lora_status(lora_name: str):
+    """Get status of a specific LoRA file"""
+    loras_dir = "loras"
+    
+    # Find the LoRA file
+    lora_file = None
+    for ext in ['.safetensors', '.pt', '.pth', '.bin']:
+        potential_path = Path(loras_dir) / f"{lora_name}{ext}"
+        if potential_path.exists():
+            lora_file = potential_path
+            break
+    
+    if not lora_file:
+        return {
+            "name": lora_name,
+            "exists": False,
+            "is_loaded": False,
+            "is_applied": False,
+            "current_strength": 0.0
+        }
+    
+    file_size_mb = lora_file.stat().st_size / (1024 * 1024)
+    modified_time = datetime.fromtimestamp(lora_file.stat().st_mtime).isoformat()
+    
+    return {
+        "name": lora_name,
+        "exists": True,
+        "path": str(lora_file),
+        "size_mb": round(file_size_mb, 2),
+        "is_loaded": False,  # In a real implementation, check if loaded in memory
+        "is_applied": False,  # In a real implementation, check if applied to current generation
+        "current_strength": 0.0,
+        "modified_time": modified_time
+    }
+
+@app.delete("/api/v1/lora/{lora_name}")
+async def delete_lora(lora_name: str):
+    """Delete a LoRA file"""
+    loras_dir = "loras"
+    
+    # Find and delete the LoRA file
+    deleted = False
+    for ext in ['.safetensors', '.pt', '.pth', '.bin']:
+        potential_path = Path(loras_dir) / f"{lora_name}{ext}"
+        if potential_path.exists():
+            potential_path.unlink()
+            deleted = True
+            break
+    
+    if not deleted:
+        raise HTTPException(status_code=404, detail="LoRA file not found")
+    
+    return {"message": f"LoRA '{lora_name}' deleted successfully"}
+
+@app.post("/api/v1/lora/{lora_name}/preview")
+async def preview_lora_effect(lora_name: str, request: dict):
+    """Preview the effect of applying a LoRA to a prompt"""
+    base_prompt = request.get("prompt", "").strip()
+    
+    if not base_prompt:
+        raise HTTPException(status_code=422, detail="Prompt is required")
+    
+    # Check if LoRA exists
+    loras_dir = "loras"
+    lora_exists = False
+    for ext in ['.safetensors', '.pt', '.pth', '.bin']:
+        if Path(loras_dir, f"{lora_name}{ext}").exists():
+            lora_exists = True
+            break
+    
+    if not lora_exists:
+        raise HTTPException(status_code=404, detail="LoRA file not found")
+    
+    # Generate style indicators based on LoRA name (simplified)
+    style_indicators = []
+    lora_lower = lora_name.lower()
+    
+    if "anime" in lora_lower:
+        style_indicators.extend(["anime style", "cel shading", "vibrant colors"])
+    elif "realistic" in lora_lower or "photo" in lora_lower:
+        style_indicators.extend(["photorealistic", "detailed textures", "natural lighting"])
+    elif "art" in lora_lower or "paint" in lora_lower:
+        style_indicators.extend(["artistic style", "painterly", "creative composition"])
+    else:
+        style_indicators.extend(["enhanced style", "improved quality"])
+    
+    # Create enhanced prompt
+    enhanced_prompt = f"{base_prompt}, {', '.join(style_indicators[:2])}"
+    
+    return {
+        "lora_name": lora_name,
+        "base_prompt": base_prompt,
+        "enhanced_prompt": enhanced_prompt,
+        "style_indicators": style_indicators,
+        "preview_note": f"This preview shows how '{lora_name}' might enhance your prompt"
+    }
+
+# Enhanced Model Management Endpoints
+@app.get("/api/v1/models/status")
+async def get_all_model_status():
+    """Get status of all supported models using existing ModelManager"""
+    try:
+        from api.model_management import get_model_management_api
+        api = await get_model_management_api()
+        return await api.get_all_model_status()
+        
+    except Exception as e:
+        logger.error(f"Error getting model status: {e}")
+        raise HTTPException(status_code=500, detail=f"Failed to get model status: {str(e)}")
+
+@app.get("/api/v1/models/status/{model_type}")
+async def get_model_status(model_type: str):
+    """Get status of a specific model using existing ModelManager"""
+    try:
+        from api.model_management import get_model_management_api
+        api = await get_model_management_api()
+        return await api.get_model_status(model_type)
+        
+    except Exception as e:
+        logger.error(f"Error getting model status for {model_type}: {e}")
+        raise HTTPException(status_code=500, detail=f"Failed to get model status: {str(e)}")
+
+@app.post("/api/v1/models/download")
+async def download_model(request: dict):
+    """Trigger model download using existing ModelDownloader"""
+    try:
+        model_type = request.get("model_type")
+        force_redownload = request.get("force_redownload", False)
+        
+        if not model_type:
+            raise HTTPException(status_code=422, detail="model_type is required")
+        
+        from api.model_management import get_model_management_api
+        api = await get_model_management_api()
+        return await api.trigger_model_download(model_type, force_redownload)
+        
+    except Exception as e:
+        logger.error(f"Error starting model download: {e}")
+        raise HTTPException(status_code=500, detail=f"Failed to start download: {str(e)}")
+
+@app.get("/api/v1/models/download/progress")
+async def get_all_download_progress():
+    """Get download progress for all models"""
+    try:
+        from core.model_integration_bridge import get_all_model_download_progress
+        progress_dict = await get_all_model_download_progress()
+        
+        response = {}
+        for model_type, progress in progress_dict.items():
+            response[model_type] = {
+                "model_type": model_type,
+                "status": progress.get("status", "unknown"),
+                "progress": progress.get("progress", 0.0),
+                "speed_mbps": progress.get("speed_mbps", 0.0),
+                "eta_seconds": progress.get("eta_seconds", 0.0),
+                "error": progress.get("error"),
+                "last_update": progress.get("last_update")
+            }
+        
+        return response
+        
+    except Exception as e:
+        logger.error(f"Error getting download progress: {e}")
+        raise HTTPException(status_code=500, detail=f"Failed to get download progress: {str(e)}")
+
+@app.get("/api/v1/models/download/progress/{model_type}")
+async def get_model_download_progress_endpoint(model_type: str):
+    """Get download progress for a specific model"""
+    try:
+        from core.model_integration_bridge import get_model_download_progress
+        progress = await get_model_download_progress(model_type)
+        
+        if progress is None:
+            return None
+        
+        return {
+            "model_type": model_type,
+            "status": progress.get("status", "unknown"),
+            "progress": progress.get("progress", 0.0),
+            "speed_mbps": progress.get("speed_mbps", 0.0),
+            "eta_seconds": progress.get("eta_seconds", 0.0),
+            "error": progress.get("error"),
+            "last_update": progress.get("last_update")
+        }
+        
+    except Exception as e:
+        logger.error(f"Error getting download progress for {model_type}: {e}")
+        raise HTTPException(status_code=500, detail=f"Failed to get download progress: {str(e)}")
+
+@app.post("/api/v1/models/verify/{model_type}")
+async def verify_model_integrity_endpoint(model_type: str):
+    """Verify model integrity and attempt recovery if needed"""
+    try:
+        from core.model_integration_bridge import verify_model_integrity
+        is_valid = await verify_model_integrity(model_type)
+        
+        return {
+            "model_type": model_type,
+            "is_valid": is_valid,
+            "details": f"Model {model_type} integrity check {'passed' if is_valid else 'failed'}"
+        }
+        
+    except Exception as e:
+        logger.error(f"Error verifying model integrity for {model_type}: {e}")
+        raise HTTPException(status_code=500, detail=f"Failed to verify model integrity: {str(e)}")
+
+@app.get("/api/v1/models/integration/status")
+async def get_integration_status():
+    """Get model integration system status"""
+    try:
+        from core.model_integration_bridge import get_model_integration_bridge
+        bridge = await get_model_integration_bridge()
+        status = bridge.get_integration_status()
+        
+        return status
+        
+    except Exception as e:
+        logger.error(f"Error getting integration status: {e}")
+        raise HTTPException(status_code=500, detail=f"Failed to get integration status: {str(e)}")
+
+async def _download_model_background(model_type: str):
+    """Background task to download a model"""
+    try:
+        logger.info(f"Starting background download for model {model_type}")
+        from core.model_integration_bridge import ensure_model_ready
+        success = await ensure_model_ready(model_type)
+        
+        if success:
+            logger.info(f"Background download completed successfully for model {model_type}")
+            # Broadcast success via WebSocket
+            await manager.broadcast({
+                "type": "model_download_complete",
+                "model_type": model_type,
+                "status": "success",
+                "message": f"Model {model_type} downloaded successfully"
+            })
+        else:
+            logger.error(f"Background download failed for model {model_type}")
+            # Broadcast failure via WebSocket
+            await manager.broadcast({
+                "type": "model_download_complete",
+                "model_type": model_type,
+                "status": "failed",
+                "message": f"Model {model_type} download failed"
+            })
+            
+    except Exception as e:
+        logger.error(f"Error in background download for model {model_type}: {e}")
+        # Broadcast error via WebSocket
+        await manager.broadcast({
+            "type": "model_download_complete",
+            "model_type": model_type,
+            "status": "error",
+            "message": f"Model {model_type} download error: {str(e)}"
+        })
+
+# Model validation endpoint
+@app.post("/api/v1/models/validate/{model_type}")
+async def validate_model_integrity_endpoint(model_type: str):
+    """Validate model integrity using existing integrity checking"""
+    try:
+        from api.model_management import get_model_management_api
+        api = await get_model_management_api()
+        return await api.validate_model_integrity(model_type)
+        
+    except Exception as e:
+        logger.error(f"Error validating model integrity for {model_type}: {e}")
+        raise HTTPException(status_code=500, detail=f"Failed to validate model integrity: {str(e)}")
+
+# System optimization status endpoint
+@app.get("/api/v1/system/optimization/status")
+async def get_system_optimization_status():
+    """Get system optimization status using existing WAN22SystemOptimizer"""
+    try:
+        from api.model_management import get_model_management_api
+        api = await get_model_management_api()
+        return await api.get_system_optimization_status()
+        
+    except Exception as e:
+        logger.error(f"Error getting system optimization status: {e}")
+        raise HTTPException(status_code=500, detail=f"Failed to get system optimization status: {str(e)}")
+
+# Hardware profile endpoint
+@app.get("/api/v1/system/hardware/profile")
+async def get_hardware_profile():
+    """Get detected hardware profile information"""
+    try:
+        from core.system_integration import get_system_integration
+        integration = await get_system_integration()
+        
+        # Get hardware profile from WAN22SystemOptimizer
+        optimizer = integration.get_wan22_system_optimizer()
+        if optimizer:
+            profile = optimizer.get_hardware_profile()
+            if profile:
+                return {
+                    "cpu_model": profile.cpu_model,
+                    "cpu_cores": profile.cpu_cores,
+                    "total_memory_gb": profile.total_memory_gb,
+                    "gpu_model": profile.gpu_model,
+                    "vram_gb": profile.vram_gb,
+                    "architecture_type": getattr(profile, 'architecture_type', 'unknown'),
+                    "optimization_recommendations": optimizer.get_optimization_recommendations() if hasattr(optimizer, 'get_optimization_recommendations') else []
+                }
+        
+        # Fallback hardware detection
+        import platform
+        import psutil
+        
+        hardware_info = {
+            "cpu_model": platform.processor() or "Unknown",
+            "cpu_cores": psutil.cpu_count(),
+            "total_memory_gb": round(psutil.virtual_memory().total / (1024**3), 2),
+            "gpu_model": "Unknown",
+            "vram_gb": 0.0,
+            "architecture_type": platform.architecture()[0],
+            "optimization_recommendations": []
+        }
+        
+        # Try to get GPU info
+        try:
+            import torch
+            if torch.cuda.is_available():
+                device = torch.cuda.current_device()
+                hardware_info["gpu_model"] = torch.cuda.get_device_name(device)
+                hardware_info["vram_gb"] = round(torch.cuda.get_device_properties(device).total_memory / (1024**3), 2)
+        except ImportError:
+            pass
+        
+        return hardware_info
+        
+    except Exception as e:
+        logger.error(f"Error getting hardware profile: {e}")
+        raise HTTPException(status_code=500, detail=f"Failed to get hardware profile: {str(e)}")
+
+# Model management summary endpoint
+@app.get("/api/v1/models/summary")
+async def get_models_summary():
+    """Get a summary of all models and system status"""
+    try:
+        from api.model_management import get_model_management_api
+        api = await get_model_management_api()
+        
+        # Get all model status
+        all_models = await api.get_all_model_status()
+        
+        # Get system optimization status
+        system_status = await api.get_system_optimization_status()
+        
+        # Calculate summary statistics
+        models = all_models.get("models", {})
+        total_models = len(models)
+        available_models = sum(1 for model in models.values() if model.get("is_available", False))
+        loaded_models = sum(1 for model in models.values() if model.get("is_loaded", False))
+        total_size_gb = sum(model.get("size_mb", 0) for model in models.values()) / 1024
+        
+        return {
+            "models_summary": {
+                "total_models": total_models,
+                "available_models": available_models,
+                "loaded_models": loaded_models,
+                "missing_models": total_models - available_models,
+                "total_size_gb": round(total_size_gb, 2)
+            },
+            "system_summary": {
+                "integration_initialized": system_status.get("system_integration", {}).get("initialized", False),
+                "optimization_applied": len(system_status.get("optimization_settings", {})) > 0,
+                "hardware_detected": system_status.get("hardware_profile") is not None
+            },
+            "models": models,
+            "timestamp": datetime.now().isoformat()
+        }
+        
+    except Exception as e:
+        logger.error(f"Error getting models summary: {e}")
+        raise HTTPException(status_code=500, detail=f"Failed to get models summary: {str(e)}")
+
+# WebSocket endpoint for real-time updates
+@app.websocket("/ws")
+async def websocket_endpoint(websocket: WebSocket):
+    await manager.connect(websocket)
+    try:
+        while True:
+            # Keep connection alive and listen for client messages
+            data = await websocket.receive_text()
+            logger.info(f"Received WebSocket message: {data}")
+            
+            # Echo back for testing
+            await manager.send_personal_message(f"Echo: {data}", websocket)
+    except WebSocketDisconnect:
+        manager.disconnect(websocket)
+    except Exception as e:
+        logger.error(f"WebSocket error: {e}")
+        manager.disconnect(websocket)
+
+# Background task processor
+async def process_generation_task(task_id: str):
+    """Process a generation task with real-time updates"""
+    try:
+        if task_id not in task_queue:
+            logger.error(f"Task {task_id} not found in queue")
+            return
+        
+        task_data = task_queue[task_id]
+        
+        # Update status to processing
+        task_data["status"] = "processing"
+        task_data["started_at"] = datetime.now().isoformat()
+        task_data["progress"] = 0
+        
+        # Broadcast status update
+        await manager.broadcast({
+            "type": "task_update",
+            "task_id": task_id,
+            "status": "processing",
+            "progress": 0,
+            "message": "Loading AI models..."
+        })
+        
+        logger.info(f"Starting real AI generation for task {task_id}")
+        logger.info(f"Model: {task_data['parameters']['model_type']}")
+        logger.info(f"Prompt: {task_data['parameters']['prompt']}")
+        logger.info(f"Resolution: {task_data['parameters']['resolution']}")
+        logger.info(f"Steps: {task_data['parameters']['steps']}")
+        
+        # Try to integrate with real AI system
+        try:
+            # Import the real generation system
+            sys.path.append(str(Path(__file__).parent.parent))
+            from utils import generate_video_from_prompt  # This would be the real function
+            
+            # This is where real AI generation would happen
+            logger.info("🤖 Loading AI models (T2V-A14B/I2V-A14B/TI2V-5B)...")
+            await manager.broadcast({
+                "type": "task_update",
+                "task_id": task_id,
+                "status": "processing", 
+                "progress": 10,
+                "message": "AI models loaded, starting generation..."
+            })
+            
+            # Real generation would happen here
+            # result = generate_video_from_prompt(
+            #     prompt=task_data['parameters']['prompt'],
+            #     model_type=task_data['parameters']['model_type'],
+            #     resolution=task_data['parameters']['resolution'],
+            #     steps=task_data['parameters']['steps']
+            # )
+            
+            logger.warning("⚠️  Real AI generation not yet integrated - using simulation")
+            
+        except ImportError as e:
+            logger.warning(f"Real AI system not available: {e}")
+            logger.info("🎭 Using simulation mode for demo")
+        
+        # Simulate generation process with progress updates (until real AI is integrated)
+        total_steps = task_data["parameters"]["steps"]
+        
+        for step in range(1, total_steps + 1):
+            # Simulate processing time
+            await asyncio.sleep(0.5)  # Faster for demo, real generation would be much slower
+            
+            progress = int(10 + (step / total_steps) * 85)  # 10-95% for generation
+            task_data["progress"] = progress
+            
+            # Broadcast progress update with more realistic messages
+            if step <= total_steps * 0.2:
+                message = f"Initializing generation pipeline... ({step}/{total_steps})"
+            elif step <= total_steps * 0.5:
+                message = f"Processing prompt and generating frames... ({step}/{total_steps})"
+            elif step <= total_steps * 0.8:
+                message = f"Rendering video sequences... ({step}/{total_steps})"
+            else:
+                message = f"Finalizing video output... ({step}/{total_steps})"
+            
+            await manager.broadcast({
+                "type": "task_update",
+                "task_id": task_id,
+                "status": "processing",
+                "progress": progress,
+                "message": message
+            })
+            
+            # Check if task was cancelled
+            if task_data.get("status") == "cancelled":
+                logger.info(f"Task {task_id} was cancelled")
+                return
+        
+        # Post-processing phase
+        await manager.broadcast({
+            "type": "task_update",
+            "task_id": task_id,
+            "status": "processing",
+            "progress": 95,
+            "message": "Post-processing and saving video..."
+        })
+        
+        # Complete the task
+        task_data["status"] = "completed"
+        task_data["completed_at"] = datetime.now().isoformat()
+        task_data["progress"] = 100
+        
+        # Create output files
+        outputs_dir = "outputs"
+        thumbnails_dir = "outputs/thumbnails"
+        os.makedirs(outputs_dir, exist_ok=True)
+        os.makedirs(thumbnails_dir, exist_ok=True)
+        
+        video_path = f"{outputs_dir}/{task_id}.mp4"
+        thumbnail_path = f"{thumbnails_dir}/{task_id}_thumb.jpg"
+        
+        # Create demo files (in real implementation, these would be the actual generated videos)
+        with open(video_path, "wb") as f:
+            f.write(b"dummy video content for demo" * 100)  # ~3KB file
+        
+        with open(thumbnail_path, "wb") as f:
+            f.write(b"dummy thumbnail content" * 50)  # ~1KB file
+        
+        # Broadcast completion
+        await manager.broadcast({
+            "type": "task_update",
+            "task_id": task_id,
+            "status": "completed",
+            "progress": 100,
+            "message": "Video generation completed successfully!",
+            "output_path": f"outputs/{task_id}.mp4"
+        })
+        
+        # Also broadcast queue update
+        await manager.broadcast({
+            "type": "queue_update",
+            "message": "Queue updated"
+        })
+        
+        logger.info(f"✅ Task {task_id} completed successfully")
+        logger.info(f"📁 Output saved to: {video_path}")
+        
+    except Exception as e:
+        logger.error(f"❌ Error processing task {task_id}: {e}")
+        
+        # Update task status to failed
+        if task_id in task_queue:
+            task_queue[task_id]["status"] = "failed"
+            task_queue[task_id]["error_message"] = str(e)
+            task_queue[task_id]["progress"] = 0
+            
+            # Broadcast failure
+            await manager.broadcast({
+                "type": "task_update",
+                "task_id": task_id,
+                "status": "failed",
+                "progress": 0,
+                "message": f"Generation failed: {str(e)}"
+            })
+
+# Start background task processing
+def start_background_task(task_id: str):
+    """Start background task processing"""
+    asyncio.create_task(process_generation_task(task_id))
+
+
+# Add task cancellation endpoint
+@app.post("/api/v1/queue/{task_id}/cancel")
+async def cancel_task(task_id: str):
+    """Cancel a pending or processing task"""
+    if task_id not in task_queue:
+        raise HTTPException(status_code=404, detail="Task not found")
+    
+    task_data = task_queue[task_id]
+    
+    if task_data["status"] in ["completed", "failed", "cancelled"]:
+        raise HTTPException(status_code=400, detail=f"Cannot cancel task with status: {task_data['status']}")
+    
+    # Update task status
+    task_data["status"] = "cancelled"
+    task_data["progress"] = 0
+    task_data["completed_at"] = datetime.now().isoformat()
+    
+    # Broadcast cancellation
+    await manager.broadcast({
+        "type": "task_update",
+        "task_id": task_id,
+        "status": "cancelled",
+        "progress": 0,
+        "message": "Task cancelled by user"
+    })
+    
+    return {"message": "Task cancelled successfully", "task_id": task_id}
+
+# Enhanced Model Management Endpoints
+
+@app.get("/api/v1/models/status/detailed")
+async def get_detailed_model_status():
+    """Get comprehensive model status with enhanced information"""
+    try:
+        from api.enhanced_model_management import get_enhanced_model_management_api
+        api = await get_enhanced_model_management_api()
+        return await api.get_detailed_model_status()
+    except Exception as e:
+        logger.error(f"Error getting detailed model status: {e}")
+        raise HTTPException(status_code=500, detail=f"Failed to get detailed model status: {str(e)}")
+
+@app.post("/api/v1/models/download/manage")
+async def manage_model_download(request: dict):
+    """Manage download operations (pause, resume, cancel, priority)"""
+    try:
+        from api.enhanced_model_management import get_enhanced_model_management_api, DownloadControlRequest
+        api = await get_enhanced_model_management_api()
+        
+        # Validate request
+        control_request = DownloadControlRequest(**request)
+        return await api.manage_download(control_request)
+    except Exception as e:
+        logger.error(f"Error managing model download: {e}")
+        raise HTTPException(status_code=500, detail=f"Failed to manage download: {str(e)}")
+
+@app.get("/api/v1/models/health")
+async def get_model_health_monitoring():
+    """Get comprehensive health monitoring data for all models"""
+    try:
+        from api.enhanced_model_management import get_enhanced_model_management_api
+        api = await get_enhanced_model_management_api()
+        return await api.get_health_monitoring_data()
+    except Exception as e:
+        logger.error(f"Error getting model health data: {e}")
+        raise HTTPException(status_code=500, detail=f"Failed to get health data: {str(e)}")
+
+@app.get("/api/v1/models/analytics")
+async def get_model_usage_analytics(time_period_days: int = 30):
+    """Get usage analytics and statistics for all models"""
+    try:
+        from api.enhanced_model_management import get_enhanced_model_management_api
+        api = await get_enhanced_model_management_api()
+        return await api.get_usage_analytics(time_period_days)
+    except Exception as e:
+        logger.error(f"Error getting model analytics: {e}")
+        raise HTTPException(status_code=500, detail=f"Failed to get analytics: {str(e)}")
+
+@app.post("/api/v1/models/cleanup")
+async def manage_storage_cleanup(request: dict):
+    """Manage storage cleanup operations"""
+    try:
+        from api.enhanced_model_management import get_enhanced_model_management_api, CleanupRequest
+        api = await get_enhanced_model_management_api()
+        
+        # Validate request
+        cleanup_request = CleanupRequest(**request)
+        return await api.manage_storage_cleanup(cleanup_request)
+    except Exception as e:
+        logger.error(f"Error managing storage cleanup: {e}")
+        raise HTTPException(status_code=500, detail=f"Failed to manage cleanup: {str(e)}")
+
+@app.post("/api/v1/models/fallback/suggest")
+async def suggest_fallback_alternatives(request: dict):
+    """Suggest alternative models and fallback strategies"""
+    try:
+        from api.enhanced_model_management import get_enhanced_model_management_api, FallbackSuggestionRequest
+        api = await get_enhanced_model_management_api()
+        
+        # Validate request
+        suggestion_request = FallbackSuggestionRequest(**request)
+        return await api.suggest_fallback_alternatives(suggestion_request)
+    except Exception as e:
+        logger.error(f"Error suggesting fallback alternatives: {e}")
+        raise HTTPException(status_code=500, detail=f"Failed to suggest alternatives: {str(e)}")
+
+# Fallback and Recovery System Endpoints
+
+@app.get("/api/v1/recovery/status")
+async def get_recovery_system_status():
+    """Get current status of the fallback and recovery system"""
+    try:
+        recovery_system = get_fallback_recovery_system()
+        
+        # Get recovery statistics
+        stats = recovery_system.get_recovery_statistics()
+        
+        # Get current health status
+        health_status = None
+        if recovery_system.current_health_status:
+            health = recovery_system.current_health_status
+            health_status = {
+                "overall_status": health.overall_status,
+                "cpu_usage_percent": health.cpu_usage_percent,
+                "memory_usage_percent": health.memory_usage_percent,
+                "vram_usage_percent": health.vram_usage_percent,
+                "gpu_available": health.gpu_available,
+                "model_loading_functional": health.model_loading_functional,
+                "generation_pipeline_functional": health.generation_pipeline_functional,
+                "issues": health.issues,
+                "recommendations": health.recommendations,
+                "last_check": health.last_check_timestamp.isoformat()
+            }
+        
+        return {
+            "recovery_system_active": True,
+            "health_monitoring_active": recovery_system.health_monitoring_active,
+            "mock_generation_enabled": recovery_system.mock_generation_enabled,
+            "degraded_mode_active": recovery_system.degraded_mode_active,
+            "recovery_statistics": stats,
+            "current_health_status": health_status,
+            "timestamp": datetime.now().isoformat()
+        }
+        
+    except Exception as e:
+        logger.error(f"Error getting recovery system status: {e}")
+        raise HTTPException(status_code=500, detail=f"Failed to get recovery system status: {str(e)}")
+
+@app.get("/api/v1/recovery/health")
+async def get_system_health():
+    """Get comprehensive system health status"""
+    try:
+        recovery_system = get_fallback_recovery_system()
+        health_status = await recovery_system.get_system_health_status()
+        
+        return {
+            "overall_status": health_status.overall_status,
+            "cpu_usage_percent": health_status.cpu_usage_percent,
+            "memory_usage_percent": health_status.memory_usage_percent,
+            "vram_usage_percent": health_status.vram_usage_percent,
+            "gpu_available": health_status.gpu_available,
+            "model_loading_functional": health_status.model_loading_functional,
+            "generation_pipeline_functional": health_status.generation_pipeline_functional,
+            "issues": health_status.issues,
+            "recommendations": health_status.recommendations,
+            "last_check_timestamp": health_status.last_check_timestamp.isoformat()
+        }
+        
+    except Exception as e:
+        logger.error(f"Error getting system health: {e}")
+        raise HTTPException(status_code=500, detail=f"Failed to get system health: {str(e)}")
+
+@app.post("/api/v1/recovery/trigger")
+async def trigger_manual_recovery(request: dict):
+    """Manually trigger recovery for a specific failure type"""
+    try:
+        failure_type = request.get("failure_type")
+        context = request.get("context", {})
+        
+        if not failure_type:
+            raise HTTPException(status_code=400, detail="failure_type is required")
+        
+        # Validate failure type
+        try:
+            failure_enum = FailureType(failure_type)
+        except ValueError:
+            raise HTTPException(
+                status_code=400, 
+                detail=f"Invalid failure type: {failure_type}. Valid types: {[ft.value for ft in FailureType]}"
+            )
+        
+        recovery_system = get_fallback_recovery_system()
+        
+        # Create a mock exception for manual recovery
+        mock_error = Exception(f"Manual recovery triggered for {failure_type}")
+        
+        # Attempt recovery
+        success, message = await recovery_system.handle_failure(
+            failure_enum, 
+            mock_error, 
+            {**context, "manual_trigger": True, "timestamp": datetime.now().isoformat()}
+        )
+        
+        return {
+            "recovery_triggered": True,
+            "failure_type": failure_type,
+            "success": success,
+            "message": message,
+            "timestamp": datetime.now().isoformat()
+        }
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Error triggering manual recovery: {e}")
+        raise HTTPException(status_code=500, detail=f"Failed to trigger recovery: {str(e)}")
+
+@app.post("/api/v1/recovery/reset")
+async def reset_recovery_state():
+    """Reset recovery state and re-enable real generation"""
+    try:
+        recovery_system = get_fallback_recovery_system()
+        recovery_system.reset_recovery_state()
+        
+        return {
+            "recovery_state_reset": True,
+            "mock_generation_disabled": True,
+            "real_generation_enabled": True,
+            "message": "Recovery state has been reset and real generation re-enabled",
+            "timestamp": datetime.now().isoformat()
+        }
+        
+    except Exception as e:
+        logger.error(f"Error resetting recovery state: {e}")
+        raise HTTPException(status_code=500, detail=f"Failed to reset recovery state: {str(e)}")
+
+@app.get("/api/v1/recovery/actions")
+async def get_available_recovery_actions():
+    """Get list of available recovery actions and failure types"""
+    try:
+        return {
+            "failure_types": [ft.value for ft in FailureType],
+            "recovery_actions": [ra.value for ra in RecoveryAction],
+            "failure_type_descriptions": {
+                FailureType.MODEL_LOADING_FAILURE.value: "Issues with loading AI models",
+                FailureType.VRAM_EXHAUSTION.value: "GPU memory exhaustion errors",
+                FailureType.GENERATION_PIPELINE_ERROR.value: "Errors in the generation pipeline",
+                FailureType.HARDWARE_OPTIMIZATION_FAILURE.value: "Hardware optimization failures",
+                FailureType.SYSTEM_RESOURCE_ERROR.value: "System resource issues",
+                FailureType.NETWORK_ERROR.value: "Network connectivity problems"
+            },
+            "recovery_action_descriptions": {
+                RecoveryAction.FALLBACK_TO_MOCK.value: "Switch to mock generation mode",
+                RecoveryAction.RETRY_MODEL_DOWNLOAD.value: "Retry downloading models",
+                RecoveryAction.APPLY_VRAM_OPTIMIZATION.value: "Apply VRAM optimization settings",
+                RecoveryAction.RESTART_PIPELINE.value: "Restart the generation pipeline",
+                RecoveryAction.CLEAR_GPU_CACHE.value: "Clear GPU memory cache",
+                RecoveryAction.REDUCE_GENERATION_PARAMS.value: "Reduce generation parameters",
+                RecoveryAction.ENABLE_CPU_OFFLOAD.value: "Enable CPU offloading",
+                RecoveryAction.SYSTEM_HEALTH_CHECK.value: "Perform system health check"
+            }
+        }
+        
+    except Exception as e:
+        logger.error(f"Error getting available recovery actions: {e}")
+        raise HTTPException(status_code=500, detail=f"Failed to get recovery actions: {str(e)}")
 
 if __name__ == "__main__":
     # Run with uvicorn
