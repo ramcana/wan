@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Error Handler Demo</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .demo-container { max-width: 800px; margin: 0 auto; }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1>Integrated Error Handler Demo</h1>
+        <h2>Sample Error Output</h2>
+        
+        <div class="error-container" style="border-left: 4px solid #fd7e14; padding: 15px; margin: 10px 0; background-color: #f8f9fa;">
+            <h4 style="color: #fd7e14; margin-top: 0;">Insufficient GPU Memory</h4>
+            <p style="margin: 10px 0;">Your GPU doesn't have enough memory for this generation. Try reducing the resolution or other settings.</p>
+            
+            <h5>Suggested Solutions:</h5><ul><li>Apply WAN22 system optimization to automatically manage VRAM usage</li><li>Enable quantization (bf16 or int8) to reduce memory requirements</li><li>Reduce the resolution (try 720p instead of 1080p)</li><li>Lower the number of inference steps</li><li>Close other GPU-intensive applications</li><li>Use the system optimization API to apply WAN22 optimizations</li><li>Check system stats API for current VRAM usage</li></ul>
+            
+            
+        <details style="margin-top: 10px;">
+            <summary style="cursor: pointer; color: #6c757d;">Technical Details</summary>
+            <pre style="background-color: #e9ecef; padding: 10px; margin-top: 5px; font-size: 12px; overflow-x: auto;">Error Type: RuntimeError
+Error Message: CUDA out of memory during model loading
+Timestamp: 2025-08-24 10:09:15
+Context:
+  model_type: t2v-A14B
+  resolution: 1080p
+  task_id: demo_html_001
+  fastapi_integration: True
+  error_handler_type: integrated
+  existing_handler_available: True
+System Info:
+  cpu_percent: 2.0
+  memory_percent: 26.8
+  available_memory_gb: 93.54410934448242
+  gpu_count: 1
+  current_device: 0
+  gpu_memory_allocated: 0.0
+  gpu_memory_reserved: 0.0
+Stack Trace:
+NoneType: None
+</pre>
+        </details>
+        
+        </div>
+        
+    </div>
+</body>
+</html>
+            

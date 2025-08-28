@@ -1,0 +1,16 @@
+{
+  "total_vram_gb": 15.99169921875,
+  "usable_vram_gb": 14.99169921875,
+  "vram_estimates": {
+    "1280x720": 8,
+    "1280x704": 8,
+    "1920x1080": 12,
+    "1920x1088": 12
+  },
+  "duration_multiplier": 0.2,
+  "max_safe_duration": 6,
+  "warnings": {
+    "high_vram_threshold": 12.793359375000001,
+    "very_high_vram_threshold": 14.392529296875
+  }
+}

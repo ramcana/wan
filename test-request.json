@@ -1,0 +1,6 @@
+{
+    "prompt": "test prompt for stream handling",
+    "options": {
+        "test": true
+    }
+}

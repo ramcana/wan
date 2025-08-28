@@ -24,7 +24,13 @@ class ConnectionManager:
             "system_stats": set(),
             "generation_progress": set(),
             "queue_updates": set(),
-            "alerts": set()
+            "alerts": set(),
+            # Enhanced model availability topics
+            "model_status": set(),
+            "download_progress": set(),
+            "health_monitoring": set(),
+            "fallback_notifications": set(),
+            "analytics_updates": set()
         }
         # Background tasks
         self._background_tasks: Set[asyncio.Task] = set()
@@ -135,6 +141,10 @@ class ConnectionManager:
         for connection_id in disconnected:
             await self.disconnect(connection_id)
     
+    async def broadcast(self, message: dict):
+        """Broadcast a message to all active connections (alias for broadcast_to_all)"""
+        await self.broadcast_to_all(message)
+    
     async def _start_background_tasks(self):
         """Start background tasks for real-time updates"""
         if self._is_running:
@@ -167,7 +177,7 @@ class ConnectionManager:
         logger.info("WebSocket background tasks stopped")
     
     async def _system_stats_updater(self):
-        """Background task to send system stats updates every 500ms"""
+        """Background task to send system stats updates every 500ms with enhanced VRAM monitoring"""
         from backend.core.system_integration import get_system_integration
         
         try:
@@ -179,6 +189,7 @@ class ConnectionManager:
                     stats = await integration.get_enhanced_system_stats()
                     
                     if stats:
+                        # Enhanced system stats with detailed VRAM monitoring
                         message = {
                             "type": "system_stats_update",
                             "data": {
@@ -195,6 +206,12 @@ class ConnectionManager:
                         }
                         
                         await self.broadcast_to_topic(message, "system_stats")
+                        
+                        # Send detailed VRAM monitoring if generation is active
+                        if self._is_generation_active():
+                            vram_details = await self._get_detailed_vram_stats(stats)
+                            if vram_details:
+                                await self.send_vram_monitoring_update(vram_details)
                     
                     # Wait 500ms for sub-second updates
                     await asyncio.sleep(0.5)
@@ -206,6 +223,58 @@ class ConnectionManager:
         except Exception as e:
             logger.error(f"System stats updater failed: {e}")
     
+    def _is_generation_active(self) -> bool:
+        """Check if any generation is currently active"""
+        try:
+            # Check if there are any subscribers to generation progress
+            return len(self.subscriptions.get("generation_progress", set())) > 0
+        except Exception:
+            return False
+    
+    async def _get_detailed_vram_stats(self, base_stats: dict) -> Optional[dict]:
+        """Get detailed VRAM statistics for real-time monitoring"""
+        try:
+            import torch
+            if not torch.cuda.is_available():
+                return None
+            
+            device = torch.cuda.current_device()
+            allocated_bytes = torch.cuda.memory_allocated(device)
+            reserved_bytes = torch.cuda.memory_reserved(device)
+            total_bytes = torch.cuda.get_device_properties(device).total_memory
+            
+            allocated_mb = allocated_bytes / (1024 * 1024)
+            reserved_mb = reserved_bytes / (1024 * 1024)
+            total_mb = total_bytes / (1024 * 1024)
+            free_mb = total_mb - allocated_mb
+            
+            # Calculate usage percentages
+            allocated_percent = (allocated_mb / total_mb) * 100
+            reserved_percent = (reserved_mb / total_mb) * 100
+            
+            # Determine warning levels
+            warning_level = "normal"
+            if allocated_percent > 90:
+                warning_level = "critical"
+            elif allocated_percent > 75:
+                warning_level = "warning"
+            
+            return {
+                "allocated_mb": round(allocated_mb, 1),
+                "reserved_mb": round(reserved_mb, 1),
+                "free_mb": round(free_mb, 1),
+                "total_mb": round(total_mb, 1),
+                "allocated_percent": round(allocated_percent, 1),
+                "reserved_percent": round(reserved_percent, 1),
+                "warning_level": warning_level,
+                "device_name": torch.cuda.get_device_name(device),
+                "device_id": device
+            }
+            
+        except Exception as e:
+            logger.warning(f"Failed to get detailed VRAM stats: {e}")
+            return None
+    
     async def send_generation_progress(self, task_id: str, progress: int, status: str, **kwargs):
         """Send generation progress update"""
         message = {
@@ -214,6 +283,65 @@ class ConnectionManager:
                 "task_id": task_id,
                 "progress": progress,
                 "status": status,
+                "timestamp": datetime.utcnow().isoformat(),
+                **kwargs
+            }
+        }
+        await self.broadcast_to_topic(message, "generation_progress")
+    
+    async def send_detailed_generation_progress(self, task_id: str, stage: str, progress: int, 
+                                              message: str, **kwargs):
+        """Send detailed generation progress with stage information"""
+        progress_message = {
+            "type": "detailed_generation_progress",
+            "data": {
+                "task_id": task_id,
+                "stage": stage,
+                "progress": progress,
+                "message": message,
+                "timestamp": datetime.utcnow().isoformat(),
+                **kwargs
+            }
+        }
+        await self.broadcast_to_topic(progress_message, "generation_progress")
+    
+    async def send_model_loading_progress(self, task_id: str, model_type: str, progress: int, 
+                                        status: str, **kwargs):
+        """Send model loading progress updates"""
+        message = {
+            "type": "model_loading_progress",
+            "data": {
+                "task_id": task_id,
+                "model_type": model_type,
+                "progress": progress,
+                "status": status,
+                "timestamp": datetime.utcnow().isoformat(),
+                **kwargs
+            }
+        }
+        await self.broadcast_to_topic(message, "generation_progress")
+    
+    async def send_vram_monitoring_update(self, vram_data: dict, **kwargs):
+        """Send real-time VRAM monitoring updates"""
+        message = {
+            "type": "vram_monitoring",
+            "data": {
+                **vram_data,
+                "timestamp": datetime.utcnow().isoformat(),
+                **kwargs
+            }
+        }
+        await self.broadcast_to_topic(message, "system_stats")
+    
+    async def send_generation_stage_notification(self, task_id: str, stage: str, 
+                                                stage_progress: int, **kwargs):
+        """Send generation stage notifications (model loading, processing, post-processing)"""
+        message = {
+            "type": "generation_stage",
+            "data": {
+                "task_id": task_id,
+                "stage": stage,
+                "stage_progress": stage_progress,
                 "timestamp": datetime.utcnow().isoformat(),
                 **kwargs
             }
@@ -252,6 +380,231 @@ class ConnectionManager:
     def get_subscription_count(self, topic: str) -> int:
         """Get number of subscribers for a topic"""
         return len(self.subscriptions.get(topic, set()))
+    
+    # Enhanced Model Availability WebSocket Methods
+    
+    async def send_model_status_update(self, model_id: str, **kwargs):
+        """Send model availability status update"""
+        message = {
+            "type": "model_status_update",
+            "data": {
+                "model_id": model_id,
+                "timestamp": datetime.utcnow().isoformat(),
+                **kwargs
+            }
+        }
+        await self.broadcast_to_topic(message, "model_status")
+    
+    async def send_download_progress_update(self, model_id: str, **kwargs):
+        """Send real-time download progress notifications"""
+        message = {
+            "type": "download_progress_update",
+            "data": {
+                "model_id": model_id,
+                "timestamp": datetime.utcnow().isoformat(),
+                **kwargs
+            }
+        }
+        await self.broadcast_to_topic(message, "download_progress")
+    
+    async def send_download_status_change(self, model_id: str, old_status: str, new_status: str, 
+                                        progress_percent: float = 0.0, **kwargs):
+        """Send download status change notification"""
+        message = {
+            "type": "download_status_change",
+            "data": {
+                "model_id": model_id,
+                "old_status": old_status,
+                "new_status": new_status,
+                "progress_percent": progress_percent,
+                "timestamp": datetime.utcnow().isoformat(),
+                **kwargs
+            }
+        }
+        await self.broadcast_to_topic(message, "download_progress")
+    
+    async def send_download_retry_notification(self, model_id: str, retry_count: int, 
+                                             max_retries: int, error_message: str = "", **kwargs):
+        """Send download retry attempt notification"""
+        message = {
+            "type": "download_retry",
+            "data": {
+                "model_id": model_id,
+                "retry_count": retry_count,
+                "max_retries": max_retries,
+                "error_message": error_message,
+                "timestamp": datetime.utcnow().isoformat(),
+                **kwargs
+            }
+        }
+        await self.broadcast_to_topic(message, "download_progress")
+    
+    async def send_health_monitoring_alert(self, model_id: str, health_status: str, **kwargs):
+        """Send health monitoring alerts and notifications"""
+        message = {
+            "type": "health_monitoring_alert",
+            "data": {
+                "model_id": model_id,
+                "health_status": health_status,
+                "timestamp": datetime.utcnow().isoformat(),
+                **kwargs
+            }
+        }
+        await self.broadcast_to_topic(message, "health_monitoring")
+    
+    async def send_corruption_detection_alert(self, model_id: str, corruption_type: str, 
+                                            severity: str, repair_action: str = "", **kwargs):
+        """Send corruption detection alert"""
+        message = {
+            "type": "corruption_detection",
+            "data": {
+                "model_id": model_id,
+                "corruption_type": corruption_type,
+                "severity": severity,
+                "repair_action": repair_action,
+                "timestamp": datetime.utcnow().isoformat(),
+                **kwargs
+            }
+        }
+        await self.broadcast_to_topic(message, "health_monitoring")
+    
+    async def send_model_availability_change(self, model_id: str, old_availability: str, 
+                                           new_availability: str, reason: str = "", **kwargs):
+        """Send model availability change notifications"""
+        message = {
+            "type": "model_availability_change",
+            "data": {
+                "model_id": model_id,
+                "old_availability": old_availability,
+                "new_availability": new_availability,
+                "reason": reason,
+                "timestamp": datetime.utcnow().isoformat(),
+                **kwargs
+            }
+        }
+        await self.broadcast_to_topic(message, "model_status")
+    
+    async def send_fallback_strategy_notification(self, original_model: str, 
+                                                user_interaction_required: bool = False, **kwargs):
+        """Send fallback strategy notifications with user interaction options"""
+        message = {
+            "type": "fallback_strategy",
+            "data": {
+                "original_model": original_model,
+                "user_interaction_required": user_interaction_required,
+                "timestamp": datetime.utcnow().isoformat(),
+                **kwargs
+            }
+        }
+        await self.broadcast_to_topic(message, "fallback_notifications")
+    
+    async def send_alternative_model_suggestion(self, original_model: str, suggested_model: str, 
+                                              compatibility_score: float, reason: str, **kwargs):
+        """Send alternative model suggestion notification"""
+        message = {
+            "type": "alternative_model_suggestion",
+            "data": {
+                "original_model": original_model,
+                "suggested_model": suggested_model,
+                "compatibility_score": compatibility_score,
+                "reason": reason,
+                "timestamp": datetime.utcnow().isoformat(),
+                **kwargs
+            }
+        }
+        await self.broadcast_to_topic(message, "fallback_notifications")
+    
+    async def send_model_queue_notification(self, model_id: str, queue_position: int, 
+                                          estimated_wait_time: Optional[float] = None, **kwargs):
+        """Send model download queue notification"""
+        message = {
+            "type": "model_queue_update",
+            "data": {
+                "model_id": model_id,
+                "queue_position": queue_position,
+                "estimated_wait_time": estimated_wait_time,
+                "timestamp": datetime.utcnow().isoformat(),
+                **kwargs
+            }
+        }
+        await self.broadcast_to_topic(message, "fallback_notifications")
+    
+    async def send_analytics_update(self, analytics_type: str, analytics_data: dict, **kwargs):
+        """Send analytics updates for dashboard integration"""
+        message = {
+            "type": "analytics_update",
+            "data": {
+                "analytics_type": analytics_type,
+                "timestamp": datetime.utcnow().isoformat(),
+                **analytics_data,
+                **kwargs
+            }
+        }
+        await self.broadcast_to_topic(message, "analytics_updates")
+    
+    async def send_usage_statistics_update(self, model_usage_data: dict, **kwargs):
+        """Send model usage statistics update"""
+        message = {
+            "type": "usage_statistics_update",
+            "data": {
+                "timestamp": datetime.utcnow().isoformat(),
+                **model_usage_data,
+                **kwargs
+            }
+        }
+        await self.broadcast_to_topic(message, "analytics_updates")
+    
+    async def send_cleanup_recommendation(self, recommendation_data: dict, **kwargs):
+        """Send model cleanup recommendation notification"""
+        message = {
+            "type": "cleanup_recommendation",
+            "data": {
+                "timestamp": datetime.utcnow().isoformat(),
+                **recommendation_data,
+                **kwargs
+            }
+        }
+        await self.broadcast_to_topic(message, "analytics_updates")
+    
+    async def send_model_update_notification(self, model_id: str, update_type: str, 
+                                           update_data: dict, **kwargs):
+        """Send model update notifications (version updates, etc.)"""
+        message = {
+            "type": "model_update_notification",
+            "data": {
+                "model_id": model_id,
+                "update_type": update_type,
+                "timestamp": datetime.utcnow().isoformat(),
+                **update_data,
+                **kwargs
+            }
+        }
+        await self.broadcast_to_topic(message, "model_status")
+    
+    async def send_batch_model_status_update(self, models_data: List[dict], **kwargs):
+        """Send batch model status update for multiple models"""
+        message = {
+            "type": "batch_model_status_update",
+            "data": {
+                "models": models_data,
+                "count": len(models_data),
+                "timestamp": datetime.utcnow().isoformat(),
+                **kwargs
+            }
+        }
+        await self.broadcast_to_topic(message, "model_status")
+    
+    async def send_system_health_report(self, health_report: dict, **kwargs):
+        """Send comprehensive system health report"""
+        message = {
+            "type": "system_health_report",
+            "data": {
+                "timestamp": datetime.utcnow().isoformat(),
+                **health_report,
+                **kwargs
+            }
+        }
+        await self.broadcast_to_topic(message, "health_monitoring")
 
 # Global connection manager instance
 connection_manager = ConnectionManager()

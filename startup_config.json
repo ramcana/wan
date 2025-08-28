@@ -1,0 +1,62 @@
+{
+  "backend": {
+    "host": "localhost",
+    "port": 8000,
+    "auto_port": true,
+    "timeout": 30,
+    "reload": true,
+    "log_level": "info",
+    "workers": 1
+  },
+  "frontend": {
+    "host": "localhost",
+    "port": 3000,
+    "auto_port": true,
+    "timeout": 30,
+    "open_browser": true,
+    "hot_reload": true
+  },
+  "logging": {
+    "level": "info",
+    "file_enabled": true,
+    "console_enabled": true,
+    "max_file_size": 10485760,
+    "backup_count": 5,
+    "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  },
+  "recovery": {
+    "enabled": true,
+    "max_retry_attempts": 3,
+    "retry_delay": 2.0,
+    "exponential_backoff": true,
+    "auto_kill_processes": false,
+    "fallback_ports": [
+      8080,
+      8081,
+      8082,
+      3001,
+      3002,
+      3003
+    ]
+  },
+  "environment": {
+    "python_min_version": "3.8.0",
+    "node_min_version": "16.0.0",
+    "npm_min_version": "8.0.0",
+    "check_virtual_env": true,
+    "validate_dependencies": true,
+    "auto_install_missing": false
+  },
+  "security": {
+    "allow_admin_elevation": true,
+    "firewall_auto_exception": false,
+    "trusted_port_range": [
+      8000,
+      9000
+    ]
+  },
+  "retry_attempts": 3,
+  "retry_delay": 2.0,
+  "verbose_logging": false,
+  "auto_fix_issues": true
+}

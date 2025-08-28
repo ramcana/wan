@@ -1,69 +1,99 @@
 {
-  "system": {
-    "default_quantization": "bf16",
-    "enable_offload": true,
-    "vae_tile_size": 256,
-    "max_queue_size": 10,
-    "stats_refresh_interval": 5
-  },
-  "directories": {
-    "output_directory": "outputs",
-    "models_directory": "models",
-    "loras_directory": "loras"
-  },
   "generation": {
-    "default_resolution": "1280x720",
-    "default_steps": 50,
-    "default_duration": 4,
-    "default_fps": 24,
-    "max_prompt_length": 500,
-    "supported_resolutions": [
-      "854x480",
-      "480x854",
-      "1280x720",
-      "1280x704", 
-      "1920x1080"
-    ]
+    "mode": "real",
+    "enable_real_models": true,
+    "fallback_to_mock": false,
+    "auto_download_models": true,
+    "max_concurrent_generations": 1,
+    "generation_timeout_minutes": 45,
+    "enable_progress_tracking": true
   },
   "models": {
-    "t2v_model": "Wan2.2-T2V-A14B",
-    "i2v_model": "Wan2.2-I2V-A14B", 
-    "ti2v_model": "Wan2.2-TI2V-5B"
+    "base_path": "models",
+    "auto_optimize": true,
+    "enable_offloading": true,
+    "vram_management": true,
+    "quantization_enabled": true,
+    "quantization_level": "bf16",
+    "supported_types": [
+      "t2v-A14B",
+      "i2v-A14B",
+      "ti2v-5B"
+    ],
+    "default_model": "t2v-A14B",
+    "preload_models": false,
+    "model_cache_size": 2
+  },
+  "hardware": {
+    "auto_detect": true,
+    "optimize_for_hardware": true,
+    "vram_limit_gb": 14,
+    "cpu_threads": 32,
+    "enable_mixed_precision": true,
+    "enable_attention_slicing": true,
+    "enable_memory_efficient_attention": true,
+    "enable_xformers": true,
+    "vae_tile_size": 512,
+    "attention_slice_size": "auto"
   },
   "optimization": {
-    "default_quantization": "bf16",
-    "quantization_levels": ["fp16", "bf16", "int8"],
-    "vae_tile_size_range": [128, 512],
-    "max_vram_usage_gb": 12,
-    "enable_offload": true,
-    "vae_tile_size": 256
+    "max_vram_usage_gb": 14,
+    "enable_offload": false,
+    "vae_tile_size": 512,
+    "quantization_level": "bf16",
+    "enable_sequential_offload": false,
+    "attention_slice_size": "auto",
+    "enable_xformers": true,
+    "vae_tile_size_range": [
+      256,
+      1024
+    ]
   },
-  "ui": {
-    "max_file_size_mb": 10,
-    "supported_image_formats": ["PNG", "JPG", "JPEG", "WebP"],
-    "gallery_thumbnail_size": 256
+  "websocket": {
+    "enable_progress_updates": true,
+    "detailed_progress": true,
+    "resource_monitoring": true,
+    "update_interval_seconds": 0.5,
+    "vram_monitoring": true
+  },
+  "api": {
+    "host": "0.0.0.0",
+    "port": 8000,
+    "debug": false,
+    "cors_origins": [
+      "http://localhost:3000",
+      "http://127.0.0.1:3000"
+    ],
+    "rate_limiting": {
+      "enabled": true,
+      "requests_per_minute": 120
+    },
+    "max_request_size": "100MB",
+    "workers": 4
+  },
+  "database": {
+    "url": "sqlite:///./generation_tasks.db",
+    "echo": false,
+    "pool_size": 20,
+    "max_overflow": 30
+  },
+  "logging": {
+    "level": "INFO",
+    "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    "file": "logs/fastapi_backend.log",
+    "max_file_size": "50MB",
+    "backup_count": 5
+  },
+  "security": {
+    "secret_key": "your-secret-key-change-in-production",
+    "algorithm": "HS256",
+    "access_token_expire_minutes": 60
   },
   "performance": {
-    "target_720p_time_minutes": 9,
-    "target_1080p_time_minutes": 17,
-    "vram_warning_threshold": 0.9,
-    "cpu_warning_percent": 95,
-    "memory_warning_percent": 85,
-    "vram_warning_percent": 90,
-    "sample_interval_seconds": 30.0,
-    "max_history_samples": 100,
-    "cpu_monitoring_enabled": false,
-    "disk_io_monitoring_enabled": false,
-    "network_monitoring_enabled": false
-  },
-  "prompt_enhancement": {
-    "max_prompt_length": 500,
-    "enable_basic_quality": true,
-    "enable_vace_detection": true,
-    "enable_cinematic_enhancement": true,
-    "enable_style_detection": true,
-    "max_quality_keywords": 3,
-    "max_cinematic_keywords": 3,
-    "max_style_keywords": 2
+    "enable_torch_compile": true,
+    "torch_compile_mode": "default",
+    "enable_cuda_graphs": false,
+    "memory_format": "channels_last",
+    "enable_flash_attention": true
   }
 }

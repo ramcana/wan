@@ -16,6 +16,7 @@ import {
   BellOff,
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useWebSocket } from "@/hooks/use-websocket";
 import { cn } from "@/lib/utils";
 
 type SortOption = "created_at" | "status" | "progress";
@@ -37,8 +38,12 @@ const QueueManager: React.FC = () => {
   const [lastCompletedCount, setLastCompletedCount] = useState(0);
 
   const { data: queueStatus, isLoading, error, refetch } = useQueueStatus();
-
   const clearCompleted = useClearCompletedTasks();
+
+  // WebSocket for real-time updates
+  const { isConnected: wsConnected, lastMessage } = useWebSocket(
+    "ws://localhost:8000/ws"
+  );
 
   // Request notification permission
   useEffect(() => {
@@ -52,6 +57,43 @@ const QueueManager: React.FC = () => {
       }
     }
   }, []);
+
+  // Handle WebSocket messages for real-time updates
+  useEffect(() => {
+    if (lastMessage) {
+      const message = lastMessage;
+
+      if (message.type === "task_update") {
+        // Refresh queue when task updates are received
+        refetch();
+
+        // Show notification for completed tasks
+        if (
+          message.data?.status === "completed" &&
+          notificationsEnabled &&
+          "Notification" in window
+        ) {
+          new Notification("Video Generation Complete", {
+            body: `Your video has finished generating!`,
+            icon: "/favicon.ico",
+          });
+        }
+
+        // Show toast for task updates
+        if (message.data?.message) {
+          toast({
+            title: "Task Update",
+            description: message.data.message,
+            variant:
+              message.data.status === "failed" ? "destructive" : "default",
+          });
+        }
+      } else if (message.type === "queue_update") {
+        // Refresh queue when queue updates are received
+        refetch();
+      }
+    }
+  }, [lastMessage, refetch, notificationsEnabled, toast]);
 
   // Show completion notifications
   useEffect(() => {
@@ -186,6 +228,20 @@ const QueueManager: React.FC = () => {
             <CardTitle className="text-lg">Task Queue</CardTitle>
 
             <div className="flex flex-wrap items-center gap-2">
+              {/* WebSocket Connection Status */}
+              <Badge
+                variant={wsConnected ? "default" : "destructive"}
+                className="flex items-center gap-1"
+              >
+                <div
+                  className={cn(
+                    "w-2 h-2 rounded-full",
+                    wsConnected ? "bg-green-500" : "bg-red-500"
+                  )}
+                />
+                {wsConnected ? "Live Updates" : "Offline"}
+              </Badge>
+
               {/* Notifications Toggle */}
               <Button
                 variant="outline"

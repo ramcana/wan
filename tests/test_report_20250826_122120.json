@@ -1,0 +1,155 @@
+{
+  "test_run_info": {
+    "start_time": "2025-08-26T12:21:11.751783",
+    "end_time": "2025-08-26T12:21:20.363192",
+    "total_duration": 8.611409,
+    "python_version": "3.11.4 (tags/v3.11.4:d2340ef, Jun  7 2023, 05:45:37) [MSC v.1934 64 bit (AMD64)]",
+    "platform": "win32"
+  },
+  "summary": {
+    "total_categories": 14,
+    "passed_categories": 0,
+    "failed_categories": 14,
+    "category_success_rate": 0.0,
+    "total_tests": 0,
+    "passed_tests": 0,
+    "failed_tests": 0,
+    "skipped_tests": 0,
+    "test_success_rate": 0,
+    "performance_tests_passed": false
+  },
+  "category_results": {
+    "Unit Tests - Environment Validator": {
+      "category": "Unit Tests - Environment Validator",
+      "duration": 0.7607479095458984,
+      "return_code": 4,
+      "stdout": "",
+      "stderr": "ERROR: usage: __main__.py [options] [file_or_dir] [file_or_dir] [...]\n__main__.py: error: unrecognized arguments: --json-report --json-report-file=E:\\wan\\tests\\results_unit_tests_-_environment_validator.json\n  inifile: E:\\wan\\tests\\pytest.ini\n  rootdir: E:\\wan\\tests\n\n",
+      "test_results": {},
+      "success": false
+    },
+    "Unit Tests - Port Manager": {
+      "category": "Unit Tests - Port Manager",
+      "duration": 0.5858542919158936,
+      "return_code": 4,
+      "stdout": "",
+      "stderr": "ERROR: usage: __main__.py [options] [file_or_dir] [file_or_dir] [...]\n__main__.py: error: unrecognized arguments: --json-report --json-report-file=E:\\wan\\tests\\results_unit_tests_-_port_manager.json\n  inifile: E:\\wan\\tests\\pytest.ini\n  rootdir: E:\\wan\\tests\n\n",
+      "test_results": {},
+      "success": false
+    },
+    "Unit Tests - Process Manager": {
+      "category": "Unit Tests - Process Manager",
+      "duration": 0.6080327033996582,
+      "return_code": 4,
+      "stdout": "",
+      "stderr": "ERROR: usage: __main__.py [options] [file_or_dir] [file_or_dir] [...]\n__main__.py: error: unrecognized arguments: --json-report --json-report-file=E:\\wan\\tests\\results_unit_tests_-_process_manager.json\n  inifile: E:\\wan\\tests\\pytest.ini\n  rootdir: E:\\wan\\tests\n\n",
+      "test_results": {},
+      "success": false
+    },
+    "Unit Tests - Recovery Engine": {
+      "category": "Unit Tests - Recovery Engine",
+      "duration": 0.6242289543151855,
+      "return_code": 4,
+      "stdout": "",
+      "stderr": "ERROR: usage: __main__.py [options] [file_or_dir] [file_or_dir] [...]\n__main__.py: error: unrecognized arguments: --json-report --json-report-file=E:\\wan\\tests\\results_unit_tests_-_recovery_engine.json\n  inifile: E:\\wan\\tests\\pytest.ini\n  rootdir: E:\\wan\\tests\n\n",
+      "test_results": {},
+      "success": false
+    },
+    "Unit Tests - Configuration": {
+      "category": "Unit Tests - Configuration",
+      "duration": 0.6060192584991455,
+      "return_code": 4,
+      "stdout": "",
+      "stderr": "ERROR: usage: __main__.py [options] [file_or_dir] [file_or_dir] [...]\n__main__.py: error: unrecognized arguments: --json-report --json-report-file=E:\\wan\\tests\\results_unit_tests_-_configuration.json\n  inifile: E:\\wan\\tests\\pytest.ini\n  rootdir: E:\\wan\\tests\n\n",
+      "test_results": {},
+      "success": false
+    },
+    "Unit Tests - CLI and Logging": {
+      "category": "Unit Tests - CLI and Logging",
+      "duration": 0.5913362503051758,
+      "return_code": 4,
+      "stdout": "",
+      "stderr": "ERROR: usage: __main__.py [options] [file_or_dir] [file_or_dir] [...]\n__main__.py: error: unrecognized arguments: --json-report --json-report-file=E:\\wan\\tests\\results_unit_tests_-_cli_and_logging.json\n  inifile: E:\\wan\\tests\\pytest.ini\n  rootdir: E:\\wan\\tests\n\n",
+      "test_results": {},
+      "success": false
+    },
+    "Integration Tests - Port Management": {
+      "category": "Integration Tests - Port Management",
+      "duration": 0.6034510135650635,
+      "return_code": 4,
+      "stdout": "",
+      "stderr": "ERROR: usage: __main__.py [options] [file_or_dir] [file_or_dir] [...]\n__main__.py: error: unrecognized arguments: --json-report --json-report-file=E:\\wan\\tests\\results_integration_tests_-_port_management.json\n  inifile: E:\\wan\\tests\\pytest.ini\n  rootdir: E:\\wan\\tests\n\n",
+      "test_results": {},
+      "success": false
+    },
+    "Integration Tests - Process Lifecycle": {
+      "category": "Integration Tests - Process Lifecycle",
+      "duration": 0.6003117561340332,
+      "return_code": 4,
+      "stdout": "",
+      "stderr": "ERROR: usage: __main__.py [options] [file_or_dir] [file_or_dir] [...]\n__main__.py: error: unrecognized arguments: --json-report --json-report-file=E:\\wan\\tests\\results_integration_tests_-_process_lifecycle.json\n  inifile: E:\\wan\\tests\\pytest.ini\n  rootdir: E:\\wan\\tests\n\n",
+      "test_results": {},
+      "success": false
+    },
+    "Integration Tests - Recovery Engine": {
+      "category": "Integration Tests - Recovery Engine",
+      "duration": 0.6097807884216309,
+      "return_code": 4,
+      "stdout": "",
+      "stderr": "ERROR: usage: __main__.py [options] [file_or_dir] [file_or_dir] [...]\n__main__.py: error: unrecognized arguments: --json-report --json-report-file=E:\\wan\\tests\\results_integration_tests_-_recovery_engine.json\n  inifile: E:\\wan\\tests\\pytest.ini\n  rootdir: E:\\wan\\tests\n\n",
+      "test_results": {},
+      "success": false
+    },
+    "Integration Tests - Configuration": {
+      "category": "Integration Tests - Configuration",
+      "duration": 0.5896282196044922,
+      "return_code": 4,
+      "stdout": "",
+      "stderr": "ERROR: usage: __main__.py [options] [file_or_dir] [file_or_dir] [...]\n__main__.py: error: unrecognized arguments: --json-report --json-report-file=E:\\wan\\tests\\results_integration_tests_-_configuration.json\n  inifile: E:\\wan\\tests\\pytest.ini\n  rootdir: E:\\wan\\tests\n\n",
+      "test_results": {},
+      "success": false
+    },
+    "Integration Tests - Error Handling": {
+      "category": "Integration Tests - Error Handling",
+      "duration": 0.6161577701568604,
+      "return_code": 4,
+      "stdout": "",
+      "stderr": "ERROR: usage: __main__.py [options] [file_or_dir] [file_or_dir] [...]\n__main__.py: error: unrecognized arguments: --json-report --json-report-file=E:\\wan\\tests\\results_integration_tests_-_error_handling.json\n  inifile: E:\\wan\\tests\\pytest.ini\n  rootdir: E:\\wan\\tests\n\n",
+      "test_results": {},
+      "success": false
+    },
+    "Integration Tests - Windows Specific": {
+      "category": "Integration Tests - Windows Specific",
+      "duration": 0.5861847400665283,
+      "return_code": 4,
+      "stdout": "",
+      "stderr": "ERROR: usage: __main__.py [options] [file_or_dir] [file_or_dir] [...]\n__main__.py: error: unrecognized arguments: --json-report --json-report-file=E:\\wan\\tests\\results_integration_tests_-_windows_specific.json\n  inifile: E:\\wan\\tests\\pytest.ini\n  rootdir: E:\\wan\\tests\n\n",
+      "test_results": {},
+      "success": false
+    },
+    "Comprehensive Integration Tests": {
+      "category": "Comprehensive Integration Tests",
+      "duration": 0.6105217933654785,
+      "return_code": 4,
+      "stdout": "",
+      "stderr": "ERROR: usage: __main__.py [options] [file_or_dir] [file_or_dir] [...]\n__main__.py: error: unrecognized arguments: --json-report --json-report-file=E:\\wan\\tests\\results_comprehensive_integration_tests.json\n  inifile: E:\\wan\\tests\\pytest.ini\n  rootdir: E:\\wan\\tests\n\n",
+      "test_results": {},
+      "success": false
+    },
+    "Performance Benchmarks": {
+      "category": "Performance Benchmarks",
+      "duration": 0.6011357307434082,
+      "return_code": 4,
+      "stdout": "",
+      "stderr": "ERROR: usage: __main__.py [options] [file_or_dir] [file_or_dir] [...]\n__main__.py: error: unrecognized arguments: --json-report --json-report-file=E:\\wan\\tests\\results_performance_benchmarks.json\n  inifile: E:\\wan\\tests\\pytest.ini\n  rootdir: E:\\wan\\tests\n\n",
+      "test_results": {},
+      "success": false
+    }
+  },
+  "recommendations": [
+    "Address failures in: Unit Tests - Environment Validator, Unit Tests - Port Manager, Unit Tests - Process Manager, Unit Tests - Recovery Engine, Unit Tests - Configuration, Unit Tests - CLI and Logging, Integration Tests - Port Management, Integration Tests - Process Lifecycle, Integration Tests - Recovery Engine, Integration Tests - Configuration, Integration Tests - Error Handling, Integration Tests - Windows Specific, Comprehensive Integration Tests, Performance Benchmarks",
+    "Performance benchmarks failed - investigate startup time and resource usage",
+    "Integration test failures indicate potential system-level issues",
+    "Unit test failures indicate component-level issues that should be fixed first"
+  ]
+}

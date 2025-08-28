@@ -156,7 +156,7 @@ const AdvancedSystemMonitor: React.FC = () => {
     subscribe,
     unsubscribe,
     lastMessage,
-  } = useWebSocket("ws://localhost:8000/api/v1/ws");
+  } = useWebSocket("ws://localhost:8000/ws");
 
   const chartRef = useRef<ChartJS<"line", any, any>>(null);
 

@@ -1,0 +1,106 @@
+{
+  "version": "1.0.0",
+  "user_preferences": {
+    "automation_level": "AutomationLevel.SEMI_AUTOMATIC",
+    "download_config": {
+      "max_retries": 3,
+      "retry_delay_base": 2.0,
+      "max_retry_delay": 300.0,
+      "bandwidth_limit_mbps": null,
+      "max_concurrent_downloads": 2,
+      "enable_resume": true,
+      "enable_pause": true,
+      "chunk_size_mb": 10.0,
+      "verify_integrity": true,
+      "cleanup_failed_downloads": true
+    },
+    "health_monitoring": {
+      "enabled": true,
+      "check_interval_hours": 24,
+      "integrity_check_enabled": true,
+      "performance_monitoring_enabled": true,
+      "auto_repair_enabled": false,
+      "corruption_threshold": 0.1,
+      "performance_degradation_threshold": 0.3,
+      "cleanup_corrupted_models": false
+    },
+    "fallback_config": {
+      "enabled": true,
+      "suggest_alternatives": true,
+      "auto_queue_requests": false,
+      "compatibility_threshold": 0.7,
+      "max_wait_time_minutes": 60,
+      "prefer_local_models": true,
+      "fallback_to_mock_enabled": true
+    },
+    "analytics_config": {
+      "enabled": true,
+      "collect_usage_stats": true,
+      "collect_performance_metrics": true,
+      "retention_days": 90,
+      "anonymize_data": true,
+      "share_analytics": false,
+      "enable_recommendations": true,
+      "auto_cleanup_suggestions": false
+    },
+    "update_config": {
+      "enabled": true,
+      "auto_check_updates": true,
+      "check_interval_hours": 168,
+      "auto_download_updates": false,
+      "auto_install_updates": false,
+      "backup_before_update": true,
+      "rollback_on_failure": true,
+      "update_during_low_usage": true
+    },
+    "notification_config": {
+      "enabled": true,
+      "download_progress": true,
+      "health_alerts": true,
+      "update_notifications": true,
+      "fallback_notifications": true,
+      "analytics_reports": false,
+      "email_notifications": false,
+      "webhook_url": null
+    },
+    "storage_config": {
+      "max_storage_gb": null,
+      "cleanup_threshold_percent": 85.0,
+      "min_free_space_gb": 5.0,
+      "auto_cleanup_enabled": false,
+      "preserve_recent_models_days": 7,
+      "preserve_frequently_used": true
+    },
+    "preferred_models": [],
+    "blocked_models": []
+  },
+  "admin_policies": {
+    "enforce_storage_limits": true,
+    "max_user_storage_gb": null,
+    "allow_external_downloads": true,
+    "require_approval_for_updates": false,
+    "max_concurrent_users": null,
+    "bandwidth_limit_per_user_mbps": null,
+    "allowed_model_sources": [
+      "huggingface",
+      "local"
+    ],
+    "blocked_model_patterns": [],
+    "security_scan_required": false,
+    "audit_logging_enabled": true
+  },
+  "feature_flags": {
+    "flags": {
+      "enhanced_downloads": true,
+      "health_monitoring": true,
+      "intelligent_fallback": true,
+      "usage_analytics": true,
+      "auto_updates": false,
+      "real_time_notifications": true
+    },
+    "rollout_percentage": {},
+    "user_overrides": {}
+  },
+  "last_updated": "2025-08-27 11:59:34.799456",
+  "config_schema_version": "1.0.0"
+}

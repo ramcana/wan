@@ -1791,13 +1791,14 @@ class EnhancedUIEventHandlers:
             
             # Estimate VRAM usage based on duration
             base_vram = {
-                "1280x720": 8,
-                "1280x704": 8,
-                "1920x1080": 12,
-                "1024x1024": 6
+                "1280x720": 6,   # RTX 4080 optimized
+                "1280x704": 6,
+                "1920x1080": 10,
+                "1920x1088": 10,
+                "2560x1440": 14
             }
             
-            vram_per_second = base_vram.get(resolution, 8) * 0.2  # Additional VRAM per second
+            vram_per_second = base_vram.get(resolution, 6) * 0.15  # Additional VRAM per second
             estimated_vram = base_vram.get(resolution, 8) + (duration - 4) * vram_per_second
             
             # Estimate total generation time
@@ -1809,7 +1810,7 @@ class EnhancedUIEventHandlers:
             
             # Create validation message
             warnings = []
-            if duration > 6:
+            if duration > 10:
                 warnings.append(f"Long duration ({duration}s) will require significant VRAM (~{estimated_vram:.1f}GB)")
             if estimated_time > 30:
                 warnings.append(f"Generation time will be very long (~{estimated_time:.1f} minutes)")

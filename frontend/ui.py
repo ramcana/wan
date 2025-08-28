@@ -323,8 +323,16 @@ class Wan22UI:
                     "default_quantization": "bf16",
                     "enable_offload": True,
                     "vae_tile_size": 256,
-                    "max_vram_usage_gb": 12
+                    ""max_vram_usage_gb": 14
                 },
+                # RTX 4080 Optimizations
+                "rtx4080_optimizations": {
+                    "enable_bf16": True,
+                    "disable_cpu_offload": True,
+                    "vae_tile_size": 512,
+                    "max_concurrent_generations": 1,
+                    "enable_attention_slicing": True
+                },,
                 "generation": {
                     "default_resolution": "1280x720",
                     "default_steps": 50,

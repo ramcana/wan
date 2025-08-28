@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WAN22 Connection Test</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f5f5f5;
+      }
+      .test-card {
+        background: white;
+        border-radius: 8px;
+        padding: 20px;
+        margin: 10px 0;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      .status {
+        padding: 10px;
+        border-radius: 4px;
+        margin: 10px 0;
+      }
+      .success {
+        background-color: #d4edda;
+        color: #155724;
+      }
+      .error {
+        background-color: #f8d7da;
+        color: #721c24;
+      }
+      .warning {
+        background-color: #fff3cd;
+        color: #856404;
+      }
+      .loading {
+        background-color: #cce7ff;
+        color: #004085;
+      }
+      button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        margin: 5px;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      button:disabled {
+        background-color: #6c757d;
+        cursor: not-allowed;
+      }
+      pre {
+        background: #f8f9fa;
+        padding: 10px;
+        border-radius: 4px;
+        overflow-x: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>WAN22 Backend Connection Test</h1>
+
+    <div class="test-card">
+      <h2>Backend API Tests</h2>
+      <button onclick="testHealth()">Test Health Endpoint</button>
+      <button onclick="testQueue()">Test Queue Endpoint</button>
+      <button onclick="testWebSocket()">Test WebSocket</button>
+      <button onclick="runAllTests()">Run All Tests</button>
+
+      <div id="results"></div>
+    </div>
+
+    <div class="test-card">
+      <h2>Instructions</h2>
+      <ol>
+        <li>
+          <strong>Start the backend server first:</strong>
+          <pre>
+cd backend
+python start_server.py</pre
+          >
+        </li>
+        <li><strong>Then run these tests</strong> to verify the connection</li>
+        <li>
+          <strong>If tests pass:</strong> Your React frontend should work
+          correctly
+        </li>
+        <li>
+          <strong>If tests fail:</strong> Check that the backend server is
+          running on port 8000
+        </li>
+      </ol>
+    </div>
+
+    <script>
+      const API_BASE = "http://localhost:8000";
+      const WS_URL = "ws://localhost:8000/ws";
+
+      function addResult(test, status, message, details = "") {
+        const results = document.getElementById("results");
+        const statusClass =
+          status === "success"
+            ? "success"
+            : status === "error"
+            ? "error"
+            : "warning";
+
+        results.innerHTML += `
+                <div class="status ${statusClass}">
+                    <strong>${test}:</strong> ${message}
+                    ${details ? `<pre>${details}</pre>` : ""}
+                </div>
+            `;
+      }
+
+      function clearResults() {
+        document.getElementById("results").innerHTML = "";
+      }
+
+      async function testHealth() {
+        addResult("Health Test", "loading", "Testing health endpoint...");
+
+        try {
+          const response = await fetch(`${API_BASE}/api/v1/system/health`);
+          const data = await response.json();
+
+          if (response.ok) {
+            addResult(
+              "Health Test",
+              "success",
+              "Backend is running!",
+              JSON.stringify(data, null, 2)
+            );
+          } else {
+            addResult(
+              "Health Test",
+              "error",
+              `HTTP ${response.status}`,
+              JSON.stringify(data, null, 2)
+            );
+          }
+        } catch (error) {
+          addResult("Health Test", "error", "Connection failed", error.message);
+        }
+      }
+
+      async function testQueue() {
+        addResult("Queue Test", "loading", "Testing queue endpoint...");
+
+        try {
+          const response = await fetch(`${API_BASE}/api/v1/queue`);
+          const data = await response.json();
+
+          if (response.ok) {
+            addResult(
+              "Queue Test",
+              "success",
+              "Queue endpoint working!",
+              JSON.stringify(data, null, 2)
+            );
+          } else {
+            addResult(
+              "Queue Test",
+              "error",
+              `HTTP ${response.status}`,
+              JSON.stringify(data, null, 2)
+            );
+          }
+        } catch (error) {
+          addResult("Queue Test", "error", "Connection failed", error.message);
+        }
+      }
+
+      function testWebSocket() {
+        addResult(
+          "WebSocket Test",
+          "loading",
+          "Testing WebSocket connection..."
+        );
+
+        try {
+          const ws = new WebSocket(WS_URL);
+
+          ws.onopen = () => {
+            addResult(
+              "WebSocket Test",
+              "success",
+              "WebSocket connected successfully!"
+            );
+            ws.send(
+              JSON.stringify({ type: "test", message: "Hello from test" })
+            );
+          };
+
+          ws.onmessage = (event) => {
+            addResult(
+              "WebSocket Test",
+              "success",
+              "Received WebSocket message",
+              event.data
+            );
+            ws.close();
+          };
+
+          ws.onerror = (error) => {
+            addResult(
+              "WebSocket Test",
+              "error",
+              "WebSocket connection failed",
+              error.toString()
+            );
+          };
+
+          ws.onclose = (event) => {
+            if (event.code !== 1000) {
+              addResult(
+                "WebSocket Test",
+                "error",
+                `WebSocket closed unexpectedly (${event.code})`,
+                event.reason
+              );
+            }
+          };
+
+          // Timeout after 5 seconds
+          setTimeout(() => {
+            if (ws.readyState === WebSocket.CONNECTING) {
+              ws.close();
+              addResult(
+                "WebSocket Test",
+                "error",
+                "WebSocket connection timeout"
+              );
+            }
+          }, 5000);
+        } catch (error) {
+          addResult(
+            "WebSocket Test",
+            "error",
+            "WebSocket test failed",
+            error.message
+          );
+        }
+      }
+
+      async function runAllTests() {
+        clearResults();
+        addResult("Test Suite", "loading", "Running all tests...");
+
+        await testHealth();
+        await new Promise((resolve) => setTimeout(resolve, 500)); // Small delay
+
+        await testQueue();
+        await new Promise((resolve) => setTimeout(resolve, 500)); // Small delay
+
+        testWebSocket();
+      }
+    </script>
+  </body>
+</html>

@@ -8,7 +8,7 @@ import logging
 from typing import List, Dict, Optional, Any, Callable
 from dataclasses import dataclass
 import gradio as gr
-from component_validator import ComponentValidator
+from utils_new.component_validator import ComponentValidator
 
 logger = logging.getLogger(__name__)
 

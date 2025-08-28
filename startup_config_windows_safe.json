@@ -1,0 +1,37 @@
+{
+    "backend": {
+        "host": "127.0.0.1",
+        "port": 8080,
+        "auto_port": true,
+        "timeout": 30
+    },
+    "frontend": {
+        "host": "127.0.0.1",
+        "port": 3001,
+        "auto_port": true,
+        "timeout": 30
+    },
+    "windows_optimizations": {
+        "safe_binding": true,
+        "localhost_only": true,
+        "avoid_privileged_ports": true
+    },
+    "permission_handling": {
+        "safe_port_ranges": [
+            [
+                8080,
+                8090
+            ],
+            [
+                3001,
+                3010
+            ],
+            [
+                9000,
+                9010
+            ]
+        ],
+        "avoid_system_ports": true,
+        "user_space_only": true
+    }
+}

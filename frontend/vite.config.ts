@@ -1,10 +1,19 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
+import { createEnvReloadPlugin } from './src/lib/vite-env-reload-plugin'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    createEnvReloadPlugin({
+      watchedVars: ['VITE_API_URL', 'VITE_DEV_MODE'],
+      onEnvChange: (changedVars) => {
+        console.log('Environment variables changed, triggering cache clear:', changedVars);
+      }
+    })
+  ],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
@@ -19,8 +28,17 @@ export default defineConfig({
     port: 3000,
     proxy: {
       '/api': {
-        target: 'http://localhost:8000',
+        target: process.env.VITE_API_URL || 'http://localhost:9000',
         changeOrigin: true,
+        secure: false,
+        configure: (proxy, options) => {
+          proxy.on('error', (err, req, res) => {
+            console.log('Proxy error:', err);
+          });
+          proxy.on('proxyReq', (proxyReq, req, res) => {
+            console.log('Proxying request:', req.method, req.url, 'to', options.target);
+          });
+        }
       },
     },
   },

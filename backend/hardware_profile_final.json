@@ -1,0 +1,12 @@
+{
+  "cpu_model": "AMD Ryzen Threadripper PRO 5995WX 64-Cores     ",
+  "cpu_cores": 64,
+  "cpu_threads": 128,
+  "total_memory_gb": 127.83,
+  "gpu_model": "NVIDIA GeForce RTX 4080",
+  "vram_gb": 15.99,
+  "cuda_version": "11.8",
+  "driver_version": "",
+  "platform_info": "Windows 10 AMD64",
+  "detection_timestamp": "2025-08-23T23:54:41.081689"
+}

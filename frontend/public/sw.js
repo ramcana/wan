@@ -50,20 +50,24 @@ self.addEventListener('activate', (event) => {
   console.log('Service Worker: Activating...');
   
   event.waitUntil(
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
-        cacheNames.map((cacheName) => {
-          if (cacheName !== STATIC_CACHE_NAME && cacheName !== DYNAMIC_CACHE_NAME) {
-            console.log('Service Worker: Deleting old cache:', cacheName);
-            return caches.delete(cacheName);
-          }
-        })
-      );
-    })
+    Promise.all([
+      // Clean up old caches
+      caches.keys().then((cacheNames) => {
+        return Promise.all(
+          cacheNames.map((cacheName) => {
+            if (cacheName !== STATIC_CACHE_NAME && cacheName !== DYNAMIC_CACHE_NAME) {
+              console.log('Service Worker: Deleting old cache:', cacheName);
+              return caches.delete(cacheName);
+            }
+          })
+        );
+      }),
+      // Take control of all pages immediately
+      self.clients.claim()
+    ])
   );
   
-  // Take control of all pages
-  self.clients.claim();
+  console.log('Service Worker: Activated and claimed all clients');
 });
 
 // Fetch event - handle requests
@@ -71,18 +75,24 @@ self.addEventListener('fetch', (event) => {
   const { request } = event;
   const url = new URL(request.url);
   
-  // Handle different types of requests
-  if (request.method === 'GET') {
-    if (url.pathname.startsWith('/api/')) {
-      // Handle API requests
-      event.respondWith(handleApiRequest(request));
+  // Handle different types of requests with fallback
+  try {
+    if (request.method === 'GET') {
+      if (url.pathname.startsWith('/api/')) {
+        // Handle API requests
+        event.respondWith(handleApiRequestWithFallback(request));
+      } else {
+        // Handle static assets and pages
+        event.respondWith(handleStaticRequestWithFallback(request));
+      }
     } else {
-      // Handle static assets and pages
-      event.respondWith(handleStaticRequest(request));
+      // Handle POST/PUT/DELETE requests (potentially offline)
+      event.respondWith(handleMutationRequestWithFallback(request));
     }
-  } else {
-    // Handle POST/PUT/DELETE requests (potentially offline)
-    event.respondWith(handleMutationRequest(request));
+  } catch (error) {
+    console.log('Service Worker: Fetch event handler error, falling back to network:', error);
+    // Fallback to direct network request
+    event.respondWith(fetch(request));
   }
 });
 
@@ -192,21 +202,88 @@ async function handleApiRequest(request) {
   }
 }
 
+// Fallback wrapper for mutation requests
+async function handleMutationRequestWithFallback(request) {
+  try {
+    return await handleMutationRequest(request);
+  } catch (error) {
+    console.log('Service Worker: Mutation request handler failed, falling back to direct network:', error);
+    // Fallback to direct network request
+    return fetch(request);
+  }
+}
+
+// Fallback wrapper for API requests
+async function handleApiRequestWithFallback(request) {
+  try {
+    return await handleApiRequest(request);
+  } catch (error) {
+    console.log('Service Worker: API request handler failed, falling back to direct network:', error);
+    // Fallback to direct network request
+    return fetch(request);
+  }
+}
+
+// Fallback wrapper for static requests
+async function handleStaticRequestWithFallback(request) {
+  try {
+    return await handleStaticRequest(request);
+  } catch (error) {
+    console.log('Service Worker: Static request handler failed, falling back to direct network:', error);
+    // Fallback to direct network request
+    return fetch(request);
+  }
+}
+
 // Handle mutation requests (POST, PUT, DELETE)
 async function handleMutationRequest(request) {
   try {
-    // Try network first
+    // Try network first - use original request
     const networkResponse = await fetch(request);
     return networkResponse;
   } catch (error) {
     console.log('Service Worker: Mutation request failed, queuing for later:', error);
+    
+    // Use proper stream management to avoid "body stream already read" errors
+    let requestBody = null;
+    try {
+      if (request.method !== 'GET') {
+        // Clone the request before reading body to preserve original stream
+        const clonedRequest = request.clone();
+        requestBody = await clonedRequest.text();
+      }
+    } catch (streamError) {
+      console.log('Service Worker: Stream consumption error, attempting recovery:', streamError);
+      
+      // Handle "body stream already read" errors
+      if (streamError.message.includes('body stream already read') || 
+          streamError.message.includes('stream')) {
+        try {
+          // Try to recreate the request using ReadableStream APIs
+          if (typeof ReadableStream !== 'undefined' && typeof TextEncoder !== 'undefined') {
+            // For consumed streams, we can't read the body, so use null
+            requestBody = null;
+            console.log('Service Worker: Using null body due to consumed stream');
+          } else {
+            // Fallback for older browsers
+            requestBody = null;
+          }
+        } catch (recreationError) {
+          console.log('Service Worker: Request recreation failed, using null body:', recreationError);
+          requestBody = null;
+        }
+      } else {
+        console.log('Service Worker: Non-stream error, using null body:', streamError);
+        requestBody = null;
+      }
+    }
     
     // Queue the request for when online
     const requestData = {
       url: request.url,
       method: request.method,
       headers: Object.fromEntries(request.headers.entries()),
-      body: request.method !== 'GET' ? await request.text() : null,
+      body: requestBody,
       timestamp: Date.now(),
       id: generateRequestId()
     };
@@ -335,7 +412,18 @@ self.addEventListener('message', (event) => {
   
   switch (type) {
     case 'SKIP_WAITING':
+      console.log('Service Worker: Received SKIP_WAITING message');
       self.skipWaiting();
+      break;
+      
+    case 'CLEAR_CACHE':
+      console.log('Service Worker: Clearing all caches');
+      clearAllCaches().then(() => {
+        event.ports[0]?.postMessage({ success: true });
+      }).catch(error => {
+        console.error('Service Worker: Failed to clear caches:', error);
+        event.ports[0]?.postMessage({ success: false, error: error.message });
+      });
       break;
       
     case 'GET_OFFLINE_QUEUE':
@@ -364,14 +452,28 @@ async function getOfflineQueueCount() {
     const request = indexedDB.open('wan22-offline', 1);
     
     request.onerror = () => reject(request.error);
+    request.onupgradeneeded = (event) => {
+      const db = event.target.result;
+      if (!db.objectStoreNames.contains('requests')) {
+        db.createObjectStore('requests', { keyPath: 'id', autoIncrement: true });
+      }
+    };
     request.onsuccess = () => {
       const db = request.result;
-      const transaction = db.transaction(['requests'], 'readonly');
-      const store = transaction.objectStore('requests');
-      
-      const countRequest = store.count();
-      countRequest.onsuccess = () => resolve(countRequest.result);
-      countRequest.onerror = () => reject(countRequest.error);
+      try {
+        if (!db.objectStoreNames.contains('requests')) {
+          resolve(0);
+          return;
+        }
+        const transaction = db.transaction(['requests'], 'readonly');
+        const store = transaction.objectStore('requests');
+        
+        const countRequest = store.count();
+        countRequest.onsuccess = () => resolve(countRequest.result);
+        countRequest.onerror = () => reject(countRequest.error);
+      } catch (error) {
+        resolve(0); // Return 0 if object store doesn't exist
+      }
     };
   });
 }
@@ -382,14 +484,28 @@ async function clearOfflineQueue() {
     const request = indexedDB.open('wan22-offline', 1);
     
     request.onerror = () => reject(request.error);
+    request.onupgradeneeded = (event) => {
+      const db = event.target.result;
+      if (!db.objectStoreNames.contains('requests')) {
+        db.createObjectStore('requests', { keyPath: 'id', autoIncrement: true });
+      }
+    };
     request.onsuccess = () => {
       const db = request.result;
-      const transaction = db.transaction(['requests'], 'readwrite');
-      const store = transaction.objectStore('requests');
-      
-      const clearRequest = store.clear();
-      clearRequest.onsuccess = () => resolve();
-      clearRequest.onerror = () => reject(clearRequest.error);
+      try {
+        if (!db.objectStoreNames.contains('requests')) {
+          resolve();
+          return;
+        }
+        const transaction = db.transaction(['requests'], 'readwrite');
+        const store = transaction.objectStore('requests');
+        
+        const clearRequest = store.clear();
+        clearRequest.onsuccess = () => resolve();
+        clearRequest.onerror = () => reject(clearRequest.error);
+      } catch (error) {
+        resolve(); // Resolve even if clearing fails
+      }
     };
   });
 }
@@ -397,6 +513,24 @@ async function clearOfflineQueue() {
 // Generate unique request ID
 function generateRequestId() {
   return Date.now().toString(36) + Math.random().toString(36).substr(2);
+}
+
+// Clear all caches
+async function clearAllCaches() {
+  try {
+    const cacheNames = await caches.keys();
+    const deletePromises = cacheNames.map(cacheName => {
+      console.log('Service Worker: Deleting cache:', cacheName);
+      return caches.delete(cacheName);
+    });
+    
+    await Promise.all(deletePromises);
+    console.log('Service Worker: All caches cleared');
+    return true;
+  } catch (error) {
+    console.error('Service Worker: Failed to clear caches:', error);
+    throw error;
+  }
 }
 
 // Background sync for processing queued requests

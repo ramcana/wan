@@ -39,12 +39,14 @@ wan2.2/
 ### Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone <repository-url>
    cd wan2.2
    ```
 
 2. **Install Python dependencies**
+
    ```bash
    pip install -r backend/requirements.txt
    ```
@@ -58,24 +60,45 @@ wan2.2/
 
 ### Running the Application
 
-#### Full Stack (Recommended)
+#### Intelligent Startup Manager (Recommended)
+
 ```bash
+# Enhanced startup with automatic port management and error recovery
+start_both_servers.bat
+
+# With verbose output for troubleshooting
+start_both_servers.bat --verbose
+
+# Force basic mode if needed
+start_both_servers.bat --basic
+```
+
+#### Alternative Startup Methods
+
+```bash
+# Full stack using main.py
 python main.py --mode full
-```
 
-#### Backend Only
-```bash
+# Backend only
 python main.py --mode backend
-```
 
-#### Frontend Only
-```bash
+# Frontend only
 python main.py --mode frontend
+
+# Legacy Gradio UI
+python main.py --mode gradio
 ```
 
-#### Legacy Gradio UI
+#### Manual Startup (Advanced Users)
+
 ```bash
-python main.py --mode gradio
+# Backend server
+cd backend
+python start_server.py
+
+# Frontend server (separate terminal)
+cd frontend
+npm run dev
 ```
 
 ### Access Points
@@ -90,22 +113,26 @@ python main.py --mode gradio
 ### Project Structure
 
 #### Backend (`/backend/`)
+
 - **FastAPI** application with async support
 - **SQLAlchemy** for database operations
 - **Pydantic** for data validation
 - **Background task processing** for video generation
 
 #### Core (`/core/`)
+
 - **Domain models** and business logic
 - **Service layer** for core functionality
 - **Interfaces** for dependency injection
 
 #### Infrastructure (`/infrastructure/`)
+
 - **Configuration management** with environment support
 - **Hardware monitoring** and optimization
 - **Storage management** for models and outputs
 
 #### Frontend (`/frontend/`)
+
 - **React** with TypeScript
 - **Tailwind CSS** for styling
 - **React Query** for API state management
@@ -114,15 +141,18 @@ python main.py --mode gradio
 ### Key Features
 
 - **Multi-model support**: T2V-A14B, I2V-A14B, TI2V-5B
+- **Intelligent startup management**: Automatic port conflict resolution, environment validation, and error recovery
 - **Real-time progress tracking**
 - **Hardware optimization** for RTX 4080
 - **Queue management** for batch processing
 - **LoRA support** for model customization
 - **Responsive UI** with dark/light themes
+- **Performance monitoring**: Startup metrics, resource usage tracking, and optimization suggestions
 
 ### Configuration
 
 Configuration is managed through:
+
 - `infrastructure/config/config.json` - Main configuration
 - Environment variables for sensitive data
 - Runtime configuration through the UI
@@ -148,9 +178,30 @@ npm test
 
 ## Troubleshooting
 
+### Startup Issues
+
+1. **Port conflicts**: The startup manager automatically resolves port conflicts
+
+   ```bash
+   # Use verbose mode to see port resolution details
+   start_both_servers.bat --verbose
+   ```
+
+2. **Environment issues**: Run diagnostic mode for comprehensive system check
+
+   ```bash
+   python scripts/startup_manager.py --diagnostics
+   ```
+
+3. **Permission errors**: Run as administrator or use basic mode
+   ```bash
+   start_both_servers.bat --basic
+   ```
+
 ### Common Issues
 
 1. **Import errors**: Run the import update script:
+
    ```bash
    python utils_new/update_imports.py
    ```
@@ -159,9 +210,19 @@ npm test
 
 3. **Model loading**: Ensure models are downloaded to the `models/` directory
 
+### Startup Manager Documentation
+
+For detailed information about the intelligent startup system:
+
+- **Integration Guide**: `docs/STARTUP_MANAGER_INTEGRATION_GUIDE.md`
+- **Migration Guide**: `docs/STARTUP_MANAGER_MIGRATION_GUIDE.md`
+- **User Guide**: `docs/STARTUP_MANAGER_USER_GUIDE.md`
+- **Developer Guide**: `docs/STARTUP_MANAGER_DEVELOPER_GUIDE.md`
+
 ### Logs
 
 - Application logs: Check console output
+- Startup logs: `logs/startup_*.log`
 - Error logs: `logs/` directory
 - Database: `wan22_tasks.db`
 

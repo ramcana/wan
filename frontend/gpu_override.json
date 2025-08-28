@@ -1,0 +1,36 @@
+{
+  "gpu_detected": true,
+  "gpu_name": "NVIDIA GeForce RTX 4080",
+  "total_vram_gb": 15.99169921875,
+  "usable_vram_gb": 13.99169921875,
+  "optimizations": {
+    "quantization": "bf16",
+    "cpu_offload": false,
+    "vae_tiling": true,
+    "attention_slicing": true,
+    "max_resolution": "2560x1440",
+    "max_duration": 10
+  },
+  "vram_estimates": {
+    "1280x720": {
+      "base": 6,
+      "per_second": 0.9
+    },
+    "1280x704": {
+      "base": 6,
+      "per_second": 0.9
+    },
+    "1920x1080": {
+      "base": 10,
+      "per_second": 1.5
+    },
+    "1920x1088": {
+      "base": 10,
+      "per_second": 1.5
+    },
+    "2560x1440": {
+      "base": 14,
+      "per_second": 2.1
+    }
+  }
+}

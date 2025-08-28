@@ -46,6 +46,7 @@ class GenerationTaskDB(Base):
     model_type = Column(Enum(ModelTypeEnum), nullable=False)
     prompt = Column(Text, nullable=False)
     image_path = Column(String, nullable=True)
+    end_image_path = Column(String, nullable=True)  # For I2V and TI2V interpolation
     resolution = Column(String, nullable=False, default="1280x720")
     steps = Column(Integer, nullable=False, default=50)
     lora_path = Column(String, nullable=True)
@@ -91,3 +92,9 @@ def init_database():
     """Initialize database with tables"""
     create_tables()
     print("Database initialized successfully")
+
+def reset_database():
+    """Reset database by dropping and recreating all tables"""
+    Base.metadata.drop_all(bind=engine)
+    Base.metadata.create_all(bind=engine)
+    print("Database reset successfully")

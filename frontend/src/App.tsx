@@ -20,6 +20,7 @@ import {
   SkipLinks,
   LandmarkNavigation,
 } from "@/components/ui/keyboard-navigation";
+import StartupValidator from "@/components/startup/StartupValidator";
 import { useEffect } from "react";
 
 function App() {
@@ -38,26 +39,28 @@ function App() {
     <ErrorBoundary>
       <ThemeProvider defaultTheme="light" storageKey="wan22-ui-theme">
         <AccessibilityProvider>
-          <SkipLinks />
-          <LandmarkNavigation />
-          <Layout>
-            <ErrorBoundary>
-              <main id="main-content" tabIndex={-1}>
-                <Routes>
-                  <Route path="/" element={<GenerationPage />} />
-                  <Route path="/generation" element={<GenerationPage />} />
-                  <Route path="/queue" element={<QueuePage />} />
-                  <Route path="/system" element={<SystemPage />} />
-                  <Route path="/outputs" element={<OutputsPage />} />
-                  <Route path="/lora" element={<LoRAPage />} />
-                </Routes>
-              </main>
-            </ErrorBoundary>
-          </Layout>
-          <RouteFocusManager />
-          <OfflineIndicator />
-          <KeyboardHelpButton />
-          <Toaster />
+          <StartupValidator>
+            <SkipLinks />
+            <LandmarkNavigation />
+            <Layout>
+              <ErrorBoundary>
+                <main id="main-content" tabIndex={-1}>
+                  <Routes>
+                    <Route path="/" element={<GenerationPage />} />
+                    <Route path="/generation" element={<GenerationPage />} />
+                    <Route path="/queue" element={<QueuePage />} />
+                    <Route path="/system" element={<SystemPage />} />
+                    <Route path="/outputs" element={<OutputsPage />} />
+                    <Route path="/lora" element={<LoRAPage />} />
+                  </Routes>
+                </main>
+              </ErrorBoundary>
+            </Layout>
+            <RouteFocusManager />
+            <OfflineIndicator />
+            <KeyboardHelpButton />
+            <Toaster />
+          </StartupValidator>
         </AccessibilityProvider>
       </ThemeProvider>
     </ErrorBoundary>
