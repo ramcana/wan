@@ -1,0 +1,49 @@
+{
+  "id": "snapshot_20250806_175314_594",
+  "timestamp": "2025-08-06T17:53:14.598980",
+  "description": "Pre-installation snapshot",
+  "phase": "detection",
+  "files": {
+    "E:\\wan\\local_installation\\config.json": "E:\\wan\\local_installation\\.wan22_backup\\snapshots\\snapshot_20250806_175314_594\\files\\config.json"
+  },
+  "directories": {},
+  "config_data": {
+    "system": {
+      "default_quantization": "fp16",
+      "enable_offload": false,
+      "vae_tile_size": 384,
+      "max_queue_size": 20,
+      "worker_threads": 32,
+      "enable_gpu_acceleration": true,
+      "cuda_enabled": false,
+      "enable_disk_cache": true,
+      "cache_size_gb": 10,
+      "temp_space_gb": 20
+    },
+    "optimization": {
+      "max_vram_usage_gb": 12,
+      "cpu_threads": 102,
+      "memory_pool_gb": 16
+    },
+    "models": {
+      "cache_models": true,
+      "preload_models": false,
+      "model_precision": "fp16"
+    },
+    "metadata": {
+      "hardware_tier": "high_performance",
+      "generated_for": {
+        "cpu": "AMD64 Family 25 Model 8 Stepping 2, AuthenticAMD",
+        "memory_gb": 127,
+        "gpu": "NVIDIA GeForce RTX 4080",
+        "os": "Windows 10 10.0.19045"
+      },
+      "generation_timestamp": "2025-08-05T19:12:30.338801"
+    }
+  },
+  "metadata": {
+    "installation_path": "E:\\wan\\local_installation",
+    "created_by": "RollbackManager",
+    "version": "1.0"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "id": "snapshot_20250806_180248_206",
+  "timestamp": "2025-08-06T18:02:48.207085",
+  "description": "Before dependencies phase",
+  "phase": "detection",
+  "files": {},
+  "directories": {},
+  "config_data": {
+    "system": {
+      "default_quantization": "int8",
+      "enable_offload": true,
+      "vae_tile_size": 128,
+      "max_queue_size": 20,
+      "worker_threads": 32,
+      "enable_gpu_acceleration": true,
+      "cuda_enabled": false,
+      "enable_disk_cache": true,
+      "cache_size_gb": 10,
+      "temp_space_gb": 20
+    },
+    "optimization": {
+      "max_vram_usage_gb": 2,
+      "cpu_threads": 102,
+      "memory_pool_gb": 32
+    },
+    "models": {
+      "cache_models": false,
+      "preload_models": false,
+      "model_precision": "int8"
+    },
+    "metadata": {
+      "hardware_tier": "budget",
+      "generated_for": {
+        "cpu": "AMD64 Family 25 Model 8 Stepping 2, AuthenticAMD",
+        "memory_gb": 127,
+        "gpu": "32.0.15.7680",
+        "os": "Windows 10 10.0.19045"
+      },
+      "generation_timestamp": "2025-08-06T17:55:55.512760"
+    }
+  },
+  "metadata": {
+    "installation_path": "E:\\wan\\local_installation",
+    "created_by": "RollbackManager",
+    "version": "1.0"
+  }
+}

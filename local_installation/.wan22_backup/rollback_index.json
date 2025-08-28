@@ -1,0 +1,194 @@
+{
+  "snapshot_20250803_180450_872": {
+    "id": "snapshot_20250803_180450_872",
+    "timestamp": "2025-08-03T18:04:50.876171",
+    "description": "Pre-installation snapshot",
+    "phase": "detection"
+  },
+  "snapshot_20250803_180455_351": {
+    "id": "snapshot_20250803_180455_351",
+    "timestamp": "2025-08-03T18:04:55.351357",
+    "description": "Before dependencies phase",
+    "phase": "detection"
+  },
+  "snapshot_20250804_103700_369": {
+    "id": "snapshot_20250804_103700_369",
+    "timestamp": "2025-08-04T10:37:00.372559",
+    "description": "Pre-installation snapshot",
+    "phase": "detection"
+  },
+  "snapshot_20250804_103706_753": {
+    "id": "snapshot_20250804_103706_753",
+    "timestamp": "2025-08-04T10:37:06.754147",
+    "description": "Before dependencies phase",
+    "phase": "detection"
+  },
+  "snapshot_20250804_104636_010": {
+    "id": "snapshot_20250804_104636_010",
+    "timestamp": "2025-08-04T10:46:36.033602",
+    "description": "Pre-installation snapshot",
+    "phase": "detection"
+  },
+  "snapshot_20250804_104639_974": {
+    "id": "snapshot_20250804_104639_974",
+    "timestamp": "2025-08-04T10:46:39.975778",
+    "description": "Before dependencies phase",
+    "phase": "detection"
+  },
+  "snapshot_20250804_104722_408": {
+    "id": "snapshot_20250804_104722_408",
+    "timestamp": "2025-08-04T10:47:22.409675",
+    "description": "Before configuration phase",
+    "phase": "dependencies"
+  },
+  "snapshot_20250804_105140_563": {
+    "id": "snapshot_20250804_105140_563",
+    "timestamp": "2025-08-04T10:51:40.584497",
+    "description": "Pre-installation snapshot",
+    "phase": "detection"
+  },
+  "snapshot_20250804_105144_644": {
+    "id": "snapshot_20250804_105144_644",
+    "timestamp": "2025-08-04T10:51:44.644096",
+    "description": "Before dependencies phase",
+    "phase": "detection"
+  },
+  "snapshot_20250804_105414_375": {
+    "id": "snapshot_20250804_105414_375",
+    "timestamp": "2025-08-04T10:54:14.376084",
+    "description": "Before configuration phase",
+    "phase": "models"
+  },
+  "snapshot_20250804_110233_092": {
+    "id": "snapshot_20250804_110233_092",
+    "timestamp": "2025-08-04T11:02:33.096211",
+    "description": "Pre-installation snapshot",
+    "phase": "detection"
+  },
+  "snapshot_20250804_110237_017": {
+    "id": "snapshot_20250804_110237_017",
+    "timestamp": "2025-08-04T11:02:37.018984",
+    "description": "Before dependencies phase",
+    "phase": "detection"
+  },
+  "snapshot_20250804_110506_415": {
+    "id": "snapshot_20250804_110506_415",
+    "timestamp": "2025-08-04T11:05:06.415594",
+    "description": "Before configuration phase",
+    "phase": "models"
+  },
+  "snapshot_20250804_122950_945": {
+    "id": "snapshot_20250804_122950_945",
+    "timestamp": "2025-08-04T12:29:50.948243",
+    "description": "Pre-installation snapshot",
+    "phase": "detection"
+  },
+  "snapshot_20250804_122955_718": {
+    "id": "snapshot_20250804_122955_718",
+    "timestamp": "2025-08-04T12:29:55.719413",
+    "description": "Before dependencies phase",
+    "phase": "detection"
+  },
+  "snapshot_20250804_123040_350": {
+    "id": "snapshot_20250804_123040_350",
+    "timestamp": "2025-08-04T12:30:40.351957",
+    "description": "Before configuration phase",
+    "phase": "models"
+  },
+  "snapshot_20250805_191006_029": {
+    "id": "snapshot_20250805_191006_029",
+    "timestamp": "2025-08-05T19:10:06.033247",
+    "description": "Pre-installation snapshot",
+    "phase": "detection"
+  },
+  "snapshot_20250805_191014_286": {
+    "id": "snapshot_20250805_191014_286",
+    "timestamp": "2025-08-05T19:10:14.288153",
+    "description": "Before dependencies phase",
+    "phase": "detection"
+  },
+  "snapshot_20250805_191230_327": {
+    "id": "snapshot_20250805_191230_327",
+    "timestamp": "2025-08-05T19:12:30.328800",
+    "description": "Before configuration phase",
+    "phase": "models"
+  },
+  "snapshot_20250806_175314_594": {
+    "id": "snapshot_20250806_175314_594",
+    "timestamp": "2025-08-06T17:53:14.598980",
+    "description": "Pre-installation snapshot",
+    "phase": "detection"
+  },
+  "snapshot_20250806_175322_023": {
+    "id": "snapshot_20250806_175322_023",
+    "timestamp": "2025-08-06T17:53:22.024019",
+    "description": "Before dependencies phase",
+    "phase": "detection"
+  },
+  "snapshot_20250806_175555_501": {
+    "id": "snapshot_20250806_175555_501",
+    "timestamp": "2025-08-06T17:55:55.502759",
+    "description": "Before configuration phase",
+    "phase": "models"
+  },
+  "snapshot_20250806_180241_871": {
+    "id": "snapshot_20250806_180241_871",
+    "timestamp": "2025-08-06T18:02:41.875275",
+    "description": "Pre-installation snapshot",
+    "phase": "detection"
+  },
+  "snapshot_20250806_180248_206": {
+    "id": "snapshot_20250806_180248_206",
+    "timestamp": "2025-08-06T18:02:48.207085",
+    "description": "Before dependencies phase",
+    "phase": "detection"
+  },
+  "snapshot_20250806_180518_861": {
+    "id": "snapshot_20250806_180518_861",
+    "timestamp": "2025-08-06T18:05:18.862719",
+    "description": "Before configuration phase",
+    "phase": "models"
+  },
+  "snapshot_20250806_181026_192": {
+    "id": "snapshot_20250806_181026_192",
+    "timestamp": "2025-08-06T18:10:26.221271",
+    "description": "Pre-installation snapshot",
+    "phase": "detection"
+  },
+  "snapshot_20250806_181032_508": {
+    "id": "snapshot_20250806_181032_508",
+    "timestamp": "2025-08-06T18:10:32.509899",
+    "description": "Before dependencies phase",
+    "phase": "detection"
+  },
+  "snapshot_20250806_181303_151": {
+    "id": "snapshot_20250806_181303_151",
+    "timestamp": "2025-08-06T18:13:03.152205",
+    "description": "Before configuration phase",
+    "phase": "models"
+  },
+  "snapshot_20250806_181738_939": {
+    "id": "snapshot_20250806_181738_939",
+    "timestamp": "2025-08-06T18:17:38.944866",
+    "description": "Pre-installation snapshot",
+    "phase": "detection"
+  },
+  "snapshot_20250806_181745_358": {
+    "id": "snapshot_20250806_181745_358",
+    "timestamp": "2025-08-06T18:17:45.359543",
+    "description": "Before dependencies phase",
+    "phase": "detection"
+  },
+  "snapshot_20250806_182015_964": {
+    "id": "snapshot_20250806_182015_964",
+    "timestamp": "2025-08-06T18:20:15.965772",
+    "description": "Before configuration phase",
+    "phase": "models"
+  },
+  "snapshot_20250806_183733_856": {
+    "id": "snapshot_20250806_183733_856",
+    "timestamp": "2025-08-06T18:37:33.857802",
+    "description": "Installation completed successfully",
+    "phase": "validation"
+  }
+}

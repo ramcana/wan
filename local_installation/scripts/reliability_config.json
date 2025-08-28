@@ -1,0 +1,79 @@
+{
+  "retry": {
+    "max_retries": 3,
+    "base_delay_seconds": 2.0,
+    "max_delay_seconds": 60.0,
+    "exponential_base": 2.0,
+    "jitter_enabled": true,
+    "user_prompt_after_first_failure": true,
+    "allow_skip_retries": true
+  },
+  "timeouts": {
+    "model_download_seconds": 1800,
+    "dependency_install_seconds": 600,
+    "system_detection_seconds": 60,
+    "validation_seconds": 300,
+    "network_test_seconds": 30,
+    "cleanup_seconds": 120,
+    "context_multipliers": {
+      "large_file": 2.0,
+      "slow_network": 1.5,
+      "retry_attempt": 1.2,
+      "low_memory": 1.3
+    }
+  },
+  "recovery": {
+    "missing_method_recovery": true,
+    "model_validation_recovery": true,
+    "network_failure_recovery": true,
+    "dependency_recovery": true,
+    "automatic_cleanup": true,
+    "fallback_implementations": true,
+    "alternative_sources": [
+      "https://huggingface.co",
+      "https://hf-mirror.com",
+      "https://mirror.huggingface.co"
+    ]
+  },
+  "monitoring": {
+    "enable_health_monitoring": true,
+    "enable_performance_tracking": false,
+    "enable_predictive_analysis": false,
+    "health_check_interval_seconds": 60,
+    "performance_sample_rate": 0.1,
+    "alert_thresholds": {
+      "error_rate": 0.1,
+      "response_time_ms": 5000,
+      "memory_usage_percent": 90,
+      "disk_usage_percent": 95
+    },
+    "export_metrics": true,
+    "metrics_export_format": "json"
+  },
+  "features": {
+    "reliability_level": "standard",
+    "enable_enhanced_error_context": true,
+    "enable_missing_method_recovery": true,
+    "enable_model_validation_recovery": true,
+    "enable_network_failure_recovery": true,
+    "enable_dependency_recovery": true,
+    "enable_pre_installation_validation": true,
+    "enable_diagnostic_monitoring": true,
+    "enable_health_reporting": true,
+    "enable_timeout_management": true,
+    "enable_user_guidance_enhancements": true
+  },
+  "deployment": {
+    "environment": "development",
+    "log_level": "DEBUG",
+    "enable_debug_mode": true,
+    "enable_telemetry": true,
+    "telemetry_endpoint": null,
+    "support_contact": "support@wan22.com",
+    "documentation_url": "https://docs.wan22.com",
+    "enable_automatic_updates": false,
+    "update_check_interval_hours": 24
+  },
+  "version": "1.0.0",
+  "last_updated": "2025-08-05T18:40:57.530948"
+}

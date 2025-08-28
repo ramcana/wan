@@ -1,0 +1,2189 @@
+{
+  "export_timestamp": "2025-08-05T17:00:44.095912",
+  "period": {
+    "start": "2025-07-06T17:00:44.094911",
+    "end": "2025-08-05T17:00:44.094911"
+  },
+  "installation_reports": [
+    {
+      "id": "demo-failure-003",
+      "timestamp": "2025-08-05T17:00:44.038638",
+      "status": "failure",
+      "duration_seconds": 900.0,
+      "final_health_score": 17.0,
+      "user_interventions": 3
+    },
+    {
+      "id": "demo-minor-issues-002",
+      "timestamp": "2025-08-05T17:00:44.023073",
+      "status": "success",
+      "duration_seconds": 1800.0,
+      "final_health_score": 93.0,
+      "user_interventions": 1
+    },
+    {
+      "id": "demo-success-001",
+      "timestamp": "2025-08-05T17:00:44.017072",
+      "status": "success",
+      "duration_seconds": 1200.0,
+      "final_health_score": 99.0,
+      "user_interventions": 0
+    },
+    {
+      "id": "install-050",
+      "timestamp": "2025-08-05T16:32:26.567437",
+      "status": "partial",
+      "duration_seconds": 3041.5539393953077,
+      "final_health_score": 72.0,
+      "user_interventions": 0
+    },
+    {
+      "id": "install-049",
+      "timestamp": "2025-08-05T16:32:26.529424",
+      "status": "failure",
+      "duration_seconds": 982.8402453753893,
+      "final_health_score": 41.0,
+      "user_interventions": 0
+    },
+    {
+      "id": "install-048",
+      "timestamp": "2025-08-05T16:32:26.523422",
+      "status": "success",
+      "duration_seconds": 1140.7431878759826,
+      "final_health_score": 100.0,
+      "user_interventions": 0
+    },
+    {
+      "id": "install-047",
+      "timestamp": "2025-08-05T16:32:26.486018",
+      "status": "success",
+      "duration_seconds": 1231.5910115424392,
+      "final_health_score": 100.0,
+      "user_interventions": 0
+    },
+    {
+      "id": "install-046",
+      "timestamp": "2025-08-05T16:32:26.480003",
+      "status": "success",
+      "duration_seconds": 1135.2660948137764,
+      "final_health_score": 98.0,
+      "user_interventions": 0
+    },
+    {
+      "id": "install-045",
+      "timestamp": "2025-08-05T16:32:26.447717",
+      "status": "success",
+      "duration_seconds": 3234.7602024430944,
+      "final_health_score": 91.0,
+      "user_interventions": 0
+    },
+    {
+      "id": "install-044",
+      "timestamp": "2025-08-05T16:32:26.419524",
+      "status": "failure",
+      "duration_seconds": 1032.6823996272897,
+      "final_health_score": 38.0,
+      "user_interventions": 1
+    },
+    {
+      "id": "install-043",
+      "timestamp": "2025-08-05T16:32:26.403523",
+      "status": "success",
+      "duration_seconds": 1749.0119267780237,
+      "final_health_score": 92.0,
+      "user_interventions": 0
+    },
+    {
+      "id": "install-042",
+      "timestamp": "2025-08-05T16:32:26.367511",
+      "status": "failure",
+      "duration_seconds": 1073.7794191131652,
+      "final_health_score": 34.0,
+      "user_interventions": 2
+    },
+    {
+      "id": "install-041",
+      "timestamp": "2025-08-05T16:32:26.341511",
+      "status": "partial",
+      "duration_seconds": 3319.375717613264,
+      "final_health_score": 64.0,
+      "user_interventions": 3
+    },
+    {
+      "id": "install-040",
+      "timestamp": "2025-08-05T16:32:26.322993",
+      "status": "success",
+      "duration_seconds": 1180.3023871934474,
+      "final_health_score": 100.0,
+      "user_interventions": 0
+    },
+    {
+      "id": "install-039",
+      "timestamp": "2025-08-05T16:32:26.242621",
+      "status": "success",
+      "duration_seconds": 2371.120218370915,
+      "final_health_score": 100.0,
+      "user_interventions": 0
+    },
+    {
+      "id": "install-038",
+      "timestamp": "2025-08-05T16:32:26.236310",
+      "status": "success",
+      "duration_seconds": 3051.4392888195603,
+      "final_health_score": 99.0,
+      "user_interventions": 0
+    },
+    {
+      "id": "install-037",
+      "timestamp": "2025-08-05T16:32:26.230473",
+      "status": "success",
+      "duration_seconds": 1217.1237304880958,
+      "final_health_score": 100.0,
+      "user_interventions": 0
+    },
+    {
+      "id": "install-036",
+      "timestamp": "2025-08-05T16:32:26.205408",
+      "status": "failure",
+      "duration_seconds": 806.4304781848807,
+      "final_health_score": 25.0,
+      "user_interventions": 3
+    },
+    {
+      "id": "install-035",
+      "timestamp": "2025-08-05T16:32:26.193408",
+      "status": "success",
+      "duration_seconds": 2331.612650464871,
+      "final_health_score": 80.0,
+      "user_interventions": 3
+    },
+    {
+      "id": "install-034",
+      "timestamp": "2025-08-05T16:32:26.187398",
+      "status": "partial",
+      "duration_seconds": 4019.250639243368,
+      "final_health_score": 56.83541489099065,
+      "user_interventions": 3
+    },
+    {
+      "id": "install-033",
+      "timestamp": "2025-08-05T16:32:26.171398",
+      "status": "failure",
+      "duration_seconds": 1144.1585277211898,
+      "final_health_score": 40.0,
+      "user_interventions": 0
+    },
+    {
+      "id": "install-032",
+      "timestamp": "2025-08-05T16:32:26.154399",
+      "status": "failure",
+      "duration_seconds": 733.9004220039986,
+      "final_health_score": 39.0,
+      "user_interventions": 0
+    },
+    {
+      "id": "install-031",
+      "timestamp": "2025-08-05T16:32:26.138927",
+      "status": "success",
+      "duration_seconds": 1783.1229311223788,
+      "final_health_score": 100.0,
+      "user_interventions": 0
+    },
+    {
+      "id": "install-030",
+      "timestamp": "2025-08-05T16:32:26.131893",
+      "status": "success",
+      "duration_seconds": 1356.518248312938,
+      "final_health_score": 100.0,
+      "user_interventions": 0
+    },
+    {
+      "id": "install-029",
+      "timestamp": "2025-08-05T16:32:26.125894",
+      "status": "success",
+      "duration_seconds": 1308.9402152646303,
+      "final_health_score": 98.0,
+      "user_interventions": 0
+    },
+    {
+      "id": "install-028",
+      "timestamp": "2025-08-05T16:32:26.119786",
+      "status": "success",
+      "duration_seconds": 1161.4368700374757,
+      "final_health_score": 100.0,
+      "user_interventions": 0
+    },
+    {
+      "id": "install-027",
+      "timestamp": "2025-08-05T16:32:26.104786",
+      "status": "failure",
+      "duration_seconds": 686.1606241671865,
+      "final_health_score": 35.0,
+      "user_interventions": 3
+    },
+    {
+      "id": "install-026",
+      "timestamp": "2025-08-05T16:32:26.097786",
+      "status": "success",
+      "duration_seconds": 1175.722169977686,
+      "final_health_score": 100.0,
+      "user_interventions": 0
+    },
+    {
+      "id": "install-025",
+      "timestamp": "2025-08-05T16:32:26.091786",
+      "status": "success",
+      "duration_seconds": 1684.3254404715092,
+      "final_health_score": 100.0,
+      "user_interventions": 0
+    },
+    {
+      "id": "install-024",
+      "timestamp": "2025-08-05T16:32:26.084774",
+      "status": "failure",
+      "duration_seconds": 665.8582848962486,
+      "final_health_score": 50.0,
+      "user_interventions": 0
+    },
+    {
+      "id": "install-023",
+      "timestamp": "2025-08-05T16:32:26.058774",
+      "status": "failure",
+      "duration_seconds": 671.5034665242223,
+      "final_health_score": 25.0,
+      "user_interventions": 3
+    },
+    {
+      "id": "install-022",
+      "timestamp": "2025-08-05T16:32:26.047774",
+      "status": "success",
+      "duration_seconds": 1852.8057075787713,
+      "final_health_score": 93.0,
+      "user_interventions": 0
+    },
+    {
+      "id": "install-021",
+      "timestamp": "2025-08-05T16:32:26.030199",
+      "status": "partial",
+      "duration_seconds": 4248.127923130141,
+      "final_health_score": 73.19964465797183,
+      "user_interventions": 0
+    },
+    {
+      "id": "install-020",
+      "timestamp": "2025-08-05T16:32:26.024151",
+      "status": "success",
+      "duration_seconds": 1443.7664425975947,
+      "final_health_score": 100.0,
+      "user_interventions": 0
+    },
+    {
+      "id": "install-019",
+      "timestamp": "2025-08-05T16:32:26.016906",
+      "status": "success",
+      "duration_seconds": 1495.448316740726,
+      "final_health_score": 100.0,
+      "user_interventions": 0
+    },
+    {
+      "id": "install-018",
+      "timestamp": "2025-08-05T16:32:25.995907",
+      "status": "failure",
+      "duration_seconds": 1036.3729637048866,
+      "final_health_score": 20.0,
+      "user_interventions": 3
+    },
+    {
+      "id": "install-017",
+      "timestamp": "2025-08-05T16:32:25.974605",
+      "status": "partial",
+      "duration_seconds": 4649.279255611813,
+      "final_health_score": 49.0853354010783,
+      "user_interventions": 2
+    },
+    {
+      "id": "install-016",
+      "timestamp": "2025-08-05T16:32:25.968604",
+      "status": "partial",
+      "duration_seconds": 4294.219926547872,
+      "final_health_score": 73.07161131514479,
+      "user_interventions": 0
+    },
+    {
+      "id": "install-015",
+      "timestamp": "2025-08-05T16:32:25.952606",
+      "status": "success",
+      "duration_seconds": 2526.755745510571,
+      "final_health_score": 95.0,
+      "user_interventions": 1
+    },
+    {
+      "id": "install-014",
+      "timestamp": "2025-08-05T16:32:25.946605",
+      "status": "success",
+      "duration_seconds": 1719.1162516710972,
+      "final_health_score": 100.0,
+      "user_interventions": 0
+    },
+    {
+      "id": "install-013",
+      "timestamp": "2025-08-05T16:32:25.940604",
+      "status": "success",
+      "duration_seconds": 1440.657633620422,
+      "final_health_score": 100.0,
+      "user_interventions": 0
+    },
+    {
+      "id": "install-012",
+      "timestamp": "2025-08-05T16:32:25.928595",
+      "status": "success",
+      "duration_seconds": 2098.986454377671,
+      "final_health_score": 95.0,
+      "user_interventions": 0
+    },
+    {
+      "id": "install-011",
+      "timestamp": "2025-08-05T16:32:25.907454",
+      "status": "failure",
+      "duration_seconds": 768.6330587491857,
+      "final_health_score": 25.0,
+      "user_interventions": 2
+    },
+    {
+      "id": "install-010",
+      "timestamp": "2025-08-05T16:32:25.901454",
+      "status": "success",
+      "duration_seconds": 975.3858704099041,
+      "final_health_score": 100.0,
+      "user_interventions": 0
+    },
+    {
+      "id": "install-009",
+      "timestamp": "2025-08-05T16:32:25.895453",
+      "status": "success",
+      "duration_seconds": 1181.5316718507731,
+      "final_health_score": 100.0,
+      "user_interventions": 0
+    },
+    {
+      "id": "install-008",
+      "timestamp": "2025-08-05T16:32:25.889456",
+      "status": "success",
+      "duration_seconds": 983.0021239527935,
+      "final_health_score": 100.0,
+      "user_interventions": 0
+    },
+    {
+      "id": "install-007",
+      "timestamp": "2025-08-05T16:32:25.859443",
+      "status": "partial",
+      "duration_seconds": 2772.101221237461,
+      "final_health_score": 52.0,
+      "user_interventions": 3
+    },
+    {
+      "id": "install-006",
+      "timestamp": "2025-08-05T16:32:25.852444",
+      "status": "success",
+      "duration_seconds": 2680.10958957609,
+      "final_health_score": 89.0,
+      "user_interventions": 2
+    },
+    {
+      "id": "install-005",
+      "timestamp": "2025-08-05T16:32:25.831282",
+      "status": "failure",
+      "duration_seconds": 662.6235531679291,
+      "final_health_score": 35.0,
+      "user_interventions": 0
+    },
+    {
+      "id": "install-004",
+      "timestamp": "2025-08-05T16:32:25.793912",
+      "status": "partial",
+      "duration_seconds": 3273.065562428884,
+      "final_health_score": 60.0,
+      "user_interventions": 2
+    },
+    {
+      "id": "install-003",
+      "timestamp": "2025-08-05T16:32:25.771681",
+      "status": "failure",
+      "duration_seconds": 673.2414499724363,
+      "final_health_score": 29.0,
+      "user_interventions": 3
+    },
+    {
+      "id": "install-002",
+      "timestamp": "2025-08-05T16:32:25.765500",
+      "status": "success",
+      "duration_seconds": 1350.0904318557525,
+      "final_health_score": 100.0,
+      "user_interventions": 0
+    },
+    {
+      "id": "install-001",
+      "timestamp": "2025-08-05T16:32:25.693003",
+      "status": "partial",
+      "duration_seconds": 4360.296239587127,
+      "final_health_score": 62.88806600114687,
+      "user_interventions": 0
+    }
+  ],
+  "error_patterns": [
+    {
+      "error_type": "network_timeout",
+      "category": "network",
+      "timestamp": "2025-08-05T17:00:44.078901",
+      "recovery_success": null
+    },
+    {
+      "error_type": "dependency_conflict",
+      "category": "dependency",
+      "timestamp": "2025-08-05T17:00:44.073898",
+      "recovery_success": null
+    },
+    {
+      "error_type": "model_download_failed",
+      "category": "network",
+      "timestamp": "2025-08-05T17:00:44.068899",
+      "recovery_success": null
+    },
+    {
+      "error_type": "network_timeout",
+      "category": "network",
+      "timestamp": "2025-08-05T17:00:44.063900",
+      "recovery_success": null
+    },
+    {
+      "error_type": "disk_space_insufficient",
+      "category": "system",
+      "timestamp": "2025-08-05T17:00:44.049646",
+      "recovery_success": "cleanup_temp"
+    },
+    {
+      "error_type": "permission_denied",
+      "category": "permission",
+      "timestamp": "2025-08-05T17:00:44.044647",
+      "recovery_success": "elevate_privileges"
+    },
+    {
+      "error_type": "network_timeout",
+      "category": "network",
+      "timestamp": "2025-08-05T17:00:44.029073",
+      "recovery_success": "retry_with_backoff"
+    },
+    {
+      "error_type": "gpu_driver_incompatible",
+      "category": "system",
+      "timestamp": "2025-08-05T16:32:26.572437",
+      "recovery_success": null
+    },
+    {
+      "error_type": "model_validation_failed",
+      "category": "validation",
+      "timestamp": "2025-08-05T16:32:26.558437",
+      "recovery_success": null
+    },
+    {
+      "error_type": "gpu_driver_incompatible",
+      "category": "system",
+      "timestamp": "2025-08-05T16:32:26.501585",
+      "recovery_success": null
+    },
+    {
+      "error_type": "gpu_driver_incompatible",
+      "category": "system",
+      "timestamp": "2025-08-05T16:32:26.496584",
+      "recovery_success": null
+    },
+    {
+      "error_type": "dependency_conflict",
+      "category": "dependency",
+      "timestamp": "2025-08-05T16:32:26.491585",
+      "recovery_success": null
+    },
+    {
+      "error_type": "permission_denied",
+      "category": "permission",
+      "timestamp": "2025-08-05T16:32:26.462718",
+      "recovery_success": null
+    },
+    {
+      "error_type": "dependency_conflict",
+      "category": "dependency",
+      "timestamp": "2025-08-05T16:32:26.457718",
+      "recovery_success": null
+    },
+    {
+      "error_type": "network_timeout",
+      "category": "network",
+      "timestamp": "2025-08-05T16:32:26.453718",
+      "recovery_success": null
+    },
+    {
+      "error_type": "gpu_driver_incompatible",
+      "category": "system",
+      "timestamp": "2025-08-05T16:32:26.442717",
+      "recovery_success": null
+    },
+    {
+      "error_type": "dependency_conflict",
+      "category": "dependency",
+      "timestamp": "2025-08-05T16:32:26.409524",
+      "recovery_success": null
+    },
+    {
+      "error_type": "dependency_conflict",
+      "category": "dependency",
+      "timestamp": "2025-08-05T16:32:26.383512",
+      "recovery_success": null
+    },
+    {
+      "error_type": "disk_space_insufficient",
+      "category": "system",
+      "timestamp": "2025-08-05T16:32:26.378512",
+      "recovery_success": null
+    },
+    {
+      "error_type": "gpu_driver_incompatible",
+      "category": "system",
+      "timestamp": "2025-08-05T16:32:26.373512",
+      "recovery_success": null
+    },
+    {
+      "error_type": "disk_space_insufficient",
+      "category": "system",
+      "timestamp": "2025-08-05T16:32:26.352511",
+      "recovery_success": null
+    },
+    {
+      "error_type": "dependency_conflict",
+      "category": "dependency",
+      "timestamp": "2025-08-05T16:32:26.346511",
+      "recovery_success": null
+    },
+    {
+      "error_type": "gpu_driver_incompatible",
+      "category": "system",
+      "timestamp": "2025-08-05T16:32:26.307725",
+      "recovery_success": null
+    },
+    {
+      "error_type": "disk_space_insufficient",
+      "category": "system",
+      "timestamp": "2025-08-05T16:32:26.249622",
+      "recovery_success": null
+    },
+    {
+      "error_type": "dependency_conflict",
+      "category": "dependency",
+      "timestamp": "2025-08-05T16:32:26.220408",
+      "recovery_success": null
+    },
+    {
+      "error_type": "disk_space_insufficient",
+      "category": "system",
+      "timestamp": "2025-08-05T16:32:26.215409",
+      "recovery_success": null
+    },
+    {
+      "error_type": "network_timeout",
+      "category": "network",
+      "timestamp": "2025-08-05T16:32:26.210409",
+      "recovery_success": null
+    },
+    {
+      "error_type": "gpu_driver_incompatible",
+      "category": "system",
+      "timestamp": "2025-08-05T16:32:26.199409",
+      "recovery_success": null
+    },
+    {
+      "error_type": "model_download_failed",
+      "category": "network",
+      "timestamp": "2025-08-05T16:32:26.181399",
+      "recovery_success": null
+    },
+    {
+      "error_type": "disk_space_insufficient",
+      "category": "system",
+      "timestamp": "2025-08-05T16:32:26.176398",
+      "recovery_success": null
+    },
+    {
+      "error_type": "dependency_conflict",
+      "category": "dependency",
+      "timestamp": "2025-08-05T16:32:26.165399",
+      "recovery_success": null
+    },
+    {
+      "error_type": "model_validation_failed",
+      "category": "validation",
+      "timestamp": "2025-08-05T16:32:26.160399",
+      "recovery_success": null
+    },
+    {
+      "error_type": "model_validation_failed",
+      "category": "validation",
+      "timestamp": "2025-08-05T16:32:26.145398",
+      "recovery_success": null
+    },
+    {
+      "error_type": "permission_denied",
+      "category": "permission",
+      "timestamp": "2025-08-05T16:32:26.109786",
+      "recovery_success": null
+    },
+    {
+      "error_type": "python_version_mismatch",
+      "category": "dependency",
+      "timestamp": "2025-08-05T16:32:26.074773",
+      "recovery_success": null
+    },
+    {
+      "error_type": "permission_denied",
+      "category": "permission",
+      "timestamp": "2025-08-05T16:32:26.069773",
+      "recovery_success": null
+    },
+    {
+      "error_type": "model_validation_failed",
+      "category": "validation",
+      "timestamp": "2025-08-05T16:32:26.064774",
+      "recovery_success": null
+    },
+    {
+      "error_type": "python_version_mismatch",
+      "category": "dependency",
+      "timestamp": "2025-08-05T16:32:26.052773",
+      "recovery_success": null
+    },
+    {
+      "error_type": "model_validation_failed",
+      "category": "validation",
+      "timestamp": "2025-08-05T16:32:26.036164",
+      "recovery_success": null
+    },
+    {
+      "error_type": "disk_space_insufficient",
+      "category": "system",
+      "timestamp": "2025-08-05T16:32:26.011906",
+      "recovery_success": null
+    },
+    {
+      "error_type": "permission_denied",
+      "category": "permission",
+      "timestamp": "2025-08-05T16:32:26.006906",
+      "recovery_success": null
+    },
+    {
+      "error_type": "python_version_mismatch",
+      "category": "dependency",
+      "timestamp": "2025-08-05T16:32:26.001907",
+      "recovery_success": null
+    },
+    {
+      "error_type": "network_timeout",
+      "category": "network",
+      "timestamp": "2025-08-05T16:32:25.985893",
+      "recovery_success": null
+    },
+    {
+      "error_type": "network_timeout",
+      "category": "network",
+      "timestamp": "2025-08-05T16:32:25.980878",
+      "recovery_success": null
+    },
+    {
+      "error_type": "dependency_conflict",
+      "category": "dependency",
+      "timestamp": "2025-08-05T16:32:25.959605",
+      "recovery_success": null
+    },
+    {
+      "error_type": "disk_space_insufficient",
+      "category": "system",
+      "timestamp": "2025-08-05T16:32:25.935593",
+      "recovery_success": null
+    },
+    {
+      "error_type": "model_validation_failed",
+      "category": "validation",
+      "timestamp": "2025-08-05T16:32:25.924594",
+      "recovery_success": null
+    },
+    {
+      "error_type": "model_validation_failed",
+      "category": "validation",
+      "timestamp": "2025-08-05T16:32:25.918454",
+      "recovery_success": null
+    },
+    {
+      "error_type": "gpu_driver_incompatible",
+      "category": "system",
+      "timestamp": "2025-08-05T16:32:25.913455",
+      "recovery_success": null
+    },
+    {
+      "error_type": "permission_denied",
+      "category": "permission",
+      "timestamp": "2025-08-05T16:32:25.874444",
+      "recovery_success": null
+    },
+    {
+      "error_type": "dependency_conflict",
+      "category": "dependency",
+      "timestamp": "2025-08-05T16:32:25.869444",
+      "recovery_success": null
+    },
+    {
+      "error_type": "model_download_failed",
+      "category": "network",
+      "timestamp": "2025-08-05T16:32:25.865443",
+      "recovery_success": null
+    },
+    {
+      "error_type": "model_validation_failed",
+      "category": "validation",
+      "timestamp": "2025-08-05T16:32:25.841444",
+      "recovery_success": null
+    },
+    {
+      "error_type": "disk_space_insufficient",
+      "category": "system",
+      "timestamp": "2025-08-05T16:32:25.837282",
+      "recovery_success": null
+    },
+    {
+      "error_type": "python_version_mismatch",
+      "category": "dependency",
+      "timestamp": "2025-08-05T16:32:25.810912",
+      "recovery_success": null
+    },
+    {
+      "error_type": "disk_space_insufficient",
+      "category": "system",
+      "timestamp": "2025-08-05T16:32:25.805912",
+      "recovery_success": null
+    },
+    {
+      "error_type": "disk_space_insufficient",
+      "category": "system",
+      "timestamp": "2025-08-05T16:32:25.800912",
+      "recovery_success": null
+    },
+    {
+      "error_type": "gpu_driver_incompatible",
+      "category": "system",
+      "timestamp": "2025-08-05T16:32:25.782682",
+      "recovery_success": null
+    },
+    {
+      "error_type": "disk_space_insufficient",
+      "category": "system",
+      "timestamp": "2025-08-05T16:32:25.777681",
+      "recovery_success": null
+    },
+    {
+      "error_type": "network_timeout",
+      "category": "network",
+      "timestamp": "2025-08-05T16:32:25.710004",
+      "recovery_success": null
+    },
+    {
+      "error_type": "disk_space_insufficient",
+      "category": "system",
+      "timestamp": "2025-08-05T16:32:25.704005",
+      "recovery_success": null
+    },
+    {
+      "error_type": "python_version_mismatch",
+      "category": "dependency",
+      "timestamp": "2025-08-05T16:32:25.699005",
+      "recovery_success": null
+    }
+  ],
+  "recovery_stats": [
+    {
+      "method_name": "integrity_check",
+      "total_attempts": 1,
+      "successful_attempts": 0,
+      "success_rate": 0.0,
+      "effectiveness_rating": "ineffective"
+    },
+    {
+      "method_name": "resume_download",
+      "total_attempts": 1,
+      "successful_attempts": 0,
+      "success_rate": 0.0,
+      "effectiveness_rating": "ineffective"
+    },
+    {
+      "method_name": "python_install",
+      "total_attempts": 2,
+      "successful_attempts": 2,
+      "success_rate": 1.0,
+      "effectiveness_rating": "highly_effective"
+    },
+    {
+      "method_name": "model_redownload",
+      "total_attempts": 1,
+      "successful_attempts": 1,
+      "success_rate": 1.0,
+      "effectiveness_rating": "highly_effective"
+    },
+    {
+      "method_name": "alternative_source",
+      "total_attempts": 1,
+      "successful_attempts": 0,
+      "success_rate": 0.0,
+      "effectiveness_rating": "ineffective"
+    },
+    {
+      "method_name": "version_fallback",
+      "total_attempts": 4,
+      "successful_attempts": 3,
+      "success_rate": 0.75,
+      "effectiveness_rating": "effective"
+    },
+    {
+      "method_name": "change_location",
+      "total_attempts": 5,
+      "successful_attempts": 4,
+      "success_rate": 0.8,
+      "effectiveness_rating": "effective"
+    },
+    {
+      "method_name": "virtual_env_recreate",
+      "total_attempts": 2,
+      "successful_attempts": 2,
+      "success_rate": 1.0,
+      "effectiveness_rating": "highly_effective"
+    },
+    {
+      "method_name": "fallback_cpu",
+      "total_attempts": 3,
+      "successful_attempts": 3,
+      "success_rate": 1.0,
+      "effectiveness_rating": "highly_effective"
+    },
+    {
+      "method_name": "alternative_model",
+      "total_attempts": 2,
+      "successful_attempts": 1,
+      "success_rate": 0.5,
+      "effectiveness_rating": "moderately_effective"
+    },
+    {
+      "method_name": "driver_update",
+      "total_attempts": 2,
+      "successful_attempts": 1,
+      "success_rate": 0.5,
+      "effectiveness_rating": "moderately_effective"
+    },
+    {
+      "method_name": "retry_with_backoff",
+      "total_attempts": 1,
+      "successful_attempts": 1,
+      "success_rate": 1.0,
+      "effectiveness_rating": "highly_effective"
+    },
+    {
+      "method_name": "elevate_privileges",
+      "total_attempts": 1,
+      "successful_attempts": 0,
+      "success_rate": 0.0,
+      "effectiveness_rating": "ineffective"
+    },
+    {
+      "method_name": "cleanup_temp",
+      "total_attempts": 1,
+      "successful_attempts": 0,
+      "success_rate": 0.0,
+      "effectiveness_rating": "ineffective"
+    }
+  ],
+  "performance_metrics": [
+    {
+      "metric_name": "install_time_s",
+      "metric_value": 900.0,
+      "timestamp": "2025-08-05T17:00:44.038638"
+    },
+    {
+      "metric_name": "download_speed_mbps",
+      "metric_value": 0.0,
+      "timestamp": "2025-08-05T17:00:44.038638"
+    },
+    {
+      "metric_name": "install_time_s",
+      "metric_value": 1800.0,
+      "timestamp": "2025-08-05T17:00:44.023073"
+    },
+    {
+      "metric_name": "download_speed_mbps",
+      "metric_value": 8.2,
+      "timestamp": "2025-08-05T17:00:44.023073"
+    },
+    {
+      "metric_name": "install_time_s",
+      "metric_value": 1200.0,
+      "timestamp": "2025-08-05T17:00:44.017072"
+    },
+    {
+      "metric_name": "download_speed_mbps",
+      "metric_value": 25.4,
+      "timestamp": "2025-08-05T17:00:44.017072"
+    },
+    {
+      "metric_name": "gpu_utilization",
+      "metric_value": 5.271782384648097,
+      "timestamp": "2025-08-05T16:32:26.567437"
+    },
+    {
+      "metric_name": "network_throughput_mbps",
+      "metric_value": 61.74958621696623,
+      "timestamp": "2025-08-05T16:32:26.567437"
+    },
+    {
+      "metric_name": "peak_disk_io",
+      "metric_value": 34.230594421054704,
+      "timestamp": "2025-08-05T16:32:26.567437"
+    },
+    {
+      "metric_name": "peak_memory_usage",
+      "metric_value": 76.89294250059679,
+      "timestamp": "2025-08-05T16:32:26.567437"
+    },
+    {
+      "metric_name": "peak_cpu_usage",
+      "metric_value": 45.003818657360306,
+      "timestamp": "2025-08-05T16:32:26.567437"
+    },
+    {
+      "metric_name": "gpu_utilization",
+      "metric_value": 44.12487477585955,
+      "timestamp": "2025-08-05T16:32:26.529424"
+    },
+    {
+      "metric_name": "network_throughput_mbps",
+      "metric_value": 31.050213739556526,
+      "timestamp": "2025-08-05T16:32:26.529424"
+    },
+    {
+      "metric_name": "peak_disk_io",
+      "metric_value": 32.29901568119492,
+      "timestamp": "2025-08-05T16:32:26.529424"
+    },
+    {
+      "metric_name": "peak_memory_usage",
+      "metric_value": 81.81989852374605,
+      "timestamp": "2025-08-05T16:32:26.529424"
+    },
+    {
+      "metric_name": "peak_cpu_usage",
+      "metric_value": 61.84306513172979,
+      "timestamp": "2025-08-05T16:32:26.529424"
+    },
+    {
+      "metric_name": "gpu_utilization",
+      "metric_value": 54.059500376478425,
+      "timestamp": "2025-08-05T16:32:26.523422"
+    },
+    {
+      "metric_name": "network_throughput_mbps",
+      "metric_value": 50.742598396590104,
+      "timestamp": "2025-08-05T16:32:26.523422"
+    },
+    {
+      "metric_name": "peak_disk_io",
+      "metric_value": 57.010203471165575,
+      "timestamp": "2025-08-05T16:32:26.523422"
+    },
+    {
+      "metric_name": "peak_memory_usage",
+      "metric_value": 69.87583406133044,
+      "timestamp": "2025-08-05T16:32:26.523422"
+    },
+    {
+      "metric_name": "peak_cpu_usage",
+      "metric_value": 75.66444935120433,
+      "timestamp": "2025-08-05T16:32:26.523422"
+    },
+    {
+      "metric_name": "gpu_utilization",
+      "metric_value": 52.59013713128278,
+      "timestamp": "2025-08-05T16:32:26.486018"
+    },
+    {
+      "metric_name": "network_throughput_mbps",
+      "metric_value": 93.78823017476981,
+      "timestamp": "2025-08-05T16:32:26.486018"
+    },
+    {
+      "metric_name": "peak_disk_io",
+      "metric_value": 37.50962547745902,
+      "timestamp": "2025-08-05T16:32:26.486018"
+    },
+    {
+      "metric_name": "peak_memory_usage",
+      "metric_value": 53.43094219491274,
+      "timestamp": "2025-08-05T16:32:26.486018"
+    },
+    {
+      "metric_name": "peak_cpu_usage",
+      "metric_value": 75.92716029277956,
+      "timestamp": "2025-08-05T16:32:26.486018"
+    },
+    {
+      "metric_name": "gpu_utilization",
+      "metric_value": 83.4336667716824,
+      "timestamp": "2025-08-05T16:32:26.480003"
+    },
+    {
+      "metric_name": "network_throughput_mbps",
+      "metric_value": 53.557489861371835,
+      "timestamp": "2025-08-05T16:32:26.480003"
+    },
+    {
+      "metric_name": "peak_disk_io",
+      "metric_value": 86.19995724890138,
+      "timestamp": "2025-08-05T16:32:26.480003"
+    },
+    {
+      "metric_name": "peak_memory_usage",
+      "metric_value": 74.99422142521743,
+      "timestamp": "2025-08-05T16:32:26.480003"
+    },
+    {
+      "metric_name": "peak_cpu_usage",
+      "metric_value": 86.58181951386193,
+      "timestamp": "2025-08-05T16:32:26.480003"
+    },
+    {
+      "metric_name": "gpu_utilization",
+      "metric_value": 22.307486486032943,
+      "timestamp": "2025-08-05T16:32:26.447717"
+    },
+    {
+      "metric_name": "network_throughput_mbps",
+      "metric_value": 53.753939209542175,
+      "timestamp": "2025-08-05T16:32:26.447717"
+    },
+    {
+      "metric_name": "peak_disk_io",
+      "metric_value": 57.7583591144812,
+      "timestamp": "2025-08-05T16:32:26.447717"
+    },
+    {
+      "metric_name": "peak_memory_usage",
+      "metric_value": 44.10236260683874,
+      "timestamp": "2025-08-05T16:32:26.447717"
+    },
+    {
+      "metric_name": "peak_cpu_usage",
+      "metric_value": 48.73094762330453,
+      "timestamp": "2025-08-05T16:32:26.447717"
+    },
+    {
+      "metric_name": "gpu_utilization",
+      "metric_value": 69.77056525829589,
+      "timestamp": "2025-08-05T16:32:26.419524"
+    },
+    {
+      "metric_name": "network_throughput_mbps",
+      "metric_value": 83.26845066660151,
+      "timestamp": "2025-08-05T16:32:26.419524"
+    },
+    {
+      "metric_name": "peak_disk_io",
+      "metric_value": 40.5329428871232,
+      "timestamp": "2025-08-05T16:32:26.419524"
+    },
+    {
+      "metric_name": "peak_memory_usage",
+      "metric_value": 64.75108841375142,
+      "timestamp": "2025-08-05T16:32:26.419524"
+    },
+    {
+      "metric_name": "peak_cpu_usage",
+      "metric_value": 49.443649096459325,
+      "timestamp": "2025-08-05T16:32:26.419524"
+    },
+    {
+      "metric_name": "gpu_utilization",
+      "metric_value": 25.573123712021413,
+      "timestamp": "2025-08-05T16:32:26.403523"
+    },
+    {
+      "metric_name": "network_throughput_mbps",
+      "metric_value": 40.361916711862484,
+      "timestamp": "2025-08-05T16:32:26.403523"
+    },
+    {
+      "metric_name": "peak_disk_io",
+      "metric_value": 57.63133686616384,
+      "timestamp": "2025-08-05T16:32:26.403523"
+    },
+    {
+      "metric_name": "peak_memory_usage",
+      "metric_value": 41.39726729715827,
+      "timestamp": "2025-08-05T16:32:26.403523"
+    },
+    {
+      "metric_name": "peak_cpu_usage",
+      "metric_value": 93.77937184055736,
+      "timestamp": "2025-08-05T16:32:26.403523"
+    },
+    {
+      "metric_name": "gpu_utilization",
+      "metric_value": 8.198751820522217,
+      "timestamp": "2025-08-05T16:32:26.367511"
+    },
+    {
+      "metric_name": "network_throughput_mbps",
+      "metric_value": 16.282751326209667,
+      "timestamp": "2025-08-05T16:32:26.367511"
+    },
+    {
+      "metric_name": "peak_disk_io",
+      "metric_value": 38.127214169024256,
+      "timestamp": "2025-08-05T16:32:26.367511"
+    },
+    {
+      "metric_name": "peak_memory_usage",
+      "metric_value": 49.67063505151708,
+      "timestamp": "2025-08-05T16:32:26.367511"
+    },
+    {
+      "metric_name": "peak_cpu_usage",
+      "metric_value": 59.01661342581473,
+      "timestamp": "2025-08-05T16:32:26.367511"
+    },
+    {
+      "metric_name": "gpu_utilization",
+      "metric_value": 26.238114335279903,
+      "timestamp": "2025-08-05T16:32:26.341511"
+    },
+    {
+      "metric_name": "network_throughput_mbps",
+      "metric_value": 97.49773472582486,
+      "timestamp": "2025-08-05T16:32:26.341511"
+    },
+    {
+      "metric_name": "peak_disk_io",
+      "metric_value": 70.77999396855049,
+      "timestamp": "2025-08-05T16:32:26.341511"
+    },
+    {
+      "metric_name": "peak_memory_usage",
+      "metric_value": 83.89289015544134,
+      "timestamp": "2025-08-05T16:32:26.341511"
+    },
+    {
+      "metric_name": "peak_cpu_usage",
+      "metric_value": 94.97540109000637,
+      "timestamp": "2025-08-05T16:32:26.341511"
+    },
+    {
+      "metric_name": "gpu_utilization",
+      "metric_value": 69.72883595357058,
+      "timestamp": "2025-08-05T16:32:26.322993"
+    },
+    {
+      "metric_name": "network_throughput_mbps",
+      "metric_value": 42.52559326100556,
+      "timestamp": "2025-08-05T16:32:26.322993"
+    },
+    {
+      "metric_name": "peak_disk_io",
+      "metric_value": 96.5008669801828,
+      "timestamp": "2025-08-05T16:32:26.322993"
+    },
+    {
+      "metric_name": "peak_memory_usage",
+      "metric_value": 77.15935220008157,
+      "timestamp": "2025-08-05T16:32:26.322993"
+    },
+    {
+      "metric_name": "peak_cpu_usage",
+      "metric_value": 32.41659972084273,
+      "timestamp": "2025-08-05T16:32:26.322993"
+    },
+    {
+      "metric_name": "gpu_utilization",
+      "metric_value": 77.1091687891008,
+      "timestamp": "2025-08-05T16:32:26.242621"
+    },
+    {
+      "metric_name": "network_throughput_mbps",
+      "metric_value": 75.35043805239852,
+      "timestamp": "2025-08-05T16:32:26.242621"
+    },
+    {
+      "metric_name": "peak_disk_io",
+      "metric_value": 45.923898057867326,
+      "timestamp": "2025-08-05T16:32:26.242621"
+    },
+    {
+      "metric_name": "peak_memory_usage",
+      "metric_value": 51.201301295914824,
+      "timestamp": "2025-08-05T16:32:26.242621"
+    },
+    {
+      "metric_name": "peak_cpu_usage",
+      "metric_value": 90.16925625681512,
+      "timestamp": "2025-08-05T16:32:26.242621"
+    },
+    {
+      "metric_name": "gpu_utilization",
+      "metric_value": 85.96522443729044,
+      "timestamp": "2025-08-05T16:32:26.236310"
+    },
+    {
+      "metric_name": "network_throughput_mbps",
+      "metric_value": 91.29980346105458,
+      "timestamp": "2025-08-05T16:32:26.236310"
+    },
+    {
+      "metric_name": "peak_disk_io",
+      "metric_value": 60.55548537245117,
+      "timestamp": "2025-08-05T16:32:26.236310"
+    },
+    {
+      "metric_name": "peak_memory_usage",
+      "metric_value": 71.87251055643637,
+      "timestamp": "2025-08-05T16:32:26.236310"
+    },
+    {
+      "metric_name": "peak_cpu_usage",
+      "metric_value": 36.19491507187012,
+      "timestamp": "2025-08-05T16:32:26.236310"
+    },
+    {
+      "metric_name": "gpu_utilization",
+      "metric_value": 73.63075705947179,
+      "timestamp": "2025-08-05T16:32:26.230473"
+    },
+    {
+      "metric_name": "network_throughput_mbps",
+      "metric_value": 61.30237305883013,
+      "timestamp": "2025-08-05T16:32:26.230473"
+    },
+    {
+      "metric_name": "peak_disk_io",
+      "metric_value": 17.750675047032097,
+      "timestamp": "2025-08-05T16:32:26.230473"
+    },
+    {
+      "metric_name": "peak_memory_usage",
+      "metric_value": 59.71583534329662,
+      "timestamp": "2025-08-05T16:32:26.230473"
+    },
+    {
+      "metric_name": "peak_cpu_usage",
+      "metric_value": 72.39885366454938,
+      "timestamp": "2025-08-05T16:32:26.230473"
+    },
+    {
+      "metric_name": "gpu_utilization",
+      "metric_value": 40.86309027170635,
+      "timestamp": "2025-08-05T16:32:26.205408"
+    },
+    {
+      "metric_name": "network_throughput_mbps",
+      "metric_value": 63.40047401865724,
+      "timestamp": "2025-08-05T16:32:26.205408"
+    },
+    {
+      "metric_name": "peak_disk_io",
+      "metric_value": 29.13300678790566,
+      "timestamp": "2025-08-05T16:32:26.205408"
+    },
+    {
+      "metric_name": "peak_memory_usage",
+      "metric_value": 82.5637775170677,
+      "timestamp": "2025-08-05T16:32:26.205408"
+    },
+    {
+      "metric_name": "peak_cpu_usage",
+      "metric_value": 64.01718968601297,
+      "timestamp": "2025-08-05T16:32:26.205408"
+    },
+    {
+      "metric_name": "gpu_utilization",
+      "metric_value": 43.27761184991241,
+      "timestamp": "2025-08-05T16:32:26.193408"
+    },
+    {
+      "metric_name": "network_throughput_mbps",
+      "metric_value": 5.503220982897842,
+      "timestamp": "2025-08-05T16:32:26.193408"
+    },
+    {
+      "metric_name": "peak_disk_io",
+      "metric_value": 41.53007770296722,
+      "timestamp": "2025-08-05T16:32:26.193408"
+    },
+    {
+      "metric_name": "peak_memory_usage",
+      "metric_value": 58.533295312356984,
+      "timestamp": "2025-08-05T16:32:26.193408"
+    },
+    {
+      "metric_name": "peak_cpu_usage",
+      "metric_value": 59.878082431441186,
+      "timestamp": "2025-08-05T16:32:26.193408"
+    },
+    {
+      "metric_name": "gpu_utilization",
+      "metric_value": 48.546592440128116,
+      "timestamp": "2025-08-05T16:32:26.187398"
+    },
+    {
+      "metric_name": "network_throughput_mbps",
+      "metric_value": 29.02585173229168,
+      "timestamp": "2025-08-05T16:32:26.187398"
+    },
+    {
+      "metric_name": "peak_disk_io",
+      "metric_value": 92.0452453300617,
+      "timestamp": "2025-08-05T16:32:26.187398"
+    },
+    {
+      "metric_name": "peak_memory_usage",
+      "metric_value": 65.79162689844996,
+      "timestamp": "2025-08-05T16:32:26.187398"
+    },
+    {
+      "metric_name": "peak_cpu_usage",
+      "metric_value": 83.05186865534924,
+      "timestamp": "2025-08-05T16:32:26.187398"
+    },
+    {
+      "metric_name": "gpu_utilization",
+      "metric_value": 67.5805905773168,
+      "timestamp": "2025-08-05T16:32:26.171398"
+    },
+    {
+      "metric_name": "network_throughput_mbps",
+      "metric_value": 89.26251088244,
+      "timestamp": "2025-08-05T16:32:26.171398"
+    },
+    {
+      "metric_name": "peak_disk_io",
+      "metric_value": 46.390716446064175,
+      "timestamp": "2025-08-05T16:32:26.171398"
+    },
+    {
+      "metric_name": "peak_memory_usage",
+      "metric_value": 42.4337175043469,
+      "timestamp": "2025-08-05T16:32:26.171398"
+    },
+    {
+      "metric_name": "peak_cpu_usage",
+      "metric_value": 58.24509131843774,
+      "timestamp": "2025-08-05T16:32:26.171398"
+    },
+    {
+      "metric_name": "gpu_utilization",
+      "metric_value": 31.798051354953962,
+      "timestamp": "2025-08-05T16:32:26.154399"
+    },
+    {
+      "metric_name": "network_throughput_mbps",
+      "metric_value": 62.335932642457514,
+      "timestamp": "2025-08-05T16:32:26.154399"
+    },
+    {
+      "metric_name": "peak_disk_io",
+      "metric_value": 85.65470337620707,
+      "timestamp": "2025-08-05T16:32:26.154399"
+    },
+    {
+      "metric_name": "peak_memory_usage",
+      "metric_value": 71.85942997514336,
+      "timestamp": "2025-08-05T16:32:26.154399"
+    },
+    {
+      "metric_name": "peak_cpu_usage",
+      "metric_value": 37.87973685144665,
+      "timestamp": "2025-08-05T16:32:26.154399"
+    },
+    {
+      "metric_name": "gpu_utilization",
+      "metric_value": 3.4376394742911645,
+      "timestamp": "2025-08-05T16:32:26.138927"
+    },
+    {
+      "metric_name": "network_throughput_mbps",
+      "metric_value": 34.53681932665143,
+      "timestamp": "2025-08-05T16:32:26.138927"
+    },
+    {
+      "metric_name": "peak_disk_io",
+      "metric_value": 48.205119825908106,
+      "timestamp": "2025-08-05T16:32:26.138927"
+    },
+    {
+      "metric_name": "peak_memory_usage",
+      "metric_value": 65.33678628519867,
+      "timestamp": "2025-08-05T16:32:26.138927"
+    },
+    {
+      "metric_name": "peak_cpu_usage",
+      "metric_value": 52.485010999372975,
+      "timestamp": "2025-08-05T16:32:26.138927"
+    },
+    {
+      "metric_name": "gpu_utilization",
+      "metric_value": 38.29764313986002,
+      "timestamp": "2025-08-05T16:32:26.131893"
+    },
+    {
+      "metric_name": "network_throughput_mbps",
+      "metric_value": 29.222299879757426,
+      "timestamp": "2025-08-05T16:32:26.131893"
+    },
+    {
+      "metric_name": "peak_disk_io",
+      "metric_value": 32.42275704894094,
+      "timestamp": "2025-08-05T16:32:26.131893"
+    },
+    {
+      "metric_name": "peak_memory_usage",
+      "metric_value": 78.68059186909267,
+      "timestamp": "2025-08-05T16:32:26.131893"
+    },
+    {
+      "metric_name": "peak_cpu_usage",
+      "metric_value": 41.10463010704787,
+      "timestamp": "2025-08-05T16:32:26.131893"
+    },
+    {
+      "metric_name": "gpu_utilization",
+      "metric_value": 7.101423400260289,
+      "timestamp": "2025-08-05T16:32:26.125894"
+    },
+    {
+      "metric_name": "network_throughput_mbps",
+      "metric_value": 45.14787672936313,
+      "timestamp": "2025-08-05T16:32:26.125894"
+    },
+    {
+      "metric_name": "peak_disk_io",
+      "metric_value": 31.29842253168416,
+      "timestamp": "2025-08-05T16:32:26.125894"
+    },
+    {
+      "metric_name": "peak_memory_usage",
+      "metric_value": 51.81055024222561,
+      "timestamp": "2025-08-05T16:32:26.125894"
+    },
+    {
+      "metric_name": "peak_cpu_usage",
+      "metric_value": 36.004327078012516,
+      "timestamp": "2025-08-05T16:32:26.125894"
+    },
+    {
+      "metric_name": "gpu_utilization",
+      "metric_value": 76.82710791730756,
+      "timestamp": "2025-08-05T16:32:26.119786"
+    },
+    {
+      "metric_name": "network_throughput_mbps",
+      "metric_value": 43.343164158456304,
+      "timestamp": "2025-08-05T16:32:26.119786"
+    },
+    {
+      "metric_name": "peak_disk_io",
+      "metric_value": 39.39913945023366,
+      "timestamp": "2025-08-05T16:32:26.119786"
+    },
+    {
+      "metric_name": "peak_memory_usage",
+      "metric_value": 78.26705386363886,
+      "timestamp": "2025-08-05T16:32:26.119786"
+    },
+    {
+      "metric_name": "peak_cpu_usage",
+      "metric_value": 39.43753672332977,
+      "timestamp": "2025-08-05T16:32:26.119786"
+    },
+    {
+      "metric_name": "gpu_utilization",
+      "metric_value": 76.4428300469659,
+      "timestamp": "2025-08-05T16:32:26.104786"
+    },
+    {
+      "metric_name": "network_throughput_mbps",
+      "metric_value": 98.46628483834135,
+      "timestamp": "2025-08-05T16:32:26.104786"
+    },
+    {
+      "metric_name": "peak_disk_io",
+      "metric_value": 37.70722223715393,
+      "timestamp": "2025-08-05T16:32:26.104786"
+    },
+    {
+      "metric_name": "peak_memory_usage",
+      "metric_value": 46.483898332586406,
+      "timestamp": "2025-08-05T16:32:26.104786"
+    },
+    {
+      "metric_name": "peak_cpu_usage",
+      "metric_value": 60.07484369330048,
+      "timestamp": "2025-08-05T16:32:26.104786"
+    },
+    {
+      "metric_name": "gpu_utilization",
+      "metric_value": 59.1175616436685,
+      "timestamp": "2025-08-05T16:32:26.097786"
+    },
+    {
+      "metric_name": "network_throughput_mbps",
+      "metric_value": 57.4810374910902,
+      "timestamp": "2025-08-05T16:32:26.097786"
+    },
+    {
+      "metric_name": "peak_disk_io",
+      "metric_value": 46.56625349127799,
+      "timestamp": "2025-08-05T16:32:26.097786"
+    },
+    {
+      "metric_name": "peak_memory_usage",
+      "metric_value": 67.71993174151714,
+      "timestamp": "2025-08-05T16:32:26.097786"
+    },
+    {
+      "metric_name": "peak_cpu_usage",
+      "metric_value": 48.866639633663596,
+      "timestamp": "2025-08-05T16:32:26.097786"
+    },
+    {
+      "metric_name": "gpu_utilization",
+      "metric_value": 37.99452222653223,
+      "timestamp": "2025-08-05T16:32:26.091786"
+    },
+    {
+      "metric_name": "network_throughput_mbps",
+      "metric_value": 64.16476579547111,
+      "timestamp": "2025-08-05T16:32:26.091786"
+    },
+    {
+      "metric_name": "peak_disk_io",
+      "metric_value": 70.92036025583411,
+      "timestamp": "2025-08-05T16:32:26.091786"
+    },
+    {
+      "metric_name": "peak_memory_usage",
+      "metric_value": 70.49807322511359,
+      "timestamp": "2025-08-05T16:32:26.091786"
+    },
+    {
+      "metric_name": "peak_cpu_usage",
+      "metric_value": 64.71712429145632,
+      "timestamp": "2025-08-05T16:32:26.091786"
+    },
+    {
+      "metric_name": "gpu_utilization",
+      "metric_value": 72.70148269912306,
+      "timestamp": "2025-08-05T16:32:26.084774"
+    },
+    {
+      "metric_name": "network_throughput_mbps",
+      "metric_value": 20.678804197472203,
+      "timestamp": "2025-08-05T16:32:26.084774"
+    },
+    {
+      "metric_name": "peak_disk_io",
+      "metric_value": 95.22255507622825,
+      "timestamp": "2025-08-05T16:32:26.084774"
+    },
+    {
+      "metric_name": "peak_memory_usage",
+      "metric_value": 80.51149429106448,
+      "timestamp": "2025-08-05T16:32:26.084774"
+    },
+    {
+      "metric_name": "peak_cpu_usage",
+      "metric_value": 54.80036871041208,
+      "timestamp": "2025-08-05T16:32:26.084774"
+    },
+    {
+      "metric_name": "gpu_utilization",
+      "metric_value": 84.19789325805365,
+      "timestamp": "2025-08-05T16:32:26.058774"
+    },
+    {
+      "metric_name": "network_throughput_mbps",
+      "metric_value": 32.19426684333421,
+      "timestamp": "2025-08-05T16:32:26.058774"
+    },
+    {
+      "metric_name": "peak_disk_io",
+      "metric_value": 71.52664979590872,
+      "timestamp": "2025-08-05T16:32:26.058774"
+    },
+    {
+      "metric_name": "peak_memory_usage",
+      "metric_value": 41.463125730637785,
+      "timestamp": "2025-08-05T16:32:26.058774"
+    },
+    {
+      "metric_name": "peak_cpu_usage",
+      "metric_value": 64.78844822993005,
+      "timestamp": "2025-08-05T16:32:26.058774"
+    },
+    {
+      "metric_name": "gpu_utilization",
+      "metric_value": 66.11020501367067,
+      "timestamp": "2025-08-05T16:32:26.047774"
+    },
+    {
+      "metric_name": "network_throughput_mbps",
+      "metric_value": 96.6175239308857,
+      "timestamp": "2025-08-05T16:32:26.047774"
+    },
+    {
+      "metric_name": "peak_disk_io",
+      "metric_value": 80.2772910444613,
+      "timestamp": "2025-08-05T16:32:26.047774"
+    },
+    {
+      "metric_name": "peak_memory_usage",
+      "metric_value": 57.81869627642635,
+      "timestamp": "2025-08-05T16:32:26.047774"
+    },
+    {
+      "metric_name": "peak_cpu_usage",
+      "metric_value": 71.3063320845282,
+      "timestamp": "2025-08-05T16:32:26.047774"
+    },
+    {
+      "metric_name": "gpu_utilization",
+      "metric_value": 4.143458996122654,
+      "timestamp": "2025-08-05T16:32:26.030199"
+    },
+    {
+      "metric_name": "network_throughput_mbps",
+      "metric_value": 41.09808735181417,
+      "timestamp": "2025-08-05T16:32:26.030199"
+    },
+    {
+      "metric_name": "peak_disk_io",
+      "metric_value": 68.79080732871336,
+      "timestamp": "2025-08-05T16:32:26.030199"
+    },
+    {
+      "metric_name": "peak_memory_usage",
+      "metric_value": 78.05056131009526,
+      "timestamp": "2025-08-05T16:32:26.030199"
+    },
+    {
+      "metric_name": "peak_cpu_usage",
+      "metric_value": 45.779187736033414,
+      "timestamp": "2025-08-05T16:32:26.030199"
+    },
+    {
+      "metric_name": "gpu_utilization",
+      "metric_value": 70.26436659369391,
+      "timestamp": "2025-08-05T16:32:26.024151"
+    },
+    {
+      "metric_name": "network_throughput_mbps",
+      "metric_value": 71.07601952900912,
+      "timestamp": "2025-08-05T16:32:26.024151"
+    },
+    {
+      "metric_name": "peak_disk_io",
+      "metric_value": 32.456507000095776,
+      "timestamp": "2025-08-05T16:32:26.024151"
+    },
+    {
+      "metric_name": "peak_memory_usage",
+      "metric_value": 78.6408446108672,
+      "timestamp": "2025-08-05T16:32:26.024151"
+    },
+    {
+      "metric_name": "peak_cpu_usage",
+      "metric_value": 77.84395265338665,
+      "timestamp": "2025-08-05T16:32:26.024151"
+    },
+    {
+      "metric_name": "gpu_utilization",
+      "metric_value": 41.79494164022555,
+      "timestamp": "2025-08-05T16:32:26.016906"
+    },
+    {
+      "metric_name": "network_throughput_mbps",
+      "metric_value": 47.28937375389316,
+      "timestamp": "2025-08-05T16:32:26.016906"
+    },
+    {
+      "metric_name": "peak_disk_io",
+      "metric_value": 49.62243988421617,
+      "timestamp": "2025-08-05T16:32:26.016906"
+    },
+    {
+      "metric_name": "peak_memory_usage",
+      "metric_value": 65.36909379166326,
+      "timestamp": "2025-08-05T16:32:26.016906"
+    },
+    {
+      "metric_name": "peak_cpu_usage",
+      "metric_value": 62.05088595679979,
+      "timestamp": "2025-08-05T16:32:26.016906"
+    },
+    {
+      "metric_name": "gpu_utilization",
+      "metric_value": 65.50178504558521,
+      "timestamp": "2025-08-05T16:32:25.995907"
+    },
+    {
+      "metric_name": "network_throughput_mbps",
+      "metric_value": 13.03029187404298,
+      "timestamp": "2025-08-05T16:32:25.995907"
+    },
+    {
+      "metric_name": "peak_disk_io",
+      "metric_value": 96.23439106289453,
+      "timestamp": "2025-08-05T16:32:25.995907"
+    },
+    {
+      "metric_name": "peak_memory_usage",
+      "metric_value": 62.81232745153636,
+      "timestamp": "2025-08-05T16:32:25.995907"
+    },
+    {
+      "metric_name": "peak_cpu_usage",
+      "metric_value": 66.11993756000695,
+      "timestamp": "2025-08-05T16:32:25.995907"
+    },
+    {
+      "metric_name": "gpu_utilization",
+      "metric_value": 54.08511572352242,
+      "timestamp": "2025-08-05T16:32:25.974605"
+    },
+    {
+      "metric_name": "network_throughput_mbps",
+      "metric_value": 43.726187055510636,
+      "timestamp": "2025-08-05T16:32:25.974605"
+    },
+    {
+      "metric_name": "peak_disk_io",
+      "metric_value": 98.46414997801016,
+      "timestamp": "2025-08-05T16:32:25.974605"
+    },
+    {
+      "metric_name": "peak_memory_usage",
+      "metric_value": 43.92913239918653,
+      "timestamp": "2025-08-05T16:32:25.974605"
+    },
+    {
+      "metric_name": "peak_cpu_usage",
+      "metric_value": 92.92494332979882,
+      "timestamp": "2025-08-05T16:32:25.974605"
+    },
+    {
+      "metric_name": "gpu_utilization",
+      "metric_value": 36.93571512125983,
+      "timestamp": "2025-08-05T16:32:25.968604"
+    },
+    {
+      "metric_name": "network_throughput_mbps",
+      "metric_value": 65.26485844848486,
+      "timestamp": "2025-08-05T16:32:25.968604"
+    },
+    {
+      "metric_name": "peak_disk_io",
+      "metric_value": 35.76221859193961,
+      "timestamp": "2025-08-05T16:32:25.968604"
+    },
+    {
+      "metric_name": "peak_memory_usage",
+      "metric_value": 78.82811544832461,
+      "timestamp": "2025-08-05T16:32:25.968604"
+    },
+    {
+      "metric_name": "peak_cpu_usage",
+      "metric_value": 80.58015701513901,
+      "timestamp": "2025-08-05T16:32:25.968604"
+    },
+    {
+      "metric_name": "gpu_utilization",
+      "metric_value": 73.67108709958084,
+      "timestamp": "2025-08-05T16:32:25.952606"
+    },
+    {
+      "metric_name": "network_throughput_mbps",
+      "metric_value": 15.939456588070959,
+      "timestamp": "2025-08-05T16:32:25.952606"
+    },
+    {
+      "metric_name": "peak_disk_io",
+      "metric_value": 50.448710700178026,
+      "timestamp": "2025-08-05T16:32:25.952606"
+    },
+    {
+      "metric_name": "peak_memory_usage",
+      "metric_value": 48.32336077679879,
+      "timestamp": "2025-08-05T16:32:25.952606"
+    },
+    {
+      "metric_name": "peak_cpu_usage",
+      "metric_value": 41.266183642070665,
+      "timestamp": "2025-08-05T16:32:25.952606"
+    },
+    {
+      "metric_name": "gpu_utilization",
+      "metric_value": 19.985181563936894,
+      "timestamp": "2025-08-05T16:32:25.946605"
+    },
+    {
+      "metric_name": "network_throughput_mbps",
+      "metric_value": 89.3022207606517,
+      "timestamp": "2025-08-05T16:32:25.946605"
+    },
+    {
+      "metric_name": "peak_disk_io",
+      "metric_value": 66.72283368913739,
+      "timestamp": "2025-08-05T16:32:25.946605"
+    },
+    {
+      "metric_name": "peak_memory_usage",
+      "metric_value": 50.61011603939058,
+      "timestamp": "2025-08-05T16:32:25.946605"
+    },
+    {
+      "metric_name": "peak_cpu_usage",
+      "metric_value": 70.49645068938437,
+      "timestamp": "2025-08-05T16:32:25.946605"
+    },
+    {
+      "metric_name": "gpu_utilization",
+      "metric_value": 76.57098777814313,
+      "timestamp": "2025-08-05T16:32:25.940604"
+    },
+    {
+      "metric_name": "network_throughput_mbps",
+      "metric_value": 85.86565484974759,
+      "timestamp": "2025-08-05T16:32:25.940604"
+    },
+    {
+      "metric_name": "peak_disk_io",
+      "metric_value": 84.37693782386981,
+      "timestamp": "2025-08-05T16:32:25.940604"
+    },
+    {
+      "metric_name": "peak_memory_usage",
+      "metric_value": 81.52969017467831,
+      "timestamp": "2025-08-05T16:32:25.940604"
+    },
+    {
+      "metric_name": "peak_cpu_usage",
+      "metric_value": 69.6265192233781,
+      "timestamp": "2025-08-05T16:32:25.940604"
+    },
+    {
+      "metric_name": "gpu_utilization",
+      "metric_value": 7.302014925231916,
+      "timestamp": "2025-08-05T16:32:25.928595"
+    },
+    {
+      "metric_name": "network_throughput_mbps",
+      "metric_value": 75.65042940384616,
+      "timestamp": "2025-08-05T16:32:25.928595"
+    },
+    {
+      "metric_name": "peak_disk_io",
+      "metric_value": 96.98663576500252,
+      "timestamp": "2025-08-05T16:32:25.928595"
+    },
+    {
+      "metric_name": "peak_memory_usage",
+      "metric_value": 66.32242861457388,
+      "timestamp": "2025-08-05T16:32:25.928595"
+    },
+    {
+      "metric_name": "peak_cpu_usage",
+      "metric_value": 55.249036781362946,
+      "timestamp": "2025-08-05T16:32:25.928595"
+    },
+    {
+      "metric_name": "gpu_utilization",
+      "metric_value": 37.94244730300658,
+      "timestamp": "2025-08-05T16:32:25.907454"
+    },
+    {
+      "metric_name": "network_throughput_mbps",
+      "metric_value": 98.61937805630136,
+      "timestamp": "2025-08-05T16:32:25.907454"
+    },
+    {
+      "metric_name": "peak_disk_io",
+      "metric_value": 73.2555651228703,
+      "timestamp": "2025-08-05T16:32:25.907454"
+    },
+    {
+      "metric_name": "peak_memory_usage",
+      "metric_value": 83.07653489355937,
+      "timestamp": "2025-08-05T16:32:25.907454"
+    },
+    {
+      "metric_name": "peak_cpu_usage",
+      "metric_value": 37.09099306474421,
+      "timestamp": "2025-08-05T16:32:25.907454"
+    },
+    {
+      "metric_name": "gpu_utilization",
+      "metric_value": 51.679828316169875,
+      "timestamp": "2025-08-05T16:32:25.901454"
+    },
+    {
+      "metric_name": "network_throughput_mbps",
+      "metric_value": 27.622496659079285,
+      "timestamp": "2025-08-05T16:32:25.901454"
+    },
+    {
+      "metric_name": "peak_disk_io",
+      "metric_value": 45.506951877072616,
+      "timestamp": "2025-08-05T16:32:25.901454"
+    },
+    {
+      "metric_name": "peak_memory_usage",
+      "metric_value": 79.74260722072043,
+      "timestamp": "2025-08-05T16:32:25.901454"
+    },
+    {
+      "metric_name": "peak_cpu_usage",
+      "metric_value": 65.38802037351896,
+      "timestamp": "2025-08-05T16:32:25.901454"
+    },
+    {
+      "metric_name": "gpu_utilization",
+      "metric_value": 19.160285330071233,
+      "timestamp": "2025-08-05T16:32:25.895453"
+    },
+    {
+      "metric_name": "network_throughput_mbps",
+      "metric_value": 48.99246392746155,
+      "timestamp": "2025-08-05T16:32:25.895453"
+    },
+    {
+      "metric_name": "peak_disk_io",
+      "metric_value": 30.86989325830541,
+      "timestamp": "2025-08-05T16:32:25.895453"
+    },
+    {
+      "metric_name": "peak_memory_usage",
+      "metric_value": 66.06504716823716,
+      "timestamp": "2025-08-05T16:32:25.895453"
+    },
+    {
+      "metric_name": "peak_cpu_usage",
+      "metric_value": 42.536886357939665,
+      "timestamp": "2025-08-05T16:32:25.895453"
+    },
+    {
+      "metric_name": "gpu_utilization",
+      "metric_value": 38.79075483236332,
+      "timestamp": "2025-08-05T16:32:25.889456"
+    },
+    {
+      "metric_name": "network_throughput_mbps",
+      "metric_value": 37.7432254844048,
+      "timestamp": "2025-08-05T16:32:25.889456"
+    },
+    {
+      "metric_name": "peak_disk_io",
+      "metric_value": 35.965782937081336,
+      "timestamp": "2025-08-05T16:32:25.889456"
+    },
+    {
+      "metric_name": "peak_memory_usage",
+      "metric_value": 60.03620592969082,
+      "timestamp": "2025-08-05T16:32:25.889456"
+    },
+    {
+      "metric_name": "peak_cpu_usage",
+      "metric_value": 59.342511554817364,
+      "timestamp": "2025-08-05T16:32:25.889456"
+    },
+    {
+      "metric_name": "gpu_utilization",
+      "metric_value": 84.48743898933017,
+      "timestamp": "2025-08-05T16:32:25.859443"
+    },
+    {
+      "metric_name": "network_throughput_mbps",
+      "metric_value": 60.3394831412555,
+      "timestamp": "2025-08-05T16:32:25.859443"
+    },
+    {
+      "metric_name": "peak_disk_io",
+      "metric_value": 51.53153540129254,
+      "timestamp": "2025-08-05T16:32:25.859443"
+    },
+    {
+      "metric_name": "peak_memory_usage",
+      "metric_value": 45.80247457368288,
+      "timestamp": "2025-08-05T16:32:25.859443"
+    },
+    {
+      "metric_name": "peak_cpu_usage",
+      "metric_value": 51.89881854467346,
+      "timestamp": "2025-08-05T16:32:25.859443"
+    },
+    {
+      "metric_name": "gpu_utilization",
+      "metric_value": 31.579424857400397,
+      "timestamp": "2025-08-05T16:32:25.852444"
+    },
+    {
+      "metric_name": "network_throughput_mbps",
+      "metric_value": 72.25002727083712,
+      "timestamp": "2025-08-05T16:32:25.852444"
+    },
+    {
+      "metric_name": "peak_disk_io",
+      "metric_value": 59.91825691369887,
+      "timestamp": "2025-08-05T16:32:25.852444"
+    },
+    {
+      "metric_name": "peak_memory_usage",
+      "metric_value": 61.01663766181066,
+      "timestamp": "2025-08-05T16:32:25.852444"
+    },
+    {
+      "metric_name": "peak_cpu_usage",
+      "metric_value": 50.109222879734325,
+      "timestamp": "2025-08-05T16:32:25.852444"
+    },
+    {
+      "metric_name": "gpu_utilization",
+      "metric_value": 68.6662391671649,
+      "timestamp": "2025-08-05T16:32:25.831282"
+    },
+    {
+      "metric_name": "network_throughput_mbps",
+      "metric_value": 69.84479946262867,
+      "timestamp": "2025-08-05T16:32:25.831282"
+    },
+    {
+      "metric_name": "peak_disk_io",
+      "metric_value": 74.77344678544188,
+      "timestamp": "2025-08-05T16:32:25.831282"
+    },
+    {
+      "metric_name": "peak_memory_usage",
+      "metric_value": 72.51453092226569,
+      "timestamp": "2025-08-05T16:32:25.831282"
+    },
+    {
+      "metric_name": "peak_cpu_usage",
+      "metric_value": 42.085220483660784,
+      "timestamp": "2025-08-05T16:32:25.831282"
+    },
+    {
+      "metric_name": "gpu_utilization",
+      "metric_value": 3.270649739287572,
+      "timestamp": "2025-08-05T16:32:25.793912"
+    },
+    {
+      "metric_name": "network_throughput_mbps",
+      "metric_value": 77.70960191562325,
+      "timestamp": "2025-08-05T16:32:25.793912"
+    },
+    {
+      "metric_name": "peak_disk_io",
+      "metric_value": 96.93849703485225,
+      "timestamp": "2025-08-05T16:32:25.793912"
+    },
+    {
+      "metric_name": "peak_memory_usage",
+      "metric_value": 78.68468347836816,
+      "timestamp": "2025-08-05T16:32:25.793912"
+    },
+    {
+      "metric_name": "peak_cpu_usage",
+      "metric_value": 44.14115869546292,
+      "timestamp": "2025-08-05T16:32:25.793912"
+    },
+    {
+      "metric_name": "gpu_utilization",
+      "metric_value": 25.81203944706393,
+      "timestamp": "2025-08-05T16:32:25.771681"
+    },
+    {
+      "metric_name": "network_throughput_mbps",
+      "metric_value": 49.65320433002318,
+      "timestamp": "2025-08-05T16:32:25.771681"
+    },
+    {
+      "metric_name": "peak_disk_io",
+      "metric_value": 43.783828284107656,
+      "timestamp": "2025-08-05T16:32:25.771681"
+    },
+    {
+      "metric_name": "peak_memory_usage",
+      "metric_value": 43.42167846863595,
+      "timestamp": "2025-08-05T16:32:25.771681"
+    },
+    {
+      "metric_name": "peak_cpu_usage",
+      "metric_value": 68.16289830540262,
+      "timestamp": "2025-08-05T16:32:25.771681"
+    },
+    {
+      "metric_name": "gpu_utilization",
+      "metric_value": 49.05528516857493,
+      "timestamp": "2025-08-05T16:32:25.765500"
+    },
+    {
+      "metric_name": "network_throughput_mbps",
+      "metric_value": 17.19327934730444,
+      "timestamp": "2025-08-05T16:32:25.765500"
+    },
+    {
+      "metric_name": "peak_disk_io",
+      "metric_value": 48.34854303301448,
+      "timestamp": "2025-08-05T16:32:25.765500"
+    },
+    {
+      "metric_name": "peak_memory_usage",
+      "metric_value": 41.91991338040947,
+      "timestamp": "2025-08-05T16:32:25.765500"
+    },
+    {
+      "metric_name": "peak_cpu_usage",
+      "metric_value": 90.3131237089471,
+      "timestamp": "2025-08-05T16:32:25.765500"
+    },
+    {
+      "metric_name": "gpu_utilization",
+      "metric_value": 10.296909025301387,
+      "timestamp": "2025-08-05T16:32:25.693003"
+    },
+    {
+      "metric_name": "network_throughput_mbps",
+      "metric_value": 21.508991353128394,
+      "timestamp": "2025-08-05T16:32:25.693003"
+    },
+    {
+      "metric_name": "peak_disk_io",
+      "metric_value": 75.00483927612215,
+      "timestamp": "2025-08-05T16:32:25.693003"
+    },
+    {
+      "metric_name": "peak_memory_usage",
+      "metric_value": 54.35188790032939,
+      "timestamp": "2025-08-05T16:32:25.693003"
+    },
+    {
+      "metric_name": "peak_cpu_usage",
+      "metric_value": 61.479686605517045,
+      "timestamp": "2025-08-05T16:32:25.693003"
+    }
+  ]
+}

@@ -1,0 +1,145 @@
+{
+  "timestamp": "2025-08-01",
+  "hardware_profile": {
+    "cpu": {
+      "model": "AMD64 Family 25 Model 8 Stepping 2, AuthenticAMD",
+      "cores": 64,
+      "threads": 128,
+      "base_clock": 2.701,
+      "boost_clock": 2.701,
+      "architecture": "x64"
+    },
+    "memory": {
+      "total_gb": 127,
+      "available_gb": 73,
+      "type": "Unknown",
+      "speed": 0
+    },
+    "gpu": {
+      "model": "NVIDIA GeForce RTX 4080",
+      "vram_gb": 15,
+      "cuda_version": "12.9",
+      "driver_version": "576.80"
+    },
+    "storage": {
+      "available_gb": 4904,
+      "type": "Unknown"
+    },
+    "os": {
+      "name": "Windows 10",
+      "version": "10.0.19045",
+      "architecture": "x64"
+    }
+  },
+  "environment_info": {
+    "windows_version": "Windows 10 Pro",
+    "windows_build": "19045",
+    "windows_edition": "Professional",
+    "architecture": "x64",
+    "user_privileges": "Standard User",
+    "python_installations": [
+      {
+        "path": "C:\\Users\\RamjiThiagarajan\\AppData\\Local\\Programs\\Python\\Python39\\python.exe",
+        "version": "3.9.7",
+        "source": "filesystem"
+      },
+      {
+        "path": "C:\\Python\\Python3.8\\python.exe",
+        "version": "3.8.0",
+        "source": "PATH"
+      },
+      {
+        "path": "C:\\Python\\Pyton3.6\\python.exe",
+        "version": "3.6",
+        "source": "registry"
+      },
+      {
+        "path": "C:\\Users\\RamjiThiagarajan\\anaconda3\\python.exe",
+        "version": "3.12",
+        "source": "registry"
+      },
+      {
+        "path": "C:\\Program Files\\Python311\\python.exe",
+        "version": "3.11.4",
+        "source": "filesystem"
+      },
+      {
+        "path": "E:\\wan\\venv\\Scripts\\python.exe",
+        "version": "3.11.4",
+        "source": "PATH"
+      },
+      {
+        "path": "C:\\msys64\\mingw64\\bin\\python.exe",
+        "version": "3.11.10",
+        "source": "PATH"
+      },
+      {
+        "path": "C:\\Python\\Python3.10.11\\python.exe",
+        "version": "3.10",
+        "source": "registry"
+      }
+    ],
+    "installed_software": [
+      "Visual C++ Redistributable",
+      ".NET Framework v2.0.50727",
+      ".NET Framework v3.0",
+      ".NET Framework v3.5",
+      ".NET Framework v4",
+      ".NET Framework v4.0",
+      "CUDA Toolkit 12.6",
+      "Git",
+      "Windows SDK v10.0",
+      "Windows Subsystem for Linux"
+    ],
+    "system_capabilities": {
+      "has_admin_rights": false,
+      "has_internet_access": true,
+      "has_sufficient_disk_space": true,
+      "has_compatible_python": true,
+      "has_visual_cpp_redist": true,
+      "has_net_framework": true,
+      "has_windows_sdk": true,
+      "supports_long_paths": true,
+      "has_hyper_v": false,
+      "has_wsl": true
+    }
+  },
+  "validation_results": {
+    "hardware_validation": {
+      "success": true,
+      "message": "Hardware validation passed",
+      "warnings": null
+    },
+    "system_validation": {
+      "success": true,
+      "message": "System capabilities validation passed",
+      "warnings": [
+        "Not running as administrator - some features may be limited"
+      ],
+      "issues": [],
+      "recommendations": [
+        "Consider running as administrator for full functionality"
+      ]
+    }
+  },
+  "performance_tier": "enterprise",
+  "optimal_settings": {
+    "performance_tier": "high_performance",
+    "cpu_threads": 32,
+    "memory_allocation_gb": 32,
+    "enable_gpu_acceleration": true,
+    "storage_optimization": "Unknown",
+    "gpu_model": "NVIDIA GeForce RTX 4080",
+    "max_vram_usage_gb": 13,
+    "cuda_enabled": false,
+    "gpu_precision": "fp16",
+    "quantization": "bf16",
+    "enable_model_offload": false,
+    "vae_tile_size": 512,
+    "max_queue_size": 20,
+    "worker_threads": 16,
+    "preload_models": true,
+    "cache_models": true
+  },
+  "overall_status": true
+}

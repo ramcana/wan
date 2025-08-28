@@ -1,0 +1,53 @@
+{
+    "system": {
+        "default_quantization": "fp16",
+        "enable_offload": true,
+        "vae_tile_size": 256,
+        "max_queue_size": 10,
+        "worker_threads": 8,
+        "log_level": "INFO"
+    },
+    "optimization": {
+        "max_vram_usage_gb": 8,
+        "cpu_threads": 16,
+        "memory_pool_gb": 8,
+        "enable_memory_efficient_attention": true,
+        "use_flash_attention": false
+    },
+    "models": {
+        "cache_models": false,
+        "preload_models": false,
+        "model_precision": "fp16",
+        "models_directory": "models",
+        "wan22_models": {
+            "t2v_model": "WAN2.2-T2V-A14B",
+            "i2v_model": "WAN2.2-I2V-A14B",
+            "ti2v_model": "WAN2.2-TI2V-5B"
+        }
+    },
+    "generation": {
+        "default_resolution": "720p",
+        "max_frames": 120,
+        "default_fps": 24,
+        "guidance_scale": 7.5,
+        "num_inference_steps": 50
+    },
+    "paths": {
+        "output_directory": "outputs",
+        "temp_directory": "temp",
+        "logs_directory": "logs"
+    },
+    "ui": {
+        "enable_gradio": true,
+        "gradio_port": 7860,
+        "gradio_host": "127.0.0.1",
+        "enable_api": true,
+        "api_port": 7861
+    },
+    "hardware": {
+        "auto_detect": true,
+        "force_cpu": false,
+        "gpu_device_id": 0,
+        "mixed_precision": true
+    }
+}

@@ -106,9 +106,22 @@ wan22_tasks.db
 model_cache/
 *.pt
 temp.pt
-local_installation/
 venv/
 __pycache__/
+
+# Exclude large files from local_installation but keep scripts and configs
+local_installation/venv/
+local_installation/__pycache__/
+local_installation/.pytest_cache/
+local_installation/logs/
+local_installation/backups/
+local_installation/test_results/
+local_installation/WAN22-Installation-Package/
+local_installation/**/*.bin
+local_installation/**/*.safetensors
+local_installation/**/*.pt
+local_installation/**/*.pth
+local_installation/**/*.ckpt
 
 # Generated content
 generated_videos/

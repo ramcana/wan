@@ -1,0 +1,97 @@
+{
+    "enabled": true,
+    "check_interval_seconds": 60,
+    "health_check_timeout_seconds": 30,
+    "metrics_retention_days": 30,
+    "alert_thresholds": [
+        {
+            "metric_name": "error_rate",
+            "warning_threshold": 0.05,
+            "critical_threshold": 0.1,
+            "comparison_operator": "greater_than",
+            "time_window_minutes": 5,
+            "min_occurrences": 3
+        },
+        {
+            "metric_name": "response_time_ms",
+            "warning_threshold": 5000,
+            "critical_threshold": 10000,
+            "comparison_operator": "greater_than",
+            "time_window_minutes": 5,
+            "min_occurrences": 2
+        },
+        {
+            "metric_name": "memory_usage_percent",
+            "warning_threshold": 80,
+            "critical_threshold": 90,
+            "comparison_operator": "greater_than",
+            "time_window_minutes": 10,
+            "min_occurrences": 1
+        },
+        {
+            "metric_name": "disk_usage_percent",
+            "warning_threshold": 85,
+            "critical_threshold": 95,
+            "comparison_operator": "greater_than",
+            "time_window_minutes": 15,
+            "min_occurrences": 1
+        },
+        {
+            "metric_name": "cpu_usage_percent",
+            "warning_threshold": 80,
+            "critical_threshold": 90,
+            "comparison_operator": "greater_than",
+            "time_window_minutes": 10,
+            "min_occurrences": 2
+        },
+        {
+            "metric_name": "success_rate",
+            "warning_threshold": 0.95,
+            "critical_threshold": 0.90,
+            "comparison_operator": "less_than",
+            "time_window_minutes": 10,
+            "min_occurrences": 2
+        }
+    ],
+    "alert_channels": [
+        {
+            "name": "log",
+            "type": "log",
+            "enabled": true,
+            "configuration": {
+                "log_level": "ERROR"
+            }
+        },
+        {
+            "name": "email",
+            "type": "email",
+            "enabled": false,
+            "configuration": {
+                "smtp_server": "localhost",
+                "smtp_port": 587,
+                "username": "",
+                "password": "",
+                "from_email": "alerts@wan22.com",
+                "to_emails": [
+                    "admin@wan22.com"
+                ]
+            }
+        },
+        {
+            "name": "webhook",
+            "type": "webhook",
+            "enabled": false,
+            "configuration": {
+                "url": "https://hooks.slack.com/services/YOUR/WEBHOOK/URL",
+                "method": "POST",
+                "headers": {
+                    "Content-Type": "application/json"
+                }
+            }
+        }
+    ],
+    "dashboard_enabled": true,
+    "dashboard_port": 8080,
+    "cross_instance_monitoring": false,
+    "instance_discovery_url": null
+}
