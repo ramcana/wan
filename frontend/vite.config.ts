@@ -1,18 +1,18 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
-import { createEnvReloadPlugin } from './src/lib/vite-env-reload-plugin'
+// import { createEnvReloadPlugin } from './src/lib/vite-env-reload-plugin'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     react(),
-    createEnvReloadPlugin({
-      watchedVars: ['VITE_API_URL', 'VITE_DEV_MODE'],
-      onEnvChange: (changedVars) => {
-        console.log('Environment variables changed, triggering cache clear:', changedVars);
-      }
-    })
+    // createEnvReloadPlugin({
+    //   watchedVars: ['VITE_API_URL', 'VITE_DEV_MODE'],
+    //   onEnvChange: (changedVars) => {
+    //     console.log('Environment variables changed, triggering cache clear:', changedVars);
+    //   }
+    // })
   ],
   resolve: {
     alias: {

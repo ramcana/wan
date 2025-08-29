@@ -37,7 +37,7 @@ function App() {
 
   return (
     <ErrorBoundary>
-      <ThemeProvider defaultTheme="light" storageKey="wan22-ui-theme">
+      <ThemeProvider defaultTheme="dark" storageKey="wan22-ui-theme">
         <AccessibilityProvider>
           <StartupValidator>
             <SkipLinks />

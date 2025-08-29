@@ -4,6 +4,12 @@ import { useGenerateVideo } from "@/hooks/api/use-generation";
 import { GenerationFormData } from "@/lib/api-schemas";
 import { useToast } from "@/hooks/use-toast";
 import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import {
   Card,
   CardContent,
   CardDescription,
@@ -112,12 +118,21 @@ const GenerationPage: React.FC = () => {
       </div>
 
       {/* Generation Form */}
-      <GenerationForm
-        onSubmit={handleGenerationSubmit}
-        isSubmitting={generateVideoMutation.isLoading}
-        error={generateVideoMutation.error || null}
-        onRetry={handleRetry}
-      />
+      <Accordion type="single" collapsible defaultValue="generation-form">
+        <AccordionItem value="generation-form">
+          <AccordionTrigger>
+            <h2 className="text-lg font-medium">Generation Settings</h2>
+          </AccordionTrigger>
+          <AccordionContent>
+            <GenerationForm
+              onSubmit={handleGenerationSubmit}
+              isSubmitting={generateVideoMutation.isLoading}
+              error={generateVideoMutation.error || null}
+              onRetry={handleRetry}
+            />
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
 
       {/* Help Section */}
       <Card className="bg-muted/50">
