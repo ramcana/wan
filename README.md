@@ -2,6 +2,31 @@
 
 A modern, functionally organized video generation system with FastAPI backend and React frontend.
 
+## 🚀 Quick Start (New Users Start Here!)
+
+### The Simple Way - Just One Click!
+
+1. **Double-click** `start.bat` in the project folder
+2. **Wait** for setup to complete (first time takes a few minutes)
+3. **Open your browser** to http://localhost:3000 when ready
+
+**Or from command line:**
+
+```bash
+python start.py
+```
+
+That's it! The script automatically:
+
+- ✅ Checks your system requirements
+- ✅ Installs missing dependencies
+- ✅ Starts both servers
+- ✅ Opens your browser
+
+**Having issues?** See [QUICK_START.md](QUICK_START.md) for troubleshooting.
+
+---
+
 ## Architecture Overview
 
 The codebase has been functionally organized into the following structure:
@@ -28,7 +53,7 @@ wan2.2/
 └── scripts/                 # Build and deployment scripts
 ```
 
-## Quick Start
+## Advanced Installation (For Developers)
 
 ### Prerequisites
 
@@ -36,7 +61,7 @@ wan2.2/
 - Node.js 16+
 - CUDA-compatible GPU (recommended)
 
-### Installation
+### Manual Installation
 
 1. **Clone the repository**
 

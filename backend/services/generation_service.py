@@ -90,12 +90,21 @@ class VRAMMonitor:
             if "error" in usage:
                 return False, f"Cannot check VRAM: {usage['error']}"
             
-            available_gb = self.optimal_usage_gb - usage["allocated_gb"]
+            # Calculate actual available VRAM correctly
+            total_gb = usage.get("total_gb", self.total_vram_gb)
+            allocated_gb = usage["allocated_gb"]
+            available_gb = total_gb - allocated_gb
+            
+            # Check against optimal usage to avoid overloading
+            optimal_available = self.optimal_usage_gb - allocated_gb
             
             if required_gb <= available_gb:
-                return True, f"Sufficient VRAM available: {available_gb:.1f}GB free, {required_gb:.1f}GB required"
+                if allocated_gb + required_gb <= self.optimal_usage_gb:
+                    return True, f"Sufficient VRAM available: {available_gb:.1f}GB free, {required_gb:.1f}GB required"
+                else:
+                    return True, f"VRAM available but will exceed optimal usage: {available_gb:.1f}GB free, {required_gb:.1f}GB required (optimal: {self.optimal_usage_gb:.1f}GB)"
             else:
-                return False, f"Insufficient VRAM: {available_gb:.1f}GB free, {required_gb:.1f}GB required"
+                return False, f"Insufficient VRAM: {available_gb:.1f}GB free, {required_gb:.1f}GB required. Suggestions: Enable model offloading to CPU; Reduce VAE tile size"
                 
         except Exception as e:
             return False, f"VRAM check failed: {str(e)}"
@@ -1598,8 +1607,40 @@ class GenerationService:
             db.commit()
             
             logger.info(f"Starting real generation with optimized pipeline for {model_type}")
+            
+            # Create progress callback to update database during generation
+            async def progress_callback(progress_update, message: str = ""):
+                try:
+                    # Handle both ProgressUpdate object and direct float
+                    if hasattr(progress_update, 'progress_percent'):
+                        # ProgressUpdate object from real generation pipeline
+                        progress_percent = progress_update.progress_percent
+                        message = progress_update.message or message
+                    else:
+                        # Direct float value (legacy support)
+                        progress_percent = float(progress_update)
+                    
+                    # Map generation progress (0-100%) to task progress (40-95%)
+                    task_progress = 40 + int((progress_percent / 100) * 55)
+                    task.progress = min(task_progress, 95)
+                    db.commit()
+                    
+                    # Send WebSocket update if available
+                    if self.websocket_manager:
+                        await self.websocket_manager.send_progress_update(
+                            task_id=task.id,
+                            progress=task.progress,
+                            message=message or f"Generating... {progress_percent:.1f}%",
+                            stage="generation"
+                        )
+                    
+                    logger.debug(f"Generation progress: {progress_percent:.1f}% -> Task progress: {task.progress}%")
+                except Exception as e:
+                    logger.warning(f"Failed to update progress: {e}")
+            
             generation_result = await self.real_generation_pipeline.generate_video_with_optimization(
                 model_type=model_type,
+                progress_callback=progress_callback,
                 **generation_params
             )
             

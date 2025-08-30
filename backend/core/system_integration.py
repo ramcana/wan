@@ -338,11 +338,22 @@ class SystemIntegration:
         try:
             # Try to import WanPipelineLoader
             try:
-                from core.services.wan_pipeline_loader import WanPipelineLoader
+                from core.services.wan_pipeline_loader_standalone import WanPipelineLoader
+                logger.info("Using standalone WanPipelineLoader implementation")
             except ImportError as e:
-                logger.warning(f"WanPipelineLoader has missing dependencies: {e}")
-                # Create a real WanPipelineLoader for actual functionality
-                return self._create_real_wan_pipeline_loader()
+                logger.warning(f"Standalone WanPipelineLoader has missing dependencies: {e}")
+                try:
+                    from core.services.wan_pipeline_loader_fixed import WanPipelineLoader
+                    logger.info("Using fixed WanPipelineLoader implementation")
+                except ImportError as e2:
+                    logger.warning(f"Fixed WanPipelineLoader has missing dependencies: {e2}")
+                    try:
+                        from core.services.wan_pipeline_loader import WanPipelineLoader
+                        logger.info("Using original WanPipelineLoader implementation")
+                    except ImportError as e3:
+                        logger.warning(f"Original WanPipelineLoader has missing dependencies: {e3}")
+                        # Create a real WanPipelineLoader for actual functionality
+                        return self._create_real_wan_pipeline_loader()
             
             # Initialize pipeline loader
             loader = WanPipelineLoader()
@@ -1155,7 +1166,7 @@ class SystemIntegration:
                             "trust_remote_code": True,
                             "torch_dtype": torch.float16 if torch.cuda.is_available() else torch.float32,
                             "low_cpu_mem_usage": True,  # Reduce CPU memory usage
-                            "device_map": "auto" if torch.cuda.is_available() else "cpu",  # Auto device mapping
+                            # Remove device_map="auto" as it's not supported by WAN models
                             "max_memory": {0: "14GB"} if torch.cuda.is_available() else None,  # Limit VRAM usage
                         }
                         
@@ -1184,11 +1195,14 @@ class SystemIntegration:
                     if torch.cuda.is_available():
                         pipeline = pipeline.to("cuda")
                     
-                    # Cache the pipeline
-                    self._pipeline_cache[model_path] = pipeline
+                    # Create a wrapper that provides the expected interface
+                    wrapped_pipeline = self._create_pipeline_wrapper(pipeline, model_type)
                     
-                    self.logger.info(f"Successfully loaded pipeline for {model_type}")
-                    return pipeline
+                    # Cache the wrapped pipeline
+                    self._pipeline_cache[model_path] = wrapped_pipeline
+                    
+                    self.logger.info(f"Successfully loaded and wrapped pipeline for {model_type}")
+                    return wrapped_pipeline
                     
                 except Exception as e:
                     self.logger.error(f"Failed to load pipeline for {model_type}: {e}")
@@ -1224,6 +1238,75 @@ class SystemIntegration:
                 self.logger.info(f"Parameters: trust_remote_code={trust_remote_code}, apply_optimizations={apply_optimizations}")
                 
                 return self.load_pipeline(model_type, model_path)
+            
+            def _create_pipeline_wrapper(self, pipeline, model_type):
+                """Create a wrapper that provides the expected interface for generation"""
+                
+                class PipelineWrapper:
+                    def __init__(self, pipeline, model_type):
+                        self.pipeline = pipeline
+                        self.model_type = model_type
+                        self.logger = logging.getLogger(__name__ + ".PipelineWrapper")
+                    
+                    def generate(self, config):
+                        """Generate using the wrapped pipeline"""
+                        try:
+                            self.logger.info(f"Starting generation with {self.model_type}")
+                            
+                            # Extract parameters from config
+                            prompt = getattr(config, 'prompt', 'A simple video')
+                            num_frames = getattr(config, 'num_frames', 1)
+                            steps = getattr(config, 'steps', 20)
+                            
+                            # Call the pipeline with progress callback support
+                            if hasattr(config, 'progress_callback') and config.progress_callback:
+                                # Create a callback wrapper for the pipeline
+                                def pipeline_callback(step, timestep, latents):
+                                    try:
+                                        # Calculate progress percentage
+                                        progress = (step / steps) * 100
+                                        config.progress_callback(step, steps, latents)
+                                    except Exception as e:
+                                        self.logger.warning(f"Progress callback error: {e}")
+                                
+                                # Generate with callback
+                                result = self.pipeline(
+                                    prompt=prompt,
+                                    num_frames=num_frames,
+                                    num_inference_steps=steps,
+                                    callback=pipeline_callback,
+                                    callback_steps=1
+                                )
+                            else:
+                                # Generate without callback
+                                result = self.pipeline(
+                                    prompt=prompt,
+                                    num_frames=num_frames,
+                                    num_inference_steps=steps
+                                )
+                            
+                            # Create a result object that matches expected interface
+                            class GenerationResult:
+                                def __init__(self, success=True, frames=None, errors=None):
+                                    self.success = success
+                                    self.frames = frames or []
+                                    self.errors = errors or []
+                                    self.peak_memory_mb = 8000  # Mock values
+                                    self.memory_used_mb = 6000
+                                    self.applied_optimizations = ["simplified_loading"]
+                            
+                            self.logger.info(f"Generation completed successfully")
+                            return GenerationResult(success=True, frames=result.frames if hasattr(result, 'frames') else [])
+                            
+                        except Exception as e:
+                            self.logger.error(f"Generation failed: {e}")
+                            return GenerationResult(success=False, errors=[str(e)])
+                    
+                    def __call__(self, *args, **kwargs):
+                        """Allow the wrapper to be called directly"""
+                        return self.pipeline(*args, **kwargs)
+                
+                return PipelineWrapper(pipeline, model_type)
         
         simplified_loader = SimplifiedWanPipelineLoader()
         logger.info("Created simplified WanPipelineLoader with basic model loading")

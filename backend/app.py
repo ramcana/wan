@@ -141,6 +141,16 @@ async def startup_event():
             logger.warning(f"CORS configuration issues detected: {errors}")
     except Exception as e:
         logger.warning(f"Failed to validate CORS configuration: {e}")
+    
+    # Initialize generation service
+    try:
+        from services.generation_service import GenerationService
+        app.state.generation_service = GenerationService()
+        await app.state.generation_service.initialize()
+        logger.info("Generation service initialized and background processing started")
+    except Exception as e:
+        logger.error(f"Failed to initialize generation service: {e}")
+        # Don't raise - we want the server to start even if generation service fails
 
 
 @app.on_event("shutdown")
@@ -152,6 +162,14 @@ async def shutdown_event():
         logger.info("Performance monitoring system shutdown successfully")
     except Exception as e:
         logger.warning(f"Failed to shutdown performance monitoring: {e}")
+    
+    # Shutdown generation service
+    try:
+        if hasattr(app.state, 'generation_service'):
+            app.state.generation_service.is_processing = False
+            logger.info("Generation service shutdown successfully")
+    except Exception as e:
+        logger.warning(f"Failed to shutdown generation service: {e}")
 
 
 # Include API routers
@@ -667,12 +685,10 @@ async def submit_generation(
     logger.info("=" * 60)
     
     try:
-        # Initialize enhanced generation service if not already done
+        # Use the pre-initialized generation service
         if not hasattr(app.state, 'generation_service'):
-            from services.generation_service import GenerationService
-            app.state.generation_service = GenerationService()
-            await app.state.generation_service.initialize()
-            logger.info("Enhanced generation service initialized")
+            logger.error("Generation service not initialized - this should not happen")
+            raise HTTPException(status_code=500, detail="Generation service not available")
         
         generation_service = app.state.generation_service
         

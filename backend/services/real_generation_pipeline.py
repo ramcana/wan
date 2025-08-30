@@ -212,17 +212,20 @@ class RealGenerationPipeline:
                 **{k: v for k, v in kwargs.items() if k in GenerationParams.__annotations__}
             )
             
+            # Extract progress_callback from kwargs if provided
+            progress_callback = kwargs.get('progress_callback', None)
+            
             # Route to appropriate generation method based on model type
             if model_type.startswith("t2v") or model_type == "T2V":
-                return await self.generate_t2v(prompt, params)
+                return await self.generate_t2v(prompt, params, progress_callback)
             elif model_type.startswith("i2v") or model_type == "I2V":
                 if not image_path:
                     raise ValueError("Image path required for I2V generation")
-                return await self.generate_i2v(image_path, prompt, params)
+                return await self.generate_i2v(image_path, prompt, params, progress_callback)
             elif model_type.startswith("ti2v") or model_type == "TI2V":
                 if not image_path:
                     raise ValueError("Image path required for TI2V generation")
-                return await self.generate_ti2v(image_path, prompt, params)
+                return await self.generate_ti2v(image_path, prompt, params, progress_callback)
             else:
                 raise ValueError(f"Unsupported model type: {model_type}")
                 
@@ -311,11 +314,25 @@ class RealGenerationPipeline:
             # Set up progress callback for generation
             def generation_progress_callback(step: int, total_steps: int, latents: torch.Tensor):
                 progress = 35 + int((step / total_steps) * 50)  # 35-85% for generation
+                
+                # Send internal progress update
                 asyncio.create_task(self._send_progress_update(
                     task_id, GenerationStage.GENERATING, progress,
                     f"Generating frame {step}/{total_steps}",
                     current_step=step, total_steps=total_steps
                 ))
+                
+                # Call external progress callback if provided
+                if progress_callback:
+                    try:
+                        # Convert internal progress (35-85%) to external progress (0-100%)
+                        external_progress = ((progress - 35) / 50) * 100
+                        asyncio.create_task(progress_callback(
+                            external_progress, 
+                            f"Generating frame {step}/{total_steps}"
+                        ))
+                    except Exception as e:
+                        self.logger.warning(f"External progress callback failed: {e}")
             
             generation_config.progress_callback = generation_progress_callback
             
@@ -496,11 +513,25 @@ class RealGenerationPipeline:
             # Set up progress callback
             def generation_progress_callback(step: int, total_steps: int, latents: torch.Tensor):
                 progress = 35 + int((step / total_steps) * 50)
+                
+                # Send internal progress update
                 asyncio.create_task(self._send_progress_update(
                     task_id, GenerationStage.GENERATING, progress,
                     f"Generating I2V frame {step}/{total_steps}",
                     current_step=step, total_steps=total_steps
                 ))
+                
+                # Call external progress callback if provided
+                if progress_callback:
+                    try:
+                        # Convert internal progress (35-85%) to external progress (0-100%)
+                        external_progress = ((progress - 35) / 50) * 100
+                        asyncio.create_task(progress_callback(
+                            external_progress, 
+                            f"Generating I2V frame {step}/{total_steps}"
+                        ))
+                    except Exception as e:
+                        self.logger.warning(f"External progress callback failed: {e}")
             
             generation_config.progress_callback = generation_progress_callback
             
@@ -685,11 +716,25 @@ class RealGenerationPipeline:
             # Set up progress callback
             def generation_progress_callback(step: int, total_steps: int, latents: torch.Tensor):
                 progress = 35 + int((step / total_steps) * 50)
+                
+                # Send internal progress update
                 asyncio.create_task(self._send_progress_update(
                     task_id, GenerationStage.GENERATING, progress,
                     f"Generating TI2V frame {step}/{total_steps}",
                     current_step=step, total_steps=total_steps
                 ))
+                
+                # Call external progress callback if provided
+                if progress_callback:
+                    try:
+                        # Convert internal progress (35-85%) to external progress (0-100%)
+                        external_progress = ((progress - 35) / 50) * 100
+                        asyncio.create_task(progress_callback(
+                            external_progress, 
+                            f"Generating TI2V frame {step}/{total_steps}"
+                        ))
+                    except Exception as e:
+                        self.logger.warning(f"External progress callback failed: {e}")
             
             generation_config.progress_callback = generation_progress_callback
             
