@@ -1,0 +1,149 @@
+# Production Health Monitoring Configuration
+# This file configures health monitoring for production environments
+
+# Monitoring Schedule
+daily_report_time: "08:00" # UTC time for daily health reports
+weekly_report_day: "monday" # Day of week for comprehensive weekly reports
+critical_check_interval: 15 # Minutes between critical health checks
+
+# Health Score Thresholds (Production-grade)
+min_health_score: 85.0 # Minimum acceptable overall health score
+critical_health_score: 70.0 # Score that triggers immediate alerts
+test_pass_rate_threshold: 95.0 # Minimum test pass rate for production
+coverage_threshold: 80.0 # Minimum code coverage requirement
+
+# Notification Settings
+enable_email_notifications: true
+enable_slack_notifications: true
+enable_dashboard_updates: true
+
+# Production-Specific Health Checks
+enable_performance_monitoring: true
+enable_security_scanning: true
+enable_dependency_auditing: true
+
+# Resource Management
+max_check_duration: 300 # Maximum time for health checks (5 minutes)
+max_concurrent_checks: 3 # Maximum concurrent health check processes
+
+# Report Management
+report_retention_days: 90 # How long to keep health reports
+detailed_reporting: true # Include detailed metrics and recommendations
+
+# Notification Channels
+notifications:
+  email:
+    enabled: true
+    recipients:
+      - "dev-team@company.com"
+      - "ops-team@company.com"
+    smtp_server: "smtp.company.com"
+    smtp_port: 587
+    use_tls: true
+
+  slack:
+    enabled: true
+    webhook_url: "${SLACK_WEBHOOK_URL}" # Set via environment variable
+    channel: "#project-health"
+    mention_on_critical: true
+
+  dashboard:
+    enabled: true
+    update_interval: 300 # Update dashboard every 5 minutes
+    public_url: "https://health-dashboard.company.com"
+
+# Production Environment Validation
+production_checks:
+  # Database connectivity and performance
+  database:
+    enabled: true
+    connection_timeout: 10
+    query_timeout: 30
+
+  # API endpoint health
+  api_endpoints:
+    enabled: true
+    timeout: 15
+    expected_response_time: 2.0 # seconds
+
+  # Model availability and performance
+  models:
+    enabled: true
+    load_timeout: 60
+    inference_timeout: 30
+
+  # System resources
+  system_resources:
+    enabled: true
+    max_cpu_usage: 80 # percent
+    max_memory_usage: 85 # percent
+    min_disk_space: 10 # GB
+
+  # Security checks
+  security:
+    enabled: true
+    check_dependencies: true
+    check_secrets: true
+    check_permissions: true
+
+# Alert Escalation
+escalation:
+  # Level 1: Warning (health score 70-85)
+  warning:
+    notify_after: 30 # minutes
+    channels: ["slack"]
+
+  # Level 2: Critical (health score 50-70)
+  critical:
+    notify_after: 5 # minutes
+    channels: ["slack", "email"]
+    escalate_after: 60 # minutes
+
+  # Level 3: Emergency (health score < 50)
+  emergency:
+    notify_immediately: true
+    channels: ["slack", "email", "sms"]
+    escalate_after: 15 # minutes
+
+# Maintenance Windows
+maintenance_windows:
+  # Skip alerts during maintenance
+  - name: "Weekly Maintenance"
+    day: "sunday"
+    start_time: "02:00"
+    end_time: "04:00"
+    timezone: "UTC"
+
+  - name: "Monthly Deployment"
+    day: "first_saturday"
+    start_time: "01:00"
+    end_time: "06:00"
+    timezone: "UTC"
+
+# Integration Settings
+integrations:
+  # GitHub integration for PR status checks
+  github:
+    enabled: true
+    token: "${GITHUB_TOKEN}" # Set via environment variable
+    repository: "company/wan22"
+    status_context: "health-check"
+
+  # Jira integration for issue tracking
+  jira:
+    enabled: false
+    server: "https://company.atlassian.net"
+    project: "WAN22"
+    issue_type: "Bug"
+
+  # Monitoring tools integration
+  monitoring:
+    prometheus:
+      enabled: true
+      pushgateway_url: "http://prometheus-pushgateway:9091"
+      job_name: "project-health"
+
+    grafana:
+      enabled: true
+      dashboard_id: "project-health"
+      api_url: "https://grafana.company.com"

@@ -1,0 +1,35 @@
+# CI Environment Test Configuration Overrides
+
+test_categories:
+  unit:
+    timeout: 45 # Stricter timeout for CI
+    parallel: true
+
+  integration:
+    timeout: 150 # Stricter timeout for CI
+
+  performance:
+    timeout: 300 # Stricter timeout for CI
+
+  e2e:
+    timeout: 600 # Stricter timeout for CI
+
+parallel_execution:
+  max_workers: 4 # Use available CI resources
+
+coverage:
+  minimum_threshold: 75 # Higher threshold for CI
+
+reporting:
+  formats:
+    - junit
+    - xml
+    - json
+  include_coverage: true
+  include_performance: true
+
+resource_limits:
+  max_memory_mb: 4096
+  max_cpu_percent: 90
+  max_execution_time: 1200 # 20 minutes
+  max_concurrent_tests: 20

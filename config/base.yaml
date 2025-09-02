@@ -1,0 +1,69 @@
+# Base configuration for WAN22 Video Generation System
+# This file contains default settings that apply to all environments
+
+system:
+  name: "WAN22 Video Generation System"
+  version: "2.2.0"
+  debug: false
+  log_level: "INFO"
+
+backend:
+  api:
+    host: "localhost"
+    port: 8000
+    cors_origins: ["http://localhost:3000"]
+    max_request_size: "100MB"
+    timeout: 300
+
+  models:
+    cache_dir: "./model_cache"
+    download_timeout: 1800
+    max_concurrent_downloads: 2
+    auto_cleanup: true
+
+  generation:
+    max_concurrent_jobs: 3
+    default_timeout: 600
+    output_dir: "./outputs"
+    temp_dir: "./temp"
+
+frontend:
+  development:
+    host: "localhost"
+    port: 3000
+    hot_reload: true
+
+  build:
+    output_dir: "./frontend/dist"
+    public_path: "/"
+    source_maps: true
+
+infrastructure:
+  startup:
+    health_check_interval: 30
+    max_startup_time: 120
+    auto_restart: true
+
+  monitoring:
+    enabled: true
+    metrics_interval: 60
+    log_retention_days: 30
+
+security:
+  authentication:
+    enabled: false
+    token_expiry: 3600
+
+  cors:
+    enabled: true
+    allow_credentials: false
+
+  rate_limiting:
+    enabled: true
+    requests_per_minute: 60
+
+features:
+  model_management: true
+  performance_monitoring: true
+  websocket_updates: true
+  auto_optimization: true

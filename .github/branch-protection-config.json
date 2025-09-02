@@ -1,0 +1,78 @@
+{
+    "branch_protection_rules": {
+        "main": {
+            "required_status_checks": {
+                "strict": true,
+                "contexts": [
+                    "test (3.8)",
+                    "test (3.9)",
+                    "test (3.10)",
+                    "test (3.11)",
+                    "performance-tests",
+                    "health-check",
+                    "build-docs",
+                    "validate-config"
+                ]
+            },
+            "enforce_admins": true,
+            "required_pull_request_reviews": {
+                "required_approving_review_count": 2,
+                "dismiss_stale_reviews": true,
+                "require_code_owner_reviews": true,
+                "require_last_push_approval": true
+            },
+            "restrictions": null,
+            "allow_force_pushes": false,
+            "allow_deletions": false,
+            "block_creations": false,
+            "required_conversation_resolution": true,
+            "lock_branch": false,
+            "allow_fork_syncing": true
+        },
+        "develop": {
+            "required_status_checks": {
+                "strict": true,
+                "contexts": [
+                    "test (3.10)",
+                    "health-check",
+                    "validate-config"
+                ]
+            },
+            "enforce_admins": false,
+            "required_pull_request_reviews": {
+                "required_approving_review_count": 1,
+                "dismiss_stale_reviews": true,
+                "require_code_owner_reviews": false,
+                "require_last_push_approval": false
+            },
+            "restrictions": null,
+            "allow_force_pushes": false,
+            "allow_deletions": false,
+            "block_creations": false,
+            "required_conversation_resolution": true,
+            "lock_branch": false,
+            "allow_fork_syncing": true
+        }
+    },
+    "health_score_requirements": {
+        "main": {
+            "minimum_score": 85,
+            "critical_issues_allowed": 0,
+            "warning_threshold": 5
+        },
+        "develop": {
+            "minimum_score": 75,
+            "critical_issues_allowed": 0,
+            "warning_threshold": 10
+        }
+    },
+    "auto_merge_rules": {
+        "enabled": false,
+        "requirements": {
+            "health_score_minimum": 90,
+            "all_checks_pass": true,
+            "required_reviews": 2,
+            "no_critical_issues": true
+        }
+    }
+}

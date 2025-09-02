@@ -1,0 +1,70 @@
+# Testing Environment Configuration Overrides
+
+system:
+  debug: true
+  log_level: "DEBUG"
+  environment: "testing"
+
+api:
+  debug: false
+  reload: false
+  workers: 1
+  timeout: 60
+  port: 8001 # Different port for testing
+
+database:
+  echo: false
+  url: "sqlite:///:memory:" # In-memory database for tests
+  pool_size: 5
+  max_overflow: 10
+
+models:
+  auto_download_models: false
+  preload_models: false
+  quantization_level: "fp16" # Faster for testing
+
+hardware:
+  enable_torch_compile: false
+  enable_cuda_graphs: false
+  vram_limit_gb: 4 # Lower for testing
+
+generation:
+  mode: "mock"
+  enable_real_models: false
+  fallback_to_mock: true
+  generation_timeout_minutes: 5
+  max_concurrent_generations: 1
+  default_steps: 10 # Faster for testing
+
+frontend:
+  hot_reload: false
+  source_maps: true
+  open_browser: false
+  port: 3001 # Different port for testing
+
+logging:
+  level: "DEBUG"
+  console_enabled: true
+  file_enabled: false # No log files during testing
+
+security:
+  secret_key: "test-secret-key"
+  authentication_enabled: false
+  cors_enabled: true
+
+performance:
+  enabled: false # Disable monitoring during tests
+  sample_interval_seconds: 1.0
+
+recovery:
+  enabled: false # Disable recovery during tests
+  max_retry_attempts: 1
+
+features:
+  model_management: true
+  performance_monitoring: false
+  websocket_updates: false
+  auto_optimization: false
+  prompt_enhancement: false
+  error_recovery: false
+  health_monitoring: false

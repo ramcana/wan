@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Health Monitoring Alerts Dashboard</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .alert { padding: 10px; margin: 10px 0; border-radius: 5px; }
+        .alert.critical { background-color: #ffebee; border-left: 5px solid #f44336; }
+        .alert.warning { background-color: #fff3e0; border-left: 5px solid #ff9800; }
+        .alert.info { background-color: #e3f2fd; border-left: 5px solid #2196f3; }
+        .status { display: inline-block; padding: 2px 8px; border-radius: 3px; color: white; }
+        .status.active { background-color: #f44336; }
+        .status.acknowledged { background-color: #ff9800; }
+        .status.resolved { background-color: #4caf50; }
+    </style>
+</head>
+<body>
+    <h1>Health Monitoring Alerts Dashboard</h1>
+    
+    <div id="alerts-container">
+        <p>Loading alerts...</p>
+    </div>
+    
+    <script>
+        // This would be populated with real-time alert data
+        // For now, it's a static template
+        
+        function loadAlerts() {
+            // In a real implementation, this would fetch data from an API
+            const alertsContainer = document.getElementById('alerts-container');
+            alertsContainer.innerHTML = '<p>No active alerts</p>';
+        }
+        
+        // Load alerts on page load
+        loadAlerts();
+        
+        // Refresh every 30 seconds
+        setInterval(loadAlerts, 30000);
+    </script>
+</body>
+</html>

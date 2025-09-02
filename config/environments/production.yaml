@@ -1,0 +1,80 @@
+# Production Environment Configuration Overrides
+
+system:
+  debug: false
+  log_level: "WARNING"
+  environment: "production"
+
+api:
+  debug: false
+  reload: false
+  workers: 4
+  host: "0.0.0.0"
+  cors_origins:
+    - "https://your-domain.com"
+    - "https://www.your-domain.com"
+
+database:
+  echo: false
+  url: "postgresql://user:password@localhost/wan22_production"
+  pool_size: 50
+  max_overflow: 100
+
+models:
+  auto_download_models: false # Pre-downloaded in production
+  preload_models: true
+  quantization_level: "bf16"
+
+hardware:
+  enable_torch_compile: true
+  enable_cuda_graphs: true
+  optimize_for_hardware: true
+
+generation:
+  mode: "real"
+  enable_real_models: true
+  fallback_to_mock: false
+  generation_timeout_minutes: 60
+  max_concurrent_generations: 2
+
+frontend:
+  hot_reload: false
+  source_maps: false
+  open_browser: false
+
+logging:
+  level: "WARNING"
+  console_enabled: false
+  file_enabled: true
+  file: "/var/log/wan22/application.log"
+  max_file_size: "100MB"
+  backup_count: 10
+
+security:
+  secret_key: "CHANGE-THIS-IN-PRODUCTION"
+  authentication_enabled: true
+  cors_enabled: true
+  allow_credentials: true
+  firewall_auto_exception: false
+
+performance:
+  enabled: true
+  sample_interval_seconds: 60.0
+  cpu_monitoring_enabled: true
+  disk_io_monitoring_enabled: true
+  network_monitoring_enabled: true
+  metrics_interval: 300
+
+recovery:
+  enabled: true
+  auto_fix_issues: false # Manual intervention in production
+  max_retry_attempts: 2
+
+features:
+  model_management: true
+  performance_monitoring: true
+  websocket_updates: true
+  auto_optimization: true
+  prompt_enhancement: true
+  error_recovery: true
+  health_monitoring: true

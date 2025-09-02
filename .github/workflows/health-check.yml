@@ -1,0 +1,184 @@
+name: Project Health Check
+
+on:
+  schedule:
+    # Run daily at 6 AM UTC
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+    inputs:
+      full_check:
+        description: "Run full comprehensive health check"
+        required: false
+        default: "false"
+        type: boolean
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  health-monitoring:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Full history for trend analysis
+
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r backend/requirements.txt
+          pip install pyyaml jsonschema requests beautifulsoup4
+          pip install pytest pytest-cov pytest-benchmark
+
+      - name: Run comprehensive health check
+        run: |
+          python tools/health-checker/run_health_check.py \
+            --comprehensive=${{ github.event.inputs.full_check || 'false' }} \
+            --output-format=json \
+            --output-file=health-report.json \
+            --include-trends=true
+
+      - name: Generate health dashboard
+        run: |
+          python tools/health-checker/generate_dashboard.py \
+            --input=health-report.json \
+            --output=health-dashboard.html
+
+      - name: Check critical health issues
+        run: |
+          python -c "
+          import json
+          import sys
+
+          with open('health-report.json') as f:
+              report = json.load(f)
+
+          critical_issues = [
+              issue for issue in report.get('issues', [])
+              if issue.get('severity') == 'critical'
+          ]
+
+          if critical_issues:
+              print(f'Found {len(critical_issues)} critical health issues:')
+              for issue in critical_issues:
+                  print(f'- {issue.get(\"description\", \"Unknown issue\")}')
+              sys.exit(1)
+
+          print('No critical health issues found.')
+          "
+
+      - name: Generate health badges
+        run: |
+          python tools/health-checker/badge_generator.py \
+            --health-report=health-report.json \
+            --output-dir=.github/badges \
+            --repo-owner=${{ github.repository_owner }} \
+            --repo-name=${{ github.event.repository.name }}
+
+      - name: Upload health report
+        uses: actions/upload-artifact@v3
+        with:
+          name: health-report-${{ github.run_number }}
+          path: |
+            health-report.json
+            health-dashboard.html
+            .github/badges/
+
+      - name: Create health issue (if critical problems found)
+        if: failure()
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const fs = require('fs');
+
+            let healthReport;
+            try {
+              healthReport = JSON.parse(fs.readFileSync('health-report.json', 'utf8'));
+            } catch (error) {
+              console.log('Could not read health report');
+              return;
+            }
+
+            const criticalIssues = healthReport.issues?.filter(
+              issue => issue.severity === 'critical'
+            ) || [];
+
+            if (criticalIssues.length === 0) return;
+
+            const issueBody = `
+            ## 🚨 Critical Project Health Issues Detected
+
+            The automated health check has detected ${criticalIssues.length} critical issue(s) that require immediate attention.
+
+            ### Critical Issues:
+            ${criticalIssues.map(issue => `
+            - **${issue.category}**: ${issue.description}
+              - **Affected Components**: ${issue.affected_components?.join(', ') || 'Unknown'}
+              - **Remediation**: ${issue.remediation_steps?.join('; ') || 'See health report for details'}
+            `).join('\n')}
+
+            ### Health Score
+            Overall project health score: **${healthReport.overall_score}/100**
+
+            ### Next Steps
+            1. Review the detailed health report in the workflow artifacts
+            2. Address critical issues according to the remediation steps
+            3. Re-run the health check to verify fixes
+
+            This issue was automatically created by the project health monitoring system.
+            `;
+
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `🚨 Critical Project Health Issues - ${new Date().toISOString().split('T')[0]}`,
+              body: issueBody,
+              labels: ['health-check', 'critical', 'automated']
+            });
+
+  trend-analysis:
+    runs-on: ubuntu-latest
+    needs: health-monitoring
+    if: always()
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install matplotlib pandas numpy
+
+      - name: Download health report
+        uses: actions/download-artifact@v3
+        with:
+          name: health-report-${{ github.run_number }}
+
+      - name: Generate health trends
+        run: |
+          python tools/health-checker/analyze_trends.py \
+            --current-report=health-report.json \
+            --output=health-trends.json \
+            --chart-output=health-trends.png
+
+      - name: Upload trend analysis
+        uses: actions/upload-artifact@v3
+        with:
+          name: health-trends-${{ github.run_number }}
+          path: |
+            health-trends.json
+            health-trends.png

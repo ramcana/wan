@@ -1,0 +1,42 @@
+models:
+  - name: "test_model_1"
+    type: "text2video"
+    path: "/fake/path/model1"
+    config:
+      resolution: "512x512"
+      fps: 24
+      duration: 5
+
+  - name: "test_model_2"
+    type: "image2video"
+    path: "/fake/path/model2"
+    config:
+      resolution: "1024x1024"
+      fps: 30
+      duration: 10
+
+generation_requests:
+  - prompt: "A cat playing with a ball"
+    model: "test_model_1"
+    parameters:
+      steps: 20
+      guidance_scale: 7.5
+      seed: 42
+
+  - prompt: "Sunset over mountains"
+    model: "test_model_2"
+    parameters:
+      steps: 25
+      guidance_scale: 8.0
+      seed: 123
+
+expected_outputs:
+  - request_id: 0
+    output_format: "mp4"
+    duration: 5.0
+    resolution: [512, 512]
+
+  - request_id: 1
+    output_format: "mp4"
+    duration: 10.0
+    resolution: [1024, 1024]

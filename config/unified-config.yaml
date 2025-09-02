@@ -1,0 +1,281 @@
+# Unified Configuration for WAN22 Video Generation System
+# This file consolidates all configuration settings into a single, manageable structure
+
+config_version: "1.0.0"
+last_updated: null
+
+system:
+  name: "WAN22 Video Generation System"
+  version: "2.2.0"
+  debug: false
+  log_level: "INFO"
+  environment: "development"
+  max_queue_size: 10
+  stats_refresh_interval: 5
+  output_directory: "outputs"
+  models_directory: "models"
+  loras_directory: "loras"
+  temp_directory: "temp"
+  cache_directory: "cache"
+
+api:
+  host: "localhost"
+  port: 8000
+  auto_port: true
+  debug: false
+  reload: true
+  workers: 1
+  timeout: 300
+  cors_origins:
+    - "http://localhost:3000"
+    - "http://127.0.0.1:3000"
+  max_request_size: "100MB"
+  rate_limiting_enabled: true
+  requests_per_minute: 120
+
+database:
+  url: "sqlite:///./generation_tasks.db"
+  echo: false
+  pool_size: 20
+  max_overflow: 30
+  connect_timeout: 30
+  query_timeout: 60
+
+models:
+  base_path: "models"
+  cache_dir: "./model_cache"
+  t2v_model: "Wan2.2-T2V-A14B"
+  i2v_model: "Wan2.2-I2V-A14B"
+  ti2v_model: "Wan2.2-TI2V-5B"
+  default_model: "t2v-A14B"
+  auto_optimize: true
+  enable_offloading: true
+  vram_management: true
+  quantization_enabled: true
+  quantization_level: "bf16"
+  preload_models: false
+  model_cache_size: 2
+  auto_download_models: true
+  download_timeout: 1800
+  max_concurrent_downloads: 2
+  auto_cleanup: true
+  supported_types:
+    - "t2v-A14B"
+    - "i2v-A14B"
+    - "ti2v-5B"
+
+hardware:
+  auto_detect: true
+  optimize_for_hardware: true
+  vram_limit_gb: 14
+  max_vram_usage_gb: 14
+  cpu_threads: 32
+  enable_mixed_precision: true
+  enable_attention_slicing: true
+  enable_memory_efficient_attention: true
+  enable_xformers: true
+  enable_offload: false
+  enable_sequential_offload: false
+  vae_tile_size: 512
+  vae_tile_size_range: [256, 1024]
+  attention_slice_size: "auto"
+  enable_torch_compile: true
+  torch_compile_mode: "default"
+  enable_cuda_graphs: false
+  memory_format: "channels_last"
+  enable_flash_attention: true
+
+generation:
+  mode: "real"
+  enable_real_models: true
+  fallback_to_mock: false
+  max_concurrent_generations: 1
+  max_concurrent_jobs: 3
+  generation_timeout_minutes: 45
+  default_timeout: 600
+  default_resolution: "1280x720"
+  default_steps: 50
+  default_duration: 4
+  default_fps: 24
+  supported_resolutions:
+    - "854x480"
+    - "480x854"
+    - "1280x720"
+    - "1280x704"
+    - "1920x1080"
+  enable_progress_tracking: true
+
+ui:
+  max_file_size_mb: 10
+  gallery_thumbnail_size: 256
+  supported_image_formats:
+    - "PNG"
+    - "JPG"
+    - "JPEG"
+    - "WebP"
+
+frontend:
+  host: "localhost"
+  port: 3000
+  auto_port: true
+  timeout: 30
+  open_browser: true
+  hot_reload: true
+  output_dir: "./frontend/dist"
+  public_path: "/"
+  source_maps: true
+
+websocket:
+  enable_progress_updates: true
+  detailed_progress: true
+  resource_monitoring: true
+  update_interval_seconds: 0.5
+  vram_monitoring: true
+
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/application.log"
+  file_enabled: true
+  console_enabled: true
+  max_file_size: "50MB"
+  backup_count: 5
+  log_retention_days: 30
+
+security:
+  secret_key: "change-in-production"
+  algorithm: "HS256"
+  access_token_expire_minutes: 60
+  authentication_enabled: false
+  token_expiry: 3600
+  cors_enabled: true
+  allow_credentials: false
+  allow_admin_elevation: true
+  firewall_auto_exception: false
+  trusted_port_range: [8000, 9000]
+
+performance:
+  enabled: true
+  metrics_interval: 60
+  sample_interval_seconds: 30.0
+  max_history_samples: 100
+  vram_warning_threshold: 0.9
+  vram_warning_percent: 90
+  cpu_warning_percent: 95
+  memory_warning_percent: 85
+  target_720p_time_minutes: 9
+  target_1080p_time_minutes: 17
+  cpu_monitoring_enabled: false
+  disk_io_monitoring_enabled: false
+  network_monitoring_enabled: false
+
+recovery:
+  enabled: true
+  max_retry_attempts: 3
+  retry_delay: 2.0
+  exponential_backoff: true
+  auto_kill_processes: false
+  auto_fix_issues: true
+  fallback_ports:
+    - 8080
+    - 8081
+    - 8082
+    - 3001
+    - 3002
+    - 3003
+
+environment_validation:
+  python_min_version: "3.8.0"
+  node_min_version: "16.0.0"
+  npm_min_version: "8.0.0"
+  check_virtual_env: true
+  validate_dependencies: true
+  auto_install_missing: false
+
+prompt_enhancement:
+  max_prompt_length: 500
+  enable_basic_quality: true
+  enable_vace_detection: true
+  enable_cinematic_enhancement: true
+  enable_style_detection: true
+  max_quality_keywords: 3
+  max_cinematic_keywords: 3
+  max_style_keywords: 2
+
+features:
+  model_management: true
+  performance_monitoring: true
+  websocket_updates: true
+  auto_optimization: true
+  prompt_enhancement: true
+  error_recovery: true
+  health_monitoring: true
+
+# Environment-specific overrides
+environments:
+  development:
+    system:
+      debug: true
+      log_level: "DEBUG"
+    api:
+      debug: true
+      reload: true
+    logging:
+      level: "DEBUG"
+      console_enabled: true
+    security:
+      secret_key: "dev-secret-key"
+
+  staging:
+    system:
+      debug: false
+      log_level: "INFO"
+    api:
+      debug: false
+      reload: false
+      workers: 2
+    logging:
+      level: "INFO"
+      file_enabled: true
+    security:
+      secret_key: "staging-secret-key"
+
+  production:
+    system:
+      debug: false
+      log_level: "WARNING"
+      environment: "production"
+    api:
+      debug: false
+      reload: false
+      workers: 4
+      host: "0.0.0.0"
+    logging:
+      level: "WARNING"
+      file_enabled: true
+      console_enabled: false
+    security:
+      secret_key: "production-secret-key-change-me"
+      authentication_enabled: true
+    performance:
+      cpu_monitoring_enabled: true
+      disk_io_monitoring_enabled: true
+      network_monitoring_enabled: true
+
+  testing:
+    system:
+      debug: true
+      log_level: "DEBUG"
+    api:
+      timeout: 60
+    models:
+      auto_download_models: false
+      preload_models: false
+    generation:
+      mode: "mock"
+      enable_real_models: false
+      fallback_to_mock: true
+    logging:
+      level: "DEBUG"
+      console_enabled: true
+      file_enabled: false

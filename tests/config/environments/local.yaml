@@ -1,0 +1,34 @@
+# Local Environment Test Configuration Overrides
+
+test_categories:
+  unit:
+    timeout: 30
+    parallel: true
+
+  integration:
+    timeout: 120
+
+  performance:
+    timeout: 300
+
+  e2e:
+    timeout: 600
+
+parallel_execution:
+  max_workers: 3 # Conservative for local machines
+
+coverage:
+  minimum_threshold: 70 # Standard threshold
+
+reporting:
+  formats:
+    - html
+    - term
+  include_coverage: true
+  include_performance: true
+
+resource_limits:
+  max_memory_mb: 1536
+  max_cpu_percent: 75
+  max_execution_time: 900 # 15 minutes
+  max_concurrent_tests: 8

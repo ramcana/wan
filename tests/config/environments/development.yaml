@@ -1,0 +1,34 @@
+# Development Environment Test Configuration Overrides
+
+test_categories:
+  unit:
+    timeout: 60 # Longer timeout for debugging
+    parallel: true
+
+  integration:
+    timeout: 180 # Longer timeout for debugging
+
+  performance:
+    timeout: 600 # Longer timeout for profiling
+
+  e2e:
+    timeout: 900 # Longer timeout for debugging
+
+parallel_execution:
+  max_workers: 2 # Fewer workers for development
+
+coverage:
+  minimum_threshold: 60 # Lower threshold for development
+
+reporting:
+  formats:
+    - html
+    - term
+  include_coverage: true
+  include_performance: false # Skip performance reports in dev
+
+resource_limits:
+  max_memory_mb: 2048
+  max_cpu_percent: 80
+  max_execution_time: 1800 # 30 minutes
+  max_concurrent_tests: 10

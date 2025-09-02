@@ -1,0 +1,111 @@
+alert_rules:
+- alert_level: critical
+  channels:
+  - email
+  - slack
+  condition: health_report.overall_score < 70
+  cooldown_minutes: 15
+  enabled: true
+  escalation_minutes: 30
+  max_alerts_per_hour: 4
+  name: critical_health_score
+- alert_level: emergency
+  channels:
+  - email
+  - slack
+  - sms
+  condition: health_report.overall_score < 50
+  cooldown_minutes: 5
+  enabled: true
+  escalation_minutes: 15
+  max_alerts_per_hour: 6
+  name: emergency_health_score
+- alert_level: warning
+  channels:
+  - slack
+  condition: any(issue.category == HealthCategory.TESTS and issue.severity == Severity.CRITICAL
+    for issue in health_report.issues)
+  cooldown_minutes: 30
+  enabled: true
+  escalation_minutes: 60
+  max_alerts_per_hour: 3
+  name: test_failures
+- alert_level: critical
+  channels:
+  - email
+  - slack
+  condition: any(issue.category == HealthCategory.SECURITY and issue.severity in [Severity.CRITICAL,
+    Severity.HIGH] for issue in health_report.issues)
+  cooldown_minutes: 10
+  enabled: true
+  escalation_minutes: 20
+  max_alerts_per_hour: 5
+  name: security_issues
+- alert_level: warning
+  channels:
+  - slack
+  condition: any(issue.category == HealthCategory.PERFORMANCE and issue.severity ==
+    Severity.HIGH for issue in health_report.issues)
+  cooldown_minutes: 60
+  enabled: true
+  escalation_minutes: 120
+  max_alerts_per_hour: 2
+  name: performance_degradation
+- alert_level: info
+  channels:
+  - slack
+  condition: any(issue.category == HealthCategory.DOCUMENTATION and issue.severity
+    == Severity.HIGH for issue in health_report.issues)
+  cooldown_minutes: 240
+  enabled: true
+  escalation_minutes: 0
+  max_alerts_per_hour: 1
+  name: documentation_issues
+- alert_level: critical
+  channels:
+  - email
+  - slack
+  condition: any(issue.category == HealthCategory.CONFIGURATION and issue.severity
+    == Severity.CRITICAL for issue in health_report.issues)
+  cooldown_minutes: 20
+  enabled: true
+  escalation_minutes: 40
+  max_alerts_per_hour: 3
+  name: configuration_errors
+escalation_policies:
+- levels:
+  - channels:
+    - slack
+    delay_minutes: 0
+    message: Initial alert - please investigate
+  - channels:
+    - email
+    - slack
+    delay_minutes: 30
+    message: 'Escalated: Issue not resolved after 30 minutes'
+  - channels:
+    - email
+    - slack
+    - sms
+    delay_minutes: 60
+    message: 'Critical escalation: Issue requires immediate attention'
+  max_escalations: 3
+  name: standard_escalation
+  reset_after_minutes: 240
+- levels:
+  - channels:
+    - email
+    - slack
+    - sms
+    delay_minutes: 0
+    message: 'EMERGENCY: Critical system issue detected'
+  - channels:
+    - email
+    - slack
+    - sms
+    - phone
+    delay_minutes: 15
+    message: 'EMERGENCY ESCALATION: System requires immediate intervention'
+  max_escalations: 2
+  name: emergency_escalation
+  reset_after_minutes: 120

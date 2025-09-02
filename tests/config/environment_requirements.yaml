@@ -1,0 +1,100 @@
+# Test Environment Requirements Configuration
+
+requirements:
+  # Additional Python packages for testing
+  - name: "requests"
+    type: "python_package"
+    required: true
+    version_check: ">=2.25.0"
+
+  - name: "pyyaml"
+    type: "python_package"
+    required: true
+    version_check: ">=5.0.0"
+
+  - name: "psutil"
+    type: "python_package"
+    required: true
+    version_check: ">=5.0.0"
+
+  - name: "packaging"
+    type: "python_package"
+    required: false
+    version_check: ">=20.0"
+
+  # System commands
+  - name: "git"
+    type: "system_command"
+    required: true
+
+  - name: "python"
+    type: "system_command"
+    required: true
+
+  # Environment variables
+  - name: "test_env_check"
+    type: "env_var"
+    required: false
+    config:
+      name: "PYTEST_CURRENT_TEST"
+
+  # Project directories
+  - name: "backend_directory"
+    type: "directory"
+    required: true
+    config:
+      path: "backend"
+
+  - name: "frontend_directory"
+    type: "directory"
+    required: true
+    config:
+      path: "frontend"
+
+  - name: "config_directory"
+    type: "directory"
+    required: false
+    config:
+      path: "config"
+
+  # Configuration files
+  - name: "main_config"
+    type: "file"
+    required: false
+    config:
+      path: "config.json"
+
+  - name: "backend_config"
+    type: "file"
+    required: false
+    config:
+      path: "backend/config.json"
+
+  # Services (for integration testing)
+  - name: "backend_service"
+    type: "service"
+    required: false
+    config:
+      host: "localhost"
+      port: 8000
+      timeout: 5
+
+  - name: "health_endpoint"
+    type: "service"
+    required: false
+    config:
+      url: "http://localhost:8000/health"
+      timeout: 5
+
+  # System resources
+  - name: "test_memory"
+    type: "system_resource"
+    required: true
+    config:
+      min_memory_gb: 1.5
+
+  - name: "test_disk_space"
+    type: "system_resource"
+    required: true
+    config:
+      min_disk_gb: 0.5

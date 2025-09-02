@@ -1,0 +1,82 @@
+# Test Configuration for WAN22 Video Generation System
+
+test_categories:
+  unit:
+    description: "Unit tests for individual components"
+    timeout: 30
+    parallel: true
+    coverage_threshold: 70
+    patterns:
+      - "tests/unit/test_*.py"
+
+  integration:
+    description: "Integration tests for component interaction"
+    timeout: 120
+    parallel: false
+    requires_services: ["backend"]
+    patterns:
+      - "tests/integration/test_*_integration.py"
+
+  performance:
+    description: "Performance benchmarks and load tests"
+    timeout: 300
+    parallel: false
+    baseline_file: "performance_baselines.json"
+    patterns:
+      - "tests/performance/test_*_benchmarks.py"
+      - "tests/performance/test_*_performance.py"
+
+  e2e:
+    description: "End-to-end workflow tests"
+    timeout: 600
+    parallel: false
+    requires_full_stack: true
+    patterns:
+      - "tests/e2e/test_*_e2e.py"
+      - "tests/e2e/test_*_workflow.py"
+
+test_environment:
+  python_version: ">=3.8"
+  required_packages:
+    - pytest
+    - pytest-asyncio
+    - pytest-cov
+    - pytest-mock
+
+  optional_packages:
+    - pytest-xdist # For parallel execution
+    - pytest-html # For HTML reports
+    - pytest-benchmark # For performance testing
+
+coverage:
+  minimum_threshold: 70
+  exclude_patterns:
+    - "*/tests/*"
+    - "*/venv/*"
+    - "*/__pycache__/*"
+    - "*/migrations/*"
+
+  report_formats:
+    - html
+    - xml
+    - term
+
+fixtures:
+  shared_data_dir: "tests/fixtures"
+  mock_data_dir: "tests/fixtures/mocks"
+  test_configs_dir: "tests/fixtures/configs"
+
+reporting:
+  output_dir: "test_results"
+  formats:
+    - junit
+    - html
+    - json
+
+  include_coverage: true
+  include_performance: true
+
+parallel_execution:
+  max_workers: 4
+  categories_parallel: ["unit"]
+  categories_sequential: ["integration", "performance", "e2e"]

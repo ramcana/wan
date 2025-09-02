@@ -1,0 +1,195 @@
+# CI/CD Health Monitoring Configuration
+# This file configures health monitoring integration with CI/CD pipelines
+
+# Health score and issue thresholds for different contexts
+thresholds:
+  # Standard CI checks
+  health_score: 80 # Minimum health score for CI success
+  critical_issues: 0 # Maximum critical issues allowed
+  coverage: 70 # Minimum test coverage percentage
+  test_pass_rate: 95 # Minimum test pass rate percentage
+
+  # Performance thresholds
+  max_check_duration: 300 # Maximum health check duration (seconds)
+  max_memory_usage: 2048 # Maximum memory usage (MB)
+
+# Branch-specific deployment gate requirements
+deployment_gates:
+  main:
+    health_score: 85 # Higher threshold for main branch
+    critical_issues: 0 # No critical issues allowed
+    coverage: 80 # Higher coverage requirement
+    test_pass_rate: 98 # Higher test pass rate
+
+  develop:
+    health_score: 75 # Lower threshold for develop branch
+    critical_issues: 2 # Allow some critical issues
+    coverage: 70 # Standard coverage requirement
+    test_pass_rate: 95 # Standard test pass rate
+
+  feature/*:
+    health_score: 70 # Relaxed threshold for feature branches
+    critical_issues: 5 # Allow more issues during development
+    coverage: 65 # Relaxed coverage requirement
+    test_pass_rate: 90 # Relaxed test pass rate
+
+# Health check categories and their weights
+health_categories:
+  test_health:
+    weight: 30 # 30% of overall score
+    enabled: true
+
+  documentation_health:
+    weight: 20 # 20% of overall score
+    enabled: true
+
+  configuration_health:
+    weight: 25 # 25% of overall score
+    enabled: true
+
+  code_quality:
+    weight: 25 # 25% of overall score
+    enabled: true
+
+# CI-specific optimizations
+ci_optimizations:
+  # Cache health check results for faster subsequent runs
+  enable_caching: true
+  cache_duration: 3600 # Cache duration in seconds (1 hour)
+
+  # Parallel execution settings
+  parallel_checks: true
+  max_parallel_jobs: 4
+
+  # Skip certain checks in CI environment
+  skip_external_checks: true # Skip checks requiring external services
+  skip_interactive_checks: true # Skip checks requiring user input
+
+  # Lightweight mode for frequent checks
+  lightweight_mode:
+    enabled: false # Enable for frequent PR checks
+    skip_categories: [] # Categories to skip in lightweight mode
+    max_duration: 60 # Maximum duration for lightweight checks
+
+# Notification settings
+notifications:
+  # Slack integration
+  slack:
+    enabled: false
+    webhook_url: null # Set via SLACK_WEBHOOK_URL environment variable
+    channels:
+      critical: "#alerts"
+      warnings: "#dev-notifications"
+
+  # Email notifications
+  email:
+    enabled: false
+    smtp_server: null
+    smtp_port: 587
+    username: null
+    password: null # Set via EMAIL_PASSWORD environment variable
+    recipients: []
+
+  # GitHub integration
+  github:
+    create_issues: true # Create GitHub issues for critical problems
+    create_status_checks: true # Create status checks on commits
+    update_pr_comments: true # Update PR comments with health status
+
+    # Issue templates
+    issue_labels: ["health-check", "automated"]
+    assignees: [] # GitHub usernames to assign issues to
+
+# Badge generation settings
+badges:
+  enabled: true
+  output_directory: ".github/badges"
+
+  # Badge styles and colors
+  style: "flat-square" # Badge style (flat, flat-square, plastic, etc.)
+
+  # Custom color thresholds
+  color_thresholds:
+    health_score:
+      excellent: 90 # brightgreen
+      good: 80 # green
+      fair: 70 # yellow
+      poor: 60 # orange
+      critical: 0 # red
+
+    coverage:
+      excellent: 90
+      good: 80
+      fair: 70
+      poor: 60
+      critical: 0
+
+# Integration with external tools
+integrations:
+  # SonarQube integration
+  sonarqube:
+    enabled: false
+    server_url: null
+    project_key: null
+    token: null # Set via SONAR_TOKEN environment variable
+
+  # CodeClimate integration
+  codeclimate:
+    enabled: false
+    repo_token: null # Set via CC_TEST_REPORTER_ID environment variable
+
+  # Codecov integration
+  codecov:
+    enabled: true
+    token: null # Set via CODECOV_TOKEN environment variable
+
+# Reporting settings
+reporting:
+  # Report formats to generate
+  formats: ["json", "html", "markdown"]
+
+  # Report retention
+  retain_reports: 30 # Number of reports to retain
+
+  # Trend analysis
+  trend_analysis:
+    enabled: true
+    history_days: 90 # Days of history to analyze
+
+  # Dashboard settings
+  dashboard:
+    enabled: true
+    auto_refresh: 300 # Auto-refresh interval (seconds)
+    show_trends: true
+    show_recommendations: true
+
+# Security settings
+security:
+  # Scan for secrets in configuration
+  scan_secrets: true
+
+  # Allowed secret patterns (for testing/demo purposes)
+  allowed_secret_patterns: []
+
+  # Security issue severity mapping
+  security_severity_mapping:
+    high_severity: "critical"
+    medium_severity: "high"
+    low_severity: "medium"
+
+# Performance monitoring
+performance:
+  # Monitor health check performance
+  monitor_performance: true
+
+  # Performance thresholds
+  thresholds:
+    max_execution_time: 300 # Maximum total execution time
+    max_memory_usage: 2048 # Maximum memory usage (MB)
+    max_cpu_usage: 80 # Maximum CPU usage percentage
+
+  # Performance optimization
+  optimization:
+    enable_profiling: false # Enable performance profiling
+    cache_results: true # Cache intermediate results
+    parallel_execution: true # Enable parallel execution where possible

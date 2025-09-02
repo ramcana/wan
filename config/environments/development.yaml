@@ -1,0 +1,69 @@
+# Development Environment Configuration Overrides
+
+system:
+  debug: true
+  log_level: "DEBUG"
+  environment: "development"
+
+api:
+  debug: true
+  reload: true
+  workers: 1
+  cors_origins:
+    - "http://localhost:3000"
+    - "http://127.0.0.1:3000"
+    - "http://localhost:5173" # Vite dev server
+
+database:
+  echo: true
+  url: "sqlite:///./dev_generation_tasks.db"
+
+models:
+  auto_download_models: true
+  preload_models: false
+  quantization_level: "bf16"
+
+hardware:
+  enable_torch_compile: false # Faster startup for development
+  enable_cuda_graphs: false
+
+generation:
+  mode: "real"
+  enable_real_models: true
+  fallback_to_mock: true
+  generation_timeout_minutes: 30
+
+frontend:
+  hot_reload: true
+  source_maps: true
+  open_browser: true
+
+logging:
+  level: "DEBUG"
+  console_enabled: true
+  file_enabled: true
+  file: "logs/dev_application.log"
+
+security:
+  secret_key: "dev-secret-key-not-for-production"
+  authentication_enabled: false
+  cors_enabled: true
+
+performance:
+  enabled: true
+  sample_interval_seconds: 10.0
+  cpu_monitoring_enabled: true
+
+recovery:
+  enabled: true
+  auto_fix_issues: true
+  max_retry_attempts: 5
+
+features:
+  model_management: true
+  performance_monitoring: true
+  websocket_updates: true
+  auto_optimization: true
+  prompt_enhancement: true
+  error_recovery: true
+  health_monitoring: true

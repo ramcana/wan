@@ -1,0 +1,339 @@
+name: Deployment Gates with Health Monitoring
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened, ready_for_review]
+
+env:
+  HEALTH_SCORE_THRESHOLD: 80
+  CRITICAL_ISSUES_THRESHOLD: 0
+  COVERAGE_THRESHOLD: 70
+
+jobs:
+  health-gate-check:
+    runs-on: ubuntu-latest
+    outputs:
+      health-score: ${{ steps.health-check.outputs.health-score }}
+      critical-issues: ${{ steps.health-check.outputs.critical-issues }}
+      deployment-ready: ${{ steps.health-check.outputs.deployment-ready }}
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r backend/requirements.txt
+          pip install pyyaml jsonschema requests beautifulsoup4
+          pip install pytest pytest-cov pytest-benchmark
+
+      - name: Run comprehensive health check
+        id: health-check
+        run: |
+          python tools/health-checker/run_health_check.py \
+            --comprehensive=true \
+            --output-format=json \
+            --output-file=health-report.json \
+            --include-trends=true \
+            --deployment-gate=true
+
+          # Extract key metrics
+          HEALTH_SCORE=$(python -c "
+          import json
+          with open('health-report.json') as f:
+              report = json.load(f)
+          print(report.get('overall_score', 0))
+          ")
+
+          CRITICAL_ISSUES=$(python -c "
+          import json
+          with open('health-report.json') as f:
+              report = json.load(f)
+          critical = [i for i in report.get('issues', []) if i.get('severity') == 'critical']
+          print(len(critical))
+          ")
+
+          echo "health-score=$HEALTH_SCORE" >> $GITHUB_OUTPUT
+          echo "critical-issues=$CRITICAL_ISSUES" >> $GITHUB_OUTPUT
+
+          # Determine deployment readiness
+          if [ "$HEALTH_SCORE" -ge "$HEALTH_SCORE_THRESHOLD" ] && [ "$CRITICAL_ISSUES" -le "$CRITICAL_ISSUES_THRESHOLD" ]; then
+            echo "deployment-ready=true" >> $GITHUB_OUTPUT
+            echo "✅ Deployment gate passed - Health score: $HEALTH_SCORE, Critical issues: $CRITICAL_ISSUES"
+          else
+            echo "deployment-ready=false" >> $GITHUB_OUTPUT
+            echo "❌ Deployment gate failed - Health score: $HEALTH_SCORE (threshold: $HEALTH_SCORE_THRESHOLD), Critical issues: $CRITICAL_ISSUES (threshold: $CRITICAL_ISSUES_THRESHOLD)"
+          fi
+
+      - name: Generate health badge data
+        run: |
+          HEALTH_SCORE="${{ steps.health-check.outputs.health-score }}"
+
+          # Determine badge color based on health score
+          if [ "$HEALTH_SCORE" -ge "90" ]; then
+            COLOR="brightgreen"
+          elif [ "$HEALTH_SCORE" -ge "80" ]; then
+            COLOR="green"
+          elif [ "$HEALTH_SCORE" -ge "70" ]; then
+            COLOR="yellow"
+          elif [ "$HEALTH_SCORE" -ge "60" ]; then
+            COLOR="orange"
+          else
+            COLOR="red"
+          fi
+
+          # Create badge JSON
+          cat > health-badge.json << EOF
+          {
+            "schemaVersion": 1,
+            "label": "health",
+            "message": "${HEALTH_SCORE}%",
+            "color": "$COLOR"
+          }
+          EOF
+
+      - name: Upload health artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: health-gate-report-${{ github.run_number }}
+          path: |
+            health-report.json
+            health-badge.json
+
+      - name: Comment PR with health status
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const fs = require('fs');
+            const healthScore = '${{ steps.health-check.outputs.health-score }}';
+            const criticalIssues = '${{ steps.health-check.outputs.critical-issues }}';
+            const deploymentReady = '${{ steps.health-check.outputs.deployment-ready }}';
+
+            let healthReport;
+            try {
+              healthReport = JSON.parse(fs.readFileSync('health-report.json', 'utf8'));
+            } catch (error) {
+              console.log('Could not read health report');
+              return;
+            }
+
+            const statusIcon = deploymentReady === 'true' ? '✅' : '❌';
+            const statusText = deploymentReady === 'true' ? 'PASSED' : 'FAILED';
+
+            const comment = `
+            ## ${statusIcon} Deployment Gate Health Check - ${statusText}
+
+            | Metric | Value | Threshold | Status |
+            |--------|-------|-----------|--------|
+            | Health Score | ${healthScore}% | ${process.env.HEALTH_SCORE_THRESHOLD}% | ${healthScore >= process.env.HEALTH_SCORE_THRESHOLD ? '✅' : '❌'} |
+            | Critical Issues | ${criticalIssues} | ≤ ${process.env.CRITICAL_ISSUES_THRESHOLD} | ${criticalIssues <= process.env.CRITICAL_ISSUES_THRESHOLD ? '✅' : '❌'} |
+
+            ### Component Health Breakdown
+            ${Object.entries(healthReport.component_scores || {}).map(([component, score]) => 
+              `- **${component}**: ${score}%`
+            ).join('\n')}
+
+            ${criticalIssues > 0 ? `
+            ### ⚠️ Critical Issues Requiring Attention
+            ${healthReport.issues?.filter(issue => issue.severity === 'critical').map(issue => 
+              `- **${issue.category}**: ${issue.description}`
+            ).join('\n') || 'No details available'}
+            ` : ''}
+
+            ${deploymentReady === 'false' ? `
+            ### 🚫 Deployment Blocked
+            This PR cannot be merged until health issues are resolved.
+            ` : `
+            ### ✅ Deployment Approved
+            This PR meets all health requirements for deployment.
+            `}
+
+            <details>
+            <summary>View detailed health report</summary>
+
+            \`\`\`json
+            ${JSON.stringify(healthReport, null, 2)}
+            \`\`\`
+            </details>
+
+            ---
+            *This comment was automatically generated by the project health monitoring system.*
+            `;
+
+            await github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });
+
+  test-gate:
+    runs-on: ubuntu-latest
+    outputs:
+      test-passed: ${{ steps.test-results.outputs.test-passed }}
+      coverage: ${{ steps.test-results.outputs.coverage }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r backend/requirements.txt
+          pip install pytest pytest-cov pytest-asyncio pytest-mock
+
+      - name: Run comprehensive test suite
+        id: test-results
+        run: |
+          # Run tests with coverage
+          python -m pytest tests/ -v \
+            --cov=backend --cov=scripts --cov=tools \
+            --cov-report=xml --cov-report=html --cov-report=term \
+            --junit-xml=test-results.xml \
+            --tb=short
+
+          # Extract coverage percentage
+          COVERAGE=$(python -c "
+          import xml.etree.ElementTree as ET
+          try:
+              tree = ET.parse('coverage.xml')
+              root = tree.getroot()
+              coverage = float(root.attrib['line-rate']) * 100
+              print(f'{coverage:.1f}')
+          except:
+              print('0')
+          ")
+
+          echo "coverage=$COVERAGE" >> $GITHUB_OUTPUT
+
+          # Check if tests passed and coverage meets threshold
+          if [ "$COVERAGE" -ge "$COVERAGE_THRESHOLD" ]; then
+            echo "test-passed=true" >> $GITHUB_OUTPUT
+            echo "✅ Test gate passed - Coverage: $COVERAGE%"
+          else
+            echo "test-passed=false" >> $GITHUB_OUTPUT
+            echo "❌ Test gate failed - Coverage: $COVERAGE% (threshold: $COVERAGE_THRESHOLD%)"
+          fi
+
+      - name: Upload test results
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: test-results-${{ github.run_number }}
+          path: |
+            test-results.xml
+            coverage.xml
+            htmlcov/
+
+  deployment-gate:
+    runs-on: ubuntu-latest
+    needs: [health-gate-check, test-gate]
+    if: always()
+
+    steps:
+      - name: Evaluate deployment readiness
+        id: gate-decision
+        run: |
+          HEALTH_READY="${{ needs.health-gate-check.outputs.deployment-ready }}"
+          TEST_PASSED="${{ needs.test-gate.outputs.test-passed }}"
+
+          echo "Health gate: $HEALTH_READY"
+          echo "Test gate: $TEST_PASSED"
+
+          if [ "$HEALTH_READY" = "true" ] && [ "$TEST_PASSED" = "true" ]; then
+            echo "deployment-approved=true" >> $GITHUB_OUTPUT
+            echo "✅ All deployment gates passed - Ready for deployment"
+          else
+            echo "deployment-approved=false" >> $GITHUB_OUTPUT
+            echo "❌ Deployment gates failed - Deployment blocked"
+            exit 1
+          fi
+
+      - name: Update deployment status
+        if: github.ref == 'refs/heads/main'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const deploymentApproved = '${{ steps.gate-decision.outputs.deployment-approved }}';
+            const healthScore = '${{ needs.health-gate-check.outputs.health-score }}';
+            const coverage = '${{ needs.test-gate.outputs.coverage }}';
+
+            // Create deployment status
+            await github.rest.repos.createDeploymentStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              deployment_id: context.payload.deployment?.id || 0,
+              state: deploymentApproved === 'true' ? 'success' : 'failure',
+              description: `Health: ${healthScore}%, Coverage: ${coverage}%`,
+              environment: 'production'
+            });
+
+  create-health-status-badge:
+    runs-on: ubuntu-latest
+    needs: [health-gate-check]
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Download health badge data
+        uses: actions/download-artifact@v3
+        with:
+          name: health-gate-report-${{ github.run_number }}
+
+      - name: Update health badge
+        run: |
+          # Create badges directory if it doesn't exist
+          mkdir -p .github/badges
+
+          # Copy health badge
+          cp health-badge.json .github/badges/health.json
+
+          # Create coverage badge data
+          COVERAGE="${{ needs.test-gate.outputs.coverage }}"
+          if [ -n "$COVERAGE" ]; then
+            if [ "${COVERAGE%.*}" -ge "90" ]; then
+              COLOR="brightgreen"
+            elif [ "${COVERAGE%.*}" -ge "80" ]; then
+              COLOR="green"
+            elif [ "${COVERAGE%.*}" -ge "70" ]; then
+              COLOR="yellow"
+            else
+              COLOR="red"
+            fi
+
+            cat > .github/badges/coverage.json << EOF
+          {
+            "schemaVersion": 1,
+            "label": "coverage",
+            "message": "${COVERAGE}%",
+            "color": "$COLOR"
+          }
+          EOF
+          fi
+
+      - name: Commit badge updates
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .github/badges/
+          git diff --staged --quiet || git commit -m "Update health and coverage badges [skip ci]"
+          git push

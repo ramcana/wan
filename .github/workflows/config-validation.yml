@@ -1,0 +1,174 @@
+name: Configuration Validation
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - "config/**"
+      - "backend/config.json"
+      - "startup_config*.json"
+  pull_request:
+    branches: [main, develop]
+    paths:
+      - "config/**"
+      - "backend/config.json"
+      - "startup_config*.json"
+
+jobs:
+  validate-config:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyyaml jsonschema cerberus
+
+      - name: Validate configuration schema
+        run: |
+          python tools/config-manager/validate_schema.py config/schemas/config-schema.yaml
+
+      - name: Validate base configuration
+        run: |
+          python tools/config-manager/validate_config.py \
+            --config=config/base.yaml \
+            --schema=config/schemas/config-schema.yaml
+
+      - name: Validate environment configurations
+        run: |
+          for env_config in config/environments/*.yaml; do
+            echo "Validating $env_config"
+            python tools/config-manager/validate_config.py \
+              --config="$env_config" \
+              --schema=config/schemas/config-schema.yaml \
+              --base-config=config/base.yaml
+          done
+
+      - name: Check configuration consistency
+        run: |
+          python tools/config-manager/check_consistency.py \
+            --base=config/base.yaml \
+            --environments=config/environments/
+
+      - name: Validate legacy configuration compatibility
+        run: |
+          python tools/config-manager/check_legacy_compatibility.py \
+            --legacy-configs="backend/config.json,startup_config.json" \
+            --unified-config=config/base.yaml
+
+      - name: Generate configuration documentation
+        run: |
+          python tools/config-manager/generate_config_docs.py \
+            --schema=config/schemas/config-schema.yaml \
+            --output=config-documentation.md
+
+      - name: Upload configuration documentation
+        uses: actions/upload-artifact@v3
+        with:
+          name: config-documentation
+          path: config-documentation.md
+
+  security-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyyaml bandit safety
+
+      - name: Check for security issues in configurations
+        run: |
+          python tools/config-manager/security_check.py config/
+
+      - name: Scan for hardcoded secrets
+        run: |
+          python -c "
+          import os
+          import re
+          import yaml
+
+          secret_patterns = [
+              r'password\s*[:=]\s*[\"\']\w+[\"\'']',
+              r'api_key\s*[:=]\s*[\"\']\w+[\"\'']',
+              r'secret\s*[:=]\s*[\"\']\w+[\"\'']',
+              r'token\s*[:=]\s*[\"\']\w+[\"\'']'
+          ]
+
+          issues = []
+          for root, dirs, files in os.walk('config/'):
+              for file in files:
+                  if file.endswith(('.yaml', '.yml', '.json')):
+                      filepath = os.path.join(root, file)
+                      with open(filepath, 'r') as f:
+                          content = f.read()
+                          for pattern in secret_patterns:
+                              if re.search(pattern, content, re.IGNORECASE):
+                                  issues.append(f'Potential secret in {filepath}')
+
+          if issues:
+              print('Security issues found:')
+              for issue in issues:
+                  print(f'- {issue}')
+              exit(1)
+          else:
+              print('No security issues found in configuration files.')
+          "
+
+      - name: Validate environment-specific security settings
+        run: |
+          python tools/config-manager/validate_security_settings.py \
+            --production-config=config/environments/production.yaml \
+            --development-config=config/environments/development.yaml
+
+  migration-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyyaml jsonschema
+
+      - name: Test configuration migration
+        run: |
+          # Create backup of existing configs
+          mkdir -p config_backup
+          cp backend/config.json config_backup/ 2>/dev/null || true
+          cp startup_config*.json config_backup/ 2>/dev/null || true
+
+          # Test migration process
+          python tools/config-manager/migrate_configs.py \
+            --dry-run \
+            --source-configs="backend/config.json,startup_config.json" \
+            --target-config=config/test-migration.yaml \
+            --schema=config/schemas/config-schema.yaml
+
+      - name: Validate migrated configuration
+        run: |
+          if [ -f config/test-migration.yaml ]; then
+            python tools/config-manager/validate_config.py \
+              --config=config/test-migration.yaml \
+              --schema=config/schemas/config-schema.yaml
+          fi

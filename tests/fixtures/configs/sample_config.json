@@ -1,0 +1,21 @@
+{
+    "api": {
+        "base_url": "http://localhost:8000",
+        "timeout": 30,
+        "retries": 3
+    },
+    "database": {
+        "url": "sqlite:///:memory:",
+        "pool_size": 5
+    },
+    "features": {
+        "enable_caching": true,
+        "enable_logging": true,
+        "debug_mode": false
+    },
+    "test_settings": {
+        "mock_external_apis": true,
+        "use_test_database": true,
+        "cleanup_after_tests": true
+    }
+}

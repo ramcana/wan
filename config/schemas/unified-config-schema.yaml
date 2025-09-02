@@ -1,0 +1,600 @@
+# Unified Configuration Schema for WAN22 Project
+# This schema defines the structure and validation rules for the unified configuration
+
+type: object
+required:
+  - system
+  - api
+  - models
+  - generation
+
+properties:
+  config_version:
+    type: string
+    pattern: "^\\d+\\.\\d+\\.\\d+$"
+    description: "Configuration schema version"
+
+  last_updated:
+    type: string
+    format: date-time
+    description: "Last configuration update timestamp"
+
+  system:
+    type: object
+    required:
+      - name
+      - version
+    properties:
+      name:
+        type: string
+        minLength: 1
+        maxLength: 100
+      version:
+        type: string
+        pattern: "^\\d+\\.\\d+\\.\\d+$"
+      debug:
+        type: boolean
+      log_level:
+        type: string
+        enum: ["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"]
+      environment:
+        type: string
+        enum: ["development", "staging", "production", "testing"]
+      max_queue_size:
+        type: integer
+        minimum: 1
+        maximum: 100
+      stats_refresh_interval:
+        type: integer
+        minimum: 1
+        maximum: 300
+      output_directory:
+        type: string
+        minLength: 1
+      models_directory:
+        type: string
+        minLength: 1
+      loras_directory:
+        type: string
+        minLength: 1
+      temp_directory:
+        type: string
+        minLength: 1
+      cache_directory:
+        type: string
+        minLength: 1
+
+  api:
+    type: object
+    required:
+      - host
+      - port
+    properties:
+      host:
+        type: string
+        format: hostname
+      port:
+        type: integer
+        minimum: 1024
+        maximum: 65535
+      auto_port:
+        type: boolean
+      debug:
+        type: boolean
+      reload:
+        type: boolean
+      workers:
+        type: integer
+        minimum: 1
+        maximum: 32
+      timeout:
+        type: integer
+        minimum: 30
+        maximum: 3600
+      cors_origins:
+        type: array
+        items:
+          type: string
+          format: uri
+      max_request_size:
+        type: string
+        pattern: "^\\d+[KMGT]?B$"
+      rate_limiting_enabled:
+        type: boolean
+      requests_per_minute:
+        type: integer
+        minimum: 1
+        maximum: 10000
+
+  database:
+    type: object
+    properties:
+      url:
+        type: string
+        minLength: 1
+      echo:
+        type: boolean
+      pool_size:
+        type: integer
+        minimum: 1
+        maximum: 100
+      max_overflow:
+        type: integer
+        minimum: 0
+        maximum: 100
+      connect_timeout:
+        type: integer
+        minimum: 5
+        maximum: 300
+      query_timeout:
+        type: integer
+        minimum: 10
+        maximum: 600
+
+  models:
+    type: object
+    required:
+      - base_path
+      - t2v_model
+      - i2v_model
+      - ti2v_model
+    properties:
+      base_path:
+        type: string
+        minLength: 1
+      cache_dir:
+        type: string
+        minLength: 1
+      t2v_model:
+        type: string
+        minLength: 1
+      i2v_model:
+        type: string
+        minLength: 1
+      ti2v_model:
+        type: string
+        minLength: 1
+      default_model:
+        type: string
+        minLength: 1
+      auto_optimize:
+        type: boolean
+      enable_offloading:
+        type: boolean
+      vram_management:
+        type: boolean
+      quantization_enabled:
+        type: boolean
+      quantization_level:
+        type: string
+        enum: ["fp16", "bf16", "int8", "fp32"]
+      preload_models:
+        type: boolean
+      model_cache_size:
+        type: integer
+        minimum: 1
+        maximum: 10
+      auto_download_models:
+        type: boolean
+      download_timeout:
+        type: integer
+        minimum: 300
+        maximum: 7200
+      max_concurrent_downloads:
+        type: integer
+        minimum: 1
+        maximum: 5
+      auto_cleanup:
+        type: boolean
+      supported_types:
+        type: array
+        items:
+          type: string
+          minLength: 1
+
+  hardware:
+    type: object
+    properties:
+      auto_detect:
+        type: boolean
+      optimize_for_hardware:
+        type: boolean
+      vram_limit_gb:
+        type: integer
+        minimum: 1
+        maximum: 128
+      max_vram_usage_gb:
+        type: integer
+        minimum: 1
+        maximum: 128
+      cpu_threads:
+        type: integer
+        minimum: 1
+        maximum: 128
+      enable_mixed_precision:
+        type: boolean
+      enable_attention_slicing:
+        type: boolean
+      enable_memory_efficient_attention:
+        type: boolean
+      enable_xformers:
+        type: boolean
+      enable_offload:
+        type: boolean
+      enable_sequential_offload:
+        type: boolean
+      vae_tile_size:
+        type: integer
+        minimum: 128
+        maximum: 2048
+      vae_tile_size_range:
+        type: array
+        items:
+          type: integer
+          minimum: 128
+          maximum: 2048
+        minItems: 2
+        maxItems: 2
+      attention_slice_size:
+        oneOf:
+          - type: string
+            enum: ["auto"]
+          - type: integer
+            minimum: 1
+      enable_torch_compile:
+        type: boolean
+      torch_compile_mode:
+        type: string
+        enum: ["default", "reduce-overhead", "max-autotune"]
+      enable_cuda_graphs:
+        type: boolean
+      memory_format:
+        type: string
+        enum: ["channels_last", "contiguous"]
+      enable_flash_attention:
+        type: boolean
+
+  generation:
+    type: object
+    required:
+      - default_resolution
+      - supported_resolutions
+    properties:
+      mode:
+        type: string
+        enum: ["real", "mock", "hybrid"]
+      enable_real_models:
+        type: boolean
+      fallback_to_mock:
+        type: boolean
+      max_concurrent_generations:
+        type: integer
+        minimum: 1
+        maximum: 10
+      max_concurrent_jobs:
+        type: integer
+        minimum: 1
+        maximum: 20
+      generation_timeout_minutes:
+        type: integer
+        minimum: 5
+        maximum: 180
+      default_timeout:
+        type: integer
+        minimum: 60
+        maximum: 3600
+      default_resolution:
+        type: string
+        pattern: "^\\d+x\\d+$"
+      default_steps:
+        type: integer
+        minimum: 1
+        maximum: 200
+      default_duration:
+        type: integer
+        minimum: 1
+        maximum: 60
+      default_fps:
+        type: integer
+        minimum: 1
+        maximum: 60
+      supported_resolutions:
+        type: array
+        items:
+          type: string
+          pattern: "^\\d+x\\d+$"
+        minItems: 1
+      enable_progress_tracking:
+        type: boolean
+
+  ui:
+    type: object
+    properties:
+      max_file_size_mb:
+        type: integer
+        minimum: 1
+        maximum: 1000
+      gallery_thumbnail_size:
+        type: integer
+        minimum: 64
+        maximum: 512
+      supported_image_formats:
+        type: array
+        items:
+          type: string
+          enum: ["PNG", "JPG", "JPEG", "WebP", "GIF", "BMP"]
+
+  frontend:
+    type: object
+    properties:
+      host:
+        type: string
+        format: hostname
+      port:
+        type: integer
+        minimum: 1024
+        maximum: 65535
+      auto_port:
+        type: boolean
+      timeout:
+        type: integer
+        minimum: 10
+        maximum: 300
+      open_browser:
+        type: boolean
+      hot_reload:
+        type: boolean
+      output_dir:
+        type: string
+        minLength: 1
+      public_path:
+        type: string
+        minLength: 1
+      source_maps:
+        type: boolean
+
+  websocket:
+    type: object
+    properties:
+      enable_progress_updates:
+        type: boolean
+      detailed_progress:
+        type: boolean
+      resource_monitoring:
+        type: boolean
+      update_interval_seconds:
+        type: number
+        minimum: 0.1
+        maximum: 10.0
+      vram_monitoring:
+        type: boolean
+
+  logging:
+    type: object
+    properties:
+      level:
+        type: string
+        enum: ["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"]
+      format:
+        type: string
+        minLength: 1
+      file:
+        type: string
+        minLength: 1
+      file_enabled:
+        type: boolean
+      console_enabled:
+        type: boolean
+      max_file_size:
+        type: string
+        pattern: "^\\d+[KMGT]?B$"
+      backup_count:
+        type: integer
+        minimum: 0
+        maximum: 50
+      log_retention_days:
+        type: integer
+        minimum: 1
+        maximum: 365
+
+  security:
+    type: object
+    properties:
+      secret_key:
+        type: string
+        minLength: 16
+      algorithm:
+        type: string
+        enum: ["HS256", "HS384", "HS512", "RS256"]
+      access_token_expire_minutes:
+        type: integer
+        minimum: 5
+        maximum: 1440
+      authentication_enabled:
+        type: boolean
+      token_expiry:
+        type: integer
+        minimum: 300
+        maximum: 86400
+      cors_enabled:
+        type: boolean
+      allow_credentials:
+        type: boolean
+      allow_admin_elevation:
+        type: boolean
+      firewall_auto_exception:
+        type: boolean
+      trusted_port_range:
+        type: array
+        items:
+          type: integer
+          minimum: 1024
+          maximum: 65535
+        minItems: 2
+        maxItems: 2
+
+  performance:
+    type: object
+    properties:
+      enabled:
+        type: boolean
+      metrics_interval:
+        type: integer
+        minimum: 10
+        maximum: 3600
+      sample_interval_seconds:
+        type: number
+        minimum: 1.0
+        maximum: 300.0
+      max_history_samples:
+        type: integer
+        minimum: 10
+        maximum: 10000
+      vram_warning_threshold:
+        type: number
+        minimum: 0.1
+        maximum: 1.0
+      vram_warning_percent:
+        type: integer
+        minimum: 50
+        maximum: 100
+      cpu_warning_percent:
+        type: integer
+        minimum: 50
+        maximum: 100
+      memory_warning_percent:
+        type: integer
+        minimum: 50
+        maximum: 100
+      target_720p_time_minutes:
+        type: integer
+        minimum: 1
+        maximum: 60
+      target_1080p_time_minutes:
+        type: integer
+        minimum: 1
+        maximum: 120
+      cpu_monitoring_enabled:
+        type: boolean
+      disk_io_monitoring_enabled:
+        type: boolean
+      network_monitoring_enabled:
+        type: boolean
+
+  recovery:
+    type: object
+    properties:
+      enabled:
+        type: boolean
+      max_retry_attempts:
+        type: integer
+        minimum: 1
+        maximum: 10
+      retry_delay:
+        type: number
+        minimum: 0.1
+        maximum: 60.0
+      exponential_backoff:
+        type: boolean
+      auto_kill_processes:
+        type: boolean
+      auto_fix_issues:
+        type: boolean
+      fallback_ports:
+        type: array
+        items:
+          type: integer
+          minimum: 1024
+          maximum: 65535
+
+  environment_validation:
+    type: object
+    properties:
+      python_min_version:
+        type: string
+        pattern: "^\\d+\\.\\d+\\.\\d+$"
+      node_min_version:
+        type: string
+        pattern: "^\\d+\\.\\d+\\.\\d+$"
+      npm_min_version:
+        type: string
+        pattern: "^\\d+\\.\\d+\\.\\d+$"
+      check_virtual_env:
+        type: boolean
+      validate_dependencies:
+        type: boolean
+      auto_install_missing:
+        type: boolean
+
+  prompt_enhancement:
+    type: object
+    properties:
+      max_prompt_length:
+        type: integer
+        minimum: 100
+        maximum: 2000
+      enable_basic_quality:
+        type: boolean
+      enable_vace_detection:
+        type: boolean
+      enable_cinematic_enhancement:
+        type: boolean
+      enable_style_detection:
+        type: boolean
+      max_quality_keywords:
+        type: integer
+        minimum: 1
+        maximum: 10
+      max_cinematic_keywords:
+        type: integer
+        minimum: 1
+        maximum: 10
+      max_style_keywords:
+        type: integer
+        minimum: 1
+        maximum: 10
+
+  features:
+    type: object
+    properties:
+      model_management:
+        type: boolean
+      performance_monitoring:
+        type: boolean
+      websocket_updates:
+        type: boolean
+      auto_optimization:
+        type: boolean
+      prompt_enhancement:
+        type: boolean
+      error_recovery:
+        type: boolean
+      health_monitoring:
+        type: boolean
+
+  environments:
+    type: object
+    patternProperties:
+      "^(development|staging|production|testing)$":
+        type: object
+        properties:
+          system:
+            type: object
+          api:
+            type: object
+          database:
+            type: object
+          models:
+            type: object
+          hardware:
+            type: object
+          generation:
+            type: object
+          logging:
+            type: object
+          security:
+            type: object
+          performance:
+            type: object
+          features:
+            type: object

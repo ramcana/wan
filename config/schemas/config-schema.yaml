@@ -1,0 +1,205 @@
+# Configuration Schema for WAN22 Video Generation System
+# This file defines the structure and validation rules for configuration
+
+schema_version: "1.0"
+description: "Configuration schema for WAN22 Video Generation System"
+
+system:
+  name:
+    type: string
+    required: true
+    description: "System name identifier"
+
+  version:
+    type: string
+    required: true
+    pattern: "^\\d+\\.\\d+\\.\\d+$"
+    description: "System version in semver format"
+
+  debug:
+    type: boolean
+    default: false
+    description: "Enable debug mode"
+
+  log_level:
+    type: string
+    enum: ["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"]
+    default: "INFO"
+    description: "Logging level"
+
+backend:
+  api:
+    host:
+      type: string
+      required: true
+      description: "API server host"
+
+    port:
+      type: integer
+      minimum: 1
+      maximum: 65535
+      required: true
+      description: "API server port"
+
+    cors_origins:
+      type: array
+      items:
+        type: string
+      description: "Allowed CORS origins"
+
+    max_request_size:
+      type: string
+      pattern: "^\\d+[KMGT]?B$"
+      description: "Maximum request size"
+
+    timeout:
+      type: integer
+      minimum: 1
+      description: "Request timeout in seconds"
+
+  models:
+    cache_dir:
+      type: string
+      description: "Model cache directory path"
+
+    download_timeout:
+      type: integer
+      minimum: 60
+      description: "Model download timeout in seconds"
+
+    max_concurrent_downloads:
+      type: integer
+      minimum: 1
+      maximum: 10
+      description: "Maximum concurrent model downloads"
+
+    auto_cleanup:
+      type: boolean
+      description: "Enable automatic cache cleanup"
+
+  generation:
+    max_concurrent_jobs:
+      type: integer
+      minimum: 1
+      maximum: 20
+      description: "Maximum concurrent generation jobs"
+
+    default_timeout:
+      type: integer
+      minimum: 60
+      description: "Default generation timeout in seconds"
+
+    output_dir:
+      type: string
+      description: "Output directory for generated content"
+
+    temp_dir:
+      type: string
+      description: "Temporary directory for processing"
+
+frontend:
+  development:
+    host:
+      type: string
+      description: "Development server host"
+
+    port:
+      type: integer
+      minimum: 1
+      maximum: 65535
+      description: "Development server port"
+
+    hot_reload:
+      type: boolean
+      description: "Enable hot reload in development"
+
+  build:
+    output_dir:
+      type: string
+      description: "Build output directory"
+
+    public_path:
+      type: string
+      description: "Public path for assets"
+
+    source_maps:
+      type: boolean
+      description: "Generate source maps"
+
+infrastructure:
+  startup:
+    health_check_interval:
+      type: integer
+      minimum: 5
+      description: "Health check interval in seconds"
+
+    max_startup_time:
+      type: integer
+      minimum: 30
+      description: "Maximum startup time in seconds"
+
+    auto_restart:
+      type: boolean
+      description: "Enable automatic restart on failure"
+
+  monitoring:
+    enabled:
+      type: boolean
+      description: "Enable monitoring"
+
+    metrics_interval:
+      type: integer
+      minimum: 10
+      description: "Metrics collection interval in seconds"
+
+    log_retention_days:
+      type: integer
+      minimum: 1
+      description: "Log retention period in days"
+
+security:
+  authentication:
+    enabled:
+      type: boolean
+      description: "Enable authentication"
+
+    token_expiry:
+      type: integer
+      minimum: 300
+      description: "Token expiry time in seconds"
+
+  cors:
+    enabled:
+      type: boolean
+      description: "Enable CORS"
+
+    allow_credentials:
+      type: boolean
+      description: "Allow credentials in CORS requests"
+
+  rate_limiting:
+    enabled:
+      type: boolean
+      description: "Enable rate limiting"
+
+    requests_per_minute:
+      type: integer
+      minimum: 1
+      description: "Maximum requests per minute"
+
+features:
+  model_management:
+    type: boolean
+    description: "Enable model management features"
+
+  performance_monitoring:
+    type: boolean
+    description: "Enable performance monitoring"
+
+  websocket_updates:
+    type: boolean
+    description: "Enable WebSocket real-time updates"
+
+  auto_optimization:
+    type: boolean
+    description: "Enable automatic performance optimization"

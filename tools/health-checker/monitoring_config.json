@@ -1,0 +1,45 @@
+{
+  "monitoring_config": {
+    "monitoring": {
+      "enabled": true,
+      "check_interval_minutes": 60,
+      "baseline_update_interval_hours": 24,
+      "trend_analysis_days": 7,
+      "max_alert_frequency_minutes": 30
+    },
+    "thresholds": {
+      "critical_score": 50,
+      "warning_score": 70,
+      "target_score": 85,
+      "execution_time_warning": 300,
+      "execution_time_critical": 600
+    },
+    "notifications": {
+      "enabled": true,
+      "channels": [
+        "console",
+        "file"
+      ],
+      "file": {
+        "enabled": true,
+        "log_file": "health_alerts.log"
+      }
+    },
+    "trend_analysis": {
+      "enabled": true,
+      "analysis_intervals": {
+        "daily": {
+          "enabled": true,
+          "time": "09:00"
+        },
+        "weekly": {
+          "enabled": true,
+          "day": "monday",
+          "time": "08:00"
+        }
+      }
+    }
+  },
+  "service_script": "start_health_monitoring.py",
+  "setup_date": "2025-09-01T21:53:56.827137"
+}
