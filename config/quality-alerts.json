@@ -1,0 +1,45 @@
+{
+    "thresholds": {
+        "test_coverage": {
+            "warning": 70.0,
+            "critical": 50.0
+        },
+        "code_complexity": {
+            "warning": 10.0,
+            "critical": 15.0
+        },
+        "documentation_coverage": {
+            "warning": 60.0,
+            "critical": 40.0
+        },
+        "duplicate_code": {
+            "warning": 10.0,
+            "critical": 20.0
+        },
+        "style_violations": {
+            "warning": 50.0,
+            "critical": 100.0
+        },
+        "type_hint_coverage": {
+            "warning": 50.0,
+            "critical": 30.0
+        }
+    },
+    "notifications": {
+        "email": {
+            "enabled": false,
+            "smtp_server": "localhost",
+            "smtp_port": 587,
+            "username": "",
+            "password": "",
+            "recipients": []
+        },
+        "webhook": {
+            "enabled": false,
+            "url": "",
+            "headers": {}
+        }
+    },
+    "alert_cooldown_hours": 24,
+    "trend_alert_threshold": 5.0
+}

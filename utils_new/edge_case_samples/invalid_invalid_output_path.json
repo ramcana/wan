@@ -1,0 +1,6 @@
+{
+  "id": "invalid_output_path",
+  "content": "{\"input\": \"A test scene\", \"resolution\": \"720p\", \"output_path\": \"/invalid/path/test.mp4\"}",
+  "error_type": "invalid_field_value",
+  "expected_behavior": "should handle invalid output path gracefully"
+}

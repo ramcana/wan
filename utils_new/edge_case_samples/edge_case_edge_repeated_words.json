@@ -1,0 +1,7 @@
+{
+  "id": "edge_repeated_words",
+  "category": "repetitive",
+  "prompt": "red red red red red red red red red red",
+  "expected_behavior": "should handle repetitive input",
+  "test_type": "repetitive_input"
+}

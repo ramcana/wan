@@ -1,0 +1,41 @@
+{
+  "alerts": [
+    {
+      "id": "8d2a5781-9d04-4b40-9202-13dc737f466d",
+      "severity": "critical",
+      "metric_type": "duplicate_code",
+      "message": "Duplicate Code threshold exceeded",
+      "description": "Current value: 39.86, Threshold: 20.00",
+      "current_value": 39.8557853967147,
+      "threshold_value": 20.0,
+      "component": null,
+      "timestamp": "2025-09-02T15:51:21.493342",
+      "resolved": false,
+      "recommendations": [
+        "Extract duplicate code into shared functions",
+        "Use inheritance or composition to reduce duplication",
+        "Consider refactoring similar code patterns",
+        "Review and consolidate similar implementations"
+      ]
+    },
+    {
+      "id": "31778331-d8b7-4734-8914-307c2c153371",
+      "severity": "medium",
+      "metric_type": "type_hint_coverage",
+      "message": "Type Hint Coverage threshold exceeded",
+      "description": "Current value: 46.34, Threshold: 50.00",
+      "current_value": 46.33946351177228,
+      "threshold_value": 50.0,
+      "component": null,
+      "timestamp": "2025-09-02T15:51:21.493342",
+      "resolved": false,
+      "recommendations": [
+        "Add type hints to function parameters and return values",
+        "Use mypy or similar tools for type checking",
+        "Gradually migrate legacy code to use type hints",
+        "Consider using dataclasses for structured data"
+      ]
+    }
+  ],
+  "last_updated": "2025-09-02T15:51:21.495343"
+}

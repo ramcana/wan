@@ -1,0 +1,7 @@
+{
+  "id": "edge_mixed_languages",
+  "category": "multilingual",
+  "prompt": "A scene mixing languages: Hello, 你好, Bonjour, Hola, こんにちは, Привет",
+  "expected_behavior": "should handle multiple languages",
+  "test_type": "multilingual_input"
+}

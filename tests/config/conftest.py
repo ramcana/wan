@@ -11,7 +11,11 @@ from pathlib import Path
 from unittest.mock import Mock, patch
 
 # Add the project root to Python path
-sys.path.insert(0, str(Path(__file__).parent.parent))
+PROJECT_ROOT = Path(__file__).parent.parent.parent
+sys.path.insert(0, str(PROJECT_ROOT))
+
+# Import shared fixtures
+from tests.utils.shared_fixtures import *
 
 
 @pytest.fixture(scope="session")

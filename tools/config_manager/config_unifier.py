@@ -14,7 +14,7 @@ from datetime import datetime
 import logging
 from dataclasses import dataclass
 
-from .unified_config import UnifiedConfig
+from tools.config_manager.unified_config import UnifiedConfig
 
 
 @dataclass

@@ -1,0 +1,6 @@
+{
+  "id": "invalid_resolution",
+  "content": "{\"input\": \"A test scene\", \"resolution\": \"999p\", \"output_path\": \"test.mp4\"}",
+  "error_type": "invalid_field_value",
+  "expected_behavior": "should return validation error for invalid resolution"
+}

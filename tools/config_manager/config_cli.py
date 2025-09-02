@@ -13,9 +13,9 @@ import time
 from pathlib import Path
 from typing import Any
 
-from .config_api import ConfigurationAPI, ConfigChangeEvent
-from .config_validator import ConfigurationValidator
-from .unified_config import UnifiedConfig
+from tools.config_manager.config_api import ConfigurationAPI, ConfigChangeEvent
+from tools.config_manager.config_validator import ConfigurationValidator
+from tools.config_manager.unified_config import UnifiedConfig
 
 
 def setup_logging(verbose: bool = False):

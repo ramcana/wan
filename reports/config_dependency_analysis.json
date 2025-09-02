@@ -1,0 +1,596 @@
+{
+  "analysis_summary": {
+    "total_configs_analyzed": 23,
+    "components": [
+      "testing",
+      "backend",
+      "deployment",
+      "system",
+      "ci",
+      "monitoring",
+      "frontend",
+      "hardware"
+    ],
+    "priority_breakdown": {
+      "high": 10,
+      "medium": 13,
+      "low": 0
+    }
+  },
+  "config_mappings": [
+    {
+      "file_path": "backend/config.json",
+      "purpose": "Backend application configuration",
+      "component": "backend",
+      "priority": "high",
+      "settings_count": 76,
+      "key_settings": [
+        "database"
+      ],
+      "depends_on": [],
+      "used_by": [
+        "comprehensive_model_fix.py",
+        "optimize_model_loading_rtx4080.py",
+        "backend\\diagnose_system.py",
+        "backend\\fix_vram_validation.py",
+        "backend\\main.py"
+      ]
+    },
+    {
+      "file_path": "config.json",
+      "purpose": "Root application configuration",
+      "component": "system",
+      "priority": "high",
+      "settings_count": 53,
+      "key_settings": [],
+      "depends_on": [],
+      "used_by": [
+        "comprehensive_model_fix.py",
+        "optimize_model_loading_rtx4080.py",
+        "backend\\diagnose_system.py",
+        "backend\\fix_vram_validation.py",
+        "backend\\main.py"
+      ]
+    },
+    {
+      "file_path": "startup_config.json",
+      "purpose": "Startup configuration",
+      "component": "system",
+      "priority": "high",
+      "settings_count": 44,
+      "key_settings": [
+        "environment"
+      ],
+      "depends_on": [],
+      "used_by": []
+    },
+    {
+      "file_path": "startup_config_windows_safe.json",
+      "purpose": "Windows-safe startup config",
+      "component": "system",
+      "priority": "medium",
+      "settings_count": 18,
+      "key_settings": [],
+      "depends_on": [],
+      "used_by": []
+    },
+    {
+      "file_path": "config/unified-config.yaml",
+      "purpose": "Unified configuration system",
+      "component": "system",
+      "priority": "high",
+      "settings_count": 237,
+      "key_settings": [
+        "database",
+        "environment_validation",
+        "environments"
+      ],
+      "depends_on": [],
+      "used_by": []
+    },
+    {
+      "file_path": "config/base.yaml",
+      "purpose": "Base configuration",
+      "component": "system",
+      "priority": "high",
+      "settings_count": 55,
+      "key_settings": [],
+      "depends_on": [],
+      "used_by": []
+    },
+    {
+      "file_path": "config/alerting-config.yaml",
+      "purpose": "Alerting configuration",
+      "component": "monitoring",
+      "priority": "medium",
+      "settings_count": 2,
+      "key_settings": [],
+      "depends_on": [],
+      "used_by": []
+    },
+    {
+      "file_path": "config/production-health.yaml",
+      "purpose": "Production health monitoring",
+      "component": "monitoring",
+      "priority": "medium",
+      "settings_count": 89,
+      "key_settings": [
+        "daily_report_time",
+        "weekly_report_day",
+        "report_retention_days",
+        "detailed_reporting"
+      ],
+      "depends_on": [],
+      "used_by": []
+    },
+    {
+      "file_path": "config/ci-health-config.yaml",
+      "purpose": "CI health configuration",
+      "component": "ci",
+      "priority": "medium",
+      "settings_count": 124,
+      "key_settings": [
+        "reporting"
+      ],
+      "depends_on": [],
+      "used_by": []
+    },
+    {
+      "file_path": ".env",
+      "purpose": "Root environment variables",
+      "component": "system",
+      "priority": "high",
+      "settings_count": 1,
+      "key_settings": [],
+      "depends_on": [],
+      "used_by": [
+        "optimize_model_loading_rtx4080.py",
+        "start.py",
+        "backend\\app.py",
+        "backend\\main.py",
+        "backend\\start_full_stack.py"
+      ]
+    },
+    {
+      "file_path": "backend/.env.example",
+      "purpose": "Backend environment template",
+      "component": "backend",
+      "priority": "medium",
+      "settings_count": 0,
+      "key_settings": [],
+      "depends_on": [],
+      "used_by": []
+    },
+    {
+      "file_path": "frontend/.env",
+      "purpose": "Frontend environment variables",
+      "component": "frontend",
+      "priority": "high",
+      "settings_count": 2,
+      "key_settings": [],
+      "depends_on": [],
+      "used_by": [
+        "optimize_model_loading_rtx4080.py",
+        "start.py",
+        "backend\\app.py",
+        "backend\\main.py",
+        "backend\\start_full_stack.py"
+      ]
+    },
+    {
+      "file_path": "frontend/.env.example",
+      "purpose": "Frontend environment template",
+      "component": "frontend",
+      "priority": "medium",
+      "settings_count": 0,
+      "key_settings": [],
+      "depends_on": [],
+      "used_by": []
+    },
+    {
+      "file_path": "pytest.ini",
+      "purpose": "Pytest configuration",
+      "component": "testing",
+      "priority": "medium",
+      "settings_count": 0,
+      "key_settings": [],
+      "depends_on": [],
+      "used_by": []
+    },
+    {
+      "file_path": "tests/config/test-config.yaml",
+      "purpose": "Test suite configuration",
+      "component": "testing",
+      "priority": "high",
+      "settings_count": 46,
+      "key_settings": [
+        "test_environment",
+        "reporting"
+      ],
+      "depends_on": [],
+      "used_by": []
+    },
+    {
+      "file_path": "tests/config/execution_config.yaml",
+      "purpose": "Test execution configuration",
+      "component": "testing",
+      "priority": "medium",
+      "settings_count": 35,
+      "key_settings": [
+        "timeouts",
+        "reporting"
+      ],
+      "depends_on": [],
+      "used_by": []
+    },
+    {
+      "file_path": "frontend/package.json",
+      "purpose": "Frontend package configuration",
+      "component": "frontend",
+      "priority": "high",
+      "settings_count": 72,
+      "key_settings": [],
+      "depends_on": [],
+      "used_by": [
+        "start.py"
+      ]
+    },
+    {
+      "file_path": "backend/requirements.txt",
+      "purpose": "Backend dependencies",
+      "component": "backend",
+      "priority": "high",
+      "settings_count": 0,
+      "key_settings": [],
+      "depends_on": [],
+      "used_by": [
+        "start.py"
+      ]
+    },
+    {
+      "file_path": "backend/docker-compose.yml",
+      "purpose": "Docker composition",
+      "component": "deployment",
+      "priority": "medium",
+      "settings_count": 84,
+      "key_settings": [],
+      "depends_on": [],
+      "used_by": []
+    },
+    {
+      "file_path": "backend/Dockerfile",
+      "purpose": "Docker build configuration",
+      "component": "deployment",
+      "priority": "medium",
+      "settings_count": 0,
+      "key_settings": [],
+      "depends_on": [],
+      "used_by": []
+    },
+    {
+      "file_path": "rtx4080_memory_config.json",
+      "purpose": "RTX 4080 memory configuration",
+      "component": "hardware",
+      "priority": "medium",
+      "settings_count": 18,
+      "key_settings": [],
+      "depends_on": [],
+      "used_by": []
+    },
+    {
+      "file_path": "backend/hardware_profile_final.json",
+      "purpose": "Hardware profile",
+      "component": "hardware",
+      "priority": "medium",
+      "settings_count": 10,
+      "key_settings": [
+        "total_memory_gb",
+        "gpu_model"
+      ],
+      "depends_on": [],
+      "used_by": [
+        "backend\\main.py"
+      ]
+    },
+    {
+      "file_path": "backend/frontend_vram_config.json",
+      "purpose": "VRAM configuration",
+      "component": "hardware",
+      "priority": "medium",
+      "settings_count": 12,
+      "key_settings": [],
+      "depends_on": [],
+      "used_by": [
+        "backend\\fix_vram_validation.py",
+        "backend\\optimize_for_rtx4080.py"
+      ]
+    }
+  ],
+  "consolidation_plan": {
+    "summary": {
+      "total_configs": 23,
+      "high_priority": 10,
+      "components": [
+        "testing",
+        "backend",
+        "deployment",
+        "system",
+        "ci",
+        "monitoring",
+        "frontend",
+        "hardware"
+      ]
+    },
+    "consolidation_groups": {
+      "backend": [
+        {
+          "file": "backend/config.json",
+          "purpose": "Backend application configuration",
+          "priority": "high",
+          "settings_count": 76,
+          "key_settings": [
+            "database"
+          ]
+        },
+        {
+          "file": "backend/.env.example",
+          "purpose": "Backend environment template",
+          "priority": "medium",
+          "settings_count": 0,
+          "key_settings": []
+        },
+        {
+          "file": "backend/requirements.txt",
+          "purpose": "Backend dependencies",
+          "priority": "high",
+          "settings_count": 0,
+          "key_settings": []
+        }
+      ],
+      "system": [
+        {
+          "file": "config.json",
+          "purpose": "Root application configuration",
+          "priority": "high",
+          "settings_count": 53,
+          "key_settings": []
+        },
+        {
+          "file": "startup_config.json",
+          "purpose": "Startup configuration",
+          "priority": "high",
+          "settings_count": 44,
+          "key_settings": [
+            "environment"
+          ]
+        },
+        {
+          "file": "startup_config_windows_safe.json",
+          "purpose": "Windows-safe startup config",
+          "priority": "medium",
+          "settings_count": 18,
+          "key_settings": []
+        },
+        {
+          "file": "config/unified-config.yaml",
+          "purpose": "Unified configuration system",
+          "priority": "high",
+          "settings_count": 237,
+          "key_settings": [
+            "database",
+            "environment_validation",
+            "environments"
+          ]
+        },
+        {
+          "file": "config/base.yaml",
+          "purpose": "Base configuration",
+          "priority": "high",
+          "settings_count": 55,
+          "key_settings": []
+        },
+        {
+          "file": ".env",
+          "purpose": "Root environment variables",
+          "priority": "high",
+          "settings_count": 1,
+          "key_settings": []
+        }
+      ],
+      "monitoring": [
+        {
+          "file": "config/alerting-config.yaml",
+          "purpose": "Alerting configuration",
+          "priority": "medium",
+          "settings_count": 2,
+          "key_settings": []
+        },
+        {
+          "file": "config/production-health.yaml",
+          "purpose": "Production health monitoring",
+          "priority": "medium",
+          "settings_count": 89,
+          "key_settings": [
+            "daily_report_time",
+            "weekly_report_day",
+            "report_retention_days",
+            "detailed_reporting"
+          ]
+        }
+      ],
+      "ci": [
+        {
+          "file": "config/ci-health-config.yaml",
+          "purpose": "CI health configuration",
+          "priority": "medium",
+          "settings_count": 124,
+          "key_settings": [
+            "reporting"
+          ]
+        }
+      ],
+      "frontend": [
+        {
+          "file": "frontend/.env",
+          "purpose": "Frontend environment variables",
+          "priority": "high",
+          "settings_count": 2,
+          "key_settings": []
+        },
+        {
+          "file": "frontend/.env.example",
+          "purpose": "Frontend environment template",
+          "priority": "medium",
+          "settings_count": 0,
+          "key_settings": []
+        },
+        {
+          "file": "frontend/package.json",
+          "purpose": "Frontend package configuration",
+          "priority": "high",
+          "settings_count": 72,
+          "key_settings": []
+        }
+      ],
+      "testing": [
+        {
+          "file": "pytest.ini",
+          "purpose": "Pytest configuration",
+          "priority": "medium",
+          "settings_count": 0,
+          "key_settings": []
+        },
+        {
+          "file": "tests/config/test-config.yaml",
+          "purpose": "Test suite configuration",
+          "priority": "high",
+          "settings_count": 46,
+          "key_settings": [
+            "test_environment",
+            "reporting"
+          ]
+        },
+        {
+          "file": "tests/config/execution_config.yaml",
+          "purpose": "Test execution configuration",
+          "priority": "medium",
+          "settings_count": 35,
+          "key_settings": [
+            "timeouts",
+            "reporting"
+          ]
+        }
+      ],
+      "deployment": [
+        {
+          "file": "backend/docker-compose.yml",
+          "purpose": "Docker composition",
+          "priority": "medium",
+          "settings_count": 84,
+          "key_settings": []
+        },
+        {
+          "file": "backend/Dockerfile",
+          "purpose": "Docker build configuration",
+          "priority": "medium",
+          "settings_count": 0,
+          "key_settings": []
+        }
+      ],
+      "hardware": [
+        {
+          "file": "rtx4080_memory_config.json",
+          "purpose": "RTX 4080 memory configuration",
+          "priority": "medium",
+          "settings_count": 18,
+          "key_settings": []
+        },
+        {
+          "file": "backend/hardware_profile_final.json",
+          "purpose": "Hardware profile",
+          "priority": "medium",
+          "settings_count": 10,
+          "key_settings": [
+            "total_memory_gb",
+            "gpu_model"
+          ]
+        },
+        {
+          "file": "backend/frontend_vram_config.json",
+          "purpose": "VRAM configuration",
+          "priority": "medium",
+          "settings_count": 12,
+          "key_settings": []
+        }
+      ]
+    },
+    "migration_order": [
+      {
+        "phase": "Phase 1 - Critical Configs",
+        "files": [
+          "backend/config.json",
+          "config.json",
+          "startup_config.json",
+          "config/unified-config.yaml",
+          "config/base.yaml",
+          ".env",
+          "frontend/.env",
+          "tests/config/test-config.yaml",
+          "frontend/package.json",
+          "backend/requirements.txt"
+        ]
+      },
+      {
+        "phase": "Phase 2 - Component Configs",
+        "files": [
+          "startup_config_windows_safe.json",
+          "config/alerting-config.yaml",
+          "config/production-health.yaml",
+          "config/ci-health-config.yaml",
+          "backend/.env.example",
+          "frontend/.env.example",
+          "pytest.ini",
+          "tests/config/execution_config.yaml",
+          "backend/docker-compose.yml",
+          "backend/Dockerfile",
+          "rtx4080_memory_config.json",
+          "backend/hardware_profile_final.json",
+          "backend/frontend_vram_config.json"
+        ]
+      },
+      {
+        "phase": "Phase 3 - Optional Configs",
+        "files": []
+      }
+    ],
+    "unified_structure": {
+      "config/unified-config.yaml": {
+        "system": "Core system settings (ports, hosts, debug)",
+        "backend": "Backend API and service configuration",
+        "frontend": "Frontend application settings",
+        "database": "Database connection and settings",
+        "monitoring": "Health checks and alerting",
+        "hardware": "GPU and performance optimization",
+        "testing": "Test execution and coverage settings"
+      },
+      "config/environments/": {
+        "development.yaml": "Development environment overrides",
+        "staging.yaml": "Staging environment overrides",
+        "production.yaml": "Production environment overrides",
+        "testing.yaml": "Testing environment overrides"
+      },
+      "config/schemas/": {
+        "unified-config-schema.yaml": "Configuration validation schema",
+        "migration-rules.yaml": "Rules for migrating existing configs"
+      }
+    }
+  },
+  "recommendations": [
+    "Implement unified configuration system using config/unified-config.yaml",
+    "Create environment-specific override files in config/environments/",
+    "Migrate high-priority configurations first (system, backend, frontend)",
+    "Establish configuration validation using schemas",
+    "Create backup and rollback procedures before migration",
+    "Update application code to use unified configuration loader"
+  ]
+}

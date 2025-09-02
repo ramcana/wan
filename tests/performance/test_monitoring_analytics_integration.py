@@ -14,14 +14,14 @@ from unittest.mock import Mock, patch
 import sys
 sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
 
-from startup_manager.performance_monitor import (
+from scripts.startup_manager.performance_monitor import PerformanceMonitor, StartupSession, TimingMetric, ResourceSnapshot, StartupPhase
     PerformanceMonitor,
     StartupSession,
     TimingMetric,
     ResourceSnapshot,
     StartupPhase
 )
-from startup_manager.analytics import (
+from scripts.startup_manager.analytics import AnalyticsEngine, SystemProfile, OptimizationCategory, OptimizationPriority
     AnalyticsEngine,
     SystemProfile,
     OptimizationCategory,
@@ -37,8 +37,8 @@ class TestMonitoringAnalyticsIntegration:
         self.temp_dir = tempfile.mkdtemp()
         
         # Reset global instances to avoid test interference
-        import startup_manager.performance_monitor
-        import startup_manager.analytics
+import scripts.startup_manager.performance_monitor
+import scripts.startup_manager.analytics
         startup_manager.performance_monitor._global_monitor = None
         startup_manager.analytics._global_analytics = None
         

@@ -21,11 +21,11 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
 # Import mock StartupManager for testing
 from .mock_startup_manager import StartupManager
-from startup_manager.config import StartupConfig
-from startup_manager.port_manager import PortManager, PortStatus
-from startup_manager.process_manager import ProcessManager, ProcessStatus
-from startup_manager.environment_validator import EnvironmentValidator
-from startup_manager.recovery_engine import RecoveryEngine, ErrorType, StartupError
+from scripts.startup_manager.config import StartupConfig
+from scripts.startup_manager.port_manager import PortManager, PortStatus
+from scripts.startup_manager.process_manager import ProcessManager, ProcessStatus
+from scripts.startup_manager.environment_validator import EnvironmentValidator
+from scripts.startup_manager.recovery_engine import RecoveryEngine, ErrorType, StartupError
 
 
 class MockDockerContainer:

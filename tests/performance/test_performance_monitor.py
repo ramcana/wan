@@ -16,7 +16,7 @@ from datetime import datetime, timedelta
 import sys
 sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
 
-from startup_manager.performance_monitor import (
+from scripts.startup_manager.performance_monitor import PerformanceMonitor, TimingMetric, ResourceSnapshot, StartupSession, PerformanceStats, StartupPhase, MetricType, get_performance_monitor
     PerformanceMonitor,
     TimingMetric,
     ResourceSnapshot,
@@ -440,7 +440,7 @@ class TestGlobalPerformanceMonitor:
     def test_get_performance_monitor_with_args(self):
         """Test get_performance_monitor with custom arguments."""
         # Reset global monitor
-        import startup_manager.performance_monitor
+import scripts.startup_manager.performance_monitor
         startup_manager.performance_monitor._global_monitor = None
         
         monitor = get_performance_monitor(max_sessions=50)

@@ -16,8 +16,8 @@ from typing import Dict, Any
 import pytest
 import yaml
 
-from tools.test_runner.orchestrator import TestSuiteOrchestrator
-from tools.test_runner.coverage_analyzer import CoverageAnalyzer
+from tools.test-runner.orchestrator import TestSuiteOrchestrator
+from tools.test-runner.coverage_analyzer import CoverageAnalyzer
 from tools.doc_generator.documentation_generator import DocumentationGenerator
 from tools.doc_generator.validator import DocumentationValidator
 from tools.config_manager.config_unifier import ConfigurationUnifier

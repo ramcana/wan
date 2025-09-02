@@ -1,0 +1,6 @@
+{
+  "id": "invalid_missing_output_path",
+  "content": "{\"input\": \"A test scene\", \"resolution\": \"720p\"}",
+  "error_type": "missing_required_field",
+  "expected_behavior": "should return validation error for missing output_path"
+}

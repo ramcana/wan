@@ -1,0 +1,28 @@
+{
+  "version": "1.0",
+  "saved_at": "2025-09-02T14:50:40.072393",
+  "tasks": [
+    {
+      "id": "c11ecd14-0e00-4596-8c6e-7825bb1ee0f9",
+      "name": "Test Scheduler Task",
+      "description": "",
+      "category": "code_quality",
+      "priority": "medium",
+      "schedule_cron": null,
+      "next_run": null,
+      "last_run": null,
+      "timeout_minutes": 30,
+      "retry_count": 3,
+      "retry_delay_minutes": 5,
+      "depends_on": [],
+      "blocks": [],
+      "config": {},
+      "environment_requirements": [],
+      "created_at": "2025-09-02T14:50:40.072393",
+      "updated_at": "2025-09-02T14:50:40.072393",
+      "created_by": "system",
+      "tags": [],
+      "rollback_enabled": true
+    }
+  ]
+}

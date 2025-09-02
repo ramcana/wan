@@ -1,0 +1,12 @@
+{
+  "input": "Bustling city street with people walking and cars passing, close-up, epic scale",
+  "resolution": "720p",
+  "output_path": "outputs/test_video_prompt_001_720p_20250902_094446.mp4",
+  "metadata": {
+    "prompt_id": "prompt_001",
+    "category": "urban",
+    "complexity": "medium",
+    "generated_at": "2025-09-02T09:44:46.042146",
+    "test_session": "ccc7906c-4388-4b7f-ae0f-7a9b84b08cc6"
+  }
+}

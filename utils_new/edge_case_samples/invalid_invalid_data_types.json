@@ -1,0 +1,6 @@
+{
+  "id": "invalid_data_types",
+  "content": "{\"input\": 123, \"resolution\": true, \"output_path\": [\"test.mp4\"]}",
+  "error_type": "invalid_data_type",
+  "expected_behavior": "should return type validation errors"
+}

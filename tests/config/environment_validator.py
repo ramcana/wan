@@ -1,765 +1,600 @@
 """
-Test Environment Validator
+Environment Validator for Test Isolation
 
-This module provides comprehensive validation of test environment dependencies,
-service availability, and setup requirements with detailed error reporting
-and guidance.
+This module provides validation and setup for test environments, ensuring
+that tests run in properly isolated and configured environments.
 """
 
 import os
 import sys
-import subprocess
+import json
+import tempfile
+import shutil
 import socket
-import importlib
-import platform
-import psutil
+import subprocess
 from pathlib import Path
-from typing import Dict, List, Any, Optional, Tuple, Union
+from typing import Dict, Any, List, Optional, Set, Tuple
 from dataclasses import dataclass, field
 from enum import Enum
-import requests
-import time
+import pytest
+
+# Add project root to Python path
+PROJECT_ROOT = Path(__file__).parent.parent.parent
+sys.path.insert(0, str(PROJECT_ROOT))
+
+
+class EnvironmentType(Enum):
+    """Test environment types."""
+    UNIT = "unit"
+    INTEGRATION = "integration"
+    E2E = "e2e"
+    PERFORMANCE = "performance"
+    STRESS = "stress"
+    RELIABILITY = "reliability"
 
 
 class ValidationLevel(Enum):
-    """Validation level enumeration"""
-    CRITICAL = "critical"
-    WARNING = "warning"
-    INFO = "info"
+    """Validation levels."""
+    MINIMAL = "minimal"
+    STANDARD = "standard"
+    STRICT = "strict"
+    COMPREHENSIVE = "comprehensive"
 
 
-class ValidationStatus(Enum):
-    """Validation status enumeration"""
-    PASSED = "passed"
-    FAILED = "failed"
-    SKIPPED = "skipped"
+@dataclass
+class EnvironmentRequirements:
+    """Environment requirements specification."""
+    python_version: Optional[str] = None
+    node_version: Optional[str] = None
+    npm_version: Optional[str] = None
+    required_packages: List[str] = field(default_factory=list)
+    required_ports: List[int] = field(default_factory=list)
+    required_env_vars: List[str] = field(default_factory=list)
+    forbidden_env_vars: List[str] = field(default_factory=list)
+    min_memory_mb: Optional[int] = None
+    min_disk_space_mb: Optional[int] = None
+    required_commands: List[str] = field(default_factory=list)
+    network_access: bool = False
+    admin_privileges: bool = False
+    docker_required: bool = False
 
 
 @dataclass
 class ValidationResult:
-    """Result of a validation check"""
-    name: str
-    status: ValidationStatus
-    level: ValidationLevel
-    message: str
-    details: Dict[str, Any] = field(default_factory=dict)
-    suggestions: List[str] = field(default_factory=list)
-
-
-@dataclass
-class EnvironmentRequirement:
-    """Definition of an environment requirement"""
-    name: str
-    type: str  # 'python_package', 'system_command', 'service', 'file', 'directory', 'env_var'
-    required: bool = True
-    version_check: Optional[str] = None
-    config: Dict[str, Any] = field(default_factory=dict)
+    """Environment validation result."""
+    valid: bool
+    environment_type: EnvironmentType
+    validation_level: ValidationLevel
+    errors: List[str] = field(default_factory=list)
+    warnings: List[str] = field(default_factory=list)
+    recommendations: List[str] = field(default_factory=list)
+    environment_info: Dict[str, Any] = field(default_factory=dict)
 
 
 class EnvironmentValidator:
-    """
-    Comprehensive test environment validator for checking dependencies,
-    service availability, and environment setup requirements.
-    """
+    """Validates and sets up test environments."""
     
-    def __init__(self, requirements_file: Optional[Union[str, Path]] = None):
-        """
-        Initialize environment validator
-        
-        Args:
-            requirements_file: Path to requirements configuration file
-        """
-        self.requirements_file = Path(requirements_file) if requirements_file else None
-        self.requirements: List[EnvironmentRequirement] = []
-        self.validation_results: List[ValidationResult] = []
-        
-        # Load requirements
-        self._load_requirements()
-        
-        # Add built-in requirements
-        self._add_builtin_requirements()
+    def __init__(self):
+        self.validation_cache: Dict[str, ValidationResult] = {}
     
-    def _load_requirements(self) -> None:
-        """Load requirements from configuration file"""
-        if self.requirements_file and self.requirements_file.exists():
-            try:
-                import yaml
-                with open(self.requirements_file, 'r') as f:
-                    config = yaml.safe_load(f)
-                
-                requirements_data = config.get('requirements', [])
-                for req_data in requirements_data:
-                    requirement = EnvironmentRequirement(**req_data)
-                    self.requirements.append(requirement)
-                    
-            except Exception as e:
-                print(f"Warning: Failed to load requirements file: {e}")
-    
-    def _add_builtin_requirements(self) -> None:
-        """Add built-in environment requirements"""
-        builtin_requirements = [
-            # Python version
-            EnvironmentRequirement(
-                name="python_version",
-                type="python_version",
-                required=True,
-                version_check=">=3.8",
-                config={"min_version": "3.8"}
-            ),
-            
-            # Essential Python packages
-            EnvironmentRequirement(
-                name="pytest",
-                type="python_package",
-                required=True,
-                version_check=">=6.0.0"
-            ),
-            
-            EnvironmentRequirement(
-                name="pytest-asyncio",
-                type="python_package",
-                required=True
-            ),
-            
-            EnvironmentRequirement(
-                name="pytest-cov",
-                type="python_package",
-                required=False
-            ),
-            
-            # System resources
-            EnvironmentRequirement(
-                name="memory_check",
-                type="system_resource",
-                required=True,
-                config={"min_memory_gb": 2}
-            ),
-            
-            EnvironmentRequirement(
-                name="disk_space_check",
-                type="system_resource",
-                required=True,
-                config={"min_disk_gb": 1}
-            ),
-            
-            # Test directories
-            EnvironmentRequirement(
-                name="tests_directory",
-                type="directory",
-                required=True,
-                config={"path": "tests"}
-            ),
-            
-            EnvironmentRequirement(
-                name="fixtures_directory",
-                type="directory",
-                required=False,
-                config={"path": "tests/fixtures"}
-            ),
-        ]
+    def validate_environment(self, env_type: EnvironmentType, 
+                           validation_level: ValidationLevel = ValidationLevel.STANDARD,
+                           requirements: Optional[EnvironmentRequirements] = None) -> ValidationResult:
+        """Validate the test environment."""
+        cache_key = f"{env_type.value}_{validation_level.value}"
         
-        self.requirements.extend(builtin_requirements)
-    
-    def validate_environment(self) -> List[ValidationResult]:
-        """
-        Validate complete test environment
+        if cache_key in self.validation_cache:
+            return self.validation_cache[cache_key]
         
-        Returns:
-            List of validation results
-        """
-        self.validation_results.clear()
+        if requirements is None:
+            requirements = self._get_default_requirements(env_type)
         
-        for requirement in self.requirements:
-            try:
-                result = self._validate_requirement(requirement)
-                self.validation_results.append(result)
-            except Exception as e:
-                error_result = ValidationResult(
-                    name=requirement.name,
-                    status=ValidationStatus.FAILED,
-                    level=ValidationLevel.CRITICAL if requirement.required else ValidationLevel.WARNING,
-                    message=f"Validation error: {e}",
-                    suggestions=["Check requirement configuration"]
-                )
-                self.validation_results.append(error_result)
+        result = ValidationResult(
+            valid=True,
+            environment_type=env_type,
+            validation_level=validation_level
+        )
         
-        return self.validation_results
+        # Collect environment information
+        result.environment_info = self._collect_environment_info()
+        
+        # Perform validations based on level
+        if validation_level in [ValidationLevel.MINIMAL, ValidationLevel.STANDARD, 
+                              ValidationLevel.STRICT, ValidationLevel.COMPREHENSIVE]:
+            self._validate_basic_requirements(result, requirements)
+        
+        if validation_level in [ValidationLevel.STANDARD, ValidationLevel.STRICT, 
+                              ValidationLevel.COMPREHENSIVE]:
+            self._validate_system_resources(result, requirements)
+            self._validate_network_access(result, requirements)
+        
+        if validation_level in [ValidationLevel.STRICT, ValidationLevel.COMPREHENSIVE]:
+            self._validate_security_requirements(result, requirements)
+            self._validate_dependencies(result, requirements)
+        
+        if validation_level == ValidationLevel.COMPREHENSIVE:
+            self._validate_performance_requirements(result, requirements)
+            self._validate_isolation_requirements(result, requirements)
+        
+        # Cache result
+        self.validation_cache[cache_key] = result
+        
+        return result
     
-    def _validate_requirement(self, requirement: EnvironmentRequirement) -> ValidationResult:
-        """Validate a specific requirement"""
-        if requirement.type == "python_package":
-            return self._validate_python_package(requirement)
-        elif requirement.type == "python_version":
-            return self._validate_python_version(requirement)
-        elif requirement.type == "system_command":
-            return self._validate_system_command(requirement)
-        elif requirement.type == "service":
-            return self._validate_service(requirement)
-        elif requirement.type == "file":
-            return self._validate_file(requirement)
-        elif requirement.type == "directory":
-            return self._validate_directory(requirement)
-        elif requirement.type == "env_var":
-            return self._validate_environment_variable(requirement)
-        elif requirement.type == "system_resource":
-            return self._validate_system_resource(requirement)
-        else:
-            return ValidationResult(
-                name=requirement.name,
-                status=ValidationStatus.SKIPPED,
-                level=ValidationLevel.INFO,
-                message=f"Unknown requirement type: {requirement.type}"
-            )
-    
-    def _validate_python_package(self, requirement: EnvironmentRequirement) -> ValidationResult:
-        """Validate Python package availability and version"""
-        try:
-            module = importlib.import_module(requirement.name)
-            
-            # Check version if specified
-            if requirement.version_check:
-                version = getattr(module, '__version__', None)
-                if version:
-                    if self._check_version(version, requirement.version_check):
-                        return ValidationResult(
-                            name=requirement.name,
-                            status=ValidationStatus.PASSED,
-                            level=ValidationLevel.INFO,
-                            message=f"Package {requirement.name} version {version} is available",
-                            details={"version": version}
-                        )
-                    else:
-                        return ValidationResult(
-                            name=requirement.name,
-                            status=ValidationStatus.FAILED,
-                            level=ValidationLevel.CRITICAL if requirement.required else ValidationLevel.WARNING,
-                            message=f"Package {requirement.name} version {version} does not meet requirement {requirement.version_check}",
-                            details={"current_version": version, "required_version": requirement.version_check},
-                            suggestions=[f"pip install '{requirement.name}{requirement.version_check}'"]
-                        )
-                else:
-                    return ValidationResult(
-                        name=requirement.name,
-                        status=ValidationStatus.PASSED,
-                        level=ValidationLevel.WARNING,
-                        message=f"Package {requirement.name} is available but version cannot be determined",
-                        suggestions=["Consider upgrading to a version that supports __version__"]
-                    )
+    def setup_environment(self, env_type: EnvironmentType, 
+                         test_id: str,
+                         requirements: Optional[EnvironmentRequirements] = None) -> Dict[str, Any]:
+        """Set up a test environment."""
+        if requirements is None:
+            requirements = self._get_default_requirements(env_type)
+        
+        setup_info = {
+            "test_id": test_id,
+            "environment_type": env_type.value,
+            "temp_dirs": [],
+            "temp_files": [],
+            "env_vars": {},
+            "processes": [],
+            "ports": [],
+            "cleanup_callbacks": []
+        }
+        
+        # Create temporary directories
+        temp_base = Path(tempfile.mkdtemp(prefix=f"test_{env_type.value}_{test_id}_"))
+        setup_info["temp_dirs"].append(temp_base)
+        
+        # Set up environment variables
+        test_env_vars = self._get_test_environment_variables(env_type, test_id, temp_base)
+        for var_name, var_value in test_env_vars.items():
+            original_value = os.environ.get(var_name)
+            os.environ[var_name] = var_value
+            setup_info["env_vars"][var_name] = original_value
+        
+        # Reserve required ports
+        for port in requirements.required_ports:
+            if self._is_port_available(port):
+                setup_info["ports"].append(port)
             else:
-                return ValidationResult(
-                    name=requirement.name,
-                    status=ValidationStatus.PASSED,
-                    level=ValidationLevel.INFO,
-                    message=f"Package {requirement.name} is available"
-                )
-                
+                # Find alternative port
+                alt_port = self._find_available_port(port + 1000)
+                setup_info["ports"].append(alt_port)
+        
+        # Create test-specific directories
+        test_dirs = {
+            "data": temp_base / "data",
+            "logs": temp_base / "logs",
+            "config": temp_base / "config",
+            "temp": temp_base / "temp",
+            "cache": temp_base / "cache"
+        }
+        
+        for dir_name, dir_path in test_dirs.items():
+            dir_path.mkdir(parents=True, exist_ok=True)
+            setup_info[f"{dir_name}_dir"] = dir_path
+        
+        return setup_info
+    
+    def cleanup_environment(self, setup_info: Dict[str, Any]):
+        """Clean up a test environment."""
+        # Run cleanup callbacks
+        for callback in setup_info.get("cleanup_callbacks", []):
+            try:
+                callback()
+            except Exception as e:
+                print(f"Warning: Cleanup callback failed: {e}")
+        
+        # Restore environment variables
+        for var_name, original_value in setup_info.get("env_vars", {}).items():
+            if original_value is None:
+                os.environ.pop(var_name, None)
+            else:
+                os.environ[var_name] = original_value
+        
+        # Clean up temporary directories
+        for temp_dir in setup_info.get("temp_dirs", []):
+            try:
+                if Path(temp_dir).exists():
+                    shutil.rmtree(temp_dir, ignore_errors=True)
+            except Exception as e:
+                print(f"Warning: Failed to clean up temp dir {temp_dir}: {e}")
+        
+        # Clean up temporary files
+        for temp_file in setup_info.get("temp_files", []):
+            try:
+                if Path(temp_file).exists():
+                    Path(temp_file).unlink()
+            except Exception as e:
+                print(f"Warning: Failed to clean up temp file {temp_file}: {e}")
+        
+        # Clean up processes
+        for pid in setup_info.get("processes", []):
+            try:
+                import psutil
+                process = psutil.Process(pid)
+                if process.is_running():
+                    process.terminate()
+                    process.wait(timeout=5)
+            except Exception:
+                pass
+    
+    def _get_default_requirements(self, env_type: EnvironmentType) -> EnvironmentRequirements:
+        """Get default requirements for environment type."""
+        base_requirements = EnvironmentRequirements(
+            python_version="3.8.0",
+            required_packages=["pytest", "pytest-cov"],
+            required_env_vars=["TESTING"],
+            forbidden_env_vars=["PRODUCTION", "LIVE"],
+            min_memory_mb=512,
+            min_disk_space_mb=1024
+        )
+        
+        if env_type == EnvironmentType.UNIT:
+            return base_requirements
+        
+        elif env_type == EnvironmentType.INTEGRATION:
+            base_requirements.required_ports = [8000, 3000]
+            base_requirements.required_packages.extend(["requests", "psutil"])
+            base_requirements.min_memory_mb = 1024
+            
+        elif env_type == EnvironmentType.E2E:
+            base_requirements.required_ports = [8000, 3000, 4444]  # Selenium port
+            base_requirements.required_packages.extend(["selenium", "requests", "psutil"])
+            base_requirements.network_access = True
+            base_requirements.min_memory_mb = 2048
+            
+        elif env_type == EnvironmentType.PERFORMANCE:
+            base_requirements.required_packages.extend(["psutil", "memory_profiler"])
+            base_requirements.min_memory_mb = 2048
+            base_requirements.min_disk_space_mb = 5120
+            
+        elif env_type == EnvironmentType.STRESS:
+            base_requirements.required_packages.extend(["psutil", "memory_profiler", "locust"])
+            base_requirements.network_access = True
+            base_requirements.min_memory_mb = 4096
+            base_requirements.min_disk_space_mb = 10240
+            
+        elif env_type == EnvironmentType.RELIABILITY:
+            base_requirements.required_packages.extend(["psutil", "requests"])
+            base_requirements.network_access = True
+            base_requirements.min_memory_mb = 1024
+            base_requirements.docker_required = True
+        
+        return base_requirements
+    
+    def _collect_environment_info(self) -> Dict[str, Any]:
+        """Collect information about the current environment."""
+        info = {
+            "python_version": sys.version,
+            "platform": sys.platform,
+            "executable": sys.executable,
+            "path": sys.path[:5],  # First 5 entries
+            "cwd": os.getcwd(),
+            "user": os.environ.get("USER", os.environ.get("USERNAME", "unknown")),
+            "env_vars": {
+                key: value for key, value in os.environ.items()
+                if any(keyword in key.upper() for keyword in ["TEST", "PYTEST", "WAN22", "DEBUG"])
+            }
+        }
+        
+        # Add system information if available
+        try:
+            import psutil
+            info.update({
+                "memory_total": psutil.virtual_memory().total,
+                "memory_available": psutil.virtual_memory().available,
+                "disk_free": psutil.disk_usage('.').free,
+                "cpu_count": psutil.cpu_count()
+            })
         except ImportError:
-            return ValidationResult(
-                name=requirement.name,
-                status=ValidationStatus.FAILED,
-                level=ValidationLevel.CRITICAL if requirement.required else ValidationLevel.WARNING,
-                message=f"Package {requirement.name} is not installed",
-                suggestions=[
-                    f"pip install {requirement.name}",
-                    "Check if package name is correct",
-                    "Ensure virtual environment is activated"
-                ]
-            )
-    
-    def _validate_python_version(self, requirement: EnvironmentRequirement) -> ValidationResult:
-        """Validate Python version"""
-        current_version = f"{sys.version_info.major}.{sys.version_info.minor}.{sys.version_info.micro}"
+            pass
         
-        if requirement.version_check:
-            if self._check_version(current_version, requirement.version_check):
-                return ValidationResult(
-                    name=requirement.name,
-                    status=ValidationStatus.PASSED,
-                    level=ValidationLevel.INFO,
-                    message=f"Python version {current_version} meets requirement {requirement.version_check}",
-                    details={"version": current_version}
-                )
-            else:
-                return ValidationResult(
-                    name=requirement.name,
-                    status=ValidationStatus.FAILED,
-                    level=ValidationLevel.CRITICAL,
-                    message=f"Python version {current_version} does not meet requirement {requirement.version_check}",
-                    details={"current_version": current_version, "required_version": requirement.version_check},
-                    suggestions=[
-                        f"Upgrade Python to version {requirement.version_check}",
-                        "Use pyenv or conda to manage Python versions"
-                    ]
-                )
-        else:
-            return ValidationResult(
-                name=requirement.name,
-                status=ValidationStatus.PASSED,
-                level=ValidationLevel.INFO,
-                message=f"Python version {current_version} is available",
-                details={"version": current_version}
-            )
+        return info
     
-    def _validate_system_command(self, requirement: EnvironmentRequirement) -> ValidationResult:
-        """Validate system command availability"""
+    def _validate_basic_requirements(self, result: ValidationResult, requirements: EnvironmentRequirements):
+        """Validate basic requirements."""
+        # Check Python version
+        if requirements.python_version:
+            current_version = sys.version_info
+            required_parts = requirements.python_version.split('.')
+            required_version = tuple(int(part) for part in required_parts)
+            
+            if current_version < required_version:
+                result.errors.append(
+                    f"Python version {requirements.python_version} required, "
+                    f"but {sys.version} is installed"
+                )
+                result.valid = False
+        
+        # Check required environment variables
+        for env_var in requirements.required_env_vars:
+            if env_var not in os.environ:
+                result.warnings.append(f"Required environment variable {env_var} is not set")
+        
+        # Check forbidden environment variables
+        for env_var in requirements.forbidden_env_vars:
+            if env_var in os.environ:
+                result.errors.append(f"Forbidden environment variable {env_var} is set")
+                result.valid = False
+        
+        # Check required packages
+        for package in requirements.required_packages:
+            try:
+                __import__(package.replace('-', '_'))
+            except ImportError:
+                result.errors.append(f"Required package {package} is not installed")
+                result.valid = False
+    
+    def _validate_system_resources(self, result: ValidationResult, requirements: EnvironmentRequirements):
+        """Validate system resources."""
         try:
-            result = subprocess.run(
-                [requirement.name, "--version"],
-                capture_output=True,
-                text=True,
-                timeout=10
-            )
+            import psutil
             
-            if result.returncode == 0:
-                version_output = result.stdout.strip() or result.stderr.strip()
-                return ValidationResult(
-                    name=requirement.name,
-                    status=ValidationStatus.PASSED,
-                    level=ValidationLevel.INFO,
-                    message=f"Command {requirement.name} is available",
-                    details={"version_output": version_output}
-                )
-            else:
-                return ValidationResult(
-                    name=requirement.name,
-                    status=ValidationStatus.FAILED,
-                    level=ValidationLevel.CRITICAL if requirement.required else ValidationLevel.WARNING,
-                    message=f"Command {requirement.name} returned error code {result.returncode}",
-                    suggestions=[f"Install {requirement.name}", "Check PATH environment variable"]
-                )
-                
-        except FileNotFoundError:
-            return ValidationResult(
-                name=requirement.name,
-                status=ValidationStatus.FAILED,
-                level=ValidationLevel.CRITICAL if requirement.required else ValidationLevel.WARNING,
-                message=f"Command {requirement.name} not found",
-                suggestions=[
-                    f"Install {requirement.name}",
-                    "Add to PATH environment variable",
-                    "Check spelling of command name"
-                ]
-            )
-        except subprocess.TimeoutExpired:
-            return ValidationResult(
-                name=requirement.name,
-                status=ValidationStatus.FAILED,
-                level=ValidationLevel.WARNING,
-                message=f"Command {requirement.name} timed out",
-                suggestions=["Check if command is responsive", "Try manual execution"]
-            )
-    
-    def _validate_service(self, requirement: EnvironmentRequirement) -> ValidationResult:
-        """Validate service availability"""
-        host = requirement.config.get("host", "localhost")
-        port = requirement.config.get("port")
-        url = requirement.config.get("url")
-        
-        if url:
-            return self._validate_http_service(requirement, url)
-        elif port:
-            return self._validate_tcp_service(requirement, host, port)
-        else:
-            return ValidationResult(
-                name=requirement.name,
-                status=ValidationStatus.FAILED,
-                level=ValidationLevel.WARNING,
-                message="Service validation requires either 'url' or 'port' in config"
-            )
-    
-    def _validate_http_service(self, requirement: EnvironmentRequirement, url: str) -> ValidationResult:
-        """Validate HTTP service availability"""
-        try:
-            timeout = requirement.config.get("timeout", 5)
-            response = requests.get(url, timeout=timeout)
-            
-            if response.status_code < 400:
-                return ValidationResult(
-                    name=requirement.name,
-                    status=ValidationStatus.PASSED,
-                    level=ValidationLevel.INFO,
-                    message=f"HTTP service at {url} is available",
-                    details={"status_code": response.status_code, "url": url}
-                )
-            else:
-                return ValidationResult(
-                    name=requirement.name,
-                    status=ValidationStatus.FAILED,
-                    level=ValidationLevel.CRITICAL if requirement.required else ValidationLevel.WARNING,
-                    message=f"HTTP service at {url} returned status {response.status_code}",
-                    details={"status_code": response.status_code, "url": url},
-                    suggestions=["Check service configuration", "Verify service is running"]
-                )
-                
-        except requests.exceptions.ConnectionError:
-            return ValidationResult(
-                name=requirement.name,
-                status=ValidationStatus.FAILED,
-                level=ValidationLevel.CRITICAL if requirement.required else ValidationLevel.WARNING,
-                message=f"Cannot connect to HTTP service at {url}",
-                suggestions=[
-                    "Start the service",
-                    "Check URL is correct",
-                    "Verify network connectivity"
-                ]
-            )
-        except requests.exceptions.Timeout:
-            return ValidationResult(
-                name=requirement.name,
-                status=ValidationStatus.FAILED,
-                level=ValidationLevel.WARNING,
-                message=f"HTTP service at {url} timed out",
-                suggestions=["Check service responsiveness", "Increase timeout"]
-            )
-    
-    def _validate_tcp_service(self, requirement: EnvironmentRequirement, host: str, port: int) -> ValidationResult:
-        """Validate TCP service availability"""
-        try:
-            sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            sock.settimeout(5)
-            result = sock.connect_ex((host, port))
-            sock.close()
-            
-            if result == 0:
-                return ValidationResult(
-                    name=requirement.name,
-                    status=ValidationStatus.PASSED,
-                    level=ValidationLevel.INFO,
-                    message=f"TCP service at {host}:{port} is available",
-                    details={"host": host, "port": port}
-                )
-            else:
-                return ValidationResult(
-                    name=requirement.name,
-                    status=ValidationStatus.FAILED,
-                    level=ValidationLevel.CRITICAL if requirement.required else ValidationLevel.WARNING,
-                    message=f"Cannot connect to TCP service at {host}:{port}",
-                    suggestions=[
-                        "Start the service",
-                        "Check host and port are correct",
-                        "Verify firewall settings"
-                    ]
-                )
-                
-        except Exception as e:
-            return ValidationResult(
-                name=requirement.name,
-                status=ValidationStatus.FAILED,
-                level=ValidationLevel.WARNING,
-                message=f"Error checking TCP service: {e}",
-                suggestions=["Check network configuration"]
-            )
-    
-    def _validate_file(self, requirement: EnvironmentRequirement) -> ValidationResult:
-        """Validate file existence"""
-        file_path = Path(requirement.config.get("path", requirement.name))
-        
-        if file_path.exists():
-            if file_path.is_file():
-                return ValidationResult(
-                    name=requirement.name,
-                    status=ValidationStatus.PASSED,
-                    level=ValidationLevel.INFO,
-                    message=f"File {file_path} exists",
-                    details={"path": str(file_path), "size": file_path.stat().st_size}
-                )
-            else:
-                return ValidationResult(
-                    name=requirement.name,
-                    status=ValidationStatus.FAILED,
-                    level=ValidationLevel.WARNING,
-                    message=f"Path {file_path} exists but is not a file",
-                    suggestions=["Check path specification"]
-                )
-        else:
-            return ValidationResult(
-                name=requirement.name,
-                status=ValidationStatus.FAILED,
-                level=ValidationLevel.CRITICAL if requirement.required else ValidationLevel.WARNING,
-                message=f"File {file_path} does not exist",
-                suggestions=[
-                    f"Create file {file_path}",
-                    "Check path is correct",
-                    "Verify file permissions"
-                ]
-            )
-    
-    def _validate_directory(self, requirement: EnvironmentRequirement) -> ValidationResult:
-        """Validate directory existence"""
-        dir_path = Path(requirement.config.get("path", requirement.name))
-        
-        if dir_path.exists():
-            if dir_path.is_dir():
-                return ValidationResult(
-                    name=requirement.name,
-                    status=ValidationStatus.PASSED,
-                    level=ValidationLevel.INFO,
-                    message=f"Directory {dir_path} exists",
-                    details={"path": str(dir_path)}
-                )
-            else:
-                return ValidationResult(
-                    name=requirement.name,
-                    status=ValidationStatus.FAILED,
-                    level=ValidationLevel.WARNING,
-                    message=f"Path {dir_path} exists but is not a directory",
-                    suggestions=["Check path specification"]
-                )
-        else:
-            level = ValidationLevel.CRITICAL if requirement.required else ValidationLevel.WARNING
-            suggestions = [f"Create directory: mkdir -p {dir_path}", "Check path is correct"]
-            
-            # Auto-create directory if not required
-            if not requirement.required:
-                try:
-                    dir_path.mkdir(parents=True, exist_ok=True)
-                    return ValidationResult(
-                        name=requirement.name,
-                        status=ValidationStatus.PASSED,
-                        level=ValidationLevel.INFO,
-                        message=f"Directory {dir_path} created automatically",
-                        details={"path": str(dir_path)}
+            # Check memory
+            if requirements.min_memory_mb:
+                available_mb = psutil.virtual_memory().available // (1024 * 1024)
+                if available_mb < requirements.min_memory_mb:
+                    result.warnings.append(
+                        f"Low memory: {available_mb}MB available, "
+                        f"{requirements.min_memory_mb}MB recommended"
                     )
-                except Exception as e:
-                    suggestions.append(f"Auto-creation failed: {e}")
             
-            return ValidationResult(
-                name=requirement.name,
-                status=ValidationStatus.FAILED,
-                level=level,
-                message=f"Directory {dir_path} does not exist",
-                suggestions=suggestions
-            )
-    
-    def _validate_environment_variable(self, requirement: EnvironmentRequirement) -> ValidationResult:
-        """Validate environment variable"""
-        var_name = requirement.config.get("name", requirement.name)
-        value = os.getenv(var_name)
+            # Check disk space
+            if requirements.min_disk_space_mb:
+                free_mb = psutil.disk_usage('.').free // (1024 * 1024)
+                if free_mb < requirements.min_disk_space_mb:
+                    result.warnings.append(
+                        f"Low disk space: {free_mb}MB available, "
+                        f"{requirements.min_disk_space_mb}MB recommended"
+                    )
         
-        if value is not None:
-            expected_value = requirement.config.get("value")
-            if expected_value and value != expected_value:
-                return ValidationResult(
-                    name=requirement.name,
-                    status=ValidationStatus.FAILED,
-                    level=ValidationLevel.WARNING,
-                    message=f"Environment variable {var_name} has unexpected value",
-                    details={"current_value": value, "expected_value": expected_value},
-                    suggestions=[f"Set {var_name}={expected_value}"]
-                )
-            else:
-                return ValidationResult(
-                    name=requirement.name,
-                    status=ValidationStatus.PASSED,
-                    level=ValidationLevel.INFO,
-                    message=f"Environment variable {var_name} is set",
-                    details={"value": value}
-                )
-        else:
-            return ValidationResult(
-                name=requirement.name,
-                status=ValidationStatus.FAILED,
-                level=ValidationLevel.CRITICAL if requirement.required else ValidationLevel.WARNING,
-                message=f"Environment variable {var_name} is not set",
-                suggestions=[
-                    f"Set environment variable: export {var_name}=<value>",
-                    "Add to shell profile (.bashrc, .zshrc, etc.)"
-                ]
-            )
+        except ImportError:
+            result.warnings.append("psutil not available, cannot check system resources")
     
-    def _validate_system_resource(self, requirement: EnvironmentRequirement) -> ValidationResult:
-        """Validate system resources"""
-        if requirement.name == "memory_check":
-            return self._validate_memory(requirement)
-        elif requirement.name == "disk_space_check":
-            return self._validate_disk_space(requirement)
-        else:
-            return ValidationResult(
-                name=requirement.name,
-                status=ValidationStatus.SKIPPED,
-                level=ValidationLevel.INFO,
-                message=f"Unknown system resource check: {requirement.name}"
-            )
+    def _validate_network_access(self, result: ValidationResult, requirements: EnvironmentRequirements):
+        """Validate network access."""
+        if requirements.network_access:
+            try:
+                socket.create_connection(("8.8.8.8", 53), timeout=3)
+            except OSError:
+                result.warnings.append("Network access required but not available")
+        
+        # Check required ports
+        for port in requirements.required_ports:
+            if not self._is_port_available(port):
+                result.warnings.append(f"Port {port} is not available")
     
-    def _validate_memory(self, requirement: EnvironmentRequirement) -> ValidationResult:
-        """Validate available memory"""
-        min_memory_gb = requirement.config.get("min_memory_gb", 2)
-        
-        memory = psutil.virtual_memory()
-        available_gb = memory.available / (1024 ** 3)
-        
-        if available_gb >= min_memory_gb:
-            return ValidationResult(
-                name=requirement.name,
-                status=ValidationStatus.PASSED,
-                level=ValidationLevel.INFO,
-                message=f"Available memory: {available_gb:.1f}GB (required: {min_memory_gb}GB)",
-                details={"available_gb": available_gb, "required_gb": min_memory_gb}
-            )
-        else:
-            return ValidationResult(
-                name=requirement.name,
-                status=ValidationStatus.FAILED,
-                level=ValidationLevel.WARNING,
-                message=f"Insufficient memory: {available_gb:.1f}GB (required: {min_memory_gb}GB)",
-                details={"available_gb": available_gb, "required_gb": min_memory_gb},
-                suggestions=[
-                    "Close unnecessary applications",
-                    "Add more RAM",
-                    "Reduce test parallelization"
-                ]
-            )
+    def _validate_security_requirements(self, result: ValidationResult, requirements: EnvironmentRequirements):
+        """Validate security requirements."""
+        if requirements.admin_privileges:
+            if os.name == 'nt':  # Windows
+                try:
+                    import ctypes
+                    if not ctypes.windll.shell32.IsUserAnAdmin():
+                        result.warnings.append("Admin privileges required but not available")
+                except:
+                    result.warnings.append("Cannot check admin privileges on Windows")
+            else:  # Unix-like
+                if os.geteuid() != 0:
+                    result.warnings.append("Root privileges required but not available")
     
-    def _validate_disk_space(self, requirement: EnvironmentRequirement) -> ValidationResult:
-        """Validate available disk space"""
-        min_disk_gb = requirement.config.get("min_disk_gb", 1)
+    def _validate_dependencies(self, result: ValidationResult, requirements: EnvironmentRequirements):
+        """Validate external dependencies."""
+        # Check required commands
+        for command in requirements.required_commands:
+            try:
+                subprocess.run([command, "--version"], 
+                             capture_output=True, 
+                             timeout=5, 
+                             check=True)
+            except (subprocess.CalledProcessError, subprocess.TimeoutExpired, FileNotFoundError):
+                result.warnings.append(f"Required command '{command}' is not available")
         
-        disk_usage = psutil.disk_usage('.')
-        available_gb = disk_usage.free / (1024 ** 3)
-        
-        if available_gb >= min_disk_gb:
-            return ValidationResult(
-                name=requirement.name,
-                status=ValidationStatus.PASSED,
-                level=ValidationLevel.INFO,
-                message=f"Available disk space: {available_gb:.1f}GB (required: {min_disk_gb}GB)",
-                details={"available_gb": available_gb, "required_gb": min_disk_gb}
-            )
-        else:
-            return ValidationResult(
-                name=requirement.name,
-                status=ValidationStatus.FAILED,
-                level=ValidationLevel.WARNING,
-                message=f"Insufficient disk space: {available_gb:.1f}GB (required: {min_disk_gb}GB)",
-                details={"available_gb": available_gb, "required_gb": min_disk_gb},
-                suggestions=[
-                    "Clean up temporary files",
-                    "Remove unused files",
-                    "Move files to external storage"
-                ]
-            )
+        # Check Docker if required
+        if requirements.docker_required:
+            try:
+                subprocess.run(["docker", "--version"], 
+                             capture_output=True, 
+                             timeout=5, 
+                             check=True)
+            except (subprocess.CalledProcessError, subprocess.TimeoutExpired, FileNotFoundError):
+                result.errors.append("Docker is required but not available")
+                result.valid = False
     
-    def _check_version(self, current: str, requirement: str) -> bool:
-        """Check if current version meets requirement"""
+    def _validate_performance_requirements(self, result: ValidationResult, requirements: EnvironmentRequirements):
+        """Validate performance requirements."""
         try:
-            from packaging import version
+            import psutil
             
-            if requirement.startswith(">="):
-                return version.parse(current) >= version.parse(requirement[2:])
-            elif requirement.startswith("<="):
-                return version.parse(current) <= version.parse(requirement[2:])
-            elif requirement.startswith(">"):
-                return version.parse(current) > version.parse(requirement[1:])
-            elif requirement.startswith("<"):
-                return version.parse(current) < version.parse(requirement[1:])
-            elif requirement.startswith("=="):
-                return version.parse(current) == version.parse(requirement[2:])
-            else:
-                return version.parse(current) >= version.parse(requirement)
-                
-        except Exception:
-            # Fallback to string comparison if packaging not available
-            return current >= requirement.lstrip(">=<!")
+            # Check CPU usage
+            cpu_percent = psutil.cpu_percent(interval=1)
+            if cpu_percent > 80:
+                result.warnings.append(f"High CPU usage: {cpu_percent}%")
+            
+            # Check memory usage
+            memory_percent = psutil.virtual_memory().percent
+            if memory_percent > 80:
+                result.warnings.append(f"High memory usage: {memory_percent}%")
+            
+            # Check disk I/O
+            disk_io = psutil.disk_io_counters()
+            if disk_io and disk_io.read_bytes > 1024**3:  # 1GB
+                result.warnings.append("High disk I/O detected")
+        
+        except ImportError:
+            result.warnings.append("Cannot validate performance requirements without psutil")
     
-    def get_validation_summary(self) -> Dict[str, Any]:
-        """Get validation summary"""
-        if not self.validation_results:
-            return {"status": "not_run", "message": "Validation not run"}
+    def _validate_isolation_requirements(self, result: ValidationResult, requirements: EnvironmentRequirements):
+        """Validate isolation requirements."""
+        # Check for conflicting processes
+        try:
+            import psutil
+            
+            conflicting_processes = []
+            for proc in psutil.process_iter(['pid', 'name', 'cmdline']):
+                try:
+                    cmdline = ' '.join(proc.info['cmdline'] or []).lower()
+                    if any(keyword in cmdline for keyword in ['pytest', 'test', 'wan22']):
+                        if proc.pid != os.getpid():
+                            conflicting_processes.append(proc.info['name'])
+                except (psutil.NoSuchProcess, psutil.AccessDenied):
+                    pass
+            
+            if conflicting_processes:
+                result.warnings.append(
+                    f"Potentially conflicting processes detected: {', '.join(set(conflicting_processes))}"
+                )
         
-        passed = sum(1 for r in self.validation_results if r.status == ValidationStatus.PASSED)
-        failed = sum(1 for r in self.validation_results if r.status == ValidationStatus.FAILED)
-        skipped = sum(1 for r in self.validation_results if r.status == ValidationStatus.SKIPPED)
+        except ImportError:
+            pass
         
-        critical_failures = sum(1 for r in self.validation_results 
-                              if r.status == ValidationStatus.FAILED and r.level == ValidationLevel.CRITICAL)
+        # Check for test environment variables from other tests
+        test_env_vars = [key for key in os.environ.keys() 
+                        if key.startswith(('TEST_', 'PYTEST_', 'WAN22_TEST_'))]
         
-        overall_status = "passed" if critical_failures == 0 else "failed"
-        
-        return {
-            "status": overall_status,
-            "total_checks": len(self.validation_results),
-            "passed": passed,
-            "failed": failed,
-            "skipped": skipped,
-            "critical_failures": critical_failures,
-            "ready_for_testing": critical_failures == 0
-        }
+        if len(test_env_vars) > 3:  # Allow a few standard ones
+            result.warnings.append(
+                f"Many test environment variables detected: {len(test_env_vars)}"
+            )
     
-    def generate_report(self, format: str = "text") -> str:
-        """Generate validation report"""
-        if format == "text":
-            return self._generate_text_report()
-        elif format == "json":
-            return self._generate_json_report()
-        else:
-            raise ValueError(f"Unsupported report format: {format}")
-    
-    def _generate_text_report(self) -> str:
-        """Generate text validation report"""
-        lines = []
-        lines.append("Test Environment Validation Report")
-        lines.append("=" * 40)
-        lines.append("")
-        
-        summary = self.get_validation_summary()
-        lines.append(f"Overall Status: {summary['status'].upper()}")
-        lines.append(f"Total Checks: {summary['total_checks']}")
-        lines.append(f"Passed: {summary['passed']}")
-        lines.append(f"Failed: {summary['failed']}")
-        lines.append(f"Skipped: {summary['skipped']}")
-        lines.append(f"Critical Failures: {summary['critical_failures']}")
-        lines.append(f"Ready for Testing: {'Yes' if summary['ready_for_testing'] else 'No'}")
-        lines.append("")
-        
-        # Group results by status
-        for status in [ValidationStatus.FAILED, ValidationStatus.PASSED, ValidationStatus.SKIPPED]:
-            status_results = [r for r in self.validation_results if r.status == status]
-            if status_results:
-                lines.append(f"{status.value.upper()} ({len(status_results)}):")
-                lines.append("-" * 20)
-                
-                for result in status_results:
-                    lines.append(f"  {result.name}: {result.message}")
-                    if result.suggestions:
-                        lines.append("    Suggestions:")
-                        for suggestion in result.suggestions:
-                            lines.append(f"      - {suggestion}")
-                    lines.append("")
-        
-        return "\n".join(lines)
-    
-    def _generate_json_report(self) -> str:
-        """Generate JSON validation report"""
-        import json
-        
-        report_data = {
-            "summary": self.get_validation_summary(),
-            "results": [
-                {
-                    "name": r.name,
-                    "status": r.status.value,
-                    "level": r.level.value,
-                    "message": r.message,
-                    "details": r.details,
-                    "suggestions": r.suggestions
-                }
-                for r in self.validation_results
-            ]
+    def _get_test_environment_variables(self, env_type: EnvironmentType, 
+                                      test_id: str, temp_base: Path) -> Dict[str, str]:
+        """Get environment variables for test environment."""
+        base_vars = {
+            "TESTING": "true",
+            "PYTEST_RUNNING": "true",
+            "WAN22_TEST_MODE": "true",
+            "TEST_ID": test_id,
+            "TEST_TYPE": env_type.value,
+            "TEST_TEMP_DIR": str(temp_base),
+            "LOG_LEVEL": "debug",
+            "DISABLE_BROWSER_OPEN": "true",
+            "NO_COLOR": "1"  # Disable colored output in tests
         }
         
-        return json.dumps(report_data, indent=2)
-
-
-def validate_test_environment(requirements_file: Optional[str] = None) -> EnvironmentValidator:
-    """
-    Convenience function to validate test environment
-    
-    Args:
-        requirements_file: Path to requirements configuration file
+        # Environment-specific variables
+        if env_type == EnvironmentType.UNIT:
+            base_vars.update({
+                "UNIT_TEST": "true",
+                "SKIP_INTEGRATION": "true"
+            })
         
-    Returns:
-        EnvironmentValidator with validation results
-    """
-    validator = EnvironmentValidator(requirements_file)
-    validator.validate_environment()
-    return validator
+        elif env_type == EnvironmentType.INTEGRATION:
+            base_vars.update({
+                "INTEGRATION_TEST": "true",
+                "TEST_DATABASE_URL": f"sqlite:///{temp_base}/test.db",
+                "TEST_BACKEND_PORT": "8000",
+                "TEST_FRONTEND_PORT": "3000"
+            })
+        
+        elif env_type == EnvironmentType.E2E:
+            base_vars.update({
+                "E2E_TEST": "true",
+                "HEADLESS_BROWSER": "true",
+                "TEST_TIMEOUT": "60"
+            })
+        
+        elif env_type == EnvironmentType.PERFORMANCE:
+            base_vars.update({
+                "PERFORMANCE_TEST": "true",
+                "PROFILE_MEMORY": "true",
+                "PROFILE_CPU": "true"
+            })
+        
+        return base_vars
+    
+    def _is_port_available(self, port: int) -> bool:
+        """Check if a port is available."""
+        try:
+            with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
+                sock.bind(('localhost', port))
+                return True
+        except OSError:
+            return False
+    
+    def _find_available_port(self, start_port: int = 8000, max_attempts: int = 100) -> int:
+        """Find an available port."""
+        for i in range(max_attempts):
+            port = start_port + i
+            if self._is_port_available(port):
+                return port
+        
+        raise RuntimeError(f"Could not find available port starting from {start_port}")
+
+
+# Global validator instance
+_environment_validator = EnvironmentValidator()
+
+
+# Pytest fixtures for environment validation
+@pytest.fixture(scope="session")
+def environment_validator():
+    """Provide environment validator."""
+    return _environment_validator
+
+
+@pytest.fixture
+def validate_unit_environment():
+    """Validate unit test environment."""
+    result = _environment_validator.validate_environment(EnvironmentType.UNIT)
+    if not result.valid:
+        pytest.skip(f"Unit test environment validation failed: {'; '.join(result.errors)}")
+    return result
+
+
+@pytest.fixture
+def validate_integration_environment():
+    """Validate integration test environment."""
+    result = _environment_validator.validate_environment(EnvironmentType.INTEGRATION)
+    if not result.valid:
+        pytest.skip(f"Integration test environment validation failed: {'; '.join(result.errors)}")
+    return result
+
+
+@pytest.fixture
+def validate_e2e_environment():
+    """Validate E2E test environment."""
+    result = _environment_validator.validate_environment(EnvironmentType.E2E)
+    if not result.valid:
+        pytest.skip(f"E2E test environment validation failed: {'; '.join(result.errors)}")
+    return result
+
+
+@pytest.fixture
+def validate_performance_environment():
+    """Validate performance test environment."""
+    result = _environment_validator.validate_environment(EnvironmentType.PERFORMANCE)
+    if not result.valid:
+        pytest.skip(f"Performance test environment validation failed: {'; '.join(result.errors)}")
+    return result
+
+
+@pytest.fixture
+def setup_unit_environment(request):
+    """Set up unit test environment."""
+    test_id = f"{request.module.__name__}::{request.function.__name__}"
+    setup_info = _environment_validator.setup_environment(EnvironmentType.UNIT, test_id)
+    
+    yield setup_info
+    
+    _environment_validator.cleanup_environment(setup_info)
+
+
+@pytest.fixture
+def setup_integration_environment(request):
+    """Set up integration test environment."""
+    test_id = f"{request.module.__name__}::{request.function.__name__}"
+    setup_info = _environment_validator.setup_environment(EnvironmentType.INTEGRATION, test_id)
+    
+    yield setup_info
+    
+    _environment_validator.cleanup_environment(setup_info)
+
+
+# Export main classes and functions
+__all__ = [
+    'EnvironmentValidator', 'EnvironmentType', 'ValidationLevel', 
+    'EnvironmentRequirements', 'ValidationResult', 'environment_validator',
+    'validate_unit_environment', 'validate_integration_environment',
+    'validate_e2e_environment', 'validate_performance_environment',
+    'setup_unit_environment', 'setup_integration_environment'
+]

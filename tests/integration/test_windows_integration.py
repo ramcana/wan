@@ -15,7 +15,7 @@ from unittest.mock import Mock, patch, MagicMock
 # Add startup_manager to path
 sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
 
-from startup_manager.windows_utils import (
+from scripts.startup_manager.windows_utils import WindowsPermissionManager, WindowsFirewallManager, WindowsServiceManager, WindowsRegistryManager, WindowsSystemInfo, WindowsOptimizer
     WindowsPermissionManager,
     WindowsFirewallManager,
     WindowsServiceManager,

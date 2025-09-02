@@ -1,0 +1,7 @@
+{
+  "id": "edge_numbers_only",
+  "category": "numeric",
+  "prompt": "123456789 0.5 -42 3.14159",
+  "expected_behavior": "should handle numeric-only input",
+  "test_type": "numeric_input"
+}

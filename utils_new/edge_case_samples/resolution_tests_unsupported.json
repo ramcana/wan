@@ -1,0 +1,50 @@
+[
+  {
+    "id": "unsupported_480p",
+    "input": "A test scene for unsupported resolution",
+    "resolution": "480p",
+    "output_path": "outputs/test_480p.mp4",
+    "expected_behavior": "should return resolution not supported error",
+    "test_type": "unsupported_resolution"
+  },
+  {
+    "id": "unsupported_4K",
+    "input": "A test scene for unsupported resolution",
+    "resolution": "4K",
+    "output_path": "outputs/test_4K.mp4",
+    "expected_behavior": "should return resolution not supported error",
+    "test_type": "unsupported_resolution"
+  },
+  {
+    "id": "unsupported_8K",
+    "input": "A test scene for unsupported resolution",
+    "resolution": "8K",
+    "output_path": "outputs/test_8K.mp4",
+    "expected_behavior": "should return resolution not supported error",
+    "test_type": "unsupported_resolution"
+  },
+  {
+    "id": "unsupported_invalid",
+    "input": "A test scene for unsupported resolution",
+    "resolution": "invalid",
+    "output_path": "outputs/test_invalid.mp4",
+    "expected_behavior": "should return resolution not supported error",
+    "test_type": "unsupported_resolution"
+  },
+  {
+    "id": "unsupported_720x480",
+    "input": "A test scene for unsupported resolution",
+    "resolution": "720x480",
+    "output_path": "outputs/test_720x480.mp4",
+    "expected_behavior": "should return resolution not supported error",
+    "test_type": "unsupported_resolution"
+  },
+  {
+    "id": "unsupported_1920x1080",
+    "input": "A test scene for unsupported resolution",
+    "resolution": "1920x1080",
+    "output_path": "outputs/test_1920x1080.mp4",
+    "expected_behavior": "should return resolution not supported error",
+    "test_type": "unsupported_resolution"
+  }
+]

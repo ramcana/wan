@@ -1,0 +1,80 @@
+{
+  "max_complexity": 10,
+  "max_function_length": 50,
+  "max_class_length": 200,
+  "min_documentation_coverage": 80,
+  "performance_thresholds": {
+    "nested_loops": 3,
+    "database_queries_per_function": 5,
+    "max_file_size_mb": 1
+  },
+  "security_patterns": [
+    "eval\\(",
+    "exec\\(",
+    "subprocess\\.call",
+    "os\\.system",
+    "pickle\\.loads",
+    "yaml\\.load\\(",
+    "input\\(",
+    "raw_input\\("
+  ],
+  "naming_conventions": {
+    "min_variable_name_length": 3,
+    "min_function_name_length": 4,
+    "min_class_name_length": 4,
+    "avoid_abbreviations": true,
+    "prefer_descriptive_names": true
+  },
+  "refactoring_thresholds": {
+    "extract_method_line_count": 30,
+    "extract_class_line_count": 200,
+    "extract_class_method_count": 15,
+    "simplify_conditional_nesting": 3,
+    "simplify_conditional_boolean_complexity": 5
+  },
+  "technical_debt": {
+    "priority_weights": {
+      "severity": {
+        "critical": 10,
+        "high": 7,
+        "medium": 4,
+        "low": 1
+      },
+      "category": {
+        "security": 3.0,
+        "performance": 2.5,
+        "architecture": 2.0,
+        "maintainability": 1.5,
+        "code_quality": 1.2,
+        "testing": 1.0,
+        "documentation": 0.8,
+        "scalability": 1.5
+      },
+      "age_factor_max": 2.0,
+      "effort_bonus_thresholds": {
+        "low_effort_max_hours": 8,
+        "medium_effort_max_hours": 40,
+        "high_effort_penalty_hours": 160
+      }
+    }
+  },
+  "exclude_patterns": [
+    "*/migrations/*",
+    "*/tests/fixtures/*",
+    "*/vendor/*",
+    "*/__pycache__/*",
+    "*/node_modules/*",
+    "*/venv/*",
+    "*/env/*",
+    "*/.git/*",
+    "*/build/*",
+    "*/dist/*"
+  ],
+  "include_patterns": [
+    "**/*.py"
+  ],
+  "performance_mode": false,
+  "parallel_workers": 4,
+  "cache_results": true,
+  "cache_duration_hours": 24
+}

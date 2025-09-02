@@ -1,0 +1,7 @@
+{
+  "id": "edge_code_injection",
+  "category": "security",
+  "prompt": "A scene with <script>alert('test')</script> and ${system.exit()}",
+  "expected_behavior": "should sanitize potential code injection",
+  "test_type": "security_test"
+}

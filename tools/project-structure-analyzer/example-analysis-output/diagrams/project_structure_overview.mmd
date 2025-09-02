@@ -1,0 +1,36 @@
+---
+title: Project Structure Overview
+---
+graph TD
+    %% Project Structure Overview
+
+    Root["🏠 Project Root"]
+
+    C0["📁 utils_new"]
+    Root --> C0
+    C1["📁 local_installation"]
+    Root --> C1
+    C2["📁 docs"]
+    Root --> C2
+    C3["🧪 wan"]
+    Root --> C3
+    C4["🧪 tests"]
+    Root --> C4
+    C5["📜 scripts"]
+    Root --> C5
+    C6["🔧 backend"]
+    Root --> C6
+    C7["🎨 frontend"]
+    Root --> C7
+    C8["🔄 services"]
+    Root --> C8
+    C9["📁 hardware"]
+    Root --> C9
+
+    %% Styling
+    classDef default fill:#f9f9f9,stroke:#333,stroke-width:2px
+    classDef root fill:#e1f5fe,stroke:#01579b,stroke-width:3px
+    classDef component fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
+
+    class Root root
+    class C0,C1,C2,C3,C4,C5,C6,C7,C8,C9 component

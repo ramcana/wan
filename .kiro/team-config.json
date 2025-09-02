@@ -1,0 +1,35 @@
+{
+  "team_name": "Test Team",
+  "shared_standards": {
+    "code_style": "pep8",
+    "max_complexity": 10,
+    "min_test_coverage": 80,
+    "documentation_required": true
+  },
+  "notification_channels": [
+    "console"
+  ],
+  "quality_gates": {
+    "pre_commit": [
+      "quality",
+      "test-audit"
+    ],
+    "pre_merge": [
+      "test-coverage",
+      "health",
+      "review"
+    ],
+    "release": [
+      "test-audit",
+      "test-coverage",
+      "quality",
+      "health",
+      "docs"
+    ]
+  },
+  "review_requirements": {
+    "min_reviewers": 1,
+    "require_tests": true,
+    "require_docs": true
+  }
+}

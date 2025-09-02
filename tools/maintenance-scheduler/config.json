@@ -1,0 +1,51 @@
+{
+  "scheduler": {
+    "max_concurrent_tasks": 3,
+    "check_interval_seconds": 60,
+    "task_timeout_minutes": 30
+  },
+  "rollback": {
+    "backup_root": "data/maintenance/rollbacks",
+    "max_rollback_points": 50,
+    "cleanup_after_days": 30,
+    "max_backup_size_mb": 1000
+  },
+  "priority": {
+    "impact_weight": 0.4,
+    "urgency_weight": 0.3,
+    "effort_weight": 0.2,
+    "success_rate_weight": 0.1,
+    "category_multipliers": {
+      "security_scan": 2.0,
+      "code_quality": 1.5,
+      "test_maintenance": 1.4,
+      "performance_optimization": 1.3,
+      "config_cleanup": 1.2,
+      "documentation": 1.0,
+      "dependency_update": 1.1
+    }
+  },
+  "history": {
+    "storage_path": "data/maintenance/history.json",
+    "cleanup_after_days": 365
+  },
+  "tasks": {
+    "storage_path": "data/maintenance/tasks.json",
+    "default_timeout_minutes": 30,
+    "default_retry_count": 3,
+    "default_retry_delay_minutes": 5
+  },
+  "logging": {
+    "level": "INFO",
+    "file": "data/maintenance/scheduler.log",
+    "max_size_mb": 10,
+    "backup_count": 5
+  },
+  "notifications": {
+    "enabled": false,
+    "channels": [],
+    "notify_on_failure": true,
+    "notify_on_success": false,
+    "notify_on_rollback": true
+  }
+}

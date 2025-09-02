@@ -1,0 +1,7 @@
+{
+  "id": "edge_empty",
+  "category": "empty",
+  "prompt": "",
+  "expected_behavior": "should handle gracefully or provide default",
+  "test_type": "empty_input"
+}

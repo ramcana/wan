@@ -22,7 +22,7 @@ import pytest
 import yaml
 
 # Import project health system components
-from tools.test_runner.orchestrator import TestSuiteOrchestrator
+from tools.test-runner.orchestrator import TestSuiteOrchestrator
 from tools.doc_generator.documentation_generator import DocumentationGenerator
 from tools.config_manager.config_unifier import ConfigurationUnifier
 from tools.health_checker.health_checker import ProjectHealthChecker

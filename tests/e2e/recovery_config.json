@@ -1,0 +1,8 @@
+{
+  "max_retry_attempts": 3,
+  "base_retry_delay": 1.0,
+  "max_retry_delay": 60.0,
+  "auto_fix_enabled": true,
+  "learning_enabled": true,
+  "success_rate_threshold": 0.7
+}

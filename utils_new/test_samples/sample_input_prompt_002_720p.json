@@ -1,0 +1,12 @@
+{
+  "input": "Dense forest with sunlight filtering through tall trees, aerial view, high detail, moody atmosphere, photorealistic",
+  "resolution": "720p",
+  "output_path": "outputs/test_video_prompt_002_720p_20250902_094446.mp4",
+  "metadata": {
+    "prompt_id": "prompt_002",
+    "category": "nature",
+    "complexity": "medium",
+    "generated_at": "2025-09-02T09:44:46.033919",
+    "test_session": "9d8a4c07-f590-446e-8344-68760a986e4c"
+  }
+}

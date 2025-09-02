@@ -13,7 +13,7 @@ import pytest
 # Add the scripts directory to the path for imports
 sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
 
-from startup_manager.environment_validator import (
+from scripts.startup_manager.environment_validator import DependencyValidator, EnvironmentValidator, ValidationIssue, ValidationResult, ValidationStatus
     DependencyValidator,
     EnvironmentValidator,
     ValidationIssue,

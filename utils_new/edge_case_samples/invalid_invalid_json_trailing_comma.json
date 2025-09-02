@@ -1,0 +1,6 @@
+{
+  "id": "invalid_json_trailing_comma",
+  "content": "{\"input\": \"A test scene\", \"resolution\": \"720p\",}",
+  "error_type": "json_syntax_error",
+  "expected_behavior": "should handle trailing comma gracefully"
+}

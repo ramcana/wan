@@ -14,7 +14,7 @@ import pytest
 import sys
 sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
 
-from startup_manager.environment_validator import (
+from scripts.startup_manager.environment_validator import ConfigurationValidator, ValidationIssue, ValidationStatus
     ConfigurationValidator,
     ValidationIssue,
     ValidationStatus

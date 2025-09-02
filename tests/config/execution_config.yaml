@@ -1,0 +1,67 @@
+# Test Execution Engine Configuration
+
+# Timeout settings per test category (in seconds)
+timeouts:
+  unit: 30
+  integration: 120
+  e2e: 300
+  performance: 600
+  reliability: 900
+
+# Retry configuration
+retry:
+  max_retries: 3
+  delay_base: 1.0 # Base delay for exponential backoff
+  delay_max: 60.0 # Maximum delay between retries
+
+# Parallel execution settings
+parallel:
+  max_workers: 4 # Will be limited by CPU count
+  memory_limit_mb: 2048
+
+# Resource management thresholds
+resources:
+  cpu_threshold: 0.8 # 80% CPU usage threshold
+  memory_threshold: 0.8 # 80% memory usage threshold
+
+# Flaky test detection
+flaky_detection:
+  failure_threshold: 2 # Number of failures before marking as flaky
+  success_rate_threshold: 0.7 # Success rate threshold for flaky tests
+  history_size: 10 # Number of recent results to track
+
+# Test categorization patterns
+categorization:
+  unit:
+    - "*/unit/*"
+    - "*test_unit_*"
+    - "*_unit_test.py"
+  integration:
+    - "*/integration/*"
+    - "*test_integration_*"
+    - "*_integration_test.py"
+  e2e:
+    - "*/e2e/*"
+    - "*test_e2e_*"
+    - "*_e2e_test.py"
+  performance:
+    - "*/performance/*"
+    - "*test_performance_*"
+    - "*_performance_test.py"
+  reliability:
+    - "*/reliability/*"
+    - "*test_reliability_*"
+    - "*_reliability_test.py"
+
+# Reporting configuration
+reporting:
+  output_dir: "test_results"
+  include_stdout: false
+  include_stderr: true
+  generate_html: true
+  generate_json: true
+
+# Monitoring settings
+monitoring:
+  resource_sampling_interval: 1.0 # seconds
+  resource_history_size: 60 # keep 60 samples (1 minute)

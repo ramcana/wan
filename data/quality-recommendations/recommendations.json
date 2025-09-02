@@ -1,0 +1,149 @@
+{
+  "recommendations": [
+    {
+      "id": "a080a9bc-9ebd-4b3a-8587-e83b9e1acd4a",
+      "title": "Extract common functionality",
+      "description": "Identify and extract duplicate code into shared modules (Current: 39.86)",
+      "priority": "critical",
+      "metric_types": [
+        "duplicate_code"
+      ],
+      "estimated_impact": 25.0,
+      "estimated_effort": "high",
+      "actions": [
+        "Scan for duplicate code blocks",
+        "Extract common functions into utilities",
+        "Create shared base classes for similar functionality",
+        "Implement DRY principle consistently"
+      ],
+      "timestamp": "2025-09-02T15:51:21.496343"
+    },
+    {
+      "id": "d15d7ca1-3f88-495b-8933-06ca1aab9536",
+      "title": "Add comprehensive type hints",
+      "description": "Add type hints to improve code clarity and catch errors (Current: 46.34)",
+      "priority": "critical",
+      "metric_types": [
+        "type_hint_coverage"
+      ],
+      "estimated_impact": 20.0,
+      "estimated_effort": "medium",
+      "actions": [
+        "Add type hints to function parameters and returns",
+        "Use mypy for static type checking",
+        "Add type hints to class attributes",
+        "Use generic types where appropriate"
+      ],
+      "timestamp": "2025-09-02T15:51:21.496343"
+    },
+    {
+      "id": "0f6fe502-fb6e-4d7b-a00d-24ae244af395",
+      "title": "Extract common functionality",
+      "description": "Identify and extract duplicate code into shared modules (Current: 39.86)",
+      "priority": "critical",
+      "metric_types": [
+        "duplicate_code"
+      ],
+      "estimated_impact": 25.0,
+      "estimated_effort": "high",
+      "actions": [
+        "Scan for duplicate code blocks",
+        "Extract common functions into utilities",
+        "Create shared base classes for similar functionality",
+        "Implement DRY principle consistently"
+      ],
+      "timestamp": "2025-09-02T15:51:21.497342"
+    },
+    {
+      "id": "975d97be-157f-49b5-b9d1-f603bdc12ee0",
+      "title": "Add comprehensive type hints",
+      "description": "Add type hints to improve code clarity and catch errors (Current: 46.34)",
+      "priority": "critical",
+      "metric_types": [
+        "type_hint_coverage"
+      ],
+      "estimated_impact": 20.0,
+      "estimated_effort": "medium",
+      "actions": [
+        "Add type hints to function parameters and returns",
+        "Use mypy for static type checking",
+        "Add type hints to class attributes",
+        "Use generic types where appropriate"
+      ],
+      "timestamp": "2025-09-02T15:51:21.497342"
+    },
+    {
+      "id": "11abaae2-66c0-43af-97a1-645856906988",
+      "title": "Improve type hint coverage",
+      "description": "Focus on improving type hint coverage (current score: 46.3)",
+      "priority": "medium",
+      "metric_types": [
+        "type_hint_coverage"
+      ],
+      "estimated_impact": 20.0,
+      "estimated_effort": "medium",
+      "actions": [
+        "Add type hints to functions",
+        "Use mypy for type checking",
+        "Add type hints to class attributes",
+        "Use generic types appropriately"
+      ],
+      "timestamp": "2025-09-02T15:51:21.511342"
+    },
+    {
+      "id": "8c099100-5138-4fea-a141-9ecc534f3935",
+      "title": "Improve duplicate code",
+      "description": "Focus on improving duplicate code (current score: 60.1)",
+      "priority": "medium",
+      "metric_types": [
+        "duplicate_code"
+      ],
+      "estimated_impact": 20.0,
+      "estimated_effort": "medium",
+      "actions": [
+        "Extract common functionality",
+        "Create shared utilities",
+        "Refactor similar code patterns",
+        "Implement DRY principle"
+      ],
+      "timestamp": "2025-09-02T15:51:21.511342"
+    },
+    {
+      "id": "35603008-eebe-4aa3-85dc-e618e534011c",
+      "title": "Improve type hint coverage",
+      "description": "Focus on improving type hint coverage (current score: 46.3)",
+      "priority": "medium",
+      "metric_types": [
+        "type_hint_coverage"
+      ],
+      "estimated_impact": 20.0,
+      "estimated_effort": "medium",
+      "actions": [
+        "Add type hints to functions",
+        "Use mypy for type checking",
+        "Add type hints to class attributes",
+        "Use generic types appropriately"
+      ],
+      "timestamp": "2025-09-02T15:51:21.511342"
+    },
+    {
+      "id": "d9a15a56-dc4a-4c9e-9b7b-96c297d05c82",
+      "title": "Improve duplicate code",
+      "description": "Focus on improving duplicate code (current score: 60.1)",
+      "priority": "medium",
+      "metric_types": [
+        "duplicate_code"
+      ],
+      "estimated_impact": 20.0,
+      "estimated_effort": "medium",
+      "actions": [
+        "Extract common functionality",
+        "Create shared utilities",
+        "Refactor similar code patterns",
+        "Implement DRY principle"
+      ],
+      "timestamp": "2025-09-02T15:51:21.511342"
+    }
+  ],
+  "last_updated": "2025-09-02T15:51:21.511342"
+}

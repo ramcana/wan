@@ -1,0 +1,7 @@
+{
+  "id": "edge_sql_like",
+  "category": "security",
+  "prompt": "A scene with 1'; DROP TABLE users; --",
+  "expected_behavior": "should handle SQL-like strings safely",
+  "test_type": "sql_injection_test"
+}

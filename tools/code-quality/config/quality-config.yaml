@@ -1,0 +1,59 @@
+# Code Quality Configuration
+# This file defines the standards and rules for code quality checking
+
+formatting:
+  # Line length settings
+  line_length: 88
+
+  # Formatter preferences
+  use_black: true
+  use_isort: true
+  use_autopep8: false
+
+documentation:
+  # Documentation requirements
+  require_module_docstrings: true
+  require_class_docstrings: true
+  require_function_docstrings: true
+
+  # Minimum docstring length (characters)
+  min_docstring_length: 10
+
+type_hints:
+  # Type annotation requirements
+  require_return_types: true
+  require_parameter_types: true
+
+  # Strict mode (applies to private functions too)
+  strict_mode: false
+
+complexity:
+  # Complexity thresholds
+  max_cyclomatic_complexity: 10
+  max_function_length: 50
+  max_class_length: 500
+  max_module_length: 1000
+
+style:
+  # Style checking settings
+  max_line_length: 88
+
+  # Rules to ignore (flake8 error codes)
+  ignore_rules:
+    - E203 # whitespace before ':'
+    - W503 # line break before binary operator
+
+files:
+  # File patterns to include
+  include_patterns:
+    - "*.py"
+
+  # Patterns to exclude
+  exclude_patterns:
+    - "__pycache__"
+    - "*.pyc"
+    - ".git"
+    - ".pytest_cache"
+    - "venv"
+    - ".venv"
+    - "node_modules"

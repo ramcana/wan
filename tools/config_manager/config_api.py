@@ -16,8 +16,8 @@ import logging
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 
-from .unified_config import UnifiedConfig
-from .config_validator import ConfigurationValidator, ValidationResult
+from tools.config_manager.unified_config import UnifiedConfig
+from tools.config_manager.config_validator import ConfigurationValidator, ValidationResult
 
 
 @dataclass

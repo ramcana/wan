@@ -1,0 +1,67 @@
+{
+  "timestamp": "2025-09-02T15:51:21.489342",
+  "metrics": [
+    {
+      "metric_type": "test_coverage",
+      "value": 90.625,
+      "timestamp": "2025-09-02T15:51:00.126215",
+      "component": null,
+      "details": {
+        "test_files": 522,
+        "source_files": 576,
+        "estimated": true
+      }
+    },
+    {
+      "metric_type": "code_complexity",
+      "value": 0,
+      "timestamp": "2025-09-02T15:51:04.781898",
+      "component": null,
+      "details": {
+        "total_complexity": 0,
+        "function_count": 0,
+        "files_analyzed": 1098
+      }
+    },
+    {
+      "metric_type": "documentation_coverage",
+      "value": 91.1085275236314,
+      "timestamp": "2025-09-02T15:51:12.470315",
+      "component": null,
+      "details": {
+        "documented_functions": 18024,
+        "total_functions": 19783
+      }
+    },
+    {
+      "metric_type": "duplicate_code",
+      "value": 39.8557853967147,
+      "timestamp": "2025-09-02T15:51:13.546713",
+      "component": null,
+      "details": {
+        "duplicate_lines": 128012,
+        "total_lines": 321188
+      }
+    },
+    {
+      "metric_type": "style_violations",
+      "value": 0.0,
+      "timestamp": "2025-09-02T15:51:13.983104",
+      "component": null,
+      "details": {
+        "total_violations": 0,
+        "total_lines": 488355
+      }
+    },
+    {
+      "metric_type": "type_hint_coverage",
+      "value": 46.33946351177228,
+      "timestamp": "2025-09-02T15:51:21.489342",
+      "component": null,
+      "details": {
+        "functions_with_hints": 7912,
+        "total_functions": 17074
+      }
+    }
+  ]
+}

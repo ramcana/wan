@@ -1,0 +1,7 @@
+{
+  "id": "edge_path_traversal",
+  "category": "security",
+  "prompt": "A scene in ../../../etc/passwd directory",
+  "expected_behavior": "should handle path-like strings safely",
+  "test_type": "path_traversal_test"
+}

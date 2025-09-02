@@ -1,0 +1,6 @@
+{
+  "id": "invalid_missing_resolution",
+  "content": "{\"input\": \"A test scene\", \"output_path\": \"test.mp4\"}",
+  "error_type": "missing_required_field",
+  "expected_behavior": "should return validation error for missing resolution"
+}

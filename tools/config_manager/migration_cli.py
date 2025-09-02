@@ -12,8 +12,8 @@ import sys
 from pathlib import Path
 from typing import Optional
 
-from .config_unifier import ConfigurationUnifier, MigrationReport
-from .unified_config import UnifiedConfig
+from tools.config_manager.config_unifier import ConfigurationUnifier, MigrationReport
+from tools.config_manager.unified_config import UnifiedConfig
 
 
 def setup_logging(verbose: bool = False):

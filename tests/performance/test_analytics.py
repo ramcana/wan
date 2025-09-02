@@ -16,7 +16,7 @@ from datetime import datetime, timedelta
 import sys
 sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
 
-from startup_manager.analytics import (
+from scripts.startup_manager.analytics import AnalyticsEngine, SystemProfile, FailurePattern, OptimizationSuggestion, BenchmarkResult, UsageAnalytics, OptimizationCategory, OptimizationPriority, get_analytics_engine
     AnalyticsEngine,
     SystemProfile,
     FailurePattern,
@@ -27,7 +27,7 @@ from startup_manager.analytics import (
     OptimizationPriority,
     get_analytics_engine
 )
-from startup_manager.performance_monitor import (
+from scripts.startup_manager.performance_monitor import PerformanceMonitor, StartupSession, TimingMetric, ResourceSnapshot
     PerformanceMonitor,
     StartupSession,
     TimingMetric,
@@ -475,7 +475,7 @@ class TestGlobalAnalyticsEngine:
         mock_monitor = Mock(spec=PerformanceMonitor)
         
         # Reset global analytics
-        import startup_manager.analytics
+import scripts.startup_manager.analytics
         startup_manager.analytics._global_analytics = None
         
         analytics1 = get_analytics_engine(mock_monitor)
@@ -488,7 +488,7 @@ class TestGlobalAnalyticsEngine:
         mock_monitor = Mock(spec=PerformanceMonitor)
         
         # Reset global analytics
-        import startup_manager.analytics
+import scripts.startup_manager.analytics
         startup_manager.analytics._global_analytics = None
         
         analytics = get_analytics_engine(mock_monitor, enable_analytics=False)

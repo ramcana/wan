@@ -1,0 +1,7 @@
+{
+  "id": "edge_contradictory",
+  "category": "contradictory",
+  "prompt": "A bright dark scene with loud silence and moving stillness",
+  "expected_behavior": "should handle contradictory descriptions",
+  "test_type": "contradictory_input"
+}

@@ -1,0 +1,31 @@
+#!/usr/bin/env python3
+"""
+Kiro CLI - Unified Project Quality Tool
+
+A simple wrapper script for the unified CLI tool that provides
+easy access to all project cleanup and quality improvement tools.
+"""
+
+import os
+import sys
+from pathlib import Path
+
+# Add the tools directory to the path
+tools_dir = Path(__file__).parent.parent
+sys.path.insert(0, str(tools_dir))
+
+# Import and run the main CLI
+try:
+    from unified_cli.cli import main
+    
+    if __name__ == '__main__':
+        main()
+        
+except ImportError as e:
+    print(f"Error importing unified CLI: {e}")
+    print("Make sure all dependencies are installed:")
+    print("  pip install -r requirements.txt")
+    sys.exit(1)
+except Exception as e:
+    print(f"Error running unified CLI: {e}")
+    sys.exit(1)
