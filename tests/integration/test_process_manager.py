@@ -538,7 +538,7 @@ class TestProcessManagerAdvanced:
     def test_process_log_rotation(self):
         """Test process log file rotation."""
         import tempfile
-        
+
         with tempfile.NamedTemporaryFile(mode='w', delete=False) as f:
             # Create a large log file
             large_content = "Log line\n" * 10000  # ~100KB
@@ -625,7 +625,7 @@ class TestProcessManagerAdvanced:
     def test_process_signal_handling(self):
         """Test process signal handling on different platforms."""
         import signal
-        
+
         mock_process = Mock()
         mock_process.poll.return_value = None
         
@@ -674,7 +674,7 @@ class TestProcessManagerErrorHandling:
     def test_handle_zombie_process_cleanup(self):
         """Test cleanup of zombie processes."""
         import psutil
-        
+
         # Create a zombie process scenario
         mock_process = Mock()
         mock_process.poll.return_value = 0  # Process is dead
@@ -696,7 +696,7 @@ class TestProcessManagerErrorHandling:
     def test_handle_permission_denied_on_process_kill(self):
         """Test handling permission denied when killing processes."""
         import psutil
-        
+
         mock_process = Mock()
         mock_process.terminate.side_effect = psutil.AccessDenied()
         
@@ -711,7 +711,7 @@ class TestProcessManagerErrorHandling:
     def test_handle_health_check_failures(self):
         """Test handling of health check failures."""
         import requests
-        
+
         process_info = ProcessInfo(
             name="unhealthy",
             health_check_url="http://localhost:8000/health",

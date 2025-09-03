@@ -514,7 +514,7 @@ Detailed content for subsection {j}.2.
                     cpu_samples.append(psutil.cpu_percent(interval=0.1))
             
             import threading
-            monitor_thread = threading.Thread(target=monitor_cpu)
+monitor_thread = threading.Thread(target=monitor_cpu)
             monitor_thread.start()
             
             # Run operation
@@ -564,7 +564,7 @@ Detailed content for subsection {j}.2.
     def _parallel_processing(self, project_root: Path):
         """Simulate parallel processing for CPU testing."""
         import concurrent.futures
-        
+
         config_files = list((project_root / "config").rglob("*.yaml"))
         
         def process_config(config_file):

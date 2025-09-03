@@ -109,7 +109,7 @@ class TestLogAnalyzerIntegration:
     def teardown_method(self):
         """Cleanup test environment."""
         import shutil
-        shutil.rmtree(self.temp_dir, ignore_errors=True)
+shutil.rmtree(self.temp_dir, ignore_errors=True)
     
     def test_analyze_empty_logs(self):
         """Test analyzing empty log directory."""
@@ -239,7 +239,7 @@ class TestDiagnosticModeIntegration:
     def teardown_method(self):
         """Cleanup test environment."""
         import shutil
-        shutil.rmtree(self.temp_dir, ignore_errors=True)
+shutil.rmtree(self.temp_dir, ignore_errors=True)
     
     def test_run_full_diagnostics_integration(self):
         """Test running full diagnostics with real system."""
@@ -334,7 +334,7 @@ class TestDiagnosticsEndToEnd:
     def teardown_method(self):
         """Cleanup test environment."""
         import shutil
-        shutil.rmtree(self.temp_dir, ignore_errors=True)
+shutil.rmtree(self.temp_dir, ignore_errors=True)
     
     def test_complete_diagnostic_workflow(self):
         """Test complete diagnostic workflow from start to finish."""
@@ -368,7 +368,7 @@ class TestDiagnosticsEndToEnd:
         self._create_large_logs()
         
         import time
-        start_time = time.time()
+start_time = time.time()
         
         diagnostic_mode = DiagnosticMode()
         result = diagnostic_mode.run_full_diagnostics(self.log_dir)

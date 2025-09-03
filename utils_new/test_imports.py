@@ -5,20 +5,20 @@ try:
     
     print("1. Testing basic imports...")
     import logging
-    import psutil
-    import platform
-    from typing import Dict, Any, List, Optional, Tuple
+import psutil
+import platform
+from typing import Dict, Any, List, Optional, Tuple
     from dataclasses import dataclass, field
     from enum import Enum
     import json
-    from pathlib import Path
+from pathlib import Path
     import threading
-    import time
-    print("   Basic imports successful")
+import time
+print("   Basic imports successful")
     
     print("2. Testing hardware_parameter_recommender import...")
     import hardware_parameter_recommender as hpr
-    print(f"   Module imported: {hpr}")
+print(f"   Module imported: {hpr}")
     print(f"   Module attributes: {[x for x in dir(hpr) if not x.startswith('_')]}")
     
     print("3. Testing specific class imports...")
@@ -41,4 +41,4 @@ try:
 except Exception as e:
     print(f"Error: {e}")
     import traceback
-    traceback.print_exc()
+traceback.print_exc()

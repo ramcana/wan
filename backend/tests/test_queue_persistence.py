@@ -13,7 +13,7 @@ from sqlalchemy.orm import sessionmaker
 from fastapi.testclient import TestClient
 
 from backend.repositories.database import Base, GenerationTaskDB, TaskStatusEnum, ModelTypeEnum
-from main import app
+from main import backend.app as app
 import logging
 
 logger = logging.getLogger(__name__)

@@ -161,7 +161,7 @@ class MockLoRAManager:
             
             # Remove invalid characters from new name
             import re
-            new_name = re.sub(r'[<>:"/\\|?*]', '_', new_name.strip())
+new_name = re.sub(r'[<>:"/\\|?*]', '_', new_name.strip())
             
             # Find the old LoRA file
             old_file = None

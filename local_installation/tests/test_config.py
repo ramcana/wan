@@ -391,4 +391,4 @@ def cleanup_test_environment(env: TestEnvironment) -> None:
     """Clean up test environment."""
     if TEST_CONFIG.get("cleanup_after_tests", True):
         import shutil
-        shutil.rmtree(env.temp_dir, ignore_errors=True)
+shutil.rmtree(env.temp_dir, ignore_errors=True)

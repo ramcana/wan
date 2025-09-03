@@ -591,7 +591,7 @@ class TestIntelligentRetrySystem:
         
         # Start operation in background (simulate)
         import threading
-        
+
         def run_operation():
             self.retry_system.execute_with_retry(
                 long_running_operation, "long_op"

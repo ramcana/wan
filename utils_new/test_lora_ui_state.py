@@ -117,7 +117,7 @@ class TestLoRAUIState(unittest.TestCase):
     def tearDown(self):
         """Clean up test environment"""
         import shutil
-        shutil.rmtree(self.temp_dir, ignore_errors=True)
+shutil.rmtree(self.temp_dir, ignore_errors=True)
     
     @patch('lora_ui_state.LoRAManager')
     def test_initialization(self, mock_lora_manager_class):
@@ -444,7 +444,7 @@ class TestLoRAUIState(unittest.TestCase):
         
         # Wait a bit to ensure timestamp difference
         import time
-        time.sleep(0.01)
+time.sleep(0.01)
         
         # Update existing selection
         success, message = state.update_selection("anime_style", 1.2)

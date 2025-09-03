@@ -159,7 +159,7 @@ def test_ui_integration():
     except Exception as e:
         print(f"❌ Failed to test UI integration: {e}")
         import traceback
-        traceback.print_exc()
+traceback.print_exc()
         return False
 
 def main():

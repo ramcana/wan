@@ -25,7 +25,7 @@ try:
 except ImportError:
     # Fallback for direct execution - modify the imports to be absolute
     import importlib.util
-    
+
     # Load interfaces module
     interfaces_spec = importlib.util.spec_from_file_location(
         "interfaces", os.path.join(os.path.dirname(__file__), "scripts", "interfaces.py")
@@ -418,7 +418,7 @@ def main():
     except Exception as e:
         print(f"\n❌ Test failed: {str(e)}")
         import traceback
-        traceback.print_exc()
+traceback.print_exc()
         return False
 
 

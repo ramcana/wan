@@ -1,12 +1,12 @@
 {
-  "input": "Ocean waves crashing against rocky cliffs during sunset, wide shot, vibrant colors",
+  "input": "Desert landscape with sand dunes and cacti under starry sky, close-up, dramatic atmosphere",
   "resolution": "720p",
-  "output_path": "outputs/test_video_prompt_001_720p_20250902_204310.mp4",
+  "output_path": "outputs/test_video_prompt_001_720p_20250902_225941.mp4",
   "metadata": {
     "prompt_id": "prompt_001",
     "category": "nature",
     "complexity": "medium",
-    "generated_at": "2025-09-02T20:43:10.116694",
-    "test_session": "4ad4a7f4-897e-4e11-a464-ea6188acd747"
+    "generated_at": "2025-09-02T22:59:41.306170",
+    "test_session": "f554b3d7-c3ff-4d04-bb69-15c3fed18b4b"
   }
 }

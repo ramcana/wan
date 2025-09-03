@@ -56,7 +56,7 @@ def test_complete_wan22_fix():
     print("\n3. Testing model manager integration...")
     try:
         import utils
-        
+
         # Create model manager
         manager = utils.ModelManager()
         
@@ -79,7 +79,7 @@ def test_complete_wan22_fix():
     print("\n4. Testing pipeline loading with fallback...")
     try:
         import utils
-        
+
         manager = utils.ModelManager()
         
         # Test the new fallback pipeline loading
@@ -106,7 +106,7 @@ def test_complete_wan22_fix():
     print("\n5. Testing full model loading...")
     try:
         import utils
-        
+
         manager = utils.ModelManager()
         
         try:
@@ -144,7 +144,7 @@ def test_video_generation():
     
     try:
         import utils
-        
+
         # Create a simple generation task
         manager = utils.ModelManager()
         

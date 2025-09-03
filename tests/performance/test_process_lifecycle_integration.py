@@ -294,7 +294,7 @@ class TestProcessLifecycleIntegration:
     def test_get_process_metrics_dead_process(self, mock_psutil_process):
         """Test getting metrics for dead process."""
         import psutil
-        mock_psutil_process.side_effect = psutil.NoSuchProcess(1234)
+mock_psutil_process.side_effect = psutil.NoSuchProcess(1234)
         
         process_info = ProcessInfo(name="test", pid=1234)
         self.process_manager.processes["test"] = process_info

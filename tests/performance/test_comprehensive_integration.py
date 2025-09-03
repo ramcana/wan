@@ -492,8 +492,8 @@ class TestStressTestScenarios:
     def test_memory_usage_under_stress(self):
         """Test memory usage doesn't grow excessively under stress."""
         import psutil
-        import gc
-        
+import gc
+
         process = psutil.Process()
         initial_memory = process.memory_info().rss
         
@@ -524,7 +524,7 @@ class TestStressTestScenarios:
     def test_file_handle_management_under_stress(self):
         """Test that file handles are properly managed under stress."""
         import psutil
-        
+
         process = psutil.Process()
         initial_handles = len(process.open_files())
         

@@ -14,13 +14,13 @@ from unittest.mock import Mock, AsyncMock, patch, MagicMock
 from sqlalchemy.orm import Session
 
 # Import the components we're testing
-from services.generation_service import GenerationService, get_generation_service
+from backend.services.generation_service import GenerationService, get_generation_service
 from repositories.database import GenerationTaskDB, TaskStatusEnum, ModelTypeEnum
-from core.model_availability_manager import ModelAvailabilityManager, ModelAvailabilityStatus
-from core.enhanced_model_downloader import EnhancedModelDownloader, DownloadStatus, DownloadResult
-from core.intelligent_fallback_manager import IntelligentFallbackManager, FallbackType, GenerationRequirements
-from core.model_health_monitor import ModelHealthMonitor, HealthStatus, IntegrityResult
-from core.model_usage_analytics import ModelUsageAnalytics, UsageEventType, UsageData
+from backend.core.model_availability_manager import ModelAvailabilityManager, ModelAvailabilityStatus
+from backend.core.enhanced_model_downloader import EnhancedModelDownloader, DownloadStatus, DownloadResult
+from backend.core.intelligent_fallback_manager import IntelligentFallbackManager, FallbackType, GenerationRequirements
+from backend.core.model_health_monitor import ModelHealthMonitor, HealthStatus, IntegrityResult
+from backend.core.model_usage_analytics import ModelUsageAnalytics, UsageEventType, UsageData
 
 
 class TestEnhancedGenerationServiceIntegration:

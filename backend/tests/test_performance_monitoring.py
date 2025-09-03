@@ -5,7 +5,7 @@ import psutil
 import threading
 from unittest.mock import Mock, patch
 from fastapi.testclient import TestClient
-from backend.main import app
+from backend.main import backend.app as app
 from backend.monitoring.performance_monitor import PerformanceMonitor
 
 client = TestClient(app)
@@ -40,7 +40,7 @@ class TestPerformanceMonitoring:
     def test_memory_usage_monitoring(self):
         """Test memory usage monitoring during operations"""
         import os
-        process = psutil.Process(os.getpid())
+process = psutil.Process(os.getpid())
         
         initial_memory = process.memory_info().rss / 1024 / 1024  # MB
         
@@ -75,8 +75,8 @@ class TestPerformanceMonitoring:
     def test_concurrent_request_performance(self):
         """Test performance under concurrent load"""
         import threading
-        import time
-        
+import time
+
         results = []
         errors = []
         
@@ -142,8 +142,8 @@ class TestPerformanceMonitoring:
     def test_large_payload_performance(self):
         """Test performance with large payloads"""
         import tempfile
-        import os
-        
+import os
+
         # Create a large test file (5MB)
         with tempfile.NamedTemporaryFile(suffix='.jpg', delete=False) as tmp_file:
             tmp_file.write(b"0" * (5 * 1024 * 1024))  # 5MB
@@ -176,8 +176,8 @@ class TestPerformanceMonitoring:
     def test_memory_leak_detection(self):
         """Test for memory leaks during repeated operations"""
         import gc
-        import os
-        
+import os
+
         process = psutil.Process(os.getpid())
         
         # Baseline memory usage
@@ -204,7 +204,7 @@ class TestPerformanceMonitoring:
     def test_api_throughput(self):
         """Test API throughput (requests per second)"""
         import time
-        
+
         request_count = 100
         start_time = time.time()
         
@@ -240,8 +240,8 @@ class TestPerformanceMonitoring:
     def test_resource_cleanup(self):
         """Test proper resource cleanup"""
         import gc
-        import threading
-        
+import threading
+
         initial_thread_count = threading.active_count()
         
         # Perform operations that might create resources
@@ -303,8 +303,8 @@ class TestPerformanceMonitoring:
     async def test_async_performance(self):
         """Test asynchronous operation performance"""
         import aiohttp
-        import asyncio
-        
+import asyncio
+
         async def make_async_request(session):
             start_time = time.time()
             async with session.get("http://testserver/api/v1/health") as response:

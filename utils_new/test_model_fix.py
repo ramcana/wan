@@ -48,7 +48,7 @@ def test_model_loading_fix():
         # Test with utils module
         try:
             import utils
-            
+
             # Create a model manager instance
             manager = utils.ModelManager()
             

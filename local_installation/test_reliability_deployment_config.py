@@ -51,7 +51,7 @@ class TestReliabilityConfiguration(unittest.TestCase):
     def tearDown(self):
         """Clean up test environment."""
         import shutil
-        shutil.rmtree(self.temp_dir, ignore_errors=True)
+shutil.rmtree(self.temp_dir, ignore_errors=True)
     
     def test_default_configuration_creation(self):
         """Test creation of default configuration."""
@@ -191,7 +191,7 @@ class TestReliabilitySystemDeployer(unittest.TestCase):
     def tearDown(self):
         """Clean up test environment."""
         import shutil
-        shutil.rmtree(self.temp_dir, ignore_errors=True)
+shutil.rmtree(self.temp_dir, ignore_errors=True)
     
     @patch('local_installation.scripts.deploy_reliability_system.ReliabilityConfigManager')
     def test_deployment_validation(self, mock_config_manager):
@@ -245,7 +245,7 @@ class TestFeatureFlagManager(unittest.TestCase):
     def tearDown(self):
         """Clean up test environment."""
         import shutil
-        shutil.rmtree(self.temp_dir, ignore_errors=True)
+shutil.rmtree(self.temp_dir, ignore_errors=True)
     
     def test_default_flags_initialization(self):
         """Test initialization of default flags."""
@@ -360,7 +360,7 @@ class TestProductionMonitoring(unittest.TestCase):
     def tearDown(self):
         """Clean up test environment."""
         import shutil
-        shutil.rmtree(self.temp_dir, ignore_errors=True)
+shutil.rmtree(self.temp_dir, ignore_errors=True)
     
     @patch('local_installation.scripts.production_monitoring.ProductionMonitor._setup_logging')
     def test_monitor_initialization(self, mock_logging):
@@ -420,7 +420,7 @@ class TestIntegrationScenarios(unittest.TestCase):
     def tearDown(self):
         """Clean up test environment."""
         import shutil
-        shutil.rmtree(self.temp_dir, ignore_errors=True)
+shutil.rmtree(self.temp_dir, ignore_errors=True)
     
     @patch('local_installation.scripts.reliability_integration.get_reliability_integration')
     def test_reliability_integration_availability(self, mock_integration):

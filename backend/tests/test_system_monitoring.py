@@ -21,7 +21,7 @@ async def test_system_stats_endpoint():
     
     try:
         from fastapi.testclient import TestClient
-        from main import app
+        from main import backend.app as app
         
         client = TestClient(app)
         
@@ -58,7 +58,7 @@ async def test_system_stats_endpoint():
     except Exception as e:
         print(f"❌ System stats test failed: {e}")
         import traceback
-        traceback.print_exc()
+traceback.print_exc()
 
 async def test_optimization_settings_endpoints():
     """Test optimization settings GET and POST endpoints"""
@@ -66,7 +66,7 @@ async def test_optimization_settings_endpoints():
     
     try:
         from fastapi.testclient import TestClient
-        from main import app
+        from main import backend.app as app
         
         client = TestClient(app)
         
@@ -112,7 +112,7 @@ async def test_optimization_settings_endpoints():
     except Exception as e:
         print(f"❌ Optimization settings test failed: {e}")
         import traceback
-        traceback.print_exc()
+traceback.print_exc()
 
 async def test_system_health_endpoint():
     """Test system health endpoint with resource constraint checking"""
@@ -120,7 +120,7 @@ async def test_system_health_endpoint():
     
     try:
         from fastapi.testclient import TestClient
-        from main import app
+        from main import backend.app as app
         
         client = TestClient(app)
         
@@ -155,7 +155,7 @@ async def test_system_health_endpoint():
     except Exception as e:
         print(f"❌ System health test failed: {e}")
         import traceback
-        traceback.print_exc()
+traceback.print_exc()
 
 async def test_resource_constraints_endpoints():
     """Test resource constraints management endpoints"""
@@ -163,7 +163,7 @@ async def test_resource_constraints_endpoints():
     
     try:
         from fastapi.testclient import TestClient
-        from main import app
+        from main import backend.app as app
         
         client = TestClient(app)
         
@@ -214,7 +214,7 @@ async def test_resource_constraints_endpoints():
     except Exception as e:
         print(f"❌ Resource constraints test failed: {e}")
         import traceback
-        traceback.print_exc()
+traceback.print_exc()
 
 async def test_resource_availability_check():
     """Test resource availability checking for graceful degradation"""
@@ -222,7 +222,7 @@ async def test_resource_availability_check():
     
     try:
         from fastapi.testclient import TestClient
-        from main import app
+        from main import backend.app as app
         
         client = TestClient(app)
         
@@ -264,7 +264,7 @@ async def test_resource_availability_check():
     except Exception as e:
         print(f"❌ Resource availability test failed: {e}")
         import traceback
-        traceback.print_exc()
+traceback.print_exc()
 
 async def test_vram_exhaustion_scenario():
     """Test VRAM exhaustion scenario for graceful degradation"""
@@ -272,7 +272,7 @@ async def test_vram_exhaustion_scenario():
     
     try:
         from fastapi.testclient import TestClient
-        from main import app
+        from main import backend.app as app
         from api.routes.system import _resource_constraints
         
         client = TestClient(app)
@@ -305,7 +305,7 @@ async def test_vram_exhaustion_scenario():
     except Exception as e:
         print(f"❌ VRAM exhaustion test failed: {e}")
         import traceback
-        traceback.print_exc()
+traceback.print_exc()
 
 async def test_optimization_validation():
     """Test optimization settings validation"""
@@ -313,7 +313,7 @@ async def test_optimization_validation():
     
     try:
         from fastapi.testclient import TestClient
-        from main import app
+        from main import backend.app as app
         
         client = TestClient(app)
         
@@ -342,7 +342,7 @@ async def test_optimization_validation():
     except Exception as e:
         print(f"❌ Optimization validation test failed: {e}")
         import traceback
-        traceback.print_exc()
+traceback.print_exc()
 
 async def run_all_tests():
     """Run all system monitoring tests"""

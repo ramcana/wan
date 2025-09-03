@@ -172,7 +172,7 @@ def test_wan22_generation_no_quant():
     except Exception as e:
         print(f"❌ Test failed with exception: {e}")
         import traceback
-        traceback.print_exc()
+traceback.print_exc()
         return False
 
 def main():
@@ -182,7 +182,7 @@ def main():
     # Apply compatibility fixes
     try:
         import wan22_compatibility_clean
-        print("✅ WAN2.2 compatibility layer loaded")
+print("✅ WAN2.2 compatibility layer loaded")
     except Exception as e:
         print(f"⚠️  Could not load compatibility layer: {e}")
     

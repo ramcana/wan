@@ -348,7 +348,7 @@ class TestVideoEncoderAdvanced:
     def test_ffmpeg_timeout_handling(self, mock_run, encoder, temp_dir):
         """Test FFmpeg timeout handling"""
         import subprocess
-        
+
         mock_run.side_effect = subprocess.TimeoutExpired("ffmpeg", 300)
         
         config = EncodingConfig(

@@ -27,7 +27,7 @@ class TestQualityChecker(unittest.TestCase):
     def tearDown(self):
         """Clean up test fixtures."""
         import shutil
-        shutil.rmtree(self.temp_dir, ignore_errors=True)
+shutil.rmtree(self.temp_dir, ignore_errors=True)
     
     def create_test_file(self, filename: str, content: str) -> Path:
         """Create a test Python file with given content."""
@@ -343,7 +343,7 @@ def test_function():
         
         # JSON should be valid JSON
         import json
-        json_data = json.loads(json_report)
+json_data = json.loads(json_report)
         self.assertIn('quality_score', json_data)
         self.assertIn('files_analyzed', json_data)
 

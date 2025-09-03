@@ -17,7 +17,7 @@ def test_final_fix():
     print("1. Loading compatibility layer...")
     try:
         import wan22_compatibility_layer
-        from diffusers import WanPipeline
+from diffusers import WanPipeline
         print("   ✅ WanPipeline compatibility layer loaded")
     except Exception as e:
         print(f"   ❌ Compatibility layer failed: {e}")
@@ -27,7 +27,7 @@ def test_final_fix():
     print("2. Testing model manager with local files...")
     try:
         import utils
-        
+
         manager = utils.ModelManager()
         
         # Force use of local model

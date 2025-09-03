@@ -441,7 +441,7 @@ class TestGlobalPerformanceMonitor:
         """Test get_performance_monitor with custom arguments."""
         # Reset global monitor
 import scripts.startup_manager.performance_monitor
-        startup_manager.performance_monitor._global_monitor = None
+startup_manager.performance_monitor._global_monitor = None
         
         monitor = get_performance_monitor(max_sessions=50)
         assert monitor.max_sessions == 50

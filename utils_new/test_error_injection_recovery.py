@@ -846,7 +846,7 @@ class ErrorInjectionRecoveryTestSuite:
             
             # Simulate recovery success based on strategy success rate
             import random
-            recovery_success = random.random() < strategy.success_rate
+recovery_success = random.random() < strategy.success_rate
             
             if recovery_success:
                 recovery_result["success"] = True
@@ -1112,5 +1112,5 @@ def main():
 
 if __name__ == "__main__":
     import sys
-    success = main()
+success = main()
     sys.exit(0 if success else 1)

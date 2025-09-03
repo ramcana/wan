@@ -348,8 +348,8 @@ class TestComprehensiveIsolationExample:
         
         # Create multiple temporary resources concurrently
         import threading
-        import queue
-        
+import queue
+
         results = queue.Queue()
         
         def create_isolated_resources(thread_id):

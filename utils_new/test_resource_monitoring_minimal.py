@@ -16,7 +16,7 @@ import GPUtil
 # Import only the resource monitoring components
 try:
     import pynvml
-    NVIDIA_ML_AVAILABLE = True
+NVIDIA_ML_AVAILABLE = True
 except ImportError:
     NVIDIA_ML_AVAILABLE = False
     print("⚠️  pynvml not available, GPU monitoring will be limited")
@@ -431,7 +431,7 @@ def main():
     except Exception as e:
         print(f"❌ Test failed with error: {e}")
         import traceback
-        traceback.print_exc()
+traceback.print_exc()
         sys.exit(1)
 
 if __name__ == "__main__":

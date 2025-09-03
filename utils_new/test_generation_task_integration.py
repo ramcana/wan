@@ -12,7 +12,7 @@ def test_generation_task_basic():
     try:
         # Try to import just the classes we need
         import uuid
-        from datetime import datetime
+from datetime import datetime
         from dataclasses import dataclass, field
         from typing import Optional, Dict, Any, Tuple, List
         from enum import Enum

@@ -353,7 +353,7 @@ def main():
         except Exception as e:
             print(f"✗ {test.__name__} FAILED: {e}")
             import traceback
-            traceback.print_exc()
+traceback.print_exc()
             failed += 1
     
     print("\n" + "=" * 60)

@@ -29,7 +29,7 @@ class TestSampleManager(unittest.TestCase):
     def tearDown(self):
         """Clean up test fixtures"""
         import shutil
-        shutil.rmtree(self.temp_dir, ignore_errors=True)
+shutil.rmtree(self.temp_dir, ignore_errors=True)
     
     def test_generate_realistic_video_prompts(self):
         """Test realistic video prompt generation"""
@@ -176,7 +176,7 @@ class TestConfigurationTemplateGenerator(unittest.TestCase):
     def tearDown(self):
         """Clean up test fixtures"""
         import shutil
-        shutil.rmtree(self.temp_dir, ignore_errors=True)
+shutil.rmtree(self.temp_dir, ignore_errors=True)
     
     def test_generate_config_json_template_balanced(self):
         """Test balanced configuration template generation"""
@@ -337,7 +337,7 @@ class TestEdgeCaseGenerator(unittest.TestCase):
     def tearDown(self):
         """Clean up test fixtures"""
         import shutil
-        shutil.rmtree(self.temp_dir, ignore_errors=True)
+shutil.rmtree(self.temp_dir, ignore_errors=True)
     
     def test_generate_edge_case_prompts(self):
         """Test edge case prompt generation"""

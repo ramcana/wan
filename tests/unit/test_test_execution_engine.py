@@ -288,7 +288,7 @@ class TestIntegration(unittest.TestCase):
     def tearDown(self):
         """Clean up test fixtures"""
         import shutil
-        shutil.rmtree(self.temp_dir, ignore_errors=True)
+shutil.rmtree(self.temp_dir, ignore_errors=True)
         
     def create_test_file(self, filename: str, content: str):
         """Create a test file with given content"""

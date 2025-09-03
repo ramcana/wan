@@ -39,7 +39,7 @@ class TestErrorRecoverySystem(unittest.TestCase):
     def tearDown(self):
         """Clean up test fixtures"""
         import shutil
-        shutil.rmtree(self.temp_dir, ignore_errors=True)
+shutil.rmtree(self.temp_dir, ignore_errors=True)
     
     def test_init(self):
         """Test ErrorRecoverySystem initialization"""
@@ -730,7 +730,7 @@ class TestErrorRecoverySystemIntegration(unittest.TestCase):
     def tearDown(self):
         """Clean up integration test fixtures"""
         import shutil
-        shutil.rmtree(self.temp_dir, ignore_errors=True)
+shutil.rmtree(self.temp_dir, ignore_errors=True)
     
     def test_end_to_end_recovery_workflow(self):
         """Test complete error recovery workflow"""

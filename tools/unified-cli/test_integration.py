@@ -42,7 +42,7 @@ class TestUnifiedCLI(unittest.TestCase):
         """Clean up test environment"""
         os.chdir(self.original_cwd)
         import shutil
-        shutil.rmtree(self.temp_dir)
+shutil.rmtree(self.temp_dir)
     
     def test_tool_registry(self):
         """Test that all expected tools are registered"""
@@ -219,7 +219,7 @@ class TestWorkflowAutomation(unittest.TestCase):
         """Clean up test environment"""
         os.chdir(self.original_cwd)
         import shutil
-        shutil.rmtree(self.temp_dir)
+shutil.rmtree(self.temp_dir)
     
     def test_default_rules_loaded(self):
         """Test that default automation rules are loaded"""
@@ -338,7 +338,7 @@ class TestIDEIntegration(unittest.TestCase):
         """Clean up test environment"""
         os.chdir(self.original_cwd)
         import shutil
-        shutil.rmtree(self.temp_dir)
+shutil.rmtree(self.temp_dir)
     
     def test_syntax_checking(self):
         """Test syntax error detection"""
@@ -467,7 +467,7 @@ class TestIntegrationWorkflows(unittest.TestCase):
         """Clean up test environment"""
         os.chdir(self.original_cwd)
         import shutil
-        shutil.rmtree(self.temp_dir)
+shutil.rmtree(self.temp_dir)
     
     def test_complete_workflow_integration(self):
         """Test complete workflow from setup to execution"""

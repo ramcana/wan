@@ -42,7 +42,7 @@ class TestModelLoadingManager(unittest.TestCase):
     def tearDown(self):
         """Clean up test environment"""
         import shutil
-        shutil.rmtree(self.temp_dir, ignore_errors=True)
+shutil.rmtree(self.temp_dir, ignore_errors=True)
     
     def test_initialization(self):
         """Test ModelLoadingManager initialization"""
@@ -370,7 +370,7 @@ class TestModelLoadingIntegration(unittest.TestCase):
     def tearDown(self):
         """Clean up integration test environment"""
         import shutil
-        shutil.rmtree(self.temp_dir, ignore_errors=True)
+shutil.rmtree(self.temp_dir, ignore_errors=True)
     
     def test_ti2v_5b_loading_simulation(self):
         """Test TI2V-5B model loading simulation"""

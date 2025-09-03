@@ -476,7 +476,7 @@ class TestGlobalAnalyticsEngine:
         
         # Reset global analytics
 import scripts.startup_manager.analytics
-        startup_manager.analytics._global_analytics = None
+startup_manager.analytics._global_analytics = None
         
         analytics1 = get_analytics_engine(mock_monitor)
         analytics2 = get_analytics_engine(mock_monitor)
@@ -489,7 +489,7 @@ import scripts.startup_manager.analytics
         
         # Reset global analytics
 import scripts.startup_manager.analytics
-        startup_manager.analytics._global_analytics = None
+startup_manager.analytics._global_analytics = None
         
         analytics = get_analytics_engine(mock_monitor, enable_analytics=False)
         assert analytics.enable_analytics is False

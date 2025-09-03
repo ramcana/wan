@@ -361,7 +361,7 @@ class TestExecutor:
         
         # Fallback to parsing stdout
         import re
-        
+
         patterns = {
             'passed': r'(\d+) passed',
             'failed': r'(\d+) failed',
@@ -504,7 +504,7 @@ def run_test_file_isolated(test_file_path: str, project_root_path: str) -> dict:
 def main():
     """Main entry point for test runner"""
     import argparse
-    
+
     parser = argparse.ArgumentParser(description="Advanced test runner with isolation and monitoring")
     parser.add_argument('test_files', nargs='*', help='Test files to run (default: discover all)')
     parser.add_argument('--project-root', type=Path, default=Path.cwd(), help='Project root directory')

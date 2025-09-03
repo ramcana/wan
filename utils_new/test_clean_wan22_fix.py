@@ -17,7 +17,7 @@ def test_clean_fix():
     print("1. Loading clean compatibility layer...")
     try:
         import wan22_compatibility_clean
-        from diffusers import WanPipeline
+from diffusers import WanPipeline
         print("   ✅ Clean WanPipeline compatibility layer loaded")
     except Exception as e:
         print(f"   ❌ Clean compatibility layer failed: {e}")

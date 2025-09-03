@@ -608,8 +608,8 @@ class TestPerformanceValidation:
         env, project_root = e2e_environment
         
         import psutil
-        import os
-        
+import os
+
         process = psutil.Process(os.getpid())
         initial_memory = process.memory_info().rss / 1024 / 1024  # MB
         
@@ -642,8 +642,8 @@ class TestPerformanceValidation:
         env, project_root = e2e_environment
         
         import threading
-        import queue
-        
+import queue
+
         results_queue = queue.Queue()
         
         def run_tool(tool_name, tool_instance, target_path):

@@ -38,14 +38,14 @@ def check_dependencies():
     
     try:
         import transformers
-        print(f"✅ transformers: {transformers.__version__}")
+print(f"✅ transformers: {transformers.__version__}")
     except ImportError as e:
         print(f"❌ transformers not found: {e}")
         return False
     
     try:
         import diffusers
-        print(f"✅ diffusers: {diffusers.__version__}")
+print(f"✅ diffusers: {diffusers.__version__}")
     except ImportError as e:
         print(f"❌ diffusers not found: {e}")
         return False
@@ -74,7 +74,7 @@ def test_model_loading_step_by_step():
         from diffusers import CogVideoXPipeline
         from transformers import T5Tokenizer, T5EncoderModel
         import numpy as np
-        from PIL import Image
+from PIL import Image
         
         # Test with a smaller, more compatible model first
         model_configs = [

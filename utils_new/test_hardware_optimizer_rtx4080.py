@@ -127,7 +127,7 @@ class TestHardwareOptimizerRTX4080(unittest.TestCase):
     def test_optimization_profile_save_load(self):
         """Test saving and loading optimization profiles"""
         import tempfile
-        
+
         # Set up test data
         self.optimizer.hardware_profile = self.rtx_4080_profile
         self.optimizer.optimal_settings = self.optimizer.generate_rtx_4080_settings(self.rtx_4080_profile)
@@ -165,6 +165,6 @@ class TestHardwareOptimizerRTX4080(unittest.TestCase):
 if __name__ == '__main__':
     # Set up logging
     import logging
-    logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.INFO)
     
     unittest.main()

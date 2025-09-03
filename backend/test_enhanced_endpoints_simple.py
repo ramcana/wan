@@ -3,7 +3,7 @@ Simple test to verify enhanced model management endpoints are working
 """
 
 from fastapi.testclient import TestClient
-from app import app
+from backend.app import app
 
 def test_enhanced_endpoints():
     """Test that enhanced endpoints are accessible"""

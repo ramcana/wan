@@ -15,7 +15,7 @@ from pathlib import Path
 backend_dir = Path(__file__).parent.parent
 sys.path.insert(0, str(backend_dir))
 
-from app import app
+from backend.app import app
 
 client = TestClient(app)
 
@@ -113,7 +113,7 @@ class TestHealthEndpointIntegration:
     def test_health_endpoint_performance(self):
         """Test health endpoint response time"""
         import time
-        
+
         start_time = time.time()
         response = client.get("/api/v1/system/health")
         end_time = time.time()
@@ -128,7 +128,7 @@ class TestHealthEndpointIntegration:
         """Test health endpoint under concurrent load"""
         import concurrent.futures
         import threading
-        
+
         def make_request():
             response = client.get("/api/v1/system/health")
             return response.status_code == 200

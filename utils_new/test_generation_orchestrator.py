@@ -658,7 +658,7 @@ class TestGenerationOrchestrator(unittest.TestCase):
 if __name__ == '__main__':
     # Configure logging for tests
     import logging
-    logging.basicConfig(level=logging.WARNING)
+logging.basicConfig(level=logging.WARNING)
     
     # Run tests
     unittest.main(verbosity=2)

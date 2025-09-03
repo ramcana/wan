@@ -763,5 +763,5 @@ def main():
 
 if __name__ == "__main__":
     import sys
-    success = main()
+success = main()
     sys.exit(0 if success else 1)

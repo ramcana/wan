@@ -11,13 +11,13 @@ from unittest.mock import Mock, patch, AsyncMock
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from core.model_usage_analytics import (
+from backend.core.model_usage_analytics import (
     ModelUsageAnalytics, UsageEventType, UsageData, UsageStatistics,
     CleanupRecommendation, PreloadRecommendation, PerformanceRecommendation,
     ModelUsageEventDB, ModelUsageStatsDB, Base,
     track_generation_usage, get_model_usage_analytics
 )
-from services.generation_service_analytics_integration import (
+from backend.services.generation_service_analytics_integration import (
     GenerationServiceAnalyticsIntegration, get_analytics_integration,
     get_usage_statistics_for_model, get_cleanup_recommendations,
     get_preload_recommendations, generate_analytics_report

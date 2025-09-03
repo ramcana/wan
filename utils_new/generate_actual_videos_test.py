@@ -37,7 +37,7 @@ def generate_test_video(output_dir: Path, prompt: str, filename: str):
     try:
         # Import the main application
         import main
-        from utils import generate_video, get_model_manager
+from utils import generate_video, get_model_manager
         
         # Set up generation parameters with optimized settings
         generation_params = {

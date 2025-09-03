@@ -41,7 +41,7 @@ class TestQuantizationController(unittest.TestCase):
     def tearDown(self):
         """Clean up test fixtures"""
         import shutil
-        shutil.rmtree(self.temp_dir, ignore_errors=True)
+shutil.rmtree(self.temp_dir, ignore_errors=True)
     
     def test_init(self):
         """Test QuantizationController initialization"""
@@ -661,7 +661,7 @@ class TestQuantizationControllerIntegration(unittest.TestCase):
     def tearDown(self):
         """Clean up integration test fixtures"""
         import shutil
-        shutil.rmtree(self.temp_dir, ignore_errors=True)
+shutil.rmtree(self.temp_dir, ignore_errors=True)
     
     def test_end_to_end_strategy_determination(self):
         """Test complete strategy determination workflow"""

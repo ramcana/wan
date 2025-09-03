@@ -5,7 +5,7 @@ import tempfile
 import os
 from fastapi.testclient import TestClient
 from unittest.mock import Mock, patch, AsyncMock
-from backend.main import app
+from backend.main import backend.app as app
 from backend.models.schemas import GenerationRequest, TaskStatus
 from backend.database import get_db_session
 
@@ -296,7 +296,7 @@ class TestComprehensiveAPI:
     def test_concurrent_requests(self):
         """Test handling of concurrent requests"""
         import threading
-        import time
+import time
 
         results = []
         
@@ -392,7 +392,7 @@ class TestComprehensiveAPI:
             # Simulate a long-running operation
             def slow_operation(*args, **kwargs):
                 import time
-                time.sleep(2)  # Simulate slow operation
+time.sleep(2)  # Simulate slow operation
                 return {"task_id": "slow-task", "status": "pending"}
             
             mock_create.side_effect = slow_operation
@@ -419,7 +419,7 @@ class TestComprehensiveAPI:
     def test_memory_usage_monitoring(self):
         """Test memory usage during API operations"""
         import psutil
-        import os
+import os
 
         process = psutil.Process(os.getpid())
         initial_memory = process.memory_info().rss

@@ -180,5 +180,5 @@ if __name__ == '__main__':
     except Exception as e:
         print(f"\n✗ Error during testing: {e}")
         import traceback
-        traceback.print_exc()
+traceback.print_exc()
         sys.exit(1)

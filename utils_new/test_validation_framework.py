@@ -190,7 +190,7 @@ class TestImageValidator(unittest.TestCase):
     def tearDown(self):
         """Clean up temporary files"""
         import shutil
-        shutil.rmtree(self.temp_dir)
+shutil.rmtree(self.temp_dir)
     
     def test_valid_image_object(self):
         """Test validation of valid PIL Image object"""

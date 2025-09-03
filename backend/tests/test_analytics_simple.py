@@ -204,7 +204,7 @@ def test_usage_statistics_calculation():
     try:
         from datetime import datetime, timedelta
         import statistics
-        
+
         # Simulate usage events
         events = [
             {"timestamp": datetime.now() - timedelta(days=5), "success": True, "duration": 120.0},

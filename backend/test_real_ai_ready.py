@@ -14,7 +14,7 @@ async def test_real_ai_readiness():
     try:
         # Test system integration
         print("1. 🔧 Testing System Integration...")
-        from core.system_integration import get_system_integration
+        from backend.core.system_integration import get_system_integration
         integration = await get_system_integration()
         optimizer = integration.get_wan22_system_optimizer()
         
@@ -27,7 +27,7 @@ async def test_real_ai_readiness():
         
         # Test model integration bridge
         print("\n2. 🌉 Testing Model Integration Bridge...")
-        from core.model_integration_bridge import get_model_integration_bridge
+        from backend.core.model_integration_bridge import get_model_integration_bridge
         bridge = await get_model_integration_bridge()
         
         print(f"   ✅ Bridge initialized: {bridge._initialized}")
@@ -44,7 +44,7 @@ async def test_real_ai_readiness():
         
         # Test generation service
         print("\n3. 🎬 Testing Generation Service...")
-        from services.generation_service import get_generation_service
+        from backend.services.generation_service import get_generation_service
         service = await get_generation_service()
         
         print(f"   ✅ Service initialized: {service is not None}")

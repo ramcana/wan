@@ -785,7 +785,7 @@ class AutomatedTestFramework:
 def main():
     """Run the automated test framework."""
     import argparse
-    
+
     parser = argparse.ArgumentParser(description="WAN2.2 Automated Test Framework")
     parser.add_argument("--installation-path", default=".", help="Installation path to test")
     parser.add_argument("--suite", choices=["unit", "integration", "hardware", "all"], 

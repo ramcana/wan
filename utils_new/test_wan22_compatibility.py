@@ -16,7 +16,7 @@ def test_wan22_compatibility():
     print("1. Testing compatibility layer import...")
     try:
         import wan22_compatibility_layer
-        print("   ✅ Compatibility layer imported successfully")
+print("   ✅ Compatibility layer imported successfully")
     except Exception as e:
         print(f"   ❌ Failed to import compatibility layer: {e}")
         return False
@@ -34,7 +34,7 @@ def test_wan22_compatibility():
     print("3. Testing model loading with compatibility...")
     try:
         import utils
-        
+
         # Create model manager
         manager = utils.ModelManager()
         

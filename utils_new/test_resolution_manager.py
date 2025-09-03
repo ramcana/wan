@@ -228,7 +228,7 @@ class TestResolutionManagerIntegration(unittest.TestCase):
         """Test that dropdown updates happen immediately - Requirement 10.4"""
         # This test verifies the update method returns immediately without blocking
         import time
-        
+
         start_time = time.time()
         result = self.resolution_manager.update_resolution_dropdown('ti2v-5B')
         end_time = time.time()

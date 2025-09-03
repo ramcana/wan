@@ -40,7 +40,7 @@ async def test_health_endpoint():
     except Exception as e:
         print(f"❌ Health check failed: {e}")
         import traceback
-        traceback.print_exc()
+traceback.print_exc()
 
 if __name__ == "__main__":
     asyncio.run(test_health_endpoint())

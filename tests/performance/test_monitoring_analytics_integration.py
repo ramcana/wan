@@ -39,7 +39,7 @@ class TestMonitoringAnalyticsIntegration:
         # Reset global instances to avoid test interference
 import scripts.startup_manager.performance_monitor
 import scripts.startup_manager.analytics
-        startup_manager.performance_monitor._global_monitor = None
+startup_manager.performance_monitor._global_monitor = None
         startup_manager.analytics._global_analytics = None
         
         # Create performance monitor

@@ -698,7 +698,7 @@ class TestErrorHandling(unittest.TestCase):
         
         # Mock pipeline to raise OOM error
         import torch
-        mock_pipeline.from_pretrained.side_effect = torch.cuda.OutOfMemoryError("CUDA out of memory")
+mock_pipeline.from_pretrained.side_effect = torch.cuda.OutOfMemoryError("CUDA out of memory")
         
         # Mock VRAM and validation
         with patch.object(self.manager, '_get_vram_info') as mock_vram:

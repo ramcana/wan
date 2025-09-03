@@ -53,7 +53,7 @@ try:
     )
     from error_handler import get_error_recovery_manager
 except ImportError as e:
-    print(f"Warning: Could not import application modules: {e}")
+    print(f"Warning: Could not import backend.app as application modules: {e}")
     # Define minimal mock classes for testing
     class ApplicationManager:
         def __init__(self, config):
@@ -143,7 +143,7 @@ class IntegrationTestBase(unittest.TestCase):
         """Create a test image for I2V and TI2V tests"""
         # Create a simple test image with gradient
         import numpy as np
-        width, height = size
+width, height = size
         
         # Create gradient array
         gradient = np.zeros((height, width, 3), dtype=np.uint8)
@@ -977,7 +977,7 @@ class TestResourceUsageValidation(IntegrationTestBase):
         
         # Run concurrent tasks
         import concurrent.futures
-        
+
         with concurrent.futures.ThreadPoolExecutor(max_workers=concurrent_tasks) as executor:
             futures = [executor.submit(mock_concurrent_generation, i) for i in range(concurrent_tasks)]
             results = [future.result() for future in concurrent.futures.as_completed(futures)]

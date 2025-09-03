@@ -34,12 +34,12 @@ class TestConfigurationIntegration:
         # Change to temp directory for tests
         self.original_cwd = Path.cwd()
         import os
-        os.chdir(self.temp_dir)
+os.chdir(self.temp_dir)
     
     def teardown_method(self):
         """Clean up test fixtures."""
         import os
-        os.chdir(self.original_cwd)
+os.chdir(self.original_cwd)
         shutil.rmtree(self.temp_dir, ignore_errors=True)
     
     def test_create_default_backend_config_integration(self):

@@ -8,7 +8,7 @@ def test_pytorch_import():
     try:
         print("Testing PyTorch import...")
         import torch
-        print(f"✅ PyTorch {torch.__version__} imported successfully")
+print(f"✅ PyTorch {torch.__version__} imported successfully")
         
         # Test CUDA availability
         cuda_available = torch.cuda.is_available()
@@ -81,7 +81,7 @@ if __name__ == "__main__":
             print(f"\n⚠️  Some dependencies failed: {', '.join(failed_deps)}")
             print("Installing missing dependencies...")
             import subprocess
-            import sys
+import sys
             for dep in failed_deps:
                 try:
                     subprocess.run([sys.executable, "-m", "pip", "install", dep], check=True)

@@ -490,7 +490,7 @@ class TestHardwareSimulationIntegration(unittest.TestCase):
     def tearDown(self):
         """Clean up hardware simulation test environment"""
         import shutil
-        shutil.rmtree(self.temp_dir, ignore_errors=True)
+shutil.rmtree(self.temp_dir, ignore_errors=True)
     
     def test_rtx_4080_configuration_integration(self):
         """Test complete integration for RTX 4080 configuration"""

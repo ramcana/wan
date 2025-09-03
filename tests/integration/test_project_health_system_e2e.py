@@ -243,7 +243,7 @@ backend:
         
         # Benchmark test suite execution
         import time
-        
+
         start_time = time.time()
         test_orchestrator = TestSuiteOrchestrator(
             project_root=temp_project_dir,

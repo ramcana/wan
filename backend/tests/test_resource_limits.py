@@ -21,7 +21,7 @@ async def test_vram_exhaustion_prevention():
     
     try:
         from fastapi.testclient import TestClient
-        from main import app
+        from main import backend.app as app
         from api.routes.system import _resource_constraints
         
         client = TestClient(app)
@@ -69,7 +69,7 @@ async def test_vram_exhaustion_prevention():
     except Exception as e:
         print(f"❌ VRAM exhaustion test failed: {e}")
         import traceback
-        traceback.print_exc()
+traceback.print_exc()
 
 async def test_concurrent_generation_limits():
     """Test maximum concurrent generation limits"""
@@ -77,7 +77,7 @@ async def test_concurrent_generation_limits():
     
     try:
         from fastapi.testclient import TestClient
-        from main import app
+        from main import backend.app as app
         from api.routes.system import _resource_constraints
         
         client = TestClient(app)
@@ -116,7 +116,7 @@ async def test_concurrent_generation_limits():
     except Exception as e:
         print(f"❌ Concurrent generation limit test failed: {e}")
         import traceback
-        traceback.print_exc()
+traceback.print_exc()
 
 async def test_graceful_degradation_warnings():
     """Test graceful degradation with warning thresholds"""
@@ -124,7 +124,7 @@ async def test_graceful_degradation_warnings():
     
     try:
         from fastapi.testclient import TestClient
-        from main import app
+        from main import backend.app as app
         from api.routes.system import _resource_constraints
         
         client = TestClient(app)
@@ -171,7 +171,7 @@ async def test_graceful_degradation_warnings():
     except Exception as e:
         print(f"❌ Graceful degradation test failed: {e}")
         import traceback
-        traceback.print_exc()
+traceback.print_exc()
 
 async def test_optimization_recommendations():
     """Test optimization recommendations based on system state"""
@@ -179,7 +179,7 @@ async def test_optimization_recommendations():
     
     try:
         from fastapi.testclient import TestClient
-        from main import app
+        from main import backend.app as app
         
         client = TestClient(app)
         
@@ -223,7 +223,7 @@ async def test_optimization_recommendations():
     except Exception as e:
         print(f"❌ Optimization recommendations test failed: {e}")
         import traceback
-        traceback.print_exc()
+traceback.print_exc()
 
 async def test_historical_stats_tracking():
     """Test historical stats tracking for monitoring dashboard"""
@@ -231,7 +231,7 @@ async def test_historical_stats_tracking():
     
     try:
         from fastapi.testclient import TestClient
-        from main import app
+        from main import backend.app as app
         
         client = TestClient(app)
         
@@ -266,7 +266,7 @@ async def test_historical_stats_tracking():
     except Exception as e:
         print(f"❌ Historical stats test failed: {e}")
         import traceback
-        traceback.print_exc()
+traceback.print_exc()
 
 async def test_resource_constraint_validation():
     """Test resource constraint validation"""
@@ -274,7 +274,7 @@ async def test_resource_constraint_validation():
     
     try:
         from fastapi.testclient import TestClient
-        from main import app
+        from main import backend.app as app
         
         client = TestClient(app)
         
@@ -297,7 +297,7 @@ async def test_resource_constraint_validation():
     except Exception as e:
         print(f"❌ Resource constraint validation test failed: {e}")
         import traceback
-        traceback.print_exc()
+traceback.print_exc()
 
 async def run_all_resource_tests():
     """Run all resource limit and graceful degradation tests"""

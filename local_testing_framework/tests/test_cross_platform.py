@@ -162,7 +162,7 @@ class TestCrossPlatformCompatibility(unittest.TestCase):
     def test_subprocess_execution_cross_platform(self):
         """Test subprocess execution across platforms"""
         import subprocess
-        
+
         # Test platform-appropriate commands
         if platform.system() == "Windows":
             # Test Windows command
@@ -343,7 +343,7 @@ class TestPlatformSpecificFeatures(unittest.TestCase):
         """Test process management across platforms"""
         import subprocess
         import time
-        
+
         # Test starting and stopping processes
         if platform.system() == "Windows":
             # Windows-specific process test
@@ -384,7 +384,7 @@ class TestPlatformSpecificFeatures(unittest.TestCase):
         """Test network handling across platforms"""
         # Test basic network connectivity check
         import socket
-        
+
         try:
             # Test socket creation (should work on all platforms)
             sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

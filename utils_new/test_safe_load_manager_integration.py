@@ -310,7 +310,7 @@ class TestSafeLoadManagerIntegration:
     def test_performance_integration(self, safe_load_manager):
         """Test performance impact of security features"""
         import time
-        
+
         models_to_test = [
             "https://huggingface.co/trusted-model",
             "https://untrusted.com/suspicious-model"

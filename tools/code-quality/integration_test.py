@@ -179,7 +179,7 @@ if __name__ == "__main__":
     except Exception as e:
         print(f"❌ Integration test failed: {e}")
         import traceback
-        traceback.print_exc()
+traceback.print_exc()
         return False
         
     finally:

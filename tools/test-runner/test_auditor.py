@@ -187,15 +187,15 @@ class TestCodeAnalyzer:
         
         # Check for missing imports
         imports = []
-        test_functions = []
+test_functions = []
         
         for node in ast.walk(tree):
             if isinstance(node, (ast.Import, ast.ImportFrom)):
                 if isinstance(node, ast.Import):
                     imports.extend([alias.name for alias in node.names])
-                else:
+else:
                     imports.append(node.module)
-            
+
             elif isinstance(node, ast.FunctionDef) and node.name.startswith('test_'):
                 test_functions.append(node)
         

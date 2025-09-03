@@ -58,7 +58,7 @@ async def test_enhanced_integration():
     except Exception as e:
         print(f"\n❌ Enhanced generation service integration test FAILED: {e}")
         import traceback
-        traceback.print_exc()
+traceback.print_exc()
         return False
 
 if __name__ == "__main__":

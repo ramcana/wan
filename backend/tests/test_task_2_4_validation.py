@@ -21,7 +21,7 @@ async def validate_requirement_7_1():
     
     try:
         from fastapi.testclient import TestClient
-        from main import app
+        from main import backend.app as app
         
         client = TestClient(app)
         
@@ -68,7 +68,7 @@ async def validate_requirement_7_2():
     
     try:
         from fastapi.testclient import TestClient
-        from main import app
+        from main import backend.app as app
         
         client = TestClient(app)
         
@@ -107,7 +107,7 @@ async def validate_requirement_4_1():
     
     try:
         from fastapi.testclient import TestClient
-        from main import app
+        from main import backend.app as app
         
         client = TestClient(app)
         
@@ -155,7 +155,7 @@ async def validate_requirement_4_4():
     
     try:
         from fastapi.testclient import TestClient
-        from main import app
+        from main import backend.app as app
         from api.routes.system import _resource_constraints
         
         client = TestClient(app)
@@ -240,7 +240,7 @@ async def validate_graceful_degradation():
     
     try:
         from fastapi.testclient import TestClient
-        from main import app
+        from main import backend.app as app
         
         client = TestClient(app)
         
@@ -285,7 +285,7 @@ async def validate_multiple_simultaneous_generations():
     
     try:
         from fastapi.testclient import TestClient
-        from main import app
+        from main import backend.app as app
         from api.routes.system import _resource_constraints
         
         client = TestClient(app)

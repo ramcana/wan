@@ -494,7 +494,7 @@ class TestPerformanceBenchmarks:
     def test_metrics_storage_efficiency(self):
         """Test memory efficiency of metrics storage"""
         import sys
-        
+
         # Measure memory usage of storing many metrics
         initial_size = sys.getsizeof(self.system.tracker.completed_metrics)
         
@@ -538,7 +538,7 @@ class TestPerformanceBenchmarks:
         """Test concurrent operation tracking"""
         import threading
         import queue
-        
+
         results = queue.Queue()
         
         def track_operations(thread_id, count):

@@ -560,7 +560,7 @@ Timeout Tests:
 def main():
     """CLI entry point for test execution engine"""
     import argparse
-    
+
     parser = argparse.ArgumentParser(description="Test Execution Engine with Timeout Handling")
     parser.add_argument("--test-dir", default="tests", help="Test directory to scan")
     parser.add_argument("--max-workers", type=int, help="Maximum parallel workers")

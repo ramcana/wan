@@ -386,7 +386,7 @@ class TestDiagnosticMonitorSimple(unittest.TestCase):
         
         # Test 5: Concurrent operations
         import threading
-        
+
         def concurrent_health_checks():
             for _ in range(50):
                 self.monitor.check_component_health("test_component")

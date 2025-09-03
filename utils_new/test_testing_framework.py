@@ -259,7 +259,7 @@ class TestTestingFramework(unittest.TestCase):
         
         # Should not raise exception
         import json
-        json_str = json.dumps(result_dict, default=str)
+json_str = json.dumps(result_dict, default=str)
         self.assertIsInstance(json_str, str)
         self.assertGreater(len(json_str), 0)
 

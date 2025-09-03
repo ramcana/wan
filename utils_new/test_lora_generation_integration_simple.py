@@ -94,7 +94,7 @@ def test_lora_ui_state_integration():
     except Exception as e:
         print(f"❌ Test failed: {str(e)}")
         import traceback
-        traceback.print_exc()
+traceback.print_exc()
         return False
 
 def test_lora_helper_methods():
@@ -421,7 +421,7 @@ def test_lora_helper_methods():
     except Exception as e:
         print(f"❌ Helper methods test failed: {str(e)}")
         import traceback
-        traceback.print_exc()
+traceback.print_exc()
         return False
 
 def test_lora_event_handler_logic():
@@ -570,7 +570,7 @@ def test_lora_event_handler_logic():
     except Exception as e:
         print(f"❌ Event handler logic test failed: {str(e)}")
         import traceback
-        traceback.print_exc()
+traceback.print_exc()
         return False
 
 if __name__ == "__main__":

@@ -323,7 +323,7 @@ class TestDependencyManager:
     def test_install_package_timeout(self, mock_run, dependency_manager):
         """Test package installation timeout"""
         import subprocess
-        mock_run.side_effect = subprocess.TimeoutExpired("pip", 300)
+mock_run.side_effect = subprocess.TimeoutExpired("pip", 300)
         
         result = dependency_manager._install_package("slow_package")
         

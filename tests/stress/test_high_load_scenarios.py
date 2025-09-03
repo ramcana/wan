@@ -573,7 +573,7 @@ Content for section B in document {i}.
         
         # Force garbage collection
         import gc
-        gc.collect()
+gc.collect()
         
         metrics.stop_monitoring()
         summary = metrics.get_summary()

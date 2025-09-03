@@ -13,14 +13,14 @@ def test_application_config():
     
     # Create a minimal version of ApplicationConfig for testing
     import argparse
-    import json
-    import logging
-    import os
-    import sys
-    import signal
-    import threading
-    import time
-    from pathlib import Path
+import json
+import logging
+import os
+import sys
+import signal
+import threading
+import time
+from pathlib import Path
     from typing import Dict, Any, Optional
 
     class ApplicationConfig:
@@ -175,7 +175,7 @@ def test_argument_parsing():
     
     # Create a minimal version of parse_arguments for testing
     import argparse
-    
+
     def parse_arguments():
         """Parse command-line arguments"""
         parser = argparse.ArgumentParser(
@@ -258,5 +258,5 @@ if __name__ == "__main__":
     except Exception as e:
         print(f"\n❌ Test failed: {e}")
         import traceback
-        traceback.print_exc()
+traceback.print_exc()
         sys.exit(1)

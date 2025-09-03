@@ -272,7 +272,7 @@ class TestModule(unittest.TestCase):
     def tearDown(self):
         """Clean up test environment."""
         import shutil
-        shutil.rmtree(self.test_dir, ignore_errors=True)
+shutil.rmtree(self.test_dir, ignore_errors=True)
 
 
 def run_basic_functionality_test():

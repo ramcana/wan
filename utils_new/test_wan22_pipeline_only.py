@@ -22,7 +22,7 @@ def test_pipeline_loading_only():
     try:
         # Import compatibility layer
         import wan22_compatibility_clean
-        print("✅ Compatibility layer loaded")
+print("✅ Compatibility layer loaded")
         
         # Import the video generation engine
         from utils import VideoGenerationEngine

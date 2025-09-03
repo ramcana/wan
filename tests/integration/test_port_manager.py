@@ -449,7 +449,7 @@ class TestPortManagerAdvanced:
     def test_port_scanning_performance(self):
         """Test port scanning performance with large ranges."""
         import time
-        
+
         start_time = time.time()
         available_ports = self.port_manager.find_available_ports_in_range((60000, 60010))
         end_time = time.time()
@@ -461,8 +461,8 @@ class TestPortManagerAdvanced:
     def test_concurrent_port_checks(self):
         """Test concurrent port availability checks."""
         import threading
-        import time
-        
+import time
+
         results = {}
         
         def check_port_worker(port):
@@ -560,8 +560,8 @@ class TestPortManagerAdvanced:
     def test_configuration_update_atomic_operations(self):
         """Test that configuration updates are atomic."""
         import tempfile
-        import json
-        
+import json
+
         with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as f:
             original_config = {"server": {"port": 8000, "host": "localhost"}}
             json.dump(original_config, f)
@@ -651,7 +651,7 @@ class TestPortManagerErrorRecovery:
     def test_recovery_from_psutil_errors(self):
         """Test recovery from psutil-related errors."""
         import psutil
-        
+
         with patch('psutil.net_connections', side_effect=psutil.AccessDenied()):
             result = self.port_manager._get_process_using_port(8000)
             assert result is None  # Should handle gracefully
@@ -663,8 +663,8 @@ class TestPortManagerErrorRecovery:
     def test_configuration_backup_and_restore(self):
         """Test configuration backup and restore functionality."""
         import tempfile
-        import json
-        
+import json
+
         with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as f:
             original_config = {"server": {"port": 8000, "host": "localhost"}}
             json.dump(original_config, f)

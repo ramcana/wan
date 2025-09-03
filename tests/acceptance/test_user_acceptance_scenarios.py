@@ -302,7 +302,7 @@ from pathlib import Path
 
 sys.path.append(str(Path(__file__).parent.parent.parent / "src"))
 
-from core.app import ApplicationCore
+from backend.core.app import ApplicationCore
 
 
 class TestApplicationCore:

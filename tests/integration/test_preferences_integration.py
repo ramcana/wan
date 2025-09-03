@@ -262,7 +262,7 @@ class TestPreferenceManager:
             original_cwd = Path.cwd()
             try:
                 import os
-                os.chdir(temp_dir)
+os.chdir(temp_dir)
                 
                 manager = PreferenceManager(prefs_dir)
                 manager.load_preferences()
@@ -300,7 +300,7 @@ class TestPreferenceManager:
             original_cwd = Path.cwd()
             try:
                 import os
-                os.chdir(temp_dir)
+os.chdir(temp_dir)
                 
                 manager = PreferenceManager(prefs_dir)
                 
@@ -418,7 +418,7 @@ class TestPreferenceManager:
             original_cwd = Path.cwd()
             try:
                 import os
-                os.chdir(temp_dir)
+os.chdir(temp_dir)
                 
                 manager = PreferenceManager(prefs_dir)
                 

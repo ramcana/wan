@@ -48,7 +48,7 @@ def test_ti2v_5b_model():
     try:
         from diffusers import CogVideoXPipeline
         import numpy as np
-        from PIL import Image
+from PIL import Image
         
         # Model configuration for TI2V-5B
         model_id = "THUDM/CogVideoX-5b"  # 5B parameter model
@@ -190,7 +190,7 @@ def test_ti2v_5b_model():
     except Exception as e:
         print(f"❌ Unexpected error: {e}")
         import traceback
-        traceback.print_exc()
+traceback.print_exc()
         
     finally:
         clear_memory()

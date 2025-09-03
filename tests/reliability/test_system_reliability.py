@@ -460,7 +460,7 @@ This project is used for testing system reliability.
             
             # Force garbage collection
             import gc
-            gc.collect()
+gc.collect()
             
             # Check resource usage after operations
             final_memory = psutil.Process().memory_info().rss

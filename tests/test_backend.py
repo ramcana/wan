@@ -28,7 +28,7 @@ def test_imports():
         
         # Test backend app import
         os.chdir(backend_dir)
-        from app import app
+        from backend.app import app
         print("✅ Backend app imported successfully")
         
         return True
@@ -44,7 +44,7 @@ def test_endpoints():
     """Test that basic endpoints are defined"""
     try:
         os.chdir(backend_dir)
-        from app import app
+        from backend.app import app
         
         # Get all routes
         routes = [route.path for route in app.routes]

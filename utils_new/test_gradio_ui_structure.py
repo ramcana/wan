@@ -65,8 +65,8 @@ class TestGradioUIStructure(unittest.TestCase):
         try:
             # This should work with mocked dependencies
             import ui_validation
-            import ui_event_handlers
-            
+import ui_event_handlers
+
             # Test that key classes exist
             self.assertTrue(hasattr(ui_validation, 'UIValidationManager'))
             self.assertTrue(hasattr(ui_event_handlers, 'UIEventHandlers'))
@@ -187,7 +187,7 @@ class TestGradioUIStructure(unittest.TestCase):
     def tearDown(self):
         """Clean up test environment"""
         import shutil
-        shutil.rmtree(self.temp_dir, ignore_errors=True)
+shutil.rmtree(self.temp_dir, ignore_errors=True)
 
 
 def run_gradio_ui_tests():

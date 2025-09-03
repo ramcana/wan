@@ -22,7 +22,7 @@ def test_cli_help():
         
         # Test that we can run help (this should not crash)
         import argparse
-        print("✅ CLI help functionality available")
+print("✅ CLI help functionality available")
         
     except Exception as e:
         print(f"❌ CLI test failed: {e}")

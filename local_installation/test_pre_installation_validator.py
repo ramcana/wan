@@ -502,13 +502,13 @@ def run_performance_tests():
         
     finally:
         import shutil
-        shutil.rmtree(temp_dir, ignore_errors=True)
+    shutil.rmtree(temp_dir, ignore_errors=True)
 
 
 def main():
     """Main test runner."""
     import argparse
-    
+
     parser = argparse.ArgumentParser(description="Pre-Installation Validator Tests")
     parser.add_argument("--performance", action="store_true",
                        help="Run performance tests")

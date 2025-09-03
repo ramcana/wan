@@ -11,7 +11,7 @@ from unittest.mock import Mock, AsyncMock, patch
 # Add backend to path
 sys.path.append(str(Path(__file__).parent.parent))
 
-from services.generation_service import GenerationService, VRAMMonitor
+from backend.services.generation_service import GenerationService, VRAMMonitor
 
 
 class TestHardwareOptimizationIntegration:
@@ -20,7 +20,7 @@ class TestHardwareOptimizationIntegration:
     @pytest.fixture
     def mock_hardware_profile(self):
         """Mock hardware profile for testing"""
-        from core.services.wan22_system_optimizer import HardwareProfile
+        from backend.core.services.wan22_system_optimizer import HardwareProfile
         return HardwareProfile(
             cpu_model="AMD Ryzen Threadripper PRO 5975WX",
             cpu_cores=32,

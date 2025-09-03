@@ -461,7 +461,7 @@ class TestConvenienceFunctions(unittest.TestCase):
         """Clean up test fixtures"""
         # Reset global resource manager
         import resource_manager
-        resource_manager._resource_manager = None
+resource_manager._resource_manager = None
         
         self.gpu_available_patcher.stop()
         self.gpu_props_patcher.stop()

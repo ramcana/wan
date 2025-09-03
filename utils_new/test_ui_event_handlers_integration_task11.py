@@ -231,7 +231,7 @@ class TestUIEventHandlersIntegration:
             from ui_event_handlers_enhanced import EnhancedUIEventHandlers
             from PIL import Image
             import numpy as np
-            
+
             # Mock all required managers
             with patch('ui_event_handlers_enhanced.get_validation_manager') as mock_validation, \
                  patch('ui_event_handlers_enhanced.get_image_validator') as mock_image_validator, \

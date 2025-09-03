@@ -47,7 +47,7 @@ def test_wan_ti2v_5b_model():
     
     # Apply WAN compatibility layer
     try:
-        from wan22_compatibility_clean import apply_wan22_compatibility, remove_wan22_compatibility
+        from wan22_compatibility_clean import backend.app as apply_wan22_compatibility, remove_wan22_compatibility
         print("✅ WAN compatibility layer imported")
     except ImportError:
         print("❌ WAN compatibility layer not found")
@@ -60,7 +60,7 @@ def test_wan_ti2v_5b_model():
     try:
         from diffusers import DiffusionPipeline
         import numpy as np
-        from PIL import Image
+from PIL import Image
         
         # The actual WAN TI2V-5B model
         model_id = "Wan-AI/Wan2.2-TI2V-5B-Diffusers"
@@ -235,7 +235,7 @@ def test_wan_ti2v_5b_model():
                 except Exception as e:
                     print(f"❌ Error in {config['name']}: {e}")
                     import traceback
-                    traceback.print_exc()
+traceback.print_exc()
                     clear_memory()
                     continue
             
@@ -277,7 +277,7 @@ def test_wan_ti2v_5b_model():
     except Exception as e:
         print(f"❌ Unexpected error: {e}")
         import traceback
-        traceback.print_exc()
+traceback.print_exc()
         return False
         
     finally:

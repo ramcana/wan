@@ -228,7 +228,7 @@ def function_{i}(param):
 
 def async_function_{i}(param):
     import asyncio
-    return asyncio.create_task(asyncio.sleep(0.001))
+return asyncio.create_task(asyncio.sleep(0.001))
 """
             (project_dir / "src" / "modules" / f"module_{i}.py").write_text(src_content)
         

@@ -157,7 +157,7 @@ class TestDependencyAnalyzer:
     def _extract_imports(self, tree: ast.AST) -> List[str]:
         """Extract all import statements from AST"""
         imports = []
-        
+
         for node in ast.walk(tree):
             if isinstance(node, ast.Import):
                 for alias in node.names:
@@ -166,7 +166,7 @@ class TestDependencyAnalyzer:
                 module = node.module or ''
                 for alias in node.names:
                     imports.append(f"{module}.{alias.name}" if module else alias.name)
-        
+
         return imports
     
     def _extract_fixtures(self, tree: ast.AST) -> List[str]:

@@ -44,7 +44,7 @@ class TestErrorRecoverySystem(unittest.TestCase):
     def tearDown(self):
         """Clean up test environment"""
         import shutil
-        shutil.rmtree(self.temp_dir, ignore_errors=True)
+shutil.rmtree(self.temp_dir, ignore_errors=True)
     
     def test_initialization(self):
         """Test ErrorRecoverySystem initialization"""
@@ -222,7 +222,7 @@ class TestRecoveryWorkflows(unittest.TestCase):
     def tearDown(self):
         """Clean up test environment"""
         import shutil
-        shutil.rmtree(self.temp_dir, ignore_errors=True)
+shutil.rmtree(self.temp_dir, ignore_errors=True)
     
     def test_workflow_manager_initialization(self):
         """Test workflow manager initialization"""
@@ -320,7 +320,7 @@ class TestAdvancedLogger(unittest.TestCase):
     def tearDown(self):
         """Clean up test environment"""
         import shutil
-        shutil.rmtree(self.temp_dir, ignore_errors=True)
+shutil.rmtree(self.temp_dir, ignore_errors=True)
     
     def test_logger_initialization(self):
         """Test advanced logger initialization"""
@@ -392,7 +392,7 @@ class TestLogRotationManager(unittest.TestCase):
     def tearDown(self):
         """Clean up test environment"""
         import shutil
-        shutil.rmtree(self.temp_dir, ignore_errors=True)
+shutil.rmtree(self.temp_dir, ignore_errors=True)
     
     def test_rotation_manager_initialization(self):
         """Test rotation manager initialization"""
@@ -505,7 +505,7 @@ class TestIntegration(unittest.TestCase):
     def tearDown(self):
         """Clean up integration test environment"""
         import shutil
-        shutil.rmtree(self.temp_dir, ignore_errors=True)
+shutil.rmtree(self.temp_dir, ignore_errors=True)
     
     def test_end_to_end_error_recovery(self):
         """Test complete end-to-end error recovery workflow"""

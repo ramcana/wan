@@ -87,7 +87,7 @@ def test_model_manager_integration():
     print("=" * 40)
     
     try:
-        from core.services.model_manager import ModelManager
+        from backend.core.services.model_manager import ModelManager
         
         # Create model manager
         manager = ModelManager()

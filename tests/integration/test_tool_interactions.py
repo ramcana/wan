@@ -647,7 +647,7 @@ class TestWorkflowValidation:
     def test_workflow_performance_tracking(self, integration_test_project):
         """Test workflow performance tracking"""
         import time
-        
+
         orchestrator = WorkflowOrchestrator()
         
         # Track performance of each workflow step
@@ -683,8 +683,8 @@ class TestWorkflowValidation:
     def test_concurrent_workflow_execution(self, integration_test_project):
         """Test concurrent execution of workflows"""
         import threading
-        import queue
-        
+import queue
+
         orchestrator = WorkflowOrchestrator()
         results_queue = queue.Queue()
         

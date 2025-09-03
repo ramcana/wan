@@ -173,7 +173,7 @@ class TestOptimizationLogger(unittest.TestCase):
     def tearDown(self):
         """Clean up test fixtures."""
         import shutil
-        shutil.rmtree(self.temp_dir, ignore_errors=True)
+shutil.rmtree(self.temp_dir, ignore_errors=True)
     
     def test_logger_initialization(self):
         """Test logger initialization."""
@@ -231,7 +231,7 @@ class TestWAN22SystemOptimizer(unittest.TestCase):
     def tearDown(self):
         """Clean up test fixtures."""
         import shutil
-        shutil.rmtree(self.temp_dir, ignore_errors=True)
+shutil.rmtree(self.temp_dir, ignore_errors=True)
     
     def test_optimizer_initialization(self):
         """Test optimizer initialization."""
@@ -396,7 +396,7 @@ class TestIntegration(unittest.TestCase):
     def tearDown(self):
         """Clean up integration test fixtures."""
         import shutil
-        shutil.rmtree(self.temp_dir, ignore_errors=True)
+shutil.rmtree(self.temp_dir, ignore_errors=True)
     
     @patch('wan22_system_optimizer.torch')
     @patch('wan22_system_optimizer.psutil')

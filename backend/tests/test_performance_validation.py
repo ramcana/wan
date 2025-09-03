@@ -10,7 +10,7 @@ import psutil
 import GPUtil
 from httpx import AsyncClient
 from fastapi.testclient import TestClient
-from backend.main import app
+from backend.main import backend.app as app
 from backend.models.schemas import GenerationRequest, TaskStatus
 import json
 import os
@@ -248,8 +248,8 @@ class TestResourceConstraints:
         async with AsyncClient(app=app, base_url="http://test") as client:
             # Create CPU load simulation
             import threading
-            import math
-            
+import math
+
             def cpu_load():
                 """Create CPU load for testing"""
                 end_time = time.time() + 30  # Run for 30 seconds
@@ -415,7 +415,7 @@ class TestBaselineMetrics:
     def test_memory_leak_detection(self):
         """Test for memory leaks during extended operation"""
         import gc
-        
+
         with TestClient(app) as client:
             initial_memory = psutil.Process().memory_info().rss / 1024 / 1024  # MB
             

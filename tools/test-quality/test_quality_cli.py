@@ -479,7 +479,7 @@ Examples:
     # Change to project root if specified
     if args.project_root != Path.cwd():
         import os
-        os.chdir(args.project_root)
+os.chdir(args.project_root)
     
     # Execute command
     try:
@@ -491,7 +491,7 @@ Examples:
         print(f"❌ Unexpected error: {e}")
         if args.verbose:
             import traceback
-            traceback.print_exc()
+traceback.print_exc()
         return 1
 
 

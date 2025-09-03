@@ -14,7 +14,7 @@ import os
 # Add backend directory to path
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
-from core.cors_validator import (
+from backend.core.cors_validator import (
     CORSValidator, validate_cors_configuration, 
     get_cors_error_info, generate_cors_error_response
 )

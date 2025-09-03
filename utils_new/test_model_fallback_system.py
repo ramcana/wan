@@ -50,7 +50,7 @@ class TestModelFallbackSystem(unittest.TestCase):
     def tearDown(self):
         """Clean up test environment"""
         import shutil
-        shutil.rmtree(self.temp_dir, ignore_errors=True)
+shutil.rmtree(self.temp_dir, ignore_errors=True)
     
     def test_initialization(self):
         """Test ModelFallbackSystem initialization"""

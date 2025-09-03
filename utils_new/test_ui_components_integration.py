@@ -337,7 +337,7 @@ class TestUIResponsiveness:
         """Test debounced validation behavior"""
         from ui_event_handlers import UIEventHandlers
         import time
-        
+
         event_handlers = UIEventHandlers()
         
         # Simulate rapid typing

@@ -226,7 +226,7 @@ class TestCoverageValidator:
                 
                 # Map to source modules based on imports and function names
                 imports = self._extract_imports(tree)
-                
+
                 for test_func in test_functions:
                     # Try to determine which source function this tests
                     source_func = self._infer_source_function(test_func, imports)
@@ -575,7 +575,7 @@ class TestCoverageValidator:
     def _extract_imports(self, tree: ast.AST) -> List[str]:
         """Extract import statements from AST"""
         imports = []
-        
+
         for node in ast.walk(tree):
             if isinstance(node, ast.Import):
                 for alias in node.names:
@@ -584,7 +584,7 @@ class TestCoverageValidator:
                 if node.module:
                     for alias in node.names:
                         imports.append(f"{node.module}.{alias.name}")
-        
+
         return imports
     
     def _infer_source_function(self, test_func_name: str, imports: List[str]) -> Optional[str]:

@@ -90,7 +90,7 @@ def test_logging_setup():
     
     from main import setup_logging
     import logging
-    
+
     # Test normal logging
     setup_logging(debug=False)
     assert logging.getLogger().level == logging.INFO
@@ -115,5 +115,5 @@ if __name__ == "__main__":
     except Exception as e:
         print(f"\n❌ Test failed: {e}")
         import traceback
-        traceback.print_exc()
+traceback.print_exc()
         sys.exit(1)

@@ -191,7 +191,7 @@ def test_image_upload_handler():
         from input_validation import ValidationResult
         from PIL import Image
         import numpy as np
-        
+
         # Mock the required managers
         with patch('ui_event_handlers_enhanced.get_validation_manager') as mock_validation, \
              patch('ui_event_handlers_enhanced.get_image_validator') as mock_image_validator, \

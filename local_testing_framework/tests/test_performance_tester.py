@@ -98,7 +98,7 @@ class TestBenchmarkRunner(unittest.TestCase):
     def tearDown(self):
         """Clean up test fixtures"""
         import shutil
-        shutil.rmtree(self.temp_dir, ignore_errors=True)
+shutil.rmtree(self.temp_dir, ignore_errors=True)
     
     @patch('subprocess.run')
     def test_run_performance_profiler_benchmark_success(self, mock_run):
@@ -130,7 +130,7 @@ class TestBenchmarkRunner(unittest.TestCase):
     def test_run_performance_profiler_benchmark_timeout(self, mock_run):
         """Test performance profiler benchmark timeout"""
         import subprocess
-        mock_run.side_effect = subprocess.TimeoutExpired("cmd", 1800)
+mock_run.side_effect = subprocess.TimeoutExpired("cmd", 1800)
         
         result = self.runner.run_performance_profiler_benchmark()
         

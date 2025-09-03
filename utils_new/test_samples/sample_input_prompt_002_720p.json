@@ -1,12 +1,12 @@
 {
-  "input": "Flowing liquid patterns with metallic reflections, wide shot, high detail, vibrant colors, dramatic atmosphere",
+  "input": "Alien landscape with strange rock formations, wide shot, high detail, moody atmosphere, soft lighting",
   "resolution": "720p",
-  "output_path": "outputs/test_video_prompt_002_720p_20250902_204310.mp4",
+  "output_path": "outputs/test_video_prompt_002_720p_20250902_225941.mp4",
   "metadata": {
     "prompt_id": "prompt_002",
-    "category": "abstract",
+    "category": "sci-fi",
     "complexity": "medium",
-    "generated_at": "2025-09-02T20:43:10.110694",
-    "test_session": "b4327352-e595-4ce9-9771-298369edbbbb"
+    "generated_at": "2025-09-02T22:59:41.299173",
+    "test_session": "a2b4627b-7983-4c56-89af-0f109143599d"
   }
 }

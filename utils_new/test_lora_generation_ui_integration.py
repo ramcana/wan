@@ -176,7 +176,7 @@ def test_lora_ui_components_integration():
     except Exception as e:
         print(f"❌ Integration verification failed: {str(e)}")
         import traceback
-        traceback.print_exc()
+traceback.print_exc()
         return False
 
 def test_lora_workflow_integration():

@@ -237,7 +237,7 @@ class TestThreadripperProOptimizations(unittest.TestCase):
 if __name__ == '__main__':
     # Set up logging
     import logging
-    logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.INFO)
     
     # Run tests
     unittest.main(verbosity=2)

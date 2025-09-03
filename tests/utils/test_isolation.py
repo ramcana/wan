@@ -111,7 +111,7 @@ class TestIsolationManager:
         for pid in context.processes:
             try:
                 import psutil
-                process = psutil.Process(pid)
+process = psutil.Process(pid)
                 if process.is_running():
                     process.terminate()
                     process.wait(timeout=5)

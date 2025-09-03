@@ -33,7 +33,7 @@ class TestVRAMConfigManager(unittest.TestCase):
         self.config_manager.cleanup()
         # Clean up temp directory
         import shutil
-        shutil.rmtree(self.temp_dir, ignore_errors=True)
+shutil.rmtree(self.temp_dir, ignore_errors=True)
     
     def test_manual_vram_config_creation(self):
         """Test creating manual VRAM configuration"""
@@ -289,7 +289,7 @@ class TestUtilityFunctions(unittest.TestCase):
     
     def tearDown(self):
         import shutil
-        shutil.rmtree(self.temp_dir, ignore_errors=True)
+shutil.rmtree(self.temp_dir, ignore_errors=True)
     
     @patch('vram_config_manager.VRAMConfigManager')
     def test_create_fallback_config(self, mock_manager_class):
@@ -374,7 +374,7 @@ class TestGPUSelectionCriteria(unittest.TestCase):
 if __name__ == '__main__':
     # Set up logging for tests
     import logging
-    logging.basicConfig(level=logging.WARNING)  # Reduce noise during tests
+logging.basicConfig(level=logging.WARNING)  # Reduce noise during tests
     
     # Run tests
     unittest.main(verbosity=2)

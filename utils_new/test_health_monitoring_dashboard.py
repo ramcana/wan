@@ -388,7 +388,7 @@ class TestIntegration(unittest.TestCase):
             
             # Wait for some data
             import time
-            time.sleep(1)
+time.sleep(1)
             
             # Test dashboard functionality
             status = dashboard.get_system_status()

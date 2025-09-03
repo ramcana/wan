@@ -35,7 +35,7 @@ class TestModelLoadingManager(unittest.TestCase):
     def tearDown(self):
         """Clean up test fixtures"""
         import shutil
-        shutil.rmtree(self.temp_dir, ignore_errors=True)
+shutil.rmtree(self.temp_dir, ignore_errors=True)
     
     def test_init(self):
         """Test ModelLoadingManager initialization"""
@@ -774,7 +774,7 @@ class TestModelLoadingManagerIntegration(unittest.TestCase):
     def tearDown(self):
         """Clean up integration test fixtures"""
         import shutil
-        shutil.rmtree(self.temp_dir, ignore_errors=True)
+shutil.rmtree(self.temp_dir, ignore_errors=True)
     
     def test_end_to_end_progress_tracking(self):
         """Test complete progress tracking workflow"""

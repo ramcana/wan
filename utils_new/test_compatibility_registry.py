@@ -335,7 +335,7 @@ class TestCompatibilityRegistry:
         
         # Create import data
         import_data = {
-            "export_timestamp": "2024-01-01T00:00:00",
+"export_timestamp": "2024-01-01T00:00:00",
             "registry_version": "1.0",
             "models": {
                 "imported-model": sample_requirements.to_dict()
@@ -360,7 +360,7 @@ class TestCompatibilityRegistry:
         
         # Create import data
         import_data = {
-            "export_timestamp": "2024-01-01T00:00:00",
+"export_timestamp": "2024-01-01T00:00:00",
             "registry_version": "1.0",
             "models": {
                 "only-model": sample_requirements.to_dict()
@@ -472,7 +472,7 @@ class TestRegistryIntegration:
         
         # Verify import worked
         imported = new_registry.get_pipeline_requirements("test-model")
-        assert imported is not None
+assert imported is not None
         assert imported.pipeline_class == "WanPipeline"
         
         # Cleanup

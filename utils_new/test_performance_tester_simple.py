@@ -117,7 +117,7 @@ def test_metrics_collection():
     collector.start_monitoring(interval=0.5)
     
     import time
-    time.sleep(3)
+time.sleep(3)
     
     collector.stop_monitoring()
     
@@ -138,5 +138,5 @@ if __name__ == '__main__':
     except Exception as e:
         print(f"\n✗ Error during testing: {e}")
         import traceback
-        traceback.print_exc()
+traceback.print_exc()
         sys.exit(1)

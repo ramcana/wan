@@ -109,7 +109,7 @@ class TestErrorPatternMatcher:
         except NameError:
             # TimeoutError might not be available in older Python versions
             import socket
-            timeout_error = socket.timeout("Timeout")
+timeout_error = socket.timeout("Timeout")
         
         result = self.matcher.classify_error("Some error", timeout_error)
         assert result == ErrorType.TIMEOUT_ERROR
@@ -629,7 +629,7 @@ class TestRecoveryEngineAdvanced:
     def test_recovery_action_timeout_handling(self):
         """Test handling of recovery actions that timeout."""
         import time
-        
+
         def slow_recovery_action(error, context):
             time.sleep(10)  # Simulate slow action
             return RecoveryResult(success=True, action_taken="slow_action", message="Done")

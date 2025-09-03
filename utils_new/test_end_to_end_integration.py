@@ -1244,7 +1244,7 @@ def main():
     
     # Parse command line arguments
     import argparse
-    parser = argparse.ArgumentParser(description="Run end-to-end integration tests")
+parser = argparse.ArgumentParser(description="Run end-to-end integration tests")
     parser.add_argument("--model-variants", action="store_true", help="Test only model variants")
     parser.add_argument("--resource-constraints", action="store_true", help="Test only resource constraints")
     parser.add_argument("--error-injection", action="store_true", help="Test only error injection")
@@ -1331,4 +1331,4 @@ def main():
 
 if __name__ == "__main__":
     import sys
-    main()
+main()

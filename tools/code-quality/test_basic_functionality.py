@@ -87,7 +87,7 @@ def test_validators():
     
     # Create test AST
     import ast
-    test_code = '''
+test_code = '''
 def undocumented_function():
     return "test"
 
@@ -125,7 +125,7 @@ def test_analyzers():
     
     # Create complex function for testing
     import ast
-    complex_code = '''
+complex_code = '''
 def complex_function(x):
     if x > 10:
         if x > 20:
@@ -181,7 +181,7 @@ def bad_function(x,y,z):
         
         # Parse the code
         import ast
-        tree = ast.parse(test_content)
+tree = ast.parse(test_content)
         
         # Run each validator
         format_issues = formatter.check_formatting(temp_file, test_content)
@@ -224,7 +224,7 @@ def main():
     except Exception as e:
         print(f"\n❌ Test failed: {e}")
         import traceback
-        traceback.print_exc()
+traceback.print_exc()
         return False
     
     return True

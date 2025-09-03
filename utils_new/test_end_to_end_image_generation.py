@@ -28,7 +28,7 @@ logger = logging.getLogger(__name__)
 def create_gradient_image(size=(512, 512), start_color=(255, 0, 0), end_color=(0, 0, 255)):
     """Create a gradient image for testing"""
     import numpy as np
-    
+
     width, height = size
     image_array = np.zeros((height, width, 3), dtype=np.uint8)
     

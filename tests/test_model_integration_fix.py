@@ -16,7 +16,7 @@ async def test_model_integration():
         # Add backend to path
         sys.path.insert(0, str(Path("backend").absolute()))
         
-        from core.model_integration_bridge import ModelIntegrationBridge
+        from backend.core.model_integration_bridge import ModelIntegrationBridge
         
         # Initialize bridge
         bridge = ModelIntegrationBridge()
@@ -57,7 +57,7 @@ async def test_model_integration():
     except Exception as e:
         print(f"❌ Test failed: {e}")
         import traceback
-        traceback.print_exc()
+traceback.print_exc()
         return False
 
 async def main():

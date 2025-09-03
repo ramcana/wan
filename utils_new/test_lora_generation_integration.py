@@ -285,7 +285,7 @@ def test_lora_generation_integration():
     except Exception as e:
         print(f"\n❌ Test failed with error: {str(e)}")
         import traceback
-        traceback.print_exc()
+traceback.print_exc()
         return False
 
 def test_lora_memory_warnings():

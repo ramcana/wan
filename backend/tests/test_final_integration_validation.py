@@ -15,11 +15,11 @@ import sys
 # Add backend to path
 sys.path.append(str(Path(__file__).parent.parent))
 
-from core.system_integration import SystemIntegration
-from core.model_integration_bridge import ModelIntegrationBridge
-from core.performance_monitor import get_performance_monitor
-from core.fallback_recovery_system import get_fallback_recovery_system
-from services.generation_service import GenerationService
+from backend.core.system_integration import SystemIntegration
+from backend.core.model_integration_bridge import ModelIntegrationBridge
+from backend.core.performance_monitor import get_performance_monitor
+from backend.core.fallback_recovery_system import get_fallback_recovery_system
+from backend.services.generation_service import GenerationService
 from services.real_generation_pipeline import RealGenerationPipeline
 
 class TestFinalIntegrationValidation:
@@ -194,7 +194,7 @@ class TestPerformanceMonitoringValidation(TestFinalIntegrationValidation):
     def test_performance_analysis(self, performance_monitor):
         """Test performance analysis functionality."""
         # Add some mock metrics
-        from core.performance_monitor import PerformanceMetrics
+        from backend.core.performance_monitor import PerformanceMetrics
         
         mock_metrics = PerformanceMetrics(
             task_id="mock-task-1",

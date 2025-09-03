@@ -70,7 +70,7 @@ def test_system_integration():
     
     try:
         import asyncio
-        from backend.core.system_integration import get_system_integration
+from backend.core.system_integration import get_system_integration
         
         async def test_integration():
             integration = await get_system_integration()
@@ -90,7 +90,7 @@ def test_gpu_validation():
     
     try:
         import asyncio
-        from backend.core.system_integration import get_system_integration
+from backend.core.system_integration import get_system_integration
         
         async def test_gpu():
             integration = await get_system_integration()

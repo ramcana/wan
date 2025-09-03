@@ -357,7 +357,7 @@ class ComprehensiveTestRunner:
 def main():
     """Main entry point for comprehensive test runner"""
     import argparse
-    
+
     parser = argparse.ArgumentParser(description="Run comprehensive test suite")
     parser.add_argument("--suite", choices=["e2e", "integration", "performance", "acceptance", "all"], 
                        default="all", help="Test suite to run")

@@ -28,7 +28,7 @@ class TestSyntaxValidator(unittest.TestCase):
     def tearDown(self):
         """Clean up test fixtures"""
         import shutil
-        shutil.rmtree(self.temp_dir, ignore_errors=True)
+shutil.rmtree(self.temp_dir, ignore_errors=True)
     
     def test_init(self):
         """Test SyntaxValidator initialization"""
@@ -348,7 +348,7 @@ class TestSyntaxValidatorIntegration(unittest.TestCase):
     def tearDown(self):
         """Clean up integration test fixtures"""
         import shutil
-        shutil.rmtree(self.temp_dir, ignore_errors=True)
+shutil.rmtree(self.temp_dir, ignore_errors=True)
     
     def test_end_to_end_validation_and_repair(self):
         """Test complete validation and repair workflow"""

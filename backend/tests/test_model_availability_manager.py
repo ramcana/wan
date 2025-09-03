@@ -567,7 +567,7 @@ class TestModelAvailabilityManagerIntegration:
         """Test integration with actual ModelManager"""
         with tempfile.TemporaryDirectory() as temp_dir:
             # Import actual ModelManager
-            from core.services.model_manager import ModelManager
+            from backend.core.services.model_manager import ModelManager
             
             # Create real model manager
             model_manager = ModelManager()

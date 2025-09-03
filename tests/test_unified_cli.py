@@ -10,7 +10,7 @@ from typer.testing import CliRunner
 project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
-from cli.main import app
+from cli.main import backend.app as app
 
 class TestUnifiedCLI:
     """Test the unified CLI functionality"""
@@ -204,7 +204,7 @@ class TestCLIPerformance:
     def test_help_is_fast(self):
         """Test that help commands are fast"""
         import time
-        
+
         start_time = time.time()
         result = self.runner.invoke(app, ["--help"])
         end_time = time.time()
@@ -215,7 +215,7 @@ class TestCLIPerformance:
     def test_quick_command_is_fast(self):
         """Test that quick command is reasonably fast"""
         import time
-        
+
         start_time = time.time()
         result = self.runner.invoke(app, ["quick"])
         end_time = time.time()

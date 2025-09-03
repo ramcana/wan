@@ -230,7 +230,7 @@ class TestGenerationPerformanceBenchmarks:
     async def test_i2v_performance_benchmark(self, benchmark_suite):
         """Benchmark I2V generation performance"""
         import tempfile
-        
+
         # Create temporary test image
         with tempfile.NamedTemporaryFile(suffix='.jpg', delete=False) as tmp_file:
             test_image_path = tmp_file.name
@@ -294,7 +294,7 @@ class TestGenerationPerformanceBenchmarks:
     async def test_ti2v_performance_benchmark(self, benchmark_suite):
         """Benchmark TI2V generation performance"""
         import tempfile
-        
+
         # Create temporary test image
         with tempfile.NamedTemporaryFile(suffix='.jpg', delete=False) as tmp_file:
             test_image_path = tmp_file.name
@@ -537,7 +537,7 @@ class TestResourceUsageBenchmarks:
         """Monitor GPU memory usage if available"""
         try:
             import GPUtil
-            
+
             gpus = GPUtil.getGPUs()
             if not gpus:
                 pytest.skip("No GPU available for monitoring")

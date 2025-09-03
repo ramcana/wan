@@ -14,7 +14,7 @@ async def test_json_request():
     
     try:
         import httpx
-        
+
         # Test data that matches what the frontend should send
         test_data = {
             "prompt": "A cat walking in the park, cinematic lighting, highly detailed",
@@ -53,7 +53,7 @@ async def test_json_request():
     except Exception as e:
         print(f"❌ Test failed: {e}")
         import traceback
-        traceback.print_exc()
+traceback.print_exc()
 
 if __name__ == "__main__":
     asyncio.run(test_json_request())

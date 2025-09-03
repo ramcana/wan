@@ -283,7 +283,7 @@ class TestDiagnosticMonitorIntegration(unittest.TestCase):
     def test_concurrent_monitoring_operations(self):
         """Test monitoring under concurrent operations"""
         import threading
-        
+
         # Start monitoring
         self.monitor.start_monitoring()
         

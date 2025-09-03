@@ -15,7 +15,7 @@ import sys
 from pathlib import Path
 sys.path.append(str(Path(__file__).parent.parent))
 
-from app import app
+from backend.app import app
 from api.enhanced_model_management import (
     EnhancedModelManagementAPI, DownloadControlRequest, CleanupRequest, FallbackSuggestionRequest
 )

@@ -29,7 +29,7 @@ class TestSyntaxValidationAccuracy(unittest.TestCase):
     def tearDown(self):
         """Clean up syntax validation test environment"""
         import shutil
-        shutil.rmtree(self.temp_dir, ignore_errors=True)
+shutil.rmtree(self.temp_dir, ignore_errors=True)
     
     def test_syntax_validation_accuracy_valid_code(self):
         """Test syntax validation accuracy on valid Python code"""
@@ -271,7 +271,7 @@ class TestVRAMDetectionReliability(unittest.TestCase):
     def tearDown(self):
         """Clean up VRAM detection test environment"""
         import shutil
-        shutil.rmtree(self.temp_dir, ignore_errors=True)
+shutil.rmtree(self.temp_dir, ignore_errors=True)
     
     def test_vram_detection_method_fallback_reliability(self):
         """Test reliability of VRAM detection method fallback chain"""
@@ -456,7 +456,7 @@ class TestQuantizationQualityValidation(unittest.TestCase):
     def tearDown(self):
         """Clean up quantization quality test environment"""
         import shutil
-        shutil.rmtree(self.temp_dir, ignore_errors=True) 
+shutil.rmtree(self.temp_dir, ignore_errors=True) 
    def test_quantization_strategy_quality_validation(self):
         """Test quality validation of quantization strategies"""
         # Test different model types and sizes
@@ -695,7 +695,7 @@ class TestValidationIntegration(unittest.TestCase):
     def tearDown(self):
         """Clean up validation integration test environment"""
         import shutil
-        shutil.rmtree(self.temp_dir, ignore_errors=True)
+shutil.rmtree(self.temp_dir, ignore_errors=True)
     
     def test_cross_component_validation_consistency(self):
         """Test validation consistency across different components"""
@@ -800,7 +800,7 @@ def test_function():
     def test_validation_performance_benchmarks(self):
         """Test validation performance meets benchmarks"""
         import time
-        
+
         # Syntax validation performance
         syntax_validator = SyntaxValidator(backup_dir=self.temp_dir)
         

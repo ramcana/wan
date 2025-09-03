@@ -24,7 +24,7 @@ def test_wan22_generation_no_quant():
     try:
         # Import the compatibility layer first
         import wan22_compatibility_clean
-        print("✅ WAN2.2 compatibility layer loaded")
+print("✅ WAN2.2 compatibility layer loaded")
         
         # Import the main engine
         from utils import VideoGenerationEngine
@@ -70,7 +70,7 @@ def test_wan22_generation_no_quant():
     except Exception as e:
         print(f"❌ Test failed with exception: {e}")
         import traceback
-        traceback.print_exc()
+traceback.print_exc()
         return False
 
 if __name__ == "__main__":

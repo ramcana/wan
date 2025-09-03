@@ -12,7 +12,7 @@ from pathlib import Path
 # Add parent directory to path
 sys.path.append(str(Path(__file__).parent.parent))
 
-from main import app
+from main import backend.app as app
 
 client = TestClient(app)
 

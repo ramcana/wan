@@ -14,7 +14,7 @@ from unittest.mock import Mock, patch, MagicMock
 from architecture_detector import ArchitectureDetector, ArchitectureType, ArchitectureSignature
 from pipeline_manager import PipelineManager, PipelineLoadStatus
 from wan_pipeline_loader import WanPipelineLoader
-from wan_model_compatibility_fix import apply_wan_compatibility_fix
+from wan_model_compatibility_fix import backend.app as apply_wan_compatibility_fix
 
 
 class TestWanModelCompatibilityIntegration(unittest.TestCase):
@@ -32,7 +32,7 @@ class TestWanModelCompatibilityIntegration(unittest.TestCase):
     def tearDown(self):
         """Clean up test environment"""
         import shutil
-        shutil.rmtree(self.temp_dir, ignore_errors=True)
+shutil.rmtree(self.temp_dir, ignore_errors=True)
     
     def _create_mock_wan_model(self):
         """Create a mock WAN model structure"""
@@ -244,7 +244,7 @@ class TestWanModelCompatibilityRealWorld(unittest.TestCase):
             
         finally:
             import shutil
-            shutil.rmtree(temp_dir, ignore_errors=True)
+shutil.rmtree(temp_dir, ignore_errors=True)
     
     def test_mixed_model_detection(self):
         """Test detection of models with mixed components"""
@@ -280,7 +280,7 @@ class TestWanModelCompatibilityRealWorld(unittest.TestCase):
             
         finally:
             import shutil
-            shutil.rmtree(temp_dir, ignore_errors=True)
+shutil.rmtree(temp_dir, ignore_errors=True)
 
 
 if __name__ == '__main__':

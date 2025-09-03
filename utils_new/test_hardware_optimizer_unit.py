@@ -33,7 +33,7 @@ class TestHardwareOptimizer(unittest.TestCase):
     def tearDown(self):
         """Clean up test fixtures"""
         import shutil
-        shutil.rmtree(self.temp_dir, ignore_errors=True)
+shutil.rmtree(self.temp_dir, ignore_errors=True)
     
     def test_init(self):
         """Test HardwareOptimizer initialization"""

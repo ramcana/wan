@@ -28,7 +28,7 @@ import os
 # Add project root to path for imports
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
-from tools.test_auditor.test_auditor import TestAuditor
+from tools.test-auditor.test_auditor import TestAuditor
 from tools.config_manager.config_unifier import ConfigUnifier
 from tools.project_structure_analyzer.structure_analyzer import StructureAnalyzer
 from tools.codebase_cleanup.duplicate_detector import DuplicateDetector

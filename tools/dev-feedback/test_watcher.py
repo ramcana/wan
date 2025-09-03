@@ -485,7 +485,7 @@ def create_default_config(project_root: Path) -> WatchConfig:
 def main():
     """Main function for CLI usage"""
     import argparse
-    
+
     parser = argparse.ArgumentParser(description="Test watcher with selective execution")
     parser.add_argument('--category', action='append', help='Test categories to run (unit, integration, e2e, performance)')
     parser.add_argument('--pattern', action='append', help='Test file patterns to watch')

@@ -11,7 +11,7 @@ from pathlib import Path
 # Add the project root to the path
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-from core.services.model_manager import ModelManager
+from backend.core.services.model_manager import ModelManager
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)

@@ -95,7 +95,7 @@ def filter_tests_by_pattern(test_files: List[str], patterns: List[str]) -> List[
         return test_files
         
     import fnmatch
-    
+
     filtered_tests = []
     for test_file in test_files:
         for pattern in patterns:
@@ -394,7 +394,7 @@ Examples:
         logger.error(f"Test execution failed: {e}")
         if args.verbose:
             import traceback
-            traceback.print_exc()
+traceback.print_exc()
         return 1
 
 

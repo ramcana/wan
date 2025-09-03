@@ -402,7 +402,7 @@ class TestEnvironmentValidatorEdgeCases:
     def test_network_timeout_during_version_check(self):
         """Test handling of network timeouts during version checks."""
         import subprocess
-        
+
         with patch('subprocess.run', side_effect=subprocess.TimeoutExpired("node", 30)):
             issue = self.validator.dependency_validator._check_node_version()
             
@@ -413,8 +413,8 @@ class TestEnvironmentValidatorEdgeCases:
     def test_concurrent_validation_calls(self):
         """Test thread safety of validation calls."""
         import threading
-        import time
-        
+import time
+
         results = []
         
         def validate_worker():

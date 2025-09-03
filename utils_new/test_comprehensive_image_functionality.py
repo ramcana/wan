@@ -599,7 +599,7 @@ class TestProgressBarFunctionality(unittest.TestCase):
         
         # Should be JSON serializable
         import json
-        json_str = json.dumps(progress_dict)
+json_str = json.dumps(progress_dict)
         self.assertIsInstance(json_str, str)
         
         # Should be deserializable
@@ -648,7 +648,7 @@ class TestProgressBarFunctionality(unittest.TestCase):
         
         # Simulate some progress with time
         import time
-        start_time = time.time()
+start_time = time.time()
         
         # Update progress at 25%
         self.progress_tracker.update_progress(step=25)

@@ -34,7 +34,7 @@ class TestStressTesting(unittest.TestCase):
     def tearDown(self):
         """Clean up stress testing environment"""
         import shutil
-        shutil.rmtree(self.temp_dir, ignore_errors=True)
+shutil.rmtree(self.temp_dir, ignore_errors=True)
     
     def test_concurrent_vram_monitoring(self):
         """Test VRAM monitoring under concurrent access"""
@@ -417,7 +417,7 @@ class TestEdgeCaseHandling(unittest.TestCase):
     def tearDown(self):
         """Clean up edge case testing environment"""
         import shutil
-        shutil.rmtree(self.temp_dir, ignore_errors=True)
+shutil.rmtree(self.temp_dir, ignore_errors=True)
     
     def test_zero_vram_handling(self):
         """Test handling of zero VRAM scenarios"""
