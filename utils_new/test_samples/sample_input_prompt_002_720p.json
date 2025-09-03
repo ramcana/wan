@@ -1,12 +1,12 @@
 {
-  "input": "Dense forest with sunlight filtering through tall trees, aerial view, high detail, moody atmosphere, photorealistic",
+  "input": "Flowing liquid patterns with metallic reflections, wide shot, high detail, vibrant colors, dramatic atmosphere",
   "resolution": "720p",
-  "output_path": "outputs/test_video_prompt_002_720p_20250902_094446.mp4",
+  "output_path": "outputs/test_video_prompt_002_720p_20250902_204310.mp4",
   "metadata": {
     "prompt_id": "prompt_002",
-    "category": "nature",
+    "category": "abstract",
     "complexity": "medium",
-    "generated_at": "2025-09-02T09:44:46.033919",
-    "test_session": "9d8a4c07-f590-446e-8344-68760a986e4c"
+    "generated_at": "2025-09-02T20:43:10.110694",
+    "test_session": "b4327352-e595-4ce9-9771-298369edbbbb"
   }
 }

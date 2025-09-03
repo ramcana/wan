@@ -1,0 +1,213 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "WAN: Quick Validation",
+            "type": "shell",
+            "command": "python",
+            "args": [
+                "-m",
+                "cli.main",
+                "quick"
+            ],
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": [],
+            "detail": "Run quick validation suite for fast feedback"
+        },
+        {
+            "label": "WAN: Full Test Suite",
+            "type": "shell",
+            "command": "python",
+            "args": [
+                "-m",
+                "cli.main",
+                "test",
+                "run",
+                "--coverage"
+            ],
+            "group": "test",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": [],
+            "detail": "Run comprehensive test suite with coverage"
+        },
+        {
+            "label": "WAN: Code Quality Check",
+            "type": "shell",
+            "command": "python",
+            "args": [
+                "-m",
+                "cli.main",
+                "quality",
+                "check"
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": [],
+            "detail": "Run code quality analysis"
+        },
+        {
+            "label": "WAN: Fix Code Quality",
+            "type": "shell",
+            "command": "python",
+            "args": [
+                "-m",
+                "cli.main",
+                "quality",
+                "check",
+                "--fix"
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": [],
+            "detail": "Auto-fix code quality issues"
+        },
+        {
+            "label": "WAN: Clean Codebase",
+            "type": "shell",
+            "command": "python",
+            "args": [
+                "-m",
+                "cli.main",
+                "clean",
+                "all",
+                "--dry-run"
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": [],
+            "detail": "Clean up codebase (dry run)"
+        },
+        {
+            "label": "WAN: Generate Documentation",
+            "type": "shell",
+            "command": "python",
+            "args": [
+                "-m",
+                "cli.main",
+                "docs",
+                "generate",
+                "--serve"
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": [],
+            "detail": "Generate and serve documentation"
+        },
+        {
+            "label": "WAN: Health Check",
+            "type": "shell",
+            "command": "python",
+            "args": [
+                "-m",
+                "cli.main",
+                "health",
+                "check"
+            ],
+            "group": "test",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": [],
+            "detail": "Check overall system health"
+        },
+        {
+            "label": "WAN: Project Status",
+            "type": "shell",
+            "command": "python",
+            "args": [
+                "-m",
+                "cli.main",
+                "status"
+            ],
+            "group": "test",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": [],
+            "detail": "Show overall project status"
+        },
+        {
+            "label": "WAN: Fix Imports",
+            "type": "shell",
+            "command": "python",
+            "args": [
+                "-m",
+                "cli.main",
+                "clean",
+                "imports",
+                "--fix"
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": [],
+            "detail": "Fix and organize imports"
+        },
+        {
+            "label": "WAN: Detect Flaky Tests",
+            "type": "shell",
+            "command": "python",
+            "args": [
+                "-m",
+                "cli.main",
+                "test",
+                "flaky"
+            ],
+            "group": "test",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": [],
+            "detail": "Detect and report flaky tests"
+        }
+    ]
+}

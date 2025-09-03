@@ -1,24 +1,35 @@
 repos:
-- repo: https://github.com/pre-commit/pre-commit-hooks
-  rev: v4.4.0
-  hooks:
-  - id: trailing-whitespace
-  - id: end-of-file-fixer
-  - id: check-yaml
-  - id: check-json
-- repo: https://github.com/psf/black
-  rev: 23.3.0
-  hooks:
-  - id: black
-    language_version: python3
-    args:
-    - --line-length=88
-- repo: local
-  hooks:
-  - id: code-quality-check
-    name: Code Quality Check
-    entry: python -m tools.code_quality.cli check
-    language: system
-    files: \.py$
-    args:
-    - --fail-on-error
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-json
+  - repo: https://github.com/psf/black
+    rev: 23.3.0
+    hooks:
+      - id: black
+        language_version: python3
+        args:
+          - --line-length=88
+  - repo: local
+    hooks:
+      - id: wan-quick-validation
+        name: WAN Quick Validation
+        entry: python -m cli.main quick
+        language: system
+        pass_filenames: false
+        always_run: true
+      - id: wan-import-check
+        name: Import Organization Check
+        entry: python -m cli.main clean imports
+        language: system
+        files: \.py$
+        args: [--fix]
+      - id: wan-quality-check
+        name: Code Quality Check (Fast)
+        entry: python -m cli.main quality check
+        language: system
+        files: \.py$
+        args: [--fix]

@@ -1,0 +1,21 @@
+{
+  "system": {
+    "default_quantization": "bf16",
+    "enable_offload": true
+  },
+  "directories": {
+    "output_directory": "outputs",
+    "models_directory": "models",
+    "loras_directory": "loras"
+  },
+  "models": {
+    "t2v_model": "Wan2.2-T2V-A14B",
+    "i2v_model": "Wan2.2-I2V-A14B",
+    "ti2v_model": "Wan2.2-TI2V-5B"
+  },
+  "optimization": {
+    "default_quantization": "invalid",
+    "enable_offload": true,
+    "max_vram_usage_gb": 12
+  }
+}

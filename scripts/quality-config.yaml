@@ -1,0 +1,30 @@
+metrics:
+  code_coverage:
+    threshold: 80
+    trend_tracking: true
+    alert_on_decrease: true
+  code_quality_score:
+    threshold: 8.0
+    components:
+    - complexity
+    - maintainability
+    - reliability
+    trend_tracking: true
+  test_success_rate:
+    threshold: 95
+    trend_tracking: true
+    alert_on_decrease: true
+  build_success_rate:
+    threshold: 90
+    trend_tracking: true
+    alert_on_decrease: true
+reporting:
+  frequency: daily
+  recipients:
+  - team@example.com
+  format: html
+  include_trends: true
+alerts:
+  slack_webhook: null
+  email_notifications: true
+  threshold_violations: true

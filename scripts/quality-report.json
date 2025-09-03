@@ -1,0 +1,22 @@
+{
+  "success": true,
+  "checks": {
+    "example.py": {
+      "errors": 0,
+      "warnings": 2,
+      "score": 8.5
+    },
+    "another.py": {
+      "errors": 1,
+      "warnings": 0,
+      "score": 7.0
+    }
+  },
+  "metrics": {
+    "overall_score": 7.75,
+    "total_errors": 1,
+    "total_warnings": 2,
+    "files_checked": 2,
+    "quality_grade": "B"
+  }
+}
