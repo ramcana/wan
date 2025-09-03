@@ -70,7 +70,7 @@ jobs:
             --output=config-documentation.md
 
       - name: Upload configuration documentation
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: config-documentation
           path: config-documentation.md

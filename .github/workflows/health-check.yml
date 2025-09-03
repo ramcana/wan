@@ -83,7 +83,7 @@ jobs:
             --repo-name=${{ github.event.repository.name }}
 
       - name: Upload health report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: health-report-${{ github.run_number }}
           path: |
@@ -164,7 +164,7 @@ jobs:
           pip install matplotlib pandas numpy
 
       - name: Download health report
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: health-report-${{ github.run_number }}
 
@@ -176,7 +176,7 @@ jobs:
             --chart-output=health-trends.png
 
       - name: Upload trend analysis
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: health-trends-${{ github.run_number }}
           path: |
