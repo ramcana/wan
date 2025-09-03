@@ -35,7 +35,11 @@ import PromptEnhancer from "@/components/prompt/PromptEnhancer";
 import { LoRASelector } from "./LoRASelector";
 
 interface GenerationFormProps {
-  onSubmit: (data: GenerationFormData, imageFile?: File, endImageFile?: File) => Promise<void>;
+  onSubmit: (
+    data: GenerationFormData,
+    imageFile?: File,
+    endImageFile?: File
+  ) => Promise<void>;
   isSubmitting?: boolean;
   error?: string | ApiError | Error | null;
   onRetry?: () => void;
@@ -59,28 +63,42 @@ const RESOLUTION_OPTIONS = [
   { value: "1024x576", label: "576p", description: "1024 × 576" },
 ];
 
-// Model type options (now including I2V and TI2V for task 4.3)
+// Enhanced model options for Phase 1 MVP with auto-detection
 const MODEL_OPTIONS = [
+  {
+    value: "auto" as ModelType | "auto",
+    label: "Auto-Detect (Recommended)",
+    description: "Automatically choose the best model based on your inputs",
+    badge: "AUTO",
+    requiresImage: false,
+    isAutoDetect: true,
+  },
   {
     value: "T2V-A14B" as ModelType,
     label: "Text-to-Video",
-    description: "Generate videos from text prompts",
+    description: "Generate videos from text prompts only",
     badge: "T2V",
     requiresImage: false,
+    estimatedTime: "2-3 minutes",
+    vramUsage: "~8GB",
   },
   {
     value: "I2V-A14B" as ModelType,
     label: "Image-to-Video",
-    description: "Generate videos from images",
+    description: "Animate images into videos",
     badge: "I2V",
     requiresImage: true,
+    estimatedTime: "2.5-3.5 minutes",
+    vramUsage: "~8.5GB",
   },
   {
     value: "TI2V-5B" as ModelType,
     label: "Text + Image to Video",
-    description: "Generate videos from text and images",
+    description: "Combine text and images for guided generation",
     badge: "TI2V",
     requiresImage: true,
+    estimatedTime: "1.5-2.5 minutes",
+    vramUsage: "~6GB",
   },
 ];
 
@@ -117,7 +135,7 @@ export const GenerationForm: React.FC<GenerationFormProps> = ({
   } = useForm<GenerationFormData>({
     resolver: zodResolver(GenerationFormSchema) as any,
     defaultValues: {
-      modelType: "T2V-A14B",
+      modelType: "auto" as any, // Phase 1: Default to auto-detection
       prompt: "",
       resolution: "1280x720",
       steps: 50,
@@ -137,19 +155,81 @@ export const GenerationForm: React.FC<GenerationFormProps> = ({
     (opt) => opt.value === watchedModelType
   );
 
+  // Phase 1: Auto-detection state
+  const [detectedModel, setDetectedModel] = useState<string | null>(null);
+  const [detectionConfidence, setDetectionConfidence] = useState<number>(0);
+  const [detectionExplanation, setDetectionExplanation] = useState<string[]>(
+    []
+  );
+  const [isDetecting, setIsDetecting] = useState(false);
+
   // Update prompt length and validation when prompt changes
   React.useEffect(() => {
     setPromptLength(watchedPrompt?.length || 0);
   }, [watchedPrompt]);
 
-  // Update form validation state
+  // Phase 1: Auto-detection logic
   React.useEffect(() => {
+    const runAutoDetection = async () => {
+      if (
+        watchedModelType === "auto" &&
+        watchedPrompt &&
+        watchedPrompt.length > 3
+      ) {
+        setIsDetecting(true);
+        try {
+          // Call auto-detection API
+          const response = await fetch(
+            `/api/v1/generation/models/detect?prompt=${encodeURIComponent(
+              watchedPrompt
+            )}&has_image=${selectedImage !== null}&has_end_image=${
+              selectedEndImage !== null
+            }`
+          );
+          if (response.ok) {
+            const data = await response.json();
+            setDetectedModel(data.detected_model_type);
+            setDetectionConfidence(data.confidence);
+            setDetectionExplanation(data.explanation || []);
+          }
+        } catch (error) {
+          console.warn("Auto-detection failed:", error);
+        } finally {
+          setIsDetecting(false);
+        }
+      } else if (watchedModelType !== "auto") {
+        // Clear detection when manual model is selected
+        setDetectedModel(null);
+        setDetectionConfidence(0);
+        setDetectionExplanation([]);
+      }
+    };
+
+    const timeoutId = setTimeout(runAutoDetection, 500); // Debounce
+    return () => clearTimeout(timeoutId);
+  }, [watchedPrompt, watchedModelType, selectedImage, selectedEndImage]);
+
+  // Update form validation state with auto-detection support
+  React.useEffect(() => {
+    // For auto-detection, use detected model requirements
+    const effectiveModelType =
+      watchedModelType === "auto" ? detectedModel : watchedModelType;
+    const effectiveModelOption = MODEL_OPTIONS.find(
+      (opt) => opt.value === effectiveModelType
+    );
+
     // Check if image is required and provided
-    const imageRequired = currentModelOption?.requiresImage || false;
+    const imageRequired = effectiveModelOption?.requiresImage || false;
     const imageProvided = selectedImage !== null;
     const imageValid = !imageRequired || imageProvided;
 
-    setIsFormValid(isValid && !isValidating && imageValid);
+    // For auto mode, require either detection completion or manual override
+    const autoDetectionValid =
+      watchedModelType !== "auto" || detectedModel !== null;
+
+    setIsFormValid(
+      isValid && !isValidating && imageValid && autoDetectionValid
+    );
 
     // Collect validation errors for display
     const errorMessages: string[] = [];
@@ -158,13 +238,24 @@ export const GenerationForm: React.FC<GenerationFormProps> = ({
     if (errors.steps)
       errorMessages.push(String(errors.steps.message) || "Invalid steps value");
     if (errors.modelType)
-      errorMessages.push(String(errors.modelType.message) || "Invalid model type");
+      errorMessages.push(
+        String(errors.modelType.message) || "Invalid model type"
+      );
     if (errors.resolution)
-      errorMessages.push(String(errors.resolution.message) || "Invalid resolution");
+      errorMessages.push(
+        String(errors.resolution.message) || "Invalid resolution"
+      );
     if (imageRequired && !imageProvided)
       errorMessages.push("Image is required for this model type");
     if (imageError) errorMessages.push(imageError);
     if (endImageError) errorMessages.push(endImageError);
+    if (
+      watchedModelType === "auto" &&
+      !detectedModel &&
+      watchedPrompt &&
+      watchedPrompt.length > 3
+    )
+      errorMessages.push("Auto-detection in progress...");
 
     setValidationErrors(errorMessages);
   }, [
@@ -176,6 +267,9 @@ export const GenerationForm: React.FC<GenerationFormProps> = ({
     imageError,
     selectedEndImage,
     endImageError,
+    watchedModelType,
+    detectedModel,
+    watchedPrompt,
   ]);
 
   // Auto-validate on field changes with debouncing
@@ -208,14 +302,36 @@ export const GenerationForm: React.FC<GenerationFormProps> = ({
         throw new Error("Steps must be between 1 and 100");
       }
 
-      // Check image requirements
-      const imageRequired = currentModelOption?.requiresImage || false;
-      if (imageRequired && !selectedImage) {
-        throw new Error("Image is required for this model type");
+      // Handle auto-detection: use detected model if in auto mode
+      const finalModelType =
+        data.modelType === "auto" ? detectedModel : data.modelType;
+      if (data.modelType === "auto" && !detectedModel) {
+        throw new Error(
+          "Auto-detection is still in progress. Please wait or select a model manually."
+        );
       }
 
+      // Check image requirements for the final model type
+      const finalModelOption = MODEL_OPTIONS.find(
+        (opt) => opt.value === finalModelType
+      );
+      const imageRequired = finalModelOption?.requiresImage || false;
+      if (imageRequired && !selectedImage) {
+        throw new Error(`Image is required for ${finalModelType} model`);
+      }
+
+      // Create final form data with detected model type
+      const finalData = {
+        ...data,
+        modelType: finalModelType as any,
+      };
+
       // Submit the form with optional images
-      await onSubmit(data, selectedImage || undefined, selectedEndImage || undefined);
+      await onSubmit(
+        finalData,
+        selectedImage || undefined,
+        selectedEndImage || undefined
+      );
     } catch (err) {
       // Error handling is managed by parent component
       console.error("Form submission error:", err);
@@ -256,7 +372,10 @@ export const GenerationForm: React.FC<GenerationFormProps> = ({
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <form onSubmit={handleSubmit(handleFormSubmit as any)} className="space-y-6">
+        <form
+          onSubmit={handleSubmit(handleFormSubmit as any)}
+          className="space-y-6"
+        >
           {/* Error Display */}
           {error && (
             <ErrorDisplay
@@ -321,8 +440,49 @@ export const GenerationForm: React.FC<GenerationFormProps> = ({
             </Select>
             {errors.modelType && (
               <p className="text-sm text-destructive">
-                {String(errors.modelType.message || 'Invalid model type')}
+                {String(errors.modelType.message || "Invalid model type")}
               </p>
+            )}
+
+            {/* Auto-Detection Feedback */}
+            {watchedModelType === "auto" && (
+              <div className="mt-2 p-3 bg-blue-50 dark:bg-blue-950/20 rounded-md border border-blue-200 dark:border-blue-800">
+                {isDetecting ? (
+                  <div className="flex items-center gap-2 text-blue-700 dark:text-blue-300">
+                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-700 dark:border-blue-300"></div>
+                    <span className="text-sm">Analyzing your inputs...</span>
+                  </div>
+                ) : detectedModel ? (
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-2 text-green-700 dark:text-green-300">
+                      <CheckCircle2 className="h-4 w-4" />
+                      <span className="text-sm font-medium">
+                        Detected: {detectedModel} (
+                        {Math.round(detectionConfidence * 100)}% confidence)
+                      </span>
+                    </div>
+                    {detectionExplanation.length > 0 && (
+                      <div className="text-xs text-blue-600 dark:text-blue-400">
+                        {detectionExplanation.map((explanation, index) => (
+                          <div key={index}>• {explanation}</div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ) : watchedPrompt && watchedPrompt.length > 3 ? (
+                  <div className="flex items-center gap-2 text-yellow-700 dark:text-yellow-300">
+                    <AlertCircle className="h-4 w-4" />
+                    <span className="text-sm">
+                      Enter more details for better detection
+                    </span>
+                  </div>
+                ) : (
+                  <div className="text-sm text-blue-600 dark:text-blue-400">
+                    Start typing your prompt to automatically detect the best
+                    model
+                  </div>
+                )}
+              </div>
             )}
           </div>
 
@@ -353,7 +513,7 @@ export const GenerationForm: React.FC<GenerationFormProps> = ({
             />
             {errors.prompt && (
               <p className="text-sm text-destructive">
-                {String(errors.prompt.message || 'Invalid prompt')}
+                {String(errors.prompt.message || "Invalid prompt")}
               </p>
             )}
             <p className="text-xs text-muted-foreground">
@@ -476,7 +636,7 @@ export const GenerationForm: React.FC<GenerationFormProps> = ({
             </Select>
             {errors.resolution && (
               <p className="text-sm text-destructive">
-                {String(errors.resolution.message || 'Invalid resolution')}
+                {String(errors.resolution.message || "Invalid resolution")}
               </p>
             )}
             {getResolutionOption(watchedResolution) && (
@@ -541,7 +701,7 @@ export const GenerationForm: React.FC<GenerationFormProps> = ({
                   </div>
                   {errors.steps && (
                     <p className="text-sm text-destructive">
-                      {String(errors.steps.message || 'Invalid steps value')}
+                      {String(errors.steps.message || "Invalid steps value")}
                     </p>
                   )}
                   {getStepsPreset(watchedSteps) && (

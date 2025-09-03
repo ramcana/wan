@@ -104,7 +104,7 @@ jobs:
           python tools/health-checker/run_health_check.py --output-format=json --output-file=health-report.json
 
       - name: Upload health report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: health-report
           path: health-report.json

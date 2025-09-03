@@ -14,7 +14,7 @@ import os
 project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
-from cli.commands import test, clean, config, docs, quality, health, deploy
+from cli.commands import test, clean, config, docs, quality, health, deploy, wan
 
 app = typer.Typer(
     name="wan-cli",
@@ -24,6 +24,7 @@ app = typer.Typer(
 )
 
 # Add command groups
+app.add_typer(wan.app, name="wan", help="WAN Model Management - T2V, I2V, TI2V operations")
 app.add_typer(test.app, name="test", help="Testing and validation commands")
 app.add_typer(clean.app, name="clean", help="Cleanup and maintenance commands") 
 app.add_typer(config.app, name="config", help="Configuration management commands")

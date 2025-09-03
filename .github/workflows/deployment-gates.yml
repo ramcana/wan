@@ -103,7 +103,7 @@ jobs:
           EOF
 
       - name: Upload health artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: health-gate-report-${{ github.run_number }}
           path: |
@@ -232,7 +232,7 @@ jobs:
           fi
 
       - name: Upload test results
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: always()
         with:
           name: test-results-${{ github.run_number }}
@@ -295,7 +295,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Download health badge data
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: health-gate-report-${{ github.run_number }}
 

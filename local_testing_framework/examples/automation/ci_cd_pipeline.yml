@@ -59,7 +59,7 @@ jobs:
           python -m local_testing_framework validate-env --report
 
       - name: Upload environment report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: environment-validation-report
           path: reports/environment_validation.json
@@ -104,7 +104,7 @@ jobs:
           python -m local_testing_framework test-performance --benchmark --report-format json
 
       - name: Upload test results
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: test-results-${{ matrix.test-type }}
           path: reports/
@@ -137,7 +137,7 @@ jobs:
           safety check --json --output safety-report.json
 
       - name: Upload security reports
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: security-reports
           path: |
@@ -175,7 +175,7 @@ jobs:
           docker save wan22/ui-variant:${{ github.sha }} | gzip > wan22-ui-variant.tar.gz
 
       - name: Upload Docker image artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: docker-image
           path: wan22-ui-variant.tar.gz
@@ -192,7 +192,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Download Docker image
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: docker-image
 
@@ -213,7 +213,7 @@ jobs:
           python -m local_testing_framework run-all --report-format json --output reports/staging-deployment
 
       - name: Upload deployment report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: staging-deployment-report
           path: reports/staging-deployment/
@@ -230,7 +230,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Download Docker image
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: docker-image
 
@@ -255,7 +255,7 @@ jobs:
           python -m local_testing_framework run-all --report-format json --output reports/production-deployment
 
       - name: Upload deployment report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: production-deployment-report
           path: reports/production-deployment/
@@ -303,7 +303,7 @@ jobs:
           python -m local_testing_framework run-all --report-format html --output reports/nightly
 
       - name: Upload nightly test report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: nightly-test-report
           path: reports/nightly/

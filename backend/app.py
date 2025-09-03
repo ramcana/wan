@@ -201,6 +201,13 @@ try:
 except ImportError as e:
     logger.warning(f"Could not import model management router: {e}")
 
+try:
+    from api.enhanced_generation import router as enhanced_gen_router
+    app.include_router(enhanced_gen_router)
+    logger.info("Enhanced generation API router included")
+except ImportError as e:
+    logger.warning(f"Could not import enhanced generation router: {e}")
+
 # Configure CORS with enhanced validation
 app.add_middleware(
     CORSMiddleware,
