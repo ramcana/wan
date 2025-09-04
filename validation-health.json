@@ -1,12 +1,12 @@
 {
-  "timestamp": "2025-09-04T12:27:30.420874",
+  "timestamp": "2025-09-04T12:46:10.981527",
   "overall_score": 85.0,
   "critical_issues": 0,
   "status": "good",
   "categories": {
     "tests": {
       "score": 80.0,
-      "status": "good"
+      "status": "warning"
     },
     "documentation": {
       "score": 90.0,
