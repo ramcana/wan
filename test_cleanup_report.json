@@ -1,0 +1,1850 @@
+{
+  "summary": {
+    "total_test_files": 436,
+    "empty_tests": 75,
+    "duplicate_tests": 13,
+    "outdated_tests": 15,
+    "redundant_groups": 51
+  },
+  "details": {
+    "empty_tests": [
+      {
+        "file": "E:\\wan\\tests\\unit\\__init__.py",
+        "reason": "no_test_functions",
+        "size": 22,
+        "lines": 1
+      },
+      {
+        "file": "E:\\wan\\tests\\fixtures\\__init__.py",
+        "reason": "no_test_functions",
+        "size": 36,
+        "lines": 1
+      },
+      {
+        "file": "E:\\wan\\tools\\quality-monitor\\test_quality_monitor.py",
+        "reason": "syntax_error",
+        "size": 11283
+      },
+      {
+        "file": "E:\\wan\\utils_new\\test_wan22_no_quantization.py",
+        "reason": "syntax_error",
+        "size": 7970
+      },
+      {
+        "file": "E:\\wan\\backend\\tests\\test_resource_limits.py",
+        "reason": "syntax_error",
+        "size": 14215
+      },
+      {
+        "file": "E:\\wan\\tests\\integration\\test_component_interaction.py",
+        "reason": "syntax_error",
+        "size": 16523
+      },
+      {
+        "file": "E:\\wan\\utils_new\\test_gradio_ui_structure.py",
+        "reason": "syntax_error",
+        "size": 8178
+      },
+      {
+        "file": "E:\\wan\\utils_new\\test_wan_t2v_5b_corrected.py",
+        "reason": "completely_empty",
+        "size": 0
+      },
+      {
+        "file": "E:\\wan\\utils_new\\test_clean_wan22_fix.py",
+        "reason": "syntax_error",
+        "size": 3022
+      },
+      {
+        "file": "E:\\wan\\tools\\health-checker\\checkers\\test_health_checker.py",
+        "reason": "syntax_error",
+        "size": 12382
+      },
+      {
+        "file": "E:\\wan\\utils_new\\test_wan_ti2v_5b_correct.py",
+        "reason": "syntax_error",
+        "size": 13307
+      },
+      {
+        "file": "E:\\wan\\tests\\performance\\test_system_performance_benchmarks.py",
+        "reason": "syntax_error",
+        "size": 23212
+      },
+      {
+        "file": "E:\\wan\\backend\\tests\\test_prompt_enhancement.py",
+        "reason": "syntax_error",
+        "size": 11087
+      },
+      {
+        "file": "E:\\wan\\tests\\performance\\test_performance_optimization.py",
+        "reason": "syntax_error",
+        "size": 26514
+      },
+      {
+        "file": "E:\\wan\\tests\\integration\\test_project_health_system_e2e.py",
+        "reason": "syntax_error",
+        "size": 15346
+      },
+      {
+        "file": "E:\\wan\\tests\\integration\\test_port_manager.py",
+        "reason": "syntax_error",
+        "size": 28946
+      },
+      {
+        "file": "E:\\wan\\utils_new\\test_ti2v_5b_model.py",
+        "reason": "syntax_error",
+        "size": 7937
+      },
+      {
+        "file": "E:\\wan\\utils_new\\test_imports.py",
+        "reason": "syntax_error",
+        "size": 1409
+      },
+      {
+        "file": "E:\\wan\\utils_new\\test_validation_tests.py",
+        "reason": "syntax_error",
+        "size": 35984
+      },
+      {
+        "file": "E:\\wan\\utils_new\\test_wan22_system_optimization_integration.py",
+        "reason": "syntax_error",
+        "size": 26522
+      },
+      {
+        "file": "E:\\wan\\local_testing_framework\\tests\\test_performance_tester.py",
+        "reason": "syntax_error",
+        "size": 15510
+      },
+      {
+        "file": "E:\\wan\\tests\\comprehensive\\test_e2e_cleanup_quality_suite.py",
+        "reason": "syntax_error",
+        "size": 34397
+      },
+      {
+        "file": "E:\\wan\\utils_new\\test_fallback_handler.py",
+        "reason": "syntax_error",
+        "size": 16762
+      },
+      {
+        "file": "E:\\wan\\utils_new\\test_resource_monitoring_minimal.py",
+        "reason": "syntax_error",
+        "size": 17059
+      },
+      {
+        "file": "E:\\wan\\utils_new\\test_wan22_generation_cli.py",
+        "reason": "syntax_error",
+        "size": 4254
+      },
+      {
+        "file": "E:\\wan\\tests\\performance\\test_performance_monitor.py",
+        "reason": "syntax_error",
+        "size": 20801
+      },
+      {
+        "file": "E:\\wan\\tests\\integration\\__init__.py",
+        "reason": "no_test_functions",
+        "size": 29,
+        "lines": 1
+      },
+      {
+        "file": "E:\\wan\\utils_new\\test_main_config_only.py",
+        "reason": "syntax_error",
+        "size": 9159
+      },
+      {
+        "file": "E:\\wan\\utils_new\\test_prompt_enhancement_minimal.py",
+        "reason": "syntax_error",
+        "size": 15898
+      },
+      {
+        "file": "E:\\wan\\tests\\integration\\test_environment_validator.py",
+        "reason": "syntax_error",
+        "size": 24924
+      },
+      {
+        "file": "E:\\wan\\local_testing_framework\\tests\\__init__.py",
+        "reason": "no_test_functions",
+        "size": 46,
+        "lines": 3
+      },
+      {
+        "file": "E:\\wan\\tests\\performance\\test_configuration_validator.py",
+        "reason": "syntax_error",
+        "size": 16484
+      },
+      {
+        "file": "E:\\wan\\tests\\integration\\test_preferences_integration.py",
+        "reason": "syntax_error",
+        "size": 20225
+      },
+      {
+        "file": "E:\\wan\\tools\\code-quality\\test_quality_checker.py",
+        "reason": "syntax_error",
+        "size": 12041
+      },
+      {
+        "file": "E:\\wan\\local_testing_framework\\tests\\test_sample_manager.py",
+        "reason": "syntax_error",
+        "size": 18769
+      },
+      {
+        "file": "E:\\wan\\backend\\tests\\test_e2e_integration.py",
+        "reason": "completely_empty",
+        "size": 0
+      },
+      {
+        "file": "E:\\wan\\tests\\performance\\test_monitoring_analytics_integration.py",
+        "reason": "syntax_error",
+        "size": 19785
+      },
+      {
+        "file": "E:\\wan\\local_testing_framework\\tests\\test_report_generator.py",
+        "reason": "syntax_error",
+        "size": 18258
+      },
+      {
+        "file": "E:\\wan\\backend\\tests\\test_setup.py",
+        "reason": "syntax_error",
+        "size": 4458
+      },
+      {
+        "file": "E:\\wan\\backend\\tests\\test_system_monitoring.py",
+        "reason": "syntax_error",
+        "size": 14439
+      },
+      {
+        "file": "E:\\wan\\backend\\tests\\test_task_2_4_validation.py",
+        "reason": "syntax_error",
+        "size": 15669
+      },
+      {
+        "file": "E:\\wan\\tests\\performance\\__init__.py",
+        "reason": "no_test_functions",
+        "size": 29,
+        "lines": 1
+      },
+      {
+        "file": "E:\\wan\\tests\\stress\\test_high_load_scenarios.py",
+        "reason": "syntax_error",
+        "size": 23097
+      },
+      {
+        "file": "E:\\wan\\utils_new\\test_pytorch_fix.py",
+        "reason": "syntax_error",
+        "size": 3247
+      },
+      {
+        "file": "E:\\wan\\tests\\__init__.py",
+        "reason": "no_test_functions",
+        "size": 33,
+        "lines": 1
+      },
+      {
+        "file": "E:\\wan\\utils_new\\test_ti2v_5b_fixed.py",
+        "reason": "syntax_error",
+        "size": 8957
+      },
+      {
+        "file": "E:\\wan\\tests\\e2e\\__init__.py",
+        "reason": "no_test_functions",
+        "size": 28,
+        "lines": 1
+      },
+      {
+        "file": "E:\\wan\\tests\\performance\\test_configuration_integration.py",
+        "reason": "syntax_error",
+        "size": 9841
+      },
+      {
+        "file": "E:\\wan\\utils_new\\generate_actual_videos_test.py",
+        "reason": "syntax_error",
+        "size": 8490
+      },
+      {
+        "file": "E:\\wan\\backend\\tests\\test_comprehensive_api.py",
+        "reason": "syntax_error",
+        "size": 18815
+      },
+      {
+        "file": "E:\\wan\\utils_new\\test_wan_config_manager.py",
+        "reason": "syntax_error",
+        "size": 48
+      },
+      {
+        "file": "E:\\wan\\utils_new\\test_import.py",
+        "reason": "syntax_error",
+        "size": 1278
+      },
+      {
+        "file": "E:\\wan\\tests\\performance\\test_analytics.py",
+        "reason": "syntax_error",
+        "size": 26010
+      },
+      {
+        "file": "E:\\wan\\tests\\config\\__init__.py",
+        "reason": "no_test_functions",
+        "size": 26,
+        "lines": 1
+      },
+      {
+        "file": "E:\\wan\\tests\\performance\\test_comprehensive_integration.py",
+        "reason": "syntax_error",
+        "size": 34618
+      },
+      {
+        "file": "E:\\wan\\tests\\integration\\test_tool_interactions.py",
+        "reason": "syntax_error",
+        "size": 28287
+      },
+      {
+        "file": "E:\\wan\\tests\\performance\\test_performance_benchmarks.py",
+        "reason": "syntax_error",
+        "size": 23946
+      },
+      {
+        "file": "E:\\wan\\utils_new\\test_file_write.py",
+        "reason": "no_test_functions",
+        "size": 20,
+        "lines": 1
+      },
+      {
+        "file": "E:\\wan\\utils_new\\test_progress_tracker_simple.py",
+        "reason": "syntax_error",
+        "size": 1532
+      },
+      {
+        "file": "E:\\wan\\tests\\utils\\test_isolation.py",
+        "reason": "syntax_error",
+        "size": 20447
+      },
+      {
+        "file": "E:\\wan\\tests\\comprehensive\\test_cleanup_quality_suite.py",
+        "reason": "syntax_error",
+        "size": 24748
+      },
+      {
+        "file": "E:\\wan\\tests\\test_unified_cli.py",
+        "reason": "syntax_error",
+        "size": 7776
+      },
+      {
+        "file": "E:\\wan\\backend\\tests\\test_queue_persistence.py",
+        "reason": "syntax_error",
+        "size": 9535
+      },
+      {
+        "file": "E:\\wan\\utils_new\\test_wan_model_compatibility_integration.py",
+        "reason": "syntax_error",
+        "size": 12377
+      },
+      {
+        "file": "E:\\wan\\tests\\integration\\test_windows_integration.py",
+        "reason": "syntax_error",
+        "size": 12390
+      },
+      {
+        "file": "E:\\wan\\tests\\reliability\\test_system_reliability.py",
+        "reason": "syntax_error",
+        "size": 20587
+      },
+      {
+        "file": "E:\\wan\\utils_new\\test_final_wan22_fix.py",
+        "reason": "syntax_error",
+        "size": 2545
+      },
+      {
+        "file": "E:\\wan\\tests\\utils\\__init__.py",
+        "reason": "no_test_functions",
+        "size": 28,
+        "lines": 1
+      },
+      {
+        "file": "E:\\wan\\backend\\tests\\test_performance_validation.py",
+        "reason": "syntax_error",
+        "size": 19599
+      },
+      {
+        "file": "E:\\wan\\utils_new\\test_generation_task_integration.py",
+        "reason": "syntax_error",
+        "size": 4833
+      },
+      {
+        "file": "E:\\wan\\tests\\examples\\test_comprehensive_isolation_example.py",
+        "reason": "syntax_error",
+        "size": 16668
+      },
+      {
+        "file": "E:\\wan\\utils_new\\test_wan22_compatibility.py",
+        "reason": "syntax_error",
+        "size": 2098
+      },
+      {
+        "file": "E:\\wan\\tools\\test-runner\\test_auditor.py",
+        "reason": "syntax_error",
+        "size": 24841
+      },
+      {
+        "file": "E:\\wan\\backend\\tests\\test_performance_monitoring.py",
+        "reason": "syntax_error",
+        "size": 14681
+      },
+      {
+        "file": "E:\\wan\\utils_new\\test_ui_model_switching_integration.py",
+        "reason": "syntax_error",
+        "size": 12747
+      }
+    ],
+    "duplicate_tests": [
+      {
+        "original": "E:\\wan\\tools\\codebase-cleanup\\backups\\naming\\naming_fixes_20250903_120301\\test_backup.py",
+        "duplicate": "E:\\wan\\tools\\codebase-cleanup\\backups\\naming\\naming_fixes_20250902_224231\\test_backup.py",
+        "functions": [
+          "bad_method"
+        ],
+        "similarity": "identical_structure"
+      },
+      {
+        "original": "E:\\wan\\tools\\codebase-cleanup\\backups\\naming\\naming_fixes_20250903_120301\\test_backup.py",
+        "duplicate": "E:\\wan\\tools\\codebase-cleanup\\backups\\naming\\naming_fixes_20250902_202534\\test_backup.py",
+        "functions": [
+          "bad_method"
+        ],
+        "similarity": "identical_structure"
+      },
+      {
+        "original": "E:\\wan\\tools\\codebase-cleanup\\backups\\naming\\naming_fixes_20250903_120301\\test_backup.py",
+        "duplicate": "E:\\wan\\tools\\codebase-cleanup\\backups\\naming\\naming_fixes_20250903_102330\\test_backup.py",
+        "functions": [
+          "bad_method"
+        ],
+        "similarity": "identical_structure"
+      },
+      {
+        "original": "E:\\wan\\tools\\codebase-cleanup\\backups\\naming\\naming_fixes_20250903_120301\\test_backup.py",
+        "duplicate": "E:\\wan\\backups\\naming\\naming_fixes_20250902_130341\\test_backup.py",
+        "functions": [
+          "bad_method"
+        ],
+        "similarity": "identical_structure"
+      },
+      {
+        "original": "E:\\wan\\tools\\codebase-cleanup\\backups\\naming\\naming_fixes_20250903_120301\\test_backup.py",
+        "duplicate": "E:\\wan\\tools\\codebase-cleanup\\backups\\naming\\naming_fixes_20250902_224232\\test_backup.py",
+        "functions": [
+          "bad_method"
+        ],
+        "similarity": "identical_structure"
+      },
+      {
+        "original": "E:\\wan\\tools\\codebase-cleanup\\backups\\naming\\naming_fixes_20250903_120301\\test_backup.py",
+        "duplicate": "E:\\wan\\tools\\codebase-cleanup\\backups\\naming\\naming_fixes_20250902_234652\\test_backup.py",
+        "functions": [
+          "bad_method"
+        ],
+        "similarity": "identical_structure"
+      },
+      {
+        "original": "E:\\wan\\utils_new\\test_optimization_simple.py",
+        "duplicate": "E:\\wan\\utils_new\\test_environment_validator_simple.py",
+        "functions": [
+          "test_basic_functionality"
+        ],
+        "similarity": "identical_structure"
+      },
+      {
+        "original": "E:\\wan\\backend\\tests\\test_chaos_engineering.py",
+        "duplicate": "E:\\wan\\backend\\tests\\test_download_stress_testing.py",
+        "functions": [
+          "__init__"
+        ],
+        "similarity": "identical_structure"
+      },
+      {
+        "original": "E:\\wan\\backend\\tests\\test_chaos_engineering.py",
+        "duplicate": "E:\\wan\\backend\\tests\\test_performance_benchmarks_enhanced.py",
+        "functions": [
+          "__init__"
+        ],
+        "similarity": "identical_structure"
+      },
+      {
+        "original": "E:\\wan\\tools\\codebase-cleanup\\backups\\naming\\naming_fixes_20250903_120301\\test_backup.py",
+        "duplicate": "E:\\wan\\tools\\codebase-cleanup\\backups\\naming\\naming_fixes_20250902_234653\\test_backup.py",
+        "functions": [
+          "bad_method"
+        ],
+        "similarity": "identical_structure"
+      },
+      {
+        "original": "E:\\wan\\tests\\test_enforcement_demo.py",
+        "duplicate": "E:\\wan\\test_assertion_finder.py",
+        "functions": [
+          "main"
+        ],
+        "similarity": "identical_structure"
+      },
+      {
+        "original": "E:\\wan\\tools\\codebase-cleanup\\backups\\naming\\naming_fixes_20250903_120301\\test_backup.py",
+        "duplicate": "E:\\wan\\tools\\codebase-cleanup\\backups\\naming\\naming_fixes_20250903_111018\\test_backup.py",
+        "functions": [
+          "bad_method"
+        ],
+        "similarity": "identical_structure"
+      },
+      {
+        "original": "E:\\wan\\tools\\codebase-cleanup\\backups\\naming\\naming_fixes_20250903_120301\\test_backup.py",
+        "duplicate": "E:\\wan\\tools\\codebase-cleanup\\backups\\naming\\naming_fixes_20250903_120300\\test_backup.py",
+        "functions": [
+          "bad_method"
+        ],
+        "similarity": "identical_structure"
+      }
+    ],
+    "outdated_tests": [
+      {
+        "file": "E:\\wan\\tools\\codebase-cleanup\\backups\\naming\\naming_fixes_20250903_120301\\test_backup.py",
+        "reason": "outdated_filename_pattern",
+        "pattern": "test.*backup.*\\.py$"
+      },
+      {
+        "file": "E:\\wan\\utils_new\\test_wan_model_variants.py",
+        "reason": "contains_outdated_marker",
+        "marker": "Legacy test"
+      },
+      {
+        "file": "E:\\wan\\tools\\codebase-cleanup\\backups\\naming\\naming_fixes_20250902_224231\\test_backup.py",
+        "reason": "outdated_filename_pattern",
+        "pattern": "test.*backup.*\\.py$"
+      },
+      {
+        "file": "E:\\wan\\test_cleanup_tool.py",
+        "reason": "contains_outdated_marker",
+        "marker": "TODO: Remove this test"
+      },
+      {
+        "file": "E:\\wan\\tools\\codebase-cleanup\\backups\\naming\\naming_fixes_20250902_202534\\test_backup.py",
+        "reason": "outdated_filename_pattern",
+        "pattern": "test.*backup.*\\.py$"
+      },
+      {
+        "file": "E:\\wan\\tools\\codebase-cleanup\\backups\\naming\\naming_fixes_20250903_102330\\test_backup.py",
+        "reason": "outdated_filename_pattern",
+        "pattern": "test.*backup.*\\.py$"
+      },
+      {
+        "file": "E:\\wan\\backups\\naming\\naming_fixes_20250902_130341\\test_backup.py",
+        "reason": "outdated_filename_pattern",
+        "pattern": "test.*backup.*\\.py$"
+      },
+      {
+        "file": "E:\\wan\\tools\\codebase-cleanup\\backups\\naming\\naming_fixes_20250902_224232\\test_backup.py",
+        "reason": "outdated_filename_pattern",
+        "pattern": "test.*backup.*\\.py$"
+      },
+      {
+        "file": "E:\\wan\\tests\\acceptance\\test_user_acceptance_scenarios.py",
+        "reason": "contains_outdated_marker",
+        "marker": "DEPRECATED"
+      },
+      {
+        "file": "E:\\wan\\tools\\codebase-cleanup\\backups\\naming\\naming_fixes_20250902_234652\\test_backup.py",
+        "reason": "outdated_filename_pattern",
+        "pattern": "test.*backup.*\\.py$"
+      },
+      {
+        "file": "E:\\wan\\tools\\codebase-cleanup\\test_naming_standardizer.py",
+        "reason": "contains_outdated_marker",
+        "marker": "DEPRECATED"
+      },
+      {
+        "file": "E:\\wan\\tools\\codebase-cleanup\\backups\\naming\\naming_fixes_20250902_234653\\test_backup.py",
+        "reason": "outdated_filename_pattern",
+        "pattern": "test.*backup.*\\.py$"
+      },
+      {
+        "file": "E:\\wan\\tools\\codebase-cleanup\\backups\\naming\\naming_fixes_20250903_111018\\test_backup.py",
+        "reason": "outdated_filename_pattern",
+        "pattern": "test.*backup.*\\.py$"
+      },
+      {
+        "file": "E:\\wan\\tools\\test-runner\\test_auditor.py",
+        "reason": "contains_outdated_marker",
+        "marker": "DEPRECATED"
+      },
+      {
+        "file": "E:\\wan\\tools\\codebase-cleanup\\backups\\naming\\naming_fixes_20250903_120300\\test_backup.py",
+        "reason": "outdated_filename_pattern",
+        "pattern": "test.*backup.*\\.py$"
+      }
+    ],
+    "redundant_files": [
+      {
+        "base_name": "test_dynamic_ui",
+        "files": [
+          {
+            "file": "E:\\wan\\utils_new\\test_dynamic_ui_simple.py",
+            "size": 7066,
+            "mtime": 1756932940.6801736,
+            "lines": 212
+          },
+          {
+            "file": "E:\\wan\\utils_new\\test_dynamic_ui.py",
+            "size": 4643,
+            "mtime": 1756932940.6741738,
+            "lines": 145
+          }
+        ],
+        "recommended_keep": "E:\\wan\\utils_new\\test_dynamic_ui_simple.py",
+        "candidates_for_removal": [
+          "E:\\wan\\utils_new\\test_dynamic_ui.py"
+        ]
+      },
+      {
+        "base_name": "test_validation",
+        "files": [
+          {
+            "file": "E:\\wan\\utils_new\\test_validation_comprehensive.py",
+            "size": 17658,
+            "mtime": 1756933008.1966205,
+            "lines": 465
+          },
+          {
+            "file": "E:\\wan\\utils_new\\test_validation_basic.py",
+            "size": 6996,
+            "mtime": 1756933008.1586115,
+            "lines": 188
+          },
+          {
+            "file": "E:\\wan\\utils_new\\test_validation_simple.py",
+            "size": 3866,
+            "mtime": 1754535195.032351,
+            "lines": 142
+          }
+        ],
+        "recommended_keep": "E:\\wan\\utils_new\\test_validation_comprehensive.py",
+        "candidates_for_removal": [
+          "E:\\wan\\utils_new\\test_validation_basic.py",
+          "E:\\wan\\utils_new\\test_validation_simple.py"
+        ]
+      },
+      {
+        "base_name": "test_lora_generation",
+        "files": [
+          {
+            "file": "E:\\wan\\utils_new\\test_lora_generation_simple.py",
+            "size": 20014,
+            "mtime": 1756932991.7827744,
+            "lines": 526
+          },
+          {
+            "file": "E:\\wan\\utils_new\\test_lora_generation_integration.py",
+            "size": 17932,
+            "mtime": 1756932989.4733064,
+            "lines": 403
+          }
+        ],
+        "recommended_keep": "E:\\wan\\utils_new\\test_lora_generation_simple.py",
+        "candidates_for_removal": [
+          "E:\\wan\\utils_new\\test_lora_generation_integration.py"
+        ]
+      },
+      {
+        "base_name": "test_backup",
+        "files": [
+          {
+            "file": "E:\\wan\\tools\\codebase-cleanup\\backups\\naming\\naming_fixes_20250903_120301\\test_backup.py",
+            "size": 69,
+            "mtime": 1756915381.1063755,
+            "lines": 5
+          },
+          {
+            "file": "E:\\wan\\tools\\codebase-cleanup\\backups\\naming\\naming_fixes_20250902_224231\\test_backup.py",
+            "size": 69,
+            "mtime": 1756867351.7415187,
+            "lines": 5
+          },
+          {
+            "file": "E:\\wan\\tools\\codebase-cleanup\\backups\\naming\\naming_fixes_20250902_202534\\test_backup.py",
+            "size": 69,
+            "mtime": 1756859134.7324114,
+            "lines": 5
+          },
+          {
+            "file": "E:\\wan\\tools\\codebase-cleanup\\backups\\naming\\naming_fixes_20250903_102330\\test_backup.py",
+            "size": 69,
+            "mtime": 1756909410.9143503,
+            "lines": 5
+          },
+          {
+            "file": "E:\\wan\\backups\\naming\\naming_fixes_20250902_130341\\test_backup.py",
+            "size": 69,
+            "mtime": 1756832621.8879616,
+            "lines": 5
+          },
+          {
+            "file": "E:\\wan\\tools\\codebase-cleanup\\backups\\naming\\naming_fixes_20250902_224232\\test_backup.py",
+            "size": 69,
+            "mtime": 1756867352.304236,
+            "lines": 5
+          },
+          {
+            "file": "E:\\wan\\tools\\codebase-cleanup\\backups\\naming\\naming_fixes_20250902_234652\\test_backup.py",
+            "size": 69,
+            "mtime": 1756871212.4623969,
+            "lines": 5
+          },
+          {
+            "file": "E:\\wan\\tools\\codebase-cleanup\\backups\\naming\\naming_fixes_20250902_234653\\test_backup.py",
+            "size": 69,
+            "mtime": 1756871213.018886,
+            "lines": 5
+          },
+          {
+            "file": "E:\\wan\\tools\\codebase-cleanup\\backups\\naming\\naming_fixes_20250903_111018\\test_backup.py",
+            "size": 69,
+            "mtime": 1756912218.8793848,
+            "lines": 5
+          },
+          {
+            "file": "E:\\wan\\tools\\codebase-cleanup\\backups\\naming\\naming_fixes_20250903_120300\\test_backup.py",
+            "size": 69,
+            "mtime": 1756915380.5286536,
+            "lines": 5
+          }
+        ],
+        "recommended_keep": "E:\\wan\\tools\\codebase-cleanup\\backups\\naming\\naming_fixes_20250903_120301\\test_backup.py",
+        "candidates_for_removal": [
+          "E:\\wan\\tools\\codebase-cleanup\\backups\\naming\\naming_fixes_20250902_224231\\test_backup.py",
+          "E:\\wan\\tools\\codebase-cleanup\\backups\\naming\\naming_fixes_20250902_202534\\test_backup.py",
+          "E:\\wan\\tools\\codebase-cleanup\\backups\\naming\\naming_fixes_20250903_102330\\test_backup.py",
+          "E:\\wan\\backups\\naming\\naming_fixes_20250902_130341\\test_backup.py",
+          "E:\\wan\\tools\\codebase-cleanup\\backups\\naming\\naming_fixes_20250902_224232\\test_backup.py",
+          "E:\\wan\\tools\\codebase-cleanup\\backups\\naming\\naming_fixes_20250902_234652\\test_backup.py",
+          "E:\\wan\\tools\\codebase-cleanup\\backups\\naming\\naming_fixes_20250902_234653\\test_backup.py",
+          "E:\\wan\\tools\\codebase-cleanup\\backups\\naming\\naming_fixes_20250903_111018\\test_backup.py",
+          "E:\\wan\\tools\\codebase-cleanup\\backups\\naming\\naming_fixes_20250903_120300\\test_backup.py"
+        ]
+      },
+      {
+        "base_name": "test_image_validation_unit_tests",
+        "files": [
+          {
+            "file": "E:\\wan\\utils_new\\test_image_validation_unit_tests_complete.py",
+            "size": 24520,
+            "mtime": 1756932989.4238174,
+            "lines": 579
+          },
+          {
+            "file": "E:\\wan\\utils_new\\test_image_validation_unit_tests.py",
+            "size": 20755,
+            "mtime": 1756932989.396271,
+            "lines": 551
+          }
+        ],
+        "recommended_keep": "E:\\wan\\utils_new\\test_image_validation_unit_tests_complete.py",
+        "candidates_for_removal": [
+          "E:\\wan\\utils_new\\test_image_validation_unit_tests.py"
+        ]
+      },
+      {
+        "base_name": "test_error_handling",
+        "files": [
+          {
+            "file": "E:\\wan\\tests\\integration\\test_error_handling_integration.py",
+            "size": 30591,
+            "mtime": 1756932902.153758,
+            "lines": 748
+          },
+          {
+            "file": "E:\\wan\\backend\\tests\\test_error_handling.py",
+            "size": 7808,
+            "mtime": 1756932886.567793,
+            "lines": 261
+          },
+          {
+            "file": "E:\\wan\\utils_new\\test_error_handling.py",
+            "size": 6205,
+            "mtime": 1756932980.242836,
+            "lines": 179
+          }
+        ],
+        "recommended_keep": "E:\\wan\\tests\\integration\\test_error_handling_integration.py",
+        "candidates_for_removal": [
+          "E:\\wan\\backend\\tests\\test_error_handling.py",
+          "E:\\wan\\utils_new\\test_error_handling.py"
+        ]
+      },
+      {
+        "base_name": "__init__",
+        "files": [
+          {
+            "file": "E:\\wan\\local_testing_framework\\tests\\__init__.py",
+            "size": 46,
+            "mtime": 1753915963.3708954,
+            "lines": 3
+          },
+          {
+            "file": "E:\\wan\\tests\\fixtures\\__init__.py",
+            "size": 36,
+            "mtime": 1756513556.5501835,
+            "lines": 1
+          },
+          {
+            "file": "E:\\wan\\tests\\__init__.py",
+            "size": 33,
+            "mtime": 1756166939.1320338,
+            "lines": 1
+          },
+          {
+            "file": "E:\\wan\\tests\\integration\\__init__.py",
+            "size": 29,
+            "mtime": 1756513549.549305,
+            "lines": 1
+          },
+          {
+            "file": "E:\\wan\\tests\\performance\\__init__.py",
+            "size": 29,
+            "mtime": 1756513551.8165495,
+            "lines": 1
+          },
+          {
+            "file": "E:\\wan\\tests\\e2e\\__init__.py",
+            "size": 28,
+            "mtime": 1756513554.2943056,
+            "lines": 1
+          },
+          {
+            "file": "E:\\wan\\tests\\utils\\__init__.py",
+            "size": 28,
+            "mtime": 1756513560.817322,
+            "lines": 1
+          },
+          {
+            "file": "E:\\wan\\tests\\config\\__init__.py",
+            "size": 26,
+            "mtime": 1756513558.6621952,
+            "lines": 1
+          },
+          {
+            "file": "E:\\wan\\tests\\unit\\__init__.py",
+            "size": 22,
+            "mtime": 1756513543.503795,
+            "lines": 1
+          }
+        ],
+        "recommended_keep": "E:\\wan\\local_testing_framework\\tests\\__init__.py",
+        "candidates_for_removal": [
+          "E:\\wan\\tests\\fixtures\\__init__.py",
+          "E:\\wan\\tests\\__init__.py",
+          "E:\\wan\\tests\\integration\\__init__.py",
+          "E:\\wan\\tests\\performance\\__init__.py",
+          "E:\\wan\\tests\\e2e\\__init__.py",
+          "E:\\wan\\tests\\utils\\__init__.py",
+          "E:\\wan\\tests\\config\\__init__.py",
+          "E:\\wan\\tests\\unit\\__init__.py"
+        ]
+      },
+      {
+        "base_name": "test_model_availability_manager",
+        "files": [
+          {
+            "file": "E:\\wan\\backend\\tests\\test_model_availability_manager.py",
+            "size": 26073,
+            "mtime": 1756869748.7493763,
+            "lines": 677
+          },
+          {
+            "file": "E:\\wan\\backend\\tests\\test_model_availability_manager_simple.py",
+            "size": 15456,
+            "mtime": 1756245593.401949,
+            "lines": 393
+          },
+          {
+            "file": "E:\\wan\\backend\\tests\\test_model_availability_manager_basic.py",
+            "size": 13031,
+            "mtime": 1756245924.0760214,
+            "lines": 393
+          }
+        ],
+        "recommended_keep": "E:\\wan\\backend\\tests\\test_model_availability_manager.py",
+        "candidates_for_removal": [
+          "E:\\wan\\backend\\tests\\test_model_availability_manager_simple.py",
+          "E:\\wan\\backend\\tests\\test_model_availability_manager_basic.py"
+        ]
+      },
+      {
+        "base_name": "test_output_management",
+        "files": [
+          {
+            "file": "E:\\wan\\utils_new\\test_output_management_minimal.py",
+            "size": 24263,
+            "mtime": 1756932996.6473103,
+            "lines": 627
+          },
+          {
+            "file": "E:\\wan\\utils_new\\test_output_management.py",
+            "size": 11358,
+            "mtime": 1756932994.3734794,
+            "lines": 293
+          },
+          {
+            "file": "E:\\wan\\utils_new\\test_output_management_simple.py",
+            "size": 6403,
+            "mtime": 1756932996.6493104,
+            "lines": 170
+          }
+        ],
+        "recommended_keep": "E:\\wan\\utils_new\\test_output_management_minimal.py",
+        "candidates_for_removal": [
+          "E:\\wan\\utils_new\\test_output_management.py",
+          "E:\\wan\\utils_new\\test_output_management_simple.py"
+        ]
+      },
+      {
+        "base_name": "test_prompt_enhancement",
+        "files": [
+          {
+            "file": "E:\\wan\\utils_new\\test_prompt_enhancement_minimal.py",
+            "size": 15898,
+            "mtime": 1756869749.8817105,
+            "lines": 410
+          },
+          {
+            "file": "E:\\wan\\backend\\tests\\test_prompt_enhancement.py",
+            "size": 11087,
+            "mtime": 1756869748.770605,
+            "lines": 260
+          },
+          {
+            "file": "E:\\wan\\utils_new\\test_prompt_enhancement.py",
+            "size": 2997,
+            "mtime": 1756932999.2169785,
+            "lines": 101
+          }
+        ],
+        "recommended_keep": "E:\\wan\\utils_new\\test_prompt_enhancement_minimal.py",
+        "candidates_for_removal": [
+          "E:\\wan\\backend\\tests\\test_prompt_enhancement.py",
+          "E:\\wan\\utils_new\\test_prompt_enhancement.py"
+        ]
+      },
+      {
+        "base_name": "test_ui_validation",
+        "files": [
+          {
+            "file": "E:\\wan\\utils_new\\test_ui_validation_integration.py",
+            "size": 16369,
+            "mtime": 1754615083.9394698,
+            "lines": 400
+          },
+          {
+            "file": "E:\\wan\\utils_new\\test_ui_validation_simple.py",
+            "size": 4079,
+            "mtime": 1754615114.684083,
+            "lines": 132
+          }
+        ],
+        "recommended_keep": "E:\\wan\\utils_new\\test_ui_validation_integration.py",
+        "candidates_for_removal": [
+          "E:\\wan\\utils_new\\test_ui_validation_simple.py"
+        ]
+      },
+      {
+        "base_name": "test_comprehensive_image_functionality",
+        "files": [
+          {
+            "file": "E:\\wan\\utils_new\\test_comprehensive_image_functionality_complete.py",
+            "size": 37066,
+            "mtime": 1756932931.0516722,
+            "lines": 940
+          },
+          {
+            "file": "E:\\wan\\utils_new\\test_comprehensive_image_functionality.py",
+            "size": 32692,
+            "mtime": 1756932918.9820347,
+            "lines": 854
+          }
+        ],
+        "recommended_keep": "E:\\wan\\utils_new\\test_comprehensive_image_functionality_complete.py",
+        "candidates_for_removal": [
+          "E:\\wan\\utils_new\\test_comprehensive_image_functionality.py"
+        ]
+      },
+      {
+        "base_name": "test_generation_task_lora_support",
+        "files": [
+          {
+            "file": "E:\\wan\\utils_new\\test_generation_task_lora_support_minimal.py",
+            "size": 20560,
+            "mtime": 1756932984.1763363,
+            "lines": 523
+          },
+          {
+            "file": "E:\\wan\\utils_new\\test_generation_task_lora_support.py",
+            "size": 16227,
+            "mtime": 1756932984.1517172,
+            "lines": 425
+          }
+        ],
+        "recommended_keep": "E:\\wan\\utils_new\\test_generation_task_lora_support_minimal.py",
+        "candidates_for_removal": [
+          "E:\\wan\\utils_new\\test_generation_task_lora_support.py"
+        ]
+      },
+      {
+        "base_name": "conftest",
+        "files": [
+          {
+            "file": "E:\\wan\\tests\\conftest.py",
+            "size": 8020,
+            "mtime": 1756823346.6832664,
+            "lines": 243
+          },
+          {
+            "file": "E:\\wan\\tests\\config\\conftest.py",
+            "size": 7394,
+            "mtime": 1756821520.5937805,
+            "lines": 245
+          }
+        ],
+        "recommended_keep": "E:\\wan\\tests\\conftest.py",
+        "candidates_for_removal": [
+          "E:\\wan\\tests\\config\\conftest.py"
+        ]
+      },
+      {
+        "base_name": "simple_test",
+        "files": [
+          {
+            "file": "E:\\wan\\utils_new\\simple_test.py",
+            "size": 3131,
+            "mtime": 1756931948.256328,
+            "lines": 112
+          },
+          {
+            "file": "E:\\wan\\tools\\code-review\\simple_test.py",
+            "size": 2959,
+            "mtime": 1756836583.1655083,
+            "lines": 100
+          }
+        ],
+        "recommended_keep": "E:\\wan\\utils_new\\simple_test.py",
+        "candidates_for_removal": [
+          "E:\\wan\\tools\\code-review\\simple_test.py"
+        ]
+      },
+      {
+        "base_name": "test_environment_validator",
+        "files": [
+          {
+            "file": "E:\\wan\\tests\\integration\\test_environment_validator.py",
+            "size": 24924,
+            "mtime": 1756869749.6828272,
+            "lines": 592
+          },
+          {
+            "file": "E:\\wan\\local_testing_framework\\tests\\test_environment_validator.py",
+            "size": 13948,
+            "mtime": 1756913498.5976307,
+            "lines": 328
+          },
+          {
+            "file": "E:\\wan\\tests\\unit\\test_environment_validator.py",
+            "size": 12566,
+            "mtime": 1756515784.944751,
+            "lines": 338
+          },
+          {
+            "file": "E:\\wan\\utils_new\\test_environment_validator_simple.py",
+            "size": 3106,
+            "mtime": 1756932940.8171973,
+            "lines": 86
+          }
+        ],
+        "recommended_keep": "E:\\wan\\tests\\integration\\test_environment_validator.py",
+        "candidates_for_removal": [
+          "E:\\wan\\local_testing_framework\\tests\\test_environment_validator.py",
+          "E:\\wan\\tests\\unit\\test_environment_validator.py",
+          "E:\\wan\\utils_new\\test_environment_validator_simple.py"
+        ]
+      },
+      {
+        "base_name": "test_performance_benchmarks",
+        "files": [
+          {
+            "file": "E:\\wan\\utils_new\\test_performance_benchmarks.py",
+            "size": 50213,
+            "mtime": 1756932996.671417,
+            "lines": 1132
+          },
+          {
+            "file": "E:\\wan\\backend\\tests\\test_performance_benchmarks.py",
+            "size": 26725,
+            "mtime": 1756907881.6044722,
+            "lines": 645
+          },
+          {
+            "file": "E:\\wan\\tests\\performance\\test_performance_benchmarks.py",
+            "size": 23946,
+            "mtime": 1756932290.2974825,
+            "lines": 550
+          }
+        ],
+        "recommended_keep": "E:\\wan\\utils_new\\test_performance_benchmarks.py",
+        "candidates_for_removal": [
+          "E:\\wan\\backend\\tests\\test_performance_benchmarks.py",
+          "E:\\wan\\tests\\performance\\test_performance_benchmarks.py"
+        ]
+      },
+      {
+        "base_name": "test_resource_manager",
+        "files": [
+          {
+            "file": "E:\\wan\\utils_new\\test_resource_manager.py",
+            "size": 25874,
+            "mtime": 1756933001.521878,
+            "lines": 636
+          },
+          {
+            "file": "E:\\wan\\utils_new\\test_resource_manager_integration.py",
+            "size": 14516,
+            "mtime": 1756933001.5512743,
+            "lines": 362
+          }
+        ],
+        "recommended_keep": "E:\\wan\\utils_new\\test_resource_manager.py",
+        "candidates_for_removal": [
+          "E:\\wan\\utils_new\\test_resource_manager_integration.py"
+        ]
+      },
+      {
+        "base_name": "test_compatibility_registry",
+        "files": [
+          {
+            "file": "E:\\wan\\utils_new\\test_compatibility_registry.py",
+            "size": 18811,
+            "mtime": 1756931948.2606063,
+            "lines": 484
+          },
+          {
+            "file": "E:\\wan\\utils_new\\test_compatibility_registry_integration.py",
+            "size": 13288,
+            "mtime": 1756931948.263458,
+            "lines": 318
+          }
+        ],
+        "recommended_keep": "E:\\wan\\utils_new\\test_compatibility_registry.py",
+        "candidates_for_removal": [
+          "E:\\wan\\utils_new\\test_compatibility_registry_integration.py"
+        ]
+      },
+      {
+        "base_name": "test_model_loading_manager",
+        "files": [
+          {
+            "file": "E:\\wan\\utils_new\\test_model_loading_manager_unit.py",
+            "size": 37151,
+            "mtime": 1756932994.3564687,
+            "lines": 953
+          },
+          {
+            "file": "E:\\wan\\utils_new\\test_model_loading_manager.py",
+            "size": 19157,
+            "mtime": 1756932994.2725465,
+            "lines": 479
+          }
+        ],
+        "recommended_keep": "E:\\wan\\utils_new\\test_model_loading_manager_unit.py",
+        "candidates_for_removal": [
+          "E:\\wan\\utils_new\\test_model_loading_manager.py"
+        ]
+      },
+      {
+        "base_name": "test_model_update_manager",
+        "files": [
+          {
+            "file": "E:\\wan\\backend\\tests\\test_model_update_manager.py",
+            "size": 25213,
+            "mtime": 1756933055.6636364,
+            "lines": 669
+          },
+          {
+            "file": "E:\\wan\\backend\\tests\\test_model_update_manager_simple.py",
+            "size": 6326,
+            "mtime": 1756307561.965371,
+            "lines": 193
+          }
+        ],
+        "recommended_keep": "E:\\wan\\backend\\tests\\test_model_update_manager.py",
+        "candidates_for_removal": [
+          "E:\\wan\\backend\\tests\\test_model_update_manager_simple.py"
+        ]
+      },
+      {
+        "base_name": "test_integration_tester",
+        "files": [
+          {
+            "file": "E:\\wan\\local_testing_framework\\tests\\test_integration_tester.py",
+            "size": 22170,
+            "mtime": 1756932290.2348428,
+            "lines": 536
+          },
+          {
+            "file": "E:\\wan\\utils_new\\test_integration_tester_simple.py",
+            "size": 10345,
+            "mtime": 1756932290.4312658,
+            "lines": 318
+          }
+        ],
+        "recommended_keep": "E:\\wan\\local_testing_framework\\tests\\test_integration_tester.py",
+        "candidates_for_removal": [
+          "E:\\wan\\utils_new\\test_integration_tester_simple.py"
+        ]
+      },
+      {
+        "base_name": "test_health_endpoint",
+        "files": [
+          {
+            "file": "E:\\wan\\backend\\tests\\test_health_endpoint_integration.py",
+            "size": 11051,
+            "mtime": 1756913498.4345248,
+            "lines": 286
+          },
+          {
+            "file": "E:\\wan\\backend\\tests\\test_health_endpoint.py",
+            "size": 1447,
+            "mtime": 1756869748.7443767,
+            "lines": 46
+          }
+        ],
+        "recommended_keep": "E:\\wan\\backend\\tests\\test_health_endpoint_integration.py",
+        "candidates_for_removal": [
+          "E:\\wan\\backend\\tests\\test_health_endpoint.py"
+        ]
+      },
+      {
+        "base_name": "test_performance_optimization",
+        "files": [
+          {
+            "file": "E:\\wan\\tests\\performance\\test_performance_optimization.py",
+            "size": 26514,
+            "mtime": 1756869749.7116494,
+            "lines": 667
+          },
+          {
+            "file": "E:\\wan\\utils_new\\test_performance_optimization_comprehensive.py",
+            "size": 22288,
+            "mtime": 1756933055.684697,
+            "lines": 611
+          }
+        ],
+        "recommended_keep": "E:\\wan\\tests\\performance\\test_performance_optimization.py",
+        "candidates_for_removal": [
+          "E:\\wan\\utils_new\\test_performance_optimization_comprehensive.py"
+        ]
+      },
+      {
+        "base_name": "test_event_handlers",
+        "files": [
+          {
+            "file": "E:\\wan\\utils_new\\test_event_handlers_simple.py",
+            "size": 4564,
+            "mtime": 1756932980.3782318,
+            "lines": 129
+          },
+          {
+            "file": "E:\\wan\\utils_new\\test_event_handlers.py",
+            "size": 2952,
+            "mtime": 1756932980.3722315,
+            "lines": 92
+          }
+        ],
+        "recommended_keep": "E:\\wan\\utils_new\\test_event_handlers_simple.py",
+        "candidates_for_removal": [
+          "E:\\wan\\utils_new\\test_event_handlers.py"
+        ]
+      },
+      {
+        "base_name": "test_enhanced_model_availability",
+        "files": [
+          {
+            "file": "E:\\wan\\backend\\tests\\test_enhanced_model_availability_integration.py",
+            "size": 26733,
+            "mtime": 1756312108.4377995,
+            "lines": 685
+          },
+          {
+            "file": "E:\\wan\\backend\\tests\\test_enhanced_model_availability_comprehensive.py",
+            "size": 4085,
+            "mtime": 1756932886.558424,
+            "lines": 129
+          }
+        ],
+        "recommended_keep": "E:\\wan\\backend\\tests\\test_enhanced_model_availability_integration.py",
+        "candidates_for_removal": [
+          "E:\\wan\\backend\\tests\\test_enhanced_model_availability_comprehensive.py"
+        ]
+      },
+      {
+        "base_name": "test_end_to_end",
+        "files": [
+          {
+            "file": "E:\\wan\\utils_new\\test_end_to_end_integration.py",
+            "size": 59462,
+            "mtime": 1756932940.6958861,
+            "lines": 1344
+          },
+          {
+            "file": "E:\\wan\\local_testing_framework\\tests\\test_end_to_end.py",
+            "size": 25866,
+            "mtime": 1756913498.5936313,
+            "lines": 622
+          },
+          {
+            "file": "E:\\wan\\backend\\tests\\test_end_to_end_comprehensive.py",
+            "size": 19400,
+            "mtime": 1756913440.0277927,
+            "lines": 484
+          }
+        ],
+        "recommended_keep": "E:\\wan\\utils_new\\test_end_to_end_integration.py",
+        "candidates_for_removal": [
+          "E:\\wan\\local_testing_framework\\tests\\test_end_to_end.py",
+          "E:\\wan\\backend\\tests\\test_end_to_end_comprehensive.py"
+        ]
+      },
+      {
+        "base_name": "test_port_manager",
+        "files": [
+          {
+            "file": "E:\\wan\\tests\\integration\\test_port_manager.py",
+            "size": 28946,
+            "mtime": 1756869749.6848278,
+            "lines": 699
+          },
+          {
+            "file": "E:\\wan\\tests\\integration\\test_port_manager_integration.py",
+            "size": 17892,
+            "mtime": 1756932902.1547594,
+            "lines": 439
+          }
+        ],
+        "recommended_keep": "E:\\wan\\tests\\integration\\test_port_manager.py",
+        "candidates_for_removal": [
+          "E:\\wan\\tests\\integration\\test_port_manager_integration.py"
+        ]
+      },
+      {
+        "base_name": "test_recovery_engine",
+        "files": [
+          {
+            "file": "E:\\wan\\tests\\e2e\\test_recovery_engine.py",
+            "size": 36312,
+            "mtime": 1756931948.1163683,
+            "lines": 842
+          },
+          {
+            "file": "E:\\wan\\tests\\integration\\test_recovery_engine_integration.py",
+            "size": 20597,
+            "mtime": 1756932902.160349,
+            "lines": 502
+          }
+        ],
+        "recommended_keep": "E:\\wan\\tests\\e2e\\test_recovery_engine.py",
+        "candidates_for_removal": [
+          "E:\\wan\\tests\\integration\\test_recovery_engine_integration.py"
+        ]
+      },
+      {
+        "base_name": "test_enhanced_model_manager",
+        "files": [
+          {
+            "file": "E:\\wan\\utils_new\\test_enhanced_model_manager.py",
+            "size": 34119,
+            "mtime": 1756932940.7596517,
+            "lines": 826
+          },
+          {
+            "file": "E:\\wan\\utils_new\\test_enhanced_model_manager_simple.py",
+            "size": 26997,
+            "mtime": 1756932940.8154514,
+            "lines": 642
+          }
+        ],
+        "recommended_keep": "E:\\wan\\utils_new\\test_enhanced_model_manager.py",
+        "candidates_for_removal": [
+          "E:\\wan\\utils_new\\test_enhanced_model_manager_simple.py"
+        ]
+      },
+      {
+        "base_name": "test",
+        "files": [
+          {
+            "file": "E:\\wan\\utils_new\\test_integration.py",
+            "size": 45691,
+            "mtime": 1756932989.4667568,
+            "lines": 1152
+          },
+          {
+            "file": "E:\\wan\\tools\\unified-cli\\test_integration.py",
+            "size": 20072,
+            "mtime": 1756931948.2388854,
+            "lines": 577
+          },
+          {
+            "file": "E:\\wan\\tools\\maintenance-scheduler\\test_integration.py",
+            "size": 18749,
+            "mtime": 1756931948.2124083,
+            "lines": 531
+          },
+          {
+            "file": "E:\\wan\\tools\\maintenance-reporter\\test_integration.py",
+            "size": 17900,
+            "mtime": 1756931948.2067535,
+            "lines": 451
+          },
+          {
+            "file": "E:\\wan\\tools\\codebase-cleanup\\test_integration.py",
+            "size": 7330,
+            "mtime": 1756931948.1967926,
+            "lines": 229
+          },
+          {
+            "file": "E:\\wan\\tools\\maintenance-scheduler\\test_basic.py",
+            "size": 6495,
+            "mtime": 1756932290.3557231,
+            "lines": 220
+          }
+        ],
+        "recommended_keep": "E:\\wan\\utils_new\\test_integration.py",
+        "candidates_for_removal": [
+          "E:\\wan\\tools\\unified-cli\\test_integration.py",
+          "E:\\wan\\tools\\maintenance-scheduler\\test_integration.py",
+          "E:\\wan\\tools\\maintenance-reporter\\test_integration.py",
+          "E:\\wan\\tools\\codebase-cleanup\\test_integration.py",
+          "E:\\wan\\tools\\maintenance-scheduler\\test_basic.py"
+        ]
+      },
+      {
+        "base_name": "test_auditor",
+        "files": [
+          {
+            "file": "E:\\wan\\tools\\test-auditor\\test_auditor.py",
+            "size": 25488,
+            "mtime": 1756932290.3782575,
+            "lines": 691
+          },
+          {
+            "file": "E:\\wan\\tools\\test-runner\\test_auditor.py",
+            "size": 24841,
+            "mtime": 1756869749.7536502,
+            "lines": 636
+          }
+        ],
+        "recommended_keep": "E:\\wan\\tools\\test-auditor\\test_auditor.py",
+        "candidates_for_removal": [
+          "E:\\wan\\tools\\test-runner\\test_auditor.py"
+        ]
+      },
+      {
+        "base_name": "test_queue_management",
+        "files": [
+          {
+            "file": "E:\\wan\\utils_new\\test_queue_management_minimal.py",
+            "size": 12720,
+            "mtime": 1756931948.4706361,
+            "lines": 364
+          },
+          {
+            "file": "E:\\wan\\utils_new\\test_queue_management.py",
+            "size": 4940,
+            "mtime": 1756931948.466745,
+            "lines": 175
+          }
+        ],
+        "recommended_keep": "E:\\wan\\utils_new\\test_queue_management_minimal.py",
+        "candidates_for_removal": [
+          "E:\\wan\\utils_new\\test_queue_management.py"
+        ]
+      },
+      {
+        "base_name": "test_continuous_monitor",
+        "files": [
+          {
+            "file": "E:\\wan\\local_testing_framework\\tests\\test_continuous_monitor.py",
+            "size": 14507,
+            "mtime": 1753920689.6922946,
+            "lines": 382
+          },
+          {
+            "file": "E:\\wan\\utils_new\\test_continuous_monitor_simple.py",
+            "size": 5108,
+            "mtime": 1753920777.323629,
+            "lines": 122
+          }
+        ],
+        "recommended_keep": "E:\\wan\\local_testing_framework\\tests\\test_continuous_monitor.py",
+        "candidates_for_removal": [
+          "E:\\wan\\utils_new\\test_continuous_monitor_simple.py"
+        ]
+      },
+      {
+        "base_name": "test_performance_tester",
+        "files": [
+          {
+            "file": "E:\\wan\\local_testing_framework\\tests\\test_performance_tester.py",
+            "size": 15510,
+            "mtime": 1756932290.236844,
+            "lines": 422
+          },
+          {
+            "file": "E:\\wan\\utils_new\\test_performance_tester_simple.py",
+            "size": 5098,
+            "mtime": 1756932996.7774594,
+            "lines": 146
+          }
+        ],
+        "recommended_keep": "E:\\wan\\local_testing_framework\\tests\\test_performance_tester.py",
+        "candidates_for_removal": [
+          "E:\\wan\\utils_new\\test_performance_tester_simple.py"
+        ]
+      },
+      {
+        "base_name": "test_sample_manager",
+        "files": [
+          {
+            "file": "E:\\wan\\local_testing_framework\\tests\\test_sample_manager.py",
+            "size": 18769,
+            "mtime": 1756932290.2418432,
+            "lines": 459
+          },
+          {
+            "file": "E:\\wan\\utils_new\\test_sample_manager_simple.py",
+            "size": 7057,
+            "mtime": 1756933003.7051804,
+            "lines": 192
+          }
+        ],
+        "recommended_keep": "E:\\wan\\local_testing_framework\\tests\\test_sample_manager.py",
+        "candidates_for_removal": [
+          "E:\\wan\\utils_new\\test_sample_manager_simple.py"
+        ]
+      },
+      {
+        "base_name": "test_resource_monitoring",
+        "files": [
+          {
+            "file": "E:\\wan\\utils_new\\test_resource_monitoring_minimal.py",
+            "size": 17059,
+            "mtime": 1756869749.900007,
+            "lines": 438
+          },
+          {
+            "file": "E:\\wan\\utils_new\\test_resource_monitoring.py",
+            "size": 6068,
+            "mtime": 1756933001.561404,
+            "lines": 172
+          }
+        ],
+        "recommended_keep": "E:\\wan\\utils_new\\test_resource_monitoring_minimal.py",
+        "candidates_for_removal": [
+          "E:\\wan\\utils_new\\test_resource_monitoring.py"
+        ]
+      },
+      {
+        "base_name": "test_execution_engine",
+        "files": [
+          {
+            "file": "E:\\wan\\tests\\utils\\test_execution_engine.py",
+            "size": 23531,
+            "mtime": 1756932290.3014812,
+            "lines": 618
+          },
+          {
+            "file": "E:\\wan\\tests\\utils\\test_execution_engine_integration.py",
+            "size": 5774,
+            "mtime": 1756932918.8807697,
+            "lines": 177
+          }
+        ],
+        "recommended_keep": "E:\\wan\\tests\\utils\\test_execution_engine.py",
+        "candidates_for_removal": [
+          "E:\\wan\\tests\\utils\\test_execution_engine_integration.py"
+        ]
+      },
+      {
+        "base_name": "test_config_validator",
+        "files": [
+          {
+            "file": "E:\\wan\\utils_new\\test_config_validator_unit.py",
+            "size": 26790,
+            "mtime": 1756932931.1023126,
+            "lines": 714
+          },
+          {
+            "file": "E:\\wan\\utils_new\\test_config_validator.py",
+            "size": 15019,
+            "mtime": 1756931948.2735054,
+            "lines": 400
+          }
+        ],
+        "recommended_keep": "E:\\wan\\utils_new\\test_config_validator_unit.py",
+        "candidates_for_removal": [
+          "E:\\wan\\utils_new\\test_config_validator.py"
+        ]
+      },
+      {
+        "base_name": "test_performance_monitor",
+        "files": [
+          {
+            "file": "E:\\wan\\tests\\performance\\test_performance_monitor.py",
+            "size": 20801,
+            "mtime": 1756869749.709652,
+            "lines": 555
+          },
+          {
+            "file": "E:\\wan\\utils_new\\test_performance_monitor.py",
+            "size": 14271,
+            "mtime": 1756932996.697138,
+            "lines": 395
+          }
+        ],
+        "recommended_keep": "E:\\wan\\tests\\performance\\test_performance_monitor.py",
+        "candidates_for_removal": [
+          "E:\\wan\\utils_new\\test_performance_monitor.py"
+        ]
+      },
+      {
+        "base_name": "test_core_functionality",
+        "files": [
+          {
+            "file": "E:\\wan\\utils_new\\test_core_functionality.py",
+            "size": 41332,
+            "mtime": 1756933055.6656392,
+            "lines": 1187
+          },
+          {
+            "file": "E:\\wan\\utils_new\\test_core_functionality_simple.py",
+            "size": 39167,
+            "mtime": 1756933055.668049,
+            "lines": 1149
+          }
+        ],
+        "recommended_keep": "E:\\wan\\utils_new\\test_core_functionality.py",
+        "candidates_for_removal": [
+          "E:\\wan\\utils_new\\test_core_functionality_simple.py"
+        ]
+      },
+      {
+        "base_name": "test_progress_tracking_functionality",
+        "files": [
+          {
+            "file": "E:\\wan\\utils_new\\test_progress_tracking_functionality_complete.py",
+            "size": 40596,
+            "mtime": 1756932999.2099805,
+            "lines": 951
+          },
+          {
+            "file": "E:\\wan\\utils_new\\test_progress_tracking_functionality.py",
+            "size": 25955,
+            "mtime": 1756932999.1664026,
+            "lines": 674
+          }
+        ],
+        "recommended_keep": "E:\\wan\\utils_new\\test_progress_tracking_functionality_complete.py",
+        "candidates_for_removal": [
+          "E:\\wan\\utils_new\\test_progress_tracking_functionality.py"
+        ]
+      },
+      {
+        "base_name": "test_error_handler",
+        "files": [
+          {
+            "file": "E:\\wan\\utils_new\\test_error_handler.py",
+            "size": 23308,
+            "mtime": 1756933055.6723773,
+            "lines": 635
+          },
+          {
+            "file": "E:\\wan\\utils_new\\test_error_handler_integration.py",
+            "size": 7861,
+            "mtime": 1754612144.244387,
+            "lines": 194
+          }
+        ],
+        "recommended_keep": "E:\\wan\\utils_new\\test_error_handler.py",
+        "candidates_for_removal": [
+          "E:\\wan\\utils_new\\test_error_handler_integration.py"
+        ]
+      },
+      {
+        "base_name": "test_error_recovery_system",
+        "files": [
+          {
+            "file": "E:\\wan\\utils_new\\test_error_recovery_system_unit.py",
+            "size": 34604,
+            "mtime": 1756932980.3702314,
+            "lines": 872
+          },
+          {
+            "file": "E:\\wan\\utils_new\\test_error_recovery_system.py",
+            "size": 25082,
+            "mtime": 1756932980.3125193,
+            "lines": 666
+          }
+        ],
+        "recommended_keep": "E:\\wan\\utils_new\\test_error_recovery_system_unit.py",
+        "candidates_for_removal": [
+          "E:\\wan\\utils_new\\test_error_recovery_system.py"
+        ]
+      },
+      {
+        "base_name": "test_health_monitor",
+        "files": [
+          {
+            "file": "E:\\wan\\utils_new\\test_health_monitor_unit.py",
+            "size": 40392,
+            "mtime": 1756933055.6830552,
+            "lines": 1101
+          },
+          {
+            "file": "E:\\wan\\utils_new\\test_health_monitor.py",
+            "size": 14742,
+            "mtime": 1756933055.6789415,
+            "lines": 432
+          }
+        ],
+        "recommended_keep": "E:\\wan\\utils_new\\test_health_monitor_unit.py",
+        "candidates_for_removal": [
+          "E:\\wan\\utils_new\\test_health_monitor.py"
+        ]
+      },
+      {
+        "base_name": "test_progress_tracker",
+        "files": [
+          {
+            "file": "E:\\wan\\utils_new\\test_progress_tracker.py",
+            "size": 14945,
+            "mtime": 1756932996.7804587,
+            "lines": 405
+          },
+          {
+            "file": "E:\\wan\\utils_new\\test_progress_tracker_simple.py",
+            "size": 1532,
+            "mtime": 1755051791.0118988,
+            "lines": 45
+          }
+        ],
+        "recommended_keep": "E:\\wan\\utils_new\\test_progress_tracker.py",
+        "candidates_for_removal": [
+          "E:\\wan\\utils_new\\test_progress_tracker_simple.py"
+        ]
+      },
+      {
+        "base_name": "test_vram_manager",
+        "files": [
+          {
+            "file": "E:\\wan\\utils_new\\test_vram_manager_unit.py",
+            "size": 28407,
+            "mtime": 1756933010.25985,
+            "lines": 730
+          },
+          {
+            "file": "E:\\wan\\utils_new\\test_vram_manager.py",
+            "size": 15025,
+            "mtime": 1756933008.284703,
+            "lines": 377
+          }
+        ],
+        "recommended_keep": "E:\\wan\\utils_new\\test_vram_manager_unit.py",
+        "candidates_for_removal": [
+          "E:\\wan\\utils_new\\test_vram_manager.py"
+        ]
+      },
+      {
+        "base_name": "test_production_validator",
+        "files": [
+          {
+            "file": "E:\\wan\\local_testing_framework\\tests\\test_production_validator.py",
+            "size": 20359,
+            "mtime": 1756913498.6076312,
+            "lines": 511
+          },
+          {
+            "file": "E:\\wan\\utils_new\\test_production_validator_simple.py",
+            "size": 4294,
+            "mtime": 1756932996.7784595,
+            "lines": 108
+          }
+        ],
+        "recommended_keep": "E:\\wan\\local_testing_framework\\tests\\test_production_validator.py",
+        "candidates_for_removal": [
+          "E:\\wan\\utils_new\\test_production_validator_simple.py"
+        ]
+      },
+      {
+        "base_name": "test_analytics",
+        "files": [
+          {
+            "file": "E:\\wan\\tests\\performance\\test_analytics.py",
+            "size": 26010,
+            "mtime": 1756869749.6980686,
+            "lines": 642
+          },
+          {
+            "file": "E:\\wan\\backend\\tests\\test_analytics_simple.py",
+            "size": 9583,
+            "mtime": 1756869748.724377,
+            "lines": 264
+          }
+        ],
+        "recommended_keep": "E:\\wan\\tests\\performance\\test_analytics.py",
+        "candidates_for_removal": [
+          "E:\\wan\\backend\\tests\\test_analytics_simple.py"
+        ]
+      },
+      {
+        "base_name": "test_safe_load_manager",
+        "files": [
+          {
+            "file": "E:\\wan\\utils_new\\test_safe_load_manager.py",
+            "size": 20963,
+            "mtime": 1756933003.6981804,
+            "lines": 527
+          },
+          {
+            "file": "E:\\wan\\utils_new\\test_safe_load_manager_integration.py",
+            "size": 15900,
+            "mtime": 1756869749.9050052,
+            "lines": 360
+          }
+        ],
+        "recommended_keep": "E:\\wan\\utils_new\\test_safe_load_manager.py",
+        "candidates_for_removal": [
+          "E:\\wan\\utils_new\\test_safe_load_manager_integration.py"
+        ]
+      },
+      {
+        "base_name": "test_syntax_validator",
+        "files": [
+          {
+            "file": "E:\\wan\\utils_new\\test_syntax_validator_unit.py",
+            "size": 17324,
+            "mtime": 1756933055.6891723,
+            "lines": 465
+          },
+          {
+            "file": "E:\\wan\\utils_new\\test_syntax_validator.py",
+            "size": 15494,
+            "mtime": 1756933003.7654812,
+            "lines": 415
+          }
+        ],
+        "recommended_keep": "E:\\wan\\utils_new\\test_syntax_validator_unit.py",
+        "candidates_for_removal": [
+          "E:\\wan\\utils_new\\test_syntax_validator.py"
+        ]
+      }
+    ]
+  }
+}
