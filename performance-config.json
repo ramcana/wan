@@ -1,0 +1,37 @@
+{
+  "backend": {
+    "test_file": "backend/test_performance_validation.py",
+    "timeout": 2400,
+    "required_tests": [
+      "test_720p_t2v_generation_timing",
+      "test_1080p_generation_timing",
+      "test_api_response_times",
+      "test_establish_baseline_metrics"
+    ],
+    "performance_budgets": {
+      "t2v_720p_max_time_seconds": 360,
+      "t2v_1080p_max_time_seconds": 1020,
+      "max_vram_usage_gb": 8
+    }
+  },
+  "frontend": {
+    "build_command": "npm run build",
+    "test_command": "npm run test:performance",
+    "bundle_size_limit": 512000,
+    "fmp_limit": 2000
+  },
+  "integration": {
+    "endpoints_to_test": [
+      "/api/v1/health",
+      "/api/v1/system/stats",
+      "/api/v1/queue",
+      "/api/v1/outputs"
+    ],
+    "response_time_limits": {
+      "/api/v1/health": 1000,
+      "/api/v1/system/stats": 2000,
+      "/api/v1/queue": 1500,
+      "/api/v1/outputs": 3000
+    }
+  }
+}
