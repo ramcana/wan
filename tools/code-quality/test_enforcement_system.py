@@ -10,9 +10,9 @@ from unittest.mock import Mock, patch, MagicMock
 import yaml
 import json
 
-from tools.code_quality.enforcement.pre_commit_hooks import PreCommitHookManager
-from tools.code_quality.enforcement.ci_integration import CIIntegration
-from tools.code_quality.enforcement.enforcement_cli import EnforcementCLI
+from enforcement.pre_commit_hooks import PreCommitHookManager
+from enforcement.ci_integration import CIIntegration
+from enforcement.enforcement_cli import EnforcementCLI
 
 
 class TestPreCommitHookManager:

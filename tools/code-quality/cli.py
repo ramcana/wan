@@ -13,8 +13,14 @@ import yaml
 project_root = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(project_root))
 
-from tools.code_quality.quality_checker import QualityChecker
-from tools.code_quality.models import QualityConfig
+# Create a proper import path by renaming the directory reference
+import sys
+import os
+code_quality_path = Path(__file__).parent
+sys.path.insert(0, str(code_quality_path))
+
+from quality_checker import QualityChecker
+from models import QualityConfig
 
 
 def setup_logging(verbose: bool = False):
@@ -269,7 +275,7 @@ def handle_config_command(args) -> int:
 def handle_enforce_command(args) -> int:
     """Handle enforcement command."""
     try:
-        from tools.code_quality.enforcement.enforcement_cli import EnforcementCLI
+        from enforcement.enforcement_cli import EnforcementCLI
         
         cli = EnforcementCLI()
         

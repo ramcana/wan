@@ -11,15 +11,15 @@ import logging
 import yaml
 import json
 
-from tools.code-quality.models import (
+from models import (
     QualityReport, QualityIssue, QualityMetrics, QualityConfig,
     QualityIssueType, QualitySeverity
 )
-from tools.code-quality.formatters.code_formatter import CodeFormatter
-from tools.code-quality.validators.documentation_validator import DocumentationValidator
-from tools.code-quality.validators.type_hint_validator import TypeHintValidator
-from tools.code-quality.validators.style_validator import StyleValidator
-from tools.code-quality.analyzers.complexity_analyzer import ComplexityAnalyzer
+from formatters.code_formatter import CodeFormatter
+from validators.documentation_validator import DocumentationValidator
+from validators.type_hint_validator import TypeHintValidator
+from validators.style_validator import StyleValidator
+from analyzers.complexity_analyzer import ComplexityAnalyzer
 
 
 logger = logging.getLogger(__name__)

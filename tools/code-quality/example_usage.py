@@ -3,7 +3,8 @@ Example usage of the code quality checking system.
 """
 
 from pathlib import Path
-from tools.code_quality import QualityChecker, QualityConfig
+from quality_checker import QualityChecker
+from models import QualityConfig
 
 
 def main():

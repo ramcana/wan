@@ -177,7 +177,7 @@ class CIIntegration:
         
         try:
             # Import quality checker
-            from tools.code_quality.quality_checker import QualityChecker
+            from quality_checker import QualityChecker
             
             checker = QualityChecker()
             

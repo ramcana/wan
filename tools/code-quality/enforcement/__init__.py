@@ -7,7 +7,7 @@ This module provides automated quality enforcement through:
 - Quality metrics tracking and reporting
 """
 
-from tools..pre_commit_hooks import PreCommitHookManager
-from tools..ci_integration import CIIntegration
+from .pre_commit_hooks import PreCommitHookManager
+from .ci_integration import CIIntegration
 
 __all__ = ['PreCommitHookManager', 'CIIntegration']

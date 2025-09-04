@@ -12,7 +12,7 @@ from typing import Dict, Any
 project_root = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(project_root))
 
-from tools.code_quality.enforcement.enforcement_cli import EnforcementCLI
+from enforcement.enforcement_cli import EnforcementCLI
 
 
 def create_demo_project() -> Path:

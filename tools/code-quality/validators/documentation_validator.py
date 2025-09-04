@@ -7,7 +7,7 @@ from pathlib import Path
 from typing import List, Dict, Any
 import logging
 
-from tools...models import QualityIssue, QualityIssueType, QualitySeverity, QualityConfig
+from models import QualityIssue, QualityIssueType, QualitySeverity, QualityConfig
 
 
 logger = logging.getLogger(__name__)
