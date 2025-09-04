@@ -1,3 +1,4 @@
+import pytest
 #!/usr/bin/env python3
 """
 Comprehensive Test Runner for React Frontend FastAPI Backend

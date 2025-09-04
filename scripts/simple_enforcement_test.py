@@ -1,3 +1,4 @@
+from unittest.mock import Mock, patch
 """
 Simple test of the enforcement system components.
 """

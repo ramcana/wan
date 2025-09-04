@@ -506,7 +506,7 @@ def load_config(config_path: Optional[Path] = None, apply_env_overrides: bool = 
     
     if apply_preferences:
         try:
-            from .preferences import PreferenceManager
+from .preferences import PreferenceManager
             pref_manager = PreferenceManager()
             config = pref_manager.apply_preferences_to_config(config)
         except ImportError:

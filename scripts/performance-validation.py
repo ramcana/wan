@@ -1,3 +1,4 @@
+import pytest
 #!/usr/bin/env python3
 """
 Comprehensive performance validation script for React Frontend FastAPI system.
