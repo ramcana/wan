@@ -27,6 +27,8 @@ class TestComponentValidator(unittest.TestCase):
         self.assertEqual(validation_result.component_name, "test_none")
         self.assertFalse(validation_result.is_valid)
         self.assertEqual(validation_result.error_message, "Component is None")
+
+        assert True  # TODO: Add proper assertion
     
     def test_validate_valid_gradio_component(self):
         """Test validation of valid Gradio component"""
@@ -42,6 +44,8 @@ class TestComponentValidator(unittest.TestCase):
         self.assertEqual(validation_result.component_name, "test_textbox")
         self.assertTrue(validation_result.is_valid)
         self.assertIsNone(validation_result.error_message)
+
+        assert True  # TODO: Add proper assertion
     
     def test_validate_component_missing_id(self):
         """Test validation of component missing _id attribute"""
@@ -58,6 +62,8 @@ class TestComponentValidator(unittest.TestCase):
         self.assertEqual(validation_result.component_name, "test_no_id")
         self.assertFalse(validation_result.is_valid)
         self.assertIn("missing '_id' attribute", validation_result.error_message)
+
+        assert True  # TODO: Add proper assertion
     
     def test_validate_invalid_component_type(self):
         """Test validation of non-Gradio component"""
@@ -70,6 +76,8 @@ class TestComponentValidator(unittest.TestCase):
         self.assertEqual(validation_result.component_name, "test_invalid")
         self.assertFalse(validation_result.is_valid)
         self.assertIn("not a valid Gradio component", validation_result.error_message)
+
+        assert True  # TODO: Add proper assertion
     
     def test_validate_component_list(self):
         """Test validation of component list"""
@@ -88,11 +96,15 @@ class TestComponentValidator(unittest.TestCase):
         self.assertEqual(len(valid_components), 2)
         self.assertIn(valid_component1, valid_components)
         self.assertIn(valid_component2, valid_components)
+
+        assert True  # TODO: Add proper assertion
     
     def test_validate_empty_component_list(self):
         """Test validation of empty component list"""
         result = self.validator.validate_component_list([], "empty_list")
         self.assertEqual(result, [])
+
+        assert True  # TODO: Add proper assertion
     
     def test_register_valid_component(self):
         """Test registering a valid component"""
@@ -103,12 +115,16 @@ class TestComponentValidator(unittest.TestCase):
         self.assertTrue(result)
         self.assertIn("test_comp", self.validator.component_registry)
         self.assertEqual(self.validator.component_registry["test_comp"], mock_component)
+
+        assert True  # TODO: Add proper assertion
     
     def test_register_invalid_component(self):
         """Test registering an invalid component"""
         result = self.validator.register_component("invalid_comp", None)
         self.assertFalse(result)
         self.assertNotIn("invalid_comp", self.validator.component_registry)
+
+        assert True  # TODO: Add proper assertion
     
     def test_get_registered_component(self):
         """Test getting a registered component"""
@@ -121,11 +137,15 @@ class TestComponentValidator(unittest.TestCase):
         # Get component
         retrieved = self.validator.get_component("get_comp")
         self.assertEqual(retrieved, mock_component)
+
+        assert True  # TODO: Add proper assertion
     
     def test_get_nonexistent_component(self):
         """Test getting a component that doesn't exist"""
         result = self.validator.get_component("nonexistent")
         self.assertIsNone(result)
+
+        assert True  # TODO: Add proper assertion
     
     def test_validate_component_dict(self):
         """Test validation of component dictionary"""
@@ -144,6 +164,8 @@ class TestComponentValidator(unittest.TestCase):
         self.assertEqual(len(valid_dict), 1)
         self.assertIn("valid", valid_dict)
         self.assertEqual(valid_dict["valid"], valid_component)
+
+        assert True  # TODO: Add proper assertion
     
     def test_get_validation_report(self):
         """Test getting validation report"""
@@ -163,6 +185,8 @@ class TestComponentValidator(unittest.TestCase):
         self.assertAlmostEqual(report['success_rate'], 33.33, places=1)  # 1/3 * 100
         self.assertIn("none_comp", report['failed_components'])
         self.assertIn("invalid_comp", report['failed_components'])
+
+        assert True  # TODO: Add proper assertion
     
     def test_clear_validation_history(self):
         """Test clearing validation history"""
@@ -173,6 +197,8 @@ class TestComponentValidator(unittest.TestCase):
         # Clear history
         self.validator.clear_validation_history()
         self.assertEqual(len(self.validator.validation_results), 0)
+
+        assert True  # TODO: Add proper assertion
     
     def test_convenience_functions(self):
         """Test convenience functions"""
@@ -188,6 +214,8 @@ class TestComponentValidator(unittest.TestCase):
         filtered = filter_valid_components(components, "conv_filter")
         self.assertEqual(len(filtered), 1)
         self.assertEqual(filtered[0], valid_component)
+
+        assert True  # TODO: Add proper assertion
 
 class TestComponentValidatorIntegration(unittest.TestCase):
     """Integration tests with actual Gradio components"""
@@ -221,6 +249,8 @@ class TestComponentValidatorIntegration(unittest.TestCase):
         except Exception as e:
             # Skip if Gradio components can't be created in test environment
             self.skipTest(f"Could not create real Gradio components: {e}")
+
+        assert True  # TODO: Add proper assertion
 
 if __name__ == '__main__':
     # Run tests

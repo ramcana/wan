@@ -267,7 +267,7 @@ class TestRegistryPerformance:
         
         # Measure batch update performance
         import time
-start_time = time.time()
+        start_time = time.time()
         registry.update_registry(batch_updates)
         update_time = time.time() - start_time
         
@@ -292,7 +292,7 @@ start_time = time.time()
         
         # Registry should not consume excessive memory
         import sys
-initial_size = sys.getsizeof(registry.registry)
+        initial_size = sys.getsizeof(registry.registry)
         
         # Add some models
         for i in range(10):

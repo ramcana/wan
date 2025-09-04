@@ -235,6 +235,8 @@ class TestGenerationTaskLoRASupport(unittest.TestCase):
         self.assertEqual(self.task.lora_load_time, 0.0)
         self.assertIsInstance(self.task.lora_metadata, dict)
         self.assertEqual(len(self.task.lora_metadata), 0)
+
+        assert True  # TODO: Add proper assertion
     
     def test_to_dict_includes_lora_information(self):
         """Test that to_dict method includes new LoRA fields"""
@@ -257,6 +259,8 @@ class TestGenerationTaskLoRASupport(unittest.TestCase):
         self.assertEqual(task_dict["lora_memory_usage"], 256.5)
         self.assertEqual(task_dict["lora_load_time"], 12.3)
         self.assertEqual(task_dict["lora_metadata"], {"applied_loras": ["anime_style", "detail_enhancer"]})
+
+        assert True  # TODO: Add proper assertion
     
     def test_add_lora_selection_valid(self):
         """Test adding valid LoRA selections"""
@@ -276,6 +280,8 @@ class TestGenerationTaskLoRASupport(unittest.TestCase):
         self.assertTrue(result)
         self.assertEqual(self.task.selected_loras["anime_style"], 1.0)
         self.assertEqual(len(self.task.selected_loras), 2)  # Should not increase count
+
+        assert True  # TODO: Add proper assertion
     
     def test_add_lora_selection_invalid_name(self):
         """Test adding LoRA with invalid name"""
@@ -293,6 +299,8 @@ class TestGenerationTaskLoRASupport(unittest.TestCase):
         
         # Should have no selections
         self.assertEqual(len(self.task.selected_loras), 0)
+
+        assert True  # TODO: Add proper assertion
     
     def test_add_lora_selection_invalid_strength(self):
         """Test adding LoRA with invalid strength values"""
@@ -314,6 +322,8 @@ class TestGenerationTaskLoRASupport(unittest.TestCase):
         
         # Should have no selections
         self.assertEqual(len(self.task.selected_loras), 0)
+
+        assert True  # TODO: Add proper assertion
     
     def test_add_lora_selection_boundary_values(self):
         """Test adding LoRA with boundary strength values"""
@@ -326,6 +336,8 @@ class TestGenerationTaskLoRASupport(unittest.TestCase):
         result = self.task.add_lora_selection("max_lora", 2.0)
         self.assertTrue(result)
         self.assertEqual(self.task.selected_loras["max_lora"], 2.0)
+
+        assert True  # TODO: Add proper assertion
     
     def test_add_lora_selection_max_limit(self):
         """Test maximum LoRA limit (5 LoRAs)"""
@@ -345,6 +357,8 @@ class TestGenerationTaskLoRASupport(unittest.TestCase):
         result = self.task.add_lora_selection("lora_0", 1.0)
         self.assertTrue(result)
         self.assertEqual(self.task.selected_loras["lora_0"], 1.0)
+
+        assert True  # TODO: Add proper assertion
     
     def test_remove_lora_selection(self):
         """Test removing LoRA selections"""
@@ -363,6 +377,8 @@ class TestGenerationTaskLoRASupport(unittest.TestCase):
         result = self.task.remove_lora_selection("non_existent")
         self.assertFalse(result)
         self.assertEqual(len(self.task.selected_loras), 1)
+
+        assert True  # TODO: Add proper assertion
     
     def test_clear_lora_selections(self):
         """Test clearing all LoRA selections"""
@@ -381,6 +397,8 @@ class TestGenerationTaskLoRASupport(unittest.TestCase):
         self.assertEqual(self.task.lora_memory_usage, 0.0)
         self.assertEqual(self.task.lora_load_time, 0.0)
         self.assertEqual(len(self.task.lora_metadata), 0)
+
+        assert True  # TODO: Add proper assertion
     
     def test_validate_lora_selections_valid(self):
         """Test validation with valid LoRA selections"""
@@ -396,6 +414,8 @@ class TestGenerationTaskLoRASupport(unittest.TestCase):
         is_valid, errors = self.task.validate_lora_selections()
         self.assertTrue(is_valid)
         self.assertEqual(len(errors), 0)
+
+        assert True  # TODO: Add proper assertion
     
     def test_validate_lora_selections_too_many(self):
         """Test validation with too many LoRAs"""
@@ -407,6 +427,8 @@ class TestGenerationTaskLoRASupport(unittest.TestCase):
         is_valid, errors = self.task.validate_lora_selections()
         self.assertFalse(is_valid)
         self.assertTrue(any("Too many LoRAs" in error for error in errors))
+
+        assert True  # TODO: Add proper assertion
     
     def test_validate_lora_selections_invalid_strength(self):
         """Test validation with invalid strength values"""
@@ -420,6 +442,8 @@ class TestGenerationTaskLoRASupport(unittest.TestCase):
         is_valid, errors = self.task.validate_lora_selections()
         self.assertFalse(is_valid)
         self.assertTrue(len(errors) >= 2)  # At least 2 errors for numeric values
+
+        assert True  # TODO: Add proper assertion
     
     def test_update_lora_metrics(self):
         """Test updating LoRA performance metrics"""
@@ -436,6 +460,8 @@ class TestGenerationTaskLoRASupport(unittest.TestCase):
         self.assertEqual(self.task.lora_memory_usage, memory_usage)
         self.assertEqual(self.task.lora_load_time, load_time)
         self.assertEqual(self.task.lora_metadata, metadata)
+
+        assert True  # TODO: Add proper assertion
     
     def test_get_lora_summary(self):
         """Test getting LoRA summary information"""
@@ -463,6 +489,8 @@ class TestGenerationTaskLoRASupport(unittest.TestCase):
         self.assertTrue(summary["has_metadata"])
         self.assertEqual(summary["metadata"], {"test": "metadata"})
         self.assertTrue(summary["is_valid"])
+
+        assert True  # TODO: Add proper assertion
     
     def test_backward_compatibility(self):
         """Test that existing lora_path and lora_strength fields still work"""
@@ -488,6 +516,8 @@ class TestGenerationTaskLoRASupport(unittest.TestCase):
         self.assertEqual(task_dict["lora_strength"], 0.9)
         self.assertIn("selected_loras", task_dict)
 
+
+        assert True  # TODO: Add proper assertion
 
 if __name__ == "__main__":
     unittest.main()

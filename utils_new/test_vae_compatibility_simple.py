@@ -1,3 +1,4 @@
+import pytest
 """
 Simple tests for VAE Compatibility Handler (no pytest required)
 """

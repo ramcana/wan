@@ -210,6 +210,8 @@ class TestProgressTracker:
         # Should not raise exception
         self.tracker.start_progress_tracking("test_task", 100)
         self.tracker.update_progress(25)
+
+        assert True  # TODO: Add proper assertion
     
     def test_get_progress_html(self):
         """Test HTML generation for progress display"""

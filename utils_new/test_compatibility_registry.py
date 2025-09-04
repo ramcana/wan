@@ -472,7 +472,7 @@ class TestRegistryIntegration:
         
         # Verify import worked
         imported = new_registry.get_pipeline_requirements("test-model")
-assert imported is not None
+        assert imported is not None
         assert imported.pipeline_class == "WanPipeline"
         
         # Cleanup

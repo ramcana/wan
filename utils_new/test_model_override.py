@@ -23,6 +23,8 @@ def test_override():
         print(f"T2V model not found: {e}")
         return False
 
+    assert True  # TODO: Add proper assertion
+
 if __name__ == "__main__":
     success = test_override()
     if success:

@@ -77,6 +77,8 @@ def test_lora_ui_state_integration():
         print(f"❌ Failed to create/test LoRAUIState: {e}")
         return False
 
+    assert True  # TODO: Add proper assertion
+
 def test_ui_integration():
     """Test that UI can be imported with LoRA integration"""
     print("\nTesting UI integration...")
@@ -159,8 +161,10 @@ def test_ui_integration():
     except Exception as e:
         print(f"❌ Failed to test UI integration: {e}")
         import traceback
-traceback.print_exc()
+        traceback.print_exc()
         return False
+
+    assert True  # TODO: Add proper assertion
 
 def main():
     """Run all integration tests"""

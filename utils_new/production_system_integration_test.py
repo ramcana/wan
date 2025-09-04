@@ -60,7 +60,7 @@ except ImportError:
 
 try:
     import utils
-UTILS_AVAILABLE = True
+    UTILS_AVAILABLE = True
 except ImportError:
     UTILS_AVAILABLE = False
 
@@ -116,7 +116,7 @@ class ProductionSystemIntegrationTest(unittest.TestCase):
     def tearDown(self):
         """Clean up production integration test environment"""
         import shutil
-shutil.rmtree(self.temp_dir, ignore_errors=True)
+        shutil.rmtree(self.temp_dir, ignore_errors=True)
         
         total_time = time.time() - self.test_metrics['start_time']
         self.logger.info(f"Production integration test completed in {total_time:.2f}s")

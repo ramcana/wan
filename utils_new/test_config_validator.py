@@ -98,7 +98,7 @@ class TestConfigValidator:
     def teardown_method(self):
         """Clean up test environment"""
         import shutil
-shutil.rmtree(self.temp_dir, ignore_errors=True)
+        shutil.rmtree(self.temp_dir, ignore_errors=True)
     
     def test_validator_initialization(self):
         """Test ConfigValidator initialization"""

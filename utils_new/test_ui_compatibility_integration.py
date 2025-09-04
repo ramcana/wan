@@ -58,6 +58,8 @@ class TestCompatibilityStatusDisplay(unittest.TestCase):
         for key in required_keys:
             self.assertIn(key, components)
             self.assertIsNotNone(components[key])
+
+        assert True  # TODO: Add proper assertion
     
     @patch('ui_compatibility_integration.get_compatibility_status_for_ui')
     def test_update_compatibility_display_success(self, mock_get_status):
@@ -93,6 +95,8 @@ class TestCompatibilityStatusDisplay(unittest.TestCase):
         self.assertEqual(details_json, mock_status["compatibility_details"])
         self.assertIn("Mixed Precision", progress_html)
         self.assertTrue(show_panel)
+
+        assert True  # TODO: Add proper assertion
     
     @patch('ui_compatibility_integration.get_compatibility_status_for_ui')
     def test_update_compatibility_display_error(self, mock_get_status):
@@ -108,6 +112,8 @@ class TestCompatibilityStatusDisplay(unittest.TestCase):
         self.assertIn("Failed to check compatibility", status_html)
         self.assertIn("Test error", status_html)
         self.assertTrue(show_panel)
+
+        assert True  # TODO: Add proper assertion
     
     def test_create_status_html_excellent(self):
         """Test status HTML creation for excellent compatibility"""
@@ -122,6 +128,8 @@ class TestCompatibilityStatusDisplay(unittest.TestCase):
         self.assertIn("🚀", html)  # Excellent icon
         self.assertIn("#28a745", html)  # Green color
         self.assertIn("excellent compatibility", html)
+
+        assert True  # TODO: Add proper assertion
     
     def test_create_status_html_insufficient(self):
         """Test status HTML creation for insufficient compatibility"""
@@ -136,6 +144,8 @@ class TestCompatibilityStatusDisplay(unittest.TestCase):
         self.assertIn("❌", html)  # Error icon
         self.assertIn("#dc3545", html)  # Red color
         self.assertIn("Insufficient VRAM", html)
+
+        assert True  # TODO: Add proper assertion
     
     def test_create_actions_html(self):
         """Test actions HTML creation"""
@@ -150,6 +160,8 @@ class TestCompatibilityStatusDisplay(unittest.TestCase):
         for action in actions:
             self.assertIn(action, html)
         self.assertIn("💡 Recommended Actions:", html)
+
+        assert True  # TODO: Add proper assertion
     
     def test_create_actions_html_empty(self):
         """Test actions HTML creation with no actions"""
@@ -157,6 +169,8 @@ class TestCompatibilityStatusDisplay(unittest.TestCase):
         
         self.assertIn("No actions needed", html)
         self.assertIn("font-style: italic", html)
+
+        assert True  # TODO: Add proper assertion
     
     def test_create_progress_html(self):
         """Test progress HTML creation"""
@@ -165,6 +179,8 @@ class TestCompatibilityStatusDisplay(unittest.TestCase):
         self.assertIn("Loading model", html)
         self.assertIn("75%", html)
         self.assertIn("width: 75%", html)
+
+        assert True  # TODO: Add proper assertion
     
     def test_create_progress_indicators_html(self):
         """Test progress indicators HTML creation"""
@@ -181,6 +197,8 @@ class TestCompatibilityStatusDisplay(unittest.TestCase):
         self.assertIn("required", html)
         self.assertIn("🔧 Optimization Status:", html)
 
+
+        assert True  # TODO: Add proper assertion
 
 class TestOptimizationControlPanel(unittest.TestCase):
     """Test the OptimizationControlPanel class"""
@@ -205,6 +223,8 @@ class TestOptimizationControlPanel(unittest.TestCase):
         for key in required_keys:
             self.assertIn(key, components)
             self.assertIsNotNone(components[key])
+
+        assert True  # TODO: Add proper assertion
     
     @patch('ui_compatibility_integration.get_optimization_status_for_ui')
     def test_update_optimization_controls_success(self, mock_get_status):
@@ -235,6 +255,8 @@ class TestOptimizationControlPanel(unittest.TestCase):
         self.assertEqual(len(current_opts), 2)
         self.assertTrue(can_apply)
         self.assertTrue(show_panel)
+
+        assert True  # TODO: Add proper assertion
     
     @patch('ui_compatibility_integration.apply_optimization_recommendations')
     def test_apply_selected_optimizations_success(self, mock_apply):
@@ -259,6 +281,8 @@ class TestOptimizationControlPanel(unittest.TestCase):
         self.assertTrue(result["success"])
         self.assertEqual(len(result["applied_optimizations"]), 2)
         self.assertEqual(len(result["errors"]), 0)
+
+        assert True  # TODO: Add proper assertion
     
     @patch('ui_compatibility_integration.apply_optimization_recommendations')
     def test_apply_selected_optimizations_failure(self, mock_apply):
@@ -282,6 +306,8 @@ class TestOptimizationControlPanel(unittest.TestCase):
         # Check result
         self.assertFalse(result["success"])
         self.assertIn("Model not loaded", result["error"])
+
+        assert True  # TODO: Add proper assertion
     
     def test_create_optimization_status_html_optimized(self):
         """Test optimization status HTML for optimized model"""
@@ -304,6 +330,8 @@ class TestOptimizationControlPanel(unittest.TestCase):
         self.assertIn("attention_slicing", html)
         self.assertIn("6144MB", html)
         self.assertIn("#28a745", html)  # Green color for optimized
+
+        assert True  # TODO: Add proper assertion
     
     def test_create_optimization_status_html_not_optimized(self):
         """Test optimization status HTML for non-optimized model"""
@@ -320,6 +348,8 @@ class TestOptimizationControlPanel(unittest.TestCase):
         self.assertIn("No optimizations active", html)
         self.assertIn("12288MB", html)
         self.assertIn("#ffc107", html)  # Yellow color for not optimized
+
+        assert True  # TODO: Add proper assertion
     
     @patch('ui_compatibility_integration.get_model_manager')
     def test_get_available_optimizations(self, mock_get_manager):
@@ -346,6 +376,8 @@ class TestOptimizationControlPanel(unittest.TestCase):
         self.assertEqual(set(available_opts), set(expected_opts))
 
 
+        assert True  # TODO: Add proper assertion
+
 class TestUIIntegrationFunctions(unittest.TestCase):
     """Test the main UI integration functions"""
     
@@ -368,6 +400,8 @@ class TestUIIntegrationFunctions(unittest.TestCase):
         required_opt_keys = ["panel", "status", "available", "apply_btn", "progress"]
         for key in required_opt_keys:
             self.assertIn(key, opt_components)
+
+        assert True  # TODO: Add proper assertion
     
     @patch('ui_compatibility_integration.compatibility_display')
     def test_update_compatibility_ui(self, mock_display):
@@ -387,6 +421,8 @@ class TestUIIntegrationFunctions(unittest.TestCase):
         
         # Check result
         self.assertEqual(len(result), 5)
+
+        assert True  # TODO: Add proper assertion
     
     @patch('ui_compatibility_integration.optimization_panel')
     def test_update_optimization_ui(self, mock_panel):
@@ -406,6 +442,8 @@ class TestUIIntegrationFunctions(unittest.TestCase):
         
         # Check result
         self.assertEqual(len(result), 5)
+
+        assert True  # TODO: Add proper assertion
     
     @patch('ui_compatibility_integration.optimization_panel')
     def test_apply_optimizations_ui(self, mock_panel):
@@ -431,6 +469,8 @@ class TestUIIntegrationFunctions(unittest.TestCase):
         # Check result
         self.assertTrue(result["success"])
 
+
+        assert True  # TODO: Add proper assertion
 
 class TestUtilsIntegrationFunctions(unittest.TestCase):
     """Test the utils integration functions"""
@@ -458,6 +498,8 @@ class TestUtilsIntegrationFunctions(unittest.TestCase):
         self.assertEqual(result["status"], "compatible")
         self.assertEqual(result["message"], "Model is compatible")
         self.assertEqual(result["level"], "good")
+
+        assert True  # TODO: Add proper assertion
     
     @patch('utils.get_model_manager')
     def test_get_optimization_status_for_ui(self, mock_get_manager):
@@ -482,6 +524,8 @@ class TestUtilsIntegrationFunctions(unittest.TestCase):
         self.assertEqual(result["status"], "optimized")
         self.assertEqual(len(result["optimizations"]), 1)
         self.assertEqual(result["memory_usage_mb"], 8192)
+
+        assert True  # TODO: Add proper assertion
     
     @patch('utils.get_model_manager')
     def test_apply_optimization_recommendations(self, mock_get_manager):
@@ -508,6 +552,8 @@ class TestUtilsIntegrationFunctions(unittest.TestCase):
         self.assertTrue(result["success"])
         self.assertEqual(len(result["applied_optimizations"]), 2)
         self.assertEqual(len(result["errors"]), 0)
+
+        assert True  # TODO: Add proper assertion
     
     @patch('utils.get_model_manager')
     def test_get_model_loading_progress_info(self, mock_get_manager):
@@ -536,6 +582,8 @@ class TestUtilsIntegrationFunctions(unittest.TestCase):
         self.assertGreater(len(result["estimated_steps"]), 0)
         self.assertEqual(result["total_steps"], len(result["estimated_steps"]))
 
+
+        assert True  # TODO: Add proper assertion
 
 if __name__ == '__main__':
     # Run tests

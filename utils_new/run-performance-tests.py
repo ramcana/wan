@@ -1,3 +1,4 @@
+import pytest
 #!/usr/bin/env python3
 """
 Main performance testing script for the React Frontend FastAPI system.

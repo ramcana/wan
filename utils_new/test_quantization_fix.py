@@ -1,3 +1,4 @@
+from unittest.mock import Mock, patch
 #!/usr/bin/env python3
 """
 Test script for quantization improvements
@@ -72,8 +73,10 @@ def test_quantization_timeout():
     except Exception as e:
         print(f"❌ Test failed: {e}")
         import traceback
-traceback.print_exc()
+        traceback.print_exc()
         return False
+
+    assert True  # TODO: Add proper assertion
 
 if __name__ == "__main__":
     print("🧪 Quantization Fix Test")

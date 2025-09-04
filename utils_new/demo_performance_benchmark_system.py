@@ -1,3 +1,4 @@
+from unittest.mock import Mock, patch
 """
 Demo script for Performance Benchmark System
 Demonstrates before/after performance metrics collection, hardware validation, and recommendations

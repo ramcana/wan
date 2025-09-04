@@ -475,14 +475,14 @@ class TestGlobalFunctions:
         self.temp_dir = tempfile.mkdtemp()
         # Reset global config manager
         import wan22_config_manager
-wan22_config_manager._config_manager = None
+        wan22_config_manager._config_manager = None
     
     def teardown_method(self):
         """Clean up test environment"""
         shutil.rmtree(self.temp_dir, ignore_errors=True)
         # Reset global config manager
         import wan22_config_manager
-wan22_config_manager._config_manager = None
+        wan22_config_manager._config_manager = None
     
     def test_get_config_manager(self):
         """Test getting global configuration manager"""

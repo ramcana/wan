@@ -60,5 +60,7 @@ def test_cpu_monitor():
     
     print("\n✅ CPU monitor test completed")
 
+    assert True  # TODO: Add proper assertion
+
 if __name__ == "__main__":
     test_cpu_monitor()

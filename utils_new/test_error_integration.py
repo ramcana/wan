@@ -1,3 +1,4 @@
+from unittest.mock import Mock, patch
 #!/usr/bin/env python3
 """
 Test script for error handling integration with the main application

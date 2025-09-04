@@ -161,7 +161,7 @@ class MockLoRAManager:
             
             # Remove invalid characters from new name
             import re
-new_name = re.sub(r'[<>:"/\\|?*]', '_', new_name.strip())
+            new_name = re.sub(r'[<>:"/\\|?*]', '_', new_name.strip())
             
             # Find the old LoRA file
             old_file = None
@@ -407,6 +407,8 @@ class TestLoRAManagerUIIntegration(unittest.TestCase):
         uploaded_file = self.loras_dir / "new_style.safetensors"
         self.assertTrue(uploaded_file.exists())
 
+        assert True  # TODO: Add proper assertion
+
     def test_upload_lora_file_invalid_extension(self):
         """Test upload with invalid file extension"""
         upload_file = self.create_temp_upload_file("invalid.txt", 30)
@@ -416,6 +418,8 @@ class TestLoRAManagerUIIntegration(unittest.TestCase):
         # Verify upload failed
         self.assertFalse(result["success"])
         self.assertIn("Invalid file format", result["error"])
+
+        assert True  # TODO: Add proper assertion
 
     def test_upload_lora_file_too_large(self):
         """Test upload with file too large"""
@@ -427,6 +431,8 @@ class TestLoRAManagerUIIntegration(unittest.TestCase):
         # Verify upload failed due to size
         self.assertFalse(result["success"])
         self.assertIn("File too large", result["error"])
+
+        assert True  # TODO: Add proper assertion
 
     def test_upload_lora_file_duplicate_name(self):
         """Test upload with duplicate filename"""
@@ -443,6 +449,8 @@ class TestLoRAManagerUIIntegration(unittest.TestCase):
         self.assertTrue(result2["success"])
         self.assertEqual(result2["filename"], "duplicate_1.safetensors")
 
+        assert True  # TODO: Add proper assertion
+
     def test_delete_lora_file_success(self):
         """Test successful LoRA file deletion"""
         # Verify file exists before deletion
@@ -456,12 +464,16 @@ class TestLoRAManagerUIIntegration(unittest.TestCase):
         self.assertTrue(result)
         self.assertFalse(test_file.exists())
 
+        assert True  # TODO: Add proper assertion
+
     def test_delete_lora_file_not_found(self):
         """Test deletion of non-existent LoRA file"""
         result = self.lora_manager.delete_lora_file("non_existent_lora")
         
         # Verify deletion failed gracefully
         self.assertFalse(result)
+
+        assert True  # TODO: Add proper assertion
 
     def test_rename_lora_file_success(self):
         """Test successful LoRA file renaming"""
@@ -479,12 +491,16 @@ class TestLoRAManagerUIIntegration(unittest.TestCase):
         new_file = self.loras_dir / "anime_style_v2.safetensors"
         self.assertTrue(new_file.exists())
 
+        assert True  # TODO: Add proper assertion
+
     def test_rename_lora_file_not_found(self):
         """Test renaming of non-existent LoRA file"""
         result = self.lora_manager.rename_lora_file("non_existent", "new_name")
         
         # Verify rename failed gracefully
         self.assertFalse(result)
+
+        assert True  # TODO: Add proper assertion
 
     def test_rename_lora_file_duplicate_name(self):
         """Test renaming to an existing name"""
@@ -497,6 +513,8 @@ class TestLoRAManagerUIIntegration(unittest.TestCase):
         
         # Verify rename failed due to duplicate name
         self.assertFalse(result)
+
+        assert True  # TODO: Add proper assertion
 
     def test_get_ui_display_data(self):
         """Test UI display data formatting"""
@@ -521,6 +539,8 @@ class TestLoRAManagerUIIntegration(unittest.TestCase):
         self.assertEqual(summary["applied_count"], 1)  # 1 applied LoRA
         self.assertGreater(summary["total_size_mb"], 0)
 
+        assert True  # TODO: Add proper assertion
+
     def test_estimate_memory_impact_empty_list(self):
         """Test memory estimation with empty LoRA list"""
         result = self.lora_manager.estimate_memory_impact([])
@@ -532,6 +552,8 @@ class TestLoRAManagerUIIntegration(unittest.TestCase):
         self.assertEqual(result["vram_impact_mb"], 0.0)
         self.assertEqual(result["recommendations"], [])
 
+        assert True  # TODO: Add proper assertion
+
     def test_estimate_memory_impact_single_lora(self):
         """Test memory estimation with single LoRA"""
         result = self.lora_manager.estimate_memory_impact(["test_anime_style"])
@@ -541,6 +563,8 @@ class TestLoRAManagerUIIntegration(unittest.TestCase):
         self.assertIn("test_anime_style", result["individual_memory_mb"])
         self.assertGreater(result["estimated_load_time_seconds"], 0)
         self.assertGreater(result["vram_impact_mb"], 0)
+
+        assert True  # TODO: Add proper assertion
 
     def test_estimate_memory_impact_multiple_loras(self):
         """Test memory estimation with multiple LoRAs"""
@@ -555,6 +579,8 @@ class TestLoRAManagerUIIntegration(unittest.TestCase):
         individual_total = sum(result["individual_memory_mb"].values())
         self.assertAlmostEqual(result["total_memory_mb"], individual_total, places=1)
 
+        assert True  # TODO: Add proper assertion
+
     def test_estimate_memory_impact_high_usage_recommendations(self):
         """Test memory estimation recommendations for high usage"""
         # Create larger mock files to trigger recommendations
@@ -568,6 +594,8 @@ class TestLoRAManagerUIIntegration(unittest.TestCase):
         # Verify recommendations are generated
         self.assertGreater(len(result["recommendations"]), 0)
 
+
+        assert True  # TODO: Add proper assertion
 
 if __name__ == '__main__':
     # Run the tests

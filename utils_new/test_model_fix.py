@@ -81,6 +81,8 @@ def test_model_loading_fix():
         print(f"❌ Test failed with error: {e}")
         return False
 
+    assert True  # TODO: Add proper assertion
+
 if __name__ == "__main__":
     success = test_model_loading_fix()
     

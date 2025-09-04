@@ -54,7 +54,7 @@ def test_cuda_detection():
     print("=" * 50)
     
     import os
-cuda_vars = ['CUDA_PATH', 'CUDA_HOME', 'CUDA_VISIBLE_DEVICES']
+    cuda_vars = ['CUDA_PATH', 'CUDA_HOME', 'CUDA_VISIBLE_DEVICES']
     for var in cuda_vars:
         value = os.environ.get(var, 'Not set')
         print(f"{var}: {value}")
@@ -64,7 +64,7 @@ cuda_vars = ['CUDA_PATH', 'CUDA_HOME', 'CUDA_VISIBLE_DEVICES']
     
     try:
         import subprocess
-result = subprocess.run(['nvidia-smi'], capture_output=True, text=True, timeout=10)
+        result = subprocess.run(['nvidia-smi'], capture_output=True, text=True, timeout=10)
         if result.returncode == 0:
             print("✅ nvidia-smi available")
             lines = result.stdout.split('\n')[:10]  # First 10 lines

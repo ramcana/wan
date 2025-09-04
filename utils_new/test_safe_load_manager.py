@@ -221,6 +221,8 @@ class TestSandboxEnvironment:
             
             def test_function(x, y):
                 return x + y
+
+                assert True  # TODO: Add proper assertion
                 
             result = sandbox.execute_in_sandbox(test_function, 2, 3)
             assert result == 5

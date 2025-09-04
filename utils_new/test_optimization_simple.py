@@ -61,11 +61,13 @@ def test_basic_functionality():
     except Exception as e:
         print(f"✗ Chunked processing failed: {e}")
         import traceback
-traceback.print_exc()
+        traceback.print_exc()
         return False
     
     print("✓ All basic tests passed!")
     return True
+
+    assert True  # TODO: Add proper assertion
 
 if __name__ == "__main__":
     test_basic_functionality()

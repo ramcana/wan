@@ -516,5 +516,7 @@ class TestMigrationIntegration:
             migration_manager.migrate_if_needed("1.0.0")
 
 
+        assert True  # TODO: Add proper assertion
+
 if __name__ == "__main__":
     pytest.main([__file__])

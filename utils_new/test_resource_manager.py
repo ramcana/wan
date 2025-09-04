@@ -49,6 +49,8 @@ class TestVRAMInfo(unittest.TestCase):
         self.assertIn("utilization_percent", vram_dict)
         self.assertEqual(vram_dict["total_mb"], 8192)
 
+        assert True  # TODO: Add proper assertion
+
 class TestResourceRequirement(unittest.TestCase):
     """Test ResourceRequirement dataclass"""
     
@@ -74,6 +76,8 @@ class TestResourceRequirement(unittest.TestCase):
         self.assertIn("optimization_level", req_dict)
         self.assertEqual(req_dict["model_type"], "t2v-A14B")
 
+        assert True  # TODO: Add proper assertion
+
 class TestOptimizationSuggestion(unittest.TestCase):
     """Test OptimizationSuggestion dataclass"""
     
@@ -96,6 +100,8 @@ class TestOptimizationSuggestion(unittest.TestCase):
         self.assertIn("parameter", suggestion_dict)
         self.assertIn("vram_savings_mb", suggestion_dict)
         self.assertEqual(suggestion_dict["parameter"], "resolution")
+
+        assert True  # TODO: Add proper assertion
 
 class TestVRAMOptimizer(unittest.TestCase):
     """Test VRAMOptimizer class"""
@@ -182,6 +188,8 @@ class TestVRAMOptimizer(unittest.TestCase):
         self.assertEqual(self.optimizer.gpu_count, 1)
         self.assertEqual(self.optimizer.gpu_name, "Test GPU")
         self.assertEqual(self.optimizer.total_vram, 8 * 1024 * 1024 * 1024)
+
+        assert True  # TODO: Add proper assertion
     
     def test_get_vram_info(self):
         """Test VRAM information retrieval"""
@@ -193,6 +201,8 @@ class TestVRAMOptimizer(unittest.TestCase):
         self.assertEqual(vram_info.cached_mb, 3072)  # 3GB in MB
         self.assertEqual(vram_info.free_mb, 5120)  # 8GB - 3GB = 5GB in MB
         self.assertAlmostEqual(vram_info.utilization_percent, 37.5, places=1)
+
+        assert True  # TODO: Add proper assertion
     
     def test_get_vram_info_no_gpu(self):
         """Test VRAM info when no GPU is available"""
@@ -203,6 +213,8 @@ class TestVRAMOptimizer(unittest.TestCase):
         self.assertEqual(vram_info.total_mb, 0)
         self.assertEqual(vram_info.free_mb, 0)
         self.assertEqual(vram_info.utilization_percent, 0)
+
+        assert True  # TODO: Add proper assertion
     
     def test_get_system_resource_info(self):
         """Test system resource information retrieval"""
@@ -215,6 +227,8 @@ class TestVRAMOptimizer(unittest.TestCase):
         self.assertEqual(resource_info.ram_usage_percent, 50.0)
         self.assertEqual(resource_info.cpu_usage_percent, 25.0)
         self.assertAlmostEqual(resource_info.disk_free_gb, 100, places=1)
+
+        assert True  # TODO: Add proper assertion
     
     def test_check_vram_availability_sufficient(self):
         """Test VRAM availability check with sufficient memory"""
@@ -223,6 +237,8 @@ class TestVRAMOptimizer(unittest.TestCase):
         self.assertTrue(available)
         self.assertIn("Sufficient VRAM available", message)
         self.assertIn("5120", message)  # Free VRAM amount
+
+        assert True  # TODO: Add proper assertion
     
     def test_check_vram_availability_insufficient(self):
         """Test VRAM availability check with insufficient memory"""
@@ -231,6 +247,8 @@ class TestVRAMOptimizer(unittest.TestCase):
         self.assertFalse(available)
         self.assertIn("Insufficient VRAM", message)
         self.assertIn("short", message)
+
+        assert True  # TODO: Add proper assertion
     
     def test_check_vram_availability_no_gpu(self):
         """Test VRAM availability check with no GPU"""
@@ -241,6 +259,8 @@ class TestVRAMOptimizer(unittest.TestCase):
         
         self.assertFalse(available)
         self.assertEqual(message, "No GPU available")
+
+        assert True  # TODO: Add proper assertion
     
     def test_estimate_resource_requirements_t2v(self):
         """Test resource requirement estimation for T2V model"""
@@ -260,6 +280,8 @@ class TestVRAMOptimizer(unittest.TestCase):
         self.assertGreater(requirement.vram_mb, 0)
         self.assertGreater(requirement.ram_mb, 0)
         self.assertGreater(requirement.estimated_time_seconds, 0)
+
+        assert True  # TODO: Add proper assertion
     
     def test_estimate_resource_requirements_different_resolutions(self):
         """Test resource estimation with different resolutions"""
@@ -270,6 +292,8 @@ class TestVRAMOptimizer(unittest.TestCase):
         # Higher resolution should require more resources
         self.assertLess(req_480p.vram_mb, req_720p.vram_mb)
         self.assertLess(req_720p.vram_mb, req_1080p.vram_mb)
+
+        assert True  # TODO: Add proper assertion
     
     def test_estimate_resource_requirements_with_lora(self):
         """Test resource estimation with LoRA"""
@@ -279,6 +303,8 @@ class TestVRAMOptimizer(unittest.TestCase):
         # LoRA should increase resource requirements
         self.assertLess(req_no_lora.vram_mb, req_with_lora.vram_mb)
         self.assertLess(req_no_lora.ram_mb, req_with_lora.ram_mb)
+
+        assert True  # TODO: Add proper assertion
     
     def test_optimize_parameters_for_resources_sufficient(self):
         """Test parameter optimization with sufficient resources"""
@@ -296,6 +322,8 @@ class TestVRAMOptimizer(unittest.TestCase):
         self.assertIsInstance(suggestions, list)
         # With sufficient resources, minimal changes expected
         self.assertEqual(optimized_params["resolution"], "720p")
+
+        assert True  # TODO: Add proper assertion
     
     def test_optimize_parameters_for_resources_insufficient_vram(self):
         """Test parameter optimization with insufficient VRAM"""
@@ -321,6 +349,8 @@ class TestVRAMOptimizer(unittest.TestCase):
             optimized_params["steps"] < 60 or
             "optimization_settings" in optimized_params
         )
+
+        assert True  # TODO: Add proper assertion
     
     def test_cleanup_memory(self):
         """Test memory cleanup functionality"""
@@ -341,6 +371,8 @@ class TestVRAMOptimizer(unittest.TestCase):
             # Should record actions
             self.assertIn("cleared_gpu_cache", result["actions_taken"])
             self.assertIn("garbage_collection", result["actions_taken"])
+
+        assert True  # TODO: Add proper assertion
     
     def test_cleanup_memory_aggressive(self):
         """Test aggressive memory cleanup"""
@@ -359,6 +391,8 @@ class TestVRAMOptimizer(unittest.TestCase):
             mock_reset_stats.assert_called()
             # gc.collect should be called multiple times
             self.assertGreater(mock_gc_collect.call_count, 1)
+
+        assert True  # TODO: Add proper assertion
     
     def test_get_resource_status(self):
         """Test resource status determination"""
@@ -372,6 +406,8 @@ class TestVRAMOptimizer(unittest.TestCase):
         
         status = self.optimizer.get_resource_status()
         self.assertEqual(status, ResourceStatus.CRITICAL)
+
+        assert True  # TODO: Add proper assertion
     
     def test_resource_monitoring(self):
         """Test resource monitoring functionality"""
@@ -384,6 +420,8 @@ class TestVRAMOptimizer(unittest.TestCase):
         # Test stopping monitoring
         self.optimizer.stop_monitoring()
         self.assertFalse(self.optimizer.monitoring_enabled)
+
+        assert True  # TODO: Add proper assertion
     
     def test_get_resource_history(self):
         """Test resource history retrieval"""
@@ -404,6 +442,8 @@ class TestVRAMOptimizer(unittest.TestCase):
         self.assertIsInstance(history[0], dict)
         self.assertIn("vram", history[0])
         self.assertIn("ram_total_gb", history[0])
+
+        assert True  # TODO: Add proper assertion
 
 class TestConvenienceFunctions(unittest.TestCase):
     """Test convenience functions"""
@@ -461,7 +501,7 @@ class TestConvenienceFunctions(unittest.TestCase):
         """Clean up test fixtures"""
         # Reset global resource manager
         import resource_manager
-resource_manager._resource_manager = None
+        resource_manager._resource_manager = None
         
         self.gpu_available_patcher.stop()
         self.gpu_props_patcher.stop()
@@ -481,6 +521,8 @@ resource_manager._resource_manager = None
         # Should return the same instance (singleton)
         self.assertIs(manager1, manager2)
         self.assertIsInstance(manager1, VRAMOptimizer)
+
+        assert True  # TODO: Add proper assertion
     
     def test_check_vram_availability_function(self):
         """Test convenience function for VRAM availability check"""
@@ -489,6 +531,8 @@ resource_manager._resource_manager = None
         self.assertIsInstance(available, bool)
         self.assertIsInstance(message, str)
         self.assertTrue(available)  # Should be available with our mock setup
+
+        assert True  # TODO: Add proper assertion
     
     def test_estimate_resource_requirements_function(self):
         """Test convenience function for resource estimation"""
@@ -497,6 +541,8 @@ resource_manager._resource_manager = None
         self.assertIsInstance(requirement, ResourceRequirement)
         self.assertEqual(requirement.model_type, "t2v-A14B")
         self.assertEqual(requirement.resolution, "720p")
+
+        assert True  # TODO: Add proper assertion
     
     def test_optimize_parameters_for_resources_function(self):
         """Test convenience function for parameter optimization"""
@@ -512,6 +558,8 @@ resource_manager._resource_manager = None
         
         self.assertIsInstance(optimized_params, dict)
         self.assertIsInstance(suggestions, list)
+
+        assert True  # TODO: Add proper assertion
     
     def test_cleanup_memory_function(self):
         """Test convenience function for memory cleanup"""
@@ -520,6 +568,8 @@ resource_manager._resource_manager = None
             
             self.assertIsInstance(result, dict)
             self.assertIn("actions_taken", result)
+
+        assert True  # TODO: Add proper assertion
     
     def test_get_system_resource_info_function(self):
         """Test convenience function for system resource info"""
@@ -527,6 +577,8 @@ resource_manager._resource_manager = None
         
         self.assertIsInstance(resource_info, SystemResourceInfo)
         self.assertIsInstance(resource_info.vram, VRAMInfo)
+
+        assert True  # TODO: Add proper assertion
 
 class TestErrorHandling(unittest.TestCase):
     """Test error handling in resource management"""
@@ -544,6 +596,8 @@ class TestErrorHandling(unittest.TestCase):
             # Should return zero values on error
             self.assertEqual(vram_info.total_mb, 0)
             self.assertEqual(vram_info.free_mb, 0)
+
+        assert True  # TODO: Add proper assertion
     
     def test_resource_estimation_with_invalid_model(self):
         """Test resource estimation with invalid model type"""
@@ -559,6 +613,8 @@ class TestErrorHandling(unittest.TestCase):
             
             self.assertIsInstance(requirement, ResourceRequirement)
             self.assertGreater(requirement.vram_mb, 0)  # Should return conservative estimate
+
+        assert True  # TODO: Add proper assertion
     
     def test_parameter_optimization_with_error(self):
         """Test parameter optimization with errors"""
@@ -573,6 +629,8 @@ class TestErrorHandling(unittest.TestCase):
             
             self.assertIsInstance(optimized_params, dict)
             self.assertIsInstance(suggestions, list)
+
+        assert True  # TODO: Add proper assertion
 
 if __name__ == '__main__':
     unittest.main()

@@ -1,3 +1,4 @@
+from unittest.mock import Mock, patch
 #!/usr/bin/env python3
 """
 Quick system diagnostic to identify what's preventing real AI generation

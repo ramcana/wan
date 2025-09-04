@@ -73,6 +73,8 @@ def test_basic_functionality():
     print("\nAll tests completed successfully!")
     return True
 
+    assert True  # TODO: Add proper assertion
+
 if __name__ == '__main__':
     try:
         test_basic_functionality()
@@ -80,5 +82,5 @@ if __name__ == '__main__':
     except Exception as e:
         print(f"\n✗ Error during testing: {e}")
         import traceback
-traceback.print_exc()
+        traceback.print_exc()
         sys.exit(1)

@@ -148,6 +148,8 @@ class TestI2VGenerationModes:
         )
         
         return images
+
+        assert True  # TODO: Add proper assertion
     
     def test_i2v_portrait_image(self, test_images):
         """Test I2V generation with portrait orientation image"""

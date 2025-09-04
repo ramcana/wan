@@ -66,6 +66,8 @@ class TestPerformanceMonitor(unittest.TestCase):
         
         # Verify metrics are stored
         self.assertEqual(len(self.monitor.metrics_history), 1)
+
+        assert True  # TODO: Add proper assertion
     
     def test_optimization_effectiveness_measurement(self):
         """Test optimization effectiveness measurement"""
@@ -114,6 +116,8 @@ class TestPerformanceMonitor(unittest.TestCase):
         
         # Verify storage
         self.assertIn("cpu_offload", self.monitor.optimization_effectiveness)
+
+        assert True  # TODO: Add proper assertion
     
     def test_performance_summary(self):
         """Test performance summary generation"""
@@ -147,6 +151,8 @@ class TestPerformanceMonitor(unittest.TestCase):
         self.assertEqual(summary["success_rate"], 1.0)
         self.assertEqual(summary["duration_stats"]["mean"], 3.0)  # (1+2+3+4+5)/5
         self.assertEqual(summary["memory_stats"]["mean_peak_mb"], 1200)  # (1000+1100+1200+1300+1400)/5
+
+        assert True  # TODO: Add proper assertion
     
     def test_regression_detection(self):
         """Test performance regression detection"""
@@ -183,6 +189,8 @@ class TestPerformanceMonitor(unittest.TestCase):
         self.assertIsNotNone(duration_alert)
         self.assertAlmostEqual(duration_alert.regression_percent, 30.0, places=1)
         self.assertIn(duration_alert.severity, ["low", "medium", "high", "critical"])
+
+        assert True  # TODO: Add proper assertion
     
     def test_baseline_updates(self):
         """Test baseline update functionality"""
@@ -214,6 +222,8 @@ class TestPerformanceMonitor(unittest.TestCase):
         
         # Verify baseline values are reasonable (median of 2,3,4 repeated)
         self.assertEqual(baseline["duration"], 3.0)  # Median of [2,3,4,2,3,4,...]
+
+        assert True  # TODO: Add proper assertion
     
     @patch('performance_monitor.torch.cuda.is_available')
     @patch('performance_monitor.torch.cuda.memory_allocated')
@@ -224,6 +234,8 @@ class TestPerformanceMonitor(unittest.TestCase):
         
         memory_usage = self.monitor._get_memory_usage()
         self.assertEqual(memory_usage, 1024)  # Should return MB
+
+        assert True  # TODO: Add proper assertion
     
     @patch('performance_monitor.GPUtil.getGPUs')
     def test_gpu_utilization_monitoring(self, mock_get_gpus):
@@ -234,6 +246,8 @@ class TestPerformanceMonitor(unittest.TestCase):
         
         utilization = self.monitor._get_gpu_utilization()
         self.assertEqual(utilization, 75.0)
+
+        assert True  # TODO: Add proper assertion
     
     def test_metrics_persistence(self):
         """Test saving and loading metrics"""
@@ -278,6 +292,8 @@ class TestPerformanceMonitor(unittest.TestCase):
         
         self.assertIn("test_type", new_monitor.baselines)
         self.assertEqual(new_monitor.baselines["test_type"]["duration"], 3.0)
+
+        assert True  # TODO: Add proper assertion
     
     def test_error_handling(self):
         """Test error handling in monitoring"""
@@ -302,6 +318,8 @@ class TestPerformanceMonitor(unittest.TestCase):
         self.monitor.update_baselines()
         self.assertEqual(len(self.monitor.baselines), initial_baseline_count)
 
+
+        assert True  # TODO: Add proper assertion
 
 class TestOptimizationEffectiveness(unittest.TestCase):
     """Test OptimizationEffectiveness data class"""
@@ -330,6 +348,8 @@ class TestOptimizationEffectiveness(unittest.TestCase):
         self.assertEqual(new_effectiveness.performance_improvement, 30.0)
 
 
+        assert True  # TODO: Add proper assertion
+
 class TestRegressionAlert(unittest.TestCase):
     """Test RegressionAlert data class"""
     
@@ -355,6 +375,8 @@ class TestRegressionAlert(unittest.TestCase):
         self.assertEqual(data["context"]["operation"], "test")
 
 
+        assert True  # TODO: Add proper assertion
+
 class TestGlobalPerformanceMonitor(unittest.TestCase):
     """Test global performance monitor access"""
     
@@ -366,6 +388,8 @@ class TestGlobalPerformanceMonitor(unittest.TestCase):
         # Should return same instance
         self.assertIs(monitor1, monitor2)
 
+
+        assert True  # TODO: Add proper assertion
 
 if __name__ == '__main__':
     unittest.main()

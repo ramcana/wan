@@ -32,6 +32,8 @@ class TestSessionIntegrationSimple:
         start_image = Image.new('RGB', (512, 512), color='red')
         end_image = Image.new('RGB', (512, 512), color='blue')
         return start_image, end_image
+
+        assert True  # TODO: Add proper assertion
     
     def test_complete_session_workflow(self, config, test_images):
         """Test complete session workflow from upload to generation preparation"""

@@ -1,3 +1,4 @@
+from unittest.mock import Mock, patch
 """
 Simple integration test for LoRAManager UI methods
 Tests the actual implementation in utils.py with minimal dependencies

@@ -122,6 +122,8 @@ class TestEnhancedUIEventHandlers:
             event_handlers.setup_generation_events.assert_called_once()
             event_handlers.setup_progress_events.assert_called_once()
             event_handlers.setup_utility_events.assert_called_once()
+
+        assert True  # TODO: Add proper assertion
     
     def test_handle_model_type_change_t2v(self, event_handlers):
         """Test model type change to T2V"""

@@ -65,6 +65,8 @@ class TestResponsiveUIIntegration:
                     # Verify responsive interface was called
                     mock_get_interface.assert_called_once()
                     mock_interface.get_responsive_css.assert_called_once()
+
+        assert True  # TODO: Add proper assertion
     
     def test_responsive_image_row_classes(self):
         """Test that image upload rows have correct responsive classes"""

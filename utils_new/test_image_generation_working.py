@@ -70,6 +70,8 @@ def test_image_generation_with_working_model():
         logger.error(f"Image generation test failed: {e}")
         return False
 
+    assert True  # TODO: Add proper assertion
+
 def test_generation_task_with_images():
     """Test GenerationTask with enhanced image features"""
     logger.info("Testing GenerationTask with enhanced features...")

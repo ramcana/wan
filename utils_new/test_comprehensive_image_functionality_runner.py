@@ -1,3 +1,4 @@
+from unittest.mock import Mock, patch
 """
 Comprehensive Test Runner for Image Functionality
 Executes all tests for task 13 of the wan22-start-end-image-fix spec

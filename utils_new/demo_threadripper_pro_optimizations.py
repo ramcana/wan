@@ -1,3 +1,4 @@
+from unittest.mock import Mock, patch
 """
 Demo script for Threadripper PRO 5995WX optimizations
 """

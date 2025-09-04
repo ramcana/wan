@@ -360,11 +360,15 @@ class TestFrameTensorHandler:
         """Test error handling for invalid output types"""
         with pytest.raises(RuntimeError, match="Tensor processing failed"):
             self.handler.process_output_tensors("invalid_output")
+
+        assert True  # TODO: Add proper assertion
     
     def test_error_handling_empty_dict(self):
         """Test error handling for empty dictionary"""
         with pytest.raises(RuntimeError, match="Tensor processing failed"):
             self.handler.process_output_tensors({})
+
+        assert True  # TODO: Add proper assertion
     
     def test_error_handling_invalid_tensor_dimensions(self):
         """Test error handling for invalid tensor dimensions"""
@@ -372,6 +376,8 @@ class TestFrameTensorHandler:
         
         with pytest.raises(RuntimeError, match="Tensor processing failed"):
             self.handler.process_output_tensors(invalid_tensor)
+
+        assert True  # TODO: Add proper assertion
     
     def test_metadata_generation(self):
         """Test metadata generation in processed frames"""

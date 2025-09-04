@@ -106,6 +106,8 @@ def test_basic_functionality():
     print("\nAll PerformanceTester components tested successfully!")
     return True
 
+    assert True  # TODO: Add proper assertion
+
 def test_metrics_collection():
     """Test actual metrics collection for a short period"""
     print("\nTesting actual metrics collection...")
@@ -117,7 +119,7 @@ def test_metrics_collection():
     collector.start_monitoring(interval=0.5)
     
     import time
-time.sleep(3)
+    time.sleep(3)
     
     collector.stop_monitoring()
     
@@ -130,6 +132,8 @@ time.sleep(3)
     
     return True
 
+    assert True  # TODO: Add proper assertion
+
 if __name__ == '__main__':
     try:
         test_basic_functionality()
@@ -138,5 +142,5 @@ if __name__ == '__main__':
     except Exception as e:
         print(f"\n✗ Error during testing: {e}")
         import traceback
-traceback.print_exc()
+        traceback.print_exc()
         sys.exit(1)

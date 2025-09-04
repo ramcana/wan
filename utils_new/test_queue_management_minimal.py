@@ -356,7 +356,7 @@ def run_all_tests():
     except Exception as e:
         print(f"✗ Test failed: {e}")
         import traceback
-traceback.print_exc()
+        traceback.print_exc()
         return False
 
 if __name__ == "__main__":

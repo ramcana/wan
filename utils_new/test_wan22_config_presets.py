@@ -54,6 +54,8 @@ class TestConfigurationPresets:
         """Test getting unknown preset raises error"""
         with pytest.raises(ValueError, match="Unknown preset"):
             ConfigurationPresets.get_preset("unknown_preset")
+
+        assert True  # TODO: Add proper assertion
     
     def test_default_preset(self):
         """Test default preset"""

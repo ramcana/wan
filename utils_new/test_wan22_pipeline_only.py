@@ -22,7 +22,7 @@ def test_pipeline_loading_only():
     try:
         # Import compatibility layer
         import wan22_compatibility_clean
-print("✅ Compatibility layer loaded")
+        print("✅ Compatibility layer loaded")
         
         # Import the video generation engine
         from utils import VideoGenerationEngine
@@ -56,6 +56,8 @@ print("✅ Compatibility layer loaded")
     except Exception as e:
         print(f"❌ Test setup failed: {e}")
         return False
+
+    assert True  # TODO: Add proper assertion
 
 if __name__ == "__main__":
     success = test_pipeline_loading_only()

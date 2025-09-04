@@ -1,3 +1,4 @@
+from unittest.mock import Mock, patch
 #!/usr/bin/env python3
 """
 Test script to verify main.py structure without heavy dependencies
@@ -115,5 +116,5 @@ if __name__ == "__main__":
     except Exception as e:
         print(f"\n❌ Test failed: {e}")
         import traceback
-traceback.print_exc()
+        traceback.print_exc()
         sys.exit(1)

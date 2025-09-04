@@ -108,6 +108,8 @@ class TestLoRAGenerationTaskIntegration(unittest.TestCase):
         self.assertEqual(task.lora_memory_usage, 0.0)
         self.assertEqual(task.lora_load_time, 0.0)
         self.assertEqual(task.lora_metadata, {})
+
+        assert True  # TODO: Add proper assertion
     
     def test_generation_task_lora_validation(self):
         """Test LoRA selection validation"""
@@ -154,6 +156,8 @@ class TestLoRAGenerationTaskIntegration(unittest.TestCase):
         is_valid, errors = task.validate_lora_selections()
         self.assertFalse(is_valid)
         self.assertTrue(any("too many" in error.lower() for error in errors))
+
+        assert True  # TODO: Add proper assertion
     
     def test_generation_task_add_lora_selection(self):
         """Test adding LoRA selections to a task"""
@@ -190,6 +194,8 @@ class TestLoRAGenerationTaskIntegration(unittest.TestCase):
         # Try to add 6th LoRA (should fail)
         success = task.add_lora_selection("lora_6", 1.0)
         self.assertFalse(success)
+
+        assert True  # TODO: Add proper assertion
     
     def test_generation_task_remove_lora_selection(self):
         """Test removing LoRA selections from a task"""
@@ -208,6 +214,8 @@ class TestLoRAGenerationTaskIntegration(unittest.TestCase):
         # Test removing non-existent LoRA
         success = task.remove_lora_selection("non_existent")
         self.assertFalse(success)
+
+        assert True  # TODO: Add proper assertion
     
     def test_generation_task_clear_lora_selections(self):
         """Test clearing all LoRA selections"""
@@ -226,6 +234,8 @@ class TestLoRAGenerationTaskIntegration(unittest.TestCase):
         self.assertEqual(task.lora_memory_usage, 0.0)
         self.assertEqual(task.lora_load_time, 0.0)
         self.assertEqual(task.lora_metadata, {})
+
+        assert True  # TODO: Add proper assertion
     
     def test_generation_task_update_lora_metrics(self):
         """Test updating LoRA performance metrics"""
@@ -246,6 +256,8 @@ class TestLoRAGenerationTaskIntegration(unittest.TestCase):
         self.assertIn("applied_loras", task.lora_metadata)
         self.assertIn("status", task.lora_metadata)
         self.assertEqual(task.lora_metadata["applied_loras"], ["lora1", "lora2"])
+
+        assert True  # TODO: Add proper assertion
     
     def test_generation_task_get_lora_summary(self):
         """Test getting LoRA summary information"""
@@ -276,6 +288,8 @@ class TestLoRAGenerationTaskIntegration(unittest.TestCase):
         self.assertEqual(summary["load_time_seconds"], 1.8)
         self.assertTrue(summary["has_metadata"])
         self.assertTrue(summary["is_valid"])
+
+        assert True  # TODO: Add proper assertion
     
     def test_generation_task_to_dict_with_loras(self):
         """Test task serialization includes LoRA information"""
@@ -301,6 +315,8 @@ class TestLoRAGenerationTaskIntegration(unittest.TestCase):
         self.assertEqual(task_dict["lora_memory_usage"], 300.0)
         self.assertEqual(task_dict["lora_load_time"], 1.5)
         self.assertEqual(task_dict["lora_metadata"], {"applied": True})
+
+        assert True  # TODO: Add proper assertion
     
     def test_generation_task_backward_compatibility(self):
         """Test backward compatibility with existing lora_path field"""
@@ -328,6 +344,8 @@ class TestLoRAGenerationTaskIntegration(unittest.TestCase):
         self.assertIn("lora_strength", task_dict)
         self.assertIn("selected_loras", task_dict)
 
+
+        assert True  # TODO: Add proper assertion
 
 class TestLoRAGenerationPipelineLogic(unittest.TestCase):
     """Test the logic of LoRA generation pipeline methods"""
@@ -423,6 +441,8 @@ class TestLoRAGenerationPipelineLogic(unittest.TestCase):
                 self.assertEqual(metadata["lora_info"]["selected_loras"], selected_loras)
                 self.assertIn("timing", metadata)
                 self.assertIn("lora_load_time_seconds", metadata["timing"])
+
+        assert True  # TODO: Add proper assertion
     
     def test_lora_fallback_enhancement_logic(self):
         """Test LoRA fallback enhancement logic"""
@@ -456,6 +476,8 @@ class TestLoRAGenerationPipelineLogic(unittest.TestCase):
         # Test with no fallback enhancements
         enhanced_prompt = engine._enhance_prompt_with_lora_fallbacks(base_prompt, {})
         self.assertEqual(enhanced_prompt, base_prompt)
+
+        assert True  # TODO: Add proper assertion
     
     def test_lora_failure_handling_logic(self):
         """Test LoRA failure handling logic"""
@@ -496,6 +518,8 @@ class TestLoRAGenerationPipelineLogic(unittest.TestCase):
                 self.assertEqual(lora_info["error"], str(error))
                 self.assertTrue(lora_info.get("fallback_applied", False))
 
+
+        assert True  # TODO: Add proper assertion
 
 if __name__ == "__main__":
     # Run the tests

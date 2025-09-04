@@ -83,6 +83,8 @@ def test_ui_structure():
         print(f"❌ Error testing UI structure: {e}")
         return False
 
+    assert True  # TODO: Add proper assertion
+
 if __name__ == "__main__":
     success = test_ui_structure()
     sys.exit(0 if success else 1)

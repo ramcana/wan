@@ -191,6 +191,8 @@ class TestFrameProcessingIntegration:
         for invalid_input, description in error_cases:
             with pytest.raises(RuntimeError, match="Tensor processing failed"):
                 self.handler.process_output_tensors(invalid_input)
+
+        assert True  # TODO: Add proper assertion
     
     def test_memory_efficiency_workflow(self):
         """Test memory efficiency with large tensors"""

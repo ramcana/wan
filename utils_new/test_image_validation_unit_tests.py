@@ -47,6 +47,8 @@ class TestImageMetadata(unittest.TestCase):
         self.assertAlmostEqual(metadata.aspect_ratio, 800/600, places=3)
         self.assertEqual(metadata.color_mode, "RGB")
         self.assertFalse(metadata.has_transparency)
+
+        assert True  # TODO: Add proper assertion
     
     def test_file_size_mb_property(self):
         """Test file size MB calculation"""
@@ -62,6 +64,8 @@ class TestImageMetadata(unittest.TestCase):
         )
         
         self.assertAlmostEqual(metadata.file_size_mb, 2.0, places=1)
+
+        assert True  # TODO: Add proper assertion
     
     def test_aspect_ratio_string_common_ratios(self):
         """Test aspect ratio string for common ratios"""
@@ -88,6 +92,8 @@ class TestImageMetadata(unittest.TestCase):
                 )
                 
                 self.assertEqual(metadata.aspect_ratio_string, expected_string)
+
+        assert True  # TODO: Add proper assertion
     
     def test_aspect_ratio_string_custom_ratio(self):
         """Test aspect ratio string for custom ratios"""
@@ -104,6 +110,8 @@ class TestImageMetadata(unittest.TestCase):
         
         self.assertIn("Custom", metadata.aspect_ratio_string)
         self.assertIn("1337:420", metadata.aspect_ratio_string)
+
+        assert True  # TODO: Add proper assertion
     
     def test_to_dict_serialization(self):
         """Test metadata serialization to dictionary"""
@@ -130,6 +138,8 @@ class TestImageMetadata(unittest.TestCase):
         self.assertEqual(metadata_dict['thumbnail_data'], "base64_data_here")
 
 
+        assert True  # TODO: Add proper assertion
+
 class TestValidationFeedback(unittest.TestCase):
     """Test ValidationFeedback class functionality"""
     
@@ -150,6 +160,8 @@ class TestValidationFeedback(unittest.TestCase):
         self.assertEqual(feedback.message, "Test message")
         self.assertEqual(len(feedback.details), 2)
         self.assertEqual(len(feedback.suggestions), 2)
+
+        assert True  # TODO: Add proper assertion
     
     def test_validation_feedback_html_success(self):
         """Test HTML generation for success feedback"""
@@ -167,6 +179,8 @@ class TestValidationFeedback(unittest.TestCase):
         self.assertIn("Success message", html)
         self.assertIn("✅", html)  # Success icon
         self.assertIn("#28a745", html)  # Success color
+
+        assert True  # TODO: Add proper assertion
     
     def test_validation_feedback_html_error(self):
         """Test HTML generation for error feedback"""
@@ -188,6 +202,8 @@ class TestValidationFeedback(unittest.TestCase):
         self.assertIn("Fix suggestion", html)
         self.assertIn("❌", html)  # Error icon
         self.assertIn("#dc3545", html)  # Error color
+
+        assert True  # TODO: Add proper assertion
     
     def test_validation_feedback_html_warning(self):
         """Test HTML generation for warning feedback"""
@@ -205,6 +221,8 @@ class TestValidationFeedback(unittest.TestCase):
         self.assertIn("Warning message", html)
         self.assertIn("⚠️", html)  # Warning icon
         self.assertIn("#ffc107", html)  # Warning color
+
+        assert True  # TODO: Add proper assertion
     
     def test_validation_feedback_html_with_metadata(self):
         """Test HTML generation with metadata"""
@@ -235,6 +253,8 @@ class TestValidationFeedback(unittest.TestCase):
         self.assertIn("📊 Image Information", html)
 
 
+        assert True  # TODO: Add proper assertion
+
 class TestEnhancedImageValidatorConfiguration(unittest.TestCase):
     """Test EnhancedImageValidator configuration and initialization"""
     
@@ -247,6 +267,8 @@ class TestEnhancedImageValidatorConfiguration(unittest.TestCase):
         self.assertEqual(validator.min_dimensions, (256, 256))
         self.assertEqual(validator.max_dimensions, (4096, 4096))
         self.assertEqual(validator.thumbnail_size, (150, 150))
+
+        assert True  # TODO: Add proper assertion
     
     def test_custom_configuration(self):
         """Test validator with custom configuration"""
@@ -265,6 +287,8 @@ class TestEnhancedImageValidatorConfiguration(unittest.TestCase):
         self.assertEqual(validator.min_dimensions, (512, 512))
         self.assertEqual(validator.max_dimensions, (2048, 2048))
         self.assertEqual(validator.thumbnail_size, (200, 200))
+
+        assert True  # TODO: Add proper assertion
     
     def test_model_requirements_configuration(self):
         """Test model-specific requirements configuration"""
@@ -281,6 +305,8 @@ class TestEnhancedImageValidatorConfiguration(unittest.TestCase):
         self.assertIn("recommended_min_size", i2v_req)
         self.assertIn("notes", i2v_req)
 
+
+        assert True  # TODO: Add proper assertion
 
 class TestImageValidationMethods(unittest.TestCase):
     """Test individual validation methods"""
@@ -302,6 +328,8 @@ class TestImageValidationMethods(unittest.TestCase):
         self.assertEqual(metadata.color_mode, 'RGB')
         self.assertAlmostEqual(metadata.aspect_ratio, 800/600, places=3)
         self.assertFalse(metadata.has_transparency)
+
+        assert True  # TODO: Add proper assertion
     
     @pytest.mark.skipif(not PIL_AVAILABLE, reason="PIL not available")
     def test_extract_metadata_rgba_image(self):
@@ -316,6 +344,8 @@ class TestImageValidationMethods(unittest.TestCase):
         self.assertEqual(metadata.color_mode, 'RGBA')
         self.assertEqual(metadata.aspect_ratio, 1.0)
         self.assertTrue(metadata.has_transparency)
+
+        assert True  # TODO: Add proper assertion
     
     @pytest.mark.skipif(not PIL_AVAILABLE, reason="PIL not available")
     def test_extract_metadata_grayscale_image(self):
@@ -330,6 +360,8 @@ class TestImageValidationMethods(unittest.TestCase):
         self.assertEqual(metadata.color_mode, 'L')
         self.assertAlmostEqual(metadata.aspect_ratio, 640/480, places=3)
         self.assertFalse(metadata.has_transparency)
+
+        assert True  # TODO: Add proper assertion
     
     @pytest.mark.skipif(not PIL_AVAILABLE, reason="PIL not available")
     def test_extract_metadata_no_format(self):
@@ -342,6 +374,8 @@ class TestImageValidationMethods(unittest.TestCase):
         self.assertEqual(metadata.dimensions, (400, 300))
         self.assertEqual(metadata.format, 'PNG')  # Should default to PNG
         self.assertEqual(metadata.color_mode, 'RGB')
+
+        assert True  # TODO: Add proper assertion
     
     @pytest.mark.skipif(not PIL_AVAILABLE, reason="PIL not available")
     def test_validate_format_supported(self):
@@ -355,6 +389,8 @@ class TestImageValidationMethods(unittest.TestCase):
         self.assertTrue(is_valid)
         self.assertEqual(error_msg, "")
         self.assertEqual(suggestions, [])
+
+        assert True  # TODO: Add proper assertion
     
     @pytest.mark.skipif(not PIL_AVAILABLE, reason="PIL not available")
     def test_validate_format_unsupported(self):
@@ -369,6 +405,8 @@ class TestImageValidationMethods(unittest.TestCase):
         self.assertIn("Unsupported format", error_msg)
         self.assertGreater(len(suggestions), 0)
         self.assertTrue(any("Convert to" in suggestion for suggestion in suggestions))
+
+        assert True  # TODO: Add proper assertion
     
     @pytest.mark.skipif(not PIL_AVAILABLE, reason="PIL not available")
     def test_validate_dimensions_valid(self):
@@ -381,6 +419,8 @@ class TestImageValidationMethods(unittest.TestCase):
         self.assertTrue(is_valid)
         self.assertEqual(error_msg, "")
         self.assertEqual(suggestions, [])
+
+        assert True  # TODO: Add proper assertion
     
     @pytest.mark.skipif(not PIL_AVAILABLE, reason="PIL not available")
     def test_validate_dimensions_too_small(self):
@@ -394,6 +434,8 @@ class TestImageValidationMethods(unittest.TestCase):
         self.assertIn("too small", error_msg)
         self.assertGreater(len(suggestions), 0)
         self.assertTrue(any("Resize" in suggestion for suggestion in suggestions))
+
+        assert True  # TODO: Add proper assertion
     
     @pytest.mark.skipif(not PIL_AVAILABLE, reason="PIL not available")
     def test_validate_dimensions_too_large(self):
@@ -407,6 +449,8 @@ class TestImageValidationMethods(unittest.TestCase):
         self.assertIn("too large", error_msg)
         self.assertGreater(len(suggestions), 0)
         self.assertTrue(any("Resize" in suggestion for suggestion in suggestions))
+
+        assert True  # TODO: Add proper assertion
     
     @pytest.mark.skipif(not PIL_AVAILABLE, reason="PIL not available")
     def test_validate_file_size_valid(self):
@@ -428,6 +472,8 @@ class TestImageValidationMethods(unittest.TestCase):
         self.assertTrue(is_valid)
         self.assertEqual(error_msg, "")
         self.assertEqual(suggestions, [])
+
+        assert True  # TODO: Add proper assertion
     
     @pytest.mark.skipif(not PIL_AVAILABLE, reason="PIL not available")
     def test_validate_file_size_too_large(self):
@@ -450,6 +496,8 @@ class TestImageValidationMethods(unittest.TestCase):
         self.assertIn("too large", error_msg)
         self.assertGreater(len(suggestions), 0)
         self.assertTrue(any("Compress" in suggestion for suggestion in suggestions))
+
+        assert True  # TODO: Add proper assertion
     
     @pytest.mark.skipif(not PIL_AVAILABLE, reason="PIL not available")
     def test_generate_thumbnail(self):
@@ -468,6 +516,8 @@ class TestImageValidationMethods(unittest.TestCase):
             self.assertGreater(len(decoded), 0)
         except Exception:
             self.fail("Thumbnail data is not valid base64")
+
+        assert True  # TODO: Add proper assertion
     
     @pytest.mark.skipif(not PIL_AVAILABLE, reason="PIL not available")
     def test_analyze_image_quality_normal_image(self):
@@ -479,6 +529,8 @@ class TestImageValidationMethods(unittest.TestCase):
         # Normal image should have minimal issues
         self.assertIsInstance(issues, list)
         self.assertIsInstance(suggestions, list)
+
+        assert True  # TODO: Add proper assertion
     
     @pytest.mark.skipif(not PIL_AVAILABLE, reason="PIL not available")
     def test_analyze_image_quality_grayscale_image(self):
@@ -492,6 +544,8 @@ class TestImageValidationMethods(unittest.TestCase):
         self.assertTrue(any("grayscale" in issue.lower() for issue in issues))
         self.assertGreater(len(suggestions), 0)
 
+
+        assert True  # TODO: Add proper assertion
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

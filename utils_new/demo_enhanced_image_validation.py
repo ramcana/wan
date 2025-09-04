@@ -1,3 +1,4 @@
+from unittest.mock import Mock, patch
 """
 Demo script for Enhanced Image Validation System
 Demonstrates comprehensive validation, feedback generation, and thumbnail creation

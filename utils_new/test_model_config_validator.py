@@ -100,7 +100,7 @@ class TestModelConfigValidator:
     def teardown_method(self):
         """Clean up test environment"""
         import shutil
-shutil.rmtree(self.temp_dir, ignore_errors=True)
+        shutil.rmtree(self.temp_dir, ignore_errors=True)
     
     def test_validator_initialization(self):
         """Test ModelConfigValidator initialization"""
@@ -453,7 +453,7 @@ if __name__ == "__main__":
     except Exception as e:
         print(f"❌ Test failed: {e}")
         import traceback
-traceback.print_exc()
+        traceback.print_exc()
         sys.exit(1)
     finally:
         test_instance.teardown_method()

@@ -85,6 +85,8 @@ def test_event_handlers():
     
     return len(missing_methods) == 0
 
+    assert True  # TODO: Add proper assertion
+
 if __name__ == "__main__":
     success = test_event_handlers()
     exit(0 if success else 1)

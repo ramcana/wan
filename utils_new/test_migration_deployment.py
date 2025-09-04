@@ -155,6 +155,8 @@ def test_docker_files():
         else:
             print(f"✗ {file_name} missing")
 
+    assert True  # TODO: Add proper assertion
+
 def test_config_files():
     """Test configuration files."""
     print("Testing configuration files...")

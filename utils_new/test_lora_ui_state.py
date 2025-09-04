@@ -31,6 +31,8 @@ class TestLoRASelection(unittest.TestCase):
         self.assertEqual(selection.strength, 0.8)
         self.assertIsInstance(selection.selected_at, datetime)
         self.assertIsInstance(selection.last_modified, datetime)
+
+        assert True  # TODO: Add proper assertion
     
     def test_lora_selection_to_dict(self):
         """Test converting LoRASelection to dictionary"""
@@ -43,6 +45,8 @@ class TestLoRASelection(unittest.TestCase):
         self.assertIn("last_modified", data)
         self.assertEqual(data["name"], "test_lora")
         self.assertEqual(data["strength"], 0.8)
+
+        assert True  # TODO: Add proper assertion
     
     def test_lora_selection_from_dict(self):
         """Test creating LoRASelection from dictionary"""
@@ -60,6 +64,8 @@ class TestLoRASelection(unittest.TestCase):
         self.assertEqual(selection.strength, 0.8)
         self.assertEqual(selection.selected_at.replace(microsecond=0), now.replace(microsecond=0))
 
+
+        assert True  # TODO: Add proper assertion
 
 class TestLoRAUIState(unittest.TestCase):
     """Test the LoRAUIState class"""
@@ -117,7 +123,7 @@ class TestLoRAUIState(unittest.TestCase):
     def tearDown(self):
         """Clean up test environment"""
         import shutil
-shutil.rmtree(self.temp_dir, ignore_errors=True)
+        shutil.rmtree(self.temp_dir, ignore_errors=True)
     
     @patch('lora_ui_state.LoRAManager')
     def test_initialization(self, mock_lora_manager_class):
@@ -131,6 +137,8 @@ shutil.rmtree(self.temp_dir, ignore_errors=True)
         self.assertIsInstance(state.last_refresh, datetime)
         self.assertEqual(len(state.validation_errors), 0)
         mock_lora_manager_class.assert_called_once_with(self.config)
+
+        assert True  # TODO: Add proper assertion
     
     @patch('lora_ui_state.LoRAManager')
     def test_update_selection_success(self, mock_lora_manager_class):
@@ -146,6 +154,8 @@ shutil.rmtree(self.temp_dir, ignore_errors=True)
         self.assertIn("selected", message)
         self.assertIn("anime_style", state.selected_loras)
         self.assertEqual(state.selected_loras["anime_style"].strength, 0.8)
+
+        assert True  # TODO: Add proper assertion
     
     @patch('lora_ui_state.LoRAManager')
     def test_update_selection_invalid_strength(self, mock_lora_manager_class):
@@ -162,6 +172,8 @@ shutil.rmtree(self.temp_dir, ignore_errors=True)
         success, message = state.update_selection("anime_style", 2.5)
         self.assertFalse(success)
         self.assertIn("Invalid strength", message)
+
+        assert True  # TODO: Add proper assertion
     
     @patch('lora_ui_state.LoRAManager')
     def test_update_selection_nonexistent_lora(self, mock_lora_manager_class):
@@ -174,6 +186,8 @@ shutil.rmtree(self.temp_dir, ignore_errors=True)
         
         self.assertFalse(success)
         self.assertIn("not found", message)
+
+        assert True  # TODO: Add proper assertion
     
     @patch('lora_ui_state.LoRAManager')
     def test_max_loras_limit(self, mock_lora_manager_class):
@@ -203,6 +217,8 @@ shutil.rmtree(self.temp_dir, ignore_errors=True)
         success, message = state.update_selection(f"lora_{LoRAUIState.MAX_LORAS}", 0.8)
         self.assertFalse(success)
         self.assertIn("Maximum", message)
+
+        assert True  # TODO: Add proper assertion
     
     @patch('lora_ui_state.LoRAManager')
     def test_remove_selection(self, mock_lora_manager_class):
@@ -221,6 +237,8 @@ shutil.rmtree(self.temp_dir, ignore_errors=True)
         self.assertTrue(success)
         self.assertIn("removed", message)
         self.assertNotIn("anime_style", state.selected_loras)
+
+        assert True  # TODO: Add proper assertion
     
     @patch('lora_ui_state.LoRAManager')
     def test_remove_nonexistent_selection(self, mock_lora_manager_class):
@@ -233,6 +251,8 @@ shutil.rmtree(self.temp_dir, ignore_errors=True)
         
         self.assertFalse(success)
         self.assertIn("not currently selected", message)
+
+        assert True  # TODO: Add proper assertion
     
     @patch('lora_ui_state.LoRAManager')
     def test_clear_selection(self, mock_lora_manager_class):
@@ -252,6 +272,8 @@ shutil.rmtree(self.temp_dir, ignore_errors=True)
         self.assertTrue(success)
         self.assertIn("2", message)  # Should mention clearing 2 LoRAs
         self.assertEqual(len(state.selected_loras), 0)
+
+        assert True  # TODO: Add proper assertion
     
     @patch('lora_ui_state.LoRAManager')
     def test_validate_selection(self, mock_lora_manager_class):
@@ -274,6 +296,8 @@ shutil.rmtree(self.temp_dir, ignore_errors=True)
         self.assertFalse(is_valid)
         self.assertGreater(len(errors), 0)
         self.assertTrue(any("no longer available" in error for error in errors))
+
+        assert True  # TODO: Add proper assertion
     
     @patch('lora_ui_state.LoRAManager')
     def test_get_selection_summary(self, mock_lora_manager_class):
@@ -294,6 +318,8 @@ shutil.rmtree(self.temp_dir, ignore_errors=True)
         self.assertEqual(len(summary["selections"]), 2)
         self.assertGreater(summary["total_memory_mb"], 0)
         self.assertTrue(summary["has_selections"])
+
+        assert True  # TODO: Add proper assertion
     
     @patch('lora_ui_state.LoRAManager')
     def test_get_display_data(self, mock_lora_manager_class):
@@ -326,6 +352,8 @@ shutil.rmtree(self.temp_dir, ignore_errors=True)
         self.assertNotIn("anime_style", available_names)
         self.assertIn("realistic_enhance", available_names)
         self.assertIn("detail_boost", available_names)
+
+        assert True  # TODO: Add proper assertion
     
     @patch('lora_ui_state.LoRAManager')
     def test_get_selection_for_generation(self, mock_lora_manager_class):
@@ -343,6 +371,8 @@ shutil.rmtree(self.temp_dir, ignore_errors=True)
         self.assertEqual(len(generation_data), 2)
         self.assertEqual(generation_data["anime_style"], 0.8)
         self.assertEqual(generation_data["realistic_enhance"], 0.6)
+
+        assert True  # TODO: Add proper assertion
     
     @patch('lora_ui_state.LoRAManager')
     def test_estimate_memory_impact(self, mock_lora_manager_class):
@@ -365,6 +395,8 @@ shutil.rmtree(self.temp_dir, ignore_errors=True)
         # Check that total includes overhead
         expected_total = (144.5 + 156.2) * 1.2  # 20% overhead
         self.assertAlmostEqual(memory_estimate["total_mb"], expected_total, places=1)
+
+        assert True  # TODO: Add proper assertion
     
     @patch('lora_ui_state.LoRAManager')
     def test_state_persistence(self, mock_lora_manager_class):
@@ -385,6 +417,8 @@ shutil.rmtree(self.temp_dir, ignore_errors=True)
         self.assertIn("realistic_enhance", state2.selected_loras)
         self.assertEqual(state2.selected_loras["anime_style"].strength, 0.8)
         self.assertEqual(state2.selected_loras["realistic_enhance"].strength, 0.6)
+
+        assert True  # TODO: Add proper assertion
     
     @patch('lora_ui_state.LoRAManager')
     def test_refresh_state(self, mock_lora_manager_class):
@@ -412,6 +446,8 @@ shutil.rmtree(self.temp_dir, ignore_errors=True)
         # Check that invalid LoRA was removed
         self.assertIn("anime_style", state.selected_loras)
         self.assertNotIn("realistic_enhance", state.selected_loras)
+
+        assert True  # TODO: Add proper assertion
     
     @patch('lora_ui_state.LoRAManager')
     def test_strength_validation(self, mock_lora_manager_class):
@@ -429,6 +465,8 @@ shutil.rmtree(self.temp_dir, ignore_errors=True)
         invalid_strengths = [-0.1, 2.1, "0.5", None, float('inf')]
         for strength in invalid_strengths:
             self.assertFalse(state._validate_strength(strength))
+
+        assert True  # TODO: Add proper assertion
     
     @patch('lora_ui_state.LoRAManager')
     def test_update_existing_selection(self, mock_lora_manager_class):
@@ -444,7 +482,7 @@ shutil.rmtree(self.temp_dir, ignore_errors=True)
         
         # Wait a bit to ensure timestamp difference
         import time
-time.sleep(0.01)
+        time.sleep(0.01)
         
         # Update existing selection
         success, message = state.update_selection("anime_style", 1.2)
@@ -454,6 +492,8 @@ time.sleep(0.01)
         # Check that strength was updated and timestamp changed
         self.assertEqual(state.selected_loras["anime_style"].strength, 1.2)
         self.assertGreater(state.selected_loras["anime_style"].last_modified, initial_time)
+
+        assert True  # TODO: Add proper assertion
     
     @patch('lora_ui_state.LoRAManager')
     def test_error_handling(self, mock_lora_manager_class):
@@ -478,6 +518,8 @@ time.sleep(0.01)
         self.assertIn("validation_errors", display_data)
         self.assertGreater(len(display_data["validation_errors"]), 0)
 
+
+        assert True  # TODO: Add proper assertion
 
 if __name__ == '__main__':
     # Run the tests

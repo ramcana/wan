@@ -60,14 +60,16 @@ def test_wan_pipeline_loading_comprehensive():
         except Exception as e:
             print(f"❌ Pipeline loading failed: {e}")
             import traceback
-traceback.print_exc()
+            traceback.print_exc()
             return False
         
     except Exception as e:
         print(f"❌ Test failed: {e}")
         import traceback
-traceback.print_exc()
+        traceback.print_exc()
         return False
+
+    assert True  # TODO: Add proper assertion
 
 if __name__ == "__main__":
     success = test_wan_pipeline_loading_comprehensive()

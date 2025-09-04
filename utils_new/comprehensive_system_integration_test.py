@@ -123,7 +123,7 @@ class RTX4080ProductionEnvironmentTest(unittest.TestCase):
         
         # Clean up temp directory
         import shutil
-shutil.rmtree(self.temp_dir, ignore_errors=True)
+        shutil.rmtree(self.temp_dir, ignore_errors=True)
         
         # Log test completion metrics
         total_time = time.time() - self.test_metrics['start_time']
@@ -916,7 +916,7 @@ class ProductionEnvironmentValidationSuite(unittest.TestCase):
         
         finally:
             import shutil
-shutil.rmtree(temp_dir, ignore_errors=True)
+        shutil.rmtree(temp_dir, ignore_errors=True)
         
         self.validation_results['integration_tests'] = integration_tests
         
