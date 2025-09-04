@@ -195,7 +195,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r backend/requirements.txt
+          pip install -r requirements.txt
           pip install pytest pytest-cov pytest-asyncio pytest-mock
 
       - name: Run comprehensive test suite
@@ -287,7 +287,7 @@ jobs:
 
   create-health-status-badge:
     runs-on: ubuntu-latest
-    needs: [health-gate-check]
+    needs: [health-gate-check, test-gate]
     if: github.ref == 'refs/heads/main'
 
     steps:
