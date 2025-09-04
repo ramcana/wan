@@ -26,7 +26,7 @@ Example Usage:
     metrics = tracker.calculate_debt_metrics()
 """
 
-from .code_reviewer import (
+from tools..code_reviewer import (
     CodeReviewer,
     CodeIssue,
     ReviewSeverity,
@@ -37,14 +37,14 @@ from .code_reviewer import (
     SecurityAnalyzer
 )
 
-from .refactoring_engine import (
+from tools..refactoring_engine import (
     RefactoringEngine,
     RefactoringType,
     RefactoringPattern,
     RefactoringSuggestion
 )
 
-from .technical_debt_tracker import (
+from tools..technical_debt_tracker import (
     TechnicalDebtTracker,
     TechnicalDebtItem,
     DebtCategory,

@@ -60,7 +60,7 @@ class TestMaintenanceSchedulerIntegration(unittest.TestCase):
         
         # Clean up temp directory
         import shutil
-shutil.rmtree(self.temp_dir, ignore_errors=True)
+        shutil.rmtree(self.temp_dir, ignore_errors=True)
     
     def test_task_lifecycle(self):
         """Test complete task lifecycle from creation to execution."""
@@ -143,7 +143,7 @@ shutil.rmtree(self.temp_dir, ignore_errors=True)
         
         # Wait for a few executions
         import time
-time.sleep(3)
+        time.sleep(3)
         
         # Stop scheduler
         self.scheduler.stop()
@@ -348,7 +348,7 @@ time.sleep(3)
         
         # Wait for completion
         import time
-time.sleep(2)
+        time.sleep(2)
         
         # Stop scheduler
         self.scheduler.stop()
@@ -480,7 +480,7 @@ class TestMaintenanceSchedulerCLI(unittest.TestCase):
     def tearDown(self):
         """Clean up test environment."""
         import shutil
-shutil.rmtree(self.temp_dir, ignore_errors=True)
+        shutil.rmtree(self.temp_dir, ignore_errors=True)
     
     @patch('sys.argv')
     def test_cli_task_creation(self, mock_argv):

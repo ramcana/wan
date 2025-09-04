@@ -2,7 +2,7 @@
 Test Runner Module - Comprehensive test orchestration and execution
 """
 
-from .orchestrator import (
+from tools..orchestrator import (
     TestSuiteOrchestrator,
     TestCategory,
     TestStatus,
@@ -14,7 +14,7 @@ from .orchestrator import (
     ResourceManager
 )
 
-from .runner_engine import (
+from tools..runner_engine import (
     TestRunnerEngine,
     TestDiscovery,
     TestExecutionContext,
@@ -23,7 +23,7 @@ from .runner_engine import (
     TimeoutManager
 )
 
-from .coverage_analyzer import (
+from tools..coverage_analyzer import (
     CoverageAnalyzer,
     CoverageReport,
     FileCoverage,
@@ -33,7 +33,7 @@ from .coverage_analyzer import (
     CoverageThresholdValidator
 )
 
-from .test_auditor import (
+from tools..test_auditor import (
     TestAuditor,
     TestFileAudit,
     AuditReport,

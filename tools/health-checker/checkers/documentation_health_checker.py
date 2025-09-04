@@ -9,7 +9,7 @@ from typing import List, Dict, Any, Set
 import logging
 from urllib.parse import urljoin, urlparse
 
-from ..health_models import ComponentHealth, HealthIssue, HealthCategory, Severity, HealthConfig
+from tools...health_models import ComponentHealth, HealthIssue, HealthCategory, Severity, HealthConfig
 
 
 class DocumentationHealthChecker:

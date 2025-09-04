@@ -1,3 +1,4 @@
+import pytest
 """
 Rollback management system for safe automated maintenance operations.
 """

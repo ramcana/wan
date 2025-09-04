@@ -1,3 +1,5 @@
+import pytest
+from unittest.mock import Mock, patch
 #!/usr/bin/env python3
 """
 Flaky Test Detection and Management System

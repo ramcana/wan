@@ -1,3 +1,4 @@
+import pytest
 """
 Comprehensive Documentation Generator
 

@@ -1,3 +1,4 @@
+import pytest
 """
 Duplicate Detection and Removal System
 

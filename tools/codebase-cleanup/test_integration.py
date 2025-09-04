@@ -195,7 +195,7 @@ def test_cli_integration():
         
         # Test argument parsing (without actually running)
         import argparse
-parser = argparse.ArgumentParser()
+        parser = argparse.ArgumentParser()
         subparsers = parser.add_subparsers(dest='command')
         
         from cli import setup_duplicate_parser, setup_dead_code_parser, setup_naming_parser

@@ -11,7 +11,7 @@ from dataclasses import dataclass, asdict
 from datetime import datetime, timedelta
 import yaml
 
-from .models import (
+from tools..models import (
     LearningPath, TrainingModule, PracticeExercise, Assessment,
     TroubleshootingWizard, TrainingResource, Certificate
 )
@@ -192,7 +192,7 @@ class TrainingManager:
                 'estimated_time': 15
             }
         
-        from .models import ExerciseStep
+from tools..models import ExerciseStep
         steps = []
         for step_data in exercise_data.get('steps', []):
             step = ExerciseStep(
@@ -217,7 +217,7 @@ class TrainingManager:
     
     def get_assessment(self, topic: str) -> Assessment:
         """Get assessment for topic."""
-        from .models import AssessmentQuestion, AssessmentResult
+from tools..models import AssessmentQuestion, AssessmentResult
         
         # Load assessment questions
         questions_file = self.content_dir / "assessments" / f"{topic}-questions.yaml"
@@ -262,7 +262,7 @@ class TrainingManager:
     
     def get_troubleshooting_wizard(self, issue_type: str) -> TroubleshootingWizard:
         """Get troubleshooting wizard for issue type."""
-        from .troubleshooting_wizard import TroubleshootingWizardImpl
+from tools..troubleshooting_wizard import TroubleshootingWizardImpl
         return TroubleshootingWizardImpl(issue_type)
     
     def get_resources(self, resource_type: Optional[str] = None) -> Dict[str, List[TrainingResource]]:

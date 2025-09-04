@@ -8,8 +8,8 @@ from pathlib import Path
 from typing import Optional, List
 import logging
 
-from .pre_commit_hooks import PreCommitHookManager
-from .ci_integration import CIIntegration
+from tools..pre_commit_hooks import PreCommitHookManager
+from tools..ci_integration import CIIntegration
 
 logger = logging.getLogger(__name__)
 

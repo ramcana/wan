@@ -1,3 +1,4 @@
+from unittest.mock import Mock, patch
 #!/usr/bin/env python3
 """
 Basic test script for the maintenance scheduler components.

@@ -33,7 +33,7 @@ class TestMaintenanceReportingIntegration(unittest.TestCase):
     def tearDown(self):
         """Clean up temporary files."""
         import shutil
-shutil.rmtree(self.temp_dir, ignore_errors=True)
+        shutil.rmtree(self.temp_dir, ignore_errors=True)
     
     def test_complete_operation_lifecycle(self):
         """Test complete operation lifecycle with audit trails."""

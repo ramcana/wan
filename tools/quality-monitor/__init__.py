@@ -15,15 +15,15 @@ Usage:
     dashboard_data = monitor.get_dashboard_data()
 """
 
-from .models import (
+from tools..models import (
     QualityMetric, QualityTrend, QualityAlert, QualityRecommendation,
     QualityThreshold, QualityDashboard, MetricType, AlertSeverity, TrendDirection
 )
-from .metrics_collector import MetricsCollector
-from .trend_analyzer import TrendAnalyzer
-from .alert_system import AlertSystem
-from .recommendation_engine import RecommendationEngine
-from .dashboard import DashboardManager
+from tools..metrics_collector import MetricsCollector
+from tools..trend_analyzer import TrendAnalyzer
+from tools..alert_system import AlertSystem
+from tools..recommendation_engine import RecommendationEngine
+from tools..dashboard import DashboardManager
 
 
 class QualityMonitor:

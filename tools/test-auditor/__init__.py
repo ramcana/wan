@@ -23,7 +23,7 @@ Usage:
     print(f"Health Score: {analysis.health_score}")
 """
 
-from .test_auditor import (
+from tools..test_auditor import (
     TestAuditor,
     TestDiscoveryEngine,
     TestDependencyAnalyzer,
@@ -33,7 +33,7 @@ from .test_auditor import (
     TestIssue
 )
 
-from .test_runner import (
+from tools..test_runner import (
     ParallelTestRunner,
     TestExecutor,
     TestExecutionResult,
@@ -43,7 +43,7 @@ from .test_runner import (
     TestRetryManager
 )
 
-from .coverage_analyzer import (
+from tools..coverage_analyzer import (
     CoverageAnalyzer,
     CoverageReport,
     FileCoverage,
@@ -51,7 +51,7 @@ from .coverage_analyzer import (
     CoverageThresholdManager
 )
 
-from .orchestrator import (
+from tools..orchestrator import (
     TestSuiteOrchestrator,
     ComprehensiveTestAnalysis,
     TestSuiteHealthScorer,

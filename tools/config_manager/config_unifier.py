@@ -1,3 +1,4 @@
+import pytest
 """
 Configuration Unifier and Migration System
 

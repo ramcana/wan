@@ -1,3 +1,4 @@
+import pytest
 #!/usr/bin/env python3
 """
 Test Watcher with Selective Execution

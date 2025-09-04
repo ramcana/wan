@@ -1,3 +1,4 @@
+from unittest.mock import Mock, patch
 """
 Test Suite Orchestrator - Core orchestration for test execution with category management
 """

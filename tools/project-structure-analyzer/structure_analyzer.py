@@ -1,3 +1,4 @@
+import pytest
 """
 Project Structure Analyzer
 

@@ -9,7 +9,7 @@ Comprehensive test coverage analysis system that provides:
 - Multiple report formats (JSON, HTML, Markdown)
 """
 
-from .coverage_system import (
+from tools..coverage_system import (
     ComprehensiveCoverageSystem,
     CoverageTrendTracker,
     NewCodeCoverageAnalyzer,

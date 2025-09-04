@@ -1,3 +1,4 @@
+import pytest
 """
 Test Coverage Analyzer - Comprehensive code coverage measurement and reporting
 """

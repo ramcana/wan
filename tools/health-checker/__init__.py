@@ -10,11 +10,11 @@ This module provides comprehensive project health monitoring capabilities includ
 - Automated recommendations
 """
 
-from .health_checker import ProjectHealthChecker
-from .health_models import HealthReport, HealthIssue, Recommendation, Severity
-from .health_reporter import HealthReporter
-from .health_notifier import HealthNotifier
-from .recommendation_engine import RecommendationEngine
+from tools..health_checker import ProjectHealthChecker
+from tools..health_models import HealthReport, HealthIssue, Recommendation, Severity
+from tools..health_reporter import HealthReporter
+from tools..health_notifier import HealthNotifier
+from tools..recommendation_engine import RecommendationEngine
 
 __all__ = [
     'ProjectHealthChecker',

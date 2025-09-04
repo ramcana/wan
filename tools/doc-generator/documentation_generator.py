@@ -1,3 +1,4 @@
+import pytest
 """
 Documentation Generator
 

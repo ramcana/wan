@@ -1,3 +1,4 @@
+import pytest
 """
 Dead Code Analysis and Removal System
 

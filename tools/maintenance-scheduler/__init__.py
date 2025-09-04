@@ -30,12 +30,12 @@ Usage:
     scheduler.start()
 """
 
-from .scheduler import MaintenanceScheduler
-from .task_manager import MaintenanceTaskManager
-from .priority_engine import TaskPriorityEngine, ImpactAnalysis, EffortAnalysis
-from .history_tracker import MaintenanceHistoryTracker
-from .rollback_manager import RollbackManager
-from .models import (
+from tools..scheduler import MaintenanceScheduler
+from tools..task_manager import MaintenanceTaskManager
+from tools..priority_engine import TaskPriorityEngine, ImpactAnalysis, EffortAnalysis
+from tools..history_tracker import MaintenanceHistoryTracker
+from tools..rollback_manager import RollbackManager
+from tools..models import (
     MaintenanceTask,
     MaintenanceResult,
     TaskSchedule,

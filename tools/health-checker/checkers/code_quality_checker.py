@@ -1,3 +1,4 @@
+import pytest
 """
 Code quality health checker
 """
@@ -8,7 +9,7 @@ from pathlib import Path
 from typing import List, Dict, Any
 import logging
 
-from ..health_models import ComponentHealth, HealthIssue, HealthCategory, Severity, HealthConfig
+from tools...health_models import ComponentHealth, HealthIssue, HealthCategory, Severity, HealthConfig
 
 
 class CodeQualityChecker:

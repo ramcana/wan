@@ -15,10 +15,10 @@ from datetime import datetime, timedelta
 import subprocess
 import time
 
-from .training_manager import TrainingManager
-from .progress_tracker import ProgressTracker
-from .interactive_tutorial import InteractiveTutorial
-from .feedback_system import FeedbackSystem
+from tools..training_manager import TrainingManager
+from tools..progress_tracker import ProgressTracker
+from tools..interactive_tutorial import InteractiveTutorial
+from tools..feedback_system import FeedbackSystem
 
 
 class TrainingSystemCLI:

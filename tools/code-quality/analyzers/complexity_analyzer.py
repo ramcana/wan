@@ -8,7 +8,7 @@ from pathlib import Path
 from typing import List, Dict, Any, Set
 import logging
 
-from ..models import QualityIssue, QualityIssueType, QualitySeverity, QualityConfig
+from tools...models import QualityIssue, QualityIssueType, QualitySeverity, QualityConfig
 
 
 logger = logging.getLogger(__name__)

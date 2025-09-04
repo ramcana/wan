@@ -6,10 +6,10 @@ import argparse
 import sys
 from pathlib import Path
 
-from .structure_analyzer import ProjectStructureAnalyzer
-from .component_analyzer import ComponentRelationshipAnalyzer
-from .complexity_analyzer import ProjectComplexityAnalyzer
-from .visualization_generator import MermaidVisualizationGenerator
+from tools..structure_analyzer import ProjectStructureAnalyzer
+from tools..component_analyzer import ComponentRelationshipAnalyzer
+from tools..complexity_analyzer import ProjectComplexityAnalyzer
+from tools..visualization_generator import MermaidVisualizationGenerator
 
 
 def main():

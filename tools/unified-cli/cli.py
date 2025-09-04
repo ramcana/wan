@@ -1,3 +1,4 @@
+from unittest.mock import Mock, patch
 #!/usr/bin/env python3
 """
 Unified CLI Tool for Project Cleanup and Quality Improvements

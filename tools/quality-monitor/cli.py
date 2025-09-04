@@ -9,12 +9,12 @@ from datetime import datetime
 from pathlib import Path
 
 try:
-    from .models import MetricType, AlertSeverity
-    from .metrics_collector import MetricsCollector
-    from .trend_analyzer import TrendAnalyzer
-    from .alert_system import AlertSystem
-    from .recommendation_engine import RecommendationEngine
-    from .dashboard import DashboardManager
+from tools..models import MetricType, AlertSeverity
+from tools..metrics_collector import MetricsCollector
+from tools..trend_analyzer import TrendAnalyzer
+from tools..alert_system import AlertSystem
+from tools..recommendation_engine import RecommendationEngine
+from tools..dashboard import DashboardManager
 except ImportError:
     from models import MetricType, AlertSeverity
     from metrics_collector import MetricsCollector
