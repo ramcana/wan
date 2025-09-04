@@ -120,14 +120,14 @@ jobs:
       - name: Check health score threshold
         run: |
           python -c "
-          import json
-          with open('health-report.json') as f:
-              report = json.load(f)
-          score = report.get('overall_score', 0)
-          threshold = 75
-          print(f'Health score: {score}/100')
-          if score < threshold:
-              print(f'Health score {score} is below threshold {threshold}')
-              exit(1)
-          print('Health check passed!')
+import json
+with open('health-report.json') as f:
+    report = json.load(f)
+score = report.get('overall_score', 0)
+threshold = 75
+print(f'Health score: {score}/100')
+if score < threshold:
+    print(f'Health score {score} is below threshold {threshold}')
+    exit(1)
+print('Health check passed!')
           "
