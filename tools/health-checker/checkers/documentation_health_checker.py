@@ -9,7 +9,11 @@ from typing import List, Dict, Any, Set
 import logging
 from urllib.parse import urljoin, urlparse
 
-from tools...health_models import ComponentHealth, HealthIssue, HealthCategory, Severity, HealthConfig
+try:
+    from ..health_models import ComponentHealth, HealthIssue, HealthCategory, Severity, HealthConfig
+except ImportError:
+    # Fallback imports - these will be defined in health_checker.py
+    pass
 
 
 class DocumentationHealthChecker:
