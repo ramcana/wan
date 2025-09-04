@@ -48,7 +48,7 @@ class TestConfigurationIntegration:
         assert os.environ.get("WAN22_TEST_MODE") == "true"
         assert os.environ.get("PYTEST_RUNNING") == "true"
     
-    def test_database_isolation(self, database_fixture):
+    async def test_database_isolation(self, database_fixture):
         """Test database isolation and cleanup."""
         # Create a test database with schema and data
         db_path = database_fixture.create_full_database()

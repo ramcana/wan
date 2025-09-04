@@ -9,12 +9,12 @@ from pathlib import Path
 from unittest.mock import patch, mock_open
 
 from tests.config.test_config import (
-    TestConfig, TestCategory, Environment, CategoryConfig,
-    ConfigurationError, get_test_config, reset_test_config
+    TestConfiguration, TestCategory, TestPriority, TestTimeouts,
+    get_test_config, reload_test_config
 )
 
 
-class TestTestConfig:
+class TestConfigurationSystem:
     """Test cases for TestConfig class"""
     
     def setup_method(self):

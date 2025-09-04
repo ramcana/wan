@@ -1,4 +1,3 @@
-import pytest
 #!/usr/bin/env python3
 """Setup script for WAN CLI toolkit"""
 

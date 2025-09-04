@@ -30,7 +30,7 @@ import signal
 import psutil
 
 
-class TestCategory(Enum):
+class ExecutionCategory(Enum):
     """Test categories with different timeout requirements"""
     UNIT = "unit"
     INTEGRATION = "integration"
@@ -39,7 +39,7 @@ class TestCategory(Enum):
     RELIABILITY = "reliability"
 
 
-class TestStatus(Enum):
+class ExecutionStatus(Enum):
     """Test execution status"""
     PENDING = "pending"
     RUNNING = "running"
@@ -52,15 +52,15 @@ class TestStatus(Enum):
 
 
 @dataclass
-class TestConfig:
+class ExecutionConfig:
     """Configuration for test execution"""
     # Timeout settings per category (in seconds)
-    timeouts: Dict[TestCategory, int] = field(default_factory=lambda: {
-        TestCategory.UNIT: 30,
-        TestCategory.INTEGRATION: 120,
-        TestCategory.E2E: 300,
-        TestCategory.PERFORMANCE: 600,
-        TestCategory.RELIABILITY: 900
+    timeouts: Dict[ExecutionCategory, int] = field(default_factory=lambda: {
+        ExecutionCategory.UNIT: 30,
+        ExecutionCategory.INTEGRATION: 120,
+        ExecutionCategory.E2E: 300,
+        ExecutionCategory.PERFORMANCE: 600,
+        ExecutionCategory.RELIABILITY: 900
     })
     
     # Retry settings
@@ -82,11 +82,11 @@ class TestConfig:
 
 
 @dataclass
-class TestResult:
+class ExecutionResult:
     """Individual test result"""
     test_id: str
-    category: TestCategory
-    status: TestStatus
+    category: ExecutionCategory
+    status: ExecutionStatus
     duration: float
     start_time: datetime
     end_time: Optional[datetime] = None
@@ -99,7 +99,7 @@ class TestResult:
 
 
 @dataclass
-class TestSuiteResult:
+class SuiteResult:
     """Aggregated test suite results"""
     total_tests: int
     passed: int
@@ -110,7 +110,7 @@ class TestSuiteResult:
     total_duration: float
     start_time: datetime
     end_time: datetime
-    results: List[TestResult]
+    results: List[ExecutionResult]
     flaky_tests: Set[str] = field(default_factory=set)
     resource_usage: Dict[str, float] = field(default_factory=dict)
 
@@ -164,7 +164,7 @@ class ResourceMonitor:
         avg_memory = sum(self.memory_usage) / len(self.memory_usage) if self.memory_usage else 0
         return avg_cpu, avg_memory
         
-    def should_throttle(self, config: TestConfig) -> bool:
+    def should_throttle(self, config: ExecutionConfig) -> bool:
         """Check if execution should be throttled due to resource usage"""
         if not self.cpu_usage or not self.memory_usage:
             return False
@@ -176,11 +176,11 @@ class ResourceMonitor:
                 current_memory > config.memory_threshold)
 
 
-class TestExecutionEngine:
+class ExecutionEngine:
     """Main test execution engine with timeout handling and retry logic"""
     
-    def __init__(self, config: Optional[TestConfig] = None):
-        self.config = config or TestConfig()
+    def __init__(self, config: Optional[ExecutionConfig] = None):
+        self.config = config or ExecutionConfig()
         self.logger = logging.getLogger(__name__)
         self.resource_monitor = ResourceMonitor()
         self.flaky_test_history: Dict[str, List[bool]] = {}  # Track test success/failure history
@@ -212,22 +212,22 @@ class TestExecutionEngine:
             except Exception as e:
                 self.logger.warning(f"Error cleaning up process: {e}")
                 
-    def categorize_test(self, test_path: str) -> TestCategory:
+    def categorize_test(self, test_path: str) -> ExecutionCategory:
         """Categorize test based on its path"""
         path_lower = test_path.lower()
         
         if "/unit/" in path_lower or "test_unit_" in path_lower:
-            return TestCategory.UNIT
+            return ExecutionCategory.UNIT
         elif "/integration/" in path_lower or "test_integration_" in path_lower:
-            return TestCategory.INTEGRATION
+            return ExecutionCategory.INTEGRATION
         elif "/e2e/" in path_lower or "test_e2e_" in path_lower:
-            return TestCategory.E2E
+            return ExecutionCategory.E2E
         elif "/performance/" in path_lower or "test_performance_" in path_lower:
-            return TestCategory.PERFORMANCE
+            return ExecutionCategory.PERFORMANCE
         elif "/reliability/" in path_lower or "test_reliability_" in path_lower:
-            return TestCategory.RELIABILITY
+            return ExecutionCategory.RELIABILITY
         else:
-            return TestCategory.UNIT  # Default to unit tests
+            return ExecutionCategory.UNIT  # Default to unit tests
             
     def discover_tests(self, test_dir: str = "tests") -> List[str]:
         """Discover all test files"""
@@ -272,24 +272,24 @@ class TestExecutionEngine:
         if len(history) > 10:
             history.pop(0)
             
-    async def _execute_single_test(self, test_file: str, semaphore: asyncio.Semaphore) -> TestResult:
+    async def _execute_single_test(self, test_file: str, semaphore: asyncio.Semaphore) -> ExecutionResult:
         """Execute a single test with timeout and retry logic"""
         async with semaphore:
             test_id = test_file
             category = self.categorize_test(test_file)
             timeout = self.config.timeouts[category]
             
-            result = TestResult(
+            result = ExecutionResult(
                 test_id=test_id,
                 category=category,
-                status=TestStatus.PENDING,
+                status=ExecutionStatus.PENDING,
                 duration=0.0,
                 start_time=datetime.now()
             )
             
             for retry_count in range(self.config.max_retries + 1):
                 if self.shutdown_requested:
-                    result.status = TestStatus.SKIPPED
+                    result.status = ExecutionStatus.SKIPPED
                     result.error_message = "Execution cancelled"
                     break
                     
@@ -303,10 +303,10 @@ class TestExecutionEngine:
                     delay = self._calculate_retry_delay(retry_count - 1)
                     self.logger.info(f"Retrying {test_id} in {delay:.1f}s (attempt {retry_count + 1})")
                     await asyncio.sleep(delay)
-                    result.status = TestStatus.RETRYING
+                    result.status = ExecutionStatus.RETRYING
                     
                 result.retry_count = retry_count
-                result.status = TestStatus.RUNNING
+                result.status = ExecutionStatus.RUNNING
                 result.start_time = datetime.now()
                 
                 try:
@@ -328,16 +328,16 @@ class TestExecutionEngine:
                         result.stderr = stderr.decode('utf-8', errors='ignore')
                         
                         if process.returncode == 0:
-                            result.status = TestStatus.PASSED
+                            result.status = ExecutionStatus.PASSED
                             self._update_flaky_history(test_id, True)
                             break
                         else:
-                            result.status = TestStatus.FAILED
+                            result.status = ExecutionStatus.FAILED
                             result.error_message = f"Test failed with return code {process.returncode}"
                             self._update_flaky_history(test_id, False)
                             
                     except asyncio.TimeoutError:
-                        result.status = TestStatus.TIMEOUT
+                        result.status = ExecutionStatus.TIMEOUT
                         result.error_message = f"Test timed out after {timeout}s"
                         result.end_time = datetime.now()
                         result.duration = timeout
@@ -352,18 +352,18 @@ class TestExecutionEngine:
                         self._update_flaky_history(test_id, False)
                         
                 except Exception as e:
-                    result.status = TestStatus.ERROR
+                    result.status = ExecutionStatus.ERROR
                     result.error_message = f"Execution error: {str(e)}"
                     result.end_time = datetime.now()
                     result.duration = (result.end_time - result.start_time).total_seconds()
                     self._update_flaky_history(test_id, False)
                     
                 # If test passed or we've exhausted retries, break
-                if result.status == TestStatus.PASSED or retry_count >= self.config.max_retries:
+                if result.status == ExecutionStatus.PASSED or retry_count >= self.config.max_retries:
                     break
                     
                 # Only retry if test failed (not timeout or error, unless it's flaky)
-                if result.status not in [TestStatus.FAILED, TestStatus.TIMEOUT]:
+                if result.status not in [ExecutionStatus.FAILED, ExecutionStatus.TIMEOUT]:
                     break
                     
                 # Don't retry if not flaky and this isn't the first failure
@@ -372,7 +372,7 @@ class TestExecutionEngine:
                     
             return result
             
-    async def run_tests_async(self, test_files: List[str]) -> TestSuiteResult:
+    async def run_tests_async(self, test_files: List[str]) -> SuiteResult:
         """Run tests asynchronously with parallel execution"""
         start_time = datetime.now()
         
@@ -396,10 +396,10 @@ class TestExecutionEngine:
             for i, result in enumerate(results):
                 if isinstance(result, Exception):
                     # Create error result for failed task
-                    error_result = TestResult(
+                    error_result = ExecutionResult(
                         test_id=test_files[i],
                         category=self.categorize_test(test_files[i]),
-                        status=TestStatus.ERROR,
+                        status=ExecutionStatus.ERROR,
                         duration=0.0,
                         start_time=start_time,
                         end_time=datetime.now(),
@@ -416,11 +416,11 @@ class TestExecutionEngine:
         
         # Aggregate results
         total_tests = len(test_results)
-        passed = sum(1 for r in test_results if r.status == TestStatus.PASSED)
-        failed = sum(1 for r in test_results if r.status == TestStatus.FAILED)
-        timeout = sum(1 for r in test_results if r.status == TestStatus.TIMEOUT)
-        error = sum(1 for r in test_results if r.status == TestStatus.ERROR)
-        skipped = sum(1 for r in test_results if r.status == TestStatus.SKIPPED)
+        passed = sum(1 for r in test_results if r.status == ExecutionStatus.PASSED)
+        failed = sum(1 for r in test_results if r.status == ExecutionStatus.FAILED)
+        timeout = sum(1 for r in test_results if r.status == ExecutionStatus.TIMEOUT)
+        error = sum(1 for r in test_results if r.status == ExecutionStatus.ERROR)
+        skipped = sum(1 for r in test_results if r.status == ExecutionStatus.SKIPPED)
         
         total_duration = (end_time - start_time).total_seconds()
         
@@ -435,7 +435,7 @@ class TestExecutionEngine:
             'avg_memory_percent': avg_memory
         }
         
-        return TestSuiteResult(
+        return SuiteResult(
             total_tests=total_tests,
             passed=passed,
             failed=failed,
@@ -450,14 +450,14 @@ class TestExecutionEngine:
             resource_usage=resource_usage
         )
         
-    def run_tests(self, test_files: Optional[List[str]] = None) -> TestSuiteResult:
+    def run_tests(self, test_files: Optional[List[str]] = None) -> SuiteResult:
         """Run tests synchronously (wrapper for async method)"""
         if test_files is None:
             test_files = self.discover_tests()
             
         if not test_files:
             self.logger.warning("No test files found")
-            return TestSuiteResult(
+            return SuiteResult(
                 total_tests=0,
                 passed=0,
                 failed=0,
@@ -481,7 +481,7 @@ class TestExecutionEngine:
         finally:
             loop.close()
             
-    def generate_report(self, result: TestSuiteResult, output_file: Optional[str] = None) -> str:
+    def generate_report(self, result: SuiteResult, output_file: Optional[str] = None) -> str:
         """Generate detailed test execution report"""
         report = {
             'summary': {
@@ -537,10 +537,10 @@ Flaky Tests: {len(result.flaky_tests)}
 {chr(10).join(f"  - {test}" for test in sorted(result.flaky_tests))}
 
 Failed Tests:
-{chr(10).join(f"  - {r.test_id}: {r.error_message}" for r in result.results if r.status == TestStatus.FAILED)}
+{chr(10).join(f"  - {r.test_id}: {r.error_message}" for r in result.results if r.status == ExecutionStatus.FAILED)}
 
 Timeout Tests:
-{chr(10).join(f"  - {r.test_id}: {r.error_message}" for r in result.results if r.status == TestStatus.TIMEOUT)}
+{chr(10).join(f"  - {r.test_id}: {r.error_message}" for r in result.results if r.status == ExecutionStatus.TIMEOUT)}
 """
         
         if output_file:
@@ -581,18 +581,18 @@ def main():
     )
     
     # Create config
-    config = TestConfig()
+    config = ExecutionConfig()
     if args.max_workers:
         config.max_workers = args.max_workers
     if args.max_retries:
         config.max_retries = args.max_retries
         
-    config.timeouts[TestCategory.UNIT] = args.timeout_unit
-    config.timeouts[TestCategory.INTEGRATION] = args.timeout_integration
-    config.timeouts[TestCategory.E2E] = args.timeout_e2e
+    config.timeouts[ExecutionCategory.UNIT] = args.timeout_unit
+    config.timeouts[ExecutionCategory.INTEGRATION] = args.timeout_integration
+    config.timeouts[ExecutionCategory.E2E] = args.timeout_e2e
     
     # Create engine and run tests
-    engine = TestExecutionEngine(config)
+    engine = ExecutionEngine(config)
     
     try:
         result = engine.run_tests()

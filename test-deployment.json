@@ -1,0 +1,20 @@
+{
+  "timestamp": "2025-09-04T10:05:58.349500",
+  "deployment_approved": true,
+  "health_gate": {
+    "ready": true,
+    "score": 85.0,
+    "critical_issues": 0,
+    "threshold": 80
+  },
+  "test_gate": {
+    "ready": true,
+    "coverage": 75.0,
+    "tests_passed": true,
+    "threshold": 70
+  },
+  "summary": {
+    "status": "APPROVED",
+    "message": "All deployment gates passed"
+  }
+}

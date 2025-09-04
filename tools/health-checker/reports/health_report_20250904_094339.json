@@ -1,0 +1,109 @@
+{
+  "timestamp": "2025-09-04T09:43:39.366921",
+  "overall_score": 77.3529411764706,
+  "component_scores": {
+    "configuration": {
+      "component_name": "configuration",
+      "category": "configuration",
+      "score": 75.0,
+      "status": "healthy",
+      "issues_count": 0,
+      "metrics": {
+        "config_files": 10
+      },
+      "last_checked": "2025-09-04T09:43:39.368921"
+    },
+    "tests": {
+      "component_name": "tests",
+      "category": "tests",
+      "score": 80.0,
+      "status": "healthy",
+      "issues_count": 0,
+      "metrics": {
+        "test_count": 50,
+        "pass_rate": 0.8
+      },
+      "last_checked": "2025-09-04T09:43:39.368921"
+    },
+    "documentation": {
+      "component_name": "documentation",
+      "category": "documentation",
+      "score": 70.0,
+      "status": "needs_attention",
+      "issues_count": 0,
+      "metrics": {
+        "doc_coverage": 0.7
+      },
+      "last_checked": "2025-09-04T09:43:39.368921"
+    },
+    "code_quality": {
+      "component_name": "code_quality",
+      "category": "code_quality",
+      "score": 85.0,
+      "status": "healthy",
+      "issues_count": 0,
+      "metrics": {
+        "complexity": 2.5
+      },
+      "last_checked": "2025-09-04T09:43:39.369921"
+    }
+  },
+  "issues": [],
+  "trends": {
+    "score_history": [
+      [
+        "2025-09-01T22:40:10.207400",
+        77.77777777777779
+      ],
+      [
+        "2025-09-03T16:21:50.805372",
+        77.3529411764706
+      ],
+      [
+        "2024-01-01T00:00:00+00:00",
+        85.0
+      ],
+      [
+        "2024-01-01T00:00:00+00:00",
+        85.0
+      ],
+      [
+        "2025-09-04T09:38:04.240921",
+        77.3529411764706
+      ],
+      [
+        "2024-01-01T00:00:00+00:00",
+        85.0
+      ],
+      [
+        "2025-09-04T09:39:07.016152",
+        77.3529411764706
+      ],
+      [
+        "2025-09-04T09:39:38.320346",
+        77.3529411764706
+      ],
+      [
+        "2025-09-04T09:40:27.438986",
+        77.3529411764706
+      ],
+      [
+        "2024-01-01T00:00:00+00:00",
+        85.0
+      ]
+    ],
+    "issue_trends": {},
+    "improvement_rate": 0.0,
+    "degradation_alerts": []
+  },
+  "metadata": {
+    "check_duration": 0.006999,
+    "categories_checked": [
+      "tests",
+      "documentation",
+      "configuration",
+      "code_quality"
+    ],
+    "config_version": "1.0"
+  }
+}

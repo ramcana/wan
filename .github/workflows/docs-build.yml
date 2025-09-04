@@ -46,11 +46,11 @@ jobs:
 
       - name: Generate API documentation
         run: |
-          python tools/doc-generator/generate_api_docs.py
+          python -m tools.doc_generator.cli generate --generate-api
 
       - name: Validate documentation links
         run: |
-          python tools/doc-generator/validate_links.py --check-external=false
+          python -m tools.doc_generator.cli validate --links-only
 
       - name: Build documentation
         run: |
@@ -87,19 +87,19 @@ jobs:
 
       - name: Check documentation completeness
         run: |
-          python tools/doc-generator/check_completeness.py
+          python -m tools.doc_generator.cli metadata scan
 
       - name: Validate markdown syntax
         run: |
-          python tools/doc-generator/validate_markdown.py docs/
+          python -m tools.doc_generator.cli validate --docs-dir=docs/
 
       - name: Check for broken internal links
         run: |
-          python tools/doc-generator/validate_links.py --internal-only
+          python -m tools.doc_generator.cli validate --links-only
 
       - name: Generate documentation metrics
         run: |
-          python tools/doc-generator/generate_metrics.py --output=docs-metrics.json
+          python -m tools.doc_generator.cli validate --output=docs-metrics.json --format=json
 
       - name: Upload documentation metrics
         uses: actions/upload-artifact@v4

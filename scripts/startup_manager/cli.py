@@ -499,7 +499,7 @@ def analyze_logs(ctx, log_dir, output_format):
     cli_interface.display_section_header("Log Analysis")
     
     try:
-from .diagnostics import LogAnalyzer
+        from .diagnostics import LogAnalyzer
         analyzer = LogAnalyzer()
         
         with cli_interface.show_spinner(f"Analyzing logs in {log_dir}...") as progress:

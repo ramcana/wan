@@ -116,12 +116,13 @@ app = FastAPI(
 async def startup_event():
     """Initialize database and services on startup"""
     try:
-        from repositories.database import reset_database
-        reset_database()  # Reset to include new end_image_path column
-        logger.info("Database reset and initialized successfully")
+        from repositories.database import create_tables
+        create_tables()  # Create tables if they don't exist
+        logger.info("Database initialized successfully")
     except Exception as e:
         logger.error(f"Failed to initialize database: {e}")
-        raise
+        # Don't raise - allow server to start even if database fails
+        logger.warning("Server starting without database functionality")
     
     # Initialize performance monitoring
     try:
