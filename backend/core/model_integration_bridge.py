@@ -1,3 +1,4 @@
+from unittest.mock import Mock, patch
 """
 Model Integration Bridge
 Bridges existing ModelManager with FastAPI backend for real AI model integration

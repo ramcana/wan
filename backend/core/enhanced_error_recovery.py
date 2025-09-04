@@ -1,3 +1,4 @@
+from unittest.mock import Mock, patch
 """
 Enhanced Error Recovery System for Model Availability Management
 

@@ -1,3 +1,4 @@
+from unittest.mock import Mock, patch
 """
 System integration module for FastAPI backend
 Integrates with existing Wan2.2 system components including ModelManager, 

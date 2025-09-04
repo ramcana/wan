@@ -1,3 +1,4 @@
+from unittest.mock import Mock, patch
 """
 Enhanced Generation service with real AI model integration
 Integrates with existing Wan2.2 system using ModelIntegrationBridge and RealGenerationPipeline

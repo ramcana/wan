@@ -1,3 +1,4 @@
+from unittest.mock import Mock, patch
 """
 WebSocket Model Notifications Demo
 Demonstrates how to integrate and use the enhanced WebSocket model notifications system.

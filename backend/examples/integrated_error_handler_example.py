@@ -1,3 +1,4 @@
+from unittest.mock import Mock, patch
 """
 Integrated Error Handler Example
 

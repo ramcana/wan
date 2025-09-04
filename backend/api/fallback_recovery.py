@@ -1,3 +1,4 @@
+from unittest.mock import Mock, patch
 """
 API endpoints for fallback and recovery system management
 """
