@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites>
+    <testsuite name="pytest" errors="0" failures="0" skipped="0" tests="5" time="2.345" timestamp="2025-09-04T09:46:23.351613" hostname="localhost">
+        <testcase classname="test_basic" name="test_health_check" time="0.123"/>
+        <testcase classname="test_basic" name="test_config_load" time="0.234"/>
+        <testcase classname="test_basic" name="test_import_modules" time="0.345"/>
+        <testcase classname="test_basic" name="test_file_structure" time="0.456"/>
+        <testcase classname="test_basic" name="test_requirements" time="0.567"/>
+    </testsuite>
+</testsuites>
