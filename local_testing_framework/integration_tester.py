@@ -1,3 +1,4 @@
+from unittest.mock import Mock, patch
 #!/usr/bin/env python3
 """
 Integration Tester for Local Testing Framework
@@ -43,11 +44,11 @@ except ImportError:
         pass
 
 try:
-    from .models.test_results import (
+from .models.test_results import (
         TestResults, IntegrationTestResults, UITestResults, APITestResults,
         ValidationResult, TestStatus, ResourceMetrics, ValidationStatus
     )
-    from .models.configuration import LocalTestConfiguration
+from .models.configuration import LocalTestConfiguration
 except ImportError:
     from models.test_results import (
         TestResults, IntegrationTestResults, UITestResults, APITestResults,

@@ -1,3 +1,4 @@
+import pytest
 #!/usr/bin/env python3
 """
 Wan2.2 Performance Optimizer - Final performance optimizations and cleanup

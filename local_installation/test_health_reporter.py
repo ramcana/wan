@@ -25,7 +25,7 @@ try:
     from scripts.diagnostic_monitor import ResourceMetrics, ComponentHealth, HealthStatus
 except ImportError:
     import sys
-sys.path.append('scripts')
+    sys.path.append('scripts')
     from health_reporter import (
         HealthReporter, InstallationReport, InstallationStatus, ErrorTrend,
         TrendAnalysis, RecoveryMethodStats, RecoveryEffectiveness,

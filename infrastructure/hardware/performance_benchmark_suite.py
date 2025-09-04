@@ -1,3 +1,4 @@
+from unittest.mock import Mock, patch
 #!/usr/bin/env python3
 """
 Performance Benchmark Suite for Wan Model Compatibility System

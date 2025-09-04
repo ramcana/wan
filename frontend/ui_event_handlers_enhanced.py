@@ -1,3 +1,4 @@
+from unittest.mock import Mock, patch
 """
 Enhanced UI Event Handlers for Wan2.2 Video Generation
 Comprehensive event handling system with proper integration of all UI components

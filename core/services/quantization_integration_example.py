@@ -1,3 +1,4 @@
+from unittest.mock import Mock, patch
 """
 Integration example showing how to use the quantization management system.
 

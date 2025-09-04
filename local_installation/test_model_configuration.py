@@ -418,7 +418,7 @@ def main():
     except Exception as e:
         print(f"\n❌ Test failed: {str(e)}")
         import traceback
-traceback.print_exc()
+        traceback.print_exc()
         return False
 
 
