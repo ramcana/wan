@@ -190,7 +190,7 @@ class TestEnhancedIsolation:
             
             # Simulate HTTP request
             import requests
-response = requests.get("http://test-service/users/1")
+            response = requests.get("http://test-service/users/1")
             assert response.status_code == 200
             assert response.json() == service_responses
     

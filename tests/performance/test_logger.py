@@ -143,7 +143,7 @@ class TestStartupLogger:
     def teardown_method(self):
         """Cleanup test environment."""
         import shutil
-shutil.rmtree(self.temp_dir, ignore_errors=True)
+        shutil.rmtree(self.temp_dir, ignore_errors=True)
     
     def test_logger_creation(self):
         """Test creating a startup logger."""
@@ -329,7 +329,7 @@ shutil.rmtree(self.temp_dir, ignore_errors=True)
         recent_time = (current_time - timedelta(days=1)).timestamp()
         
         import os
-os.utime(old_log, (old_time, old_time))
+        os.utime(old_log, (old_time, old_time))
         os.utime(old_json, (old_time, old_time))
         os.utime(recent_log, (recent_time, recent_time))
         
@@ -349,7 +349,7 @@ class TestGlobalLogger:
         """Setup test environment."""
         # Reset global logger
         import scripts.startup_manager.logger
-scripts.startup_manager.logger._global_logger = None
+        scripts.startup_manager.logger._global_logger = None
     
     def test_get_logger(self):
         """Test getting global logger instance."""
@@ -400,7 +400,7 @@ class TestLogRotation:
     def teardown_method(self):
         """Cleanup test environment."""
         import shutil
-shutil.rmtree(self.temp_dir, ignore_errors=True)
+        shutil.rmtree(self.temp_dir, ignore_errors=True)
     
     def test_log_rotation_setup(self):
         """Test that log rotation is properly configured."""

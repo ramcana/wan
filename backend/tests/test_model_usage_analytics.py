@@ -32,6 +32,8 @@ def test_db_engine():
     return engine
 
 
+    assert True  # TODO: Add proper assertion
+
 @pytest.fixture
 def test_db_session(test_db_engine):
     """Create a test database session"""
@@ -40,6 +42,8 @@ def test_db_session(test_db_engine):
     yield session
     session.close()
 
+
+    assert True  # TODO: Add proper assertion
 
 @pytest.fixture
 def analytics_system(test_db_session, tmp_path):

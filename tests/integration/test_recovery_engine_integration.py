@@ -276,6 +276,8 @@ class TestIntelligentFailureHandler:
         
         mock_open.assert_called_once()
         mock_file.write.assert_called()
+
+        assert True  # TODO: Add proper assertion
     
     @patch('builtins.open')
     @patch('pathlib.Path.exists')

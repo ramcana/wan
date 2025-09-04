@@ -13,7 +13,7 @@ from sqlalchemy.orm import sessionmaker
 # Add parent directory to path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from backend.main import backend.app as app
+from backend.main import app
 from backend.database import Base, get_db, GenerationTaskDB, TaskStatusEnum, ModelTypeEnum
 from datetime import datetime
 
@@ -364,5 +364,5 @@ if __name__ == "__main__":
     except Exception as e:
         print(f"\n✗ Test failed: {e}")
         import traceback
-traceback.print_exc()
+        traceback.print_exc()
         sys.exit(1)

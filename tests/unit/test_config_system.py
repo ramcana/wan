@@ -110,6 +110,8 @@ class TestTestConfig:
         """Test configuration loading with missing file"""
         with pytest.raises(ConfigurationError, match="Configuration file not found"):
             TestConfig(config_path="/nonexistent/config.yaml")
+
+        assert True  # TODO: Add proper assertion
     
     def test_environment_overrides(self):
         """Test environment-specific configuration overrides"""

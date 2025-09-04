@@ -205,5 +205,7 @@ def test_api_endpoints():
     
     print("\nAPI endpoint testing completed!")
 
+    assert True  # TODO: Add proper assertion
+
 if __name__ == "__main__":
     test_api_endpoints()

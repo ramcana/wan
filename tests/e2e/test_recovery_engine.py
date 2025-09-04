@@ -109,7 +109,7 @@ class TestErrorPatternMatcher:
         except NameError:
             # TimeoutError might not be available in older Python versions
             import socket
-timeout_error = socket.timeout("Timeout")
+            timeout_error = socket.timeout("Timeout")
         
         result = self.matcher.classify_error("Some error", timeout_error)
         assert result == ErrorType.TIMEOUT_ERROR

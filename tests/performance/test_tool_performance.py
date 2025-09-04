@@ -741,7 +741,7 @@ class TestConcurrentPerformance:
                 
                 # Force garbage collection
                 import gc
-gc.collect()
+                gc.collect()
             
             final_memory = process.memory_info().rss / 1024 / 1024  # MB
             memory_increase = final_memory - initial_memory

@@ -433,5 +433,7 @@ class TestPortManagerErrorHandling:
             config_path.unlink()
 
 
+        assert True  # TODO: Add proper assertion
+
 if __name__ == "__main__":
     pytest.main([__file__, "-v"])

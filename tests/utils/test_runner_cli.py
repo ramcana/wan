@@ -394,7 +394,7 @@ Examples:
         logger.error(f"Test execution failed: {e}")
         if args.verbose:
             import traceback
-traceback.print_exc()
+        traceback.print_exc()
         return 1
 
 

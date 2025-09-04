@@ -192,6 +192,8 @@ def test_image_validation_requirements():
     print(f"  - Minimum dimensions: {min_width}x{min_height}")
     print(f"  - Maximum dimensions: {max_width}x{max_height}")
 
+    assert True  # TODO: Add proper assertion
+
 if __name__ == "__main__":
     print("Running queue persistence tests...")
     

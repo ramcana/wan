@@ -1,3 +1,4 @@
+import pytest
 """
 Test Import Fixer - Automatically fixes common import issues in test files.
 

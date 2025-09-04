@@ -1,3 +1,4 @@
+from unittest.mock import Mock, patch
 """
 Comprehensive validation test for Task 2.3: I2V/TI2V support and queue management
 """

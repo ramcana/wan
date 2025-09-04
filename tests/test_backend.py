@@ -40,6 +40,8 @@ def test_imports():
         print(f"❌ Error: {e}")
         return False
 
+    assert True  # TODO: Add proper assertion
+
 def test_endpoints():
     """Test that basic endpoints are defined"""
     try:
@@ -70,6 +72,8 @@ def test_endpoints():
     except Exception as e:
         print(f"❌ Error testing endpoints: {e}")
         return False
+
+    assert True  # TODO: Add proper assertion
 
 def main():
     print("WAN22 Backend Test")

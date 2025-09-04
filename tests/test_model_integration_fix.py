@@ -57,7 +57,7 @@ async def test_model_integration():
     except Exception as e:
         print(f"❌ Test failed: {e}")
         import traceback
-traceback.print_exc()
+        traceback.print_exc()
         return False
 
 async def main():

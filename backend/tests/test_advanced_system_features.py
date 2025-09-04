@@ -12,7 +12,7 @@ from unittest.mock import Mock, patch, AsyncMock
 import websockets
 from datetime import datetime, timedelta
 
-from main import backend.app as app
+from backend.app import app
 from websocket.manager import ConnectionManager, connection_manager
 from api.routes.optimization import OPTIMIZATION_PRESETS
 

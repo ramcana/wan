@@ -1,73 +1,76 @@
 """
-Example demonstrating integration of test configuration, fixture management,
-and environment validation systems.
+Example Test: Configuration Integration with Test Isolation
+
+This test demonstrates the comprehensive test isolation and cleanup system
+including database isolation, filesystem isolation, process management,
+and environment variable handling.
 """
 
 import pytest
-import asyncio
+import json
+import time
+import sqlite3
 from pathlib import Path
+from unittest.mock import Mock, patch
 
+# Import test isolation and fixture systems
+from tests.fixtures.fixture_manager import (
+    database_fixture, filesystem_fixture, process_fixture, 
+    mock_fixture, environment_fixture, isolated_test_environment,
+    web_test_environment, database_test_environment
+)
+from tests.config.environment_validator import (
+    validate_unit_environment, validate_integration_environment,
+    setup_unit_environment, setup_integration_environment
+)
 from tests.config.test_config import get_test_config, TestCategory
-from tests.fixtures.fixture_manager import get_fixture_manager, FixtureType, FixtureScope
-from tests.config.environment_validator import validate_test_environment
+from tests.utils.test_data_factories import TestDataFactory
 
 
-class TestConfigurationIntegrationExample:
-    """Example test class showing integrated usage"""
+class TestConfigurationIntegration:
+    """Test configuration integration with isolation system."""
     
-    @classmethod
-    def setup_class(cls):
-        """Setup for the test class"""
-        # Validate environment before running tests
-        cls.env_validator = validate_test_environment()
-        summary = cls.env_validator.get_validation_summary()
+    def test_basic_isolation_setup(self, isolated_test_environment):
+        """Test basic isolation environment setup."""
+        env = isolated_test_environment
         
-        if not summary["ready_for_testing"]:
-            pytest.skip(f"Environment not ready for testing: {summary['critical_failures']} critical failures")
+        # Verify all components are available
+        assert "database" in env
+        assert "filesystem" in env
+        assert "process" in env
+        assert "mock" in env
+        assert "environment" in env
+        assert "test_id" in env
         
-        # Get test configuration
-        cls.config = get_test_config()
-        
-        # Get fixture manager
-        cls.fixture_manager = get_fixture_manager()
+        # Test environment variables are set
+        import os
+        assert os.environ.get("TESTING") == "true"
+        assert os.environ.get("WAN22_TEST_MODE") == "true"
+        assert os.environ.get("PYTEST_RUNNING") == "true"
     
-    def test_configuration_system_usage(self):
-        """Test using the configuration system"""
-        # Get configuration for unit tests
-        unit_config = self.config.get_category_config(TestCategory.UNIT)
-        assert unit_config is not None
+    def test_database_isolation(self, database_fixture):
+        """Test database isolation and cleanup."""
+        # Create a test database with schema and data
+        db_path = database_fixture.create_full_database()
         
-        # Check timeout settings
-        timeout = self.config.get_timeout("unit")
-        assert timeout > 0
+        # Verify database exists and has data
+        assert db_path.exists()
         
-        # Check if parallel execution is enabled
-        parallel_enabled = self.config.is_parallel_enabled("unit")
-        assert isinstance(parallel_enabled, bool)
-        
-        # Get test patterns
-        patterns = self.config.get_test_patterns("unit")
-        assert isinstance(patterns, list)
-        
-        print(f"Unit test timeout: {timeout}s")
-        print(f"Parallel execution: {parallel_enabled}")
-        print(f"Test patterns: {patterns}")
-    
-    @pytest.mark.asyncio
-    async def test_fixture_manager_usage(self):
-        """Test using the fixture manager"""
-        # Register a test fixture
-        self.fixture_manager.register_fixture(
-            "test_data",
-            FixtureType.CONFIG,
-            FixtureScope.FUNCTION,
-            config={"test_value": "example", "numbers": [1, 2, 3]}
-        )
-        
-        # Get the fixture
-        test_data = await self.fixture_manager.get_fixture("test_data")
-        assert test_data["test_value"] == "example"
-        assert test_data["numbers"] == [1, 2, 3]
+        conn = sqlite3.connect(str(db_path))
+        try:
+            # Check tables exist
+            cursor = conn.execute("SELECT name FROM sqlite_master WHERE type='table'")
+            tables = [row[0] for row in cursor.fetchall()]
+            assert "users" in tables
+            assert "processes" in tables
+            assert "configurations" in tables
+            
+            # Check data exists
+            cursor = conn.execute("SELECT COUNT(*) FROM users")
+            user_count = cursor.fetchone()[0]
+            assert user_count > 0
+        finally:
+            conn.close()
         
         # Register a mock fixture
         self.fixture_manager.register_fixture(

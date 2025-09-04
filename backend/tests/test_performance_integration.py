@@ -467,7 +467,7 @@ class TestPerformanceSystemIntegration:
         
         # Measure baseline resource usage
         import psutil
-process = psutil.Process()
+        process = psutil.Process()
         baseline_memory = process.memory_info().rss
         baseline_cpu_time = process.cpu_times().user
         

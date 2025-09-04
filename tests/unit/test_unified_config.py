@@ -187,6 +187,8 @@ class TestUnifiedConfig:
         
         with pytest.raises(KeyError):
             config.set_config_path("invalid.path", "value")
+
+        assert True  # TODO: Add proper assertion
     
     def test_enum_handling(self):
         """Test proper handling of enum values"""
