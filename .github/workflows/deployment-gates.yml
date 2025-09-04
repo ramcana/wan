@@ -72,12 +72,24 @@ jobs:
           echo "health-score=$HEALTH_SCORE" >> $GITHUB_OUTPUT
           echo "critical-issues=$CRITICAL_ISSUES" >> $GITHUB_OUTPUT
 
-          # Determine deployment readiness
-          if [ "$HEALTH_SCORE" -ge "$HEALTH_SCORE_THRESHOLD" ] && [ "$CRITICAL_ISSUES" -le "$CRITICAL_ISSUES_THRESHOLD" ]; then
-            echo "deployment-ready=true" >> $GITHUB_OUTPUT
+          # Determine deployment readiness using Python for floating point comparison
+          DEPLOYMENT_READY=$(python -c "
+          health_score = float('$HEALTH_SCORE')
+          critical_issues = int('$CRITICAL_ISSUES')
+          health_threshold = float('$HEALTH_SCORE_THRESHOLD')
+          critical_threshold = int('$CRITICAL_ISSUES_THRESHOLD')
+
+          if health_score >= health_threshold and critical_issues <= critical_threshold:
+              print('true')
+          else:
+              print('false')
+          ")
+
+          echo "deployment-ready=$DEPLOYMENT_READY" >> $GITHUB_OUTPUT
+
+          if [ "$DEPLOYMENT_READY" = "true" ]; then
             echo "✅ Deployment gate passed - Health score: $HEALTH_SCORE, Critical issues: $CRITICAL_ISSUES"
           else
-            echo "deployment-ready=false" >> $GITHUB_OUTPUT
             echo "❌ Deployment gate failed - Health score: $HEALTH_SCORE (threshold: $HEALTH_SCORE_THRESHOLD), Critical issues: $CRITICAL_ISSUES (threshold: $CRITICAL_ISSUES_THRESHOLD)"
           fi
 
@@ -85,18 +97,20 @@ jobs:
         run: |
           HEALTH_SCORE="${{ steps.health-check.outputs.health-score }}"
 
-          # Determine badge color based on health score
-          if [ "$HEALTH_SCORE" -ge "90" ]; then
-            COLOR="brightgreen"
-          elif [ "$HEALTH_SCORE" -ge "80" ]; then
-            COLOR="green"
-          elif [ "$HEALTH_SCORE" -ge "70" ]; then
-            COLOR="yellow"
-          elif [ "$HEALTH_SCORE" -ge "60" ]; then
-            COLOR="orange"
-          else
-            COLOR="red"
-          fi
+          # Determine badge color based on health score using Python for floating point comparison
+          COLOR=$(python -c "
+          health_score = float('$HEALTH_SCORE')
+          if health_score >= 90:
+              print('brightgreen')
+          elif health_score >= 80:
+              print('green')
+          elif health_score >= 70:
+              print('yellow')
+          elif health_score >= 60:
+              print('orange')
+          else:
+              print('red')
+          ")
 
           # Create badge JSON
           cat > health-badge.json << EOF
@@ -235,12 +249,18 @@ jobs:
 
           echo "coverage=$COVERAGE" >> $GITHUB_OUTPUT
 
-          # Check if tests passed and coverage meets threshold
-          if [ "${COVERAGE%.*}" -ge "$COVERAGE_THRESHOLD" ]; then
-            echo "test-passed=true" >> $GITHUB_OUTPUT
+          # Check if tests passed and coverage meets threshold using Python for floating point comparison
+          TEST_PASSED=$(python -c "
+          coverage = float('$COVERAGE')
+          threshold = float('$COVERAGE_THRESHOLD')
+          print('true' if coverage >= threshold else 'false')
+          ")
+
+          echo "test-passed=$TEST_PASSED" >> $GITHUB_OUTPUT
+
+          if [ "$TEST_PASSED" = "true" ]; then
             echo "✅ Test gate passed - Coverage: $COVERAGE%"
           else
-            echo "test-passed=false" >> $GITHUB_OUTPUT
             echo "❌ Test gate failed - Coverage: $COVERAGE% (threshold: $COVERAGE_THRESHOLD%)"
           fi
 
@@ -323,15 +343,17 @@ jobs:
           # Create coverage badge data
           COVERAGE="${{ needs.test-gate.outputs.coverage }}"
           if [ -n "$COVERAGE" ]; then
-            if [ "${COVERAGE%.*}" -ge "90" ]; then
-              COLOR="brightgreen"
-            elif [ "${COVERAGE%.*}" -ge "80" ]; then
-              COLOR="green"
-            elif [ "${COVERAGE%.*}" -ge "70" ]; then
-              COLOR="yellow"
-            else
-              COLOR="red"
-            fi
+            COLOR=$(python -c "
+            coverage = float('$COVERAGE')
+            if coverage >= 90:
+                print('brightgreen')
+            elif coverage >= 80:
+                print('green')
+            elif coverage >= 70:
+                print('yellow')
+            else:
+                print('red')
+            ")
 
             cat > .github/badges/coverage.json << EOF
           {
