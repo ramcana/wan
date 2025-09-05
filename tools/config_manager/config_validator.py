@@ -20,7 +20,7 @@ try:
 except ImportError:
     JSONSCHEMA_AVAILABLE = False
 
-from tools..unified_config import UnifiedConfig, LogLevel, QuantizationLevel, Environment
+from tools.config_manager.unified_config import UnifiedConfig, LogLevel, QuantizationLevel, Environment
 
 
 class ValidationSeverity(Enum):
