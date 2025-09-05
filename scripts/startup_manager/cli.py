@@ -577,7 +577,7 @@ def system_info(ctx):
     cli_interface.display_section_header("System Information")
     
     try:
-from .diagnostics import SystemDiagnostics
+        from .diagnostics import SystemDiagnostics
         diagnostics = SystemDiagnostics()
         
         with cli_interface.show_spinner("Collecting system information...") as progress:
