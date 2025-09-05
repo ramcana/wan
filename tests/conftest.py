@@ -15,10 +15,25 @@ PROJECT_ROOT = Path(__file__).parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
 # Import all shared fixtures to make them available project-wide
-from tests.utils.shared_fixtures import *
-from tests.utils.test_isolation import *
-from tests.utils.test_execution_engine import *
-from tests.fixtures.fixture_manager import *
+try:
+    from tests.utils.shared_fixtures import *
+except ImportError as e:
+    print(f"Warning: Could not import shared_fixtures: {e}")
+
+try:
+    from tests.utils.test_isolation import *
+except ImportError as e:
+    print(f"Warning: Could not import test_isolation: {e}")
+
+try:
+    from tests.utils.test_execution_engine import *
+except ImportError as e:
+    print(f"Warning: Could not import test_execution_engine: {e}")
+
+try:
+    from tests.fixtures.fixture_manager import *
+except ImportError as e:
+    print(f"Warning: Could not import fixture_manager: {e}")
 
 
 def pytest_configure(config):
