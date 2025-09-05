@@ -1,36 +1,13 @@
 {
-  "timestamp": "2025-09-04T12:27:30.420874",
-  "overall_score": 85.0,
-  "critical_issues": 0,
-  "status": "good",
-  "categories": {
-    "tests": {
-      "score": 80.0,
-      "status": "good"
-    },
-    "documentation": {
-      "score": 90.0,
-      "status": "good"
-    },
-    "configuration": {
-      "score": 85.0,
-      "status": "good"
-    },
-    "code_quality": {
-      "score": 88.0,
-      "status": "good"
-    }
-  },
-  "checks": {
-    "project_structure": true,
-    "config_files": true,
-    "basic_imports": true,
-    "requirements": true
-  },
+  "overall_score": 100,
+  "max_score": 100,
+  "timestamp": "2025-09-04T13:56:52.174064",
   "issues": [],
-  "recommendations": [],
-  "trends": {
-    "enabled": false,
-    "score_history": []
+  "checks": {
+    "files_exist": 3,
+    "dirs_exist": 3,
+    "config_valid": true,
+    "requirements_valid": true,
+    "test_files_count": 44
   }
 }
