@@ -11,7 +11,7 @@ from pathlib import Path
 current_dir = Path(__file__).parent
 sys.path.insert(0, str(current_dir))
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Request, Form, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 import logging
@@ -78,6 +78,53 @@ async def enhance_prompt(request: dict):
             "original": len(prompt),
             "enhanced": len(enhanced_prompt)
         }
+    }
+
+# Simple generation endpoint
+@app.post("/api/v1/generation/submit")
+async def submit_generation(
+    request: Request,
+    prompt: str = Form(None),
+    model_type: str = Form(None),
+    resolution: str = Form("1280x720"),
+    steps: int = Form(50),
+    lora_path: str = Form(""),
+    lora_strength: float = Form(1.0),
+    image: UploadFile = File(None),
+    end_image: UploadFile = File(None)
+):
+    """Simple generation endpoint (mock) - handles both JSON and FormData"""
+    
+    # Handle both JSON and form data requests like the full backend
+    content_type = request.headers.get("content-type", "")
+    
+    if "application/json" in content_type:
+        # Handle JSON request
+        try:
+            json_data = await request.json()
+            prompt = json_data.get("prompt")
+            model_type = json_data.get("model_type") or json_data.get("modelType")
+            resolution = json_data.get("resolution", "1280x720")
+            steps = json_data.get("steps", 50)
+            lora_path = json_data.get("lora_path", "") or json_data.get("loraPath", "")
+            lora_strength = json_data.get("lora_strength", 1.0) or json_data.get("loraStrength", 1.0)
+        except Exception as e:
+            logger.error(f"Error parsing JSON request: {e}")
+            return {"error": "Invalid JSON request"}
+    
+    logger.info(f"Generation request - Prompt: '{prompt}', Model: {model_type}")
+    
+    # Mock generation response
+    return {
+        "task_id": "mock_task_123",
+        "status": "queued",
+        "prompt": prompt,
+        "model_type": model_type,
+        "resolution": resolution,
+        "steps": steps,
+        "estimated_time": 30,
+        "queue_position": 1,
+        "message": "Generation request received (mock mode)"
     }
 
 # Simple queue endpoint
