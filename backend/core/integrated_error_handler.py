@@ -10,9 +10,15 @@ from typing import Dict, Any, Optional, List, Tuple
 from dataclasses import dataclass
 from enum import Enum
 import traceback
-import torch
 import psutil
 from pathlib import Path
+
+# Import torch optionally
+try:
+    import torch
+    TORCH_AVAILABLE = True
+except ImportError:
+    TORCH_AVAILABLE = False
 
 # Import existing error handling infrastructure
 try:
@@ -42,14 +48,31 @@ except ImportError:
         CRITICAL = "critical"
     
     @dataclass
+    class RecoveryAction:
+        action_type: str
+        description: str
+        parameters: Dict[str, Any] = None
+        automatic: bool = False
+        success_probability: float = 0.5
+        
+        def __post_init__(self):
+            if self.parameters is None:
+                self.parameters = {}
+    
+    @dataclass
     class UserFriendlyError:
         category: ErrorCategory
         severity: ErrorSeverity
         title: str
         message: str
         recovery_suggestions: List[str]
+        recovery_actions: List[RecoveryAction] = None
         technical_details: Optional[str] = None
         error_code: Optional[str] = None
+        
+        def __post_init__(self):
+            if self.recovery_actions is None:
+                self.recovery_actions = []
 
 
 logger = logging.getLogger(__name__)
@@ -207,6 +230,14 @@ class IntegratedErrorHandler:
         """
         # Enhance context with FastAPI-specific information
         enhanced_context = self._enhance_context_for_fastapi(context or {})
+        
+        # Check if this is a WAN model-specific error
+        if self._is_wan_model_error(error, enhanced_context):
+            try:
+                # Use WAN-specific error handler
+                return await self._handle_wan_model_error(error, enhanced_context)
+            except Exception as e:
+                self.logger.warning(f"WAN error handler failed, falling back to integrated handling: {e}")
         
         # Use existing error handler if available
         if self.existing_handler:
@@ -490,7 +521,7 @@ class IntegratedErrorHandler:
             details.append(f"  CPU Usage: {psutil.cpu_percent()}%")
             details.append(f"  Memory Usage: {psutil.virtual_memory().percent}%")
             
-            if hasattr(torch, 'cuda') and torch.cuda.is_available():
+            if TORCH_AVAILABLE and hasattr(torch, 'cuda') and torch.cuda.is_available():
                 details.append(f"  GPU Memory Allocated: {torch.cuda.memory_allocated() / (1024**3):.2f} GB")
                 details.append(f"  GPU Memory Reserved: {torch.cuda.memory_reserved() / (1024**3):.2f} GB")
         except Exception:
@@ -584,7 +615,7 @@ class IntegratedErrorHandler:
         """Attempt automatic recovery for pipeline errors"""
         try:
             # Clear any cached pipeline state
-            if hasattr(torch, 'cuda') and torch.cuda.is_available():
+            if TORCH_AVAILABLE and hasattr(torch, 'cuda') and torch.cuda.is_available():
                 torch.cuda.empty_cache()
             
             # Basic pipeline recovery - would integrate with actual pipeline
@@ -604,7 +635,7 @@ class IntegratedErrorHandler:
         """Attempt automatic recovery for model loading errors"""
         try:
             # Clear model cache
-            if hasattr(torch, 'cuda') and torch.cuda.is_available():
+            if TORCH_AVAILABLE and hasattr(torch, 'cuda') and torch.cuda.is_available():
                 torch.cuda.empty_cache()
             
             # Try to trigger model download if model is missing
@@ -627,7 +658,7 @@ class IntegratedErrorHandler:
         """Attempt automatic VRAM optimization"""
         try:
             # Clear GPU cache
-            if hasattr(torch, 'cuda') and torch.cuda.is_available():
+            if TORCH_AVAILABLE and hasattr(torch, 'cuda') and torch.cuda.is_available():
                 torch.cuda.empty_cache()
             
             # Apply basic optimizations
@@ -674,7 +705,7 @@ class IntegratedErrorHandler:
                 "available_memory_gb": psutil.virtual_memory().available / (1024**3)
             })
             
-            if hasattr(torch, 'cuda') and torch.cuda.is_available():
+            if TORCH_AVAILABLE and hasattr(torch, 'cuda') and torch.cuda.is_available():
                 status.update({
                     "gpu_available": True,
                     "gpu_memory_allocated_gb": torch.cuda.memory_allocated() / (1024**3),
@@ -686,6 +717,134 @@ class IntegratedErrorHandler:
             status["system_info_error"] = str(e)
         
         return status
+    
+    def _is_wan_model_error(self, error: Exception, context: Dict[str, Any]) -> bool:
+        """Check if this is a WAN model-specific error"""
+        error_message = str(error).lower()
+        
+        # Check for WAN-specific keywords in error message
+        wan_keywords = [
+            "wan", "wan22", "wan_t2v", "wan_i2v", "wan_ti2v",
+            "wan model", "wan pipeline", "wan generation",
+            "t2v-a14b", "i2v-a14b", "ti2v-5b"
+        ]
+        
+        for keyword in wan_keywords:
+            if keyword in error_message:
+                return True
+        
+        # Check context for WAN model indicators
+        if context:
+            # Check for WAN model type in context
+            model_type = context.get("model_type", "")
+            if isinstance(model_type, str) and any(wan_type in model_type.lower() for wan_type in ["t2v", "i2v", "ti2v", "wan"]):
+                return True
+            
+            # Check for WAN-specific context keys
+            wan_context_keys = [
+                "wan_model_type", "wan_error_stage", "wan_model_loaded",
+                "wan_weights_loaded", "wan_hardware_optimized"
+            ]
+            
+            for key in wan_context_keys:
+                if key in context:
+                    return True
+            
+            # Check error stage for WAN-specific stages
+            error_stage = context.get("error_stage", "")
+            if error_stage in ["wan_loading", "wan_inference", "wan_optimization"]:
+                return True
+        
+        # Check exception type for WAN-specific exceptions
+        exception_name = type(error).__name__.lower()
+        if "wan" in exception_name:
+            return True
+        
+        return False
+    
+    async def _handle_wan_model_error(self, error: Exception, context: Dict[str, Any]) -> UserFriendlyError:
+        """Handle WAN model-specific errors using the WAN error handler"""
+        try:
+            # Import WAN error handler
+            from core.models.wan_models.wan_model_error_handler import (
+                get_wan_error_handler,
+                WANErrorContext,
+                WANModelType
+            )
+            
+            # Create WAN error context from integrated context
+            wan_context = WANErrorContext()
+            
+            # Map model type
+            model_type_str = context.get("model_type") or context.get("wan_model_type", "")
+            if model_type_str:
+                try:
+                    if "t2v" in model_type_str.lower():
+                        wan_context.model_type = WANModelType.T2V_A14B
+                    elif "i2v" in model_type_str.lower():
+                        wan_context.model_type = WANModelType.I2V_A14B
+                    elif "ti2v" in model_type_str.lower():
+                        wan_context.model_type = WANModelType.TI2V_5B
+                except (ValueError, AttributeError):
+                    pass
+            
+            # Map context fields
+            wan_context.model_loaded = context.get("model_loaded") or context.get("wan_model_loaded", False)
+            wan_context.weights_loaded = context.get("weights_loaded") or context.get("wan_weights_loaded", False)
+            wan_context.hardware_optimized = context.get("hardware_optimized") or context.get("wan_hardware_optimized", False)
+            wan_context.generation_params = context.get("generation_params")
+            wan_context.vram_usage_gb = context.get("vram_usage_gb", 0.0)
+            wan_context.available_vram_gb = context.get("available_vram_gb", 0.0)
+            wan_context.applied_optimizations = context.get("applied_optimizations", [])
+            wan_context.error_stage = context.get("error_stage") or context.get("wan_error_stage", "unknown")
+            wan_context.checkpoint_path = context.get("checkpoint_path")
+            wan_context.previous_errors = context.get("previous_errors", [])
+            
+            # Create hardware profile if available
+            if context.get("hardware_profile"):
+                try:
+                    from core.models.wan_models.wan_base_model import HardwareProfile
+                    hw_info = context["hardware_profile"]
+                    wan_context.hardware_profile = HardwareProfile(
+                        gpu_name=hw_info.get("gpu_name", "Unknown"),
+                        total_vram_gb=hw_info.get("total_vram_gb", 0.0),
+                        available_vram_gb=hw_info.get("available_vram_gb", 0.0),
+                        cpu_cores=hw_info.get("cpu_cores", 1),
+                        total_ram_gb=hw_info.get("total_ram_gb", 0.0),
+                        architecture_type=hw_info.get("architecture_type", "cuda"),
+                        supports_fp16=hw_info.get("supports_fp16", True),
+                        supports_bf16=hw_info.get("supports_bf16", False),
+                        tensor_cores_available=hw_info.get("tensor_cores_available", False)
+                    )
+                except ImportError:
+                    pass
+            
+            # Use WAN error handler
+            wan_handler = get_wan_error_handler()
+            wan_error = await wan_handler.handle_wan_error(error, wan_context)
+            
+            # Add integrated handler context to the error
+            wan_error.technical_details += f"\n\nIntegrated Handler Context:\n"
+            for key, value in context.items():
+                if key not in ["generation_service", "hardware_profile"]:  # Skip complex objects
+                    wan_error.technical_details += f"  {key}: {value}\n"
+            
+            return wan_error
+            
+        except ImportError as e:
+            self.logger.warning(f"WAN error handler not available: {e}")
+            # Fallback to integrated error handling with WAN context
+            enhanced_context = context.copy()
+            enhanced_context["error_type"] = "wan_model_fallback"
+            return self._handle_error_integrated(error, enhanced_context)
+        
+        except Exception as e:
+            self.logger.error(f"WAN error handler failed: {e}")
+            # Fallback to integrated error handling
+            enhanced_context = context.copy()
+            enhanced_context["error_type"] = "wan_model_handler_failed"
+            enhanced_context["wan_handler_error"] = str(e)
+            return self._handle_error_integrated(error, enhanced_context)
 
 
 # Convenience functions for common error scenarios
@@ -719,6 +878,59 @@ async def handle_generation_pipeline_error(
     enhanced_context["error_type"] = "generation_pipeline"
     enhanced_context["force_category"] = "generation_pipeline"  # Force correct categorization
     return await handler.handle_generation_pipeline_error(error, enhanced_context)
+
+
+async def handle_wan_model_error(
+    error: Exception,
+    wan_context: Optional[Dict[str, Any]] = None
+) -> UserFriendlyError:
+    """Handle WAN model-specific errors with comprehensive recovery suggestions"""
+    try:
+        # Import WAN error handler
+        from core.models.wan_models.wan_model_error_handler import (
+            get_wan_error_handler,
+            WANErrorContext,
+            WANModelType
+        )
+        
+        # Create WAN error context
+        wan_error_context = WANErrorContext()
+        
+        if wan_context:
+            # Map context to WAN error context
+            if "model_type" in wan_context:
+                try:
+                    wan_error_context.model_type = WANModelType(wan_context["model_type"])
+                except (ValueError, KeyError):
+                    pass
+            
+            wan_error_context.model_loaded = wan_context.get("model_loaded", False)
+            wan_error_context.weights_loaded = wan_context.get("weights_loaded", False)
+            wan_error_context.hardware_optimized = wan_context.get("hardware_optimized", False)
+            wan_error_context.generation_params = wan_context.get("generation_params")
+            wan_error_context.vram_usage_gb = wan_context.get("vram_usage_gb", 0.0)
+            wan_error_context.available_vram_gb = wan_context.get("available_vram_gb", 0.0)
+            wan_error_context.applied_optimizations = wan_context.get("applied_optimizations", [])
+            wan_error_context.error_stage = wan_context.get("error_stage", "unknown")
+            wan_error_context.checkpoint_path = wan_context.get("checkpoint_path")
+        
+        # Use WAN error handler
+        wan_handler = get_wan_error_handler()
+        return await wan_handler.handle_wan_error(error, wan_error_context)
+        
+    except ImportError:
+        # Fallback to integrated error handler if WAN handler not available
+        handler = IntegratedErrorHandler()
+        enhanced_context = wan_context or {}
+        enhanced_context["error_type"] = "wan_model"
+        return await handler.handle_error(error, enhanced_context)
+    except Exception as e:
+        # Fallback error handling
+        handler = IntegratedErrorHandler()
+        enhanced_context = wan_context or {}
+        enhanced_context["error_type"] = "wan_model"
+        enhanced_context["wan_handler_error"] = str(e)
+        return await handler.handle_error(error, enhanced_context)
 
 
 # Global error handler instance
