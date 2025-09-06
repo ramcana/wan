@@ -4765,6 +4765,10 @@ class LoRAManager:
         self.loaded_loras: Dict[str, Dict[str, Any]] = {}
         self.applied_loras: Dict[str, float] = {}  # LoRA name -> strength
         
+        # WAN model integration
+        self._wan_lora_manager = None
+        self._initialize_wan_integration()
+        
     def list_available_loras(self) -> Dict[str, Dict[str, Any]]:
         """List all available LoRA files in the loras directory"""
         loras = {}
@@ -5412,6 +5416,301 @@ class LoRAManager:
             return "Moderate VRAM usage. Should work well with current system."
         else:
             return "Low VRAM usage. Safe to load with current system."
+    
+    # WAN Model Integration Methods
+    def _initialize_wan_integration(self):
+        """Initialize WAN model LoRA integration"""
+        try:
+            from .wan_lora_manager import get_wan_lora_manager
+            self._wan_lora_manager = get_wan_lora_manager(self.config)
+            logger.info("WAN LoRA integration initialized successfully")
+        except ImportError:
+            logger.warning("WAN LoRA manager not available, WAN model LoRA support disabled")
+            self._wan_lora_manager = None
+        except Exception as e:
+            logger.error(f"Failed to initialize WAN LoRA integration: {e}")
+            self._wan_lora_manager = None
+    
+    def check_wan_model_compatibility(self, model, lora_name: str) -> Dict[str, Any]:
+        """
+        Check LoRA compatibility with WAN model architecture
+        
+        Args:
+            model: Model instance (WAN or standard)
+            lora_name: Name of LoRA to check
+            
+        Returns:
+            Dictionary with compatibility information
+        """
+        if not self._wan_lora_manager:
+            return {
+                "is_wan_model": False,
+                "is_compatible": True,  # Assume compatible for non-WAN models
+                "compatibility_info": None,
+                "reason": "WAN LoRA manager not available, using standard LoRA handling"
+            }
+        
+        try:
+            # Check if this is a WAN model
+            if not self._is_wan_model(model):
+                return {
+                    "is_wan_model": False,
+                    "is_compatible": True,
+                    "compatibility_info": None,
+                    "reason": "Standard model, using regular LoRA handling"
+                }
+            
+            # Use WAN-specific compatibility check
+            is_compatible, compatibility, reason = self._wan_lora_manager.check_wan_model_compatibility(model, lora_name)
+            
+            return {
+                "is_wan_model": True,
+                "is_compatible": is_compatible,
+                "compatibility_info": compatibility.__dict__ if compatibility else None,
+                "reason": reason
+            }
+            
+        except Exception as e:
+            logger.error(f"Error checking WAN model compatibility: {e}")
+            return {
+                "is_wan_model": False,
+                "is_compatible": False,
+                "compatibility_info": None,
+                "reason": f"Compatibility check failed: {str(e)}"
+            }
+    
+    def apply_lora_with_wan_support(self, model, lora_name: str, strength: float = 1.0):
+        """
+        Apply LoRA with WAN model support
+        
+        Args:
+            model: Model instance (WAN or standard)
+            lora_name: Name of LoRA to apply
+            strength: LoRA strength (0.0 to 2.0)
+            
+        Returns:
+            Model with LoRA applied
+        """
+        try:
+            # Check WAN model compatibility first
+            compatibility_result = self.check_wan_model_compatibility(model, lora_name)
+            
+            if not compatibility_result["is_compatible"]:
+                logger.warning(f"LoRA {lora_name} not compatible: {compatibility_result['reason']}")
+                # Continue with fallback prompt enhancement
+                return self._apply_lora_fallback(model, lora_name, strength)
+            
+            if compatibility_result["is_wan_model"] and self._wan_lora_manager:
+                # Use WAN-specific LoRA application
+                logger.info(f"Applying LoRA {lora_name} to WAN model with strength {strength}")
+                status = self._wan_lora_manager.apply_wan_lora(model, lora_name, strength)
+                
+                if status.is_applied:
+                    logger.info(f"Successfully applied WAN LoRA {lora_name}")
+                    return model
+                else:
+                    logger.warning(f"WAN LoRA application failed: {status.error_message}")
+                    return self._apply_lora_fallback(model, lora_name, strength)
+            else:
+                # Use standard LoRA application
+                return self.apply_lora(model, lora_name, strength)
+                
+        except Exception as e:
+            logger.error(f"Error applying LoRA with WAN support: {e}")
+            return self._apply_lora_fallback(model, lora_name, strength)
+    
+    def _apply_lora_fallback(self, model, lora_name: str, strength: float):
+        """Apply LoRA fallback when WAN-specific application fails"""
+        try:
+            # Try standard LoRA application first
+            return self.apply_lora(model, lora_name, strength)
+        except Exception as e:
+            logger.warning(f"Standard LoRA application also failed: {e}")
+            # Return model unchanged - LoRA will be handled via prompt enhancement
+            logger.info(f"LoRA {lora_name} will be handled via prompt enhancement")
+            return model
+    
+    def adjust_lora_strength_with_wan_support(self, model, lora_name: str, new_strength: float):
+        """Adjust LoRA strength with WAN model support"""
+        try:
+            if self._is_wan_model(model) and self._wan_lora_manager:
+                # Use WAN-specific strength adjustment
+                status = self._wan_lora_manager.adjust_wan_lora_strength(model, lora_name, new_strength)
+                if status.is_applied:
+                    return model
+                else:
+                    logger.warning(f"WAN LoRA strength adjustment failed: {status.error_message}")
+            
+            # Fallback to standard method
+            return self.adjust_lora_strength(model, lora_name, new_strength)
+            
+        except Exception as e:
+            logger.error(f"Error adjusting LoRA strength with WAN support: {e}")
+            return model
+    
+    def remove_lora_with_wan_support(self, model, lora_name: str):
+        """Remove LoRA with WAN model support"""
+        try:
+            if self._is_wan_model(model) and self._wan_lora_manager:
+                # Use WAN-specific LoRA removal
+                success = self._wan_lora_manager.remove_wan_lora(model, lora_name)
+                if success:
+                    return model
+                else:
+                    logger.warning("WAN LoRA removal failed, trying standard method")
+            
+            # Fallback to standard method
+            return self.remove_lora(model, lora_name)
+            
+        except Exception as e:
+            logger.error(f"Error removing LoRA with WAN support: {e}")
+            return model
+    
+    def blend_loras_with_wan_support(self, model, lora_configs: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+        """
+        Blend multiple LoRAs with WAN model support
+        
+        Args:
+            model: Model instance
+            lora_configs: List of {"name": str, "strength": float} configs
+            
+        Returns:
+            List of application results
+        """
+        try:
+            if self._is_wan_model(model) and self._wan_lora_manager:
+                # Use WAN-specific LoRA blending
+                wan_results = self._wan_lora_manager.blend_wan_loras(model, lora_configs)
+                
+                # Convert WAN results to standard format
+                results = []
+                for wan_status in wan_results:
+                    results.append({
+                        "lora_name": wan_status.lora_name,
+                        "success": wan_status.is_applied,
+                        "strength": wan_status.current_strength,
+                        "method": wan_status.application_method,
+                        "memory_usage_mb": wan_status.memory_usage_mb,
+                        "error": wan_status.error_message
+                    })
+                
+                return results
+            else:
+                # Standard LoRA blending (sequential application)
+                results = []
+                for lora_config in lora_configs:
+                    try:
+                        lora_name = lora_config["name"]
+                        strength = lora_config.get("strength", 1.0)
+                        
+                        model = self.apply_lora(model, lora_name, strength)
+                        
+                        results.append({
+                            "lora_name": lora_name,
+                            "success": True,
+                            "strength": strength,
+                            "method": "standard",
+                            "memory_usage_mb": 0.0,
+                            "error": None
+                        })
+                        
+                    except Exception as e:
+                        results.append({
+                            "lora_name": lora_config["name"],
+                            "success": False,
+                            "strength": 0.0,
+                            "method": "failed",
+                            "memory_usage_mb": 0.0,
+                            "error": str(e)
+                        })
+                
+                return results
+                
+        except Exception as e:
+            logger.error(f"Error blending LoRAs with WAN support: {e}")
+            return [{"error": str(e)}]
+    
+    def get_wan_lora_status(self, model, lora_name: Optional[str] = None) -> Dict[str, Any]:
+        """Get LoRA status for WAN models"""
+        try:
+            if not self._is_wan_model(model) or not self._wan_lora_manager:
+                return {
+                    "is_wan_model": False,
+                    "status": "WAN LoRA manager not available or not a WAN model"
+                }
+            
+            wan_status = self._wan_lora_manager.get_wan_lora_status(model, lora_name)
+            
+            if isinstance(wan_status, dict):
+                # Multiple LoRAs
+                return {
+                    "is_wan_model": True,
+                    "multiple_loras": True,
+                    "loras": {name: status.__dict__ for name, status in wan_status.items()}
+                }
+            else:
+                # Single LoRA
+                return {
+                    "is_wan_model": True,
+                    "multiple_loras": False,
+                    "lora_status": wan_status.__dict__
+                }
+                
+        except Exception as e:
+            logger.error(f"Error getting WAN LoRA status: {e}")
+            return {
+                "is_wan_model": False,
+                "error": str(e)
+            }
+    
+    def validate_lora_for_wan_model(self, lora_name: str, model_type: str) -> Dict[str, Any]:
+        """Validate LoRA loading for specific WAN model type"""
+        try:
+            if not self._wan_lora_manager:
+                return {
+                    "valid": False,
+                    "error": "WAN LoRA manager not available",
+                    "compatibility": None
+                }
+            
+            return self._wan_lora_manager.validate_wan_lora_loading(lora_name, model_type)
+            
+        except Exception as e:
+            logger.error(f"Error validating LoRA for WAN model: {e}")
+            return {
+                "valid": False,
+                "error": str(e),
+                "compatibility": None
+            }
+    
+    def _is_wan_model(self, model) -> bool:
+        """Check if model is a WAN model"""
+        try:
+            # Check class name
+            model_class = model.__class__.__name__
+            if any(wan_indicator in model_class for wan_indicator in ['WAN', 'Wan', 'wan']):
+                return True
+            
+            # Check for WAN-specific attributes
+            if hasattr(model, 'transformer'):
+                # WAN models typically use transformer architecture
+                transformer = model.transformer
+                if hasattr(transformer, 'transformer_blocks'):
+                    return True
+            
+            # Check model configuration
+            if hasattr(model, 'config'):
+                config = model.config
+                if hasattr(config, 'model_type'):
+                    model_type = config.model_type.lower()
+                    if any(wan_type in model_type for wan_type in ['wan', 't2v', 'i2v', 'ti2v']):
+                        return True
+            
+            return False
+            
+        except Exception as e:
+            logger.warning(f"Error checking if model is WAN model: {e}")
+            return False
 
 
 # Global LoRA manager instance

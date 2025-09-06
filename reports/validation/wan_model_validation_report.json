@@ -1,0 +1,67 @@
+{
+  "summary": {
+    "total_validations": 8,
+    "successful_validations": 3,
+    "failed_validations": 5,
+    "success_rate": 0.375,
+    "timestamp": 1757196937.7670743
+  },
+  "validation_results": {
+    "WAN Base Model": {
+      "success": false,
+      "error": "Can't instantiate abstract class WANBaseModel with abstract methods _get_model_capabilities, _initialize_architecture, generate_video",
+      "class_available": true,
+      "duration": 1.2238309383392334
+    },
+    "WAN T2V-A14B Model": {
+      "success": false,
+      "error": "'WANModelConfig' object has no attribute 'get'",
+      "class_available": true,
+      "duration": 0.0001239776611328125
+    },
+    "WAN I2V-A14B Model": {
+      "success": false,
+      "error": "'WANModelConfig' object has no attribute 'get'",
+      "class_available": true,
+      "duration": 0.00010228157043457031
+    },
+    "WAN TI2V-5B Model": {
+      "success": false,
+      "error": "'WANModelConfig' object has no attribute 'get'",
+      "class_available": true,
+      "duration": 0.00022101402282714844
+    },
+    "WAN Pipeline Factory": {
+      "success": true,
+      "missing_methods": [],
+      "has_available_models": true,
+      "class_available": true,
+      "duration": 5.507469177246094e-05
+    },
+    "WAN Model Config": {
+      "success": true,
+      "missing_methods": [],
+      "config_results": {
+        "t2v-A14B": true,
+        "i2v-A14B": true,
+        "ti2v-5B": true
+      },
+      "class_available": true,
+      "duration": 6.67572021484375e-06
+    },
+    "WAN Error Handler": {
+      "success": false,
+      "missing_methods": [
+        "get_wan_recovery_suggestions"
+      ],
+      "class_available": true,
+      "duration": 0.011671066284179688
+    },
+    "Integration Components": {
+      "success": true,
+      "missing_methods": [],
+      "bridge_available": true,
+      "duration": 0.003728628158569336
+    }
+  }
+}

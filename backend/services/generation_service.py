@@ -161,9 +161,10 @@ class GenerationService:
         self.optimization_applied = False
         self.vram_monitor = None
         
-        # Generation mode (can be switched for testing)
+        # Generation mode - prioritize real WAN models
         self.use_real_generation = True
-        self.fallback_to_simulation = True
+        self.fallback_to_simulation = False  # Disable simulation fallback by default
+        self.prefer_wan_models = True  # Prefer WAN models over other implementations
         
         # Fallback and recovery system
         self.fallback_recovery_system: Optional[FallbackRecoverySystem] = None
@@ -448,14 +449,17 @@ class GenerationService:
             self.model_integration_bridge = await get_model_integration_bridge()
             
             if self.model_integration_bridge and self.model_integration_bridge.is_initialized():
-                logger.info("Model Integration Bridge initialized successfully")
+                logger.info("WAN Model Integration Bridge initialized successfully")
                 
                 # Integrate hardware optimization with model bridge
                 if self.wan22_system_optimizer:
                     self.model_integration_bridge.set_hardware_optimizer(self.wan22_system_optimizer)
-                    logger.info("Hardware optimizer integrated with model bridge")
+                    logger.info("Hardware optimizer integrated with WAN model bridge")
+                
+                # Verify WAN model availability
+                await self._verify_wan_model_availability()
             else:
-                logger.warning("Model Integration Bridge initialization failed")
+                logger.warning("WAN Model Integration Bridge initialization failed")
                 self.use_real_generation = False
             
             # Initialize Real Generation Pipeline
@@ -464,14 +468,17 @@ class GenerationService:
             
             pipeline_initialized = await self.real_generation_pipeline.initialize()
             if pipeline_initialized:
-                logger.info("Real Generation Pipeline initialized successfully")
+                logger.info("WAN Real Generation Pipeline initialized successfully")
                 
                 # Integrate hardware optimization with pipeline
                 if self.wan22_system_optimizer:
                     self.real_generation_pipeline.set_hardware_optimizer(self.wan22_system_optimizer)
-                    logger.info("Hardware optimizer integrated with generation pipeline")
+                    logger.info("Hardware optimizer integrated with WAN generation pipeline")
+                
+                # Configure pipeline for WAN models
+                await self._configure_pipeline_for_wan_models()
             else:
-                logger.warning("Real Generation Pipeline initialization failed")
+                logger.warning("WAN Real Generation Pipeline initialization failed")
                 self.use_real_generation = False
                 
         except Exception as e:
@@ -585,6 +592,257 @@ class GenerationService:
             return FailureType.NETWORK_ERROR
         else:
             return FailureType.SYSTEM_RESOURCE_ERROR
+    
+    def _estimate_wan_model_vram_requirements(self, model_type: str, resolution: str = None) -> float:
+        """Estimate VRAM requirements for WAN models based on type and resolution"""
+        try:
+            # Base VRAM requirements for WAN models
+            base_requirements = {
+                "t2v-A14B": 10.0,  # 10GB for T2V A14B
+                "i2v-A14B": 11.0,  # 11GB for I2V A14B (includes image processing)
+                "ti2v-5B": 6.0,    # 6GB for TI2V 5B
+                "t2v-a14b": 10.0,  # Lowercase variant
+                "i2v-a14b": 11.0,  # Lowercase variant
+                "ti2v-5b": 6.0     # Lowercase variant
+            }
+            
+            base_vram = base_requirements.get(model_type, 8.0)  # Default 8GB
+            
+            # Adjust for resolution if provided
+            if resolution:
+                try:
+                    width, height = map(int, resolution.split('x'))
+                    pixel_count = width * height
+                    
+                    # Scale VRAM based on resolution (baseline: 1280x720)
+                    baseline_pixels = 1280 * 720
+                    resolution_multiplier = pixel_count / baseline_pixels
+                    
+                    # Apply resolution scaling with diminishing returns
+                    resolution_adjustment = (resolution_multiplier - 1) * 0.3 + 1
+                    base_vram *= resolution_adjustment
+                    
+                except (ValueError, AttributeError):
+                    logger.warning(f"Could not parse resolution {resolution}, using base VRAM estimate")
+            
+            return base_vram
+            
+        except Exception as e:
+            logger.warning(f"Error estimating WAN model VRAM requirements: {e}")
+            return 8.0  # Safe default
+    
+    async def _apply_wan_model_vram_optimizations(self, model_type: str):
+        """Apply WAN model specific VRAM optimizations"""
+        try:
+            logger.info(f"Applying WAN model VRAM optimizations for {model_type}")
+            
+            # Enable model offloading for WAN models
+            self.enable_model_offloading = True
+            
+            # Adjust VAE tile size based on model type
+            if "A14B" in model_type:
+                self.vae_tile_size = 256  # Smaller tiles for larger models
+            else:
+                self.vae_tile_size = 512  # Larger tiles for smaller models
+            
+            # Enable attention slicing for WAN models
+            self.enable_attention_slicing = True
+            
+            # Apply quantization if available
+            if hasattr(self, 'wan22_system_optimizer') and self.wan22_system_optimizer:
+                # Use system optimizer for WAN model specific optimizations
+                optimization_result = self.wan22_system_optimizer.optimize_for_wan_model(model_type)
+                if optimization_result.success:
+                    logger.info(f"Applied WAN model system optimizations: {optimization_result.applied_optimizations}")
+            
+            logger.info("WAN model VRAM optimizations applied successfully")
+            
+        except Exception as e:
+            logger.warning(f"Failed to apply WAN model VRAM optimizations: {e}")
+    
+    async def _apply_wan_model_pre_generation_optimizations(self, model_type: str):
+        """Apply WAN model specific pre-generation optimizations"""
+        try:
+            logger.info(f"Applying WAN model pre-generation optimizations for {model_type}")
+            
+            if self.wan22_system_optimizer:
+                # Get WAN model specific optimization profile
+                optimization_profile = self.wan22_system_optimizer.get_wan_model_optimization_profile(model_type)
+                
+                if optimization_profile:
+                    # Apply model-specific optimizations
+                    if optimization_profile.enable_cpu_offload:
+                        self.enable_model_offloading = True
+                        logger.info("Enabled CPU offloading for WAN model")
+                    
+                    if optimization_profile.optimal_vae_tile_size:
+                        self.vae_tile_size = optimization_profile.optimal_vae_tile_size
+                        logger.info(f"Set optimal VAE tile size: {self.vae_tile_size}")
+                    
+                    if optimization_profile.recommended_quantization:
+                        self.quantization_level = optimization_profile.recommended_quantization
+                        logger.info(f"Set quantization level: {self.quantization_level}")
+                    
+                    # Apply hardware-specific optimizations
+                    hardware_optimizations = self.wan22_system_optimizer.apply_hardware_optimizations_for_wan_model(
+                        model_type, self.hardware_profile
+                    )
+                    
+                    if hardware_optimizations.success:
+                        logger.info(f"Applied hardware optimizations: {hardware_optimizations.applied_optimizations}")
+                else:
+                    logger.warning(f"No optimization profile found for WAN model {model_type}")
+            
+        except Exception as e:
+            logger.warning(f"Failed to apply WAN model pre-generation optimizations: {e}")
+    
+    async def _enable_wan_model_aggressive_optimization(self):
+        """Enable aggressive optimization for WAN models when VRAM is critical"""
+        try:
+            logger.info("Enabling aggressive WAN model optimization due to critical VRAM usage")
+            
+            # Enable all available optimizations
+            self.enable_model_offloading = True
+            self.enable_attention_slicing = True
+            self.enable_vae_slicing = True
+            self.enable_vae_tiling = True
+            self.vae_tile_size = 128  # Very small tiles
+            
+            # Enable sequential CPU offload if available
+            self.enable_sequential_cpu_offload = True
+            
+            # Use lower precision if available
+            self.use_fp16 = True
+            
+            # Apply system-level optimizations
+            if self.wan22_system_optimizer:
+                aggressive_result = self.wan22_system_optimizer.enable_aggressive_optimization()
+                if aggressive_result.success:
+                    logger.info(f"Applied aggressive system optimizations: {aggressive_result.applied_optimizations}")
+            
+            logger.info("Aggressive WAN model optimization enabled")
+            
+        except Exception as e:
+            logger.warning(f"Failed to enable aggressive WAN model optimization: {e}")
+    
+    def _get_alternative_wan_models(self, failed_model_type: str) -> List[str]:
+        """Get alternative WAN models to try when the primary model fails"""
+        alternatives = []
+        
+        try:
+            # Define WAN model alternatives based on capability and resource requirements
+            wan_model_alternatives = {
+                "t2v-A14B": ["t2v-a14b", "ti2v-5B", "ti2v-5b"],  # Try lowercase variant, then smaller model
+                "t2v-a14b": ["t2v-A14B", "ti2v-5B", "ti2v-5b"],  # Try uppercase variant, then smaller model
+                "i2v-A14B": ["i2v-a14b", "t2v-A14B", "t2v-a14b"],  # Try lowercase variant, then T2V models
+                "i2v-a14b": ["i2v-A14B", "t2v-A14B", "t2v-a14b"],  # Try uppercase variant, then T2V models
+                "ti2v-5B": ["ti2v-5b", "t2v-A14B", "t2v-a14b"],   # Try lowercase variant, then larger models
+                "ti2v-5b": ["ti2v-5B", "t2v-A14B", "t2v-a14b"]    # Try uppercase variant, then larger models
+            }
+            
+            alternatives = wan_model_alternatives.get(failed_model_type, [])
+            
+            # Filter out the failed model itself
+            alternatives = [alt for alt in alternatives if alt != failed_model_type]
+            
+            # Prioritize based on hardware compatibility if available
+            if self.hardware_profile and hasattr(self.hardware_profile, 'vram_gb'):
+                vram_gb = self.hardware_profile.vram_gb
+                
+                # If low VRAM, prioritize smaller models
+                if vram_gb < 10:
+                    alternatives = [alt for alt in alternatives if "5B" in alt or "5b" in alt] + \
+                                 [alt for alt in alternatives if "A14B" in alt or "a14b" in alt]
+                # If high VRAM, prioritize larger models
+                elif vram_gb >= 12:
+                    alternatives = [alt for alt in alternatives if "A14B" in alt or "a14b" in alt] + \
+                                 [alt for alt in alternatives if "5B" in alt or "5b" in alt]
+            
+            logger.info(f"Alternative WAN models for {failed_model_type}: {alternatives}")
+            return alternatives[:2]  # Limit to 2 alternatives to avoid excessive retries
+            
+        except Exception as e:
+            logger.warning(f"Error getting alternative WAN models: {e}")
+            return []
+    
+    async def _verify_wan_model_availability(self):
+        """Verify that WAN models are available and properly configured"""
+        try:
+            logger.info("Verifying WAN model availability...")
+            
+            # List of WAN models to check
+            wan_models = ["t2v-A14B", "i2v-A14B", "ti2v-5B"]
+            available_models = []
+            
+            for model_type in wan_models:
+                try:
+                    model_status = await self.model_integration_bridge.check_model_availability(model_type)
+                    if model_status.status.value in ["available", "loaded"]:
+                        available_models.append(model_type)
+                        logger.info(f"WAN model {model_type} is available")
+                    else:
+                        logger.warning(f"WAN model {model_type} status: {model_status.status.value}")
+                except Exception as e:
+                    logger.warning(f"Error checking WAN model {model_type}: {e}")
+            
+            if available_models:
+                logger.info(f"Available WAN models: {available_models}")
+                self.available_wan_models = available_models
+            else:
+                logger.warning("No WAN models are currently available")
+                self.available_wan_models = []
+                
+                # Send notification about missing WAN models
+                if self.websocket_manager:
+                    await self.websocket_manager.send_alert(
+                        alert_type="wan_models_unavailable",
+                        message="No WAN models are currently available. Please download models or check configuration.",
+                        severity="warning",
+                        metadata={"checked_models": wan_models}
+                    )
+            
+        except Exception as e:
+            logger.error(f"Error verifying WAN model availability: {e}")
+            self.available_wan_models = []
+    
+    async def _configure_pipeline_for_wan_models(self):
+        """Configure the real generation pipeline specifically for WAN models"""
+        try:
+            logger.info("Configuring generation pipeline for WAN models...")
+            
+            # Set WAN model specific configuration
+            if hasattr(self.real_generation_pipeline, 'set_wan_model_config'):
+                wan_config = {
+                    "prefer_wan_models": True,
+                    "enable_wan_optimizations": True,
+                    "wan_model_cache_size": 2,  # Cache up to 2 WAN models
+                    "wan_model_timeout": 300,   # 5 minute timeout for WAN models
+                    "enable_wan_progress_tracking": True,
+                    "wan_vram_monitoring": True
+                }
+                
+                self.real_generation_pipeline.set_wan_model_config(wan_config)
+                logger.info("WAN model configuration applied to pipeline")
+            
+            # Set hardware profile for WAN model optimization
+            if hasattr(self.real_generation_pipeline, 'set_hardware_profile') and self.hardware_profile:
+                self.real_generation_pipeline.set_hardware_profile(self.hardware_profile)
+                logger.info("Hardware profile set for WAN model optimization")
+            
+            # Enable WAN model specific features
+            if hasattr(self.real_generation_pipeline, 'enable_wan_features'):
+                wan_features = {
+                    "enhanced_progress_tracking": True,
+                    "vram_monitoring": True,
+                    "automatic_optimization": True,
+                    "fallback_strategies": True
+                }
+                
+                self.real_generation_pipeline.enable_wan_features(wan_features)
+                logger.info("WAN model specific features enabled")
+            
+        except Exception as e:
+            logger.warning(f"Error configuring pipeline for WAN models: {e}")
     
     async def _run_mock_generation(self, task: GenerationTaskDB, db: Session, model_type: str) -> bool:
         """
@@ -1515,176 +1773,230 @@ class GenerationService:
             return await self._run_mock_generation(task, db, model_type)
 
     async def _run_real_generation(self, task: GenerationTaskDB, db: Session, model_type: str) -> bool:
-        """Run real AI generation using ModelIntegrationBridge and RealGenerationPipeline with hardware optimization"""
+        """Run real WAN model generation with enhanced resource monitoring and optimization"""
         try:
-            # Check VRAM availability before starting
+            # Enhanced VRAM monitoring for WAN models
             if self.vram_monitor:
-                # Estimate VRAM requirements based on model type and resolution
-                estimated_vram_gb = self._estimate_vram_requirements(model_type, task.resolution)
+                # Get precise VRAM requirements for WAN models
+                estimated_vram_gb = self._estimate_wan_model_vram_requirements(model_type, task.resolution)
                 vram_available, vram_message = self.vram_monitor.check_vram_availability(estimated_vram_gb)
                 
                 if not vram_available:
-                    logger.warning(f"VRAM check failed: {vram_message}")
-                    # Get optimization suggestions
+                    logger.warning(f"WAN model VRAM check failed: {vram_message}")
+                    # Get WAN-specific optimization suggestions
                     suggestions = self.vram_monitor.get_optimization_suggestions()
                     if suggestions:
-                        logger.info(f"VRAM optimization suggestions: {', '.join(suggestions[:3])}")
+                        logger.info(f"WAN model VRAM optimization suggestions: {', '.join(suggestions[:3])}")
                     
-                    # Apply automatic VRAM optimizations if available
-                    await self._apply_vram_optimizations()
+                    # Apply automatic WAN model VRAM optimizations
+                    await self._apply_wan_model_vram_optimizations(model_type)
                 else:
-                    logger.info(f"VRAM check passed: {vram_message}")
+                    logger.info(f"WAN model VRAM check passed: {vram_message}")
             
-            # Ensure model is available (will download if necessary)
+            # Validate WAN model availability and integrity
             task.progress = 10
             db.commit()
             
-            logger.info(f"Ensuring model {model_type} is available")
-            model_available = await self.model_integration_bridge.ensure_model_available(model_type)
+            logger.info(f"Validating WAN model {model_type} availability and integrity")
+            model_status = await self.model_integration_bridge.check_model_availability(model_type)
             
-            if not model_available:
-                error_msg = f"Model {model_type} is not available and could not be downloaded"
+            if model_status.status.value == "missing":
+                error_msg = f"WAN model {model_type} is missing and needs to be downloaded"
+                logger.error(error_msg)
+                raise Exception(error_msg)
+            elif model_status.status.value == "corrupted":
+                error_msg = f"WAN model {model_type} is corrupted and needs to be re-downloaded"
+                logger.error(error_msg)
+                raise Exception(error_msg)
+            elif not model_status.hardware_compatible:
+                error_msg = f"Hardware not compatible with WAN model {model_type}. Required VRAM: {model_status.estimated_vram_usage_mb/1024:.1f}GB"
                 logger.error(error_msg)
                 raise Exception(error_msg)
             
-            # Apply hardware optimizations before model loading
+            # Apply WAN model specific hardware optimizations
             task.progress = 20
             db.commit()
             
             if self.wan22_system_optimizer:
-                logger.info("Applying hardware optimizations before model loading")
-                await self._apply_pre_generation_optimizations(model_type)
+                logger.info(f"Applying WAN model specific hardware optimizations for {model_type}")
+                await self._apply_wan_model_pre_generation_optimizations(model_type)
             
-            # Load the model with optimization
+            # Load WAN model with enhanced optimization
             task.progress = 25
             db.commit()
             
-            logger.info(f"Loading model with hardware optimization: {model_type}")
+            logger.info(f"Loading WAN model with enhanced optimization: {model_type}")
             model_loaded, load_message = await self.model_integration_bridge.load_model_with_optimization(model_type)
             
             if not model_loaded:
-                error_msg = f"Failed to load model {model_type}: {load_message}"
+                error_msg = f"Failed to load WAN model {model_type}: {load_message}"
                 logger.error(error_msg)
                 raise Exception(error_msg)
             
-            logger.info(f"Model loaded successfully with optimization: {load_message}")
+            logger.info(f"WAN model loaded successfully with optimization: {load_message}")
             
-            # Monitor VRAM after model loading
+            # Enhanced VRAM monitoring after WAN model loading
             if self.vram_monitor:
                 usage = self.vram_monitor.get_current_vram_usage()
                 if "error" not in usage:
-                    logger.info(f"VRAM usage after model loading: {usage['allocated_gb']:.1f}GB allocated, "
-                               f"{usage['usage_percent']:.1f}% of total")
+                    logger.info(f"VRAM usage after WAN model loading: {usage['allocated_gb']:.1f}GB allocated, "
+                               f"{usage['usage_percent']:.1f}% of total, "
+                               f"{usage.get('optimal_usage_percent', 0):.1f}% of optimal")
                     
-                    # Check if we're approaching VRAM limits
-                    if usage.get("optimal_usage_percent", 0) > 85:
-                        logger.warning("High VRAM usage detected, monitoring for potential issues")
+                    # WAN model specific VRAM monitoring thresholds
+                    if usage.get("optimal_usage_percent", 0) > 90:
+                        logger.warning("Critical VRAM usage detected for WAN model, enabling aggressive optimization")
+                        await self._enable_wan_model_aggressive_optimization()
+                    elif usage.get("optimal_usage_percent", 0) > 75:
+                        logger.warning("High VRAM usage detected for WAN model, monitoring closely")
             
-            # Prepare generation parameters
+            # Prepare WAN model generation parameters
             task.progress = 30
             db.commit()
             
             generation_params = {
                 "prompt": task.prompt,
-                "resolution": task.resolution,
-                "steps": task.steps,
+                "resolution": task.resolution or "1280x720",
+                "steps": task.steps or 50,
                 "image_path": task.image_path,
+                "end_image_path": task.end_image_path,
                 "lora_path": task.lora_path,
-                "lora_strength": task.lora_strength
+                "lora_strength": task.lora_strength or 1.0,
+                "guidance_scale": task.guidance_scale or 7.5,
+                "negative_prompt": task.negative_prompt,
+                "seed": task.seed,
+                "fps": task.fps or 8.0,
+                "num_frames": task.num_frames or 16,
+                # WAN model specific parameters
+                "enable_offload": getattr(self, 'enable_model_offloading', True),
+                "vae_tile_size": getattr(self, 'vae_tile_size', 256),
+                "max_vram_usage_gb": getattr(self, 'optimal_vram_usage_gb', None),
+                "quantization_level": getattr(self, 'quantization_level', None)
             }
             
-            # Send WebSocket notification about real generation start
+            # Send WebSocket notification about WAN model generation start
             if self.websocket_manager:
                 await self.websocket_manager.send_alert(
-                    alert_type="generation_started",
-                    message=f"Starting real AI generation with {model_type}",
+                    alert_type="wan_generation_started",
+                    message=f"Starting WAN model generation with {model_type}",
                     severity="info",
                     task_id=task.id,
-                    model_type=model_type
+                    metadata={
+                        "model_type": model_type,
+                        "wan_model": True,
+                        "estimated_vram_gb": model_status.estimated_vram_usage_mb / 1024.0,
+                        "hardware_optimized": True
+                    }
                 )
             
-            # Run the actual generation using RealGenerationPipeline
+            # Run WAN model generation with enhanced monitoring
             task.progress = 40
             db.commit()
             
-            logger.info(f"Starting real generation with optimized pipeline for {model_type}")
+            logger.info(f"Starting WAN model generation with enhanced pipeline for {model_type}")
             
-            # Create progress callback to update database during generation
-            async def progress_callback(progress_update, message: str = ""):
+            # Create enhanced progress callback for WAN model generation
+            async def wan_progress_callback(progress_update, message: str = ""):
                 try:
                     # Handle both ProgressUpdate object and direct float
                     if hasattr(progress_update, 'progress_percent'):
-                        # ProgressUpdate object from real generation pipeline
+                        # ProgressUpdate object from WAN generation pipeline
                         progress_percent = progress_update.progress_percent
                         message = progress_update.message or message
+                        metadata = getattr(progress_update, 'metadata', {})
                     else:
                         # Direct float value (legacy support)
                         progress_percent = float(progress_update)
+                        metadata = {}
                     
-                    # Map generation progress (0-100%) to task progress (40-95%)
+                    # Map WAN generation progress (0-100%) to task progress (40-95%)
                     task_progress = 40 + int((progress_percent / 100) * 55)
                     task.progress = min(task_progress, 95)
                     db.commit()
                     
-                    # Send WebSocket update if available
+                    # Send enhanced WebSocket update for WAN model
                     if self.websocket_manager:
+                        update_metadata = {
+                            "wan_model": True,
+                            "model_type": model_type,
+                            "stage": "wan_generation"
+                        }
+                        update_metadata.update(metadata)
+                        
                         await self.websocket_manager.send_progress_update(
                             task_id=task.id,
                             progress=task.progress,
-                            message=message or f"Generating... {progress_percent:.1f}%",
-                            stage="generation"
+                            message=message or f"WAN {model_type} generating... {progress_percent:.1f}%",
+                            stage="wan_generation",
+                            metadata=update_metadata
                         )
                     
-                    logger.debug(f"Generation progress: {progress_percent:.1f}% -> Task progress: {task.progress}%")
+                    logger.debug(f"WAN model generation progress: {progress_percent:.1f}% -> Task progress: {task.progress}%")
                 except Exception as e:
-                    logger.warning(f"Failed to update progress: {e}")
+                    logger.warning(f"Failed to update WAN model progress: {e}")
             
+            # Execute WAN model generation with optimization
             generation_result = await self.real_generation_pipeline.generate_video_with_optimization(
                 model_type=model_type,
-                progress_callback=progress_callback,
+                progress_callback=wan_progress_callback,
                 **generation_params
             )
             
             if generation_result.success:
-                # Update task with successful result
+                # Update task with successful WAN model result
                 task.output_path = generation_result.output_path
                 task.progress = 100
                 task.status = TaskStatusEnum.COMPLETED
                 task.completed_at = datetime.utcnow()
+                task.generation_time_seconds = generation_result.generation_time_seconds
+                task.model_used = f"WAN-{generation_result.model_used}"
+                task.peak_vram_usage_mb = generation_result.peak_vram_usage_mb
+                task.average_vram_usage_mb = generation_result.average_vram_usage_mb
+                task.optimizations_applied = generation_result.optimizations_applied
                 db.commit()
                 
-                # Send completion notification
+                # Send WAN model completion notification
                 if self.websocket_manager:
                     await self.websocket_manager.send_alert(
-                        alert_type="generation_completed",
-                        message=f"Real AI generation completed successfully",
+                        alert_type="wan_generation_completed",
+                        message=f"WAN model generation completed successfully",
                         severity="success",
                         task_id=task.id,
-                        output_path=generation_result.output_path,
-                        model_type=model_type
+                        metadata={
+                            "output_path": generation_result.output_path,
+                            "generation_time": generation_result.generation_time_seconds,
+                            "wan_model_used": generation_result.model_used,
+                            "peak_vram_mb": generation_result.peak_vram_usage_mb,
+                            "optimizations": generation_result.optimizations_applied,
+                            "wan_model": True
+                        }
                     )
                 
-                logger.info(f"Real generation completed successfully for task {task.id}")
+                logger.info(f"WAN model generation completed successfully for task {task.id} using {generation_result.model_used}")
                 return True
             else:
-                error_msg = f"Real generation failed: {generation_result.error_message}"
+                error_msg = f"WAN model generation failed: {generation_result.error_message}"
                 logger.error(error_msg)
                 raise Exception(error_msg)
                 
         except Exception as e:
-            logger.error(f"Real generation failed for task {task.id}: {e}")
-            task.error_message = str(e)
+            logger.error(f"WAN model generation failed for task {task.id}: {e}")
+            task.error_message = f"WAN model error: {str(e)}"
             task.status = TaskStatusEnum.FAILED
             db.commit()
             
-            # Send error notification
+            # Send WAN model error notification
             if self.websocket_manager:
                 await self.websocket_manager.send_alert(
-                    alert_type="generation_failed",
-                    message=f"Real generation failed: {str(e)}",
+                    alert_type="wan_generation_failed",
+                    message=f"WAN model generation failed: {str(e)}",
                     severity="error",
                     task_id=task.id,
-                    model_type=model_type
+                    metadata={
+                        "model_type": model_type,
+                        "wan_model": True,
+                        "error_type": "wan_generation_error"
+                    }
                 )
             
             return False

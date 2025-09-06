@@ -1693,6 +1693,271 @@ class RealGenerationPipeline:
                 self.logger.warning("Hardware optimizer set to None")
         except Exception as e:
             self.logger.error(f"Error setting hardware optimizer: {e}")
+    
+    # LoRA Integration Methods
+    async def _apply_lora_to_pipeline(self, pipeline_wrapper, params: GenerationParams, task_id: str) -> bool:
+        """
+        Apply LoRA to the pipeline if specified in parameters
+        
+        Args:
+            pipeline_wrapper: Pipeline wrapper instance
+            params: Generation parameters containing LoRA settings
+            task_id: Current generation task ID
+            
+        Returns:
+            bool: True if LoRA was applied successfully, False otherwise
+        """
+        try:
+            # Check if LoRA is specified
+            if not params.lora_path or not self.lora_manager:
+                return False
+            
+            # Extract LoRA name from path
+            lora_name = Path(params.lora_path).stem
+            lora_strength = params.lora_strength
+            
+            self.logger.info(f"Applying LoRA {lora_name} with strength {lora_strength} to pipeline")
+            
+            # Get the actual model from pipeline wrapper
+            model = self._extract_model_from_pipeline(pipeline_wrapper)
+            if not model:
+                self.logger.warning("Could not extract model from pipeline wrapper for LoRA application")
+                return False
+            
+            # Check WAN model compatibility and apply LoRA
+            if hasattr(self.lora_manager, 'apply_lora_with_wan_support'):
+                # Use WAN-aware LoRA application
+                model = self.lora_manager.apply_lora_with_wan_support(model, lora_name, lora_strength)
+                self.logger.info(f"Applied LoRA using WAN-aware method")
+            else:
+                # Fallback to standard LoRA application
+                model = self.lora_manager.apply_lora(model, lora_name, lora_strength)
+                self.logger.info(f"Applied LoRA using standard method")
+            
+            # Track applied LoRA for this pipeline
+            pipeline_id = self._get_pipeline_id(pipeline_wrapper)
+            if pipeline_id not in self._applied_loras:
+                self._applied_loras[pipeline_id] = {}
+            self._applied_loras[pipeline_id][lora_name] = lora_strength
+            
+            self.logger.info(f"Successfully applied LoRA {lora_name} to pipeline {pipeline_id}")
+            return True
+            
+        except FileNotFoundError:
+            self.logger.warning(f"LoRA file not found: {params.lora_path}")
+            return False
+        except Exception as e:
+            self.logger.error(f"Failed to apply LoRA to pipeline: {e}")
+            return False
+    
+    def _extract_model_from_pipeline(self, pipeline_wrapper):
+        """
+        Extract the actual model from pipeline wrapper for LoRA application
+        
+        Args:
+            pipeline_wrapper: Pipeline wrapper instance
+            
+        Returns:
+            Model instance or None if not found
+        """
+        try:
+            # Try different ways to access the model
+            if hasattr(pipeline_wrapper, 'model'):
+                return pipeline_wrapper.model
+            elif hasattr(pipeline_wrapper, 'pipeline'):
+                return pipeline_wrapper.pipeline
+            elif hasattr(pipeline_wrapper, 'unet'):
+                return pipeline_wrapper.unet
+            elif hasattr(pipeline_wrapper, 'transformer'):
+                return pipeline_wrapper.transformer
+            else:
+                # For WAN models, try to access through wan_model attribute
+                if hasattr(pipeline_wrapper, 'wan_model'):
+                    return pipeline_wrapper.wan_model
+                
+                # Last resort: return the wrapper itself
+                return pipeline_wrapper
+                
+        except Exception as e:
+            self.logger.error(f"Error extracting model from pipeline wrapper: {e}")
+            return None
+    
+    def _get_pipeline_id(self, pipeline_wrapper) -> str:
+        """Get unique identifier for pipeline wrapper"""
+        try:
+            # Try to get a meaningful ID
+            if hasattr(pipeline_wrapper, 'model_type'):
+                return f"{pipeline_wrapper.model_type}_{id(pipeline_wrapper)}"
+            elif hasattr(pipeline_wrapper, 'config') and hasattr(pipeline_wrapper.config, 'model_type'):
+                return f"{pipeline_wrapper.config.model_type}_{id(pipeline_wrapper)}"
+            else:
+                return f"pipeline_{id(pipeline_wrapper)}"
+        except Exception:
+            return f"pipeline_{id(pipeline_wrapper)}"
+    
+    async def _remove_lora_from_pipeline(self, pipeline_wrapper, lora_name: str) -> bool:
+        """
+        Remove LoRA from pipeline
+        
+        Args:
+            pipeline_wrapper: Pipeline wrapper instance
+            lora_name: Name of LoRA to remove
+            
+        Returns:
+            bool: True if LoRA was removed successfully
+        """
+        try:
+            if not self.lora_manager:
+                return False
+            
+            # Get the actual model from pipeline wrapper
+            model = self._extract_model_from_pipeline(pipeline_wrapper)
+            if not model:
+                return False
+            
+            # Remove LoRA using WAN-aware method if available
+            if hasattr(self.lora_manager, 'remove_lora_with_wan_support'):
+                model = self.lora_manager.remove_lora_with_wan_support(model, lora_name)
+            else:
+                model = self.lora_manager.remove_lora(model, lora_name)
+            
+            # Update tracking
+            pipeline_id = self._get_pipeline_id(pipeline_wrapper)
+            if pipeline_id in self._applied_loras and lora_name in self._applied_loras[pipeline_id]:
+                del self._applied_loras[pipeline_id][lora_name]
+            
+            self.logger.info(f"Successfully removed LoRA {lora_name} from pipeline {pipeline_id}")
+            return True
+            
+        except Exception as e:
+            self.logger.error(f"Failed to remove LoRA from pipeline: {e}")
+            return False
+    
+    async def _adjust_lora_strength_in_pipeline(self, pipeline_wrapper, lora_name: str, new_strength: float) -> bool:
+        """
+        Adjust LoRA strength in pipeline
+        
+        Args:
+            pipeline_wrapper: Pipeline wrapper instance
+            lora_name: Name of LoRA to adjust
+            new_strength: New strength value (0.0 to 2.0)
+            
+        Returns:
+            bool: True if strength was adjusted successfully
+        """
+        try:
+            if not self.lora_manager:
+                return False
+            
+            # Get the actual model from pipeline wrapper
+            model = self._extract_model_from_pipeline(pipeline_wrapper)
+            if not model:
+                return False
+            
+            # Adjust LoRA strength using WAN-aware method if available
+            if hasattr(self.lora_manager, 'adjust_lora_strength_with_wan_support'):
+                model = self.lora_manager.adjust_lora_strength_with_wan_support(model, lora_name, new_strength)
+            else:
+                model = self.lora_manager.adjust_lora_strength(model, lora_name, new_strength)
+            
+            # Update tracking
+            pipeline_id = self._get_pipeline_id(pipeline_wrapper)
+            if pipeline_id in self._applied_loras and lora_name in self._applied_loras[pipeline_id]:
+                self._applied_loras[pipeline_id][lora_name] = new_strength
+            
+            self.logger.info(f"Successfully adjusted LoRA {lora_name} strength to {new_strength} in pipeline {pipeline_id}")
+            return True
+            
+        except Exception as e:
+            self.logger.error(f"Failed to adjust LoRA strength in pipeline: {e}")
+            return False
+    
+    def get_applied_loras_status(self, pipeline_wrapper=None) -> Dict[str, Any]:
+        """
+        Get status of applied LoRAs
+        
+        Args:
+            pipeline_wrapper: Optional specific pipeline to check
+            
+        Returns:
+            Dictionary with LoRA status information
+        """
+        try:
+            if pipeline_wrapper:
+                # Get status for specific pipeline
+                pipeline_id = self._get_pipeline_id(pipeline_wrapper)
+                applied_loras = self._applied_loras.get(pipeline_id, {})
+                
+                # Get WAN-specific status if available
+                wan_status = {}
+                if self.lora_manager and hasattr(self.lora_manager, 'get_wan_lora_status'):
+                    model = self._extract_model_from_pipeline(pipeline_wrapper)
+                    if model:
+                        wan_status = self.lora_manager.get_wan_lora_status(model)
+                
+                return {
+                    "pipeline_id": pipeline_id,
+                    "applied_loras": applied_loras,
+                    "wan_status": wan_status,
+                    "total_applied": len(applied_loras)
+                }
+            else:
+                # Get status for all pipelines
+                return {
+                    "all_pipelines": self._applied_loras,
+                    "total_pipelines_with_loras": len([p for p in self._applied_loras.values() if p]),
+                    "total_applied_loras": sum(len(loras) for loras in self._applied_loras.values())
+                }
+                
+        except Exception as e:
+            self.logger.error(f"Error getting applied LoRAs status: {e}")
+            return {"error": str(e)}
+    
+    async def validate_lora_compatibility(self, model_type: str, lora_name: str) -> Dict[str, Any]:
+        """
+        Validate LoRA compatibility with specific model type
+        
+        Args:
+            model_type: Type of model (t2v-A14B, i2v-A14B, ti2v-5B)
+            lora_name: Name of LoRA to validate
+            
+        Returns:
+            Dictionary with validation results
+        """
+        try:
+            if not self.lora_manager:
+                return {
+                    "valid": False,
+                    "error": "LoRA manager not available",
+                    "compatibility": None
+                }
+            
+            # Use WAN-specific validation if available
+            if hasattr(self.lora_manager, 'validate_lora_for_wan_model'):
+                return self.lora_manager.validate_lora_for_wan_model(lora_name, model_type)
+            else:
+                # Basic validation - check if LoRA exists
+                available_loras = self.lora_manager.list_available_loras()
+                if lora_name in available_loras:
+                    return {
+                        "valid": True,
+                        "compatibility": "standard",
+                        "lora_info": available_loras[lora_name]
+                    }
+                else:
+                    return {
+                        "valid": False,
+                        "error": f"LoRA {lora_name} not found",
+                        "compatibility": None
+                    }
+                    
+        except Exception as e:
+            self.logger.error(f"Error validating LoRA compatibility: {e}")
+            return {
+                "valid": False,
+                "error": str(e),
+                "compatibility": None
+            }
 
 # Global real generation pipeline instance
 _real_generation_pipeline = None

@@ -9,12 +9,12 @@
     "loras_directory": "loras"
   },
   "models": {
-    "t2v_model": "Wan2.2-T2V-A14B",
-    "i2v_model": "Wan2.2-I2V-A14B",
-    "ti2v_model": "Wan2.2-TI2V-5B"
+    "t2v_model": "t2v-A14B",
+    "i2v_model": "i2v-A14B",
+    "ti2v_model": "ti2v-5B"
   },
   "optimization": {
-    "default_quantization": "invalid",
+    "default_quantization": "fp16",
     "enable_offload": true,
     "max_vram_usage_gb": 12
   }

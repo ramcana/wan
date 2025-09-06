@@ -36,10 +36,9 @@
     "cpu_warning_percent": 80
   },
   "model": {
-    "base_model": "runwayml/stable-diffusion-v1-5",
-    "vae_model": "stabilityai/sd-vae-ft-mse",
-    "safety_model": "CompVis/stable-diffusion-safety-checker",
-    "feature_extractor": "openai/clip-vit-base-patch32",
+    "t2v_model": "wan_implementation:t2v-A14B",
+    "i2v_model": "wan_implementation:i2v-A14B",
+    "ti2v_model": "wan_implementation:ti2v-5B",
     "cache_models": true,
     "offload_to_cpu": false
   },

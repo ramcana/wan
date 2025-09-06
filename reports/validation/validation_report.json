@@ -1,0 +1,631 @@
+{
+  "timestamp": "1757186014.963255",
+  "validation_results": {
+    "overall_valid": true,
+    "model_validations": {
+      "t2v-A14B": {
+        "is_valid": true,
+        "errors": []
+      },
+      "i2v-A14B": {
+        "is_valid": true,
+        "errors": []
+      },
+      "ti2v-5B": {
+        "is_valid": true,
+        "errors": []
+      }
+    },
+    "summary": {
+      "total_models": 3,
+      "valid_models": 3,
+      "invalid_models": 0,
+      "errors": []
+    }
+  },
+  "model_status": {
+    "t2v-A14B": {
+      "model_id": "wan_implementation:t2v-A14B",
+      "is_cached": false,
+      "is_loaded": false,
+      "is_valid": false,
+      "cache_info": null,
+      "model_info": null,
+      "size_mb": 0.0,
+      "compatibility_status": null,
+      "optimization_recommendations": [],
+      "is_wan_model": true,
+      "wan_capabilities": {
+        "capabilities": {
+          "model_type": "t2v-A14B",
+          "display_name": "WAN Text-to-Video A14B",
+          "description": "WAN Text-to-Video model with 14B parameters for high-quality video generation from text prompts",
+          "architecture_type": "diffusion_transformer",
+          "max_resolution": [
+            1280,
+            720
+          ],
+          "min_resolution": [
+            256,
+            256
+          ],
+          "max_frames": 16,
+          "supports_variable_length": true,
+          "supports_attention_slicing": true,
+          "supports_gradient_checkpointing": true,
+          "supports_text_conditioning": true,
+          "supports_image_conditioning": false,
+          "supports_dual_conditioning": false,
+          "supports_lora": true,
+          "supports_controlnet": false,
+          "supports_inpainting": false,
+          "parameter_count": 14000000000
+        },
+        "requirements": {
+          "min_vram_gb": 8.0,
+          "estimated_vram_gb": 10.5,
+          "supported_precisions": [
+            "bf16",
+            "fp16"
+          ],
+          "supports_cpu_offload": true,
+          "supports_memory_efficient_attention": true,
+          "supports_torch_compile": true,
+          "supports_xformers": true
+        },
+        "hardware_profiles": {
+          "rtx_4080": {
+            "target_gpu": "RTX 4080",
+            "vram_requirement_gb": 10.0,
+            "batch_size": 1,
+            "precision": "fp16",
+            "optimizations": [
+              "Optimized for RTX 4080 16GB VRAM",
+              "Uses tensor cores for acceleration"
+            ]
+          },
+          "rtx_3080": {
+            "target_gpu": "RTX 3080",
+            "vram_requirement_gb": 8.5,
+            "batch_size": 1,
+            "precision": "fp16",
+            "optimizations": [
+              "Optimized for RTX 3080 10GB VRAM",
+              "Uses CPU offloading for memory management"
+            ]
+          },
+          "low_vram": {
+            "target_gpu": "Generic Low VRAM",
+            "vram_requirement_gb": 6.0,
+            "batch_size": 1,
+            "precision": "fp16",
+            "optimizations": [
+              "Optimized for GPUs with 6-8GB VRAM",
+              "Aggressive memory optimization"
+            ]
+          }
+        },
+        "is_valid": true
+      },
+      "wan_validation": {
+        "is_valid": true,
+        "errors": []
+      },
+      "hardware_compatibility": {
+        "is_compatible": true,
+        "compatibility_errors": [],
+        "hardware_detected": {
+          "gpu_name": "NVIDIA GeForce RTX 4080",
+          "available_vram_gb": 15.99169921875,
+          "architecture_type": "cuda"
+        },
+        "optimal_profile": "rtx_4080",
+        "optimal_profile_config": {
+          "profile_name": "rtx_4080",
+          "target_gpu": "RTX 4080",
+          "vram_requirement_gb": 10.0,
+          "batch_size": 1,
+          "enable_xformers": true,
+          "vae_tile_size": 256,
+          "cpu_offload": false,
+          "precision": "WANPrecisionType.FP16",
+          "enable_attention_slicing": false,
+          "enable_sequential_cpu_offload": false,
+          "chunk_size": null,
+          "optimization_notes": [
+            "Optimized for RTX 4080 16GB VRAM",
+            "Uses tensor cores for acceleration"
+          ]
+        },
+        "recommendations": [],
+        "vram_utilization": {
+          "available_gb": 15.99169921875,
+          "required_gb": 8.0,
+          "estimated_gb": 10.5,
+          "utilization_percent": 65.65906384537877
+        }
+      },
+      "performance_profile": {
+        "model_type": "t2v-A14B",
+        "optimization_settings": {
+          "precision": "WANPrecisionType.FP16",
+          "enable_xformers": true,
+          "vae_tile_size": 256,
+          "cpu_offload": false,
+          "enable_attention_slicing": false,
+          "enable_sequential_cpu_offload": false,
+          "batch_size": 1
+        },
+        "performance_recommendations": [
+          "Use WANPrecisionType.FP16 precision for optimal performance",
+          "Set batch size to 1",
+          "Configure VAE tile size to 256",
+          "Enable xFormers for memory efficiency"
+        ],
+        "estimated_metrics": {
+          "inference_time_seconds": 38.25,
+          "vram_usage_gb": 10.5,
+          "vram_utilization_percent": 65.65906384537877
+        },
+        "hardware_requirements": {
+          "min_vram_gb": 8.0,
+          "recommended_vram_gb": 10.5,
+          "supports_cpu_fallback": true
+        },
+        "optimization_features": {
+          "supports_fp16": true,
+          "supports_bf16": true,
+          "supports_int8": false,
+          "supports_torch_compile": true,
+          "supports_xformers": true,
+          "memory_efficient_attention": true
+        }
+      }
+    },
+    "i2v-A14B": {
+      "model_id": "wan_implementation:i2v-A14B",
+      "is_cached": false,
+      "is_loaded": false,
+      "is_valid": false,
+      "cache_info": null,
+      "model_info": null,
+      "size_mb": 0.0,
+      "compatibility_status": null,
+      "optimization_recommendations": [],
+      "is_wan_model": true,
+      "wan_capabilities": {
+        "capabilities": {
+          "model_type": "i2v-A14B",
+          "display_name": "WAN Image-to-Video A14B",
+          "description": "WAN Image-to-Video model with 14B parameters for video generation from input images",
+          "architecture_type": "diffusion_transformer",
+          "max_resolution": [
+            1280,
+            720
+          ],
+          "min_resolution": [
+            256,
+            256
+          ],
+          "max_frames": 16,
+          "supports_variable_length": true,
+          "supports_attention_slicing": true,
+          "supports_gradient_checkpointing": true,
+          "supports_text_conditioning": true,
+          "supports_image_conditioning": true,
+          "supports_dual_conditioning": false,
+          "supports_lora": true,
+          "supports_controlnet": false,
+          "supports_inpainting": false,
+          "parameter_count": 14000000000
+        },
+        "requirements": {
+          "min_vram_gb": 8.5,
+          "estimated_vram_gb": 11.0,
+          "supported_precisions": [
+            "bf16",
+            "fp16"
+          ],
+          "supports_cpu_offload": true,
+          "supports_memory_efficient_attention": true,
+          "supports_torch_compile": true,
+          "supports_xformers": true
+        },
+        "hardware_profiles": {
+          "rtx_4080": {
+            "target_gpu": "RTX 4080",
+            "vram_requirement_gb": 10.5,
+            "batch_size": 1,
+            "precision": "fp16",
+            "optimizations": [
+              "Optimized for RTX 4080 16GB VRAM",
+              "Image conditioning requires additional memory"
+            ]
+          },
+          "rtx_3080": {
+            "target_gpu": "RTX 3080",
+            "vram_requirement_gb": 9.0,
+            "batch_size": 1,
+            "precision": "fp16",
+            "optimizations": [
+              "Optimized for RTX 3080 10GB VRAM",
+              "CPU offloading for image encoder"
+            ]
+          },
+          "low_vram": {
+            "target_gpu": "Generic Low VRAM",
+            "vram_requirement_gb": 6.5,
+            "batch_size": 1,
+            "precision": "fp16",
+            "optimizations": [
+              "Optimized for GPUs with 6-8GB VRAM",
+              "Sequential offloading for all components"
+            ]
+          }
+        },
+        "is_valid": true
+      },
+      "wan_validation": {
+        "is_valid": true,
+        "errors": []
+      },
+      "hardware_compatibility": {
+        "is_compatible": true,
+        "compatibility_errors": [],
+        "hardware_detected": {
+          "gpu_name": "NVIDIA GeForce RTX 4080",
+          "available_vram_gb": 15.99169921875,
+          "architecture_type": "cuda"
+        },
+        "optimal_profile": "rtx_4080",
+        "optimal_profile_config": {
+          "profile_name": "rtx_4080",
+          "target_gpu": "RTX 4080",
+          "vram_requirement_gb": 10.5,
+          "batch_size": 1,
+          "enable_xformers": true,
+          "vae_tile_size": 256,
+          "cpu_offload": false,
+          "precision": "WANPrecisionType.FP16",
+          "enable_attention_slicing": false,
+          "enable_sequential_cpu_offload": false,
+          "chunk_size": null,
+          "optimization_notes": [
+            "Optimized for RTX 4080 16GB VRAM",
+            "Image conditioning requires additional memory"
+          ]
+        },
+        "recommendations": [],
+        "vram_utilization": {
+          "available_gb": 15.99169921875,
+          "required_gb": 8.5,
+          "estimated_gb": 11.0,
+          "utilization_percent": 68.78568593325394
+        }
+      },
+      "performance_profile": {
+        "model_type": "i2v-A14B",
+        "optimization_settings": {
+          "precision": "WANPrecisionType.FP16",
+          "enable_xformers": true,
+          "vae_tile_size": 256,
+          "cpu_offload": false,
+          "enable_attention_slicing": false,
+          "enable_sequential_cpu_offload": false,
+          "batch_size": 1
+        },
+        "performance_recommendations": [
+          "Use WANPrecisionType.FP16 precision for optimal performance",
+          "Set batch size to 1",
+          "Configure VAE tile size to 256",
+          "Enable xFormers for memory efficiency"
+        ],
+        "estimated_metrics": {
+          "inference_time_seconds": 42.5,
+          "vram_usage_gb": 11.0,
+          "vram_utilization_percent": 68.78568593325394
+        },
+        "hardware_requirements": {
+          "min_vram_gb": 8.5,
+          "recommended_vram_gb": 11.0,
+          "supports_cpu_fallback": true
+        },
+        "optimization_features": {
+          "supports_fp16": true,
+          "supports_bf16": true,
+          "supports_int8": false,
+          "supports_torch_compile": true,
+          "supports_xformers": true,
+          "memory_efficient_attention": true
+        }
+      }
+    },
+    "ti2v-5B": {
+      "model_id": "wan_implementation:ti2v-5B",
+      "is_cached": false,
+      "is_loaded": false,
+      "is_valid": false,
+      "cache_info": null,
+      "model_info": null,
+      "size_mb": 0.0,
+      "compatibility_status": null,
+      "optimization_recommendations": [],
+      "is_wan_model": true,
+      "wan_capabilities": {
+        "capabilities": {
+          "model_type": "ti2v-5B",
+          "display_name": "WAN Text+Image-to-Video 5B",
+          "description": "WAN Text+Image-to-Video model with 5B parameters for efficient dual-conditioned video generation",
+          "architecture_type": "diffusion_transformer",
+          "max_resolution": [
+            1280,
+            720
+          ],
+          "min_resolution": [
+            256,
+            256
+          ],
+          "max_frames": 16,
+          "supports_variable_length": true,
+          "supports_attention_slicing": true,
+          "supports_gradient_checkpointing": true,
+          "supports_text_conditioning": true,
+          "supports_image_conditioning": true,
+          "supports_dual_conditioning": true,
+          "supports_lora": true,
+          "supports_controlnet": false,
+          "supports_inpainting": false,
+          "supports_interpolation": true,
+          "parameter_count": 5000000000
+        },
+        "requirements": {
+          "min_vram_gb": 5.0,
+          "estimated_vram_gb": 6.5,
+          "supported_precisions": [
+            "int8",
+            "bf16",
+            "fp16"
+          ],
+          "supports_cpu_offload": true,
+          "supports_memory_efficient_attention": true,
+          "supports_torch_compile": true,
+          "supports_xformers": true
+        },
+        "hardware_profiles": {
+          "rtx_4080": {
+            "target_gpu": "RTX 4080",
+            "vram_requirement_gb": 6.0,
+            "batch_size": 2,
+            "precision": "fp16",
+            "optimizations": [
+              "Optimized for RTX 4080 16GB VRAM",
+              "Can run multiple batches",
+              "Fastest inference"
+            ]
+          },
+          "rtx_3080": {
+            "target_gpu": "RTX 3080",
+            "vram_requirement_gb": 6.0,
+            "batch_size": 1,
+            "precision": "fp16",
+            "optimizations": [
+              "Optimized for RTX 3080 10GB VRAM",
+              "Fits comfortably in VRAM"
+            ]
+          },
+          "low_vram": {
+            "target_gpu": "Generic Low VRAM",
+            "vram_requirement_gb": 4.0,
+            "batch_size": 1,
+            "precision": "fp16",
+            "optimizations": [
+              "Optimized for GPUs with 4-6GB VRAM",
+              "Lightweight model variant"
+            ]
+          }
+        },
+        "is_valid": true
+      },
+      "wan_validation": {
+        "is_valid": true,
+        "errors": []
+      },
+      "hardware_compatibility": {
+        "is_compatible": true,
+        "compatibility_errors": [],
+        "hardware_detected": {
+          "gpu_name": "NVIDIA GeForce RTX 4080",
+          "available_vram_gb": 15.99169921875,
+          "architecture_type": "cuda"
+        },
+        "optimal_profile": "rtx_4080",
+        "optimal_profile_config": {
+          "profile_name": "rtx_4080",
+          "target_gpu": "RTX 4080",
+          "vram_requirement_gb": 6.0,
+          "batch_size": 2,
+          "enable_xformers": true,
+          "vae_tile_size": 512,
+          "cpu_offload": false,
+          "precision": "WANPrecisionType.FP16",
+          "enable_attention_slicing": false,
+          "enable_sequential_cpu_offload": false,
+          "chunk_size": null,
+          "optimization_notes": [
+            "Optimized for RTX 4080 16GB VRAM",
+            "Can run multiple batches",
+            "Fastest inference"
+          ]
+        },
+        "recommendations": [],
+        "vram_utilization": {
+          "available_gb": 15.99169921875,
+          "required_gb": 5.0,
+          "estimated_gb": 6.5,
+          "utilization_percent": 40.64608714237733
+        }
+      },
+      "performance_profile": {
+        "model_type": "ti2v-5B",
+        "optimization_settings": {
+          "precision": "WANPrecisionType.FP16",
+          "enable_xformers": true,
+          "vae_tile_size": 512,
+          "cpu_offload": false,
+          "enable_attention_slicing": false,
+          "enable_sequential_cpu_offload": false,
+          "batch_size": 2
+        },
+        "performance_recommendations": [
+          "Use WANPrecisionType.FP16 precision for optimal performance",
+          "Set batch size to 2",
+          "Configure VAE tile size to 512",
+          "Enable xFormers for memory efficiency"
+        ],
+        "estimated_metrics": {
+          "inference_time_seconds": 21.25,
+          "vram_usage_gb": 6.5,
+          "vram_utilization_percent": 40.64608714237733
+        },
+        "hardware_requirements": {
+          "min_vram_gb": 5.0,
+          "recommended_vram_gb": 6.5,
+          "supports_cpu_fallback": true
+        },
+        "optimization_features": {
+          "supports_fp16": true,
+          "supports_bf16": true,
+          "supports_int8": true,
+          "supports_torch_compile": true,
+          "supports_xformers": true,
+          "memory_efficient_attention": true
+        }
+      }
+    }
+  },
+  "available_models": [
+    {
+      "model_type": "t2v-A14B",
+      "display_name": "WAN Text-to-Video A14B",
+      "description": "WAN Text-to-Video model with 14B parameters for high-quality video generation from text prompts",
+      "parameter_count": 14000000000,
+      "vram_estimate_gb": 10.5,
+      "min_vram_gb": 8.0,
+      "max_frames": 16,
+      "max_resolution": [
+        1280,
+        720
+      ],
+      "capabilities": {
+        "supports_text_conditioning": true,
+        "supports_image_conditioning": false,
+        "supports_dual_conditioning": false,
+        "supports_lora": true,
+        "supports_controlnet": false,
+        "supports_inpainting": false,
+        "parameter_count": 14000000000
+      },
+      "hardware_profiles": [
+        "rtx_4080",
+        "rtx_3080",
+        "low_vram"
+      ],
+      "supports_text": true,
+      "supports_image": false,
+      "supports_dual": false
+    },
+    {
+      "model_type": "i2v-A14B",
+      "display_name": "WAN Image-to-Video A14B",
+      "description": "WAN Image-to-Video model with 14B parameters for video generation from input images",
+      "parameter_count": 14000000000,
+      "vram_estimate_gb": 11.0,
+      "min_vram_gb": 8.5,
+      "max_frames": 16,
+      "max_resolution": [
+        1280,
+        720
+      ],
+      "capabilities": {
+        "supports_text_conditioning": true,
+        "supports_image_conditioning": true,
+        "supports_dual_conditioning": false,
+        "supports_lora": true,
+        "supports_controlnet": false,
+        "supports_inpainting": false,
+        "parameter_count": 14000000000
+      },
+      "hardware_profiles": [
+        "rtx_4080",
+        "rtx_3080",
+        "low_vram"
+      ],
+      "supports_text": true,
+      "supports_image": true,
+      "supports_dual": false
+    },
+    {
+      "model_type": "ti2v-5B",
+      "display_name": "WAN Text+Image-to-Video 5B",
+      "description": "WAN Text+Image-to-Video model with 5B parameters for efficient dual-conditioned video generation",
+      "parameter_count": 5000000000,
+      "vram_estimate_gb": 6.5,
+      "min_vram_gb": 5.0,
+      "max_frames": 16,
+      "max_resolution": [
+        1280,
+        720
+      ],
+      "capabilities": {
+        "supports_text_conditioning": true,
+        "supports_image_conditioning": true,
+        "supports_dual_conditioning": true,
+        "supports_lora": true,
+        "supports_controlnet": false,
+        "supports_inpainting": false,
+        "supports_interpolation": true,
+        "parameter_count": 5000000000
+      },
+      "hardware_profiles": [
+        "rtx_4080",
+        "rtx_3080",
+        "low_vram"
+      ],
+      "supports_text": true,
+      "supports_image": true,
+      "supports_dual": true
+    }
+  ],
+  "hardware_recommendations": {
+    "recommended_models": [
+      {
+        "model_type": "t2v-A14B",
+        "display_name": "WAN Text-to-Video A14B",
+        "min_vram_gb": 8.0,
+        "estimated_vram_gb": 10.5,
+        "description": "WAN Text-to-Video model with 14B parameters for high-quality video generation from text prompts"
+      },
+      {
+        "model_type": "i2v-A14B",
+        "display_name": "WAN Image-to-Video A14B",
+        "min_vram_gb": 8.5,
+        "estimated_vram_gb": 11.0,
+        "description": "WAN Image-to-Video model with 14B parameters for video generation from input images"
+      },
+      {
+        "model_type": "ti2v-5B",
+        "display_name": "WAN Text+Image-to-Video 5B",
+        "min_vram_gb": 5.0,
+        "estimated_vram_gb": 6.5,
+        "description": "WAN Text+Image-to-Video model with 5B parameters for efficient dual-conditioned video generation"
+      }
+    ],
+    "compatible_models": [],
+    "incompatible_models": [],
+    "optimization_suggestions": [
+      "All models should run optimally",
+      "Consider enabling torch.compile for faster inference",
+      "Use BF16 precision if supported by hardware"
+    ]
+  }
+}

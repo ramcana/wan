@@ -1,0 +1,101 @@
+{
+    "deployment": {
+        "source_models_path": "models/staging",
+        "target_models_path": "models/production",
+        "backup_path": "backups/models",
+        "validation_enabled": true,
+        "rollback_enabled": true,
+        "monitoring_enabled": true,
+        "health_check_interval": 300,
+        "max_deployment_time": 3600
+    },
+    "validation": {
+        "pre_deployment_checks": [
+            "system_resources",
+            "environment",
+            "model_source",
+            "dependencies",
+            "storage_requirements",
+            "hardware_compatibility"
+        ],
+        "post_deployment_checks": [
+            "model_loading",
+            "model_configurations",
+            "model_inference",
+            "performance_benchmark",
+            "model_integration"
+        ],
+        "thresholds": {
+            "min_ram_gb": 8,
+            "min_vram_gb": 8,
+            "min_disk_space_gb": 50,
+            "max_cpu_usage_percent": 80,
+            "max_memory_usage_percent": 85,
+            "max_inference_time_seconds": 30
+        }
+    },
+    "monitoring": {
+        "health_check_interval": 300,
+        "max_history_days": 7,
+        "alert_thresholds": {
+            "cpu_usage_warning": 80.0,
+            "cpu_usage_critical": 95.0,
+            "memory_usage_warning": 85.0,
+            "memory_usage_critical": 95.0,
+            "disk_usage_warning": 85.0,
+            "disk_usage_critical": 95.0,
+            "inference_time_warning": 30.0,
+            "inference_time_critical": 60.0,
+            "model_load_time_warning": 60.0,
+            "model_load_time_critical": 120.0
+        }
+    },
+    "rollback": {
+        "backup_retention_days": 30,
+        "compression_enabled": true,
+        "integrity_verification": true,
+        "automatic_cleanup": true
+    },
+    "models": {
+        "supported_models": [
+            "t2v-A14B",
+            "i2v-A14B",
+            "ti2v-5B"
+        ],
+        "model_requirements": {
+            "t2v-A14B": {
+                "min_vram_gb": 12,
+                "estimated_size_gb": 30,
+                "dependencies": [
+                    "torch",
+                    "transformers",
+                    "diffusers"
+                ]
+            },
+            "i2v-A14B": {
+                "min_vram_gb": 12,
+                "estimated_size_gb": 30,
+                "dependencies": [
+                    "torch",
+                    "transformers",
+                    "diffusers"
+                ]
+            },
+            "ti2v-5B": {
+                "min_vram_gb": 8,
+                "estimated_size_gb": 15,
+                "dependencies": [
+                    "torch",
+                    "transformers",
+                    "diffusers"
+                ]
+            }
+        }
+    },
+    "logging": {
+        "level": "INFO",
+        "file_path": "logs/deployment.log",
+        "max_file_size_mb": 100,
+        "backup_count": 5
+    }
+}

@@ -29,29 +29,38 @@ That's it! The script automatically:
 
 ## Architecture Overview
 
-The codebase has been functionally organized into the following structure:
+The codebase has been comprehensively organized with a clean structure (reorganized 2025-01-06):
 
 ```
-wan2.2/
-├── backend/                    # FastAPI backend
-│   ├── api/v1/endpoints/      # API endpoints
-│   ├── repositories/          # Data access layer
-│   ├── schemas/              # API schemas
-│   └── services/             # Business logic services
-├── core/                      # Core domain logic
-│   ├── models/               # Domain models
-│   ├── services/             # Core services
-│   └── interfaces/           # Abstract interfaces
-├── infrastructure/           # Infrastructure layer
-│   ├── config/              # Configuration management
-│   ├── storage/             # File and model storage
-│   └── hardware/            # Hardware monitoring & optimization
-├── frontend/                 # React frontend
-│   └── src/                 # Frontend source code
-├── utils_new/               # Utility functions
-├── docs/                    # Documentation
-└── scripts/                 # Build and deployment scripts
+wan/
+├── backend/                    # FastAPI backend services
+├── frontend/                   # React frontend application
+├── core/                       # Core domain logic and models
+├── cli/                        # Command-line interface
+├── models/                     # Model definitions and configs
+├── config/                     # Configuration management
+├── docs/                       # Comprehensive documentation
+│   ├── archive/               # Historical docs (moved from root)
+│   ├── api/                   # API documentation
+│   ├── user-guide/            # User documentation
+│   └── developer-guide/       # Developer resources
+├── tests/                      # Organized test suite
+│   ├── archive/               # Legacy tests (moved from root)
+│   ├── unit/                  # Unit tests
+│   ├── integration/           # Integration tests
+│   └── e2e/                   # End-to-end tests
+├── scripts/                    # Automation and utilities
+│   └── utils/                 # Code maintenance tools
+├── reports/                    # Generated reports and metrics
+│   ├── health/                # Health monitoring
+│   ├── validation/            # Validation results
+│   └── test-results/          # Test execution reports
+├── demo/                       # Examples and demonstrations
+├── infrastructure/             # Infrastructure as code
+└── data/                       # Data files and datasets
 ```
+
+For detailed structure information, see [docs/PROJECT_STRUCTURE.md](docs/PROJECT_STRUCTURE.md).
 
 ## Advanced Installation (For Developers)
 

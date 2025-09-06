@@ -209,6 +209,20 @@ try:
 except ImportError as e:
     logger.warning(f"Could not import enhanced generation router: {e}")
 
+try:
+    from api.wan_model_info import router as wan_model_info_router
+    app.include_router(wan_model_info_router)
+    logger.info("WAN Model Information API router included")
+except ImportError as e:
+    logger.warning(f"Could not import WAN model info router: {e}")
+
+try:
+    from api.wan_model_dashboard import router as wan_dashboard_router
+    app.include_router(wan_dashboard_router)
+    logger.info("WAN Model Dashboard API router included")
+except ImportError as e:
+    logger.warning(f"Could not import WAN dashboard router: {e}")
+
 # Configure CORS with enhanced validation
 app.add_middleware(
     CORSMiddleware,

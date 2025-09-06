@@ -1,0 +1,129 @@
+{
+  "test_summary": {
+    "total_tests": 6,
+    "passed": 5,
+    "failed": 1,
+    "errors": 0,
+    "warnings": 0,
+    "duration_seconds": 2.91
+  },
+  "test_results": {
+    "WAN Model Integration": {
+      "status": "FAIL",
+      "available_models": [],
+      "details": "No WAN models available"
+    },
+    "VRAM Monitoring": {
+      "status": "PASS",
+      "current_usage": {
+        "allocated_gb": 0.0,
+        "reserved_gb": 0.0,
+        "total_gb": 15.99169921875,
+        "usage_percent": 0.0,
+        "optimal_usage_percent": 0.0
+      },
+      "optimization_suggestions": [],
+      "details": "VRAM monitoring working correctly"
+    },
+    "Hardware Optimization": {
+      "status": "PASS",
+      "hardware_profile": {
+        "gpu_name": "NVIDIA GeForce RTX 4080",
+        "total_vram_gb": 15.99,
+        "cpu_cores": 64,
+        "architecture": "unknown"
+      },
+      "optimizer_status": "Available",
+      "optimization_applied": true,
+      "alternative_models": [
+        "t2v-a14b",
+        "ti2v-5B"
+      ],
+      "details": "Hardware optimization components checked"
+    },
+    "Generation Mode Configuration": {
+      "status": "PASS",
+      "expected_config": {
+        "use_real_generation": true,
+        "fallback_to_simulation": false,
+        "prefer_wan_models": true
+      },
+      "actual_config": {
+        "use_real_generation": true,
+        "fallback_to_simulation": false,
+        "prefer_wan_models": true
+      },
+      "pipeline_available": true,
+      "details": "Generation mode configuration checked"
+    },
+    "Fallback Strategies": {
+      "status": "PASS",
+      "fallback_results": {
+        "t2v-A14B": {
+          "alternatives": [
+            "t2v-a14b",
+            "ti2v-5B"
+          ],
+          "count": 2,
+          "description": "Primary T2V model"
+        },
+        "i2v-A14B": {
+          "alternatives": [
+            "i2v-a14b",
+            "t2v-A14B"
+          ],
+          "count": 2,
+          "description": "Primary I2V model"
+        },
+        "ti2v-5B": {
+          "alternatives": [
+            "t2v-A14B",
+            "t2v-a14b"
+          ],
+          "count": 2,
+          "description": "Primary TI2V model"
+        },
+        "invalid-model": {
+          "alternatives": [],
+          "count": 0,
+          "description": "Invalid model type"
+        }
+      },
+      "fallback_manager_available": false,
+      "details": "Fallback strategies tested successfully"
+    },
+    "Enhanced Components": {
+      "status": "PASS",
+      "components_status": {
+        "model_availability_manager": {
+          "available": false,
+          "description": "Manages model availability and status"
+        },
+        "enhanced_model_downloader": {
+          "available": true,
+          "description": "Enhanced model downloading capabilities"
+        },
+        "model_health_monitor": {
+          "available": true,
+          "description": "Monitors model health and performance"
+        },
+        "model_usage_analytics": {
+          "available": true,
+          "description": "Tracks model usage analytics"
+        },
+        "performance_monitor": {
+          "available": true,
+          "description": "Monitors system performance"
+        }
+      },
+      "available_count": 4,
+      "total_count": 5,
+      "details": "4/5 enhanced components available"
+    }
+  },
+  "timestamp": "2025-09-06 17:23:48",
+  "test_environment": {
+    "python_version": "3.10.12 (main, Aug 15 2025, 14:32:43) [GCC 11.4.0]",
+    "platform": "linux"
+  }
+}

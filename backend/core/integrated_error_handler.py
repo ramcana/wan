@@ -819,8 +819,9 @@ class IntegratedErrorHandler:
                 except ImportError:
                     pass
             
-            # Use WAN error handler
-            wan_handler = get_wan_error_handler()
+            # Create WAN error handler instance directly to avoid circular dependency
+            from core.models.wan_models.wan_model_error_handler import WANModelErrorHandler
+            wan_handler = WANModelErrorHandler(avoid_integrated_handler=True)
             wan_error = await wan_handler.handle_wan_error(error, wan_context)
             
             # Add integrated handler context to the error
@@ -914,8 +915,9 @@ async def handle_wan_model_error(
             wan_error_context.error_stage = wan_context.get("error_stage", "unknown")
             wan_error_context.checkpoint_path = wan_context.get("checkpoint_path")
         
-        # Use WAN error handler
-        wan_handler = get_wan_error_handler()
+        # Create WAN error handler instance directly to avoid circular dependency
+        from core.models.wan_models.wan_model_error_handler import WANModelErrorHandler
+        wan_handler = WANModelErrorHandler(avoid_integrated_handler=True)
         return await wan_handler.handle_wan_error(error, wan_error_context)
         
     except ImportError:

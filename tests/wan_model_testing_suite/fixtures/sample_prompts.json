@@ -1,0 +1,91 @@
+{
+    "basic_prompts": [
+        "A cat playing in a garden",
+        "A dog running on the beach",
+        "A bird flying in the sky",
+        "A car driving down a road",
+        "A person walking in the rain"
+    ],
+    "detailed_prompts": [
+        "A beautiful cat with orange fur playing with a red ball in a lush green garden with colorful flowers",
+        "A golden retriever dog running energetically along a sandy beach with waves crashing in the background",
+        "A majestic eagle soaring through clear blue skies with white clouds and mountain peaks below",
+        "A sleek sports car driving down a winding mountain road during a stunning sunset",
+        "A person in a yellow raincoat walking slowly through a city street during a gentle rain shower"
+    ],
+    "cinematic_prompts": [
+        "Cinematic shot of a cat playing in a garden, golden hour lighting, shallow depth of field",
+        "Epic wide shot of a dog running on the beach, dramatic waves, sunset lighting, 4K quality",
+        "Aerial cinematic view of a bird flying over a vast landscape, professional cinematography",
+        "Dynamic tracking shot of a car on a mountain road, cinematic color grading, high production value",
+        "Atmospheric shot of a person walking in rain, moody lighting, film noir style"
+    ],
+    "artistic_prompts": [
+        "Impressionist painting style of a cat in a garden, soft brushstrokes, vibrant colors",
+        "Watercolor illustration of a dog on a beach, flowing colors, artistic interpretation",
+        "Oil painting of a bird in flight, classical art style, rich textures and colors",
+        "Abstract representation of a car on a road, geometric shapes, modern art style",
+        "Sketch-like drawing of a person in rain, minimalist style, black and white"
+    ],
+    "negative_prompts": [
+        "blurry, low quality, pixelated, distorted",
+        "ugly, deformed, bad anatomy, worst quality",
+        "overexposed, underexposed, poor lighting",
+        "artifacts, compression, low resolution",
+        "unrealistic, cartoon, anime, illustration"
+    ],
+    "style_modifiers": [
+        "photorealistic",
+        "highly detailed",
+        "8K resolution",
+        "professional photography",
+        "studio lighting",
+        "sharp focus",
+        "vibrant colors",
+        "natural lighting",
+        "high contrast",
+        "cinematic composition"
+    ],
+    "test_scenarios": {
+        "short_prompts": [
+            "Cat",
+            "Dog running",
+            "Bird flying",
+            "Car driving",
+            "Person walking"
+        ],
+        "long_prompts": [
+            "A magnificent orange tabby cat with bright green eyes playing joyfully with a small red rubber ball in a beautifully maintained garden filled with blooming roses, tulips, and daffodils, surrounded by lush green grass and tall oak trees, during a perfect sunny afternoon with soft golden light filtering through the leaves",
+            "An energetic golden retriever with a shiny coat running at full speed along a pristine sandy beach with crystal clear turquoise water, white foam waves gently lapping at the shore, seagulls flying overhead, and a beautiful sunset painting the sky in shades of orange, pink, and purple",
+            "A majestic bald eagle with powerful wings spread wide soaring gracefully through a brilliant blue sky dotted with fluffy white clouds, flying high above snow-capped mountain peaks, dense forests, and a winding river valley, captured in stunning detail with perfect lighting and composition"
+        ],
+        "complex_scenes": [
+            "Multiple cats playing together in a garden with various toys and obstacles",
+            "A pack of dogs running together on a beach during a storm with dramatic lighting",
+            "A flock of birds performing aerial maneuvers in formation against a sunset sky",
+            "Multiple cars racing on a winding mountain road with dynamic camera movements",
+            "A group of people walking through a busy city street in heavy rain with reflections"
+        ],
+        "challenging_prompts": [
+            "A transparent glass cat playing with invisible toys in a mirror-filled room",
+            "A dog made of water running on a beach made of clouds",
+            "A mechanical bird with clockwork wings flying through a steampunk cityscape",
+            "A car driving upside down on the ceiling of a tunnel filled with floating objects",
+            "A person walking backwards through time in a constantly changing environment"
+        ]
+    },
+    "quality_test_prompts": [
+        "High quality professional photograph of a cat, studio lighting, 8K resolution",
+        "Photorealistic dog portrait, sharp focus, natural lighting, highly detailed",
+        "Crystal clear image of a bird in flight, perfect focus, vibrant colors",
+        "Ultra-high definition car photography, professional automotive shoot",
+        "Portrait photography of a person, professional lighting, sharp details"
+    ],
+    "performance_test_prompts": [
+        "Simple cat",
+        "Basic dog running",
+        "Bird flying",
+        "Car on road",
+        "Person walking"
+    ]
+}

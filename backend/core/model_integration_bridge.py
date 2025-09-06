@@ -1931,6 +1931,186 @@ class ModelIntegrationBridge:
         except Exception as e:
             logger.error(f"Sync hardware detection failed: {e}")
             self.hardware_profile = None
+    
+    # LoRA Integration Status Methods
+    def get_lora_status(self, model_type: Optional[str] = None) -> Dict[str, Any]:
+        """
+        Get LoRA status information for models
+        
+        Args:
+            model_type: Optional specific model type to check
+            
+        Returns:
+            Dictionary with LoRA status information
+        """
+        try:
+            # Import LoRA manager
+            from core.services.utils import get_lora_manager
+            lora_manager = get_lora_manager()
+            
+            # Get available LoRAs
+            available_loras = lora_manager.list_available_loras()
+            
+            # Get applied LoRAs from real generation pipeline if available
+            applied_loras = {}
+            try:
+                from backend.services.real_generation_pipeline import get_real_generation_pipeline
+                import asyncio
+                
+                # Try to get pipeline status
+                if hasattr(asyncio, 'get_running_loop'):
+                    try:
+                        loop = asyncio.get_running_loop()
+                        # We're in an async context, but can't await here
+                        # Return basic status without pipeline-specific info
+                        pass
+                    except RuntimeError:
+                        # No running loop, we can create one
+                        pass
+                
+            except Exception as e:
+                logger.warning(f"Could not get applied LoRA status from pipeline: {e}")
+            
+            # Prepare status response
+            status = {
+                "available_loras": available_loras,
+                "total_available": len(available_loras),
+                "applied_loras": applied_loras,
+                "lora_manager_available": True,
+                "wan_lora_support": hasattr(lora_manager, 'apply_lora_with_wan_support')
+            }
+            
+            # Add model-specific information if requested
+            if model_type:
+                status["model_type"] = model_type
+                
+                # Check WAN model compatibility if available
+                if hasattr(lora_manager, 'validate_lora_for_wan_model'):
+                    compatibility_results = {}
+                    for lora_name in available_loras.keys():
+                        try:
+                            compatibility = lora_manager.validate_lora_for_wan_model(lora_name, model_type)
+                            compatibility_results[lora_name] = compatibility
+                        except Exception as e:
+                            compatibility_results[lora_name] = {
+                                "valid": False,
+                                "error": str(e)
+                            }
+                    
+                    status["compatibility_results"] = compatibility_results
+            
+            return status
+            
+        except ImportError:
+            return {
+                "available_loras": {},
+                "total_available": 0,
+                "applied_loras": {},
+                "lora_manager_available": False,
+                "wan_lora_support": False,
+                "error": "LoRA manager not available"
+            }
+        except Exception as e:
+            logger.error(f"Error getting LoRA status: {e}")
+            return {
+                "available_loras": {},
+                "total_available": 0,
+                "applied_loras": {},
+                "lora_manager_available": False,
+                "wan_lora_support": False,
+                "error": str(e)
+            }
+    
+    async def validate_lora_compatibility_async(self, model_type: str, lora_name: str) -> Dict[str, Any]:
+        """
+        Async wrapper for LoRA compatibility validation
+        
+        Args:
+            model_type: Type of model to check compatibility with
+            lora_name: Name of LoRA to validate
+            
+        Returns:
+            Dictionary with validation results
+        """
+        try:
+            # Get real generation pipeline for validation
+            from backend.services.real_generation_pipeline import get_real_generation_pipeline
+            pipeline = await get_real_generation_pipeline()
+            
+            if pipeline:
+                return await pipeline.validate_lora_compatibility(model_type, lora_name)
+            else:
+                # Fallback to basic validation
+                from core.services.utils import get_lora_manager
+                lora_manager = get_lora_manager()
+                
+                available_loras = lora_manager.list_available_loras()
+                if lora_name in available_loras:
+                    return {
+                        "valid": True,
+                        "compatibility": "basic",
+                        "lora_info": available_loras[lora_name],
+                        "model_type": model_type
+                    }
+                else:
+                    return {
+                        "valid": False,
+                        "error": f"LoRA {lora_name} not found",
+                        "model_type": model_type
+                    }
+                    
+        except Exception as e:
+            logger.error(f"Error validating LoRA compatibility: {e}")
+            return {
+                "valid": False,
+                "error": str(e),
+                "model_type": model_type
+            }
+    
+    def get_lora_memory_impact(self, lora_name: str) -> Dict[str, Any]:
+        """
+        Get memory impact estimation for a LoRA
+        
+        Args:
+            lora_name: Name of LoRA to analyze
+            
+        Returns:
+            Dictionary with memory impact information
+        """
+        try:
+            from core.services.utils import get_lora_manager
+            lora_manager = get_lora_manager()
+            
+            # Get memory impact estimation
+            if hasattr(lora_manager, 'estimate_memory_impact'):
+                return lora_manager.estimate_memory_impact(lora_name)
+            else:
+                # Basic estimation
+                available_loras = lora_manager.list_available_loras()
+                if lora_name in available_loras:
+                    lora_info = available_loras[lora_name]
+                    file_size_mb = lora_info.get("size_mb", 0)
+                    
+                    return {
+                        "lora_name": lora_name,
+                        "file_size_mb": file_size_mb,
+                        "estimated_memory_mb": file_size_mb * 1.5,  # Basic estimation
+                        "impact_level": "medium" if file_size_mb > 100 else "low",
+                        "can_load": True,  # Assume can load
+                        "recommendation": "Basic estimation - monitor system performance"
+                    }
+                else:
+                    return {
+                        "lora_name": lora_name,
+                        "error": "LoRA not found"
+                    }
+                    
+        except Exception as e:
+            logger.error(f"Error getting LoRA memory impact: {e}")
+            return {
+                "lora_name": lora_name,
+                "error": str(e)
+            }
 
 # Global model integration bridge instance
 _model_integration_bridge = None
@@ -1978,3 +2158,19 @@ async def verify_model_integrity(model_type: str) -> bool:
     """Verify model integrity using existing validation system"""
     bridge = await get_model_integration_bridge()
     return await bridge._verify_model_integrity(model_type)
+
+# LoRA Integration Convenience Functions
+async def get_lora_status_for_model(model_type: Optional[str] = None) -> Dict[str, Any]:
+    """Get LoRA status information"""
+    bridge = await get_model_integration_bridge()
+    return bridge.get_lora_status(model_type)
+
+async def validate_lora_compatibility(model_type: str, lora_name: str) -> Dict[str, Any]:
+    """Validate LoRA compatibility with model"""
+    bridge = await get_model_integration_bridge()
+    return await bridge.validate_lora_compatibility_async(model_type, lora_name)
+
+async def get_lora_memory_impact(lora_name: str) -> Dict[str, Any]:
+    """Get memory impact estimation for LoRA"""
+    bridge = await get_model_integration_bridge()
+    return bridge.get_lora_memory_impact(lora_name)

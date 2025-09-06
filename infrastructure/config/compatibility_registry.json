@@ -1,60 +1,287 @@
 {
-  "Wan-AI/Wan2.2-T2V-A14B-Diffusers": {
-    "pipeline_class": "WanPipeline",
+  "wan_implementation:t2v-A14B": {
+    "pipeline_class": "WANT2VA14B",
     "min_diffusers_version": "0.21.0",
     "required_dependencies": [
-      "transformers>=4.25.0",
       "torch>=2.0.0",
+      "diffusers>=0.21.0",
+      "transformers>=4.25.0",
       "accelerate>=0.20.0"
     ],
-    "pipeline_source": "https://huggingface.co/Wan-AI/Wan2.2-T2V-A14B-Diffusers",
+    "pipeline_source": "core.models.wan_models.wan_t2v_a14b",
+    "custom_pipeline": true,
     "vram_requirements": {
       "min_mb": 8192,
-      "recommended_mb": 12288
+      "recommended_mb": 10752
     },
     "supported_optimizations": [
       "cpu_offload",
       "mixed_precision",
-      "chunked_processing"
+      "attention_slicing",
+      "memory_efficient_attention",
+      "gradient_checkpointing"
     ],
-    "trust_remote_code": true
+    "supported_precisions": [
+      "fp16",
+      "bf16"
+    ],
+    "trust_remote_code": false,
+    "model_type": "text-to-video",
+    "implementation_type": "wan_native"
   },
-  "Wan-AI/Wan2.2-T2I-A14B-Diffusers": {
-    "pipeline_class": "WanPipeline",
+  "wan_implementation:i2v-A14B": {
+    "pipeline_class": "WANI2VA14B",
     "min_diffusers_version": "0.21.0",
     "required_dependencies": [
-      "transformers>=4.25.0",
       "torch>=2.0.0",
-      "accelerate>=0.20.0"
+      "diffusers>=0.21.0",
+      "transformers>=4.25.0",
+      "accelerate>=0.20.0",
+      "pillow>=8.0.0"
     ],
-    "pipeline_source": "https://huggingface.co/Wan-AI/Wan2.2-T2I-A14B-Diffusers",
+    "pipeline_source": "core.models.wan_models.wan_i2v_a14b",
+    "custom_pipeline": true,
+    "vram_requirements": {
+      "min_mb": 8192,
+      "recommended_mb": 10752
+    },
+    "supported_optimizations": [
+      "cpu_offload",
+      "mixed_precision",
+      "attention_slicing",
+      "memory_efficient_attention",
+      "gradient_checkpointing"
+    ],
+    "supported_precisions": [
+      "fp16",
+      "bf16"
+    ],
+    "trust_remote_code": false,
+    "model_type": "image-to-video",
+    "implementation_type": "wan_native"
+  },
+  "wan_implementation:ti2v-5B": {
+    "pipeline_class": "WANTI2V5B",
+    "min_diffusers_version": "0.21.0",
+    "required_dependencies": [
+      "torch>=2.0.0",
+      "diffusers>=0.21.0",
+      "transformers>=4.25.0",
+      "accelerate>=0.20.0",
+      "pillow>=8.0.0"
+    ],
+    "pipeline_source": "core.models.wan_models.wan_ti2v_5b",
+    "custom_pipeline": true,
     "vram_requirements": {
       "min_mb": 6144,
       "recommended_mb": 8192
     },
     "supported_optimizations": [
       "cpu_offload",
-      "mixed_precision"
+      "mixed_precision",
+      "attention_slicing",
+      "memory_efficient_attention",
+      "gradient_checkpointing",
+      "quantization"
     ],
-    "trust_remote_code": true
+    "supported_precisions": [
+      "fp16",
+      "bf16",
+      "int8"
+    ],
+    "trust_remote_code": false,
+    "model_type": "text-image-to-video",
+    "implementation_type": "wan_native"
   },
-  "Wan-AI/Wan2.2-Mini-T2V": {
-    "pipeline_class": "WanPipeline",
+  "t2v-A14B": {
+    "pipeline_class": "WANT2VA14B",
     "min_diffusers_version": "0.21.0",
     "required_dependencies": [
+      "torch>=2.0.0",
+      "diffusers>=0.21.0",
       "transformers>=4.25.0",
-      "torch>=2.0.0"
+      "accelerate>=0.20.0"
     ],
-    "pipeline_source": "https://huggingface.co/Wan-AI/Wan2.2-Mini-T2V",
+    "pipeline_source": "core.models.wan_models.wan_t2v_a14b",
+    "custom_pipeline": true,
     "vram_requirements": {
-      "min_mb": 4096,
-      "recommended_mb": 6144
+      "min_mb": 8192,
+      "recommended_mb": 10752
     },
     "supported_optimizations": [
       "cpu_offload",
       "mixed_precision",
-      "chunked_processing"
+      "attention_slicing",
+      "memory_efficient_attention",
+      "gradient_checkpointing"
     ],
-    "trust_remote_code": true
+    "supported_precisions": [
+      "fp16",
+      "bf16"
+    ],
+    "trust_remote_code": false,
+    "model_type": "text-to-video",
+    "implementation_type": "wan_native"
+  },
+  "i2v-A14B": {
+    "pipeline_class": "WANI2VA14B",
+    "min_diffusers_version": "0.21.0",
+    "required_dependencies": [
+      "torch>=2.0.0",
+      "diffusers>=0.21.0",
+      "transformers>=4.25.0",
+      "accelerate>=0.20.0",
+      "pillow>=8.0.0"
+    ],
+    "pipeline_source": "core.models.wan_models.wan_i2v_a14b",
+    "custom_pipeline": true,
+    "vram_requirements": {
+      "min_mb": 8192,
+      "recommended_mb": 10752
+    },
+    "supported_optimizations": [
+      "cpu_offload",
+      "mixed_precision",
+      "attention_slicing",
+      "memory_efficient_attention",
+      "gradient_checkpointing"
+    ],
+    "supported_precisions": [
+      "fp16",
+      "bf16"
+    ],
+    "trust_remote_code": false,
+    "model_type": "image-to-video",
+    "implementation_type": "wan_native"
+  },
+  "ti2v-5B": {
+    "pipeline_class": "WANTI2V5B",
+    "min_diffusers_version": "0.21.0",
+    "required_dependencies": [
+      "torch>=2.0.0",
+      "diffusers>=0.21.0",
+      "transformers>=4.25.0",
+      "accelerate>=0.20.0",
+      "pillow>=8.0.0"
+    ],
+    "pipeline_source": "core.models.wan_models.wan_ti2v_5b",
+    "custom_pipeline": true,
+    "vram_requirements": {
+      "min_mb": 6144,
+      "recommended_mb": 8192
+    },
+    "supported_optimizations": [
+      "cpu_offload",
+      "mixed_precision",
+      "attention_slicing",
+      "memory_efficient_attention",
+      "gradient_checkpointing",
+      "quantization"
+    ],
+    "supported_precisions": [
+      "fp16",
+      "bf16",
+      "int8"
+    ],
+    "trust_remote_code": false,
+    "model_type": "text-image-to-video",
+    "implementation_type": "wan_native"
+  },
+  "Wan-AI/Wan2.2-T2V-A14B-Diffusers": {
+    "pipeline_class": "WANT2VA14B",
+    "min_diffusers_version": "0.21.0",
+    "required_dependencies": [
+      "torch>=2.0.0",
+      "diffusers>=0.21.0",
+      "transformers>=4.25.0",
+      "accelerate>=0.20.0"
+    ],
+    "pipeline_source": "core.models.wan_models.wan_t2v_a14b",
+    "custom_pipeline": true,
+    "vram_requirements": {
+      "min_mb": 8192,
+      "recommended_mb": 10752
+    },
+    "supported_optimizations": [
+      "cpu_offload",
+      "mixed_precision",
+      "attention_slicing",
+      "memory_efficient_attention",
+      "gradient_checkpointing"
+    ],
+    "supported_precisions": [
+      "fp16",
+      "bf16"
+    ],
+    "trust_remote_code": false,
+    "model_type": "text-to-video",
+    "implementation_type": "wan_native",
+    "legacy_mapping": true
+  },
+  "Wan-AI/Wan2.2-I2V-A14B-Diffusers": {
+    "pipeline_class": "WANI2VA14B",
+    "min_diffusers_version": "0.21.0",
+    "required_dependencies": [
+      "torch>=2.0.0",
+      "diffusers>=0.21.0",
+      "transformers>=4.25.0",
+      "accelerate>=0.20.0",
+      "pillow>=8.0.0"
+    ],
+    "pipeline_source": "core.models.wan_models.wan_i2v_a14b",
+    "custom_pipeline": true,
+    "vram_requirements": {
+      "min_mb": 8192,
+      "recommended_mb": 10752
+    },
+    "supported_optimizations": [
+      "cpu_offload",
+      "mixed_precision",
+      "attention_slicing",
+      "memory_efficient_attention",
+      "gradient_checkpointing"
+    ],
+    "supported_precisions": [
+      "fp16",
+      "bf16"
+    ],
+    "trust_remote_code": false,
+    "model_type": "image-to-video",
+    "implementation_type": "wan_native",
+    "legacy_mapping": true
+  },
+  "Wan-AI/Wan2.2-TI2V-5B-Diffusers": {
+    "pipeline_class": "WANTI2V5B",
+    "min_diffusers_version": "0.21.0",
+    "required_dependencies": [
+      "torch>=2.0.0",
+      "diffusers>=0.21.0",
+      "transformers>=4.25.0",
+      "accelerate>=0.20.0",
+      "pillow>=8.0.0"
+    ],
+    "pipeline_source": "core.models.wan_models.wan_ti2v_5b",
+    "custom_pipeline": true,
+    "vram_requirements": {
+      "min_mb": 6144,
+      "recommended_mb": 8192
+    },
+    "supported_optimizations": [
+      "cpu_offload",
+      "mixed_precision",
+      "attention_slicing",
+      "memory_efficient_attention",
+      "gradient_checkpointing",
+      "quantization"
+    ],
+    "supported_precisions": [
+      "fp16",
+      "bf16",
+      "int8"
+    ],
+    "trust_remote_code": false,
+    "model_type": "text-image-to-video",
+    "implementation_type": "wan_native",
+    "legacy_mapping": true
   }
 }
