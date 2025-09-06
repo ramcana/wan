@@ -18,6 +18,10 @@ var/
 wheels/
 *.egg-info/
 .installed.cfg
+
+# Large files (>50MB)
+reports/config_landscape_analysis.json
+**/config_landscape_analysis.json
 *.egg
 MANIFEST
 
