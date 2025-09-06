@@ -264,8 +264,10 @@ class TestEndToEndGenerationWorkflows(IntegrationTestBase):
         
         print(f"T2V Generation time: {generation_time:.2f} minutes (target: {target_time} minutes)")
         
-        # In real implementation, this should pass. For mock test, we just verify structure
+        # Verify T2V generation meets performance target (Requirement 1.4)
         self.assertIn("duration_minutes", self.performance_metrics["t2v_generation"])
+        self.assertLessEqual(generation_time, target_time, 
+                           f"T2V generation took {generation_time:.2f} minutes, exceeding target of {target_time} minutes")
         
         # Verify resource usage
         if initial_snapshot and final_snapshot:
@@ -276,10 +278,10 @@ class TestEndToEndGenerationWorkflows(IntegrationTestBase):
             max_vram_gb = self.test_config["optimization"]["max_vram_usage_gb"]
             vram_used_gb = final_snapshot["vram_used_mb"] / 1024
             print(f"VRAM usage: {vram_used_gb:.2f} GB (limit: {max_vram_gb} GB)")
+            self.assertLessEqual(vram_used_gb, max_vram_gb, 
+                               f"VRAM usage {vram_used_gb:.2f} GB exceeds limit of {max_vram_gb} GB")
         
         print("✓ T2V workflow test completed")
-
-        assert True  # TODO: Add proper assertion
     
     @mock.patch('utils.get_model_manager')
     @mock.patch('utils.torch')
@@ -320,11 +322,15 @@ class TestEndToEndGenerationWorkflows(IntegrationTestBase):
         
         # Verify I2V specific requirements
         generation_time = self.performance_metrics["i2v_generation"]["duration_minutes"]
-        print(f"I2V Generation time: {generation_time:.2f} minutes")
+        target_time = self.test_config["performance"]["target_720p_time_minutes"]  # I2V uses 720p target
+        print(f"I2V Generation time: {generation_time:.2f} minutes (target: {target_time} minutes)")
+        
+        # Verify I2V generation meets performance target
+        self.assertIn("duration_minutes", self.performance_metrics["i2v_generation"])
+        self.assertLessEqual(generation_time, target_time, 
+                           f"I2V generation took {generation_time:.2f} minutes, exceeding target of {target_time} minutes")
         
         print("✓ I2V workflow test completed")
-
-        assert True  # TODO: Add proper assertion
     
     @mock.patch('utils.get_model_manager')
     @mock.patch('utils.torch')
@@ -373,9 +379,11 @@ class TestEndToEndGenerationWorkflows(IntegrationTestBase):
         # Verify 1080p generation completes within time limit
         self.assertIn("duration_minutes", self.performance_metrics["ti2v_generation"])
         
+        # Verify TI2V generation meets performance target (Requirement 3.4)
+        self.assertLessEqual(generation_time, target_time, 
+                           f"TI2V generation took {generation_time:.2f} minutes, exceeding target of {target_time} minutes")
+        
         print("✓ TI2V workflow test completed")
-
-        assert True  # TODO: Add proper assertion
     
     def test_queue_processing_workflow(self):
         """Test end-to-end queue processing workflow"""
@@ -694,12 +702,12 @@ class TestPerformanceBenchmarks(IntegrationTestBase):
         print(f"720p Generation - Actual: {actual_time:.2f}min, Target: {target_time}min")
         print(f"Performance ratio: {self.benchmark_results['720p']['performance_ratio']:.2f}")
         
-        # Verify requirement 1.4
+        # Verify requirement 1.4 - 720p generation timing performance
         self.assertIn("actual_time_minutes", self.benchmark_results["720p"])
+        self.assertTrue(self.benchmark_results["720p"]["meets_target"], 
+                       f"720p generation failed to meet target time: {actual_time:.2f}min > {target_time}min")
         
         print("✓ 720p generation timing benchmark completed")
-
-        assert True  # TODO: Add proper assertion
     
     def test_1080p_generation_timing(self):
         """Test 1080p video generation timing benchmark"""
@@ -735,12 +743,12 @@ class TestPerformanceBenchmarks(IntegrationTestBase):
         print(f"1080p Generation - Actual: {actual_time:.2f}min, Target: {target_time}min")
         print(f"Performance ratio: {self.benchmark_results['1080p']['performance_ratio']:.2f}")
         
-        # Verify requirement 3.4
+        # Verify requirement 3.4 - TI2V 1080p generation timing performance
         self.assertIn("actual_time_minutes", self.benchmark_results["1080p"])
+        self.assertTrue(self.benchmark_results["1080p"]["meets_target"], 
+                       f"1080p TI2V generation failed to meet target time: {actual_time:.2f}min > {target_time}min")
         
         print("✓ 1080p generation timing benchmark completed")
-
-        assert True  # TODO: Add proper assertion
     
     def test_queue_throughput_benchmark(self):
         """Test queue processing throughput benchmark"""
