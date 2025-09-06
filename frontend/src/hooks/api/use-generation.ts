@@ -14,48 +14,60 @@ export const useGenerateVideo = () => {
 
   return useMutation<GenerationResponse, ApiError, { formData: GenerationFormData; imageFile?: File; endImageFile?: File }>({
     mutationFn: async ({ formData, imageFile, endImageFile }) => {
-      // Always use FormData since backend expects multipart/form-data
-      const uploadData = new FormData();
-      
-      // Add image file if provided
-      if (imageFile) {
-        uploadData.append("image", imageFile);
+      // Use FormData only if files are present, otherwise use JSON
+      if (imageFile || endImageFile) {
+        // Use FormData for file uploads
+        const uploadData = new FormData();
+        
+        // Add image file if provided
+        if (imageFile) {
+          uploadData.append("image", imageFile);
+        }
+        
+        // Add end image file if provided
+        if (endImageFile) {
+          uploadData.append("end_image", endImageFile);
+        }
+        
+        // Add other form fields
+        uploadData.append("model_type", formData.modelType);
+        uploadData.append("prompt", formData.prompt);
+        uploadData.append("resolution", formData.resolution);
+        uploadData.append("steps", formData.steps.toString());
+        uploadData.append("lora_path", formData.loraPath || "");
+        uploadData.append("lora_strength", formData.loraStrength.toString());
+        
+        console.log("Sending FormData with files");
+        
+        // Submit with FormData
+        const response = await post<GenerationResponse>("/api/v1/generation/submit", uploadData, {
+          timeout: 300000, // 5 minutes for generation submission
+        });
+        
+        return validateApiResponse(GenerationResponseSchema, response);
+      } else {
+        // Use JSON for requests without files
+        const jsonData = {
+          model_type: formData.modelType,
+          prompt: formData.prompt,
+          resolution: formData.resolution,
+          steps: formData.steps,
+          lora_path: formData.loraPath || "",
+          lora_strength: formData.loraStrength
+        };
+        
+        console.log("Sending JSON data:", jsonData);
+        
+        // Submit with JSON
+        const response = await post<GenerationResponse>("/api/v1/generation/submit", jsonData, {
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          timeout: 300000, // 5 minutes for generation submission
+        });
+        
+        return validateApiResponse(GenerationResponseSchema, response);
       }
-      
-      // Add end image file if provided
-      if (endImageFile) {
-        uploadData.append("end_image", endImageFile);
-      }
-      
-      // Add other form fields
-      uploadData.append("model_type", formData.modelType);
-      uploadData.append("prompt", formData.prompt);
-      uploadData.append("resolution", formData.resolution);
-      uploadData.append("steps", formData.steps.toString());
-      
-      // Always append lora_path, even if empty
-      uploadData.append("lora_path", formData.loraPath || "");
-      uploadData.append("lora_strength", formData.loraStrength.toString());
-      
-      // Debug log
-      console.log("Sending FormData with:", {
-        modelType: formData.modelType,
-        prompt: formData.prompt,
-        resolution: formData.resolution,
-        steps: formData.steps,
-        uploadDataType: uploadData.constructor.name
-      });
-      
-      // Submit to API with multipart data and extended timeout
-      const response = await post<GenerationResponse>("/generation/submit", uploadData, {
-        headers: {
-          // Don't set Content-Type manually for FormData - let axios set it with boundary
-        },
-        timeout: 300000, // 5 minutes for generation submission
-      });
-      
-      // Validate response
-      return validateApiResponse(GenerationResponseSchema, response);
     },
     onSuccess: (data) => {
       // Invalidate queue queries to refresh the queue
