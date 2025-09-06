@@ -342,9 +342,32 @@ class RealGenerationPipeline:
                 f"Generating {params.num_frames} frames"
             )
             
-            generation_result = await asyncio.get_event_loop().run_in_executor(
-                None, pipeline_wrapper.generate, generation_config
-            )
+            # Check if pipeline wrapper supports async generation (WAN models)
+            if hasattr(pipeline_wrapper, 'generate_async') or hasattr(pipeline_wrapper, 'model') and hasattr(pipeline_wrapper.model, 'generate_video'):
+                # Use async generation for WAN models with enhanced progress tracking
+                generation_config.task_id = task_id
+                if hasattr(pipeline_wrapper, 'generate_async'):
+                    generation_result = await pipeline_wrapper.generate_async(generation_config)
+                else:
+                    # Direct WAN model call
+                    wan_params = {
+                        'prompt': generation_config.prompt,
+                        'negative_prompt': generation_config.negative_prompt,
+                        'num_frames': generation_config.num_frames,
+                        'width': generation_config.width,
+                        'height': generation_config.height,
+                        'num_inference_steps': generation_config.num_inference_steps,
+                        'guidance_scale': generation_config.guidance_scale,
+                        'seed': generation_config.seed,
+                        'task_id': task_id,
+                        'callback': generation_config.progress_callback
+                    }
+                    generation_result = await pipeline_wrapper.model.generate_video(**wan_params)
+            else:
+                # Fallback to sync generation for non-WAN models
+                generation_result = await asyncio.get_event_loop().run_in_executor(
+                    None, pipeline_wrapper.generate, generation_config
+                )
             
             if not generation_result.success:
                 return self._create_error_result(
@@ -541,9 +564,33 @@ class RealGenerationPipeline:
                 f"Generating video from image ({params.num_frames} frames)"
             )
             
-            generation_result = await asyncio.get_event_loop().run_in_executor(
-                None, pipeline_wrapper.generate, generation_config
-            )
+            # Check if pipeline wrapper supports async generation (WAN models)
+            if hasattr(pipeline_wrapper, 'generate_async') or hasattr(pipeline_wrapper, 'model') and hasattr(pipeline_wrapper.model, 'generate_video'):
+                # Use async generation for WAN models with enhanced progress tracking
+                generation_config.task_id = task_id
+                if hasattr(pipeline_wrapper, 'generate_async'):
+                    generation_result = await pipeline_wrapper.generate_async(generation_config)
+                else:
+                    # Direct WAN model call
+                    wan_params = {
+                        'prompt': generation_config.prompt,
+                        'negative_prompt': generation_config.negative_prompt,
+                        'image': generation_config.input_image,
+                        'num_frames': generation_config.num_frames,
+                        'width': generation_config.width,
+                        'height': generation_config.height,
+                        'num_inference_steps': generation_config.num_inference_steps,
+                        'guidance_scale': generation_config.guidance_scale,
+                        'seed': generation_config.seed,
+                        'task_id': task_id,
+                        'callback': generation_config.progress_callback
+                    }
+                    generation_result = await pipeline_wrapper.model.generate_video(**wan_params)
+            else:
+                # Fallback to sync generation for non-WAN models
+                generation_result = await asyncio.get_event_loop().run_in_executor(
+                    None, pipeline_wrapper.generate, generation_config
+                )
             
             if not generation_result.success:
                 return self._create_error_result(
