@@ -8,6 +8,8 @@ from pathlib import Path
 from typing import Dict, Any, Optional
 from enum import Enum
 import logging
+import yaml
+from pydantic import BaseSettings
 
 logger = logging.getLogger(__name__)
 
@@ -28,20 +30,19 @@ class EnvironmentConfig:
     
     def _load_config(self) -> None:
         """Load configuration based on environment."""
-        # Base configuration
-        base_config_path = Path("config.json")
+        config_dir = Path(__file__).resolve().parents[2] / "config"
+        base_config_path = config_dir / "default.yaml"
         if base_config_path.exists():
-            with open(base_config_path, 'r') as f:
-                self.config = json.load(f)
-        
-        # Environment-specific configuration
-        env_config_path = Path(f"config_{self.env.value}.json")
-        if env_config_path.exists():
-            with open(env_config_path, 'r') as f:
-                env_config = json.load(f)
+            with open(base_config_path, "r") as f:
+                self.config = yaml.safe_load(f) or {}
+
+        config_name = os.getenv("WAN_CONFIG", "default")
+        env_config_path = config_dir / f"{config_name}.yaml"
+        if config_name != "default" and env_config_path.exists():
+            with open(env_config_path, "r") as f:
+                env_config = yaml.safe_load(f) or {}
                 self._merge_config(env_config)
-        
-        # Environment variables override
+
         self._apply_env_overrides()
         
         logger.info(f"Loaded configuration for environment: {self.env.value}")
@@ -93,14 +94,38 @@ class EnvironmentConfig:
             "SECRET_KEY": ("security_settings", "secret_key"),
             "JWT_SECRET": ("security_settings", "jwt_secret"),
         }
-        
+
+        class EnvSettings(BaseSettings):
+            API_HOST: Optional[str] = None
+            API_PORT: Optional[int] = None
+            API_CORS_ORIGINS: Optional[str] = None
+            DATABASE_URL: Optional[str] = None
+            DATABASE_POOL_SIZE: Optional[int] = None
+            MODEL_CACHE_DIR: Optional[str] = None
+            DEFAULT_MODEL: Optional[str] = None
+            QUANTIZATION_MODE: Optional[str] = None
+            OUTPUTS_DIR: Optional[str] = None
+            TEMP_DIR: Optional[str] = None
+            MAX_STORAGE_GB: Optional[int] = None
+            LOG_LEVEL: Optional[str] = None
+            LOG_FILE: Optional[str] = None
+            MAX_WORKERS: Optional[int] = None
+            WORKER_TIMEOUT: Optional[int] = None
+            SECRET_KEY: Optional[str] = None
+            JWT_SECRET: Optional[str] = None
+
+            class Config:
+                env_file = Path(__file__).resolve().parents[2] / "config" / ".env"
+
+        env_settings = EnvSettings()
+        env_dict = env_settings.dict(exclude_none=True)
+
         for env_var, (section, key) in env_mappings.items():
-            value = os.getenv(env_var)
-            if value is not None:
+            if env_var in env_dict:
+                value = env_dict[env_var]
                 if section not in self.config:
                     self.config[section] = {}
-                
-                # Type conversion
+
                 if key in ["port", "pool_size", "max_storage_gb", "max_workers", "worker_timeout"]:
                     try:
                         value = int(value)
@@ -108,10 +133,10 @@ class EnvironmentConfig:
                         logger.warning(f"Invalid integer value for {env_var}: {value}")
                         continue
                 elif key == "cors_origins":
-                    value = [origin.strip() for origin in value.split(",")]
-                elif value.lower() in ["true", "false"]:
+                    value = [origin.strip() for origin in str(value).split(",")]
+                elif isinstance(value, str) and value.lower() in ["true", "false"]:
                     value = value.lower() == "true"
-                
+
                 self.config[section][key] = value
                 logger.info(f"Applied environment override: {env_var} -> {section}.{key}")
     

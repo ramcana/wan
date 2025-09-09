@@ -194,6 +194,7 @@ syntax_backups/
 logs/
 wan22_errors.log
 wan22_ui.log
+backend.pid
 
 # Cache
 .cache/

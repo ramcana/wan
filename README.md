@@ -188,9 +188,9 @@ npm run dev
 
 Configuration is managed through:
 
-- `infrastructure/config/config.json` - Main configuration
-- Environment variables for sensitive data
-- Runtime configuration through the UI
+- YAML files in `config/` (`default.yaml`, `dev.yaml`, `prod.yaml`)
+- Environment selection via `WAN_CONFIG` (e.g. `WAN_CONFIG=prod`)
+- `.env` for machine-local secrets (see `config/.env.example`)
 
 ### Testing
 

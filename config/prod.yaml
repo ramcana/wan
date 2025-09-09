@@ -1,0 +1,3 @@
+# Production overrides
+optimization:
+  max_vram_usage_gb: 16

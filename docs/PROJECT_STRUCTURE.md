@@ -10,8 +10,7 @@ wan/
 ├── main.py                      # Main application entry point
 ├── start.py                     # Application startup script
 ├── setup.py                     # Python package setup
-├── config.json                  # Main configuration file
-├── performance-config.json      # Performance configuration
+├── config/                      # Environment-based configuration
 ├── pytest.ini                   # Pytest configuration
 ├── requirements*.txt            # Python dependencies
 ├── nginx.conf                   # Nginx configuration
@@ -202,8 +201,10 @@ Temporary files
 
 ### Configuration
 
-- `config.json` - Main application configuration
-- `performance-config.json` - Performance tuning settings
+- `config/default.yaml` - Default settings
+- `config/dev.yaml` - Development overrides
+- `config/prod.yaml` - Production overrides
+- `config/.env.example` - Documented environment variables
 - `pytest.ini` - Test configuration
 - `requirements*.txt` - Python dependencies
 
