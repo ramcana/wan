@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "wan"
+version = "0.0.0"
+description = "WAN backend/frontend tooling"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi",
+    "uvicorn[standard]",
+    "pydantic>=2",
+    "pydantic-settings",
+    "sqlalchemy",
+    "alembic",
+    "psycopg2-binary",
+    "redis",
+    "rq",
+    "httpx",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-cov",
+    "pytest-asyncio",
+    "httpx",
+    "anyio",
+    "ruff",
+    "mypy",
+]
+# If you have heavy/optional stuff, keep them out of dev:
+gpu = ["torch", "onnxruntime-gpu"]
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "-q"
+testpaths = ["tests"]
+
