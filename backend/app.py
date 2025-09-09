@@ -173,6 +173,19 @@ async def shutdown_event():
         logger.warning(f"Failed to shutdown generation service: {e}")
 
 
+# Basic health endpoints for orchestrators
+@app.get("/healthz")
+async def healthz():
+    """Liveness probe endpoint."""
+    return {"status": "ok"}
+
+
+@app.get("/readiness")
+async def readiness():
+    """Readiness probe endpoint."""
+    return {"status": "ready"}
+
+
 # Include API routers
 try:
     from api.performance import router as performance_router

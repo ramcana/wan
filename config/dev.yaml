@@ -1,3 +1,6 @@
 # Development overrides
 system:
   enable_offload: false
+
+database_settings:
+  url: sqlite:///./wan22_tasks.db

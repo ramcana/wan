@@ -1,3 +1,6 @@
 # Production overrides
 optimization:
   max_vram_usage_gb: 16
+
+database_settings:
+  url: postgresql+psycopg2://postgres:postgres@postgres:5432/wan

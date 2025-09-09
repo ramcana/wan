@@ -42,3 +42,7 @@ performance:
       /api/v1/system/stats: 2000
       /api/v1/queue: 1500
       /api/v1/outputs: 3000
+
+database_settings:
+  url: postgresql+psycopg2://postgres:postgres@postgres:5432/wan
+  pool_size: 5

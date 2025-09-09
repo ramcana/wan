@@ -27,6 +27,25 @@ That's it! The script automatically:
 
 ---
 
+## Docker Deployment
+
+Use the included `docker-compose.yml` for a full stack with external services:
+
+- **api** – FastAPI app served by Uvicorn
+- **worker** – background RQ worker for long-running jobs
+- **frontend** – Vite/React build served by Nginx
+- **redis** – task queue
+- **postgres** – primary database
+- **minio** – optional artifact storage
+
+Start everything with:
+
+```bash
+docker compose up --build
+```
+
+The backend provides `/healthz` and `/readiness` endpoints for orchestration.
+
 ## Architecture Overview
 
 The codebase has been comprehensively organized with a clean structure (reorganized 2025-01-06):
