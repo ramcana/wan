@@ -217,7 +217,7 @@ python -m pytest local_testing_framework/tests/test_cli.py -v --tb=short
 python -m pytest local_testing_framework/tests/test_*.py -v --cov=local_testing_framework --cov-report=html --cov-report=term
 
 # Generate detailed test report
-python -m pytest local_testing_framework/tests/test_*.py --junitxml=unit_test_results.xml
+python -m pytest local_testing_framework/tests/test_*.py --junitxml=reports/tests/unit_test_results.xml
 ```
 
 **Success Criteria**:
@@ -463,7 +463,7 @@ python local_testing_framework/tests/run_integration_tests.py --all
 
 ```bash
 # Final comprehensive test run
-python -m pytest local_testing_framework/tests/ -v --cov=local_testing_framework --cov-report=html --cov-report=term --junitxml=final_test_results.xml
+python -m pytest local_testing_framework/tests/ -v --cov=local_testing_framework --cov-report=html --cov-report=term --junitxml=reports/tests/final_test_results.xml
 
 # Integration test final run
 python local_testing_framework/tests/run_integration_tests.py --all --verbose > integration_test_final_results.txt
@@ -475,7 +475,7 @@ python local_testing_framework/tests/run_integration_tests.py --all --verbose > 
 # Generate test metrics
 python -c "
 import xml.etree.ElementTree as ET
-tree = ET.parse('final_test_results.xml')
+tree = ET.parse('reports/tests/final_test_results.xml')
 root = tree.getroot()
 total_tests = int(root.attrib['tests'])
 failures = int(root.attrib['failures'])

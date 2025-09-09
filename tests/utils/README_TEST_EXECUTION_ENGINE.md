@@ -337,16 +337,16 @@ jobs:
       - name: Run tests
         run: |
           python tests/utils/test_runner_cli.py \
-            --json-output test_results.json \
-            --output test_report.txt \
+            --json-output reports/tests/test_results.json \
+            --output reports/tests/test_report.txt \
             --verbose
       - name: Upload test results
         uses: actions/upload-artifact@v2
         with:
-          name: test-results
+          name: reports-tests
           path: |
-            test_results.json
-            test_report.txt
+            reports/tests/test_results.json
+            reports/tests/test_report.txt
 ```
 
 ### Jenkins

@@ -106,7 +106,7 @@ jobs:
       - name: Upload test results
         uses: actions/upload-artifact@v4
         with:
-          name: test-results-${{ matrix.test-type }}
+          name: reports-tests-${{ matrix.test-type }}
           path: reports/
 
   # Security and code quality checks

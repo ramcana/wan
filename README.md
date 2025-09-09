@@ -27,6 +27,25 @@ That's it! The script automatically:
 
 ---
 
+## Docker Deployment
+
+Use the included `docker-compose.yml` for a full stack with external services:
+
+- **api** – FastAPI app served by Uvicorn
+- **worker** – background RQ worker for long-running jobs
+- **frontend** – Vite/React build served by Nginx
+- **redis** – task queue
+- **postgres** – primary database
+- **minio** – optional artifact storage
+
+Start everything with:
+
+```bash
+docker compose up --build
+```
+
+The backend provides `/healthz` and `/readiness` endpoints for orchestration.
+
 ## Architecture Overview
 
 The codebase has been comprehensively organized with a clean structure (reorganized 2025-01-06):
@@ -52,10 +71,11 @@ wan/
 ├── scripts/                    # Automation and utilities
 │   └── utils/                 # Code maintenance tools
 ├── reports/                    # Generated reports and metrics
-│   ├── health/                # Health monitoring
-│   ├── validation/            # Validation results
-│   └── test-results/          # Test execution reports
-├── demo/                       # Examples and demonstrations
+│   ├── coverage/             # Test coverage reports
+│   ├── health/               # Health monitoring
+│   ├── tests/                # Test execution reports
+│   └── validation/           # Validation results
+├── demo_examples/             # Examples and demonstrations
 ├── infrastructure/             # Infrastructure as code
 └── data/                       # Data files and datasets
 ```
@@ -187,9 +207,9 @@ npm run dev
 
 Configuration is managed through:
 
-- `infrastructure/config/config.json` - Main configuration
-- Environment variables for sensitive data
-- Runtime configuration through the UI
+- YAML files in `config/` (`default.yaml`, `dev.yaml`, `prod.yaml`)
+- Environment selection via `WAN_CONFIG` (e.g. `WAN_CONFIG=prod`)
+- `.env` for machine-local secrets (see `config/.env.example`)
 
 ### Testing
 

@@ -67,7 +67,7 @@ fixtures:
   test_configs_dir: "tests/fixtures/configs"
 
 reporting:
-  output_dir: "test_results"
+  output_dir: "reports/tests"
   formats:
     - junit
     - html

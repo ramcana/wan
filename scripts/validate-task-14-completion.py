@@ -460,7 +460,7 @@ def main():
     success = validator.print_validation_report(results)
     
     # Save detailed results
-    results_path = project_root / "test-results" / "task-14-validation.json"
+    results_path = project_root / "reports" / "tests" / "task-14-validation.json"
     results_path.parent.mkdir(parents=True, exist_ok=True)
     
     with open(results_path, 'w') as f:

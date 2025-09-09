@@ -8,6 +8,8 @@ anyio==3.7.1
 attrs==25.3.0
 bcrypt==4.3.0
 bitsandbytes==0.46.1
+psycopg2-binary==2.9.9
+rq==1.15.1
 black==23.11.0
 Brotli==1.1.0
 certifi==2025.7.14

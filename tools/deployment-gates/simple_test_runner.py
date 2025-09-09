@@ -34,7 +34,9 @@ def create_mock_coverage_xml(coverage_percent=75.0):
     </packages>
 </coverage>'''
     
-    with open('coverage.xml', 'w') as f:
+    coverage_path = Path('reports') / 'coverage'
+    coverage_path.mkdir(parents=True, exist_ok=True)
+    with open(coverage_path / 'coverage.xml', 'w') as f:
         f.write(coverage_xml)
 
 
@@ -51,7 +53,9 @@ def create_mock_test_results():
     </testsuite>
 </testsuites>'''
     
-    with open('test-results.xml', 'w') as f:
+    results_path = Path('reports') / 'tests'
+    results_path.mkdir(parents=True, exist_ok=True)
+    with open(results_path / 'test-results.xml', 'w') as f:
         f.write(test_results_xml)
 
 
@@ -132,7 +136,7 @@ def main():
                 sys.executable, "-m", "pytest", "tests/", "-v",
                 "--cov=backend", "--cov=scripts", "--cov=tools",
                 "--cov-report=xml", "--cov-report=html", "--cov-report=term",
-                "--junit-xml=test-results.xml",
+                "--junit-xml=reports/tests/test-results.xml",
                 "--tb=short", "--maxfail=10", "--ignore-glob=**/test_*_integration.py"
             ], capture_output=True, text=True, timeout=300)
             

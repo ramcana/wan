@@ -270,7 +270,7 @@ class CoverageAnalyzer:
         self.threshold_validator = CoverageThresholdValidator(config)
         self.coverage_history = CoverageHistory()
         self.project_root = Path.cwd()
-        self.coverage_data_dir = Path("test_results/coverage")
+        self.coverage_data_dir = Path("reports/coverage")
         self.coverage_data_dir.mkdir(parents=True, exist_ok=True)
         
         # Load historical data
@@ -727,8 +727,8 @@ if __name__ == "__main__":
     report = analyzer.measure_coverage(categories)
     
     # Generate reports
-    analyzer.generate_coverage_report(report, Path("test_results/coverage_report.html"), "html")
-    analyzer.generate_coverage_report(report, Path("test_results/coverage_report.md"), "markdown")
+    analyzer.generate_coverage_report(report, Path("reports/coverage/coverage_report.html"), "html")
+    analyzer.generate_coverage_report(report, Path("reports/coverage/coverage_report.md"), "markdown")
     
     print(f"Coverage: {report.coverage_percentage:.1f}%")
     print(f"Threshold met: {report.threshold_met}")

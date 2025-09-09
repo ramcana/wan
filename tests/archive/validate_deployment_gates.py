@@ -139,7 +139,7 @@ def main():
         print("Fix the issues above before running the workflow.")
     
     # Cleanup test files
-    for test_file in ["test-health-report.json", "coverage.xml", "test-results.xml"]:
+    for test_file in ["test-health-report.json", "reports/coverage/coverage.xml", "reports/tests/test-results.xml"]:
         if Path(test_file).exists():
             Path(test_file).unlink()
     

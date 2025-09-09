@@ -10,8 +10,7 @@ wan/
 ├── main.py                      # Main application entry point
 ├── start.py                     # Application startup script
 ├── setup.py                     # Python package setup
-├── config.json                  # Main configuration file
-├── performance-config.json      # Performance configuration
+├── config/                      # Environment-based configuration
 ├── pytest.ini                   # Pytest configuration
 ├── requirements*.txt            # Python dependencies
 ├── nginx.conf                   # Nginx configuration
@@ -149,19 +148,18 @@ Validation and verification reports
 - Model validation results
 - System validation metrics
 
-#### `/reports/test-results/`
+#### `/reports/tests/`
 
 Test execution results
 
 - Test reports
-- Coverage reports
 - Test execution logs
 
-### `/demo/`
+#### `/reports/coverage/`
 
-Demonstration and example code
+Code coverage reports
 
-#### `/demo/examples/`
+### `/demo_examples/`
 
 Example scripts and demonstrations (moved from root)
 
@@ -203,8 +201,10 @@ Temporary files
 
 ### Configuration
 
-- `config.json` - Main application configuration
-- `performance-config.json` - Performance tuning settings
+- `config/default.yaml` - Default settings
+- `config/dev.yaml` - Development overrides
+- `config/prod.yaml` - Production overrides
+- `config/.env.example` - Documented environment variables
 - `pytest.ini` - Test configuration
 - `requirements*.txt` - Python dependencies
 
@@ -228,7 +228,7 @@ This structure was established during a comprehensive cleanup on 2025-01-06:
 2. **Test Organization**: All `test_*.py` files from root moved to `tests/archive/`
 3. **Utility Scripts**: All `fix_*.py` and utility scripts moved to `scripts/utils/`
 4. **Reports Organization**: All report files organized into `reports/` with subdirectories
-5. **Demo Code**: Demo and example scripts moved to `demo/examples/`
+5. **Demo Code**: Demo and example scripts moved to `demo_examples/`
 
 All original file locations are preserved in git history for reference.
 

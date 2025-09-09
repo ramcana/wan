@@ -41,7 +41,7 @@ async def demonstrate_test_infrastructure():
     print(f"Issues found: {audit_report.summary['issues_found']}")
     
     # Generate audit report
-    audit_report_path = Path("../../test_results/demo_audit_report.md")
+    audit_report_path = Path("../../reports/tests/demo_audit_report.md")
     auditor.generate_audit_report(audit_report, audit_report_path)
     print(f"📄 Audit report saved to: {audit_report_path}")
     
@@ -73,7 +73,7 @@ async def demonstrate_test_infrastructure():
     print(f"Failed: {results.overall_summary.failed_tests}")
     
     # Export results
-    results_path = Path("../../test_results/demo_test_results.json")
+    results_path = Path("../../reports/tests/demo_test_results.json")
     orchestrator.export_results(results, results_path)
     print(f"📊 Test results saved to: {results_path}")
     
@@ -106,8 +106,8 @@ async def demonstrate_test_infrastructure():
             print(f"  - {rec['message']}")
     
     # Generate coverage reports
-    coverage_html_path = Path("../../test_results/demo_coverage_report.html")
-    coverage_md_path = Path("../../test_results/demo_coverage_report.md")
+    coverage_html_path = Path("../../reports/tests/demo_coverage_report.html")
+    coverage_md_path = Path("../../reports/tests/demo_coverage_report.md")
     
     coverage_analyzer.generate_coverage_report(coverage_report, coverage_html_path, "html")
     coverage_analyzer.generate_coverage_report(coverage_report, coverage_md_path, "markdown")
@@ -160,7 +160,7 @@ async def demonstrate_test_infrastructure():
     print("✅ Automated test discovery and validation")
     print("✅ Multiple report formats (JSON, HTML, Markdown)")
     
-    print(f"\n📁 All reports saved to: {Path('../../test_results').absolute()}")
+    print(f"\n📁 All reports saved to: {Path('../../reports/tests').absolute()}")
     
     return {
         'audit_report': audit_report,

@@ -1,5 +1,3 @@
 @echo off
-echo Starting WAN22 Frontend...
-cd frontend
-npm install
-npm run dev
+echo DEPRECATED: use "python wan-cli" instead. This script will be removed in a future release.
+python wan-cli %*

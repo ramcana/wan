@@ -9,8 +9,11 @@ from sqlalchemy.orm import sessionmaker
 from datetime import datetime
 import enum
 
-# Database URL - using SQLite for development
-DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./wan22_tasks.db")
+# Database URL defaults to Postgres in production
+DATABASE_URL = os.getenv(
+    "DATABASE_URL",
+    "postgresql+psycopg2://postgres:postgres@postgres:5432/wan",
+)
 
 # Create engine
 engine = create_engine(

@@ -15,7 +15,7 @@ Successfully cleaned up and organized the entire WAN project codebase, transform
 - **25+ test files** moved from root → `tests/archive/`
 - **15+ utility scripts** moved from root → `scripts/utils/`
 - **20+ report files** organized into `reports/` subdirectories
-- **2 demo files** moved to `demo/examples/`
+- **2 demo files** moved to `demo_examples/`
 
 ### New Structure Created
 
@@ -32,11 +32,11 @@ wan/
 │   ├── utils/                 # 15+ maintenance utilities
 │   └── install_cli.py
 ├── reports/
-│   ├── health/                # Health monitoring reports
-│   ├── validation/            # Validation results
-│   └── test-results/          # Test execution reports
-├── demo/
-│   └── examples/              # Demo and example code
+│   ├── coverage/             # Test coverage reports
+│   ├── health/               # Health monitoring reports
+│   ├── tests/                # Test execution reports
+│   └── validation/           # Validation results
+├── demo_examples/           # Demo and example code
 └── infrastructure/
     └── deployment/            # New deployment management system
 ```
