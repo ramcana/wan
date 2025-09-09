@@ -95,7 +95,7 @@ class ComprehensiveTestRunner:
                 sys.executable, "-m", "pytest", 
                 str(self.project_root / suite_path),
                 "-v", "--tb=short", "--json-report", 
-                f"--json-report-file={self.project_root}/test_results_{suite_name}.json"
+                f"--json-report-file={self.project_root}/reports/tests/test_results_{suite_name}.json"
             ]
             
             result = subprocess.run(
@@ -109,7 +109,7 @@ class ComprehensiveTestRunner:
             duration = (end_time - start_time).total_seconds()
             
             # Parse results
-            json_report_path = self.project_root / f"test_results_{suite_name}.json"
+            json_report_path = self.project_root / "reports" / "tests" / f"test_results_{suite_name}.json"
             if json_report_path.exists():
                 with open(json_report_path) as f:
                     json_data = json.load(f)

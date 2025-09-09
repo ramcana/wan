@@ -52,10 +52,11 @@ wan/
 ├── scripts/                    # Automation and utilities
 │   └── utils/                 # Code maintenance tools
 ├── reports/                    # Generated reports and metrics
-│   ├── health/                # Health monitoring
-│   ├── validation/            # Validation results
-│   └── test-results/          # Test execution reports
-├── demo/                       # Examples and demonstrations
+│   ├── coverage/             # Test coverage reports
+│   ├── health/               # Health monitoring
+│   ├── tests/                # Test execution reports
+│   └── validation/           # Validation results
+├── demo_examples/             # Examples and demonstrations
 ├── infrastructure/             # Infrastructure as code
 └── data/                       # Data files and datasets
 ```

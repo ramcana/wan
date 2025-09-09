@@ -644,7 +644,7 @@ def main():
     )
     parser.add_argument(
         "--output",
-        default="test-results/comprehensive-report.json",
+        default="reports/tests/comprehensive-report.json",
         help="Output file for test report"
     )
     parser.add_argument(

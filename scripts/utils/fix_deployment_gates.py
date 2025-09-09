@@ -141,7 +141,7 @@ addopts =
     --cov-report=term-missing
     --cov-report=xml
     --cov-report=html
-    --junit-xml=test-results.xml
+    --junit-xml=reports/tests/test-results.xml
 markers =
     slow: marks tests as slow
     integration: marks tests as integration tests

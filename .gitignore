@@ -138,10 +138,13 @@ gradio_tmp/
 benchmark_results/*.json
 wan22_benchmark_results/*.json
 demo_benchmark_results/*.json
-comprehensive_test_results/*.json
-integration_test_results/*.json
-test_results/*.json
-coverage_reports/*.json
+reports/tests/*.json
+reports/coverage/*.json
+test-results/
+test_results/
+comprehensive_test_results/
+integration_test_results/
+coverage_reports/
 
 # But keep important test files and frameworks
 !test_samples/

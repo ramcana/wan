@@ -104,9 +104,9 @@ class ConfigLandscapeAnalyzer:
         
         # Directories to skip
         skip_dirs = {
-            'node_modules', 'venv', '__pycache__', '.git', 
-            '.pytest_cache', 'dist', 'build', 'coverage_reports',
-            'test_results', 'logs'
+            'node_modules', 'venv', '__pycache__', '.git',
+            '.pytest_cache', 'dist', 'build', 'reports',
+            'logs'
         }
         
         # Walk through all directories

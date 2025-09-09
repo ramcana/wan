@@ -55,7 +55,7 @@ categorization:
 
 # Reporting configuration
 reporting:
-  output_dir: "test_results"
+  output_dir: "reports/tests"
   include_stdout: false
   include_stderr: true
   generate_html: true

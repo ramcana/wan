@@ -310,15 +310,20 @@ print('true' if coverage >= threshold else 'false')
             echo "❌ Test gate failed - Coverage: $COVERAGE% (threshold: $COVERAGE_THRESHOLD%)"
           fi
 
-      - name: Upload test results
+          mkdir -p reports/tests reports/coverage
+          mv test-results.xml reports/tests/ || true
+          mv coverage.xml reports/coverage/ || true
+          mv htmlcov reports/coverage/htmlcov || true
+
+      - name: Upload test reports
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: test-results-${{ github.run_number }}
+          name: reports-${{ github.run_number }}
           path: |
-            test-results.xml
-            coverage.xml
-            htmlcov/
+            reports/tests/test-results.xml
+            reports/coverage/coverage.xml
+            reports/coverage/htmlcov/
 
   deployment-gate:
     runs-on: ubuntu-latest

@@ -158,7 +158,7 @@ The tools generate several output files:
 
 - `health-report.json` - Detailed health analysis
 - `coverage.xml` - Test coverage report
-- `test-results.xml` - Test execution results
+- `reports/tests/test-results.xml` - Test execution results
 - `deployment-status.json` - Overall deployment status
 - `deployment-badge.json` - Status badge data
 

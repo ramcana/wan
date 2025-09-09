@@ -279,11 +279,10 @@ python comprehensive_test_runner.py --timeout 30
 
 ### Report Locations
 
-- `test_results/`: Smoke test results
+- `reports/tests/`: Test execution results
 - `integration_test_artifacts/`: Integration test outputs
 - `benchmark_results/`: Performance benchmark data
-- `coverage_reports/`: Coverage analysis reports
-- `comprehensive_test_results/`: Unified test reports
+- `reports/coverage/`: Coverage analysis reports
 
 ## Requirements Validation
 

@@ -609,7 +609,7 @@ def main():
     print(f"\nOverall Results: {successful_variants}/{total_variants} variants passed")
     
     # Save detailed results
-    results_file = Path("test_results") / "model_variant_test_results.json"
+    results_file = Path("reports") / "tests" / "model_variant_test_results.json"
     results_file.parent.mkdir(exist_ok=True)
     
     with open(results_file, 'w') as f:

@@ -284,7 +284,7 @@ The test framework is designed for CI/CD integration:
 - name: Upload Test Results
   uses: actions/upload-artifact@v3
   with:
-    name: test-results
+    name: reports-tests
     path: local_installation/ci_results/
 ```
 
