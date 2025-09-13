@@ -49,6 +49,8 @@ class GenerationTaskDB(Base):
     end_image_path = Column(String, nullable=True)  # For I2V and TI2V interpolation
     resolution = Column(String, nullable=False, default="1280x720")
     steps = Column(Integer, nullable=False, default=50)
+    num_frames = Column(Integer, nullable=False, default=16)
+    fps = Column(Float, nullable=False, default=8.0)
     lora_path = Column(String, nullable=True)
     lora_strength = Column(Float, nullable=False, default=1.0)
     status = Column(Enum(TaskStatusEnum), nullable=False, default=TaskStatusEnum.PENDING)

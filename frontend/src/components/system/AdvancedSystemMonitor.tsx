@@ -156,7 +156,11 @@ const AdvancedSystemMonitor: React.FC = () => {
     subscribe,
     unsubscribe,
     lastMessage,
-  } = useWebSocket("ws://localhost:8000/ws");
+  } = useWebSocket(
+    `ws://${
+      import.meta.env.VITE_API_URL?.replace("http://", "") || "localhost:9000"
+    }/ws`
+  );
 
   const chartRef = useRef<ChartJS<"line", any, any>>(null);
 

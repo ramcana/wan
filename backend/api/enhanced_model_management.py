@@ -510,3 +510,50 @@ async def get_enhanced_model_management_api() -> EnhancedModelManagementAPI:
         _enhanced_api = EnhancedModelManagementAPI()
         await _enhanced_api.initialize()
     return _enhanced_api
+
+
+# FastAPI Router
+from fastapi import APIRouter
+
+router = APIRouter()
+
+@router.get("/model-management/health")
+async def health():
+    """Health check endpoint for model management"""
+    return {"ok": True}
+
+@router.get("/model-management/status")
+async def get_model_status():
+    """Get detailed model status"""
+    api = await get_enhanced_model_management_api()
+    return await api.get_detailed_model_status()
+
+@router.post("/model-management/download/control")
+async def control_download(request: DownloadControlRequest):
+    """Control download operations (pause, resume, cancel, priority)"""
+    api = await get_enhanced_model_management_api()
+    return await api.manage_download(request)
+
+@router.get("/model-management/health-monitoring")
+async def get_health_monitoring():
+    """Get health monitoring data"""
+    api = await get_enhanced_model_management_api()
+    return await api.get_health_monitoring_data()
+
+@router.get("/model-management/analytics")
+async def get_analytics(time_period_days: int = 30):
+    """Get usage analytics"""
+    api = await get_enhanced_model_management_api()
+    return await api.get_usage_analytics(time_period_days)
+
+@router.post("/model-management/cleanup")
+async def manage_cleanup(request: CleanupRequest):
+    """Manage storage cleanup"""
+    api = await get_enhanced_model_management_api()
+    return await api.manage_storage_cleanup(request)
+
+@router.post("/model-management/fallback-suggestions")
+async def get_fallback_suggestions(request: FallbackSuggestionRequest):
+    """Get fallback model suggestions"""
+    api = await get_enhanced_model_management_api()
+    return await api.suggest_fallback_alternatives(request)

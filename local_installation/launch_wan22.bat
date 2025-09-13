@@ -6,10 +6,10 @@ echo ========================================
 echo.
 
 REM Change to installation directory
-cd /d "E:\wan\local_installation"
+cd /d "%~dp0"
 
 REM Check if virtual environment exists
-if not exist "E:\wan\local_installation\venv\Scripts\activate.bat" (
+if not exist "%~dp0venv\Scripts\activate.bat" (
     echo Error: Virtual environment not found!
     echo Please run the installer again.
     echo.
@@ -19,7 +19,7 @@ if not exist "E:\wan\local_installation\venv\Scripts\activate.bat" (
 
 REM Activate virtual environment
 echo Activating environment...
-call "E:\wan\local_installation\venv\Scripts\activate.bat"
+call "%~dp0venv\Scripts\activate.bat"
 
 REM Check if main application exists
 if not exist "application\main.py" (

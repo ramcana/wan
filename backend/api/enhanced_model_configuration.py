@@ -10,12 +10,12 @@ from fastapi.security import HTTPBearer
 from typing import Dict, Any, Optional, List
 import logging
 
-from ..core.enhanced_model_config import (
+from core.enhanced_model_config import (
     get_config_manager, ConfigurationManager,
     UserPreferences, AdminPolicies, FeatureFlagConfig,
     AutomationLevel, FeatureFlag
 )
-from ..core.config_validation import ValidationResult
+from core.config_validation import ValidationResult
 
 logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/api/v1/config", tags=["Enhanced Model Configuration"])
@@ -447,7 +447,7 @@ def _dict_to_user_preferences(data: Dict[str, Any]) -> UserPreferences:
     for field_name, class_name in nested_configs.items():
         if field_name in data and isinstance(data[field_name], dict):
             # Get the class from the config module
-            from ..core.enhanced_model_config import (
+            from core.enhanced_model_config import (
                 DownloadConfig, HealthMonitoringConfig, FallbackConfig,
                 AnalyticsConfig, UpdateConfig, NotificationConfig, StorageConfig
             )

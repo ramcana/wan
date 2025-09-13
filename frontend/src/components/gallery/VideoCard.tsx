@@ -119,7 +119,7 @@ const VideoCard: React.FC<VideoCardProps> = ({
   // Generate thumbnail URL or use actual thumbnail path
   const thumbnailSrc = video.thumbnail_path
     ? `${
-        import.meta.env.VITE_API_URL || "http://localhost:8000"
+        import.meta.env.VITE_API_URL || "http://localhost:9000"
       }/thumbnails/${video.thumbnail_path.split("/").pop()}`
     : outputsApi.getThumbnailUrl(video.id);
 

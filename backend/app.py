@@ -223,6 +223,13 @@ try:
 except ImportError as e:
     logger.warning(f"Could not import WAN dashboard router: {e}")
 
+try:
+    from api.v1.endpoints.generation import router as v1_generation_router
+    app.include_router(v1_generation_router, prefix="/api/v1")
+    logger.info("V1 Generation API router included")
+except ImportError as e:
+    logger.warning(f"Could not import V1 generation router: {e}")
+
 # Configure CORS with enhanced validation
 app.add_middleware(
     CORSMiddleware,
@@ -598,11 +605,7 @@ async def get_prompt_styles():
         "total_count": len(styles)
     }
 
-# Basic generation endpoint (placeholder)
-@app.post("/api/v1/generate")
-async def generate_video():
-    """Generate video endpoint (placeholder)"""
-    return {"message": "Video generation endpoint - implementation pending"}
+# Generation endpoint is handled by the v1 router in backend/api/v1/endpoints/generation.py
 
 # Queue endpoint
 @app.get("/api/v1/queue")

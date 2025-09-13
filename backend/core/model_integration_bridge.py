@@ -268,26 +268,12 @@ class ModelIntegrationBridge:
     async def _initialize_model_manager(self):
         """Initialize the existing ModelManager"""
         try:
-            # Try multiple import paths for ModelManager
-            model_manager = None
-            
-            # First try the direct path
-            try:
-                sys.path.insert(0, str(Path(__file__).parent.parent.parent))
-                from core.services.model_manager import get_model_manager
-                model_manager = get_model_manager()
-                logger.info("ModelManager imported from core.services")
-            except ImportError:
-                # Try alternative path
-                try:
-                    core_services_path = Path(__file__).parent.parent.parent / "core" / "services"
-                    sys.path.insert(0, str(core_services_path.parent))
-                    from core.services.model_manager import get_model_manager
-                    model_manager = get_model_manager()
-                    logger.info("ModelManager imported from alternative path")
-                except ImportError:
-                    logger.warning("ModelManager not available, using fallback model loading")
-                    model_manager = None
+            # Add project root to path for core.services imports
+            project_root = Path(__file__).parent.parent.parent
+            sys.path.insert(0, str(project_root))
+            from core.services.model_manager import get_model_manager
+            model_manager = get_model_manager()
+            logger.info("ModelManager imported from core.services")
             
             self.model_manager = model_manager
             if model_manager:
@@ -306,18 +292,12 @@ class ModelIntegrationBridge:
             system_optimizer = None
             
             try:
-                sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+                project_root = Path(__file__).parent.parent.parent
+                sys.path.insert(0, str(project_root))
                 from core.services.wan22_system_optimizer import WAN22SystemOptimizer
                 system_optimizer = WAN22SystemOptimizer()
                 logger.info("WAN22SystemOptimizer imported from core.services")
             except ImportError:
-                try:
-                    core_services_path = Path(__file__).parent.parent.parent / "core" / "services"
-                    sys.path.insert(0, str(core_services_path.parent))
-                    from core.services.wan22_system_optimizer import WAN22SystemOptimizer
-                    system_optimizer = WAN22SystemOptimizer()
-                    logger.info("WAN22SystemOptimizer imported from alternative path")
-                except ImportError:
                     logger.warning("WAN22SystemOptimizer not available, using fallback optimization")
                     system_optimizer = None
             
@@ -2040,7 +2020,9 @@ class ModelIntegrationBridge:
             if pipeline:
                 return await pipeline.validate_lora_compatibility(model_type, lora_name)
             else:
-                # Fallback to basic validation
+                # Get available LoRAs
+                project_root = Path(__file__).parent.parent.parent
+                sys.path.insert(0, str(project_root))
                 from core.services.utils import get_lora_manager
                 lora_manager = get_lora_manager()
                 

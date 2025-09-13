@@ -104,7 +104,7 @@ describe("TaskCard", () => {
     expect(
       screen.getByText("A beautiful sunset over mountains")
     ).toBeInTheDocument();
-    expect(screen.getByText("Processing")).toBeInTheDocument();
+    expect(screen.getByText("processing")).toBeInTheDocument(); // lowercase in badge
     expect(screen.getByText("T2V-A14B")).toBeInTheDocument();
     expect(screen.getByText("75%")).toBeInTheDocument();
     expect(screen.getByText("1280x720")).toBeInTheDocument();

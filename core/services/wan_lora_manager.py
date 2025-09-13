@@ -725,10 +725,13 @@ class WANLoRAManager(LoRAManager):
 
 # Global WAN LoRA manager instance
 _wan_lora_manager = None
+_wan_lora_initialized = False
 
 def get_wan_lora_manager(config: Optional[Dict[str, Any]] = None) -> WANLoRAManager:
     """Get the global WAN LoRA manager instance"""
-    global _wan_lora_manager
+    global _wan_lora_manager, _wan_lora_initialized
+    if _wan_lora_initialized:
+        return _wan_lora_manager
     if _wan_lora_manager is None:
         if config is None:
             # Try to get config from existing model manager
@@ -747,4 +750,6 @@ def get_wan_lora_manager(config: Optional[Dict[str, Any]] = None) -> WANLoRAMana
                 }
         
         _wan_lora_manager = WANLoRAManager(config)
+        _wan_lora_initialized = True
+        logger.info("LoRA manager initialized successfully")
     return _wan_lora_manager

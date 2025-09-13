@@ -15,8 +15,8 @@ from pydantic import BaseModel
 
 # Import WAN model info API
 try:
-    from backend.api.wan_model_info import get_wan_model_info_api, WANModelInfoAPI
-    from backend.websocket.manager import get_connection_manager
+    from api.wan_model_info import get_wan_model_info_api, WANModelInfoAPI
+    from websocket.manager import get_connection_manager
     WAN_API_AVAILABLE = True
 except ImportError as e:
     logging.warning(f"WAN model info API not available: {e}")

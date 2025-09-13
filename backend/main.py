@@ -22,6 +22,10 @@ try:
     import apply_model_fixes
 except ImportError:
     try:
+        import sys
+        from pathlib import Path
+        project_root = Path(__file__).parent.parent
+        sys.path.insert(0, str(project_root))
         from core.services import apply_model_fixes
     except ImportError:
         print("Warning: Could not import apply_model_fixes module")
@@ -66,6 +70,8 @@ try:
     SYSTEM_OPTIMIZER_AVAILABLE = True
 except ImportError:
     try:
+        project_root = Path(__file__).parent.parent
+        sys.path.insert(0, str(project_root))
         from core.services.wan22_system_optimizer import WAN22SystemOptimizer
         SYSTEM_OPTIMIZER_AVAILABLE = True
     except ImportError as e:
@@ -395,6 +401,8 @@ class ApplicationManager:
         """Cleanup loaded models and free GPU memory"""
         try:
             # Lazy import to avoid heavy dependencies during cleanup
+            project_root = Path(__file__).parent.parent
+            sys.path.insert(0, str(project_root))
             from core.services.model_manager import get_model_manager
             
             model_manager = get_model_manager()

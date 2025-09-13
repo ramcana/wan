@@ -12,38 +12,26 @@ from pathlib import Path
 def main():
     # Get the directory containing this script
     script_dir = Path(__file__).parent.absolute()
-    backend_dir = script_dir / "backend"
     
-    # Change to backend directory
-    os.chdir(backend_dir)
+    # Add project root to Python path for proper module resolution
+    sys.path.insert(0, str(script_dir))
     
-    # Add backend directory to Python path
-    sys.path.insert(0, str(backend_dir))
-    
-    print("🚀 Starting WAN22 FastAPI Backend Server...")
-    print(f"📁 Working directory: {backend_dir}")
-    print(f"🌐 Server will be available at: http://localhost:8000")
-    print(f"📚 API Documentation: http://localhost:8000/docs")
+    # Run the backend as a module to ensure proper import resolution
+    print("Starting WAN22 FastAPI Backend Server using module execution...")
     print(f"🔌 WebSocket endpoint: ws://localhost:8000/ws")
     print("Press Ctrl+C to stop the server")
     print("-" * 60)
     
     try:
-        # Start the server using uvicorn
-        subprocess.run([
-            sys.executable, "-m", "uvicorn", 
-            "app:app", 
-            "--host", "0.0.0.0", 
-            "--port", "8000", 
-            "--reload"
-        ], check=True)
+        # Use subprocess to run the backend as a module
+        result = subprocess.run([
+            sys.executable, "-m", "backend"
+        ], cwd=str(script_dir))
+        sys.exit(result.returncode)
     except KeyboardInterrupt:
-        print("\n👋 Server stopped by user")
-    except subprocess.CalledProcessError as e:
-        print(f"\n❌ Server failed to start: {e}")
-        sys.exit(1)
+        print("\nServer stopped by user")
     except Exception as e:
-        print(f"\n❌ Unexpected error: {e}")
+        print(f"Error starting server: {e}")
         sys.exit(1)
 
 if __name__ == "__main__":

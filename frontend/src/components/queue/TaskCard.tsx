@@ -34,6 +34,8 @@ const TaskCard: React.FC<TaskCardProps> = ({ task, className }) => {
   const estimatedTime = useEstimatedCompletionTime(task);
 
   const handleCancel = async () => {
+    if (!cancelTask?.mutateAsync) return;
+
     try {
       await cancelTask.mutateAsync(task.id);
       toast({
@@ -50,6 +52,8 @@ const TaskCard: React.FC<TaskCardProps> = ({ task, className }) => {
   };
 
   const handleDelete = async () => {
+    if (!deleteTask?.mutateAsync) return;
+
     try {
       await deleteTask.mutateAsync(task.id);
       toast({
@@ -149,7 +153,7 @@ const TaskCard: React.FC<TaskCardProps> = ({ task, className }) => {
                 variant="ghost"
                 size="sm"
                 onClick={handleCancel}
-                disabled={cancelTask.isLoading}
+                disabled={cancelTask?.isLoading || false}
                 className="h-8 w-8 p-0"
               >
                 <X className="h-4 w-4" />
@@ -160,7 +164,7 @@ const TaskCard: React.FC<TaskCardProps> = ({ task, className }) => {
                 variant="ghost"
                 size="sm"
                 onClick={handleDelete}
-                disabled={deleteTask.isLoading}
+                disabled={deleteTask?.isLoading || false}
                 className="h-8 w-8 p-0 text-red-600 hover:text-red-700"
               >
                 <Trash2 className="h-4 w-4" />

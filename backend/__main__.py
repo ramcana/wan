@@ -1,17 +1,12 @@
 #!/usr/bin/env python3
 """
-Simple script to start the FastAPI backend server
+Backend module entry point for running as: python -m backend
 """
 
 import uvicorn
-import os
-import sys
 import argparse
+import sys
 from pathlib import Path
-
-# Add the backend directory to Python path
-backend_dir = Path(__file__).parent
-sys.path.insert(0, str(backend_dir))
 
 def main():
     parser = argparse.ArgumentParser(description="Start WAN22 FastAPI Backend Server")

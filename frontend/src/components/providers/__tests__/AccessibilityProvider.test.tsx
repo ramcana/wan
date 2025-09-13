@@ -110,12 +110,10 @@ describe("ScreenReaderOnly", () => {
 
 describe("AccessibleLoading", () => {
   it("should show loading state", () => {
-    render(
-      <AccessibilityProvider>
-        <AccessibleLoading isLoading={true} loadingText="Loading data">
-          <div>Content</div>
-        </AccessibleLoading>
-      </AccessibilityProvider>
+    renderWithProviders(
+      <AccessibleLoading isLoading={true} loadingText="Loading data">
+        <div>Content</div>
+      </AccessibleLoading>
     );
 
     expect(screen.getByRole("status")).toBeInTheDocument();
@@ -124,12 +122,10 @@ describe("AccessibleLoading", () => {
   });
 
   it("should show content when not loading", () => {
-    render(
-      <AccessibilityProvider>
-        <AccessibleLoading isLoading={false}>
-          <div>Content</div>
-        </AccessibleLoading>
-      </AccessibilityProvider>
+    renderWithProviders(
+      <AccessibleLoading isLoading={false}>
+        <div>Content</div>
+      </AccessibleLoading>
     );
 
     expect(screen.getByText("Content")).toBeInTheDocument();
@@ -139,11 +135,7 @@ describe("AccessibleLoading", () => {
 
 describe("AccessibleFormErrors", () => {
   it("should not render when no errors", () => {
-    render(
-      <AccessibilityProvider>
-        <AccessibleFormErrors errors={{}} />
-      </AccessibilityProvider>
-    );
+    renderWithProviders(<AccessibleFormErrors errors={{}} />);
 
     expect(screen.queryByRole("alert")).not.toBeInTheDocument();
   });
@@ -154,10 +146,8 @@ describe("AccessibleFormErrors", () => {
       password: "Password too short",
     };
 
-    render(
-      <AccessibilityProvider>
-        <AccessibleFormErrors errors={errors} fieldId="test-field" />
-      </AccessibilityProvider>
+    renderWithProviders(
+      <AccessibleFormErrors errors={errors} fieldId="test-field" />
     );
 
     const alert = screen.getByRole("alert");

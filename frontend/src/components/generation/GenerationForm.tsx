@@ -133,9 +133,9 @@ export const GenerationForm: React.FC<GenerationFormProps> = ({
     clearErrors,
     formState: { errors, isValid, isDirty, isValidating },
   } = useForm<GenerationFormData>({
-    resolver: zodResolver(GenerationFormSchema) as any,
+    resolver: zodResolver(GenerationFormSchema),
     defaultValues: {
-      modelType: "auto" as any, // Phase 1: Default to auto-detection
+      modelType: "auto" as const,
       prompt: "",
       resolution: "1280x720",
       steps: 50,

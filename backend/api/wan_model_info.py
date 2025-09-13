@@ -16,15 +16,21 @@ from pydantic import BaseModel, Field
 
 # Import WAN model components
 try:
+    import sys
+    from pathlib import Path
+    # Add project root to path for core.models imports
+    project_root = Path(__file__).parent.parent.parent
+    sys.path.insert(0, str(project_root))
+    
     from core.models.wan_models.wan_base_model import WANModelType, WANModelStatus
     from core.models.wan_models.wan_model_config import get_wan_model_config, get_wan_model_info
     from core.models.wan_models.wan_pipeline_factory import WANPipelineFactory
-    from core.models.wan_models.wan_hardware_optimizer import WANHardwareOptimizer
+    from core.models.wan_models.wan_hardware_optimizer import WANModelHardwareOptimizer as WANHardwareOptimizer
     from core.models.wan_models.wan_vram_monitor import WANVRAMMonitor
     from core.models.wan_models.wan_progress_tracker import WANProgressTracker
     WAN_MODELS_AVAILABLE = True
 except ImportError as e:
-    logging.warning(f"WAN model components not available: {e}")
+    logging.warning(f"WAN model implementations not available: {e}")
     WAN_MODELS_AVAILABLE = False
 
 # Import existing infrastructure

@@ -42,7 +42,9 @@ const QueueManager: React.FC = () => {
 
   // WebSocket for real-time updates
   const { isConnected: wsConnected, lastMessage } = useWebSocket(
-    "ws://localhost:8000/ws"
+    `ws://${
+      import.meta.env.VITE_API_URL?.replace("http://", "") || "localhost:9000"
+    }/ws`
   );
 
   // Request notification permission

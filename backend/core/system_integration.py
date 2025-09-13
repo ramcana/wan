@@ -273,6 +273,12 @@ class SystemIntegration:
         try:
             # Try to import ModelManager - it may have dependencies that aren't available
             try:
+                import sys
+                from pathlib import Path
+                # Add project root to path for core.services imports
+                project_root = Path(__file__).parent.parent.parent
+                sys.path.insert(0, str(project_root))
+                
                 from core.services.model_manager import ModelManager
             except ImportError as e:
                 logger.warning(f"ModelManager has missing dependencies: {e}")

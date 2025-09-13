@@ -25,6 +25,10 @@ from backend.core.model_integration_bridge import (
 
 # Import existing LoRA manager
 try:
+    import sys
+    from pathlib import Path
+    project_root = Path(__file__).parent.parent.parent
+    sys.path.insert(0, str(project_root))
     from core.services.utils import LoRAManager
     LORA_MANAGER_AVAILABLE = True
 except ImportError:
@@ -1129,6 +1133,8 @@ class RealGenerationPipeline:
     def _create_generation_config(self, prompt: str, params: GenerationParams):
         """Create generation configuration from parameters"""
         try:
+            project_root = Path(__file__).parent.parent.parent
+            sys.path.insert(0, str(project_root))
             from core.services.wan_pipeline_loader import GenerationConfig
             
             width, height = self._parse_resolution(params.resolution)

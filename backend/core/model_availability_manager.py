@@ -17,6 +17,10 @@ from concurrent.futures import ThreadPoolExecutor
 
 # Import existing components
 try:
+    import sys
+    from pathlib import Path
+    project_root = Path(__file__).parent.parent.parent
+    sys.path.insert(0, str(project_root))
     from core.services.model_manager import ModelManager, get_model_manager
 except ImportError:
     # Fallback for testing or when model_manager is not available
