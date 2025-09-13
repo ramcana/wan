@@ -90,7 +90,7 @@ async def test_cors_endpoints():
 
 def test_cors_validator_directly():
     """Test CORS validator functionality directly"""
-    from core.cors_validator import CORSValidator, generate_cors_error_response
+    from backend.core.cors_validator import CORSValidator, generate_cors_error_response
     
     print("\n🧪 Testing CORS validator directly...")
     print("=" * 60)

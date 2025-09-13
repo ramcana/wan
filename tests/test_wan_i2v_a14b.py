@@ -146,11 +146,11 @@ numpy_mock.random.seed = MagicMock()
 sys.modules['numpy'] = numpy_mock
 
 # Now import the actual modules
-from core.models.wan_models.wan_i2v_a14b import (
+from backend.core.models.wan_models.wan_i2v_a14b import (
     WANI2VA14B, I2VGenerationParams, ImageEncoder, 
     ImageConditioningBlock, TemporalImageAttention, I2VTransformerBlock
 )
-from core.models.wan_models.wan_base_model import (
+from backend.core.models.wan_models.wan_base_model import (
     WANModelCapabilities, WANGenerationResult, HardwareProfile
 )
 

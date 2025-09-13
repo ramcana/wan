@@ -14,14 +14,14 @@ import time
 from typing import Dict, Any, List, Optional, Callable, Tuple
 from datetime import datetime
 
-from core.services.utils import (
+from backend.core.services.utils import (
     get_compatibility_status_for_ui,
     get_optimization_status_for_ui, 
     apply_optimization_recommendations,
     check_model_compatibility_for_ui,
     get_model_loading_progress_info,
 )
-from core.services.model_manager import get_model_manager
+from backend.core.services.model_manager import get_model_manager
 
 logger = logging.getLogger(__name__)
 

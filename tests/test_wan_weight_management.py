@@ -22,15 +22,15 @@ import pytest
 import sys
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from core.models.wan_models.wan_weight_manager import (
+from backend.core.models.wan_models.wan_weight_manager import (
     WANWeightManager, WeightInfo, WeightType, WeightStatus, CacheEntry,
     get_wan_weight_manager, download_wan_model, verify_wan_model
 )
-from core.models.wan_models.wan_model_updater import (
+from backend.core.models.wan_models.wan_model_updater import (
     WANModelUpdater, UpdateInfo, ModelVersion, MigrationStrategy,
     check_wan_model_updates, update_wan_model
 )
-from core.models.wan_models.wan_model_config import get_wan_model_config
+from backend.core.models.wan_models.wan_model_config import get_wan_model_config
 
 logger = logging.getLogger(__name__)
 

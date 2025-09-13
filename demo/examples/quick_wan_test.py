@@ -19,7 +19,7 @@ logger = logging.getLogger(__name__)
 def test_wan_pipeline_factory():
     """Test WAN pipeline factory"""
     try:
-        from core.models.wan_models.wan_pipeline_factory import WANPipelineFactory
+        from backend.core.models.wan_models.wan_pipeline_factory import WANPipelineFactory
         
         factory = WANPipelineFactory()
         logger.info("✅ WAN Pipeline Factory created successfully")
@@ -41,7 +41,7 @@ def test_wan_pipeline_factory():
 def test_wan_model_config():
     """Test WAN model configuration"""
     try:
-        from core.models.wan_models.wan_model_config import get_wan_model_config
+        from backend.core.models.wan_models.wan_model_config import get_wan_model_config
         
         # Test T2V config
         config = get_wan_model_config("t2v-A14B")
@@ -76,10 +76,10 @@ def test_wan_model_config():
 def test_wan_models():
     """Test WAN model instantiation"""
     try:
-        from core.models.wan_models.wan_t2v_a14b import WANT2VA14B
-        from core.models.wan_models.wan_i2v_a14b import WANI2VA14B
-        from core.models.wan_models.wan_ti2v_5b import WANTI2V5B
-        from core.models.wan_models.wan_model_config import get_wan_model_config
+        from backend.core.models.wan_models.wan_t2v_a14b import WANT2VA14B
+        from backend.core.models.wan_models.wan_i2v_a14b import WANI2VA14B
+        from backend.core.models.wan_models.wan_ti2v_5b import WANTI2V5B
+        from backend.core.models.wan_models.wan_model_config import get_wan_model_config
         
         # Test T2V model
         config = get_wan_model_config("t2v-A14B")

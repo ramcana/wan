@@ -766,7 +766,7 @@ class IntegratedErrorHandler:
         """Handle WAN model-specific errors using the WAN error handler"""
         try:
             # Import WAN error handler
-            from core.models.wan_models.wan_model_error_handler import (
+            from backend.core.models.wan_models.wan_model_error_handler import (
                 get_wan_error_handler,
                 WANErrorContext,
                 WANModelType
@@ -803,7 +803,7 @@ class IntegratedErrorHandler:
             # Create hardware profile if available
             if context.get("hardware_profile"):
                 try:
-                    from core.models.wan_models.wan_base_model import HardwareProfile
+                    from backend.core.models.wan_models.wan_base_model import HardwareProfile
                     hw_info = context["hardware_profile"]
                     wan_context.hardware_profile = HardwareProfile(
                         gpu_name=hw_info.get("gpu_name", "Unknown"),
@@ -820,7 +820,7 @@ class IntegratedErrorHandler:
                     pass
             
             # Create WAN error handler instance directly to avoid circular dependency
-            from core.models.wan_models.wan_model_error_handler import WANModelErrorHandler
+            from backend.core.models.wan_models.wan_model_error_handler import WANModelErrorHandler
             wan_handler = WANModelErrorHandler(avoid_integrated_handler=True)
             wan_error = await wan_handler.handle_wan_error(error, wan_context)
             
@@ -888,7 +888,7 @@ async def handle_wan_model_error(
     """Handle WAN model-specific errors with comprehensive recovery suggestions"""
     try:
         # Import WAN error handler
-        from core.models.wan_models.wan_model_error_handler import (
+        from backend.core.models.wan_models.wan_model_error_handler import (
             get_wan_error_handler,
             WANErrorContext,
             WANModelType
@@ -916,7 +916,7 @@ async def handle_wan_model_error(
             wan_error_context.checkpoint_path = wan_context.get("checkpoint_path")
         
         # Create WAN error handler instance directly to avoid circular dependency
-        from core.models.wan_models.wan_model_error_handler import WANModelErrorHandler
+        from backend.core.models.wan_models.wan_model_error_handler import WANModelErrorHandler
         wan_handler = WANModelErrorHandler(avoid_integrated_handler=True)
         return await wan_handler.handle_wan_error(error, wan_error_context)
         

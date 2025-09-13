@@ -9,7 +9,7 @@ from datetime import datetime
 from typing import Dict, Any, Optional
 from functools import wraps
 
-from core.model_usage_analytics import (
+from backend.core.model_usage_analytics import (
     track_generation_usage, UsageEventType, get_model_usage_analytics
 )
 

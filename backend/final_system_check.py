@@ -14,7 +14,7 @@ async def final_system_check():
     try:
         # 1. Check system integration
         print("1. 🔧 System Integration Check...")
-        from core.system_integration import get_system_integration
+        from backend.core.system_integration import get_system_integration
         integration = await get_system_integration()
         optimizer = integration.get_wan22_system_optimizer()
         
@@ -40,7 +40,7 @@ async def final_system_check():
         
         # 3. Check fallback recovery system
         print("\n3. 🛡️  Fallback Recovery System Check...")
-        from core.fallback_recovery_system import get_fallback_recovery_system
+        from backend.core.fallback_recovery_system import get_fallback_recovery_system
         recovery = get_fallback_recovery_system()
         
         if recovery:

@@ -24,7 +24,7 @@ except Exception as e:
     logger.warning(f"Could not apply model loading fixes: {e}")
 
 # Import backend utilities
-from core.services.utils import (
+from backend.core.services.utils import (
     GenerationTask,
     TaskStatus,
     get_system_stats,
@@ -85,8 +85,8 @@ class Wan22UI:
     
     def __init__(self, config_path: str = "config.json", system_optimizer=None):
         self.config = self._load_config(config_path)
-        from core.services.model_manager import get_model_manager
-        from core.services.optimization_service import get_vram_optimizer
+        from backend.core.services.model_manager import get_model_manager
+        from backend.core.services.optimization_service import get_vram_optimizer
         self.model_manager = get_model_manager()
         self.vram_optimizer = get_vram_optimizer(self.config)
         
@@ -2877,7 +2877,7 @@ class Wan22UI:
         
         try:
             # Import the enhance_prompt function
-            from core.services.utils import enhance_prompt
+            from backend.core.services.utils import enhance_prompt
             
             enhanced = enhance_prompt(prompt)
             
@@ -2926,7 +2926,7 @@ class Wan22UI:
             progress_html = self.progress_tracker.get_progress_html()
             
             # Import generation function
-            from core.services.utils import generate_video
+            from backend.core.services.utils import generate_video
             
             # Prepare generation parameters
             gen_params = {
@@ -3099,7 +3099,7 @@ class Wan22UI:
         
         try:
             # Import queue manager
-            from core.services.utils import get_queue_manager, GenerationTask
+            from backend.core.services.utils import get_queue_manager, GenerationTask
             
             queue_manager = get_queue_manager()
             
@@ -4967,7 +4967,7 @@ class Wan22UI:
         """Check if system meets minimum requirements for video generation"""
         try:
             import torch
-            from core.services.utils import get_system_stats
+            from backend.core.services.utils import get_system_stats
             
             warnings = []
             
@@ -5615,7 +5615,7 @@ class Wan22UI:
     def _clear_queue(self):
         """Clear all tasks from the queue"""
         try:
-            from core.services.utils import get_queue_manager
+            from backend.core.services.utils import get_queue_manager
             
             queue_manager = get_queue_manager()
             
@@ -5642,7 +5642,7 @@ class Wan22UI:
     def _pause_queue(self):
         """Pause queue processing"""
         try:
-            from core.services.utils import get_queue_manager
+            from backend.core.services.utils import get_queue_manager
             
             queue_manager = get_queue_manager()
             
@@ -5660,7 +5660,7 @@ class Wan22UI:
     def _resume_queue(self):
         """Resume queue processing"""
         try:
-            from core.services.utils import get_queue_manager
+            from backend.core.services.utils import get_queue_manager
             
             queue_manager = get_queue_manager()
             
@@ -5679,7 +5679,7 @@ class Wan22UI:
         """Refresh all system statistics and queue status"""
         try:
             # Get system stats
-            from core.services.utils import get_system_stats, get_queue_manager
+            from backend.core.services.utils import get_system_stats, get_queue_manager
             
             stats = get_system_stats()
             queue_manager = get_queue_manager()
@@ -5715,7 +5715,7 @@ class Wan22UI:
     def _get_queue_status(self):
         """Get current queue status for display with enhanced real-time info"""
         try:
-            from core.services.utils import get_queue_manager
+            from backend.core.services.utils import get_queue_manager
             
             queue_manager = get_queue_manager()
             tasks = queue_manager.get_all_tasks()
@@ -5937,7 +5937,7 @@ class Wan22UI:
     def _refresh_video_gallery(self, sort_by: str):
         """Refresh the video gallery with current sorting"""
         try:
-            from core.services.utils import get_output_manager
+            from backend.core.services.utils import get_output_manager
             
             output_manager = get_output_manager()
             videos = output_manager.list_videos()
@@ -5973,7 +5973,7 @@ class Wan22UI:
     def _on_video_select(self, evt: gr.SelectData):
         """Handle video selection from gallery"""
         try:
-            from core.services.utils import get_output_manager
+            from backend.core.services.utils import get_output_manager
             
             output_manager = get_output_manager()
             videos = output_manager.list_videos()
@@ -6012,7 +6012,7 @@ class Wan22UI:
             return [], None, {"error": "No video selected"}
         
         try:
-            from core.services.utils import get_output_manager
+            from backend.core.services.utils import get_output_manager
             
             output_manager = get_output_manager()
             success = output_manager.delete_video(self.selected_video_path)

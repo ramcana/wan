@@ -21,13 +21,13 @@ from enum import Enum
 sys.path.append(str(Path(__file__).parent.parent))
 
 try:
-    from core.enhanced_model_downloader import EnhancedModelDownloader
-    from core.model_health_monitor import ModelHealthMonitor
-    from core.model_availability_manager import ModelAvailabilityManager
-    from core.intelligent_fallback_manager import IntelligentFallbackManager
-    from core.model_usage_analytics import ModelUsageAnalytics
-    from core.enhanced_error_recovery import EnhancedErrorRecovery
-    from core.model_update_manager import ModelUpdateManager
+    from backend.core.enhanced_model_downloader import EnhancedModelDownloader
+    from backend.core.model_health_monitor import ModelHealthMonitor
+    from backend.core.model_availability_manager import ModelAvailabilityManager
+    from backend.core.intelligent_fallback_manager import IntelligentFallbackManager
+    from backend.core.model_usage_analytics import ModelUsageAnalytics
+    from backend.core.enhanced_error_recovery import EnhancedErrorRecovery
+    from backend.core.model_update_manager import ModelUpdateManager
 except ImportError as e:
     logging.warning(f"Could not import enhanced model availability components: {e}")
 
@@ -475,7 +475,7 @@ async def check_enhanced_downloader_health():
     """Check enhanced model downloader health"""
     try:
         # Try to import and instantiate
-        from core.enhanced_model_downloader import EnhancedModelDownloader
+        from backend.core.enhanced_model_downloader import EnhancedModelDownloader
         
         # Basic instantiation test
         downloader = EnhancedModelDownloader(None)  # Would normally pass base downloader
@@ -490,7 +490,7 @@ async def check_enhanced_downloader_health():
 async def check_health_monitor_health():
     """Check model health monitor health"""
     try:
-        from core.model_health_monitor import ModelHealthMonitor
+        from backend.core.model_health_monitor import ModelHealthMonitor
         
         monitor = ModelHealthMonitor()
         
@@ -504,7 +504,7 @@ async def check_health_monitor_health():
 async def check_availability_manager_health():
     """Check model availability manager health"""
     try:
-        from core.model_availability_manager import ModelAvailabilityManager
+        from backend.core.model_availability_manager import ModelAvailabilityManager
         
         # Basic instantiation test
         manager = ModelAvailabilityManager(None, None)  # Would normally pass dependencies
@@ -519,7 +519,7 @@ async def check_availability_manager_health():
 async def check_fallback_manager_health():
     """Check intelligent fallback manager health"""
     try:
-        from core.intelligent_fallback_manager import IntelligentFallbackManager
+        from backend.core.intelligent_fallback_manager import IntelligentFallbackManager
         
         manager = IntelligentFallbackManager(None)  # Would normally pass availability manager
         
@@ -533,7 +533,7 @@ async def check_fallback_manager_health():
 async def check_usage_analytics_health():
     """Check model usage analytics health"""
     try:
-        from core.model_usage_analytics import ModelUsageAnalytics
+        from backend.core.model_usage_analytics import ModelUsageAnalytics
         
         analytics = ModelUsageAnalytics()
         
@@ -547,7 +547,7 @@ async def check_usage_analytics_health():
 async def check_error_recovery_health():
     """Check enhanced error recovery health"""
     try:
-        from core.enhanced_error_recovery import EnhancedErrorRecovery
+        from backend.core.enhanced_error_recovery import EnhancedErrorRecovery
         
         recovery = EnhancedErrorRecovery(None, None)  # Would normally pass dependencies
         
@@ -561,7 +561,7 @@ async def check_error_recovery_health():
 async def check_update_manager_health():
     """Check model update manager health"""
     try:
-        from core.model_update_manager import ModelUpdateManager
+        from backend.core.model_update_manager import ModelUpdateManager
         
         manager = ModelUpdateManager()
         

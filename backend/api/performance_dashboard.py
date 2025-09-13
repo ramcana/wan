@@ -10,7 +10,7 @@ from typing import Dict, List, Optional, Any
 from datetime import datetime, timedelta
 import logging
 
-from core.performance_monitoring_system import (
+from backend.core.performance_monitoring_system import (
     get_performance_monitor,
     PerformanceMonitoringSystem,
     PerformanceReport,

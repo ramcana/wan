@@ -11,7 +11,7 @@ from unittest.mock import Mock, patch, AsyncMock
 from typing import Dict, Any, List
 
 # Import the WAN error handler components
-from core.models.wan_models.wan_model_error_handler import (
+from backend.core.models.wan_models.wan_model_error_handler import (
     WANModelErrorHandler,
     WANErrorCategory,
     WANErrorSeverity,
@@ -26,7 +26,7 @@ from core.models.wan_models.wan_model_error_handler import (
 
 # Import WAN model types
 try:
-    from core.models.wan_models.wan_base_model import WANModelType, HardwareProfile
+    from backend.core.models.wan_models.wan_base_model import WANModelType, HardwareProfile
     WAN_MODELS_AVAILABLE = True
 except ImportError:
     # Create fallback for testing

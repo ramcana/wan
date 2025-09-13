@@ -19,16 +19,16 @@ from pathlib import Path
 import json
 
 from infrastructure.hardware.architecture_detector import ArchitectureDetector, ModelArchitecture, ArchitectureType
-from core.services.pipeline_manager import PipelineManager, PipelineLoadResult, PipelineLoadStatus
-from core.services.optimization_manager import (
+from backend.core.services.pipeline_manager import PipelineManager, PipelineLoadResult, PipelineLoadStatus
+from backend.core.services.optimization_manager import (
     OptimizationManager, OptimizationPlan, OptimizationResult, 
     SystemResources, ModelRequirements, ChunkedProcessor
 )
 
 # Import WAN model components (with fallback for environments without implementations)
 try:
-    from core.models.wan_models.wan_pipeline_factory import WANPipelineFactory, WANPipelineConfig
-    from core.models.wan_models.wan_base_model import HardwareProfile as WANHardwareProfile
+    from backend.core.models.wan_models.wan_pipeline_factory import WANPipelineFactory, WANPipelineConfig
+    from backend.core.models.wan_models.wan_base_model import HardwareProfile as WANHardwareProfile
     WAN_MODELS_AVAILABLE = True
 except ImportError:
     WAN_MODELS_AVAILABLE = False
@@ -49,7 +49,7 @@ except ImportError:
 
 # Import WAN22 System Optimization components
 from infrastructure.hardware.vram_manager import VRAMManager, VRAMUsage, GPUInfo
-from core.services.quantization_controller import (
+from backend.core.services.quantization_controller import (
     QuantizationController, QuantizationStrategy, QuantizationMethod,
     QuantizationResult, HardwareProfile as QuantHardwareProfile,
     ModelInfo as QuantModelInfo
@@ -1569,7 +1569,7 @@ class WanPipelineLoader:
             # Try to get requirements from actual WAN model implementations
             if WAN_MODELS_AVAILABLE:
                 try:
-                    from core.models.wan_models.wan_model_config import get_wan_model_config
+                    from backend.core.models.wan_models.wan_model_config import get_wan_model_config
                     
                     model_config = get_wan_model_config(model_type)
                     if model_config:
@@ -1754,7 +1754,7 @@ class WanPipelineLoader:
             if WAN_MODELS_AVAILABLE:
                 try:
                     # Get model configurations
-                    from core.models.wan_models.wan_model_config import get_wan_model_config
+                    from backend.core.models.wan_models.wan_model_config import get_wan_model_config
                     
                     model_configs = {}
                     for model_type in ["t2v-A14B", "i2v-A14B", "ti2v-5B"]:
@@ -2156,7 +2156,7 @@ class WanPipelineLoader:
         Returns:
             OptimizationResult with applied optimizations
         """
-        from core.services.optimization_manager import OptimizationResult
+        from backend.core.services.optimization_manager import OptimizationResult
         
         optimization_result = OptimizationResult(
             success=True,

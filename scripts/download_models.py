@@ -20,8 +20,8 @@ import hashlib
 project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
-from core.models.wan_models.wan_model_downloader import WANModelDownloader
-from core.models.wan_models.wan_model_config import get_wan_model_config
+from backend.core.models.wan_models.wan_model_downloader import WANModelDownloader
+from backend.core.models.wan_models.wan_model_config import get_wan_model_config
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)

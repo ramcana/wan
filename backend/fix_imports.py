@@ -17,7 +17,7 @@ print(f"🐍 Python path: {sys.path[:3]}...")
 
 # Test critical imports
 try:
-    from core.system_integration import SystemIntegration
+    from backend.core.system_integration import SystemIntegration
     print("✅ SystemIntegration import: OK")
 except ImportError as e:
     print(f"❌ SystemIntegration import failed: {e}")
@@ -29,7 +29,7 @@ except ImportError as e:
     print(f"❌ GenerationService import failed: {e}")
 
 try:
-    from core.performance_monitor import get_performance_monitor
+    from backend.core.performance_monitor import get_performance_monitor
     print("✅ PerformanceMonitor import: OK")
 except ImportError as e:
     print(f"❌ PerformanceMonitor import failed: {e}")

@@ -1,6 +1,6 @@
 """Debug low memory scenario"""
 
-from core.services.optimization_manager import OptimizationManager, SystemResources, ModelRequirements
+from backend.core.services.optimization_manager import OptimizationManager, SystemResources, ModelRequirements
 
 # Low-end system (from test)
 system = SystemResources(

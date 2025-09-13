@@ -26,7 +26,7 @@ from infrastructure.hardware.error_handler import (
     GenerationErrorHandler
 )
 from resource_manager import get_resource_manager, ResourceStatus, OptimizationLevel
-from core.services.utils import get_model_manager, GenerationTask, TaskStatus
+from backend.core.services.utils import get_model_manager, GenerationTask, TaskStatus
 
 logger = logging.getLogger(__name__)
 
@@ -496,7 +496,7 @@ class EnhancedGenerationPipeline:
         """Execute generation using the legacy generation engine"""
         try:
             # Import the generation engine
-            from core.services.utils import get_generation_engine
+            from backend.core.services.utils import get_generation_engine
             
             engine = get_generation_engine()
             

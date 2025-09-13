@@ -51,7 +51,7 @@ def get_local_model_path(model_id):
 def patch_model_loading():
     """Patch the model loading to use local models"""
     try:
-        from core.services from core.services import utils
+        from backend.core.services from backend.core.services import utils
         
         # Check if ModelManager exists
         if not hasattr(utils, 'ModelManager'):

@@ -28,7 +28,7 @@ async def test_lora_manager_wan_integration():
         logger.info("Testing LoRAManager WAN integration...")
         
         # Import LoRA manager
-        from core.services.utils import get_lora_manager
+        from backend.core.services.utils import get_lora_manager
         lora_manager = get_lora_manager()
         
         # Test WAN integration initialization
@@ -52,7 +52,7 @@ async def test_lora_manager_wan_integration():
             
             expected_models = ['T2V_A14B', 'I2V_A14B', 'TI2V_5B']
             for model_type in expected_models:
-                from core.services.wan_lora_manager import WANModelType
+                from backend.core.services.wan_lora_manager import WANModelType
                 wan_type = getattr(WANModelType, model_type)
                 assert wan_type in compatibility_matrix, f"Compatibility info missing for {model_type}"
                 
@@ -179,7 +179,7 @@ async def test_wan_lora_manager_direct():
         logger.info("Testing WANLoRAManager directly...")
         
         # Import WAN LoRA manager
-        from core.services.wan_lora_manager import get_wan_lora_manager, WANModelType
+        from backend.core.services.wan_lora_manager import get_wan_lora_manager, WANModelType
         wan_lora_manager = get_wan_lora_manager()
         
         # Test WAN LoRA manager methods

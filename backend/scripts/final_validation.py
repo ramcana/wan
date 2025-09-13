@@ -259,7 +259,7 @@ class FinalValidator:
         
         try:
             # Test SystemIntegration
-            from core.system_integration import SystemIntegration
+            from backend.core.system_integration import SystemIntegration
             
             integration = SystemIntegration()
             await integration.initialize()
@@ -321,7 +321,7 @@ class FinalValidator:
         results = {}
         
         try:
-            from core.performance_monitor import get_performance_monitor
+            from backend.core.performance_monitor import get_performance_monitor
             
             monitor = get_performance_monitor()
             results["monitor_available"] = monitor is not None
@@ -360,7 +360,7 @@ class FinalValidator:
         results = {}
         
         try:
-            from core.fallback_recovery_system import get_fallback_recovery_system
+            from backend.core.fallback_recovery_system import get_fallback_recovery_system
             
             recovery_system = get_fallback_recovery_system()
             results["recovery_system_available"] = recovery_system is not None
@@ -406,7 +406,7 @@ class FinalValidator:
         results = {}
         
         try:
-            from core.system_integration import SystemIntegration
+            from backend.core.system_integration import SystemIntegration
             
             integration = SystemIntegration()
             await integration.initialize()
@@ -495,7 +495,7 @@ class FinalValidator:
         results = {}
         
         try:
-            from core.performance_monitor import get_performance_monitor
+            from backend.core.performance_monitor import get_performance_monitor
             
             monitor = get_performance_monitor()
             

@@ -24,7 +24,7 @@ async def test_requirement_7_1_specific_error_messages():
     print("\n=== Testing Requirement 7.1: Specific Error Messages ===")
     
     try:
-        from core.models.wan_models.wan_model_error_handler import (
+        from backend.core.models.wan_models.wan_model_error_handler import (
             WANModelErrorHandler, WANErrorContext, WANModelType
         )
         
@@ -64,7 +64,7 @@ async def test_requirement_7_2_cuda_memory_optimization():
     print("\n=== Testing Requirement 7.2: CUDA Memory Optimization ===")
     
     try:
-        from core.models.wan_models.wan_model_error_handler import (
+        from backend.core.models.wan_models.wan_model_error_handler import (
             WANModelErrorHandler, WANErrorContext, WANModelType
         )
         
@@ -105,7 +105,7 @@ async def test_requirement_7_3_error_categorization():
     print("\n=== Testing Requirement 7.3: Error Categorization ===")
     
     try:
-        from core.models.wan_models.wan_model_error_handler import (
+        from backend.core.models.wan_models.wan_model_error_handler import (
             WANModelErrorHandler, WANErrorContext, WANModelType, WANErrorCategory
         )
         
@@ -152,7 +152,7 @@ async def test_requirement_7_4_fallback_strategies():
     print("\n=== Testing Requirement 7.4: Fallback Strategies ===")
     
     try:
-        from core.models.wan_models.wan_model_error_handler import (
+        from backend.core.models.wan_models.wan_model_error_handler import (
             WANModelErrorHandler, WANErrorContext, WANModelType, WANErrorSeverity
         )
         

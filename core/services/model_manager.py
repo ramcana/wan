@@ -33,12 +33,12 @@ from infrastructure.hardware.error_handler import (
 
 # Import compatibility detection system
 from infrastructure.hardware.architecture_detector import ArchitectureDetector, ArchitectureType
-from core.services.wan_pipeline_loader import WanPipelineLoader, GenerationConfig
-from core.services.optimization_manager import OptimizationManager
+from backend.core.services.wan_pipeline_loader import WanPipelineLoader, GenerationConfig
+from backend.core.services.optimization_manager import OptimizationManager
 
 # Import WAN model configuration system
 try:
-    from core.models.wan_models.wan_model_config import (
+    from backend.core.models.wan_models.wan_model_config import (
         get_wan_model_config, 
         get_wan_model_info,
         WAN_MODEL_CONFIGS,

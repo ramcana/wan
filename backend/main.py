@@ -26,7 +26,7 @@ except ImportError:
         from pathlib import Path
         project_root = Path(__file__).parent.parent
         sys.path.insert(0, str(project_root))
-        from core.services import apply_model_fixes
+        from backend.core.services import apply_model_fixes
     except ImportError:
         print("Warning: Could not import apply_model_fixes module")
 
@@ -72,7 +72,7 @@ except ImportError:
     try:
         project_root = Path(__file__).parent.parent
         sys.path.insert(0, str(project_root))
-        from core.services.wan22_system_optimizer import WAN22SystemOptimizer
+        from backend.core.services.wan22_system_optimizer import WAN22SystemOptimizer
         SYSTEM_OPTIMIZER_AVAILABLE = True
     except ImportError as e:
         print(f"Warning: Could not import system optimizer: {e}")
@@ -403,7 +403,7 @@ class ApplicationManager:
             # Lazy import to avoid heavy dependencies during cleanup
             project_root = Path(__file__).parent.parent
             sys.path.insert(0, str(project_root))
-            from core.services.model_manager import get_model_manager
+            from backend.core.services.model_manager import get_model_manager
             
             model_manager = get_model_manager()
             # Unload all models

@@ -28,7 +28,7 @@ def test_wan_pipeline_loader_structure():
     """Test that WAN Pipeline Loader has the expected structure and methods"""
     try:
         # Test that the module can be imported
-        import core.services.wan_pipeline_loader as wan_module
+        import backend.core.services.wan_pipeline_loader as wan_module
         logger.info("✓ WAN Pipeline Loader module imported successfully")
         
         # Test that WanPipelineLoader class exists
@@ -51,7 +51,7 @@ def test_wan_pipeline_loader_structure():
 def test_wan_pipeline_loader_methods():
     """Test that WAN Pipeline Loader has the required methods for Task 7"""
     try:
-        from core.services.wan_pipeline_loader import WanPipelineLoader
+        from backend.core.services.wan_pipeline_loader import WanPipelineLoader
         
         # Check that the class has the required methods
         required_methods = [
@@ -76,7 +76,7 @@ def test_wan_pipeline_loader_methods():
 def test_wan_pipeline_wrapper_methods():
     """Test that WAN Pipeline Wrapper has the required methods"""
     try:
-        from core.services.wan_pipeline_loader import WanPipelineWrapper
+        from backend.core.services.wan_pipeline_loader import WanPipelineWrapper
         
         # Check that the class has the required methods
         required_methods = [
@@ -99,12 +99,12 @@ def test_wan_pipeline_wrapper_methods():
 def test_wan_model_imports():
     """Test that WAN model imports are handled correctly"""
     try:
-        from core.services.wan_pipeline_loader import WAN_MODELS_AVAILABLE
+        from backend.core.services.wan_pipeline_loader import WAN_MODELS_AVAILABLE
         logger.info(f"✓ WAN_MODELS_AVAILABLE flag: {WAN_MODELS_AVAILABLE}")
         
         # Test that fallback classes are available when WAN models are not
         if not WAN_MODELS_AVAILABLE:
-            from core.services.wan_pipeline_loader import WANPipelineFactory, WANPipelineConfig, WANHardwareProfile
+            from backend.core.services.wan_pipeline_loader import WANPipelineFactory, WANPipelineConfig, WANHardwareProfile
             logger.info("✓ Fallback WAN classes available when models not installed")
         
         return True
@@ -115,7 +115,7 @@ def test_wan_model_imports():
 def test_generation_config():
     """Test GenerationConfig functionality"""
     try:
-        from core.services.wan_pipeline_loader import GenerationConfig
+        from backend.core.services.wan_pipeline_loader import GenerationConfig
         
         # Test creating a GenerationConfig
         config = GenerationConfig(
@@ -141,7 +141,7 @@ def test_generation_config():
 def test_memory_estimate():
     """Test MemoryEstimate functionality"""
     try:
-        from core.services.wan_pipeline_loader import MemoryEstimate
+        from backend.core.services.wan_pipeline_loader import MemoryEstimate
         
         # Test creating a MemoryEstimate
         estimate = MemoryEstimate(
@@ -168,7 +168,7 @@ def test_memory_estimate():
 def test_video_generation_result():
     """Test VideoGenerationResult functionality"""
     try:
-        from core.services.wan_pipeline_loader import VideoGenerationResult
+        from backend.core.services.wan_pipeline_loader import VideoGenerationResult
         
         # Test creating a VideoGenerationResult
         result = VideoGenerationResult(

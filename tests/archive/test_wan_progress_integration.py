@@ -30,7 +30,7 @@ async def test_real_generation_pipeline_with_wan_progress():
         mock_wan_model.generate_video = AsyncMock()
         
         # Mock generation result
-        from core.models.wan_models.wan_base_model import WANGenerationResult
+        from backend.core.models.wan_models.wan_base_model import WANGenerationResult
         mock_result = WANGenerationResult(
             success=True,
             frames=[],
@@ -95,7 +95,7 @@ async def test_real_generation_pipeline_with_wan_progress():
 async def test_progress_callback_integration():
     """Test progress callback integration between pipeline and WAN models"""
     try:
-        from core.models.wan_models.wan_progress_tracker import create_wan_progress_callback, WANProgressTracker
+        from backend.core.models.wan_models.wan_progress_tracker import create_wan_progress_callback, WANProgressTracker
         
         # Create progress tracker
         tracker = WANProgressTracker("t2v-A14B")
@@ -130,7 +130,7 @@ async def test_progress_callback_integration():
 async def test_websocket_progress_integration():
     """Test WebSocket progress integration with WAN models"""
     try:
-        from core.models.wan_models.wan_progress_tracker import WANProgressTracker, WANInferenceStage
+        from backend.core.models.wan_models.wan_progress_tracker import WANProgressTracker, WANInferenceStage
         
         # Create progress tracker
         tracker = WANProgressTracker("t2v-A14B")
@@ -161,7 +161,7 @@ async def test_websocket_progress_integration():
 def test_performance_profile_accuracy():
     """Test performance profile accuracy for different model types"""
     try:
-        from core.models.wan_models.wan_progress_tracker import WANProgressTracker
+        from backend.core.models.wan_models.wan_progress_tracker import WANProgressTracker
         
         # Test T2V performance profile
         t2v_tracker = WANProgressTracker("t2v-A14B")

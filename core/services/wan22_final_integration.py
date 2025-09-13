@@ -200,7 +200,7 @@ class Wan22IntegratedSystem:
     def _load_optimization_manager(self):
         """Load optimization manager"""
         try:
-            from core.services.optimization_manager import OptimizationManager
+            from backend.core.services.optimization_manager import OptimizationManager
             return OptimizationManager()
         except ImportError as e:
             self.logger.warning(f"OptimizationManager not available: {e}")

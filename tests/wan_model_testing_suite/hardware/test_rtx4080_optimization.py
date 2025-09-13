@@ -9,8 +9,8 @@ from typing import Dict, Any, List
 
 # Import hardware optimization utilities
 try:
-    from core.models.wan_models.wan_hardware_optimizer import WANModelHardwareOptimizer as WANHardwareOptimizer
-    from core.models.wan_models.wan_vram_monitor import WANVRAMMonitor
+    from backend.core.models.wan_models.wan_hardware_optimizer import WANModelHardwareOptimizer as WANHardwareOptimizer
+    from backend.core.models.wan_models.wan_vram_monitor import WANVRAMMonitor
     HARDWARE_UTILS_AVAILABLE = True
 except ImportError:
     HARDWARE_UTILS_AVAILABLE = False

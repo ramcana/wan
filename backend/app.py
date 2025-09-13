@@ -27,12 +27,12 @@ current_dir = Path(__file__).parent
 sys.path.insert(0, str(current_dir))
 
 # Import fallback recovery system
-from core.fallback_recovery_system import (
+from backend.core.fallback_recovery_system import (
     get_fallback_recovery_system, FailureType, RecoveryAction
 )
 
 # Import CORS validator
-from core.cors_validator import (
+from backend.core.cors_validator import (
     validate_cors_configuration, get_cors_error_info, generate_cors_error_response
 )
 
@@ -126,7 +126,7 @@ async def startup_event():
     
     # Initialize performance monitoring
     try:
-        from core.performance_monitoring_system import initialize_performance_monitoring
+        from backend.core.performance_monitoring_system import initialize_performance_monitoring
         await initialize_performance_monitoring()
         logger.info("Performance monitoring system initialized successfully")
     except Exception as e:
@@ -143,11 +143,11 @@ async def startup_event():
     except Exception as e:
         logger.warning(f"Failed to validate CORS configuration: {e}")
     
-    # Initialize generation service
+    # Initialize generation service (singleton pattern)
     try:
-        from services.generation_service import GenerationService
-        app.state.generation_service = GenerationService()
-        await app.state.generation_service.initialize()
+        from backend.services.generation_service import generation_service
+        await generation_service.initialize()
+        app.state.generation_service = generation_service
         logger.info("Generation service initialized and background processing started")
     except Exception as e:
         logger.error(f"Failed to initialize generation service: {e}")
@@ -158,7 +158,7 @@ async def startup_event():
 async def shutdown_event():
     """Cleanup services on shutdown"""
     try:
-        from core.performance_monitoring_system import shutdown_performance_monitoring
+        from backend.core.performance_monitoring_system import shutdown_performance_monitoring
         await shutdown_performance_monitoring()
         logger.info("Performance monitoring system shutdown successfully")
     except Exception as e:
@@ -978,7 +978,7 @@ async def get_system_stats():
             else:
                 # Try to get model status directly from model integration bridge
                 try:
-                    from core.model_integration_bridge import get_model_integration_bridge
+                    from backend.core.model_integration_bridge import get_model_integration_bridge
                     bridge = await get_model_integration_bridge()
                     if bridge:
                         status_dict = bridge.get_model_status_from_existing_system()
@@ -1478,7 +1478,7 @@ async def download_model(request: dict):
 async def get_all_download_progress():
     """Get download progress for all models"""
     try:
-        from core.model_integration_bridge import get_all_model_download_progress
+        from backend.core.model_integration_bridge import get_all_model_download_progress
         progress_dict = await get_all_model_download_progress()
         
         response = {}
@@ -1503,7 +1503,7 @@ async def get_all_download_progress():
 async def get_model_download_progress_endpoint(model_type: str):
     """Get download progress for a specific model"""
     try:
-        from core.model_integration_bridge import get_model_download_progress
+        from backend.core.model_integration_bridge import get_model_download_progress
         progress = await get_model_download_progress(model_type)
         
         if progress is None:
@@ -1527,7 +1527,7 @@ async def get_model_download_progress_endpoint(model_type: str):
 async def verify_model_integrity_endpoint(model_type: str):
     """Verify model integrity and attempt recovery if needed"""
     try:
-        from core.model_integration_bridge import verify_model_integrity
+        from backend.core.model_integration_bridge import verify_model_integrity
         is_valid = await verify_model_integrity(model_type)
         
         return {
@@ -1544,7 +1544,7 @@ async def verify_model_integrity_endpoint(model_type: str):
 async def get_integration_status():
     """Get model integration system status"""
     try:
-        from core.model_integration_bridge import get_model_integration_bridge
+        from backend.core.model_integration_bridge import get_model_integration_bridge
         bridge = await get_model_integration_bridge()
         status = bridge.get_integration_status()
         
@@ -1558,7 +1558,7 @@ async def _download_model_background(model_type: str):
     """Background task to download a model"""
     try:
         logger.info(f"Starting background download for model {model_type}")
-        from core.model_integration_bridge import ensure_model_ready
+        from backend.core.model_integration_bridge import ensure_model_ready
         success = await ensure_model_ready(model_type)
         
         if success:
@@ -1621,7 +1621,7 @@ async def get_system_optimization_status():
 async def get_hardware_profile():
     """Get detected hardware profile information"""
     try:
-        from core.system_integration import get_system_integration
+        from backend.core.system_integration import get_system_integration
         integration = await get_system_integration()
         
         # Get hardware profile from WAN22SystemOptimizer

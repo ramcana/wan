@@ -1,6 +1,6 @@
 """Debug optimization recommendations"""
 
-from core.services.optimization_manager import OptimizationManager, SystemResources, ModelRequirements
+from backend.core.services.optimization_manager import OptimizationManager, SystemResources, ModelRequirements
 
 # Create minimal system (same as test)
 minimal_system = SystemResources(

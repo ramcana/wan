@@ -15,9 +15,9 @@ from typing import Dict, Any, List, Optional
 # Add backend to path for imports
 sys.path.append(str(Path(__file__).parent.parent))
 
-from core.system_integration import SystemIntegration
-from core.configuration_bridge import ConfigurationBridge
-from core.model_integration_bridge import ModelIntegrationBridge
+from backend.core.system_integration import SystemIntegration
+from backend.core.configuration_bridge import ConfigurationBridge
+from backend.core.model_integration_bridge import ModelIntegrationBridge
 from database.database import get_database
 from models.generation_task import GenerationTaskDB
 

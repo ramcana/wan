@@ -27,7 +27,7 @@ try:
     from ..core.model_integration_bridge import GenerationParams, ModelType
 except ImportError:
     try:
-        from core.model_integration_bridge import GenerationParams, ModelType
+        from backend.core.model_integration_bridge import GenerationParams, ModelType
     except ImportError:
         # Create placeholder classes for Phase 1
         class GenerationParams:

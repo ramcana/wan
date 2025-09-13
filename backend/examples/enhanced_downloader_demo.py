@@ -12,7 +12,7 @@ from pathlib import Path
 # Add backend to path
 sys.path.append(str(Path(__file__).parent.parent))
 
-from core.enhanced_model_downloader import (
+from backend.core.enhanced_model_downloader import (
     EnhancedModelDownloader,
     DownloadStatus,
     RetryConfig,
@@ -175,7 +175,7 @@ async def demo_download_management():
         print("📋 Testing download progress tracking:")
         
         # Simulate active downloads
-        from core.enhanced_model_downloader import DownloadProgress
+        from backend.core.enhanced_model_downloader import DownloadProgress
         
         test_downloads = [
             DownloadProgress(

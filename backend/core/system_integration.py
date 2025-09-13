@@ -279,7 +279,7 @@ class SystemIntegration:
                 project_root = Path(__file__).parent.parent.parent
                 sys.path.insert(0, str(project_root))
                 
-                from core.services.model_manager import ModelManager
+                from backend.core.services.model_manager import ModelManager
             except ImportError as e:
                 logger.warning(f"ModelManager has missing dependencies: {e}")
                 # Create a minimal mock ModelManager for basic functionality
@@ -345,17 +345,17 @@ class SystemIntegration:
         try:
             # Try to import WanPipelineLoader
             try:
-                from core.services.wan_pipeline_loader_standalone import WanPipelineLoader
+                from backend.core.services.wan_pipeline_loader_standalone import WanPipelineLoader
                 logger.info("Using standalone WanPipelineLoader implementation")
             except ImportError as e:
                 logger.warning(f"Standalone WanPipelineLoader has missing dependencies: {e}")
                 try:
-                    from core.services.wan_pipeline_loader_fixed import WanPipelineLoader
+                    from backend.core.services.wan_pipeline_loader_fixed import WanPipelineLoader
                     logger.info("Using fixed WanPipelineLoader implementation")
                 except ImportError as e2:
                     logger.warning(f"Fixed WanPipelineLoader has missing dependencies: {e2}")
                     try:
-                        from core.services.wan_pipeline_loader import WanPipelineLoader
+                        from backend.core.services.wan_pipeline_loader import WanPipelineLoader
                         logger.info("Using original WanPipelineLoader implementation")
                     except ImportError as e3:
                         logger.warning(f"Original WanPipelineLoader has missing dependencies: {e3}")
@@ -388,7 +388,7 @@ class SystemIntegration:
         try:
             # Try to import system stats
             try:
-                from core.services.utils import get_system_stats
+                from backend.core.services.utils import get_system_stats
                 logger.info("System stats monitoring initialized")
                 return get_system_stats
             except ImportError as e:
@@ -843,7 +843,7 @@ class SystemIntegration:
                 sys.path.insert(0, parent_dir)
             
             # Import from the root utils.py file
-            from core.services import utils
+            from backend.core.services import utils
             return utils.get_prompt_enhancer()
         except ImportError as e:
             logger.error(f"Could not import prompt enhancer: {e}")

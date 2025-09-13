@@ -20,7 +20,7 @@ async def diagnose_system():
     # 1. Check System Integration
     print("\n1. 🔧 Checking System Integration...")
     try:
-        from core.system_integration import SystemIntegration
+        from backend.core.system_integration import SystemIntegration
         integration = SystemIntegration()
         await integration.initialize()
         

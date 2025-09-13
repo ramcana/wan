@@ -34,7 +34,7 @@ class WANModelValidator:
             project_root = Path(__file__).parent
             sys.path.insert(0, str(project_root))
             
-            from core.models.wan_models.wan_base_model import WANBaseModel
+            from backend.core.models.wan_models.wan_base_model import WANBaseModel
             
             # Test basic instantiation
             base_model = WANBaseModel()
@@ -72,10 +72,10 @@ class WANModelValidator:
     async def validate_wan_t2v_model(self):
         """Validate WAN T2V-A14B model implementation"""
         try:
-            from core.models.wan_models.wan_t2v_a14b import WANT2VA14B
+            from backend.core.models.wan_models.wan_t2v_a14b import WANT2VA14B
             
             # Test instantiation with config
-            from core.models.wan_models.wan_model_config import get_wan_model_config
+            from backend.core.models.wan_models.wan_model_config import get_wan_model_config
             config = get_wan_model_config("t2v-A14B")
             model = WANT2VA14B(config)
             
@@ -117,9 +117,9 @@ class WANModelValidator:
     async def validate_wan_i2v_model(self):
         """Validate WAN I2V-A14B model implementation"""
         try:
-            from core.models.wan_models.wan_i2v_a14b import WANI2VA14B
+            from backend.core.models.wan_models.wan_i2v_a14b import WANI2VA14B
             
-            from core.models.wan_models.wan_model_config import get_wan_model_config
+            from backend.core.models.wan_models.wan_model_config import get_wan_model_config
             config = get_wan_model_config("i2v-A14B")
             model = WANI2VA14B(config)
             
@@ -153,9 +153,9 @@ class WANModelValidator:
     async def validate_wan_ti2v_model(self):
         """Validate WAN TI2V-5B model implementation"""
         try:
-            from core.models.wan_models.wan_ti2v_5b import WANTI2V5B
+            from backend.core.models.wan_models.wan_ti2v_5b import WANTI2V5B
             
-            from core.models.wan_models.wan_model_config import get_wan_model_config
+            from backend.core.models.wan_models.wan_model_config import get_wan_model_config
             config = get_wan_model_config("ti2v-5B")
             model = WANTI2V5B(config)
             
@@ -189,7 +189,7 @@ class WANModelValidator:
     async def validate_wan_pipeline_factory(self):
         """Validate WAN pipeline factory"""
         try:
-            from core.models.wan_models.wan_pipeline_factory import WANPipelineFactory
+            from backend.core.models.wan_models.wan_pipeline_factory import WANPipelineFactory
             
             factory = WANPipelineFactory()
             
@@ -231,9 +231,9 @@ class WANModelValidator:
     async def validate_wan_model_config(self):
         """Validate WAN model configuration"""
         try:
-            from core.models.wan_models.wan_model_config import WANModelConfig
+            from backend.core.models.wan_models.wan_model_config import WANModelConfig
             
-            from core.models.wan_models.wan_model_config import get_wan_model_config
+            from backend.core.models.wan_models.wan_model_config import get_wan_model_config
             # Test getting a model config instead of creating empty one
             config = get_wan_model_config("t2v-A14B")
             
@@ -247,7 +247,7 @@ class WANModelValidator:
             missing_methods = []  # Config is a dataclass, not a class with methods
             
             # Test model configurations
-            from core.models.wan_models.wan_model_config import get_wan_model_config
+            from backend.core.models.wan_models.wan_model_config import get_wan_model_config
             model_types = ["t2v-A14B", "i2v-A14B", "ti2v-5B"]
             config_results = {}
             
@@ -281,7 +281,7 @@ class WANModelValidator:
     async def validate_wan_error_handler(self):
         """Validate WAN error handler"""
         try:
-            from core.models.wan_models.wan_model_error_handler import WANModelErrorHandler
+            from backend.core.models.wan_models.wan_model_error_handler import WANModelErrorHandler
             
             error_handler = WANModelErrorHandler()
             

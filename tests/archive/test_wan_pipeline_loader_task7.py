@@ -23,15 +23,15 @@ def test_imports():
     print("=" * 60)
     
     try:
-        from core.services.wan_pipeline_loader import WanPipelineLoader, WanPipelineWrapper
+        from backend.core.services.wan_pipeline_loader import WanPipelineLoader, WanPipelineWrapper
         print("✓ WanPipelineLoader and WanPipelineWrapper import successfully")
         
-        from core.services.wan_pipeline_loader import GenerationConfig, VideoGenerationResult, MemoryEstimate
+        from backend.core.services.wan_pipeline_loader import GenerationConfig, VideoGenerationResult, MemoryEstimate
         print("✓ Data classes import successfully")
         
         # Test WAN model imports (may fail gracefully)
         try:
-            from core.models.wan_models.wan_pipeline_factory import WANPipelineFactory
+            from backend.core.models.wan_models.wan_pipeline_factory import WANPipelineFactory
             print("✓ WANPipelineFactory imports successfully")
         except ImportError as e:
             print(f"⚠ WANPipelineFactory import failed (expected): {e}")
@@ -49,7 +49,7 @@ def test_initialization():
     print("=" * 60)
     
     try:
-        from core.services.wan_pipeline_loader import WanPipelineLoader
+        from backend.core.services.wan_pipeline_loader import WanPipelineLoader
         
         # Test basic initialization
         loader = WanPipelineLoader()
@@ -250,7 +250,7 @@ def test_generation_config():
     print("=" * 60)
     
     try:
-        from core.services.wan_pipeline_loader import GenerationConfig, VideoGenerationResult, MemoryEstimate
+        from backend.core.services.wan_pipeline_loader import GenerationConfig, VideoGenerationResult, MemoryEstimate
         
         # Test GenerationConfig creation
         config = GenerationConfig(

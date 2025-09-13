@@ -17,11 +17,11 @@ import logging
 # Add backend to path for imports
 sys.path.append(str(Path(__file__).parent.parent))
 
-from core.enhanced_model_config import (
+from backend.core.enhanced_model_config import (
     ConfigurationManager, EnhancedModelConfiguration,
     UserPreferences, AdminPolicies, FeatureFlagConfig
 )
-from core.config_validation import ConfigurationValidator, ValidationResult
+from backend.core.config_validation import ConfigurationValidator, ValidationResult
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -245,7 +245,7 @@ class ConfigurationMigrationTool:
             
             # Map automation level
             if 'automation_level' in user_prefs:
-                from core.enhanced_model_config import AutomationLevel
+                from backend.core.enhanced_model_config import AutomationLevel
                 level_map = {
                     'manual': AutomationLevel.MANUAL,
                     'semi_automatic': AutomationLevel.SEMI_AUTOMATIC,

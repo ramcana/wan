@@ -17,8 +17,8 @@ try:
     from ui_validation import get_validation_manager, UIValidationManager
     from input_validation import ValidationResult
     from infrastructure.hardware.error_handler import UserFriendlyError, handle_generation_error
-    from core.services.utils import generate_video, enhance_prompt
-    from core.services.model_manager import get_model_manager
+    from backend.core.services.utils import generate_video, enhance_prompt
+    from backend.core.services.model_manager import get_model_manager
     
     # Import component managers
     from enhanced_image_validation import get_image_validator

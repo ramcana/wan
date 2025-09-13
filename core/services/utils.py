@@ -42,8 +42,8 @@ from infrastructure.hardware.error_handler import (
 
 # Import compatibility detection system
 from infrastructure.hardware.architecture_detector import ArchitectureDetector, ArchitectureType
-from core.services.wan_pipeline_loader import WanPipelineLoader, GenerationConfig
-from core.services.optimization_manager import OptimizationManager
+from backend.core.services.wan_pipeline_loader import WanPipelineLoader, GenerationConfig
+from backend.core.services.optimization_manager import OptimizationManager
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)

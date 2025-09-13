@@ -20,9 +20,9 @@ project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
 try:
-    from core.models.wan_models.wan_model_config import get_wan_model_config
-    from core.models.wan_models.wan_model_error_handler import WANModelErrorHandler
-    from core.models.wan_models.wan_model_downloader import WANModelDownloader
+    from backend.core.models.wan_models.wan_model_config import get_wan_model_config
+    from backend.core.models.wan_models.wan_model_error_handler import WANModelErrorHandler
+    from backend.core.models.wan_models.wan_model_downloader import WANModelDownloader
 except ImportError as e:
     logging.warning(f"Could not import WAN model components: {e}")
 

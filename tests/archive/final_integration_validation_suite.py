@@ -613,7 +613,7 @@ class FinalIntegrationValidator:
             
             # Test WAN pipeline loader
             try:
-                from core.services.wan_pipeline_loader import WANPipelineLoader
+                from backend.core.services.wan_pipeline_loader import WANPipelineLoader
                 loader = WANPipelineLoader()
                 
                 # Test pipeline creation capabilities
@@ -638,7 +638,7 @@ class FinalIntegrationValidator:
             
             # Test hardware optimization integration
             try:
-                from core.services.wan22_system_optimizer import WAN22SystemOptimizer
+                from backend.core.services.wan22_system_optimizer import WAN22SystemOptimizer
                 optimizer = WAN22SystemOptimizer()
                 
                 integration_results["hardware_optimizer"] = {

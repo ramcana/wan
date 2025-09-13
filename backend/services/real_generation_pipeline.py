@@ -29,7 +29,7 @@ try:
     from pathlib import Path
     project_root = Path(__file__).parent.parent.parent
     sys.path.insert(0, str(project_root))
-    from core.services.utils import LoRAManager
+    from backend.core.services.utils import LoRAManager
     LORA_MANAGER_AVAILABLE = True
 except ImportError:
     LORA_MANAGER_AVAILABLE = False
@@ -1135,7 +1135,7 @@ class RealGenerationPipeline:
         try:
             project_root = Path(__file__).parent.parent.parent
             sys.path.insert(0, str(project_root))
-            from core.services.wan_pipeline_loader import GenerationConfig
+            from backend.core.services.wan_pipeline_loader import GenerationConfig
             
             width, height = self._parse_resolution(params.resolution)
             

@@ -17,7 +17,7 @@ import os
 
 # Import existing validation components
 from input_validation import ValidationResult, PromptValidator, ImageValidator, ConfigValidator
-from core.services.optimization_service import VRAMOptimizer, get_vram_optimizer
+from backend.core.services.optimization_service import VRAMOptimizer, get_vram_optimizer
 from resource_manager import ResourceStatus, get_resource_manager
 
 logger = logging.getLogger(__name__)

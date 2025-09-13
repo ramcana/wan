@@ -10,7 +10,7 @@ from typing import Dict, Any
 
 # Import the model under test
 try:
-    from core.models.wan_models.wan_i2v_a14b import (
+    from backend.core.models.wan_models.wan_i2v_a14b import (
         WANI2VA14B, 
         I2VGenerationParams,
         ImageEncoder,

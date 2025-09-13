@@ -14,13 +14,13 @@ import sys
 # Add backend to path for imports
 sys.path.append(str(Path(__file__).parent.parent))
 
-from core.enhanced_model_config import (
+from backend.core.enhanced_model_config import (
     ConfigurationManager, UserPreferences, AdminPolicies,
     DownloadConfig, HealthMonitoringConfig, FallbackConfig,
     AutomationLevel, FeatureFlag, get_config_manager, reset_config_manager
 )
-from core.config_validation import ConfigurationValidator
-from core.runtime_config_updater import RuntimeConfigurationUpdater
+from backend.core.config_validation import ConfigurationValidator
+from backend.core.runtime_config_updater import RuntimeConfigurationUpdater
 
 
 async def demo_basic_configuration():

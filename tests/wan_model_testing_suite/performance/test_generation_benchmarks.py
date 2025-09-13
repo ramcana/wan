@@ -109,7 +109,7 @@ class TestGenerationBenchmarks:
         mock_wan_model.generate.side_effect = mock_generate
         
         # Create I2V parameters
-        from core.models.wan_models.wan_i2v_a14b import I2VGenerationParams
+        from backend.core.models.wan_models.wan_i2v_a14b import I2VGenerationParams
         i2v_params = I2VGenerationParams(
             image=sample_image_tensor,
             prompt="A cat playing in a garden",
@@ -167,7 +167,7 @@ class TestGenerationBenchmarks:
         mock_wan_model.generate.side_effect = mock_generate
         
         # Create TI2V parameters
-        from core.models.wan_models.wan_ti2v_5b import TI2VGenerationParams
+        from backend.core.models.wan_models.wan_ti2v_5b import TI2VGenerationParams
         ti2v_params = TI2VGenerationParams(
             image=sample_image_tensor,
             prompt="A cat playing in a garden",
@@ -227,7 +227,7 @@ class TestGenerationBenchmarks:
         benchmark_results = {}
         
         for width, height in resolutions:
-            from core.models.wan_models.wan_t2v_a14b import T2VGenerationParams
+            from backend.core.models.wan_models.wan_t2v_a14b import T2VGenerationParams
             params = T2VGenerationParams(
                 prompt="A cat playing in a garden",
                 width=width,
@@ -280,7 +280,7 @@ class TestGenerationBenchmarks:
         benchmark_results = {}
         
         for steps in step_counts:
-            from core.models.wan_models.wan_t2v_a14b import T2VGenerationParams
+            from backend.core.models.wan_models.wan_t2v_a14b import T2VGenerationParams
             params = T2VGenerationParams(
                 prompt="A cat playing in a garden",
                 width=512,
@@ -338,7 +338,7 @@ class TestGenerationBenchmarks:
             # Create batch parameters
             batch_params = []
             for i in range(batch_size):
-                from core.models.wan_models.wan_t2v_a14b import T2VGenerationParams
+                from backend.core.models.wan_models.wan_t2v_a14b import T2VGenerationParams
                 params = T2VGenerationParams(
                     prompt=f"A cat playing in a garden {i}",
                     width=512,
@@ -399,7 +399,7 @@ class TestGenerationBenchmarks:
         mock_wan_model.get_gpu_utilization.return_value = utilization_history
         
         # Run generation with GPU monitoring
-        from core.models.wan_models.wan_t2v_a14b import T2VGenerationParams
+        from backend.core.models.wan_models.wan_t2v_a14b import T2VGenerationParams
         params = T2VGenerationParams(
             prompt="A cat playing in a garden",
             width=512,
@@ -463,7 +463,7 @@ class TestQualityBenchmarks:
         quality_scores = []
         
         for prompt in test_prompts:
-            from core.models.wan_models.wan_t2v_a14b import T2VGenerationParams
+            from backend.core.models.wan_models.wan_t2v_a14b import T2VGenerationParams
             params = T2VGenerationParams(
                 prompt=prompt,
                 width=512,
@@ -516,7 +516,7 @@ class TestQualityBenchmarks:
         consistency_scores = []
         
         for num_frames in frame_counts:
-            from core.models.wan_models.wan_t2v_a14b import T2VGenerationParams
+            from backend.core.models.wan_models.wan_t2v_a14b import T2VGenerationParams
             params = T2VGenerationParams(
                 prompt="A cat playing in a garden",
                 width=512,

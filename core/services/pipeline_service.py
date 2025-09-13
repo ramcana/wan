@@ -12,8 +12,8 @@ from PIL import Image
 import torch
 
 # Import model and optimization services
-from core.services.model_manager import get_model_manager
-from core.services.optimization_service import get_vram_optimizer
+from backend.core.services.model_manager import get_model_manager
+from backend.core.services.optimization_service import get_vram_optimizer
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)

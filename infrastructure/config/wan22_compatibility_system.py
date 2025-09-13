@@ -17,8 +17,8 @@ from model_index_schema import SchemaValidator, ModelIndexSchema
 from pipeline_manager import PipelineManager, PipelineRequirements
 from dependency_manager import DependencyManager, RemoteCodeStatus
 from vae_compatibility_handler import VAECompatibilityHandler
-from core.services.optimization_manager import OptimizationManager, OptimizationPlan
-from core.services.wan_pipeline_loader import WanPipelineLoader, WanPipelineWrapper
+from backend.core.services.optimization_manager import OptimizationManager, OptimizationPlan
+from backend.core.services.wan_pipeline_loader import WanPipelineLoader, WanPipelineWrapper
 from fallback_handler import FallbackHandler, FallbackStrategy
 from frame_tensor_handler import FrameTensorHandler, ProcessedFrames
 from video_encoder import VideoEncoder, EncodingResult
@@ -503,7 +503,7 @@ class Wan22CompatibilitySystem:
         """Estimate model resource requirements"""
         # This would normally analyze the model to estimate requirements
         # For now, return a basic estimate based on architecture type
-        from core.services.optimization_manager import ModelRequirements
+        from backend.core.services.optimization_manager import ModelRequirements
         
         if architecture.signature.is_wan_architecture():
             return ModelRequirements(

@@ -13,19 +13,19 @@ from fastapi import HTTPException
 from pydantic import BaseModel, Field
 
 # Import enhanced model components
-from core.model_availability_manager import (
+from backend.core.model_availability_manager import (
     ModelAvailabilityManager, ModelAvailabilityStatus, ModelPriority
 )
-from core.enhanced_model_downloader import (
+from backend.core.enhanced_model_downloader import (
     EnhancedModelDownloader, DownloadStatus, DownloadProgress
 )
-from core.model_health_monitor import (
+from backend.core.model_health_monitor import (
     ModelHealthMonitor, HealthStatus, IntegrityResult
 )
-from core.intelligent_fallback_manager import (
+from backend.core.intelligent_fallback_manager import (
     IntelligentFallbackManager, FallbackType, GenerationRequirements
 )
-from core.model_usage_analytics import (
+from backend.core.model_usage_analytics import (
     ModelUsageAnalytics, UsageStatistics, CleanupRecommendations
 )
 

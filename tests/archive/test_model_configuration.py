@@ -9,7 +9,7 @@ from pathlib import Path
 # Add project root to path
 sys.path.insert(0, str(Path(__file__).parent))
 
-from core.services.model_manager import (
+from backend.core.services.model_manager import (
     get_model_manager,
     get_wan_model_capabilities,
     validate_wan_model_configuration,

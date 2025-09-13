@@ -8,8 +8,8 @@ from typing import Dict, Any, List, Optional
 import logging
 from datetime import datetime, timedelta
 
-from core.performance_monitor import get_performance_monitor, PerformanceAnalysis
-from core.system_integration import SystemIntegration
+from backend.core.performance_monitor import get_performance_monitor, PerformanceAnalysis
+from backend.core.system_integration import SystemIntegration
 
 logger = logging.getLogger(__name__)
 

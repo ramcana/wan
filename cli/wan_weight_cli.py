@@ -27,13 +27,13 @@ from typing import Optional
 # Add parent directory to path for imports
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from core.models.wan_models.wan_weight_manager import (
+from backend.core.models.wan_models.wan_weight_manager import (
     get_wan_weight_manager, download_wan_model, verify_wan_model
 )
-from core.models.wan_models.wan_model_updater import (
+from backend.core.models.wan_models.wan_model_updater import (
     WANModelUpdater, MigrationStrategy, check_wan_model_updates, update_wan_model
 )
-from core.models.wan_models.wan_model_config import get_available_wan_models, get_wan_model_info
+from backend.core.models.wan_models.wan_model_config import get_available_wan_models, get_wan_model_info
 
 logger = logging.getLogger(__name__)
 

@@ -16,7 +16,7 @@ from pathlib import Path
 sys.path.append(str(Path(__file__).parent.parent))
 
 from services.generation_service import GenerationService, VRAMMonitor
-from core.system_integration import SystemIntegration
+from backend.core.system_integration import SystemIntegration
 
 # Configure logging
 logging.basicConfig(

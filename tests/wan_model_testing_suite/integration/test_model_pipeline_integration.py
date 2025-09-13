@@ -10,9 +10,9 @@ from typing import Dict, Any, List
 
 # Import pipeline components
 try:
-    from core.services.wan_generation_service import WANGenerationService
-    from core.models.wan_models.wan_pipeline_factory import WANPipelineFactory
-    from core.models.wan_models.wan_progress_tracker import WANProgressTracker
+    from backend.core.services.wan_generation_service import WANGenerationService
+    from backend.core.models.wan_models.wan_pipeline_factory import WANPipelineFactory
+    from backend.core.models.wan_models.wan_progress_tracker import WANProgressTracker
     PIPELINE_AVAILABLE = True
 except ImportError:
     PIPELINE_AVAILABLE = False
@@ -327,7 +327,7 @@ class TestModelConfigurationIntegration:
             mock_get_config.return_value = mock_config
             
             # Test config loading
-            from core.models.wan_models.wan_model_config import get_wan_model_config
+            from backend.core.models.wan_models.wan_model_config import get_wan_model_config
             config = get_wan_model_config("t2v-A14B")
             
             assert config is not None
@@ -342,7 +342,7 @@ class TestModelConfigurationIntegration:
             mock_validate.return_value = (True, [])
             
             # Test validation
-            from core.models.wan_models.wan_model_config import validate_model_config
+            from backend.core.models.wan_models.wan_model_config import validate_model_config
             is_valid, errors = validate_model_config(mock_model_config)
             
             assert is_valid is True

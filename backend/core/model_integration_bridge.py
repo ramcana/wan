@@ -44,9 +44,9 @@ except ImportError:
 
 # Import WAN model implementations
 try:
-    from core.models.wan_models.wan_pipeline_factory import WANPipelineFactory, WANPipelineConfig
-    from core.models.wan_models.wan_base_model import WANModelStatus, WANModelType, HardwareProfile as WANHardwareProfile
-    from core.models.wan_models.wan_model_config import get_wan_model_config, get_wan_model_info
+    from backend.core.models.wan_models.wan_pipeline_factory import WANPipelineFactory, WANPipelineConfig
+    from backend.core.models.wan_models.wan_base_model import WANModelStatus, WANModelType, HardwareProfile as WANHardwareProfile
+    from backend.core.models.wan_models.wan_model_config import get_wan_model_config, get_wan_model_info
     WAN_MODELS_AVAILABLE = True
 except ImportError as e:
     WAN_MODELS_AVAILABLE = False
@@ -271,9 +271,9 @@ class ModelIntegrationBridge:
             # Add project root to path for core.services imports
             project_root = Path(__file__).parent.parent.parent
             sys.path.insert(0, str(project_root))
-            from core.services.model_manager import get_model_manager
+            from backend.core.services.model_manager import get_model_manager
             model_manager = get_model_manager()
-            logger.info("ModelManager imported from core.services")
+            logger.info("ModelManager imported from backend.core.services")
             
             self.model_manager = model_manager
             if model_manager:
@@ -294,9 +294,9 @@ class ModelIntegrationBridge:
             try:
                 project_root = Path(__file__).parent.parent.parent
                 sys.path.insert(0, str(project_root))
-                from core.services.wan22_system_optimizer import WAN22SystemOptimizer
+                from backend.core.services.wan22_system_optimizer import WAN22SystemOptimizer
                 system_optimizer = WAN22SystemOptimizer()
-                logger.info("WAN22SystemOptimizer imported from core.services")
+                logger.info("WAN22SystemOptimizer imported from backend.core.services")
             except ImportError:
                     logger.warning("WAN22SystemOptimizer not available, using fallback optimization")
                     system_optimizer = None
@@ -1925,7 +1925,7 @@ class ModelIntegrationBridge:
         """
         try:
             # Import LoRA manager
-            from core.services.utils import get_lora_manager
+            from backend.core.services.utils import get_lora_manager
             lora_manager = get_lora_manager()
             
             # Get available LoRAs
@@ -2023,7 +2023,7 @@ class ModelIntegrationBridge:
                 # Get available LoRAs
                 project_root = Path(__file__).parent.parent.parent
                 sys.path.insert(0, str(project_root))
-                from core.services.utils import get_lora_manager
+                from backend.core.services.utils import get_lora_manager
                 lora_manager = get_lora_manager()
                 
                 available_loras = lora_manager.list_available_loras()
@@ -2060,7 +2060,7 @@ class ModelIntegrationBridge:
             Dictionary with memory impact information
         """
         try:
-            from core.services.utils import get_lora_manager
+            from backend.core.services.utils import get_lora_manager
             lora_manager = get_lora_manager()
             
             # Get memory impact estimation

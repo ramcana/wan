@@ -10,7 +10,7 @@ import logging
 from datetime import datetime, timedelta
 from pathlib import Path
 
-from core.model_usage_analytics import (
+from backend.core.model_usage_analytics import (
     ModelUsageAnalytics, UsageEventType, UsageData,
     track_generation_usage, get_model_usage_analytics
 )

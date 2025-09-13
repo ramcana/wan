@@ -10,7 +10,7 @@ from pathlib import Path
 from typing import Dict, List, Optional, Tuple, Any
 from dataclasses import dataclass, field, asdict
 try:
-    from core.services.utils import LoRAManager
+    from backend.core.services.utils import LoRAManager
 except ImportError:
     # For testing purposes, create a mock LoRAManager
     class LoRAManager:

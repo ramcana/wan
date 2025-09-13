@@ -54,7 +54,7 @@ def get_local_model_path(model_id):
 # Monkey patch the model loading
 def patch_model_loading():
     """Patch the model loading to use local models"""
-    from core.services from core.services import utils
+    from backend.core.services from backend.core.services import utils
     
     # Store original method
     if hasattr(utils.ModelManager, '_original_download_model'):

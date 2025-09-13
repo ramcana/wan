@@ -28,7 +28,7 @@ def test_wan_pipeline_loader_imports():
     """Test that WAN Pipeline Loader can be imported with all dependencies"""
     try:
         # Test core imports
-        from core.services.wan_pipeline_loader import (
+        from backend.core.services.wan_pipeline_loader import (
             WanPipelineLoader, 
             WanPipelineWrapper,
             GenerationConfig,
@@ -49,7 +49,7 @@ def test_wan_pipeline_loader_imports():
 def test_wan_model_availability_flag():
     """Test that WAN model availability is properly detected"""
     try:
-        from core.services.wan_pipeline_loader import WAN_MODELS_AVAILABLE
+        from backend.core.services.wan_pipeline_loader import WAN_MODELS_AVAILABLE
         logger.info(f"✓ WAN_MODELS_AVAILABLE flag: {WAN_MODELS_AVAILABLE}")
         
         # The flag should exist regardless of whether models are actually available
@@ -64,7 +64,7 @@ def test_wan_model_availability_flag():
 def test_wan_pipeline_loader_methods():
     """Test that WAN Pipeline Loader has the required methods for Task 7"""
     try:
-        from core.services.wan_pipeline_loader import WanPipelineLoader
+        from backend.core.services.wan_pipeline_loader import WanPipelineLoader
         
         loader = WanPipelineLoader()
         
@@ -93,7 +93,7 @@ def test_wan_pipeline_loader_methods():
 def test_wan_model_memory_requirements():
     """Test WAN model memory requirements functionality"""
     try:
-        from core.services.wan_pipeline_loader import WanPipelineLoader
+        from backend.core.services.wan_pipeline_loader import WanPipelineLoader
         
         loader = WanPipelineLoader()
         
@@ -118,7 +118,7 @@ def test_wan_model_memory_requirements():
 def test_wan_model_status():
     """Test WAN model status functionality"""
     try:
-        from core.services.wan_pipeline_loader import WanPipelineLoader
+        from backend.core.services.wan_pipeline_loader import WanPipelineLoader
         
         loader = WanPipelineLoader()
         
@@ -147,7 +147,7 @@ def test_wan_model_status():
 def test_generation_config():
     """Test GenerationConfig functionality"""
     try:
-        from core.services.wan_pipeline_loader import GenerationConfig
+        from backend.core.services.wan_pipeline_loader import GenerationConfig
         
         # Test creating a GenerationConfig
         config = GenerationConfig(
@@ -173,7 +173,7 @@ def test_generation_config():
 def test_memory_estimate():
     """Test MemoryEstimate functionality"""
     try:
-        from core.services.wan_pipeline_loader import MemoryEstimate
+        from backend.core.services.wan_pipeline_loader import MemoryEstimate
         
         # Test creating a MemoryEstimate
         estimate = MemoryEstimate(
@@ -200,7 +200,7 @@ def test_memory_estimate():
 def test_video_generation_result():
     """Test VideoGenerationResult functionality"""
     try:
-        from core.services.wan_pipeline_loader import VideoGenerationResult
+        from backend.core.services.wan_pipeline_loader import VideoGenerationResult
         
         # Test creating a VideoGenerationResult
         result = VideoGenerationResult(
@@ -227,7 +227,7 @@ def test_video_generation_result():
 def test_wan_optimization_integration():
     """Test WAN optimization integration"""
     try:
-        from core.services.wan_pipeline_loader import WanPipelineLoader
+        from backend.core.services.wan_pipeline_loader import WanPipelineLoader
         
         loader = WanPipelineLoader()
         
@@ -249,7 +249,7 @@ def test_wan_optimization_integration():
 async def test_wan_pipeline_loading_methods():
     """Test WAN pipeline loading methods (async)"""
     try:
-        from core.services.wan_pipeline_loader import WanPipelineLoader
+        from backend.core.services.wan_pipeline_loader import WanPipelineLoader
         
         loader = WanPipelineLoader()
         

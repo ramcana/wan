@@ -9,7 +9,7 @@ from typing import Dict, Any
 
 # Import the model under test
 try:
-    from core.models.wan_models.wan_t2v_a14b import (
+    from backend.core.models.wan_models.wan_t2v_a14b import (
         WANT2VA14B, 
         T2VGenerationParams,
         PositionalEncoding,

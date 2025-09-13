@@ -16,8 +16,8 @@ import sys
 # Add backend to path for imports
 sys.path.append(str(Path(__file__).parent.parent))
 
-from core.performance_monitor import get_performance_monitor
-from core.system_integration import SystemIntegration
+from backend.core.performance_monitor import get_performance_monitor
+from backend.core.system_integration import SystemIntegration
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)

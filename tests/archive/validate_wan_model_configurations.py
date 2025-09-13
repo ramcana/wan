@@ -19,7 +19,7 @@ from typing import Dict, Any
 sys.path.insert(0, str(Path(__file__).parent))
 
 try:
-    from core.services.model_manager import (
+    from backend.core.services.model_manager import (
         get_model_manager,
         validate_all_wan_configurations,
         get_all_wan_model_status,
@@ -27,7 +27,7 @@ try:
         get_performance_profile,
         get_wan_model_recommendations
     )
-    from core.models.wan_models.wan_model_config import (
+    from backend.core.models.wan_models.wan_model_config import (
         get_available_wan_models,
         get_wan_model_info
     )

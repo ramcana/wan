@@ -28,7 +28,7 @@ try:
         stop_performance_monitoring,
         generate_performance_report
     )
-    from core.services.utils import get_model_manager, VRAMOptimizer
+    from backend.core.services.utils import get_model_manager, VRAMOptimizer
     from infrastructure.hardware.error_handler import handle_error_with_recovery, log_error_with_context
 except ImportError as e:
     print(f"Error importing application modules: {e}")
