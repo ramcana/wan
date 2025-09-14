@@ -663,11 +663,11 @@ class ModelEnsurer:
                     backend.download,
                     operation="download_from_source",
                     config=self.error_recovery.config,
-                    source_url=source_url,
                     local_dir=temp_dir,
                     file_specs=files_to_download,
                     allow_patterns=getattr(spec, 'allow_patterns', None),
-                    progress_callback=progress_callback
+                    progress_callback=progress_callback,
+                    source_url=source_url  # Keep for context
                 )
                 
                 download_duration = time.time() - download_start_time

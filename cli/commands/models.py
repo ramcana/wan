@@ -7,6 +7,7 @@ Provides CLI interface for WAN2.2 model management through the Model Orchestrato
 import typer
 import json
 import sys
+import os
 from pathlib import Path
 from typing import Optional, List
 from rich.console import Console
@@ -39,7 +40,7 @@ def _get_orchestrator_components():
     """Initialize and return orchestrator components."""
     try:
         # Get configuration from environment or defaults
-        models_root = Path.cwd() / "models"
+        models_root = Path(os.getenv("WAN_MODELS_ROOT", Path.cwd() / "models"))
         manifest_path = Path.cwd() / "config" / "models.toml"
         
         # Initialize components

@@ -139,6 +139,7 @@ class HFStore(StorageBackend):
                 "local_dir": local_dir,
                 "local_dir_use_symlinks": False,  # Use actual files, not symlinks
                 "token": self.token,
+                "resume_download": True,  # Enable resume for large files
             }
             
             if revision:

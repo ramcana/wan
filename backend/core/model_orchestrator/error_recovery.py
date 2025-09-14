@@ -443,9 +443,13 @@ def retry_operation(
     manager = ErrorRecoveryManager(config)
     
     # Separate context kwargs from function kwargs
-    context_fields = {'model_id', 'variant', 'source_url', 'metadata'}
+    context_fields = {'model_id', 'variant', 'metadata'}
     context_kwargs = {k: v for k, v in kwargs.items() if k in context_fields}
     func_kwargs = {k: v for k, v in kwargs.items() if k not in context_fields}
+    
+    # Special handling for source_url - add to context but also pass to function
+    if 'source_url' in kwargs:
+        context_kwargs['source_url'] = kwargs['source_url']
     
     with manager.recovery_context(operation, **context_kwargs) as context:
         return manager.retry_with_recovery(func, context, *args, **func_kwargs)
