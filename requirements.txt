@@ -132,3 +132,9 @@ mkdocs-mermaid2-plugin>=0.6.0
 beautifulsoup4>=4.12.0
 jsonschema>=4.17.0
 cerberus>=1.3.4
+# Model Orchestrator dependencies
+boto3>=1.34.0
+botocore>=1.34.0
+keyring>=24.0.0
+tomli>=2.0.0
+tomli-w>=1.0.0
