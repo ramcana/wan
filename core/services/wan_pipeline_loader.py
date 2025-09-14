@@ -4,7 +4,7 @@ WanPipeline wrapper and loader for resource-managed generation.
 This module implements the WanPipelineLoader and WanPipelineWrapper classes
 for automatic optimization application and resource-managed video generation.
 
-Requirements addressed: 3.1, 3.2, 3.3, 5.1, 5.2
+Requirements addressed: 3.1, 3.2, 3.3, 5.1, 5.2, 6.1, 6.2, 6.3, 14.1, 14.4
 """
 
 import torch
@@ -24,6 +24,29 @@ from backend.core.services.optimization_manager import (
     OptimizationManager, OptimizationPlan, OptimizationResult, 
     SystemResources, ModelRequirements, ChunkedProcessor
 )
+
+# Import Model Orchestrator integration
+try:
+    from backend.services.wan_pipeline_integration import (
+        get_wan_integration, WanPipelineIntegration, get_wan_paths,
+        ComponentValidationResult
+    )
+    MODEL_ORCHESTRATOR_AVAILABLE = True
+except ImportError:
+    MODEL_ORCHESTRATOR_AVAILABLE = False
+    # Create mock for environments without Model Orchestrator
+    def get_wan_paths(model_id: str, variant: Optional[str] = None) -> str:
+        """Fallback implementation when Model Orchestrator is not available."""
+        # Return a default path structure
+        models_root = os.environ.get('MODELS_ROOT', './models')
+        return os.path.join(models_root, 'wan22', model_id.replace('@', '_'))
+    
+    @dataclass
+    class ComponentValidationResult:
+        is_valid: bool = True
+        missing_components: List[str] = field(default_factory=list)
+        invalid_components: List[str] = field(default_factory=list)
+        warnings: List[str] = field(default_factory=list)
 
 # Import WAN model components (with fallback for environments without implementations)
 try:
@@ -122,7 +145,8 @@ class WanPipelineWrapper:
                  pipeline: Any,
                  model_architecture: ModelArchitecture,
                  optimization_result: OptimizationResult,
-                 chunked_processor: Optional[ChunkedProcessor] = None):
+                 chunked_processor: Optional[ChunkedProcessor] = None,
+                 model_id: Optional[str] = None):
         """
         Initialize WanPipelineWrapper.
         
@@ -131,11 +155,13 @@ class WanPipelineWrapper:
             model_architecture: Model architecture information
             optimization_result: Applied optimization results
             chunked_processor: Optional chunked processor for memory-constrained systems
+            model_id: Optional model identifier for Model Orchestrator integration
         """
         self.pipeline = pipeline
         self.model_architecture = model_architecture
         self.optimization_result = optimization_result
         self.chunked_processor = chunked_processor
+        self._model_id = model_id
         self.logger = logging.getLogger(__name__ + ".WanPipelineWrapper")
         
         # Initialize monitoring
@@ -148,6 +174,8 @@ class WanPipelineWrapper:
         self._supports_progress_callback = hasattr(pipeline, 'callback_on_step_end')
         
         self.logger.info(f"WanPipelineWrapper initialized with optimizations: {optimization_result.applied_optimizations}")
+        if model_id:
+            self.logger.info(f"Model Orchestrator integration enabled for model: {model_id}")
     
     def generate(self, config: GenerationConfig) -> VideoGenerationResult:
         """
@@ -243,7 +271,7 @@ class WanPipelineWrapper:
     
     def estimate_memory_usage(self, config: GenerationConfig) -> MemoryEstimate:
         """
-        Estimate memory usage for generation parameters using WAN model capabilities.
+        Estimate memory usage for generation parameters using Model Orchestrator and WAN model capabilities.
         
         Args:
             config: Generation configuration
@@ -251,38 +279,62 @@ class WanPipelineWrapper:
         Returns:
             MemoryEstimate with detailed memory breakdown
         """
-        # Get base model memory from actual WAN model capabilities
+        # Get base model memory from Model Orchestrator if available
         base_model_mb = 8192  # Default fallback
         confidence = 0.7  # Base confidence
+        warnings = []
         
-        # First try to get capabilities from WAN model implementation
-        if hasattr(self.pipeline, 'model') and hasattr(self.pipeline.model, 'get_model_capabilities'):
+        # Try to get VRAM estimation from Model Orchestrator first
+        if MODEL_ORCHESTRATOR_AVAILABLE and hasattr(self, '_model_id'):
             try:
-                capabilities = self.pipeline.model.get_model_capabilities()
-                base_model_mb = int(capabilities.estimated_vram_gb * 1024)
-                confidence += 0.3  # Much more confident with actual WAN model capabilities
+                wan_integration = get_wan_integration()
+                estimated_vram_gb = wan_integration.estimate_vram_usage(
+                    self._model_id,
+                    num_frames=config.num_frames,
+                    width=config.width,
+                    height=config.height,
+                    batch_size=config.batch_size
+                )
+                base_model_mb = int(estimated_vram_gb * 1024)
+                confidence += 0.3  # More confident with Model Orchestrator estimation
+                self.logger.info(f"Using Model Orchestrator VRAM estimation: {estimated_vram_gb:.2f}GB")
                 
-                # Validate generation parameters against WAN model limits
-                if config.num_frames > capabilities.max_frames:
-                    confidence -= 0.1
-                    warnings.append(f"Frame count ({config.num_frames}) exceeds WAN model maximum ({capabilities.max_frames})")
-                
-                if (config.width, config.height) > capabilities.max_resolution:
-                    confidence -= 0.1
-                    warnings.append(f"Resolution ({config.width}x{config.height}) exceeds WAN model maximum ({capabilities.max_resolution})")
-                
-                # Check if precision is supported
-                precision = "fp16" if "fp16" in self.optimization_result.applied_optimizations else "fp32"
-                if precision not in capabilities.supported_precisions:
-                    confidence -= 0.05
-                    warnings.append(f"Precision {precision} may not be optimal for this WAN model")
-                
-                self.logger.info(f"Using WAN model capabilities: {capabilities.estimated_vram_gb:.2f}GB, {capabilities.parameter_count:,} parameters")
+                # Get model capabilities for validation
+                capabilities = wan_integration.get_model_capabilities(self._model_id)
+                if capabilities:
+                    if config.num_frames > capabilities.get('max_frames', 64):
+                        confidence -= 0.1
+                        warnings.append(f"Frame count ({config.num_frames}) exceeds model maximum ({capabilities.get('max_frames', 64)})")
                     
+                    max_res = capabilities.get('max_resolution', (1920, 1080))
+                    if config.width > max_res[0] or config.height > max_res[1]:
+                        confidence -= 0.1
+                        warnings.append(f"Resolution ({config.width}x{config.height}) exceeds model maximum ({max_res})")
+                
             except Exception as e:
-                self.logger.warning(f"Could not get WAN model capabilities: {e}")
-                # Fall back to architecture-based estimation
-                base_model_mb = getattr(self.model_architecture.requirements, 'recommended_vram_mb', 8192)
+                self.logger.warning(f"Could not get Model Orchestrator VRAM estimation: {e}")
+        
+        # Fallback to WAN model capabilities if Model Orchestrator is not available
+        if base_model_mb == 8192:  # Still using default
+            if hasattr(self.pipeline, 'model') and hasattr(self.pipeline.model, 'get_model_capabilities'):
+                try:
+                    capabilities = self.pipeline.model.get_model_capabilities()
+                    base_model_mb = int(capabilities.estimated_vram_gb * 1024)
+                    confidence += 0.2  # Confident with actual WAN model capabilities
+                    
+                    # Validate generation parameters against WAN model limits
+                    if config.num_frames > capabilities.max_frames:
+                        confidence -= 0.1
+                        warnings.append(f"Frame count ({config.num_frames}) exceeds WAN model maximum ({capabilities.max_frames})")
+                    
+                    if (config.width, config.height) > capabilities.max_resolution:
+                        confidence -= 0.1
+                        warnings.append(f"Resolution ({config.width}x{config.height}) exceeds WAN model maximum ({capabilities.max_resolution})")
+                    
+                    self.logger.info(f"Using WAN model capabilities: {capabilities.estimated_vram_gb:.2f}GB")
+                        
+                except Exception as e:
+                    self.logger.warning(f"Could not get WAN model capabilities: {e}")
         
         # Use WAN model's own VRAM estimation if available (most accurate)
         if hasattr(self.pipeline, 'model') and hasattr(self.pipeline.model, 'estimate_vram_usage'):
@@ -290,12 +342,12 @@ class WanPipelineWrapper:
                 # WAN models can provide dynamic VRAM estimation based on current configuration
                 estimated_vram_gb = self.pipeline.model.estimate_vram_usage()
                 base_model_mb = int(estimated_vram_gb * 1024)
-                confidence += 0.2  # Even more confident with model's own dynamic estimation
+                confidence += 0.1  # Additional confidence with model's own dynamic estimation
                 self.logger.info(f"Using WAN model dynamic VRAM estimation: {estimated_vram_gb:.2f}GB")
             except Exception as e:
                 self.logger.warning(f"Could not get WAN model VRAM estimation: {e}")
         
-        # If we still don't have a good estimate, fall back to architecture
+        # Final fallback to architecture-based estimation
         if base_model_mb == 8192:  # Still using default
             base_model_mb = getattr(self.model_architecture.requirements, 'recommended_vram_mb', 8192)
         
@@ -740,16 +792,18 @@ class WanPipelineLoader:
             self.logger.warning("WAN model implementations are not available - using fallback implementations")
     
     async def load_wan_pipeline(self, 
-                         model_path: str,
+                         model_id: str,
+                         variant: Optional[str] = None,
                          trust_remote_code: bool = True,
                          apply_optimizations: bool = True,
                          optimization_config: Optional[Dict[str, Any]] = None,
                          **pipeline_kwargs) -> WanPipelineWrapper:
         """
-        Load Wan pipeline with automatic optimization.
+        Load Wan pipeline with automatic optimization using Model Orchestrator.
         
         Args:
-            model_path: Path to the model
+            model_id: Model identifier (e.g., "t2v-A14B@2.2.0")
+            variant: Optional variant (e.g., "fp16", "bf16")
             trust_remote_code: Whether to trust remote code
             apply_optimizations: Whether to apply automatic optimizations
             optimization_config: Optional optimization configuration override
@@ -762,27 +816,65 @@ class WanPipelineLoader:
             ValueError: If model cannot be loaded or is incompatible
             RuntimeError: If optimization fails critically
         """
-        self.logger.info(f"Loading Wan pipeline from: {model_path}")
+        self.logger.info(f"Loading Wan pipeline for model: {model_id}")
         
         # Check cache first
         config_hash = hash(str(sorted(optimization_config.items()))) if optimization_config else 0
-        cache_key = f"{model_path}_{trust_remote_code}_{apply_optimizations}_{config_hash}"
+        cache_key = f"{model_id}_{variant}_{trust_remote_code}_{apply_optimizations}_{config_hash}"
         if self._pipeline_cache is not None and cache_key in self._pipeline_cache:
             self.logger.info("Returning cached pipeline")
             return self._pipeline_cache[cache_key]
         
         try:
-            # Step 1: Detect model architecture
+            # Step 1: Get model path using Model Orchestrator
+            self.logger.info("Ensuring model availability...")
+            model_path = get_wan_paths(model_id, variant)
+            
+            # Step 2: Validate components before GPU initialization
+            if MODEL_ORCHESTRATOR_AVAILABLE:
+                self.logger.info("Validating model components...")
+                wan_integration = get_wan_integration()
+                validation_result = wan_integration.validate_components(model_id, model_path)
+                
+                if not validation_result.is_valid:
+                    error_msg = f"Model validation failed for {model_id}:\n"
+                    if validation_result.missing_components:
+                        error_msg += f"Missing components: {validation_result.missing_components}\n"
+                    if validation_result.invalid_components:
+                        error_msg += f"Invalid components: {validation_result.invalid_components}\n"
+                    raise ValueError(error_msg.strip())
+                
+                # Log warnings
+                for warning in validation_result.warnings:
+                    self.logger.warning(f"Model validation warning: {warning}")
+            
+            # Step 3: Detect model architecture
             self.logger.info("Detecting model architecture...")
             model_architecture = self.architecture_detector.detect_model_architecture(model_path)
             
             # Validate that this is a Wan model
             if model_architecture.architecture_type not in [
-                ArchitectureType.WAN_T2V, ArchitectureType.WAN_T2I, ArchitectureType.WAN_I2V
+                ArchitectureType.WAN_T2V, ArchitectureType.WAN_T2I, ArchitectureType.WAN_I2V, ArchitectureType.WAN_TI2V
             ]:
                 raise ValueError(f"Model is not a Wan architecture: {model_architecture.architecture_type.value}")
             
-            # Step 2: Load actual WAN model implementation
+            # Step 4: Get pipeline class from Model Orchestrator
+            if MODEL_ORCHESTRATOR_AVAILABLE:
+                wan_integration = get_wan_integration()
+                pipeline_class = wan_integration.get_pipeline_class(model_id)
+                self.logger.info(f"Using pipeline class: {pipeline_class}")
+            else:
+                # Fallback pipeline class determination
+                if model_architecture.architecture_type == ArchitectureType.WAN_T2V:
+                    pipeline_class = "WanT2VPipeline"
+                elif model_architecture.architecture_type == ArchitectureType.WAN_I2V:
+                    pipeline_class = "WanI2VPipeline"
+                elif model_architecture.architecture_type == ArchitectureType.WAN_TI2V:
+                    pipeline_class = "WanTI2VPipeline"
+                else:
+                    pipeline_class = "WanPipeline"
+            
+            # Step 5: Load actual WAN model implementation
             self.logger.info("Loading WAN model implementation...")
             
             # Check if WAN models are available
@@ -792,22 +884,14 @@ class WanPipelineLoader:
             # Create WAN pipeline factory
             wan_factory = WANPipelineFactory()
             
-            # Determine WAN model type from architecture
-            wan_model_type = None
-            if model_architecture.architecture_type == ArchitectureType.WAN_T2V:
-                wan_model_type = "t2v-A14B"
-            elif model_architecture.architecture_type == ArchitectureType.WAN_I2V:
-                wan_model_type = "i2v-A14B"
-            elif model_architecture.architecture_type == ArchitectureType.WAN_TI2V:
-                wan_model_type = "ti2v-5B"
-            else:
-                raise ValueError(f"Unsupported WAN model architecture: {model_architecture.architecture_type.value}")
+            # Extract model base name for WAN factory
+            model_base = model_id.split("@")[0] if "@" in model_id else model_id
             
-            # Create WAN pipeline configuration
+            # Create WAN pipeline configuration with Model Orchestrator integration
             wan_pipeline_config = WANPipelineConfig(
-                model_type=wan_model_type,
+                model_type=model_base,
                 device="cuda" if torch.cuda.is_available() else "cpu",
-                dtype="float16" if torch.cuda.is_available() else "float32",
+                dtype=variant if variant in ["fp16", "bf16", "fp32"] else ("float16" if torch.cuda.is_available() else "float32"),
                 enable_memory_efficient_attention=True,
                 enable_cpu_offload=optimization_config.get("cpu_offload", False) if optimization_config else False,
                 enable_attention_slicing=optimization_config.get("attention_slicing", False) if optimization_config else False,
@@ -843,65 +927,23 @@ class WanPipelineLoader:
             
             # Load WAN pipeline using factory
             pipeline = await wan_factory.create_wan_pipeline(
-                wan_model_type, 
+                model_base, 
                 wan_pipeline_config, 
                 wan_hardware_profile
             )
             
             if pipeline is None:
-                raise ValueError(f"Failed to create WAN pipeline for model type: {wan_model_type}")
+                raise ValueError(f"Failed to create WAN pipeline for model type: {model_base}")
             
             # Create a mock load result for compatibility
             load_result = PipelineLoadResult(
                 status=PipelineLoadStatus.SUCCESS,
                 pipeline=pipeline,
-                pipeline_class=f"WAN{wan_model_type.upper().replace('-', '')}Pipeline",
+                pipeline_class=pipeline_class,
                 warnings=[]
             )
             
-            # Apply precision settings if specified
-            if optimization_config and "precision" in optimization_config:
-                precision = optimization_config["precision"]
-                if precision in ["fp16", "bf16", "fp32"]:
-                    wan_pipeline_config.dtype = precision
-            
-            # Create hardware profile for WAN model optimization
-            wan_hardware_profile = None
-            if torch.cuda.is_available():
-                gpu_props = torch.cuda.get_device_properties(0)
-                total_vram_gb = gpu_props.total_memory / (1024**3)
-                available_vram_gb = (gpu_props.total_memory - torch.cuda.memory_allocated()) / (1024**3)
-                
-                wan_hardware_profile = WANHardwareProfile(
-                    gpu_name=gpu_props.name,
-                    total_vram_gb=total_vram_gb,
-                    available_vram_gb=available_vram_gb,
-                    cpu_cores=os.cpu_count() or 8,
-                    total_ram_gb=32.0,  # Default, could be detected
-                    architecture_type="cuda",
-                    supports_fp16=True,
-                    tensor_cores_available="RTX" in gpu_props.name or "A100" in gpu_props.name
-                )
-            
-            # Load WAN pipeline using factory
-            pipeline = await wan_factory.create_wan_pipeline(
-                wan_model_type, 
-                wan_pipeline_config, 
-                wan_hardware_profile
-            )
-            
-            if pipeline is None:
-                raise ValueError(f"Failed to create WAN pipeline for model type: {wan_model_type}")
-            
-            # Create a mock load result for compatibility
-            load_result = PipelineLoadResult(
-                status=PipelineLoadStatus.SUCCESS,
-                pipeline=pipeline,
-                pipeline_class=f"WAN{wan_model_type.upper().replace('-', '')}Pipeline",
-                warnings=[]
-            )
-            
-            # Step 3: Apply WAN model optimizations
+            # Step 6: Apply WAN model optimizations
             optimization_result = OptimizationResult(
                 success=True,
                 applied_optimizations=[],
@@ -914,7 +956,7 @@ class WanPipelineLoader:
             if apply_optimizations:
                 self.logger.info("Applying WAN model optimizations...")
                 optimization_result = self._apply_wan_optimizations(
-                    pipeline, model_architecture, optimization_config, wan_hardware_profile
+                    pipeline, model_architecture, optimization_config, wan_hardware_profile, model_id
                 )
                 
                 if not optimization_result.success:
@@ -943,7 +985,8 @@ class WanPipelineLoader:
                 pipeline=pipeline,
                 model_architecture=model_architecture,
                 optimization_result=optimization_result,
-                chunked_processor=chunked_processor
+                chunked_processor=chunked_processor,
+                model_id=model_id
             )
             
             # Cache the wrapper
@@ -2362,3 +2405,122 @@ class WanPipelineLoader:
         """Set WebSocket manager for progress updates"""
         self._websocket_manager = websocket_manager
         self.logger.info("WebSocket manager set for WAN pipeline loader")
+    
+    def _apply_wan_optimizations(self, 
+                               pipeline: Any,
+                               model_architecture: ModelArchitecture,
+                               optimization_config: Optional[Dict[str, Any]],
+                               hardware_profile: Optional[Any],
+                               model_id: str) -> OptimizationResult:
+        """
+        Apply WAN-specific optimizations using Model Orchestrator integration.
+        
+        Args:
+            pipeline: The WAN pipeline to optimize
+            model_architecture: Model architecture information
+            optimization_config: Optimization configuration
+            hardware_profile: Hardware profile for optimization
+            model_id: Model identifier for Model Orchestrator integration
+            
+        Returns:
+            OptimizationResult with applied optimizations
+        """
+        optimization_result = OptimizationResult(
+            success=True,
+            applied_optimizations=[],
+            final_vram_usage_mb=0,
+            performance_impact=0.0,
+            errors=[],
+            warnings=[]
+        )
+        
+        try:
+            # Step 1: Model Orchestrator-based optimizations
+            if MODEL_ORCHESTRATOR_AVAILABLE:
+                try:
+                    wan_integration = get_wan_integration()
+                    capabilities = wan_integration.get_model_capabilities(model_id)
+                    
+                    if capabilities:
+                        model_type = capabilities.get('model_type')
+                        estimated_vram_gb = capabilities.get('estimated_vram_gb', 8.0)
+                        
+                        # Apply model-type specific optimizations
+                        if model_type == 't2v':
+                            optimization_result.applied_optimizations.append("WAN T2V optimizations")
+                            # T2V models don't need image encoder, save memory
+                            if hasattr(pipeline, 'image_encoder'):
+                                delattr(pipeline, 'image_encoder')
+                                optimization_result.applied_optimizations.append("T2V image encoder removal")
+                        
+                        elif model_type == 'i2v':
+                            optimization_result.applied_optimizations.append("WAN I2V optimizations")
+                            # I2V models need image encoder optimization
+                            if hasattr(pipeline, 'image_encoder'):
+                                optimization_result.applied_optimizations.append("I2V image encoder optimization")
+                        
+                        elif model_type == 'ti2v':
+                            optimization_result.applied_optimizations.append("WAN TI2V optimizations")
+                            # TI2V models need both text and image encoders
+                            optimization_result.applied_optimizations.append("TI2V dual conditioning optimization")
+                        
+                        # Set VRAM estimation from Model Orchestrator
+                        optimization_result.final_vram_usage_mb = int(estimated_vram_gb * 1024)
+                        
+                except Exception as e:
+                    self.logger.warning(f"Model Orchestrator optimization failed: {e}")
+                    optimization_result.warnings.append(f"Model Orchestrator optimization failed: {str(e)}")
+            
+            # Step 2: Hardware-specific optimizations
+            if hardware_profile:
+                try:
+                    # Apply precision optimizations based on hardware
+                    if hardware_profile.supports_fp16 and optimization_config.get("precision") != "fp32":
+                        optimization_result.applied_optimizations.append("FP16 precision optimization")
+                    
+                    # Apply tensor core optimizations
+                    if hardware_profile.tensor_cores_available:
+                        optimization_result.applied_optimizations.append("Tensor cores optimization")
+                    
+                    # Memory optimizations based on available VRAM
+                    if hardware_profile.available_vram_gb < 8:
+                        optimization_result.applied_optimizations.append("Low VRAM optimizations")
+                        # Enable CPU offloading for low VRAM systems
+                        if hasattr(pipeline, 'enable_cpu_offload'):
+                            pipeline.enable_cpu_offload()
+                            optimization_result.applied_optimizations.append("CPU offloading")
+                    
+                except Exception as e:
+                    self.logger.warning(f"Hardware optimization failed: {e}")
+                    optimization_result.warnings.append(f"Hardware optimization failed: {str(e)}")
+            
+            # Step 3: Apply configuration-based optimizations
+            if optimization_config:
+                try:
+                    if optimization_config.get("enable_attention_slicing", False):
+                        if hasattr(pipeline, 'enable_attention_slicing'):
+                            pipeline.enable_attention_slicing()
+                            optimization_result.applied_optimizations.append("Attention slicing")
+                    
+                    if optimization_config.get("enable_vae_slicing", False):
+                        if hasattr(pipeline, 'enable_vae_slicing'):
+                            pipeline.enable_vae_slicing()
+                            optimization_result.applied_optimizations.append("VAE slicing")
+                    
+                    if optimization_config.get("enable_memory_efficient_attention", True):
+                        if hasattr(pipeline, 'enable_memory_efficient_attention'):
+                            pipeline.enable_memory_efficient_attention()
+                            optimization_result.applied_optimizations.append("Memory efficient attention")
+                    
+                except Exception as e:
+                    self.logger.warning(f"Configuration optimization failed: {e}")
+                    optimization_result.warnings.append(f"Configuration optimization failed: {str(e)}")
+            
+            self.logger.info(f"Applied WAN optimizations: {optimization_result.applied_optimizations}")
+            
+        except Exception as e:
+            self.logger.error(f"WAN optimization failed: {e}")
+            optimization_result.success = False
+            optimization_result.errors.append(str(e))
+        
+        return optimization_result

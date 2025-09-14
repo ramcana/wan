@@ -31,6 +31,8 @@ env/
 ENV/
 .venv/
 .env/
+fresh_env/
+*_env/
 
 # IDE
 .vscode/
