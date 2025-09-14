@@ -27,10 +27,10 @@ jobs:
           pip install -e . || echo "Local package installation failed, continuing with available tools..."
       - name: Run quality checks
         run: |
-          python tools/code-quality/ci_quality_check.py check . --fail-on-error || echo "Quality checks completed with issues"
+          python tools/code_quality/ci_quality_check.py check . --fail-on-error || echo "Quality checks completed with issues"
       - name: Generate quality report
         run: |
-          python tools/code-quality/ci_quality_check.py report . --output=quality-report.html --format=html
+          python tools/code_quality/ci_quality_check.py report . --output=quality-report.html --format=html
         if: always()
       - name: Upload quality report
         uses: actions/upload-artifact@v4
