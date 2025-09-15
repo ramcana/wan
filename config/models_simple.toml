@@ -1,0 +1,187 @@
+# WAN2.2 Model Manifest - Simplified for HuggingFace Downloads
+# Schema version for compatibility checking
+schema_version = 1
+
+# Text-to-Video A14B Model
+[models."t2v-A14B@2.2.0"]
+description = "WAN2.2 Text-to-Video A14B Model"
+version = "2.2.0"
+variants = ["fp16", "bf16"]
+default_variant = "fp16"
+resolution_caps = ["720p24", "1080p24"]
+optional_components = []
+lora_required = false
+allow_patterns = ["*.safetensors", "*.json", "*.pth", "*.model", "*.bin"]
+
+# Required components for t2v-A14B: text_encoder + unet + vae (no image_encoder)
+required_components = ["text_encoder", "unet", "vae"]
+
+# Per-model defaults
+[models."t2v-A14B@2.2.0".defaults]
+fps = 24
+frames = 16
+scheduler = "ddim"
+precision = "fp16"
+guidance_scale = 7.5
+num_inference_steps = 50
+
+# VRAM estimation parameters
+[models."t2v-A14B@2.2.0".vram_estimation]
+params_billion = 14.0
+family_size = "large"
+base_vram_gb = 12.0
+per_frame_vram_mb = 256
+
+# Simplified file structure - match actual HuggingFace repo
+[[models."t2v-A14B@2.2.0".files]]
+path = "configuration.json"
+component = "config"
+
+[[models."t2v-A14B@2.2.0".files]]
+path = "high_noise_model/config.json"
+component = "unet"
+
+[[models."t2v-A14B@2.2.0".files]]
+path = "high_noise_model/diffusion_pytorch_model.safetensors.index.json"
+component = "unet"
+
+[[models."t2v-A14B@2.2.0".files]]
+path = "low_noise_model/config.json"
+component = "unet"
+
+[[models."t2v-A14B@2.2.0".files]]
+path = "low_noise_model/diffusion_pytorch_model.safetensors.index.json"
+component = "unet"
+
+[[models."t2v-A14B@2.2.0".files]]
+path = "google/umt5-xxl/tokenizer_config.json"
+component = "text_encoder"
+
+[[models."t2v-A14B@2.2.0".files]]
+path = "google/umt5-xxl/special_tokens_map.json"
+component = "text_encoder"
+
+[models."t2v-A14B@2.2.0".sources]
+priority = [
+    "local://wan22/t2v-A14B@2.2.0",
+    "hf://Wan-AI/Wan2.2-T2V-A14B"
+]
+
+# Image-to-Video A14B Model
+[models."i2v-A14B@2.2.0"]
+description = "WAN2.2 Image-to-Video A14B Model"
+version = "2.2.0"
+variants = ["fp16", "bf16"]
+default_variant = "fp16"
+resolution_caps = ["720p24", "1080p24"]
+optional_components = ["text_encoder"]
+lora_required = false
+allow_patterns = ["*.safetensors", "*.json", "*.pth", "*.model", "*.bin"]
+
+# Required components for i2v-A14B: image_encoder + unet + vae (optional text_encoder)
+required_components = ["image_encoder", "unet", "vae"]
+
+# Per-model defaults
+[models."i2v-A14B@2.2.0".defaults]
+fps = 24
+frames = 16
+scheduler = "ddim"
+precision = "fp16"
+guidance_scale = 5.0
+num_inference_steps = 50
+image_guidance_scale = 1.5
+
+# VRAM estimation parameters
+[models."i2v-A14B@2.2.0".vram_estimation]
+params_billion = 14.0
+family_size = "large"
+base_vram_gb = 14.0
+per_frame_vram_mb = 320
+
+# Simplified file structure
+[[models."i2v-A14B@2.2.0".files]]
+path = "configuration.json"
+component = "config"
+
+[[models."i2v-A14B@2.2.0".files]]
+path = "high_noise_model/config.json"
+component = "unet"
+
+[[models."i2v-A14B@2.2.0".files]]
+path = "high_noise_model/diffusion_pytorch_model.safetensors.index.json"
+component = "unet"
+
+[[models."i2v-A14B@2.2.0".files]]
+path = "low_noise_model/config.json"
+component = "unet"
+
+[[models."i2v-A14B@2.2.0".files]]
+path = "low_noise_model/diffusion_pytorch_model.safetensors.index.json"
+component = "unet"
+
+[[models."i2v-A14B@2.2.0".files]]
+path = "google/umt5-xxl/tokenizer_config.json"
+component = "text_encoder"
+optional = true
+
+[[models."i2v-A14B@2.2.0".files]]
+path = "google/umt5-xxl/special_tokens_map.json"
+component = "text_encoder"
+optional = true
+
+[models."i2v-A14B@2.2.0".sources]
+priority = [
+    "local://wan22/i2v-A14B@2.2.0",
+    "hf://Wan-AI/Wan2.2-I2V-A14B"
+]
+
+# Text+Image-to-Video 5B Model
+[models."ti2v-5b@2.2.0"]
+description = "WAN2.2 Text+Image-to-Video 5B Model"
+version = "2.2.0"
+variants = ["fp16", "bf16"]
+default_variant = "fp16"
+resolution_caps = ["720p24", "1080p24", "1440p24"]
+optional_components = []
+lora_required = false
+allow_patterns = ["*.safetensors", "*.json", "*.pth", "*.model", "*.bin"]
+
+# Required components for ti2v-5b: text_encoder + image_encoder + unet + vae (dual conditioning)
+required_components = ["text_encoder", "image_encoder", "unet", "vae"]
+
+# Per-model defaults
+[models."ti2v-5b@2.2.0".defaults]
+fps = 24
+frames = 24
+scheduler = "ddim"
+precision = "fp16"
+guidance_scale = 7.5
+num_inference_steps = 50
+image_guidance_scale = 1.2
+text_guidance_scale = 7.5
+
+# VRAM estimation parameters
+[models."ti2v-5b@2.2.0".vram_estimation]
+params_billion = 5.0
+family_size = "medium"
+base_vram_gb = 10.0
+per_frame_vram_mb = 200
+
+# Simplified file structure
+[[models."ti2v-5b@2.2.0".files]]
+path = "configuration.json"
+component = "config"
+
+[[models."ti2v-5b@2.2.0".files]]
+path = "google/umt5-xxl/tokenizer_config.json"
+component = "text_encoder"
+
+[[models."ti2v-5b@2.2.0".files]]
+path = "google/umt5-xxl/special_tokens_map.json"
+component = "text_encoder"
+
+[models."ti2v-5b@2.2.0".sources]
+priority = [
+    "local://wan22/ti2v-5b@2.2.0",
+    "hf://Wan-AI/Wan2.2-TI2V-5B"
+]

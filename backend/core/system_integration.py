@@ -343,27 +343,10 @@ class SystemIntegration:
     async def _initialize_wan_pipeline_loader(self):
         """Initialize WAN pipeline loader from existing core services"""
         try:
-            # Try to import WanPipelineLoader
-            try:
-                from backend.core.services.wan_pipeline_loader_standalone import WanPipelineLoader
-                logger.info("Using standalone WanPipelineLoader implementation")
-            except ImportError as e:
-                logger.warning(f"Standalone WanPipelineLoader has missing dependencies: {e}")
-                try:
-                    from backend.core.services.wan_pipeline_loader_fixed import WanPipelineLoader
-                    logger.info("Using fixed WanPipelineLoader implementation")
-                except ImportError as e2:
-                    logger.warning(f"Fixed WanPipelineLoader has missing dependencies: {e2}")
-                    try:
-                        from backend.core.services.wan_pipeline_loader import WanPipelineLoader
-                        logger.info("Using original WanPipelineLoader implementation")
-                    except ImportError as e3:
-                        logger.warning(f"Original WanPipelineLoader has missing dependencies: {e3}")
-                        # Create a real WanPipelineLoader for actual functionality
-                        return self._create_real_wan_pipeline_loader()
-            
-            # Initialize pipeline loader
-            loader = WanPipelineLoader()
+            # For now, skip the complex loaders and use the simplified one directly
+            # This ensures we have a working pipeline loader for basic functionality
+            logger.info("Using simplified WanPipelineLoader for basic model loading")
+            loader = self._create_simplified_wan_pipeline_loader()
             
             # If we have system optimizer, integrate it for hardware optimization
             if self.wan22_system_optimizer:

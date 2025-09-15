@@ -48,7 +48,7 @@ required_components = []
 
 [[models."ti2v-5b@2.2.0".files]]
 path = "configuration.json"
-size = 43
+size = 47
 sha256 = "0000000000000000000000000000000000000000000000000000000000000000"
 component = "config"
 

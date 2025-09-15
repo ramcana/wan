@@ -1,0 +1,495 @@
+# WAN2.2 Model Manifest
+# Schema version for compatibility checking
+schema_version = 1
+
+# Text-to-Video A14B Model
+[models."t2v-A14B@2.2.0"]
+description = "WAN2.2 Text-to-Video A14B Model"
+version = "2.2.0"
+variants = ["fp16", "bf16"]
+default_variant = "fp16"
+resolution_caps = ["720p24", "1080p24"]
+optional_components = []
+lora_required = false
+allow_patterns = ["*.safetensors", "*.json", "*.pth", "*.model"]
+
+# Required components for t2v-A14B: text_encoder + unet + vae (no image_encoder)
+required_components = ["text_encoder", "unet", "vae"]
+
+# Per-model defaults
+[models."t2v-A14B@2.2.0".defaults]
+fps = 24
+frames = 16
+scheduler = "ddim"
+precision = "fp16"
+guidance_scale = 7.5
+num_inference_steps = 50
+
+# VRAM estimation parameters
+[models."t2v-A14B@2.2.0".vram_estimation]
+params_billion = 14.0
+family_size = "large"
+base_vram_gb = 12.0
+per_frame_vram_mb = 256
+
+# Model configuration
+[[models."t2v-A14B@2.2.0".files]]
+path = "configuration.json"
+size = 2048
+sha256 = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+component = "config"
+
+# VAE component
+[[models."t2v-A14B@2.2.0".files]]
+path = "Wan2.1_VAE.pth"
+size = 335544320
+sha256 = "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3"
+component = "vae"
+
+# Text encoder component
+[[models."t2v-A14B@2.2.0".files]]
+path = "models_t5_umt5-xxl-enc-bf16.pth"
+size = 4294967296
+sha256 = "b5d4045c3f466fa91fe2cc6abe79232a1a57cdf104f7a26e716e0a1e2789df78"
+component = "text_encoder"
+
+# UNet component - high noise model (sharded)
+[[models."t2v-A14B@2.2.0".files]]
+path = "high_noise_model/config.json"
+size = 1024
+sha256 = "c3ab8ff13720e8ad9047dd39466b3c8974e592c2fa383d4a3960714caef0c4f2"
+component = "unet"
+
+[[models."t2v-A14B@2.2.0".files]]
+path = "high_noise_model/diffusion_pytorch_model.safetensors.index.json"
+size = 4096
+sha256 = "2c624232cdd221771294dfbb310aca000a0df6ac8b66b696b90ef72c9e9c323c"
+component = "unet"
+shard_index = true
+
+[[models."t2v-A14B@2.2.0".files]]
+path = "high_noise_model/diffusion_pytorch_model-00001-of-00006.safetensors"
+size = 8589934592
+sha256 = "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35"
+component = "unet"
+shard_part = 1
+
+[[models."t2v-A14B@2.2.0".files]]
+path = "high_noise_model/diffusion_pytorch_model-00002-of-00006.safetensors"
+size = 8589934592
+sha256 = "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce"
+component = "unet"
+shard_part = 2
+
+[[models."t2v-A14B@2.2.0".files]]
+path = "high_noise_model/diffusion_pytorch_model-00003-of-00006.safetensors"
+size = 8589934592
+sha256 = "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a"
+component = "unet"
+shard_part = 3
+
+[[models."t2v-A14B@2.2.0".files]]
+path = "high_noise_model/diffusion_pytorch_model-00004-of-00006.safetensors"
+size = 8589934592
+sha256 = "ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d"
+component = "unet"
+shard_part = 4
+
+[[models."t2v-A14B@2.2.0".files]]
+path = "high_noise_model/diffusion_pytorch_model-00005-of-00006.safetensors"
+size = 8589934592
+sha256 = "e7f6c011776e8db7cd330b54174fd76f7d0216b612387a5ffcfb81e6f0919683"
+component = "unet"
+shard_part = 5
+
+[[models."t2v-A14B@2.2.0".files]]
+path = "high_noise_model/diffusion_pytorch_model-00006-of-00006.safetensors"
+size = 4294967296
+sha256 = "7902699be42c8a8e46fbbb4501726517e86b22c56a189f7625a6da49081b2451"
+component = "unet"
+shard_part = 6
+
+# UNet component - low noise model (sharded)
+[[models."t2v-A14B@2.2.0".files]]
+path = "low_noise_model/config.json"
+size = 1024
+sha256 = "bd4f21a52ad4f9f04f4b6bf4d19c4a2c6a9c2b7c8e1f3d4e5f6a7b8c9d0e1f2a"
+component = "unet"
+
+[[models."t2v-A14B@2.2.0".files]]
+path = "low_noise_model/diffusion_pytorch_model.safetensors.index.json"
+size = 4096
+sha256 = "5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c"
+component = "unet"
+shard_index = true
+
+[[models."t2v-A14B@2.2.0".files]]
+path = "low_noise_model/diffusion_pytorch_model-00001-of-00006.safetensors"
+size = 8589934592
+sha256 = "3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c"
+component = "unet"
+shard_part = 1
+
+[[models."t2v-A14B@2.2.0".files]]
+path = "low_noise_model/diffusion_pytorch_model-00002-of-00006.safetensors"
+size = 8589934592
+sha256 = "5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e"
+component = "unet"
+shard_part = 2
+
+[[models."t2v-A14B@2.2.0".files]]
+path = "low_noise_model/diffusion_pytorch_model-00003-of-00006.safetensors"
+size = 8589934592
+sha256 = "7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a"
+component = "unet"
+shard_part = 3
+
+[[models."t2v-A14B@2.2.0".files]]
+path = "low_noise_model/diffusion_pytorch_model-00004-of-00006.safetensors"
+size = 8589934592
+sha256 = "9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c"
+component = "unet"
+shard_part = 4
+
+[[models."t2v-A14B@2.2.0".files]]
+path = "low_noise_model/diffusion_pytorch_model-00005-of-00006.safetensors"
+size = 8589934592
+sha256 = "1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e"
+component = "unet"
+shard_part = 5
+
+[[models."t2v-A14B@2.2.0".files]]
+path = "low_noise_model/diffusion_pytorch_model-00006-of-00006.safetensors"
+size = 4294967296
+sha256 = "3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a"
+component = "unet"
+shard_part = 6
+
+# Text encoder tokenizer files
+[[models."t2v-A14B@2.2.0".files]]
+path = "google/umt5-xxl/tokenizer.json"
+size = 2097152
+sha256 = "7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e"
+component = "text_encoder"
+
+[[models."t2v-A14B@2.2.0".files]]
+path = "google/umt5-xxl/spiece.model"
+size = 791621
+sha256 = "9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a"
+component = "text_encoder"
+
+[models."t2v-A14B@2.2.0".sources]
+priority = [
+    "local://wan22/t2v-A14B@2.2.0",
+    "s3://ai-models/wan22/t2v-A14B@2.2.0",
+    "hf://Wan-AI/Wan2.2-T2V-A14B"
+]
+
+# Image-to-Video A14B Model
+[models."i2v-A14B@2.2.0"]
+description = "WAN2.2 Image-to-Video A14B Model"
+version = "2.2.0"
+variants = ["fp16", "bf16"]
+default_variant = "fp16"
+resolution_caps = ["720p24", "1080p24"]
+optional_components = ["text_encoder"]
+lora_required = false
+allow_patterns = ["*.safetensors", "*.json", "*.pth", "*.model"]
+
+# Required components for i2v-A14B: image_encoder + unet + vae (optional text_encoder)
+required_components = ["image_encoder", "unet", "vae"]
+
+# Per-model defaults
+[models."i2v-A14B@2.2.0".defaults]
+fps = 24
+frames = 16
+scheduler = "ddim"
+precision = "fp16"
+guidance_scale = 5.0
+num_inference_steps = 50
+image_guidance_scale = 1.5
+
+# VRAM estimation parameters
+[models."i2v-A14B@2.2.0".vram_estimation]
+params_billion = 14.0
+family_size = "large"
+base_vram_gb = 14.0
+per_frame_vram_mb = 320
+
+# Model configuration
+[[models."i2v-A14B@2.2.0".files]]
+path = "configuration.json"
+size = 2048
+sha256 = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+component = "config"
+
+# VAE component
+[[models."i2v-A14B@2.2.0".files]]
+path = "Wan2.1_VAE.pth"
+size = 335544320
+sha256 = "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3"
+component = "vae"
+
+# Text encoder component (optional for i2v)
+[[models."i2v-A14B@2.2.0".files]]
+path = "models_t5_umt5-xxl-enc-bf16.pth"
+size = 4294967296
+sha256 = "b5d4045c3f466fa91fe2cc6abe79232a1a57cdf104f7a26e716e0a1e2789df78"
+component = "text_encoder"
+optional = true
+
+# Image encoder component (required for i2v)
+[[models."i2v-A14B@2.2.0".files]]
+path = "image_encoder/pytorch_model.bin"
+size = 1073741824
+sha256 = "1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b"
+component = "image_encoder"
+
+# UNet component - high noise model (sharded)
+[[models."i2v-A14B@2.2.0".files]]
+path = "high_noise_model/config.json"
+size = 1024
+sha256 = "c3ab8ff13720e8ad9047dd39466b3c8974e592c2fa383d4a3960714caef0c4f2"
+component = "unet"
+
+[[models."i2v-A14B@2.2.0".files]]
+path = "high_noise_model/diffusion_pytorch_model.safetensors.index.json"
+size = 4096
+sha256 = "2c624232cdd221771294dfbb310aca000a0df6ac8b66b696b90ef72c9e9c323c"
+component = "unet"
+shard_index = true
+
+[[models."i2v-A14B@2.2.0".files]]
+path = "high_noise_model/diffusion_pytorch_model-00001-of-00006.safetensors"
+size = 8589934592
+sha256 = "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35"
+component = "unet"
+shard_part = 1
+
+[[models."i2v-A14B@2.2.0".files]]
+path = "high_noise_model/diffusion_pytorch_model-00002-of-00006.safetensors"
+size = 8589934592
+sha256 = "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce"
+component = "unet"
+shard_part = 2
+
+[[models."i2v-A14B@2.2.0".files]]
+path = "high_noise_model/diffusion_pytorch_model-00003-of-00006.safetensors"
+size = 8589934592
+sha256 = "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a"
+component = "unet"
+shard_part = 3
+
+[[models."i2v-A14B@2.2.0".files]]
+path = "high_noise_model/diffusion_pytorch_model-00004-of-00006.safetensors"
+size = 8589934592
+sha256 = "ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d"
+component = "unet"
+shard_part = 4
+
+[[models."i2v-A14B@2.2.0".files]]
+path = "high_noise_model/diffusion_pytorch_model-00005-of-00006.safetensors"
+size = 8589934592
+sha256 = "e7f6c011776e8db7cd330b54174fd76f7d0216b612387a5ffcfb81e6f0919683"
+component = "unet"
+shard_part = 5
+
+[[models."i2v-A14B@2.2.0".files]]
+path = "high_noise_model/diffusion_pytorch_model-00006-of-00006.safetensors"
+size = 4294967296
+sha256 = "7902699be42c8a8e46fbbb4501726517e86b22c56a189f7625a6da49081b2451"
+component = "unet"
+shard_part = 6
+
+# UNet component - low noise model (sharded)
+[[models."i2v-A14B@2.2.0".files]]
+path = "low_noise_model/config.json"
+size = 1024
+sha256 = "bd4f21a52ad4f9f04f4b6bf4d19c4a2c6a9c2b7c8e1f3d4e5f6a7b8c9d0e1f2a"
+component = "unet"
+
+[[models."i2v-A14B@2.2.0".files]]
+path = "low_noise_model/diffusion_pytorch_model.safetensors.index.json"
+size = 4096
+sha256 = "5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c"
+component = "unet"
+shard_index = true
+
+[[models."i2v-A14B@2.2.0".files]]
+path = "low_noise_model/diffusion_pytorch_model-00001-of-00006.safetensors"
+size = 8589934592
+sha256 = "3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c"
+component = "unet"
+shard_part = 1
+
+[[models."i2v-A14B@2.2.0".files]]
+path = "low_noise_model/diffusion_pytorch_model-00002-of-00006.safetensors"
+size = 8589934592
+sha256 = "5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e"
+component = "unet"
+shard_part = 2
+
+[[models."i2v-A14B@2.2.0".files]]
+path = "low_noise_model/diffusion_pytorch_model-00003-of-00006.safetensors"
+size = 8589934592
+sha256 = "7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a"
+component = "unet"
+shard_part = 3
+
+[[models."i2v-A14B@2.2.0".files]]
+path = "low_noise_model/diffusion_pytorch_model-00004-of-00006.safetensors"
+size = 8589934592
+sha256 = "9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c"
+component = "unet"
+shard_part = 4
+
+[[models."i2v-A14B@2.2.0".files]]
+path = "low_noise_model/diffusion_pytorch_model-00005-of-00006.safetensors"
+size = 8589934592
+sha256 = "1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e"
+component = "unet"
+shard_part = 5
+
+[[models."i2v-A14B@2.2.0".files]]
+path = "low_noise_model/diffusion_pytorch_model-00006-of-00006.safetensors"
+size = 4294967296
+sha256 = "3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a"
+component = "unet"
+shard_part = 6
+
+# Text encoder tokenizer files (optional for i2v)
+[[models."i2v-A14B@2.2.0".files]]
+path = "google/umt5-xxl/tokenizer.json"
+size = 2097152
+sha256 = "7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e"
+component = "text_encoder"
+optional = true
+
+[[models."i2v-A14B@2.2.0".files]]
+path = "google/umt5-xxl/spiece.model"
+size = 791621
+sha256 = "9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a"
+component = "text_encoder"
+optional = true
+
+[models."i2v-A14B@2.2.0".sources]
+priority = [
+    "local://wan22/i2v-A14B@2.2.0",
+    "s3://ai-models/wan22/i2v-A14B@2.2.0",
+    "hf://Wan-AI/Wan2.2-I2V-A14B"
+]
+
+# Text+Image-to-Video 5B Model
+[models."ti2v-5b@2.2.0"]
+description = "WAN2.2 Text+Image-to-Video 5B Model"
+version = "2.2.0"
+variants = ["fp16", "bf16"]
+default_variant = "fp16"
+resolution_caps = ["720p24", "1080p24", "1440p24"]
+optional_components = []
+lora_required = false
+allow_patterns = ["*.safetensors", "*.json", "*.pth", "*.model"]
+
+# Required components for ti2v-5b: text_encoder + image_encoder + unet + vae (dual conditioning)
+required_components = ["text_encoder", "image_encoder", "unet", "vae"]
+
+# Per-model defaults
+[models."ti2v-5b@2.2.0".defaults]
+fps = 24
+frames = 24
+scheduler = "ddim"
+precision = "fp16"
+guidance_scale = 7.5
+num_inference_steps = 50
+image_guidance_scale = 1.2
+text_guidance_scale = 7.5
+
+# VRAM estimation parameters
+[models."ti2v-5b@2.2.0".vram_estimation]
+params_billion = 5.0
+family_size = "medium"
+base_vram_gb = 10.0
+per_frame_vram_mb = 200
+
+# Model configuration
+[[models."ti2v-5b@2.2.0".files]]
+path = "config.json"
+size = 1024
+sha256 = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+component = "config"
+
+[[models."ti2v-5b@2.2.0".files]]
+path = "configuration.json"
+size = 2048
+sha256 = "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3"
+component = "config"
+
+# VAE component
+[[models."ti2v-5b@2.2.0".files]]
+path = "Wan2.2_VAE.pth"
+size = 335544320
+sha256 = "b5d4045c3f466fa91fe2cc6abe79232a1a57cdf104f7a26e716e0a1e2789df78"
+component = "vae"
+
+# Text encoder component
+[[models."ti2v-5b@2.2.0".files]]
+path = "models_t5_umt5-xxl-enc-bf16.pth"
+size = 4294967296
+sha256 = "c3ab8ff13720e8ad9047dd39466b3c8974e592c2fa383d4a3960714caef0c4f2"
+component = "text_encoder"
+
+# Image encoder component
+[[models."ti2v-5b@2.2.0".files]]
+path = "image_encoder/pytorch_model.bin"
+size = 1073741824
+sha256 = "2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c"
+component = "image_encoder"
+
+# UNet component (sharded)
+[[models."ti2v-5b@2.2.0".files]]
+path = "diffusion_pytorch_model.safetensors.index.json"
+size = 4096
+sha256 = "ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d"
+component = "unet"
+shard_index = true
+
+[[models."ti2v-5b@2.2.0".files]]
+path = "diffusion_pytorch_model-00001-of-00003.safetensors"
+size = 17179869184
+sha256 = "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35"
+component = "unet"
+shard_part = 1
+
+[[models."ti2v-5b@2.2.0".files]]
+path = "diffusion_pytorch_model-00002-of-00003.safetensors"
+size = 17179869184
+sha256 = "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce"
+component = "unet"
+shard_part = 2
+
+[[models."ti2v-5b@2.2.0".files]]
+path = "diffusion_pytorch_model-00003-of-00003.safetensors"
+size = 17179869184
+sha256 = "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a"
+component = "unet"
+shard_part = 3
+
+# Text encoder tokenizer files
+[[models."ti2v-5b@2.2.0".files]]
+path = "google/umt5-xxl/tokenizer.json"
+size = 2097152
+sha256 = "e7f6c011776e8db7cd330b54174fd76f7d0216b612387a5ffcfb81e6f0919683"
+component = "text_encoder"
+
+[[models."ti2v-5b@2.2.0".files]]
+path = "google/umt5-xxl/spiece.model"
+size = 791621
+sha256 = "7902699be42c8a8e46fbbb4501726517e86b22c56a189f7625a6da49081b2451"
+component = "text_encoder"
+
+[models."ti2v-5b@2.2.0".sources]
+priority = [
+    "local://wan22/ti2v-5b@2.2.0",
+    "s3://ai-models/wan22/ti2v-5b@2.2.0",
+    "hf://Wan-AI/Wan2.2-TI2V-5B"
+]

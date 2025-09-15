@@ -1,1 +1,1 @@
-# API package
+# Backend API package initialization

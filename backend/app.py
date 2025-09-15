@@ -230,6 +230,13 @@ try:
 except ImportError as e:
     logger.warning(f"Could not import V1 generation router: {e}")
 
+try:
+    from backend.api.v2.router import router as v2_router
+    app.include_router(v2_router)
+    logger.info("V2 API router included")
+except ImportError as e:
+    logger.warning(f"Could not import V2 router: {e}")
+
 # Configure CORS with enhanced validation
 app.add_middleware(
     CORSMiddleware,

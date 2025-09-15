@@ -373,17 +373,16 @@ class GenerationService:
     async def _initialize_fallback_recovery_system(self):
         """Initialize fallback and recovery system for automatic error handling"""
         try:
-            # Use tolerant call signature to handle different factory signatures
+            # Initialize the fallback recovery system with dependencies
+            from backend.core.fallback_recovery_system import initialize_fallback_recovery_system
             try:
-                self.fallback_recovery_system = get_fallback_recovery_system(
+                self.fallback_recovery_system = initialize_fallback_recovery_system(
                     generation_service=self,
                     websocket_manager=self.websocket_manager
                 )
             except TypeError:
-                # Fallback to older signature without generation_service parameter
-                self.fallback_recovery_system = get_fallback_recovery_system(
-                    websocket_manager=self.websocket_manager
-                )
+                # Fallback to basic initialization without parameters
+                self.fallback_recovery_system = get_fallback_recovery_system()
             
             if hasattr(self.fallback_recovery_system, 'start_health_monitoring'):
                 self.fallback_recovery_system.start_health_monitoring()

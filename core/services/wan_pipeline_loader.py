@@ -138,7 +138,8 @@ class WanPipelineWrapper:
     Wrapper for Wan pipelines with resource management and optimization.
     
     Provides memory usage estimation, monitoring, and automatic optimization
-    application for efficient video generation.
+    application for efficient video generation. Enhanced with GPU semaphore
+    integration and device specification support.
     """
     
     def __init__(self, 
@@ -146,7 +147,9 @@ class WanPipelineWrapper:
                  model_architecture: ModelArchitecture,
                  optimization_result: OptimizationResult,
                  chunked_processor: Optional[ChunkedProcessor] = None,
-                 model_id: Optional[str] = None):
+                 model_id: Optional[str] = None,
+                 gpu_semaphore: Optional[asyncio.Semaphore] = None,
+                 device: str = "cuda"):
         """
         Initialize WanPipelineWrapper.
         
@@ -156,12 +159,16 @@ class WanPipelineWrapper:
             optimization_result: Applied optimization results
             chunked_processor: Optional chunked processor for memory-constrained systems
             model_id: Optional model identifier for Model Orchestrator integration
+            gpu_semaphore: Optional GPU semaphore for concurrent request management
+            device: Device specification (cuda:0, cuda:1, auto-allocation)
         """
         self.pipeline = pipeline
         self.model_architecture = model_architecture
         self.optimization_result = optimization_result
         self.chunked_processor = chunked_processor
         self._model_id = model_id
+        self.gpu_semaphore = gpu_semaphore
+        self.device = device
         self.logger = logging.getLogger(__name__ + ".WanPipelineWrapper")
         
         # Initialize monitoring
@@ -173,13 +180,56 @@ class WanPipelineWrapper:
         self._supports_chunked_processing = chunked_processor is not None
         self._supports_progress_callback = hasattr(pipeline, 'callback_on_step_end')
         
+        # Resource management
+        self._is_loaded = True
+        self._device_allocated = self._parse_device_specification(device)
+        
         self.logger.info(f"WanPipelineWrapper initialized with optimizations: {optimization_result.applied_optimizations}")
         if model_id:
             self.logger.info(f"Model Orchestrator integration enabled for model: {model_id}")
+        if gpu_semaphore:
+            self.logger.info(f"GPU semaphore integration enabled for device: {device}")
+    
+    def _parse_device_specification(self, device: str) -> str:
+        """
+        Parse device specification and handle auto-allocation.
+        
+        Args:
+            device: Device specification (cuda:0, cuda:1, auto-allocation)
+            
+        Returns:
+            Resolved device string
+        """
+        if device == "auto-allocation":
+            # Auto-allocate to least used GPU
+            if torch.cuda.is_available():
+                device_count = torch.cuda.device_count()
+                if device_count > 1:
+                    # Find GPU with most available memory
+                    best_device = 0
+                    max_free_memory = 0
+                    
+                    for i in range(device_count):
+                        props = torch.cuda.get_device_properties(i)
+                        allocated = torch.cuda.memory_allocated(i)
+                        free_memory = props.total_memory - allocated
+                        
+                        if free_memory > max_free_memory:
+                            max_free_memory = free_memory
+                            best_device = i
+                    
+                    device = f"cuda:{best_device}"
+                    self.logger.info(f"Auto-allocated to device: {device} (free memory: {max_free_memory / 1024**3:.2f}GB)")
+                else:
+                    device = "cuda:0"
+            else:
+                device = "cpu"
+        
+        return device
     
     def generate(self, config: GenerationConfig) -> VideoGenerationResult:
         """
-        Generate video with automatic resource management.
+        Generate video with automatic resource management and device allocation.
         
         Args:
             config: Generation configuration
@@ -190,7 +240,15 @@ class WanPipelineWrapper:
         start_time = time.time()
         initial_memory = self._get_current_memory_usage()
         
-        self.logger.info(f"Starting video generation: {config.num_frames} frames at {config.width}x{config.height}")
+        self.logger.info(f"Starting video generation on {self._device_allocated}: {config.num_frames} frames at {config.width}x{config.height}")
+        
+        # Check if pipeline is loaded
+        if not self._is_loaded:
+            return VideoGenerationResult(
+                success=False,
+                errors=["Pipeline has been torn down and is no longer available"],
+                generation_time=time.time() - start_time
+            )
         
         try:
             # Validate generation parameters
@@ -441,6 +499,119 @@ class WanPipelineWrapper:
             confidence=confidence,
             warnings=warnings
         )
+    
+    async def generate_async(self, config: GenerationConfig) -> VideoGenerationResult:
+        """
+        Async version of generate with GPU semaphore integration.
+        
+        Args:
+            config: Generation configuration
+            
+        Returns:
+            VideoGenerationResult with generated frames and metadata
+        """
+        if self.gpu_semaphore:
+            async with self.gpu_semaphore:
+                self.logger.info(f"Acquired GPU semaphore for device: {self.device}")
+                return self.generate(config)
+        else:
+            return self.generate(config)
+    
+    def decode(self, latents: torch.Tensor) -> List[torch.Tensor]:
+        """
+        Decode latents to RGB frames using the VAE.
+        
+        Args:
+            latents: Latent tensors from generation
+            
+        Returns:
+            List of decoded RGB frame tensors
+        """
+        try:
+            self.logger.info(f"Decoding latents to frames: {latents.shape}")
+            
+            # Check if pipeline has VAE for decoding
+            if not hasattr(self.pipeline, 'vae'):
+                raise ValueError("Pipeline does not have VAE for decoding")
+            
+            # Decode latents to frames
+            with torch.no_grad():
+                # Move latents to correct device
+                if hasattr(latents, 'to'):
+                    latents = latents.to(self._device_allocated)
+                
+                # Decode using VAE
+                frames = self.pipeline.vae.decode(latents)
+                
+                # Convert to list of individual frame tensors
+                if isinstance(frames, torch.Tensor):
+                    # Assume frames are in format [batch, frames, channels, height, width]
+                    if frames.dim() == 5:
+                        frame_list = [frames[0, i] for i in range(frames.shape[1])]
+                    elif frames.dim() == 4:
+                        # Single batch, multiple frames
+                        frame_list = [frames[i] for i in range(frames.shape[0])]
+                    else:
+                        # Single frame
+                        frame_list = [frames]
+                else:
+                    frame_list = frames
+                
+                self.logger.info(f"Successfully decoded {len(frame_list)} frames")
+                return frame_list
+                
+        except Exception as e:
+            self.logger.error(f"Failed to decode latents: {e}")
+            raise RuntimeError(f"Decoding failed: {str(e)}")
+    
+    def teardown(self) -> None:
+        """
+        Clean up resources and free GPU memory.
+        
+        This method should be called when the pipeline is no longer needed
+        to ensure proper resource cleanup.
+        """
+        try:
+            self.logger.info("Tearing down WAN pipeline wrapper")
+            
+            # Move pipeline components to CPU to free GPU memory
+            if hasattr(self.pipeline, 'to'):
+                self.pipeline.to('cpu')
+            
+            # Clear CUDA cache
+            if torch.cuda.is_available():
+                torch.cuda.empty_cache()
+                self.logger.info("Cleared CUDA cache")
+            
+            # Run garbage collection
+            gc.collect()
+            
+            # Mark as unloaded
+            self._is_loaded = False
+            
+            self.logger.info("Pipeline teardown completed")
+            
+        except Exception as e:
+            self.logger.error(f"Error during pipeline teardown: {e}")
+            # Don't raise exception during cleanup
+    
+    def is_loaded(self) -> bool:
+        """
+        Check if the pipeline is currently loaded and ready for use.
+        
+        Returns:
+            True if pipeline is loaded, False otherwise
+        """
+        return self._is_loaded
+    
+    def get_device(self) -> str:
+        """
+        Get the device this pipeline is allocated to.
+        
+        Returns:
+            Device string (e.g., "cuda:0", "cpu")
+        """
+        return self._device_allocated
     
     def get_generation_stats(self) -> Dict[str, Any]:
         """
@@ -757,20 +928,23 @@ class WanPipelineLoader:
                  optimization_config_path: Optional[str] = None,
                  enable_caching: bool = True,
                  vram_manager: Optional[VRAMManager] = None,
-                 quantization_controller: Optional[QuantizationController] = None):
+                 quantization_controller: Optional[QuantizationController] = None,
+                 model_ensurer: Optional[Any] = None):
         """
-        Initialize WanPipelineLoader.
+        Initialize WanPipelineLoader with Model Orchestrator integration.
         
         Args:
             optimization_config_path: Path to optimization configuration
             enable_caching: Whether to cache loaded pipelines
             vram_manager: Optional VRAM manager instance
             quantization_controller: Optional quantization controller instance
+            model_ensurer: Optional Model Ensurer for orchestrator integration
         """
         self.architecture_detector = ArchitectureDetector()
         self.pipeline_manager = PipelineManager()
         self.optimization_manager = OptimizationManager(optimization_config_path)
         self.enable_caching = enable_caching
+        self.model_ensurer = model_ensurer
         self.logger = logging.getLogger(__name__ + ".WanPipelineLoader")
         
         # Initialize WAN22 optimization components
@@ -783,13 +957,49 @@ class WanPipelineLoader:
         # System resources (cached after first analysis)
         self._system_resources = None
         
+        # GPU semaphore pool for concurrent request management
+        self._gpu_semaphores = {}
+        
         self.logger.info("WanPipelineLoader initialized with WAN22 optimization components")
+        
+        # Log Model Orchestrator integration status
+        if MODEL_ORCHESTRATOR_AVAILABLE:
+            self.logger.info("Model Orchestrator integration is available")
+        else:
+            self.logger.warning("Model Orchestrator integration is not available - using fallback implementations")
         
         # Log WAN model availability
         if WAN_MODELS_AVAILABLE:
             self.logger.info("WAN model implementations are available")
         else:
             self.logger.warning("WAN model implementations are not available - using fallback implementations")
+    
+    def get_gpu_semaphore(self, device: str, capacity: int = 1) -> asyncio.Semaphore:
+        """
+        Get or create a GPU semaphore for the specified device.
+        
+        Args:
+            device: Device specification (e.g., "cuda:0", "cuda:1")
+            capacity: Semaphore capacity (number of concurrent requests)
+            
+        Returns:
+            Asyncio semaphore for the device
+        """
+        if device not in self._gpu_semaphores:
+            self._gpu_semaphores[device] = asyncio.Semaphore(capacity)
+            self.logger.info(f"Created GPU semaphore for {device} with capacity {capacity}")
+        
+        return self._gpu_semaphores[device]
+    
+    def set_model_ensurer(self, model_ensurer: Any) -> None:
+        """
+        Set the Model Ensurer for orchestrator integration.
+        
+        Args:
+            model_ensurer: Model Ensurer instance
+        """
+        self.model_ensurer = model_ensurer
+        self.logger.info("Model Ensurer set for orchestrator integration")
     
     async def load_wan_pipeline(self, 
                          model_id: str,
@@ -800,6 +1010,9 @@ class WanPipelineLoader:
                          **pipeline_kwargs) -> WanPipelineWrapper:
         """
         Load Wan pipeline with automatic optimization using Model Orchestrator.
+        
+        This method integrates with the Model Ensurer to ensure models are downloaded
+        and validates components before GPU initialization.
         
         Args:
             model_id: Model identifier (e.g., "t2v-A14B@2.2.0")
@@ -826,9 +1039,17 @@ class WanPipelineLoader:
             return self._pipeline_cache[cache_key]
         
         try:
-            # Step 1: Get model path using Model Orchestrator
-            self.logger.info("Ensuring model availability...")
-            model_path = get_wan_paths(model_id, variant)
+            # Step 1: Ensure model using Model Orchestrator (replaces hardcoded paths)
+            self.logger.info("Ensuring model availability with Model Orchestrator...")
+            if MODEL_ORCHESTRATOR_AVAILABLE:
+                # Use Model Orchestrator to ensure model is downloaded and available
+                wan_integration = get_wan_integration()
+                model_path = wan_integration.get_wan_paths(model_id, variant)
+                self.logger.info(f"Model ensured at path: {model_path}")
+            else:
+                # Fallback to legacy path resolution
+                self.logger.warning("Model Orchestrator not available, using fallback path resolution")
+                model_path = get_wan_paths(model_id, variant)
             
             # Step 2: Validate components before GPU initialization
             if MODEL_ORCHESTRATOR_AVAILABLE:
@@ -847,6 +1068,19 @@ class WanPipelineLoader:
                 # Log warnings
                 for warning in validation_result.warnings:
                     self.logger.warning(f"Model validation warning: {warning}")
+                
+                # Get pipeline class mapping from Model Orchestrator
+                pipeline_class = wan_integration.get_pipeline_class(model_id)
+                self.logger.info(f"Using pipeline class from Model Orchestrator: {pipeline_class}")
+            else:
+                # Fallback component validation and pipeline class determination
+                self.logger.warning("Model Orchestrator not available, using fallback validation")
+                validation_result = ComponentValidationResult(
+                    is_valid=True,
+                    missing_components=[],
+                    invalid_components=[],
+                    warnings=["Model Orchestrator not available - using fallback validation"]
+                )
             
             # Step 3: Detect model architecture
             self.logger.info("Detecting model architecture...")
@@ -858,13 +1092,9 @@ class WanPipelineLoader:
             ]:
                 raise ValueError(f"Model is not a Wan architecture: {model_architecture.architecture_type.value}")
             
-            # Step 4: Get pipeline class from Model Orchestrator
-            if MODEL_ORCHESTRATOR_AVAILABLE:
-                wan_integration = get_wan_integration()
-                pipeline_class = wan_integration.get_pipeline_class(model_id)
-                self.logger.info(f"Using pipeline class: {pipeline_class}")
-            else:
-                # Fallback pipeline class determination
+            # Step 4: Determine pipeline class (already done in Step 2 if Model Orchestrator available)
+            if not MODEL_ORCHESTRATOR_AVAILABLE:
+                # Fallback pipeline class determination based on architecture
                 if model_architecture.architecture_type == ArchitectureType.WAN_T2V:
                     pipeline_class = "WanT2VPipeline"
                 elif model_architecture.architecture_type == ArchitectureType.WAN_I2V:
@@ -873,6 +1103,7 @@ class WanPipelineLoader:
                     pipeline_class = "WanTI2VPipeline"
                 else:
                     pipeline_class = "WanPipeline"
+                self.logger.info(f"Using fallback pipeline class: {pipeline_class}")
             
             # Step 5: Load actual WAN model implementation
             self.logger.info("Loading WAN model implementation...")
@@ -981,12 +1212,24 @@ class WanPipelineLoader:
                     # Continue without chunked processing
             
             # Step 5: Create wrapper that integrates WAN pipeline with existing infrastructure
+            # Extract device from optimization config or use default
+            device = optimization_config.get("device", "cuda") if optimization_config else "cuda"
+            
+            # Get GPU semaphore for concurrent request management
+            gpu_semaphore = None
+            if device.startswith("cuda") or device == "auto-allocation":
+                # Get semaphore capacity from config or use default
+                semaphore_capacity = optimization_config.get("gpu_semaphore_capacity", 1) if optimization_config else 1
+                gpu_semaphore = self.get_gpu_semaphore(device, semaphore_capacity)
+            
             wrapper = WanPipelineWrapper(
                 pipeline=pipeline,
                 model_architecture=model_architecture,
                 optimization_result=optimization_result,
                 chunked_processor=chunked_processor,
-                model_id=model_id
+                model_id=model_id,
+                gpu_semaphore=gpu_semaphore,
+                device=device
             )
             
             # Cache the wrapper
