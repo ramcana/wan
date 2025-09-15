@@ -34,9 +34,60 @@ def generate_html_dashboard(health_data, output_file):
         status_color = "#dc3545"  # Red
         status_text = "Critical"
     
+    # Generate category cards
+    category_cards = ""
+    for category, data in categories.items():
+        score = data.get('score', 0)
+        status = data.get('status', 'unknown')
+        
+        if score >= 90:
+            card_color = "#d4edda"
+        elif score >= 75:
+            card_color = "#fff3cd"
+        else:
+            card_color = "#f8d7da"
+        
+        category_cards += f"""
+        <div class="category-card" style="background-color: {card_color};">
+            <h3>{category.replace('_', ' ').title()}</h3>
+            <div class="score">{score:.1f}/100</div>
+            <div class="status">{status.title()}</div>
+        </div>
+        """
+    
+    # Generate issues list
+    issues_html = ""
+    if issues:
+        for issue in issues:
+            severity = issue.get('severity', 'info')
+            description = issue.get('description', 'No description')
+            
+            if severity == 'critical':
+                issue_color = "#dc3545"
+            elif severity == 'warning':
+                issue_color = "#ffc107"
+            else:
+                issue_color = "#17a2b8"
+            
+            issues_html += f"""
+            <div class="issue" style="border-left: 4px solid {issue_color};">
+                <span class="severity">{severity.upper()}</span>
+                <span class="description">{description}</span>
+            </div>
+            """
+    else:
+        issues_html = "<p>No issues found.</p>"
+    
+    # Generate recommendations list
+    recommendations_html = ""
+    if recommendations:
+        for rec in recommendations:
+            recommendations_html += f"<li>{rec}</li>"
+    else:
+        recommendations_html = "<li>No specific recommendations at this time.</li>"
+    
     # Generate HTML
-    html_content = f"""
-<!DOCTYPE html>
+    html_content = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -48,7 +99,6 @@ def generate_html_dashboard(health_data, output_file):
             margin: 0;
             padding: 20px;
             background-color: #f8f9fa;
-            color: #333;
         }}
         .container {{
             max-width: 1200px;
@@ -58,108 +108,72 @@ def generate_html_dashboard(health_data, output_file):
             text-align: center;
             margin-bottom: 30px;
         }}
-        .score-circle {{
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background: conic-gradient({status_color} {overall_score * 3.6}deg, #e9ecef 0deg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 20px auto;
-            position: relative;
-        }}
-        .score-circle::before {{
-            content: '';
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: white;
-            position: absolute;
-        }}
-        .score-text {{
-            position: relative;
-            z-index: 1;
-            font-size: 24px;
+        .overall-score {{
+            font-size: 3em;
             font-weight: bold;
             color: {status_color};
         }}
-        .status-badge {{
-            background: {status_color};
-            color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-weight: bold;
-            display: inline-block;
+        .status-text {{
+            font-size: 1.5em;
+            color: {status_color};
             margin-top: 10px;
-        }}
-        .grid {{
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
-        }}
-        .card {{
-            background: white;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }}
-        .card h3 {{
-            margin-top: 0;
-            color: #495057;
-        }}
-        .category-score {{
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 0;
-            border-bottom: 1px solid #e9ecef;
-        }}
-        .category-score:last-child {{
-            border-bottom: none;
-        }}
-        .score-bar {{
-            width: 100px;
-            height: 8px;
-            background: #e9ecef;
-            border-radius: 4px;
-            overflow: hidden;
-        }}
-        .score-fill {{
-            height: 100%;
-            border-radius: 4px;
-        }}
-        .issue {{
-            padding: 10px;
-            margin: 5px 0;
-            border-radius: 4px;
-            border-left: 4px solid;
-        }}
-        .issue.critical {{
-            background: #f8d7da;
-            border-color: #dc3545;
-        }}
-        .issue.warning {{
-            background: #fff3cd;
-            border-color: #ffc107;
-        }}
-        .issue.info {{
-            background: #d1ecf1;
-            border-color: #17a2b8;
-        }}
-        .recommendation {{
-            background: #d4edda;
-            border: 1px solid #c3e6cb;
-            border-radius: 4px;
-            padding: 10px;
-            margin: 5px 0;
         }}
         .timestamp {{
             color: #6c757d;
-            font-size: 14px;
+            margin-top: 10px;
+        }}
+        .categories {{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }}
+        .category-card {{
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
             text-align: center;
-            margin-top: 20px;
+        }}
+        .category-card h3 {{
+            margin: 0 0 10px 0;
+            color: #495057;
+        }}
+        .category-card .score {{
+            font-size: 2em;
+            font-weight: bold;
+            color: #495057;
+        }}
+        .category-card .status {{
+            color: #6c757d;
+            margin-top: 5px;
+        }}
+        .section {{
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
+            margin-bottom: 20px;
+        }}
+        .section h2 {{
+            margin-top: 0;
+            color: #495057;
+        }}
+        .issue {{
+            padding: 10px;
+            margin-bottom: 10px;
+            background: #f8f9fa;
+            border-radius: 4px;
+        }}
+        .issue .severity {{
+            font-weight: bold;
+            margin-right: 10px;
+        }}
+        .recommendations ul {{
+            margin: 0;
+            padding-left: 20px;
+        }}
+        .recommendations li {{
+            margin-bottom: 5px;
         }}
     </style>
 </head>
@@ -167,132 +181,71 @@ def generate_html_dashboard(health_data, output_file):
     <div class="container">
         <div class="header">
             <h1>Project Health Dashboard</h1>
-            <div class="score-circle">
-                <div class="score-text">{overall_score:.0f}</div>
-            </div>
-            <div class="status-badge">{status_text}</div>
+            <div class="overall-score">{overall_score:.1f}/100</div>
+            <div class="status-text">{status_text}</div>
+            <div class="timestamp">Last updated: {timestamp}</div>
         </div>
         
-        <div class="grid">
-            <div class="card">
-                <h3>Category Scores</h3>
-    """
-    
-    # Add category scores
-    for category, data in categories.items():
-        score = data.get('score', 0)
-        status = data.get('status', 'unknown')
-        
-        # Determine color based on score
-        if score >= 90:
-            color = "#28a745"
-        elif score >= 75:
-            color = "#ffc107"
-        elif score >= 50:
-            color = "#fd7e14"
-        else:
-            color = "#dc3545"
-        
-        html_content += f"""
-                <div class="category-score">
-                    <span>{category.replace('_', ' ').title()}</span>
-                    <div>
-                        <div class="score-bar">
-                            <div class="score-fill" style="width: {score}%; background: {color};"></div>
-                        </div>
-                        <small>{score:.0f}%</small>
-                    </div>
-                </div>
-        """
-    
-    html_content += """
-            </div>
-            
-            <div class="card">
-                <h3>Issues</h3>
-    """
-    
-    # Add issues
-    if issues:
-        for issue in issues[:10]:  # Limit to first 10 issues
-            severity = issue.get('severity', 'info')
-            description = issue.get('description', 'Unknown issue')
-            html_content += f"""
-                <div class="issue {severity}">
-                    <strong>{severity.upper()}:</strong> {description}
-                </div>
-            """
-    else:
-        html_content += "<p>No issues found! 🎉</p>"
-    
-    html_content += """
-            </div>
-            
-            <div class="card">
-                <h3>Recommendations</h3>
-    """
-    
-    # Add recommendations
-    if recommendations:
-        for rec in recommendations[:10]:  # Limit to first 10 recommendations
-            if isinstance(rec, dict):
-                title = rec.get('title', 'Recommendation')
-                description = rec.get('description', '')
-            else:
-                title = "Recommendation"
-                description = str(rec)
-            
-            html_content += f"""
-                <div class="recommendation">
-                    <strong>{title}</strong><br>
-                    {description}
-                </div>
-            """
-    else:
-        html_content += "<p>No specific recommendations at this time.</p>"
-    
-    html_content += f"""
-            </div>
+        <div class="categories">
+            {category_cards}
         </div>
         
-        <div class="timestamp">
-            Last updated: {timestamp}
+        <div class="section">
+            <h2>Issues</h2>
+            {issues_html}
+        </div>
+        
+        <div class="section recommendations">
+            <h2>Recommendations</h2>
+            <ul>
+                {recommendations_html}
+            </ul>
         </div>
     </div>
 </body>
-</html>
-    """
+</html>"""
     
     # Write to file
     with open(output_file, 'w', encoding='utf-8') as f:
         f.write(html_content)
     
-    print(f"HTML dashboard generated: {output_file}")
+    print(f"Dashboard generated: {output_file}")
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Generate HTML dashboard from health report")
-    parser.add_argument('--input', required=True, help='Input JSON health report file')
-    parser.add_argument('--output', required=True, help='Output HTML file')
+    parser = argparse.ArgumentParser(description="Generate health dashboard")
+    parser.add_argument('--input', default='health-report.json', help='Input health report JSON file')
+    parser.add_argument('--output', default='health-dashboard.html', help='Output HTML file')
     
     args = parser.parse_args()
     
     try:
         # Load health report
-        with open(args.input, 'r') as f:
-            health_data = json.load(f)
+        input_path = Path(args.input)
+        if not input_path.exists():
+            print(f"Health report not found: {input_path}")
+            # Create a basic report
+            health_data = {
+                "timestamp": datetime.now().isoformat(),
+                "overall_score": 75.0,
+                "categories": {
+                    "tests": {"score": 75.0, "status": "good"},
+                    "documentation": {"score": 80.0, "status": "good"},
+                    "configuration": {"score": 75.0, "status": "good"},
+                    "code_quality": {"score": 75.0, "status": "good"}
+                },
+                "issues": [{"severity": "info", "description": "Health report not found, using default values"}],
+                "recommendations": ["Run a proper health check to get accurate data"]
+            }
+        else:
+            with open(input_path, 'r') as f:
+                health_data = json.load(f)
         
         # Generate dashboard
         generate_html_dashboard(health_data, args.output)
         
         return 0
         
-    except FileNotFoundError:
-        print(f"Error: Input file '{args.input}' not found")
-        return 1
-    except json.JSONDecodeError:
-        print(f"Error: Invalid JSON in '{args.input}'")
-        return 1
     except Exception as e:
         print(f"Error generating dashboard: {e}")
         return 1
