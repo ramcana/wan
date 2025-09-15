@@ -1,50 +1,170 @@
-# WAN2.2 Model Manifest - Minimal Working Version
+# WAN2.2 Model Manifest
+# Schema version for compatibility checking
 schema_version = 1
 
 # Text-to-Video A14B Model
 [models."t2v-A14B@2.2.0"]
 description = "WAN2.2 Text-to-Video A14B Model"
 version = "2.2.0"
-variants = ["fp16"]
+variants = ["fp16", "bf16"]
 default_variant = "fp16"
-allow_patterns = ["*"]
-required_components = []
+resolution_caps = ["720p24", "1080p24"]
+optional_components = []
+lora_required = false
+allow_patterns = ["*.safetensors", "*.json", "*.pth", "*.model"]
 
+# Required components for t2v-A14B: text_encoder + unet + vae (no image_encoder)
+required_components = ["text_encoder", "unet", "vae"]
+
+# Per-model defaults
+[models."t2v-A14B@2.2.0".defaults]
+fps = 24
+frames = 16
+scheduler = "ddim"
+precision = "fp16"
+guidance_scale = 7.5
+num_inference_steps = 50
+
+# VRAM estimation parameters
+[models."t2v-A14B@2.2.0".vram_estimation]
+params_billion = 14.0
+family_size = "large"
+base_vram_gb = 12.0
+per_frame_vram_mb = 256
+
+# Model configuration
 [[models."t2v-A14B@2.2.0".files]]
 path = "configuration.json"
-size = 47
-sha256 = "0000000000000000000000000000000000000000000000000000000000000000"
+size = 2048
+sha256 = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
 component = "config"
 
+# VAE component
+[[models."t2v-A14B@2.2.0".files]]
+path = "Wan2.1_VAE.pth"
+size = 335544320
+sha256 = "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3"
+component = "vae"
+
+# Text encoder component
+[[models."t2v-A14B@2.2.0".files]]
+path = "models_t5_umt5-xxl-enc-bf16.pth"
+size = 4294967296
+sha256 = "b5d4045c3f466fa91fe2cc6abe79232a1a57cdf104f7a26e716e0a1e2789df78"
+component = "text_encoder"
+
 [models."t2v-A14B@2.2.0".sources]
-priority = ["local://wan22/t2v-A14B@2.2.0"]
+priority = [
+    "local://wan22/t2v-A14B@2.2.0",
+    "s3://ai-models/wan22/t2v-A14B@2.2.0",
+    "hf://Wan-AI/Wan2.2-T2V-A14B"
+]
 
 # Image-to-Video A14B Model
 [models."i2v-A14B@2.2.0"]
 description = "WAN2.2 Image-to-Video A14B Model"
 version = "2.2.0"
-variants = ["fp16"]
+variants = ["fp16", "bf16"]
 default_variant = "fp16"
-allow_patterns = ["*"]
-required_components = []
+resolution_caps = ["720p24", "1080p24"]
+optional_components = ["text_encoder"]
+lora_required = false
+allow_patterns = ["*.safetensors", "*.json", "*.pth", "*.model"]
 
+# Required components for i2v-A14B: image_encoder + unet + vae (optional text_encoder)
+required_components = ["image_encoder", "unet", "vae"]
+
+# Per-model defaults
+[models."i2v-A14B@2.2.0".defaults]
+fps = 24
+frames = 16
+scheduler = "ddim"
+precision = "fp16"
+guidance_scale = 5.0
+num_inference_steps = 50
+image_guidance_scale = 1.5
+
+# VRAM estimation parameters
+[models."i2v-A14B@2.2.0".vram_estimation]
+params_billion = 14.0
+family_size = "large"
+base_vram_gb = 14.0
+per_frame_vram_mb = 320
+
+# Model configuration
 [[models."i2v-A14B@2.2.0".files]]
 path = "configuration.json"
-size = 47
-sha256 = "0000000000000000000000000000000000000000000000000000000000000000"
+size = 2048
+sha256 = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
 component = "config"
 
+# VAE component
+[[models."i2v-A14B@2.2.0".files]]
+path = "Wan2.1_VAE.pth"
+size = 335544320
+sha256 = "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3"
+component = "vae"
+
+# Text encoder component (optional for i2v)
+[[models."i2v-A14B@2.2.0".files]]
+path = "models_t5_umt5-xxl-enc-bf16.pth"
+size = 4294967296
+sha256 = "b5d4045c3f466fa91fe2cc6abe79232a1a57cdf104f7a26e716e0a1e2789df78"
+component = "text_encoder"
+optional = true
+
+# Image encoder component (required for i2v)
+[[models."i2v-A14B@2.2.0".files]]
+path = "image_encoder/pytorch_model.bin"
+size = 1073741824
+sha256 = "1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b"
+component = "image_encoder"
+
 [models."i2v-A14B@2.2.0".sources]
-priority = ["local://wan22/i2v-A14B@2.2.0"]
+priority = [
+    "local://wan22/i2v-A14B@2.2.0",
+    "s3://ai-models/wan22/i2v-A14B@2.2.0",
+    "hf://Wan-AI/Wan2.2-I2V-A14B"
+]
 
 # Text+Image-to-Video 5B Model
 [models."ti2v-5b@2.2.0"]
 description = "WAN2.2 Text+Image-to-Video 5B Model"
 version = "2.2.0"
-variants = ["fp16"]
+variants = ["fp16", "bf16"]
 default_variant = "fp16"
-allow_patterns = ["*"]
-required_components = []
+resolution_caps = ["720p24", "1080p24", "1440p24"]
+optional_components = []
+lora_required = false
+allow_patterns = ["*.safetensors", "*.json", "*.pth", "*.model"]
+
+# Required components for ti2v-5b: text_encoder + image_encoder + unet + vae (dual conditioning)
+required_components = ["text_encoder", "image_encoder", "unet", "vae"]
+
+# Per-model defaults
+[models."ti2v-5b@2.2.0".defaults]
+fps = 24
+frames = 24
+scheduler = "ddim"
+precision = "fp16"
+guidance_scale = 7.5
+num_inference_steps = 50
+image_guidance_scale = 1.2
+text_guidance_scale = 7.5
+
+# VRAM estimation parameters
+[models."ti2v-5b@2.2.0".vram_estimation]
+params_billion = 5.0
+family_size = "medium"
+base_vram_gb = 10.0
+per_frame_vram_mb = 200
+
+# Model configuration
+[[models."ti2v-5b@2.2.0".files]]
+path = "config.json"
+size = 1024
+sha256 = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+component = "config"
 
 [[models."ti2v-5b@2.2.0".files]]
 path = "configuration.json"
