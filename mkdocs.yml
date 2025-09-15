@@ -1,0 +1,61 @@
+site_name: WAN22 Documentation
+site_description: WAN2.2 Video Generation System Documentation
+site_url: https://ramcana.github.io/wan/
+
+repo_name: ramcana/wan
+repo_url: https://github.com/ramcana/wan
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: blue
+      accent: blue
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: blue
+      accent: blue
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.highlight
+    - search.share
+    - content.code.copy
+
+plugins:
+  - search
+  - mermaid2
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:mermaid2.fence_mermaid
+  - pymdownx.tabbed
+  - pymdownx.details
+  - toc:
+      permalink: true
+
+nav:
+  - Home: index.md
+  - System Overview:
+      - Capabilities Report: WAN22_System_Capabilities_Report.md
+  - Model Orchestrator:
+      - Requirements: .kiro/specs/model-orchestrator/requirements.md
+      - Tasks: .kiro/specs/model-orchestrator/tasks.md
+  - Configuration:
+      - Models Config: config/models.toml
+      - Simple Config: config/models_simple.toml
+
+docs_dir: .
+site_dir: site
