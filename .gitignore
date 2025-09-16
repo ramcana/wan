@@ -210,6 +210,10 @@ yarn-error.log*
 frontend/dist/
 frontend/build/
 
+# Frontend lib utilities should be tracked (exception to general lib/ ignore)
+!frontend/src/lib/
+!frontend/src/lib/**/*
+
 # PyTorch and ML artifacts
 *.pth
 *.ckpt
