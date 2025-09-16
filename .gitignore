@@ -10,8 +10,11 @@ dist/
 downloads/
 eggs/
 .eggs/
+# Exclude Python build libs but keep frontend source utilities
 lib/
 lib64/
+!frontend/src/lib/
+!frontend/src/lib/**
 parts/
 sdist/
 var/
