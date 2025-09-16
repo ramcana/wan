@@ -19,7 +19,10 @@
     "peaceiris",
     "asyncio",
     "maxfail",
-    "unittests"
+    "unittests",
+    "Verdana",
+    "matplotlib",
+    "numpy"
   ],
   "flagWords": [],
   "ignorePaths": [
