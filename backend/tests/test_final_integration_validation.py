@@ -4,6 +4,7 @@ Comprehensive end-to-end testing to ensure all components work together correctl
 """
 
 import pytest
+import pytest_asyncio
 import asyncio
 import json
 import time
@@ -25,14 +26,14 @@ from services.real_generation_pipeline import RealGenerationPipeline
 class TestFinalIntegrationValidation:
     """Comprehensive integration validation tests."""
     
-    @pytest.fixture
+    @pytest_asyncio.fixture
     async def system_integration(self):
         """System integration fixture."""
         integration = SystemIntegration()
         await integration.initialize()
         return integration
     
-    @pytest.fixture
+    @pytest_asyncio.fixture
     async def generation_service(self):
         """Generation service fixture."""
         service = GenerationService()
