@@ -20,6 +20,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Fix for Git error - ensure we have full history and proper token access
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Python 3.10
         uses: actions/setup-python@v4
@@ -71,6 +75,9 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./site
+          # Additional configuration to prevent Git errors
+          force_orphan: true
+          enable_jekyll: false
 
   validate-docs:
     runs-on: ubuntu-latest
@@ -107,6 +114,10 @@ jobs:
         continue-on-error: true
         run: |
           python -m tools.doc_generator.cli validate --output=docs-metrics.json --format=json || echo "Metrics generation completed with warnings"
+          # Ensure the file exists even if the command fails
+          if [ ! -f docs-metrics.json ]; then
+            echo '{"validation_passed": false, "error": "Validation failed"}' > docs-metrics.json
+          fi
 
       - name: Upload documentation metrics
         uses: actions/upload-artifact@v4

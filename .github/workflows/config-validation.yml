@@ -93,35 +93,35 @@ jobs:
       - name: Scan for hardcoded secrets
         run: |
           python -c "
-import os
-import re
-import yaml
-
-secret_patterns = [
-    r'password\s*[:=]\s*[\"\']\w+[\"\'']',
-    r'api_key\s*[:=]\s*[\"\']\w+[\"\'']',
-    r'secret\s*[:=]\s*[\"\']\w+[\"\'']',
-    r'token\s*[:=]\s*[\"\']\w+[\"\'']'
-]
-
-issues = []
-for root, dirs, files in os.walk('config/'):
-    for file in files:
-        if file.endswith(('.yaml', '.yml', '.json')):
-            filepath = os.path.join(root, file)
-            with open(filepath, 'r') as f:
-                content = f.read()
-                for pattern in secret_patterns:
-                    if re.search(pattern, content, re.IGNORECASE):
-                        issues.append(f'Potential secret in {filepath}')
-
-if issues:
-    print('Security issues found:')
-    for issue in issues:
-        print(f'- {issue}')
-    exit(1)
-else:
-    print('No security issues found in configuration files.')
+          import os
+          import re
+          import yaml
+          
+          secret_patterns = [
+              r'password\s*[:=]\s*[\"\']\w+[\"\'']',
+              r'api_key\s*[:=]\s*[\"\']\w+[\"\'']',
+              r'secret\s*[:=]\s*[\"\']\w+[\"\'']',
+              r'token\s*[:=]\s*[\"\']\w+[\"\'']'
+          ]
+          
+          issues = []
+          for root, dirs, files in os.walk('config/'):
+              for file in files:
+                  if file.endswith(('.yaml', '.yml', '.json')):
+                      filepath = os.path.join(root, file)
+                      with open(filepath, 'r') as f:
+                          content = f.read()
+                          for pattern in secret_patterns:
+                              if re.search(pattern, content, re.IGNORECASE):
+                                  issues.append(f'Potential secret in {filepath}')
+          
+          if issues:
+              print('Security issues found:')
+              for issue in issues:
+                  print(f'- {issue}')
+              exit(1)
+          else:
+              print('No security issues found in configuration files.')
           "
 
       - name: Validate environment-specific security settings

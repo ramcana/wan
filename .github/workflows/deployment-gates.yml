@@ -77,29 +77,29 @@ jobs:
 
           # Extract key metrics with error handling
           HEALTH_SCORE=$(python -c "
-import json
-try:
-    with open('health-report.json') as f:
-        report = json.load(f)
-    score = report.get('overall_score', 85.0)
-    print(f'{score:.1f}')
-except Exception as e:
-    print('85.0')  # Fallback to passing score
-    import sys
-    print(f'Warning: Could not read health score: {e}', file=sys.stderr)
+          import json
+          try:
+              with open('health-report.json') as f:
+                  report = json.load(f)
+              score = report.get('overall_score', 85.0)
+              print(f'{score:.1f}')
+          except Exception as e:
+              print('85.0')  # Fallback to passing score
+              import sys
+              print(f'Warning: Could not read health score: {e}', file=sys.stderr)
           ")
 
           CRITICAL_ISSUES=$(python -c "
-import json
-try:
-    with open('health-report.json') as f:
-        report = json.load(f)
-    critical = [i for i in report.get('issues', []) if i.get('severity') == 'critical']
-    print(len(critical))
-except Exception as e:
-    print('0')  # Fallback to no critical issues
-    import sys
-    print(f'Warning: Could not read critical issues: {e}', file=sys.stderr)
+          import json
+          try:
+              with open('health-report.json') as f:
+                  report = json.load(f)
+              critical = [i for i in report.get('issues', []) if i.get('severity') == 'critical']
+              print(len(critical))
+          except Exception as e:
+              print('0')  # Fallback to no critical issues
+              import sys
+              print(f'Warning: Could not read critical issues: {e}', file=sys.stderr)
           ")
 
           echo "📊 Extracted metrics:"
@@ -114,25 +114,25 @@ except Exception as e:
           # Determine deployment readiness using Python for floating point comparison
           echo "🔍 Evaluating deployment readiness..."
           DEPLOYMENT_READY=$(python -c "
-import sys
-try:
-    health_score = float('$HEALTH_SCORE')
-    critical_issues = int('$CRITICAL_ISSUES')
-    health_threshold = float('$HEALTH_SCORE_THRESHOLD')
-    critical_threshold = int('$CRITICAL_ISSUES_THRESHOLD')
-    
-    print(f'Debug: health_score={health_score}, threshold={health_threshold}', file=sys.stderr)
-    print(f'Debug: critical_issues={critical_issues}, threshold={critical_threshold}', file=sys.stderr)
-    print(f'Debug: health_check={health_score >= health_threshold}', file=sys.stderr)
-    print(f'Debug: critical_check={critical_issues <= critical_threshold}', file=sys.stderr)
-    
-    if health_score >= health_threshold and critical_issues <= critical_threshold:
-        print('true')
-    else:
-        print('false')
-except Exception as e:
-    print(f'Error in deployment readiness check: {e}', file=sys.stderr)
-    print('false')  # Fail safe
+          import sys
+          try:
+              health_score = float('$HEALTH_SCORE')
+              critical_issues = int('$CRITICAL_ISSUES')
+              health_threshold = float('$HEALTH_SCORE_THRESHOLD')
+              critical_threshold = int('$CRITICAL_ISSUES_THRESHOLD')
+              
+              print(f'Debug: health_score={health_score}, threshold={health_threshold}', file=sys.stderr)
+              print(f'Debug: critical_issues={critical_issues}, threshold={critical_threshold}', file=sys.stderr)
+              print(f'Debug: health_check={health_score >= health_threshold}', file=sys.stderr)
+              print(f'Debug: critical_check={critical_issues <= critical_threshold}', file=sys.stderr)
+              
+              if health_score >= health_threshold and critical_issues <= critical_threshold:
+                  print('true')
+              else:
+                  print('false')
+          except Exception as e:
+              print(f'Error in deployment readiness check: {e}', file=sys.stderr)
+              print('false')  # Fail safe
           ")
 
           echo "deployment-ready=$DEPLOYMENT_READY" >> $GITHUB_OUTPUT
@@ -149,28 +149,26 @@ except Exception as e:
 
           # Determine badge color based on health score using Python for floating point comparison
           COLOR=$(python -c "
-health_score = float('$HEALTH_SCORE')
-if health_score >= 90:
-    print('brightgreen')
-elif health_score >= 80:
-    print('green')
-elif health_score >= 70:
-    print('yellow')
-elif health_score >= 60:
-    print('orange')
-else:
-    print('red')
+          health_score = float('$HEALTH_SCORE')
+          if health_score >= 90:
+              print('brightgreen')
+          elif health_score >= 80:
+              print('green')
+          elif health_score >= 70:
+              print('yellow')
+          elif health_score >= 60:
+              print('orange')
+          else:
+              print('red')
           ")
 
           # Create badge JSON
-          cat > health-badge.json << EOF
-          {
+          echo '{
             "schemaVersion": 1,
             "label": "health",
-            "message": "${HEALTH_SCORE}%",
-            "color": "$COLOR"
-          }
-          EOF
+            "message": "'${HEALTH_SCORE}'%",
+            "color": "'${COLOR}'"
+          }' > health-badge.json
 
       - name: Upload health artifacts
         uses: actions/upload-artifact@v4
@@ -283,23 +281,23 @@ else:
 
           # Extract coverage percentage
           COVERAGE=$(python -c "
-import xml.etree.ElementTree as ET
-try:
-    tree = ET.parse('coverage.xml')
-    root = tree.getroot()
-    coverage = float(root.attrib['line-rate']) * 100
-    print(f'{coverage:.1f}')
-except:
-    print('75.0')  # Default coverage if XML parsing fails
+          import xml.etree.ElementTree as ET
+          try:
+              tree = ET.parse('coverage.xml')
+              root = tree.getroot()
+              coverage = float(root.attrib['line-rate']) * 100
+              print(f'{coverage:.1f}')
+          except:
+              print('75.0')  # Default coverage if XML parsing fails
           ")
 
           echo "coverage=$COVERAGE" >> $GITHUB_OUTPUT
 
           # Check if tests passed and coverage meets threshold using Python for floating point comparison
           TEST_PASSED=$(python -c "
-coverage = float('$COVERAGE')
-threshold = float('$COVERAGE_THRESHOLD')
-print('true' if coverage >= threshold else 'false')
+          coverage = float('$COVERAGE')
+          threshold = float('$COVERAGE_THRESHOLD')
+          print('true' if coverage >= threshold else 'false')
           ")
 
           echo "test-passed=$TEST_PASSED" >> $GITHUB_OUTPUT
@@ -415,42 +413,38 @@ print('true' if coverage >= threshold else 'false')
             cp health-badge.json .github/badges/health.json
           else
             # Create a default health badge
-            cat > .github/badges/health.json << EOF
-{
-  "schemaVersion": 1,
-  "label": "health",
-  "message": "${{ needs.health-gate-check.outputs.health-score }}%",
-  "color": "green"
-}
-EOF
+            echo '{
+              "schemaVersion": 1,
+              "label": "health",
+              "message": "${{ needs.health-gate-check.outputs.health-score }}%",
+              "color": "green"
+            }' > .github/badges/health.json
           fi
 
           # Create coverage badge data
           COVERAGE="${{ needs.test-gate.outputs.coverage }}"
           if [ -n "$COVERAGE" ]; then
             COLOR=$(python -c "
-try:
-    coverage = float('$COVERAGE')
-    if coverage >= 90:
-        print('brightgreen')
-    elif coverage >= 80:
-        print('green')
-    elif coverage >= 70:
-        print('yellow')
-    else:
-        print('red')
-except:
-    print('green')
+            try:
+                coverage = float('$COVERAGE')
+                if coverage >= 90:
+                    print('brightgreen')
+                elif coverage >= 80:
+                    print('green')
+                elif coverage >= 70:
+                    print('yellow')
+                else:
+                    print('red')
+            except:
+                print('green')
             ")
 
-            cat > .github/badges/coverage.json << EOF
-{
-  "schemaVersion": 1,
-  "label": "coverage",
-  "message": "${COVERAGE}%",
-  "color": "$COLOR"
-}
-EOF
+            echo '{
+              "schemaVersion": 1,
+              "label": "coverage",
+              "message": "'${COVERAGE}%'",
+              "color": "'${COLOR}'"
+            }' > .github/badges/coverage.json
           fi
 
       - name: Commit badge updates
