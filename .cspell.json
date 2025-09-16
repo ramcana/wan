@@ -1,0 +1,30 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "words": [
+    "pyyaml",
+    "jsonschema",
+    "bandit",
+    "safety",
+    "endswith",
+    "cerberus",
+    "brightgreen",
+    "elif",
+    "pytest",
+    "etree",
+    "getroot",
+    "htmlcov",
+    "mkdocs",
+    "beautifulsoup",
+    "peaceiris",
+    "asyncio",
+    "maxfail",
+    "unittests"
+  ],
+  "flagWords": [],
+  "ignorePaths": [
+    "node_modules/**",
+    "package-lock.json",
+    "yarn.lock"
+  ]
+}

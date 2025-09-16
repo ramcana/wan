@@ -24,6 +24,7 @@ jobs:
           # Fix for Git error - ensure we have full history and proper token access
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
+          persist-credentials: false
 
       - name: Set up Python 3.10
         uses: actions/setup-python@v4
@@ -69,6 +70,13 @@ jobs:
           name: documentation
           path: site/
 
+      - name: Configure Git
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global url."https://github.com/".insteadOf "git@github.com:"
+
       - name: Deploy to GitHub Pages (main branch only)
         if: github.ref == 'refs/heads/main'
         uses: peaceiris/actions-gh-pages@v3
@@ -78,6 +86,8 @@ jobs:
           # Additional configuration to prevent Git errors
           force_orphan: true
           enable_jekyll: false
+          user_name: "github-actions[bot]"
+          user_email: "github-actions[bot]@users.noreply.github.com"
 
   validate-docs:
     runs-on: ubuntu-latest
