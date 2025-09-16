@@ -19,9 +19,14 @@ export class ApiError extends Error {
 
 class ApiClient {
   private client: AxiosInstance
-  private baseURL: string = 'http://localhost:9000'
+  private baseURL: string
+  private configuredBaseURL: string
 
   constructor() {
+    // Initialize base URL from environment variable with localhost fallback
+    this.configuredBaseURL = import.meta.env.VITE_API_URL || 'http://localhost:9000'
+    this.baseURL = this.configuredBaseURL
+
     this.client = axios.create({
       timeout: 30000,
       headers: {
@@ -61,6 +66,10 @@ class ApiClient {
 
   public getBaseURL(): string {
     return this.baseURL
+  }
+
+  public getConfiguredBaseURL(): string {
+    return this.configuredBaseURL
   }
 
   // Generic HTTP methods
@@ -106,12 +115,16 @@ class ApiClient {
 
   async initializePortDetection(): Promise<void> {
     try {
-      const ports = await this.detectPorts()
-      if (ports.backend_port !== 9000) {
-        this.setBaseURL(`http://localhost:${ports.backend_port}`)
+      // Only perform port detection if using the default localhost configuration
+      if (this.configuredBaseURL === 'http://localhost:9000') {
+        const ports = await this.detectPorts()
+        if (ports.backend_port !== 9000) {
+          this.setBaseURL(`http://localhost:${ports.backend_port}`)
+        }
       }
+      // If a custom VITE_API_URL is configured, respect it and skip port detection
     } catch (error) {
-      console.warn('Port detection failed, using default backend port 9000')
+      console.warn('Port detection failed, using configured base URL:', this.configuredBaseURL)
     }
   }
 
