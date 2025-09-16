@@ -6,6 +6,7 @@ Integrates with existing Wan2.2 system using ModelIntegrationBridge and RealGene
 import asyncio
 import threading
 import logging
+from dataclasses import dataclass
 from datetime import datetime, timedelta
 from typing import Dict, Any, Optional, List, Tuple, Union
 from sqlalchemy.orm import Session
@@ -22,7 +23,7 @@ except ImportError:
     imageio = None
 
 # Proper package imports - no sys.path manipulation
-from backend.repositories.database import SessionLocal, GenerationTaskDB, TaskStatusEnum
+from backend.repositories.database import SessionLocal, GenerationTaskDB, TaskStatusEnum, ModelTypeEnum
 from backend.core.system_integration import get_system_integration
 from backend.core.fallback_recovery_system import (
     get_fallback_recovery_system, FailureType, FallbackRecoverySystem
@@ -30,6 +31,18 @@ from backend.core.fallback_recovery_system import (
 from backend.core.performance_monitor import get_performance_monitor
 
 logger = logging.getLogger(__name__)
+
+
+@dataclass
+class TaskSubmissionResult:
+    """Structured response for generation task submissions."""
+
+    success: bool
+    task_id: Optional[str] = None
+    message: Optional[str] = None
+    error_message: Optional[str] = None
+    status: Optional[str] = None
+    queue_position: Optional[int] = None
 
 
 class ModelType(Enum):
@@ -158,6 +171,7 @@ class GenerationService:
         self.processing_thread = None
         self.is_processing = False
         self.current_task = None
+        self._thread_lock = threading.Lock()
         
         # Real AI integration components
         self.model_integration_bridge = None
@@ -244,6 +258,216 @@ class GenerationService:
         self.processing_thread = None
         
         logger.info("Generation service shutdown complete")
+
+    def _ensure_processing_thread(self):
+        """Ensure the background processing thread is running."""
+        with self._thread_lock:
+            if not self.processing_thread or not self.processing_thread.is_alive():
+                self.is_processing = True
+                self.processing_thread = threading.Thread(
+                    target=self._process_queue_worker,
+                    daemon=True
+                )
+                self.processing_thread.start()
+
+    async def submit_generation_task(
+        self,
+        *,
+        prompt: Optional[str] = None,
+        model_type: Optional[str] = None,
+        resolution: str = "1280x720",
+        steps: int = 50,
+        image_path: Optional[str] = None,
+        end_image_path: Optional[str] = None,
+        lora_path: Optional[str] = None,
+        lora_strength: float = 1.0,
+        num_frames: Optional[int] = None,
+        fps: Optional[float] = None,
+        parameters: Optional[Any] = None,
+        task_id: Optional[str] = None,
+        priority: Optional[str] = None,
+    ) -> TaskSubmissionResult:
+        """Create a generation task in the database and queue it for processing."""
+
+        try:
+            task_id = task_id or str(uuid.uuid4())
+
+            # Merge parameter object values with explicit kwargs
+            if parameters:
+                prompt = getattr(parameters, "prompt", prompt)
+                model_type = getattr(parameters, "model_type", model_type)
+                resolution = getattr(parameters, "resolution", resolution)
+                if hasattr(parameters, "num_inference_steps"):
+                    steps = getattr(parameters, "num_inference_steps") or steps
+                else:
+                    steps = getattr(parameters, "steps", steps)
+                image_path = getattr(parameters, "image_path", image_path)
+                end_image_path = getattr(parameters, "end_image_path", end_image_path)
+                lora_path = getattr(parameters, "lora_path", lora_path)
+                lora_strength = getattr(parameters, "lora_strength", lora_strength)
+                num_frames = getattr(parameters, "num_frames", num_frames)
+                fps = getattr(parameters, "fps", fps)
+
+            if not prompt:
+                raise ValueError("Prompt is required to submit a generation task")
+
+            if not model_type:
+                raise ValueError("Model type is required to submit a generation task")
+
+            if isinstance(model_type, Enum):
+                model_type = model_type.value
+
+            normalized_model_type = ModelType.normalize(model_type)
+            model_type_enum_value = normalized_model_type.upper()
+
+            try:
+                model_type_enum = ModelTypeEnum(model_type_enum_value)
+            except ValueError:
+                # Try matching against enum values directly for robustness
+                matched_enum = None
+                for enum_member in ModelTypeEnum:
+                    if enum_member.value.lower() == model_type_enum_value.lower():
+                        matched_enum = enum_member
+                        break
+                if not matched_enum:
+                    raise
+                model_type_enum = matched_enum
+
+            created_at = datetime.utcnow()
+            num_frames = num_frames if num_frames is not None else 16
+            fps = fps if fps is not None else 8.0
+            estimated_time = getattr(parameters, "estimated_time_minutes", None)
+
+            db = SessionLocal()
+            try:
+                db_task = GenerationTaskDB(
+                    id=task_id,
+                    model_type=model_type_enum,
+                    prompt=prompt,
+                    image_path=str(image_path) if image_path else None,
+                    end_image_path=str(end_image_path) if end_image_path else None,
+                    resolution=resolution,
+                    steps=int(steps),
+                    num_frames=int(num_frames) if num_frames is not None else 16,
+                    fps=float(fps) if fps is not None else 8.0,
+                    lora_path=str(lora_path) if lora_path else None,
+                    lora_strength=float(lora_strength),
+                    status=TaskStatusEnum.PENDING,
+                    progress=0,
+                    created_at=created_at,
+                    estimated_time_minutes=estimated_time
+                )
+
+                db.add(db_task)
+                db.commit()
+                db.refresh(db_task)
+
+                pending_position = db.query(GenerationTaskDB).filter(
+                    GenerationTaskDB.status == TaskStatusEnum.PENDING,
+                    GenerationTaskDB.created_at <= db_task.created_at
+                ).count()
+
+            except Exception as db_error:
+                db.rollback()
+                logger.error(f"Failed to submit generation task {task_id}: {db_error}")
+                return TaskSubmissionResult(
+                    success=False,
+                    task_id=task_id,
+                    message="Failed to submit generation task",
+                    error_message=str(db_error)
+                )
+            finally:
+                db.close()
+
+            logger.info(
+                "Generation task %s queued (model=%s, priority=%s)",
+                task_id,
+                model_type_enum.value,
+                priority or "normal"
+            )
+
+            # Ensure the background worker is running so the task will be processed
+            self._ensure_processing_thread()
+
+            return TaskSubmissionResult(
+                success=True,
+                task_id=db_task.id,
+                message="Generation task queued successfully",
+                status=db_task.status.value if db_task.status else None,
+                queue_position=pending_position
+            )
+
+        except Exception as error:
+            logger.error(f"Error submitting generation task: {error}")
+            return TaskSubmissionResult(
+                success=False,
+                task_id=task_id,
+                message="Failed to submit generation task",
+                error_message=str(error)
+            )
+
+    async def get_queue_status(self) -> Dict[str, Any]:
+        """Return queue statistics and task summaries."""
+
+        db = SessionLocal()
+        try:
+            tasks = db.query(GenerationTaskDB).order_by(GenerationTaskDB.created_at).all()
+
+            pending_tasks = [t for t in tasks if t.status == TaskStatusEnum.PENDING]
+            processing_tasks = [t for t in tasks if t.status == TaskStatusEnum.PROCESSING]
+            completed_tasks = [t for t in tasks if t.status == TaskStatusEnum.COMPLETED]
+            failed_tasks = [t for t in tasks if t.status == TaskStatusEnum.FAILED]
+
+            pending_positions = {
+                task.id: index + 1
+                for index, task in enumerate(sorted(pending_tasks, key=lambda t: t.created_at or datetime.min))
+            }
+
+            task_summaries = []
+            for task in tasks:
+                task_summaries.append({
+                    "id": task.id,
+                    "model_type": task.model_type.value if task.model_type else None,
+                    "prompt": task.prompt,
+                    "status": task.status.value if task.status else None,
+                    "progress": task.progress,
+                    "created_at": task.created_at.isoformat() if task.created_at else None,
+                    "started_at": task.started_at.isoformat() if task.started_at else None,
+                    "completed_at": task.completed_at.isoformat() if task.completed_at else None,
+                    "output_path": task.output_path,
+                    "error_message": task.error_message,
+                    "estimated_time_minutes": task.estimated_time_minutes,
+                    "queue_position": pending_positions.get(task.id),
+                })
+
+            return {
+                "queue_size": len(pending_tasks),
+                "pending_tasks": len(pending_tasks),
+                "processing_tasks": len(processing_tasks),
+                "completed_tasks": len(completed_tasks),
+                "failed_tasks": len(failed_tasks),
+                "tasks": task_summaries,
+                "is_processing": self.is_processing,
+                "current_task": getattr(self.current_task, "id", None),
+                "last_updated": datetime.utcnow().isoformat(),
+            }
+
+        except Exception as error:
+            logger.error(f"Failed to get queue status: {error}")
+            return {
+                "queue_size": 0,
+                "pending_tasks": 0,
+                "processing_tasks": 0,
+                "completed_tasks": 0,
+                "failed_tasks": 0,
+                "tasks": [],
+                "is_processing": self.is_processing,
+                "current_task": getattr(self.current_task, "id", None),
+                "last_updated": datetime.utcnow().isoformat(),
+                "error": str(error),
+            }
+        finally:
+            db.close()
     
     def _estimate_wan_model_vram_requirements(self, model_type: str, resolution: str = None) -> float:
         """Estimate VRAM requirements for WAN models based on type and resolution"""
