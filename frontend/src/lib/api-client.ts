@@ -19,9 +19,19 @@ export class ApiError extends Error {
 
 class ApiClient {
   private client: AxiosInstance
-  private baseURL: string = 'http://localhost:9000'
+  private baseURL: string
+  private readonly environmentBaseURL?: string
 
   constructor() {
+    const configuredBaseURL = import.meta.env.VITE_API_URL
+    if (configuredBaseURL) {
+      const normalizedBaseURL = configuredBaseURL.trim()
+      if (normalizedBaseURL.length > 0) {
+        this.environmentBaseURL = normalizedBaseURL
+      }
+    }
+    this.baseURL = this.environmentBaseURL ?? 'http://localhost:9000'
+
     this.client = axios.create({
       timeout: 30000,
       headers: {
@@ -56,6 +66,11 @@ class ApiClient {
   }
 
   public setBaseURL(url: string) {
+    if (this.environmentBaseURL) {
+      this.baseURL = this.environmentBaseURL
+      return
+    }
+
     this.baseURL = url
   }
 
