@@ -203,7 +203,7 @@ jobs:
             const statusIcon = deploymentReady === 'true' ? '✅' : '❌';
             const statusText = deploymentReady === 'true' ? 'PASSED' : 'FAILED';
 
-            const comment = `
+            const comment = ``
             ## ${statusIcon} Deployment Gate Health Check - ${statusText}
 
             | Metric | Value | Threshold | Status |
@@ -455,14 +455,12 @@ jobs:
             # Determine color based on health score
             COLOR=$(python -c "try:\n    health_score = float('$HEALTH_SCORE')\n    if health_score >= 90:\n        print('brightgreen')\n    elif health_score >= 80:\n        print('green')\n    elif health_score >= 70:\n        print('yellow')\n    elif health_score >= 60:\n        print('orange')\n    else:\n        print('red')\nexcept:\n    print('green')")
 
-            cat <<EOF > .github/badges/health.json
-{
-  "schemaVersion": 1,
-  "label": "health",
-  "message": "${HEALTH_SCORE}%",
-  "color": "${COLOR}"
-}
-EOF
+            echo "{
+              \"schemaVersion\": 1,
+              \"label\": \"health\",
+              \"message\": \"${HEALTH_SCORE}%\",
+              \"color\": \"${COLOR}\"
+            }" > .github/badges/health.json
           fi
 
           # Create coverage badge data
@@ -475,14 +473,12 @@ EOF
           if [ -n "$COVERAGE" ]; then
             COLOR=$(python -c "try:\n    coverage = float('$COVERAGE')\n    if coverage >= 90:\n        print('brightgreen')\n    elif coverage >= 80:\n        print('green')\n    elif coverage >= 70:\n        print('yellow')\n    else:\n        print('red')\nexcept:\n    print('green')")
 
-            cat <<EOF > .github/badges/coverage.json
-{
-  "schemaVersion": 1,
-  "label": "coverage",
-  "message": "${COVERAGE}%",
-  "color": "${COLOR}"
-}
-EOF
+            echo "{
+              \"schemaVersion\": 1,
+              \"label\": \"coverage\",
+              \"message\": \"${COVERAGE}%\",
+              \"color\": \"${COLOR}\"
+            }" > .github/badges/coverage.json
           fi
 
       - name: Display badge files
