@@ -1,0 +1,1607 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="WAN2.2 Video Generation System Documentation">
+      
+      
+      
+        <link rel="canonical" href="https://ramcana.github.io/wan/reference/ENHANCED_MODEL_AVAILABILITY_USER_GUIDE/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>Enhanced Model Availability - User Guide - WAN22 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e53b48f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#enhanced-model-availability-user-guide" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="WAN22 Documentation" class="md-header__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            WAN22 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Enhanced Model Availability - User Guide
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../WAN22_System_Capabilities_Report/" class="md-tabs__link">
+          
+  
+  
+  System Overview
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../model-orchestrator/requirements/" class="md-tabs__link">
+          
+  
+  
+  Model Orchestrator
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../config/models.toml" class="md-tabs__link">
+          
+  
+  
+  Configuration
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="WAN22 Documentation" class="md-nav__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    WAN22 Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    System Overview
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            System Overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../WAN22_System_Capabilities_Report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Capabilities Report
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Model Orchestrator
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Model Orchestrator
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Requirements
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/tasks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tasks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Configuration
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Configuration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Models Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models_simple.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simple Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Features
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-automatic-model-download-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Automatic Model Download Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-model-health-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Model Health Monitoring
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-intelligent-fallback-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Intelligent Fallback System
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-usage-analytics" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Usage Analytics
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting Started
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Getting Started">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#checking-model-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      Checking Model Status
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#managing-downloads" class="md-nav__link">
+    <span class="md-ellipsis">
+      Managing Downloads
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Managing Downloads">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#starting-a-download" class="md-nav__link">
+    <span class="md-ellipsis">
+      Starting a Download
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#controlling-downloads" class="md-nav__link">
+    <span class="md-ellipsis">
+      Controlling Downloads
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bandwidth-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bandwidth Management
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#understanding-model-health" class="md-nav__link">
+    <span class="md-ellipsis">
+      Understanding Model Health
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Understanding Model Health">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#health-indicators" class="md-nav__link">
+    <span class="md-ellipsis">
+      Health Indicators
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#health-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Health Actions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-intelligent-fallbacks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using Intelligent Fallbacks
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Using Intelligent Fallbacks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#when-models-are-unavailable" class="md-nav__link">
+    <span class="md-ellipsis">
+      When Models Are Unavailable
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fallback-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fallback Strategies
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Features
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#model-update-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model Update Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Model Update Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#automatic-updates" class="md-nav__link">
+    <span class="md-ellipsis">
+      Automatic Updates
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manual-updates" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manual Updates
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-rollback" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update Rollback
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage-analytics-dashboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage Analytics Dashboard
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage Analytics Dashboard">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#viewing-analytics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Viewing Analytics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Metrics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimization-recommendations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optimization Recommendations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#storage-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Storage Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Storage Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#automatic-cleanup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Automatic Cleanup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manual-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manual Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#storage-policies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Storage Policies
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Issues
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#download-failures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Download Failures
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-corruption" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model Corruption
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Issues
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#storage-full" class="md-nav__link">
+    <span class="md-ellipsis">
+      Storage Full
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getting-help" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting Help
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Getting Help">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#built-in-help" class="md-nav__link">
+    <span class="md-ellipsis">
+      Built-in Help
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Log Files
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#support-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Support Resources
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#download-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Download Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-health" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model Health
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#storage-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Storage Optimization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Optimization
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration Options
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration Options">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#user-preferences" class="md-nav__link">
+    <span class="md-ellipsis">
+      User Preferences
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Settings
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      API Integration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="API Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Usage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#websocket-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      WebSocket Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="enhanced-model-availability-user-guide">Enhanced Model Availability - User Guide<a class="headerlink" href="#enhanced-model-availability-user-guide" title="Permanent link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>The Enhanced Model Availability system provides intelligent model management, automatic download retry mechanisms, and improved user experience when working with AI models. This guide covers all user-facing features and how to use them effectively.</p>
+<h2 id="key-features">Key Features<a class="headerlink" href="#key-features" title="Permanent link">&para;</a></h2>
+<h3 id="1-automatic-model-download-management">1. Automatic Model Download Management<a class="headerlink" href="#1-automatic-model-download-management" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Intelligent Retry</strong>: Failed downloads automatically retry up to 3 times with exponential backoff</li>
+<li><strong>Partial Download Recovery</strong>: Resume interrupted downloads from where they left off</li>
+<li><strong>Download Controls</strong>: Pause, resume, or cancel downloads as needed</li>
+<li><strong>Bandwidth Management</strong>: Set download speed limits to manage network usage</li>
+</ul>
+<h3 id="2-model-health-monitoring">2. Model Health Monitoring<a class="headerlink" href="#2-model-health-monitoring" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Integrity Checking</strong>: Automatic verification of model file integrity</li>
+<li><strong>Corruption Detection</strong>: Identifies and repairs corrupted model files</li>
+<li><strong>Performance Monitoring</strong>: Tracks model generation performance over time</li>
+<li><strong>Proactive Maintenance</strong>: Scheduled health checks and automatic repairs</li>
+</ul>
+<h3 id="3-intelligent-fallback-system">3. Intelligent Fallback System<a class="headerlink" href="#3-intelligent-fallback-system" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Smart Alternatives</strong>: Suggests compatible models when preferred ones are unavailable</li>
+<li><strong>Queue Management</strong>: Queue generation requests while models download</li>
+<li><strong>Wait Time Estimates</strong>: Provides accurate download completion estimates</li>
+<li><strong>Graceful Degradation</strong>: Clear guidance when falling back to mock generation</li>
+</ul>
+<h3 id="4-usage-analytics">4. Usage Analytics<a class="headerlink" href="#4-usage-analytics" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Usage Tracking</strong>: Monitor which models you use most frequently</li>
+<li><strong>Storage Optimization</strong>: Recommendations for freeing up disk space</li>
+<li><strong>Performance Insights</strong>: Identify models with performance issues</li>
+<li><strong>Preload Suggestions</strong>: Automatically prepare frequently used models</li>
+</ul>
+<h2 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
+<h3 id="checking-model-status">Checking Model Status<a class="headerlink" href="#checking-model-status" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>Via Web Interface</strong>:</p>
+</li>
+<li>
+<p>Navigate to the Model Management section</p>
+</li>
+<li>View comprehensive status for all models</li>
+<li>
+<p>See download progress, integrity status, and availability</p>
+</li>
+<li>
+<p><strong>Via API</strong>:
+   <div class="highlight"><pre><span></span><code>curl<span class="w"> </span>http://localhost:8000/api/v1/models/status/detailed
+</code></pre></div></p>
+</li>
+</ol>
+<h3 id="managing-downloads">Managing Downloads<a class="headerlink" href="#managing-downloads" title="Permanent link">&para;</a></h3>
+<h4 id="starting-a-download">Starting a Download<a class="headerlink" href="#starting-a-download" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Models download automatically when first requested</li>
+<li>Manual downloads can be initiated from the Model Management interface</li>
+<li>Priority can be set for multiple simultaneous downloads</li>
+</ul>
+<h4 id="controlling-downloads">Controlling Downloads<a class="headerlink" href="#controlling-downloads" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Pause</strong>: Click the pause button or use the API endpoint</li>
+<li><strong>Resume</strong>: Resume paused downloads with a single click</li>
+<li><strong>Cancel</strong>: Stop unwanted downloads and free up bandwidth</li>
+<li><strong>Set Priority</strong>: Reorder download queue based on your needs</li>
+</ul>
+<h4 id="bandwidth-management">Bandwidth Management<a class="headerlink" href="#bandwidth-management" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Go to Settings → Model Management</li>
+<li>Set "Download Speed Limit" (in MB/s)</li>
+<li>Enable "Pause downloads during generation" if needed</li>
+</ol>
+<h3 id="understanding-model-health">Understanding Model Health<a class="headerlink" href="#understanding-model-health" title="Permanent link">&para;</a></h3>
+<h4 id="health-indicators">Health Indicators<a class="headerlink" href="#health-indicators" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Green</strong>: Model is healthy and ready for use</li>
+<li><strong>Yellow</strong>: Minor issues detected, automatic repair in progress</li>
+<li><strong>Red</strong>: Significant problems, manual intervention may be needed</li>
+</ul>
+<h4 id="health-actions">Health Actions<a class="headerlink" href="#health-actions" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Auto-Repair</strong>: System automatically fixes detected issues</li>
+<li><strong>Manual Repair</strong>: Force integrity check and repair</li>
+<li><strong>Re-download</strong>: Download fresh copy if corruption is severe</li>
+</ul>
+<h3 id="using-intelligent-fallbacks">Using Intelligent Fallbacks<a class="headerlink" href="#using-intelligent-fallbacks" title="Permanent link">&para;</a></h3>
+<h4 id="when-models-are-unavailable">When Models Are Unavailable<a class="headerlink" href="#when-models-are-unavailable" title="Permanent link">&para;</a></h4>
+<ol>
+<li>System suggests compatible alternatives</li>
+<li>Shows compatibility score and expected quality difference</li>
+<li>Provides options to:</li>
+<li>Use suggested alternative immediately</li>
+<li>Queue request and wait for preferred model</li>
+<li>Download preferred model in background</li>
+</ol>
+<h4 id="fallback-strategies">Fallback Strategies<a class="headerlink" href="#fallback-strategies" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Alternative Model</strong>: Use similar available model</li>
+<li><strong>Queue and Wait</strong>: Wait for model to download</li>
+<li><strong>Mock Generation</strong>: Use placeholder generation with upgrade path</li>
+<li><strong>Download and Retry</strong>: Trigger download and retry automatically</li>
+</ul>
+<h2 id="advanced-features">Advanced Features<a class="headerlink" href="#advanced-features" title="Permanent link">&para;</a></h2>
+<h3 id="model-update-management">Model Update Management<a class="headerlink" href="#model-update-management" title="Permanent link">&para;</a></h3>
+<h4 id="automatic-updates">Automatic Updates<a class="headerlink" href="#automatic-updates" title="Permanent link">&para;</a></h4>
+<ul>
+<li>System checks for model updates periodically</li>
+<li>Notifications appear when updates are available</li>
+<li>Updates download in background without interrupting current models</li>
+</ul>
+<h4 id="manual-updates">Manual Updates<a class="headerlink" href="#manual-updates" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Go to Model Management</li>
+<li>Click "Check for Updates"</li>
+<li>Review available updates</li>
+<li>Select models to update</li>
+<li>Updates download and install automatically</li>
+</ol>
+<h4 id="update-rollback">Update Rollback<a class="headerlink" href="#update-rollback" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Previous versions kept until new version verified</li>
+<li>Automatic rollback if new version fails</li>
+<li>Manual rollback option in Model Management</li>
+</ul>
+<h3 id="usage-analytics-dashboard">Usage Analytics Dashboard<a class="headerlink" href="#usage-analytics-dashboard" title="Permanent link">&para;</a></h3>
+<h4 id="viewing-analytics">Viewing Analytics<a class="headerlink" href="#viewing-analytics" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Navigate to Analytics → Model Usage</li>
+<li>View usage statistics by time period</li>
+<li>See performance trends and recommendations</li>
+</ol>
+<h4 id="key-metrics">Key Metrics<a class="headerlink" href="#key-metrics" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Usage Frequency</strong>: How often each model is used</li>
+<li><strong>Performance Scores</strong>: Generation speed and quality metrics</li>
+<li><strong>Storage Impact</strong>: Disk space used by each model</li>
+<li><strong>Success Rates</strong>: Reliability statistics for each model</li>
+</ul>
+<h4 id="optimization-recommendations">Optimization Recommendations<a class="headerlink" href="#optimization-recommendations" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Cleanup Suggestions</strong>: Models safe to remove</li>
+<li><strong>Preload Recommendations</strong>: Models to keep ready</li>
+<li><strong>Performance Alerts</strong>: Models with degrading performance</li>
+</ul>
+<h3 id="storage-management">Storage Management<a class="headerlink" href="#storage-management" title="Permanent link">&para;</a></h3>
+<h4 id="automatic-cleanup">Automatic Cleanup<a class="headerlink" href="#automatic-cleanup" title="Permanent link">&para;</a></h4>
+<ul>
+<li>System suggests unused models for removal</li>
+<li>Configurable retention policies</li>
+<li>Safe cleanup with usage history consideration</li>
+</ul>
+<h4 id="manual-management">Manual Management<a class="headerlink" href="#manual-management" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Go to Model Management → Storage</li>
+<li>View storage usage by model</li>
+<li>Select models to remove</li>
+<li>Confirm cleanup operation</li>
+</ol>
+<h4 id="storage-policies">Storage Policies<a class="headerlink" href="#storage-policies" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Keep Recent</strong>: Retain models used in last N days</li>
+<li><strong>Keep Frequent</strong>: Retain models used more than N times</li>
+<li><strong>Size Limits</strong>: Remove largest models when space needed</li>
+</ul>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<h3 id="common-issues">Common Issues<a class="headerlink" href="#common-issues" title="Permanent link">&para;</a></h3>
+<h4 id="download-failures">Download Failures<a class="headerlink" href="#download-failures" title="Permanent link">&para;</a></h4>
+<p><strong>Problem</strong>: Model download keeps failing
+<strong>Solutions</strong>:</p>
+<ol>
+<li>Check internet connection stability</li>
+<li>Verify sufficient disk space</li>
+<li>Try downloading during off-peak hours</li>
+<li>Contact support if issue persists</li>
+</ol>
+<h4 id="model-corruption">Model Corruption<a class="headerlink" href="#model-corruption" title="Permanent link">&para;</a></h4>
+<p><strong>Problem</strong>: Model generates poor quality or fails
+<strong>Solutions</strong>:</p>
+<ol>
+<li>Run integrity check from Model Management</li>
+<li>Use auto-repair function</li>
+<li>Re-download model if corruption is severe</li>
+<li>Check system logs for hardware issues</li>
+</ol>
+<h4 id="performance-issues">Performance Issues<a class="headerlink" href="#performance-issues" title="Permanent link">&para;</a></h4>
+<p><strong>Problem</strong>: Model generation is slow or unreliable
+<strong>Solutions</strong>:</p>
+<ol>
+<li>Check model health status</li>
+<li>Review system resource usage</li>
+<li>Consider using alternative model temporarily</li>
+<li>Update to latest model version</li>
+</ol>
+<h4 id="storage-full">Storage Full<a class="headerlink" href="#storage-full" title="Permanent link">&para;</a></h4>
+<p><strong>Problem</strong>: Not enough space for new models
+<strong>Solutions</strong>:</p>
+<ol>
+<li>Use cleanup recommendations</li>
+<li>Remove unused models manually</li>
+<li>Move models to external storage</li>
+<li>Upgrade storage capacity</li>
+</ol>
+<h3 id="getting-help">Getting Help<a class="headerlink" href="#getting-help" title="Permanent link">&para;</a></h3>
+<h4 id="built-in-help">Built-in Help<a class="headerlink" href="#built-in-help" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Hover over any interface element for tooltips</li>
+<li>Click "?" icons for contextual help</li>
+<li>Check status messages for guidance</li>
+</ul>
+<h4 id="log-files">Log Files<a class="headerlink" href="#log-files" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Model operations logged to <code>logs/model_management.log</code></li>
+<li>Download progress in <code>logs/downloads.log</code></li>
+<li>Health monitoring in <code>logs/health_monitor.log</code></li>
+</ul>
+<h4 id="support-resources">Support Resources<a class="headerlink" href="#support-resources" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Check troubleshooting guide for common issues</li>
+<li>Review API documentation for advanced usage</li>
+<li>Contact support with log files for complex problems</li>
+</ul>
+<h2 id="best-practices">Best Practices<a class="headerlink" href="#best-practices" title="Permanent link">&para;</a></h2>
+<h3 id="download-management">Download Management<a class="headerlink" href="#download-management" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Prioritize</strong>: Download most-used models first</li>
+<li><strong>Schedule</strong>: Use off-peak hours for large downloads</li>
+<li><strong>Monitor</strong>: Keep an eye on download progress</li>
+<li><strong>Bandwidth</strong>: Set appropriate speed limits</li>
+</ol>
+<h3 id="model-health">Model Health<a class="headerlink" href="#model-health" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Regular Checks</strong>: Enable automatic health monitoring</li>
+<li><strong>Quick Response</strong>: Address health issues promptly</li>
+<li><strong>Preventive</strong>: Keep models updated to latest versions</li>
+<li><strong>Backup</strong>: Consider backing up frequently used models</li>
+</ol>
+<h3 id="storage-optimization">Storage Optimization<a class="headerlink" href="#storage-optimization" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Regular Cleanup</strong>: Remove unused models monthly</li>
+<li><strong>Usage Tracking</strong>: Monitor which models you actually use</li>
+<li><strong>Size Awareness</strong>: Consider model sizes when downloading</li>
+<li><strong>External Storage</strong>: Use for infrequently used models</li>
+</ol>
+<h3 id="performance-optimization">Performance Optimization<a class="headerlink" href="#performance-optimization" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Model Selection</strong>: Choose appropriate models for tasks</li>
+<li><strong>Resource Monitoring</strong>: Watch system resource usage</li>
+<li><strong>Update Management</strong>: Keep models updated</li>
+<li><strong>Alternative Planning</strong>: Have backup models ready</li>
+</ol>
+<h2 id="configuration-options">Configuration Options<a class="headerlink" href="#configuration-options" title="Permanent link">&para;</a></h2>
+<h3 id="user-preferences">User Preferences<a class="headerlink" href="#user-preferences" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Auto-download</strong>: Enable automatic model downloads</li>
+<li><strong>Retry Settings</strong>: Configure retry attempts and delays</li>
+<li><strong>Notification Level</strong>: Set alert preferences</li>
+<li><strong>Cleanup Policy</strong>: Define automatic cleanup rules</li>
+</ul>
+<h3 id="advanced-settings">Advanced Settings<a class="headerlink" href="#advanced-settings" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Download Concurrency</strong>: Number of simultaneous downloads</li>
+<li><strong>Health Check Frequency</strong>: How often to check model health</li>
+<li><strong>Analytics Collection</strong>: Enable/disable usage tracking</li>
+<li><strong>Fallback Behavior</strong>: Configure fallback preferences</li>
+</ul>
+<h2 id="api-integration">API Integration<a class="headerlink" href="#api-integration" title="Permanent link">&para;</a></h2>
+<h3 id="basic-usage">Basic Usage<a class="headerlink" href="#basic-usage" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="c1"># Check model status</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://localhost:8000/api/v1/models/status/detailed&#39;</span><span class="p">)</span>
+<span class="n">models</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+<span class="c1"># Start download with retry</span>
+<span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;http://localhost:8000/api/v1/models/download/manage&#39;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="s1">&#39;model_id&#39;</span><span class="p">:</span> <span class="s1">&#39;my-model&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;action&#39;</span><span class="p">:</span> <span class="s1">&#39;start&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;max_retries&#39;</span><span class="p">:</span> <span class="mi">3</span>
+<span class="p">})</span>
+
+<span class="c1"># Get usage analytics</span>
+<span class="n">analytics</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://localhost:8000/api/v1/models/analytics&#39;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="websocket-integration">WebSocket Integration<a class="headerlink" href="#websocket-integration" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">ws</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">WebSocket</span><span class="p">(</span><span class="s2">&quot;ws://localhost:8000/ws&quot;</span><span class="p">);</span>
+
+<span class="nx">ws</span><span class="p">.</span><span class="nx">onmessage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">type</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;model_download_progress&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">updateProgressBar</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">model_id</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">.</span><span class="nx">progress</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
+<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
+<p>The Enhanced Model Availability system provides comprehensive model management with intelligent automation and user-friendly controls. By following this guide and best practices, you can ensure optimal model availability and performance for your AI generation needs.</p>
+<p>For additional help, consult the troubleshooting guide, API documentation, or contact support.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

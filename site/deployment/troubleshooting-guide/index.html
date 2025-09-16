@@ -1,0 +1,2157 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="WAN2.2 Video Generation System Documentation">
+      
+      
+      
+        <link rel="canonical" href="https://ramcana.github.io/wan/deployment/troubleshooting-guide/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>Troubleshooting Guide - WAN22 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e53b48f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#troubleshooting-guide" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="WAN22 Documentation" class="md-header__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            WAN22 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Troubleshooting Guide
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../WAN22_System_Capabilities_Report/" class="md-tabs__link">
+          
+  
+  
+  System Overview
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../model-orchestrator/requirements/" class="md-tabs__link">
+          
+  
+  
+  Model Orchestrator
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../config/models.toml" class="md-tabs__link">
+          
+  
+  
+  Configuration
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="WAN22 Documentation" class="md-nav__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    WAN22 Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    System Overview
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            System Overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../WAN22_System_Capabilities_Report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Capabilities Report
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Model Orchestrator
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Model Orchestrator
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Requirements
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/tasks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tasks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Configuration
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Configuration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Models Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models_simple.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simple Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick Reference
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#emergency-contacts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Emergency Contacts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#critical-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Critical Commands
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-issues-and-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Issues and Solutions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Issues and Solutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-service-wont-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Service Won't Start
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Service Won&#39;t Start">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#symptoms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Symptoms
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagnostic-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagnostic Steps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-causes-and-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Causes and Solutions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-high-memory-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. High Memory Usage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. High Memory Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#symptoms_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Symptoms
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagnostic-steps_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagnostic Steps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solutions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-slow-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Slow Performance
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Slow Performance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#symptoms_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Symptoms
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagnostic-steps_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagnostic Steps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solutions_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solutions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-database-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Database Issues
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Database Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#symptoms_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Symptoms
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagnostic-steps_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagnostic Steps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solutions_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solutions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-configuration-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Configuration Issues
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Configuration Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#symptoms_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Symptoms
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagnostic-steps_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagnostic Steps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solutions_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solutions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-network-and-connectivity-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Network and Connectivity Issues
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Network and Connectivity Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#symptoms_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Symptoms
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagnostic-steps_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagnostic Steps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solutions_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solutions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-test-execution-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Test Execution Issues
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Test Execution Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#symptoms_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Symptoms
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagnostic-steps_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagnostic Steps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solutions_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solutions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-documentation-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Documentation Issues
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Documentation Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#symptoms_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Symptoms
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagnostic-steps_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagnostic Steps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solutions_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solutions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-monitoring-and-alerting-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Monitoring and Alerting Issues
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Monitoring and Alerting Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#symptoms_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Symptoms
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagnostic-steps_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagnostic Steps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solutions_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solutions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Troubleshooting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#performance-profiling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Profiling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Log Analysis
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#system-resource-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Resource Analysis
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#escalation-procedures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Escalation Procedures
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Escalation Procedures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#level-1-self-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 1: Self-Service
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-2-team-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 2: Team Support
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-3-emergency-response" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 3: Emergency Response
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-4-vendor-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      Level 4: Vendor Support
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prevention-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prevention Strategies
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Prevention Strategies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#proactive-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Proactive Monitoring
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regular-maintenance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Regular Maintenance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentation-updates" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documentation Updates
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tools-and-utilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tools and Utilities
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tools and Utilities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagnostic-scripts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagnostic Scripts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monitoring-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monitoring Commands
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recovery-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recovery Tools
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appendix" class="md-nav__link">
+    <span class="md-ellipsis">
+      Appendix
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Appendix">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#error-code-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Code Reference
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log-file-locations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Log File Locations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-file-locations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration File Locations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="troubleshooting-guide">Troubleshooting Guide<a class="headerlink" href="#troubleshooting-guide" title="Permanent link">&para;</a></h1>
+<p>This guide provides comprehensive troubleshooting procedures for common issues with the project health system.</p>
+<h2 id="quick-reference">Quick Reference<a class="headerlink" href="#quick-reference" title="Permanent link">&para;</a></h2>
+<h3 id="emergency-contacts">Emergency Contacts<a class="headerlink" href="#emergency-contacts" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>On-call Engineer</strong>: +1-555-0123</li>
+<li><strong>DevOps Team</strong>: devops@company.com</li>
+<li><strong>System Administrator</strong>: sysadmin@company.com</li>
+</ul>
+<h3 id="critical-commands">Critical Commands<a class="headerlink" href="#critical-commands" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check service status</span>
+systemctl<span class="w"> </span>status<span class="w"> </span>project-health
+
+<span class="c1"># View recent logs</span>
+journalctl<span class="w"> </span>-u<span class="w"> </span>project-health<span class="w"> </span>-f
+
+<span class="c1"># Run health check</span>
+python<span class="w"> </span>-m<span class="w"> </span>tools.health_checker.cli<span class="w"> </span>--quick-check
+
+<span class="c1"># Emergency restart</span>
+systemctl<span class="w"> </span>restart<span class="w"> </span>project-health
+</code></pre></div>
+<h2 id="common-issues-and-solutions">Common Issues and Solutions<a class="headerlink" href="#common-issues-and-solutions" title="Permanent link">&para;</a></h2>
+<h3 id="1-service-wont-start">1. Service Won't Start<a class="headerlink" href="#1-service-wont-start" title="Permanent link">&para;</a></h3>
+<h4 id="symptoms">Symptoms<a class="headerlink" href="#symptoms" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Service fails to start</li>
+<li><code>systemctl status project-health</code> shows "failed" or "inactive"</li>
+<li>Error messages in system logs</li>
+</ul>
+<h4 id="diagnostic-steps">Diagnostic Steps<a class="headerlink" href="#diagnostic-steps" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check service status</span>
+systemctl<span class="w"> </span>status<span class="w"> </span>project-health
+
+<span class="c1"># Check detailed logs</span>
+journalctl<span class="w"> </span>-u<span class="w"> </span>project-health<span class="w"> </span>--no-pager
+
+<span class="c1"># Check configuration syntax</span>
+python<span class="w"> </span>-m<span class="w"> </span>tools.config_manager.config_cli<span class="w"> </span>validate
+
+<span class="c1"># Check file permissions</span>
+ls<span class="w"> </span>-la<span class="w"> </span>/opt/project-health/
+ls<span class="w"> </span>-la<span class="w"> </span>/etc/project-health/
+
+<span class="c1"># Check dependencies</span>
+pip<span class="w"> </span>check
+</code></pre></div>
+<h4 id="common-causes-and-solutions">Common Causes and Solutions<a class="headerlink" href="#common-causes-and-solutions" title="Permanent link">&para;</a></h4>
+<p><strong>Configuration Syntax Error</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Symptom: YAML parsing errors in logs</span>
+<span class="c1"># Solution: Validate and fix configuration</span>
+python<span class="w"> </span>-m<span class="w"> </span>tools.config_manager.config_cli<span class="w"> </span>validate<span class="w"> </span>--config<span class="w"> </span>/etc/project-health/production.yaml
+
+<span class="c1"># If validation fails, check for:</span>
+<span class="c1"># - Missing quotes around strings</span>
+<span class="c1"># - Incorrect indentation</span>
+<span class="c1"># - Invalid YAML syntax</span>
+</code></pre></div>
+<p><strong>Permission Issues</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Symptom: Permission denied errors</span>
+<span class="c1"># Solution: Fix file permissions</span>
+sudo<span class="w"> </span>chown<span class="w"> </span>-R<span class="w"> </span>project-health:project-health<span class="w"> </span>/opt/project-health
+sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">755</span><span class="w"> </span>/opt/project-health
+sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">640</span><span class="w"> </span>/etc/project-health/*.yaml
+</code></pre></div>
+<p><strong>Missing Dependencies</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Symptom: ImportError or ModuleNotFoundError</span>
+<span class="c1"># Solution: Install missing dependencies</span>
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>/opt/project-health/requirements.txt
+
+<span class="c1"># For specific missing modules:</span>
+pip<span class="w"> </span>install<span class="w"> </span>&lt;module-name&gt;
+</code></pre></div>
+<p><strong>Port Already in Use</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Symptom: &quot;Address already in use&quot; error</span>
+<span class="c1"># Solution: Find and stop conflicting process</span>
+sudo<span class="w"> </span>netstat<span class="w"> </span>-tulpn<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>:8080
+sudo<span class="w"> </span><span class="nb">kill</span><span class="w"> </span>&lt;PID&gt;
+
+<span class="c1"># Or change port in configuration</span>
+<span class="c1"># Edit /etc/project-health/production.yaml</span>
+</code></pre></div>
+<h3 id="2-high-memory-usage">2. High Memory Usage<a class="headerlink" href="#2-high-memory-usage" title="Permanent link">&para;</a></h3>
+<h4 id="symptoms_1">Symptoms<a class="headerlink" href="#symptoms_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li>System becomes slow or unresponsive</li>
+<li>Out of memory errors in logs</li>
+<li>High memory usage in monitoring</li>
+</ul>
+<h4 id="diagnostic-steps_1">Diagnostic Steps<a class="headerlink" href="#diagnostic-steps_1" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check memory usage</span>
+free<span class="w"> </span>-h
+ps<span class="w"> </span>aux<span class="w"> </span>--sort<span class="o">=</span>-%mem<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-20
+
+<span class="c1"># Check for memory leaks</span>
+python<span class="w"> </span>-m<span class="w"> </span>tools.health_checker.cli<span class="w"> </span>--memory-analysis
+
+<span class="c1"># Monitor memory over time</span>
+watch<span class="w"> </span>-n<span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="s1">&#39;free -h &amp;&amp; ps aux --sort=-%mem | head -10&#39;</span>
+</code></pre></div>
+<h4 id="solutions">Solutions<a class="headerlink" href="#solutions" title="Permanent link">&para;</a></h4>
+<p><strong>Memory Leak in Application</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Restart service to free memory</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>project-health
+
+<span class="c1"># Enable memory profiling</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONMALLOC</span><span class="o">=</span>debug
+systemctl<span class="w"> </span>restart<span class="w"> </span>project-health
+
+<span class="c1"># Check for memory leaks in code</span>
+python<span class="w"> </span>-m<span class="w"> </span>tools.health_checker.cli<span class="w"> </span>--profile-memory
+</code></pre></div>
+<p><strong>Insufficient System Memory</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Add swap space (temporary solution)</span>
+sudo<span class="w"> </span>fallocate<span class="w"> </span>-l<span class="w"> </span>2G<span class="w"> </span>/swapfile
+sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>/swapfile
+sudo<span class="w"> </span>mkswap<span class="w"> </span>/swapfile
+sudo<span class="w"> </span>swapon<span class="w"> </span>/swapfile
+
+<span class="c1"># Permanent solution: Upgrade system memory</span>
+</code></pre></div>
+<p><strong>Large Log Files</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check log file sizes</span>
+du<span class="w"> </span>-sh<span class="w"> </span>/var/log/project-health/*
+
+<span class="c1"># Rotate logs immediately</span>
+sudo<span class="w"> </span>logrotate<span class="w"> </span>-f<span class="w"> </span>/etc/logrotate.d/project-health
+
+<span class="c1"># Adjust log retention in configuration</span>
+</code></pre></div>
+<h3 id="3-slow-performance">3. Slow Performance<a class="headerlink" href="#3-slow-performance" title="Permanent link">&para;</a></h3>
+<h4 id="symptoms_2">Symptoms<a class="headerlink" href="#symptoms_2" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Health checks take longer than expected</li>
+<li>Web dashboard is slow to load</li>
+<li>Test execution times out</li>
+</ul>
+<h4 id="diagnostic-steps_2">Diagnostic Steps<a class="headerlink" href="#diagnostic-steps_2" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check system load</span>
+uptime
+htop
+
+<span class="c1"># Check I/O wait</span>
+iostat<span class="w"> </span>-x<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">5</span>
+
+<span class="c1"># Profile application performance</span>
+python<span class="w"> </span>-m<span class="w"> </span>tools.health_checker.cli<span class="w"> </span>--performance-profile
+
+<span class="c1"># Check database performance</span>
+sqlite3<span class="w"> </span>/var/lib/project-health/health.db<span class="w"> </span><span class="s2">&quot;PRAGMA optimize;&quot;</span>
+</code></pre></div>
+<h4 id="solutions_1">Solutions<a class="headerlink" href="#solutions_1" title="Permanent link">&para;</a></h4>
+<p><strong>High CPU Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Identify CPU-intensive processes</span>
+top<span class="w"> </span>-o<span class="w"> </span>%CPU
+
+<span class="c1"># Reduce parallel workers in configuration</span>
+<span class="c1"># Edit /etc/project-health/production.yaml:</span>
+<span class="c1"># test_execution:</span>
+<span class="c1">#   max_workers: 2  # Reduce from default</span>
+
+<span class="c1"># Enable CPU throttling if needed</span>
+<span class="nb">echo</span><span class="w"> </span><span class="m">80</span><span class="w"> </span>&gt;<span class="w"> </span>/sys/devices/system/cpu/intel_pstate/max_perf_pct
+</code></pre></div>
+<p><strong>Disk I/O Bottleneck</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check disk usage and performance</span>
+df<span class="w"> </span>-h
+iotop<span class="w"> </span>-o
+
+<span class="c1"># Move to faster storage (SSD)</span>
+<span class="c1"># Or optimize database</span>
+sqlite3<span class="w"> </span>/var/lib/project-health/health.db<span class="w"> </span><span class="s2">&quot;VACUUM; ANALYZE;&quot;</span>
+
+<span class="c1"># Enable database WAL mode for better performance</span>
+sqlite3<span class="w"> </span>/var/lib/project-health/health.db<span class="w"> </span><span class="s2">&quot;PRAGMA journal_mode=WAL;&quot;</span>
+</code></pre></div>
+<p><strong>Network Latency</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check network connectivity</span>
+ping<span class="w"> </span>-c<span class="w"> </span><span class="m">5</span><span class="w"> </span>google.com
+
+<span class="c1"># Test local network performance</span>
+iperf3<span class="w"> </span>-c<span class="w"> </span>&lt;server-ip&gt;
+
+<span class="c1"># Optimize network settings</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;net.core.rmem_max = 16777216&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/etc/sysctl.conf
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;net.core.wmem_max = 16777216&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/etc/sysctl.conf
+sysctl<span class="w"> </span>-p
+</code></pre></div>
+<h3 id="4-database-issues">4. Database Issues<a class="headerlink" href="#4-database-issues" title="Permanent link">&para;</a></h3>
+<h4 id="symptoms_3">Symptoms<a class="headerlink" href="#symptoms_3" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Database corruption errors</li>
+<li>SQLite locking errors</li>
+<li>Data inconsistencies</li>
+</ul>
+<h4 id="diagnostic-steps_3">Diagnostic Steps<a class="headerlink" href="#diagnostic-steps_3" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check database integrity</span>
+sqlite3<span class="w"> </span>/var/lib/project-health/health.db<span class="w"> </span><span class="s2">&quot;PRAGMA integrity_check;&quot;</span>
+
+<span class="c1"># Check database size and statistics</span>
+sqlite3<span class="w"> </span>/var/lib/project-health/health.db<span class="w"> </span><span class="s2">&quot;.dbinfo&quot;</span>
+
+<span class="c1"># Check for locks</span>
+lsof<span class="w"> </span>/var/lib/project-health/health.db
+
+<span class="c1"># Backup database before repairs</span>
+cp<span class="w"> </span>/var/lib/project-health/health.db<span class="w"> </span>/var/lib/project-health/health.db.backup
+</code></pre></div>
+<h4 id="solutions_2">Solutions<a class="headerlink" href="#solutions_2" title="Permanent link">&para;</a></h4>
+<p><strong>Database Corruption</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Stop service first</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>project-health
+
+<span class="c1"># Attempt repair</span>
+sqlite3<span class="w"> </span>/var/lib/project-health/health.db<span class="w"> </span><span class="s2">&quot;PRAGMA integrity_check;&quot;</span>
+
+<span class="c1"># If corruption is found, try to recover</span>
+sqlite3<span class="w"> </span>/var/lib/project-health/health.db<span class="w"> </span><span class="s2">&quot;.recover&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sqlite3<span class="w"> </span>/var/lib/project-health/health_recovered.db
+
+<span class="c1"># Restore from backup if recovery fails</span>
+cp<span class="w"> </span>/backup/project-health/latest/health.db<span class="w"> </span>/var/lib/project-health/health.db
+
+<span class="c1"># Restart service</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>project-health
+</code></pre></div>
+<p><strong>Database Locking</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Find processes using the database</span>
+lsof<span class="w"> </span>/var/lib/project-health/health.db
+
+<span class="c1"># Kill processes if necessary</span>
+sudo<span class="w"> </span><span class="nb">kill</span><span class="w"> </span>-9<span class="w"> </span>&lt;PID&gt;
+
+<span class="c1"># Enable WAL mode to reduce locking</span>
+sqlite3<span class="w"> </span>/var/lib/project-health/health.db<span class="w"> </span><span class="s2">&quot;PRAGMA journal_mode=WAL;&quot;</span>
+
+<span class="c1"># Restart service</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>project-health
+</code></pre></div>
+<p><strong>Large Database Size</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Vacuum database to reclaim space</span>
+sqlite3<span class="w"> </span>/var/lib/project-health/health.db<span class="w"> </span><span class="s2">&quot;VACUUM;&quot;</span>
+
+<span class="c1"># Archive old data</span>
+python<span class="w"> </span>-m<span class="w"> </span>tools.health_checker.cli<span class="w"> </span>--archive-old-data<span class="w"> </span>--days<span class="w"> </span><span class="m">90</span>
+
+<span class="c1"># Set up automatic cleanup</span>
+<span class="c1"># Add to cron: 0 2 * * 0 python -m tools.health_checker.cli --cleanup-old-data</span>
+</code></pre></div>
+<h3 id="5-configuration-issues">5. Configuration Issues<a class="headerlink" href="#5-configuration-issues" title="Permanent link">&para;</a></h3>
+<h4 id="symptoms_4">Symptoms<a class="headerlink" href="#symptoms_4" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Configuration validation errors</li>
+<li>Settings not taking effect</li>
+<li>Service fails to load configuration</li>
+</ul>
+<h4 id="diagnostic-steps_4">Diagnostic Steps<a class="headerlink" href="#diagnostic-steps_4" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Validate configuration syntax</span>
+python<span class="w"> </span>-m<span class="w"> </span>tools.config_manager.config_cli<span class="w"> </span>validate
+
+<span class="c1"># Check configuration file permissions</span>
+ls<span class="w"> </span>-la<span class="w"> </span>/etc/project-health/
+
+<span class="c1"># Test configuration loading</span>
+python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span>
+<span class="s2">import yaml</span>
+<span class="s2">with open(&#39;/etc/project-health/production.yaml&#39;, &#39;r&#39;) as f:</span>
+<span class="s2">    config = yaml.safe_load(f)</span>
+<span class="s2">    print(&#39;Configuration loaded successfully&#39;)</span>
+<span class="s2">    print(f&#39;Keys: {list(config.keys())}&#39;)</span>
+<span class="s2">&quot;</span>
+
+<span class="c1"># Check environment variables</span>
+env<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>PROJECT
+</code></pre></div>
+<h4 id="solutions_3">Solutions<a class="headerlink" href="#solutions_3" title="Permanent link">&para;</a></h4>
+<p><strong>YAML Syntax Errors</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Use YAML validator</span>
+python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span>
+<span class="s2">import yaml</span>
+<span class="s2">try:</span>
+<span class="s2">    with open(&#39;/etc/project-health/production.yaml&#39;, &#39;r&#39;) as f:</span>
+<span class="s2">        yaml.safe_load(f)</span>
+<span class="s2">    print(&#39;YAML is valid&#39;)</span>
+<span class="s2">except yaml.YAMLError as e:</span>
+<span class="s2">    print(f&#39;YAML error: {e}&#39;)</span>
+<span class="s2">&quot;</span>
+
+<span class="c1"># Common fixes:</span>
+<span class="c1"># - Add quotes around strings with special characters</span>
+<span class="c1"># - Fix indentation (use spaces, not tabs)</span>
+<span class="c1"># - Escape backslashes in paths</span>
+</code></pre></div>
+<p><strong>Configuration Not Loading</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check file path in service configuration</span>
+grep<span class="w"> </span>ExecStart<span class="w"> </span>/etc/systemd/system/project-health.service
+
+<span class="c1"># Check environment variables</span>
+systemctl<span class="w"> </span>show<span class="w"> </span>project-health<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>Environment
+
+<span class="c1"># Reload systemd configuration</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>daemon-reload
+sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>project-health
+</code></pre></div>
+<p><strong>Invalid Configuration Values</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check configuration schema</span>
+python<span class="w"> </span>-m<span class="w"> </span>tools.config_manager.config_cli<span class="w"> </span>validate<span class="w"> </span>--schema
+
+<span class="c1"># Reset to default configuration</span>
+cp<span class="w"> </span>/opt/project-health/config/default.yaml<span class="w"> </span>/etc/project-health/production.yaml
+
+<span class="c1"># Gradually add custom settings</span>
+</code></pre></div>
+<h3 id="6-network-and-connectivity-issues">6. Network and Connectivity Issues<a class="headerlink" href="#6-network-and-connectivity-issues" title="Permanent link">&para;</a></h3>
+<h4 id="symptoms_5">Symptoms<a class="headerlink" href="#symptoms_5" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Cannot access web dashboard</li>
+<li>Health check endpoints not responding</li>
+<li>External service timeouts</li>
+</ul>
+<h4 id="diagnostic-steps_5">Diagnostic Steps<a class="headerlink" href="#diagnostic-steps_5" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check if service is listening on correct port</span>
+netstat<span class="w"> </span>-tulpn<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>:8080
+
+<span class="c1"># Test local connectivity</span>
+curl<span class="w"> </span>-I<span class="w"> </span>http://localhost:8080/health
+
+<span class="c1"># Check firewall rules</span>
+sudo<span class="w"> </span>ufw<span class="w"> </span>status
+sudo<span class="w"> </span>iptables<span class="w"> </span>-L
+
+<span class="c1"># Test external connectivity</span>
+curl<span class="w"> </span>-I<span class="w"> </span>http://external-service.com
+</code></pre></div>
+<h4 id="solutions_4">Solutions<a class="headerlink" href="#solutions_4" title="Permanent link">&para;</a></h4>
+<p><strong>Service Not Listening</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check configuration for correct port</span>
+grep<span class="w"> </span>-i<span class="w"> </span>port<span class="w"> </span>/etc/project-health/production.yaml
+
+<span class="c1"># Check if port is available</span>
+sudo<span class="w"> </span>netstat<span class="w"> </span>-tulpn<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>:8080
+
+<span class="c1"># Start service if not running</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>project-health
+</code></pre></div>
+<p><strong>Firewall Blocking Connections</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Allow port through firewall</span>
+sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">8080</span>/tcp
+
+<span class="c1"># For iptables:</span>
+sudo<span class="w"> </span>iptables<span class="w"> </span>-A<span class="w"> </span>INPUT<span class="w"> </span>-p<span class="w"> </span>tcp<span class="w"> </span>--dport<span class="w"> </span><span class="m">8080</span><span class="w"> </span>-j<span class="w"> </span>ACCEPT
+sudo<span class="w"> </span>iptables-save<span class="w"> </span>&gt;<span class="w"> </span>/etc/iptables/rules.v4
+</code></pre></div>
+<p><strong>DNS Resolution Issues</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Test DNS resolution</span>
+nslookup<span class="w"> </span>external-service.com
+
+<span class="c1"># Use alternative DNS servers</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;nameserver 8.8.8.8&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/etc/resolv.conf
+
+<span class="c1"># Check /etc/hosts for overrides</span>
+cat<span class="w"> </span>/etc/hosts
+</code></pre></div>
+<h3 id="7-test-execution-issues">7. Test Execution Issues<a class="headerlink" href="#7-test-execution-issues" title="Permanent link">&para;</a></h3>
+<h4 id="symptoms_6">Symptoms<a class="headerlink" href="#symptoms_6" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Tests fail to run</li>
+<li>Test timeouts</li>
+<li>Inconsistent test results</li>
+</ul>
+<h4 id="diagnostic-steps_6">Diagnostic Steps<a class="headerlink" href="#diagnostic-steps_6" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Run tests manually</span>
+python<span class="w"> </span>-m<span class="w"> </span>pytest<span class="w"> </span>tests/<span class="w"> </span>-v
+
+<span class="c1"># Check test configuration</span>
+cat<span class="w"> </span>tests/config/test-config.yaml
+
+<span class="c1"># Check test environment</span>
+python<span class="w"> </span>-m<span class="w"> </span>tools.test_runner.cli<span class="w"> </span>--check-environment
+
+<span class="c1"># Run specific test category</span>
+python<span class="w"> </span>-m<span class="w"> </span>tools.test_runner.cli<span class="w"> </span>--category<span class="w"> </span>unit
+</code></pre></div>
+<h4 id="solutions_5">Solutions<a class="headerlink" href="#solutions_5" title="Permanent link">&para;</a></h4>
+<p><strong>Test Dependencies Missing</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Install test dependencies</span>
+pip<span class="w"> </span>install<span class="w"> </span>pytest<span class="w"> </span>pytest-asyncio<span class="w"> </span>pytest-cov
+
+<span class="c1"># Check for missing test files</span>
+find<span class="w"> </span>tests/<span class="w"> </span>-name<span class="w"> </span><span class="s2">&quot;*.py&quot;</span><span class="w"> </span>-exec<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>py_compile<span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span>
+
+<span class="c1"># Fix import errors</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONPATH</span><span class="o">=</span>/opt/project-health:<span class="nv">$PYTHONPATH</span>
+</code></pre></div>
+<p><strong>Test Timeouts</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Increase timeout in configuration</span>
+<span class="c1"># Edit tests/config/test-config.yaml:</span>
+<span class="c1"># test_categories:</span>
+<span class="c1">#   unit:</span>
+<span class="c1">#     timeout: 60  # Increase from 30</span>
+
+<span class="c1"># Run tests with verbose output</span>
+python<span class="w"> </span>-m<span class="w"> </span>pytest<span class="w"> </span>tests/<span class="w"> </span>-v<span class="w"> </span>-s<span class="w"> </span>--tb<span class="o">=</span>short
+</code></pre></div>
+<p><strong>Flaky Tests</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Identify flaky tests</span>
+python<span class="w"> </span>-m<span class="w"> </span>tools.test_runner.cli<span class="w"> </span>--identify-flaky
+
+<span class="c1"># Run tests multiple times</span>
+python<span class="w"> </span>-m<span class="w"> </span>pytest<span class="w"> </span>tests/<span class="w"> </span>--count<span class="o">=</span><span class="m">5</span>
+
+<span class="c1"># Fix or skip flaky tests</span>
+python<span class="w"> </span>-m<span class="w"> </span>pytest<span class="w"> </span>tests/<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;not flaky&quot;</span>
+</code></pre></div>
+<h3 id="8-documentation-issues">8. Documentation Issues<a class="headerlink" href="#8-documentation-issues" title="Permanent link">&para;</a></h3>
+<h4 id="symptoms_7">Symptoms<a class="headerlink" href="#symptoms_7" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Documentation generation fails</li>
+<li>Broken links in documentation</li>
+<li>Missing documentation files</li>
+</ul>
+<h4 id="diagnostic-steps_7">Diagnostic Steps<a class="headerlink" href="#diagnostic-steps_7" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Test documentation generation</span>
+python<span class="w"> </span>-m<span class="w"> </span>tools.doc_generator.cli<span class="w"> </span>--generate
+
+<span class="c1"># Check for broken links</span>
+python<span class="w"> </span>-m<span class="w"> </span>tools.doc_generator.cli<span class="w"> </span>--check-links
+
+<span class="c1"># Validate documentation structure</span>
+find<span class="w"> </span>docs/<span class="w"> </span>-name<span class="w"> </span><span class="s2">&quot;*.md&quot;</span><span class="w"> </span>-exec<span class="w"> </span>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span>
+<span class="s2">import sys</span>
+<span class="s2">try:</span>
+<span class="s2">    with open(sys.argv[1], &#39;r&#39;) as f:</span>
+<span class="s2">        content = f.read()</span>
+<span class="s2">    print(f&#39;✓ {sys.argv[1]}&#39;)</span>
+<span class="s2">except Exception as e:</span>
+<span class="s2">    print(f&#39;✗ {sys.argv[1]}: {e}&#39;)</span>
+<span class="s2">&quot;</span><span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span>
+</code></pre></div>
+<h4 id="solutions_6">Solutions<a class="headerlink" href="#solutions_6" title="Permanent link">&para;</a></h4>
+<p><strong>Documentation Generation Fails</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check for missing source files</span>
+ls<span class="w"> </span>-la<span class="w"> </span>docs/
+
+<span class="c1"># Install documentation dependencies</span>
+pip<span class="w"> </span>install<span class="w"> </span>mkdocs<span class="w"> </span>mkdocs-material
+
+<span class="c1"># Generate with verbose output</span>
+python<span class="w"> </span>-m<span class="w"> </span>tools.doc_generator.cli<span class="w"> </span>--generate<span class="w"> </span>--verbose
+</code></pre></div>
+<p><strong>Broken Links</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Fix broken internal links</span>
+python<span class="w"> </span>-m<span class="w"> </span>tools.doc_generator.cli<span class="w"> </span>--fix-links
+
+<span class="c1"># Update external links</span>
+<span class="c1"># Manually review and update broken external links</span>
+
+<span class="c1"># Exclude problematic links</span>
+<span class="c1"># Add to .linkcheck-ignore file</span>
+</code></pre></div>
+<h3 id="9-monitoring-and-alerting-issues">9. Monitoring and Alerting Issues<a class="headerlink" href="#9-monitoring-and-alerting-issues" title="Permanent link">&para;</a></h3>
+<h4 id="symptoms_8">Symptoms<a class="headerlink" href="#symptoms_8" title="Permanent link">&para;</a></h4>
+<ul>
+<li>No alerts being sent</li>
+<li>Monitoring data missing</li>
+<li>Dashboard not updating</li>
+</ul>
+<h4 id="diagnostic-steps_8">Diagnostic Steps<a class="headerlink" href="#diagnostic-steps_8" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Test alert system</span>
+python<span class="w"> </span>-m<span class="w"> </span>tools.health_checker.cli<span class="w"> </span>--test-alerts
+
+<span class="c1"># Check monitoring configuration</span>
+cat<span class="w"> </span>/etc/project-health/production.yaml<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-A<span class="w"> </span><span class="m">10</span><span class="w"> </span>monitoring
+
+<span class="c1"># Test notification channels</span>
+python<span class="w"> </span>-m<span class="w"> </span>tools.health_checker.cli<span class="w"> </span>--test-notifications
+
+<span class="c1"># Check dashboard logs</span>
+tail<span class="w"> </span>-f<span class="w"> </span>/var/log/project-health/dashboard.log
+</code></pre></div>
+<h4 id="solutions_7">Solutions<a class="headerlink" href="#solutions_7" title="Permanent link">&para;</a></h4>
+<p><strong>Alerts Not Sending</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check email configuration</span>
+python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span>
+<span class="s2">import smtplib</span>
+<span class="s2">try:</span>
+<span class="s2">    server = smtplib.SMTP(&#39;smtp.company.com&#39;, 587)</span>
+<span class="s2">    server.starttls()</span>
+<span class="s2">    print(&#39;SMTP connection successful&#39;)</span>
+<span class="s2">    server.quit()</span>
+<span class="s2">except Exception as e:</span>
+<span class="s2">    print(f&#39;SMTP error: {e}&#39;)</span>
+<span class="s2">&quot;</span>
+
+<span class="c1"># Check Slack webhook</span>
+curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>-H<span class="w"> </span><span class="s1">&#39;Content-type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--data<span class="w"> </span><span class="s1">&#39;{&quot;text&quot;:&quot;Test message&quot;}&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>https://hooks.slack.com/services/YOUR/WEBHOOK/URL
+</code></pre></div>
+<p><strong>Monitoring Data Missing</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check data collection</span>
+python<span class="w"> </span>-m<span class="w"> </span>tools.health_checker.cli<span class="w"> </span>--collect-metrics
+
+<span class="c1"># Verify database writes</span>
+sqlite3<span class="w"> </span>/var/lib/project-health/health.db<span class="w"> </span><span class="s2">&quot;SELECT COUNT(*) FROM health_reports WHERE date(timestamp) = date(&#39;now&#39;);&quot;</span>
+
+<span class="c1"># Check file permissions</span>
+ls<span class="w"> </span>-la<span class="w"> </span>/var/lib/project-health/
+</code></pre></div>
+<h2 id="advanced-troubleshooting">Advanced Troubleshooting<a class="headerlink" href="#advanced-troubleshooting" title="Permanent link">&para;</a></h2>
+<h3 id="performance-profiling">Performance Profiling<a class="headerlink" href="#performance-profiling" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># CPU profiling</span>
+python<span class="w"> </span>-m<span class="w"> </span>cProfile<span class="w"> </span>-o<span class="w"> </span>profile.stats<span class="w"> </span>-m<span class="w"> </span>tools.health_checker.cli<span class="w"> </span>--full-check
+
+<span class="c1"># Memory profiling</span>
+python<span class="w"> </span>-m<span class="w"> </span>memory_profiler<span class="w"> </span>-m<span class="w"> </span>tools.health_checker.cli<span class="w"> </span>--full-check
+
+<span class="c1"># I/O profiling</span>
+strace<span class="w"> </span>-e<span class="w"> </span><span class="nv">trace</span><span class="o">=</span>file<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>tools.health_checker.cli<span class="w"> </span>--full-check
+</code></pre></div>
+<h3 id="log-analysis">Log Analysis<a class="headerlink" href="#log-analysis" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Search for specific errors</span>
+grep<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;ERROR&quot;</span><span class="w"> </span>/var/log/project-health/<span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-20
+
+<span class="c1"># Analyze error patterns</span>
+awk<span class="w"> </span><span class="s1">&#39;/ERROR/ {print $1, $2, $NF}&#39;</span><span class="w"> </span>/var/log/project-health/*.log<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span><span class="p">|</span><span class="w"> </span>uniq<span class="w"> </span>-c
+
+<span class="c1"># Generate log summary</span>
+python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span>
+<span class="s2">import re</span>
+<span class="s2">from collections import Counter</span>
+
+<span class="s2">errors = Counter()</span>
+<span class="s2">with open(&#39;/var/log/project-health/health.log&#39;, &#39;r&#39;) as f:</span>
+<span class="s2">    for line in f:</span>
+<span class="s2">        if &#39;ERROR&#39; in line:</span>
+<span class="s2">            # Extract error type</span>
+<span class="s2">            match = re.search(r&#39;ERROR.*?(\w+Error|\w+Exception)&#39;, line)</span>
+<span class="s2">            if match:</span>
+<span class="s2">                errors[match.group(1)] += 1</span>
+
+<span class="s2">print(&#39;Top errors:&#39;)</span>
+<span class="s2">for error, count in errors.most_common(5):</span>
+<span class="s2">    print(f&#39;  {error}: {count}&#39;)</span>
+<span class="s2">&quot;</span>
+</code></pre></div>
+<h3 id="system-resource-analysis">System Resource Analysis<a class="headerlink" href="#system-resource-analysis" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Comprehensive system check</span>
+python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span>
+<span class="s2">import psutil</span>
+<span class="s2">import json</span>
+
+<span class="s2">system_info = {</span>
+<span class="s2">    &#39;cpu_percent&#39;: psutil.cpu_percent(interval=1),</span>
+<span class="s2">    &#39;memory&#39;: dict(psutil.virtual_memory()._asdict()),</span>
+<span class="s2">    &#39;disk&#39;: dict(psutil.disk_usage(&#39;/&#39;)._asdict()),</span>
+<span class="s2">    &#39;network&#39;: dict(psutil.net_io_counters()._asdict()),</span>
+<span class="s2">    &#39;processes&#39;: len(psutil.pids())</span>
+<span class="s2">}</span>
+
+<span class="s2">print(json.dumps(system_info, indent=2, default=str))</span>
+<span class="s2">&quot;</span>
+
+<span class="c1"># Check for resource limits</span>
+<span class="nb">ulimit</span><span class="w"> </span>-a
+
+<span class="c1"># Monitor resource usage over time</span>
+sar<span class="w"> </span>-u<span class="w"> </span>-r<span class="w"> </span>-d<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">60</span><span class="w">  </span><span class="c1"># CPU, memory, disk for 60 seconds</span>
+</code></pre></div>
+<h2 id="escalation-procedures">Escalation Procedures<a class="headerlink" href="#escalation-procedures" title="Permanent link">&para;</a></h2>
+<h3 id="level-1-self-service">Level 1: Self-Service<a class="headerlink" href="#level-1-self-service" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Check this troubleshooting guide</li>
+<li>Review recent logs</li>
+<li>Try basic restart procedures</li>
+<li>Check system resources</li>
+</ol>
+<h3 id="level-2-team-support">Level 2: Team Support<a class="headerlink" href="#level-2-team-support" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Contact DevOps team: devops@company.com</li>
+<li>Provide incident details:</li>
+<li>Symptoms observed</li>
+<li>Steps already taken</li>
+<li>Log excerpts</li>
+<li>System information</li>
+</ol>
+<h3 id="level-3-emergency-response">Level 3: Emergency Response<a class="headerlink" href="#level-3-emergency-response" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Call on-call engineer: +1-555-0123</li>
+<li>For critical issues:</li>
+<li>Service completely down</li>
+<li>Data corruption detected</li>
+<li>Security breach suspected</li>
+</ol>
+<h3 id="level-4-vendor-support">Level 4: Vendor Support<a class="headerlink" href="#level-4-vendor-support" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Contact system vendor support</li>
+<li>Escalate to cloud provider if infrastructure issue</li>
+<li>Engage external consultants if needed</li>
+</ol>
+<h2 id="prevention-strategies">Prevention Strategies<a class="headerlink" href="#prevention-strategies" title="Permanent link">&para;</a></h2>
+<h3 id="proactive-monitoring">Proactive Monitoring<a class="headerlink" href="#proactive-monitoring" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Set up comprehensive monitoring</span>
+python<span class="w"> </span>-m<span class="w"> </span>tools.health_checker.cli<span class="w"> </span>--setup-monitoring
+
+<span class="c1"># Configure predictive alerts</span>
+<span class="c1"># Edit monitoring configuration to alert on trends</span>
+</code></pre></div>
+<h3 id="regular-maintenance">Regular Maintenance<a class="headerlink" href="#regular-maintenance" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Schedule regular health checks</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;0 */6 * * * python -m tools.health_checker.cli --full-check&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>crontab<span class="w"> </span>-
+
+<span class="c1"># Automate log rotation</span>
+sudo<span class="w"> </span>logrotate<span class="w"> </span>-f<span class="w"> </span>/etc/logrotate.d/project-health
+
+<span class="c1"># Regular backups</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;0 2 * * * /opt/project-health/scripts/backup.sh&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>crontab<span class="w"> </span>-
+</code></pre></div>
+<h3 id="documentation-updates">Documentation Updates<a class="headerlink" href="#documentation-updates" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Keep troubleshooting guide current</li>
+<li>Document new issues and solutions</li>
+<li>Update contact information regularly</li>
+<li>Review procedures quarterly</li>
+</ul>
+<h2 id="tools-and-utilities">Tools and Utilities<a class="headerlink" href="#tools-and-utilities" title="Permanent link">&para;</a></h2>
+<h3 id="diagnostic-scripts">Diagnostic Scripts<a class="headerlink" href="#diagnostic-scripts" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># System health check</span>
+/opt/project-health/scripts/system-health-check.sh
+
+<span class="c1"># Performance analysis</span>
+/opt/project-health/scripts/performance-analysis.sh
+
+<span class="c1"># Log analyzer</span>
+/opt/project-health/scripts/log-analyzer.py
+
+<span class="c1"># Configuration validator</span>
+python<span class="w"> </span>-m<span class="w"> </span>tools.config_manager.config_cli<span class="w"> </span>validate<span class="w"> </span>--all
+</code></pre></div>
+<h3 id="monitoring-commands">Monitoring Commands<a class="headerlink" href="#monitoring-commands" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Real-time monitoring</span>
+watch<span class="w"> </span>-n<span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="s1">&#39;python -m tools.health_checker.cli --quick-check&#39;</span>
+
+<span class="c1"># Resource monitoring</span>
+htop
+iotop
+nethogs
+
+<span class="c1"># Service monitoring</span>
+systemctl<span class="w"> </span>status<span class="w"> </span>project-health
+journalctl<span class="w"> </span>-u<span class="w"> </span>project-health<span class="w"> </span>-f
+</code></pre></div>
+<h3 id="recovery-tools">Recovery Tools<a class="headerlink" href="#recovery-tools" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Database recovery</span>
+/opt/project-health/scripts/database-recovery.sh
+
+<span class="c1"># Configuration recovery</span>
+/opt/project-health/scripts/config-recovery.sh
+
+<span class="c1"># Service recovery</span>
+/opt/project-health/scripts/service-recovery.sh
+</code></pre></div>
+<h2 id="appendix">Appendix<a class="headerlink" href="#appendix" title="Permanent link">&para;</a></h2>
+<h3 id="error-code-reference">Error Code Reference<a class="headerlink" href="#error-code-reference" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+<th>Severity</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E001</td>
+<td>Configuration syntax error</td>
+<td>High</td>
+<td>Fix YAML syntax</td>
+</tr>
+<tr>
+<td>E002</td>
+<td>Database connection failed</td>
+<td>Critical</td>
+<td>Check database</td>
+</tr>
+<tr>
+<td>E003</td>
+<td>Permission denied</td>
+<td>Medium</td>
+<td>Fix permissions</td>
+</tr>
+<tr>
+<td>E004</td>
+<td>Service timeout</td>
+<td>Medium</td>
+<td>Check performance</td>
+</tr>
+<tr>
+<td>E005</td>
+<td>Memory exhausted</td>
+<td>High</td>
+<td>Restart service</td>
+</tr>
+</tbody>
+</table>
+<h3 id="log-file-locations">Log File Locations<a class="headerlink" href="#log-file-locations" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Log File</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Main Service</td>
+<td><code>/var/log/project-health/health.log</code></td>
+<td>General application logs</td>
+</tr>
+<tr>
+<td>Test Runner</td>
+<td><code>/var/log/project-health/tests.log</code></td>
+<td>Test execution logs</td>
+</tr>
+<tr>
+<td>Documentation</td>
+<td><code>/var/log/project-health/docs.log</code></td>
+<td>Documentation generation</td>
+</tr>
+<tr>
+<td>Configuration</td>
+<td><code>/var/log/project-health/config.log</code></td>
+<td>Configuration changes</td>
+</tr>
+<tr>
+<td>System</td>
+<td><code>/var/log/syslog</code></td>
+<td>System-level messages</td>
+</tr>
+</tbody>
+</table>
+<h3 id="configuration-file-locations">Configuration File Locations<a class="headerlink" href="#configuration-file-locations" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/etc/project-health/production.yaml</code></td>
+<td>Main configuration</td>
+</tr>
+<tr>
+<td><code>/etc/project-health/monitoring.yaml</code></td>
+<td>Monitoring settings</td>
+</tr>
+<tr>
+<td><code>/etc/systemd/system/project-health.service</code></td>
+<td>Service definition</td>
+</tr>
+<tr>
+<td><code>/etc/logrotate.d/project-health</code></td>
+<td>Log rotation config</td>
+</tr>
+</tbody>
+</table>
+<p>This troubleshooting guide should help resolve most common issues with the project health system. For issues not covered here, please contact the support team with detailed information about the problem.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

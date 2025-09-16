@@ -1,0 +1,1632 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="WAN2.2 Video Generation System Documentation">
+      
+      
+      
+        <link rel="canonical" href="https://ramcana.github.io/wan/user/common-issues/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>Common Issues Database - WAN22 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e53b48f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#common-issues-database" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="WAN22 Documentation" class="md-header__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            WAN22 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Common Issues Database
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../WAN22_System_Capabilities_Report/" class="md-tabs__link">
+          
+  
+  
+  System Overview
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../model-orchestrator/requirements/" class="md-tabs__link">
+          
+  
+  
+  Model Orchestrator
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../config/models.toml" class="md-tabs__link">
+          
+  
+  
+  Configuration
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="WAN22 Documentation" class="md-nav__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    WAN22 Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    System Overview
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            System Overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../WAN22_System_Capabilities_Report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Capabilities Report
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Model Orchestrator
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Model Orchestrator
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Requirements
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/tasks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tasks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Configuration
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Configuration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Models Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models_simple.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simple Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#issue-categories" class="md-nav__link">
+    <span class="md-ellipsis">
+      Issue Categories
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Issue Categories">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-related-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧪 Test-Related Issues
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧪 Test-Related Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#issue-tests-fail-after-tool-updates" class="md-nav__link">
+    <span class="md-ellipsis">
+      Issue: Tests Fail After Tool Updates
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#issue-flaky-tests-detected" class="md-nav__link">
+    <span class="md-ellipsis">
+      Issue: Flaky Tests Detected
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#issue-test-performance-degradation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Issue: Test Performance Degradation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚙️ Configuration Issues
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="⚙️ Configuration Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#issue-configuration-conflicts-between-environments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Issue: Configuration Conflicts Between Environments
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#issue-missing-or-invalid-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Issue: Missing or Invalid Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-quality-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      📝 Code Quality Issues
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📝 Code Quality Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#issue-quality-checks-failing-after-standards-update" class="md-nav__link">
+    <span class="md-ellipsis">
+      Issue: Quality Checks Failing After Standards Update
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#issue-documentation-validation-failures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Issue: Documentation Validation Failures
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚀 Performance Issues
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 Performance Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#issue-tool-performance-degradation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Issue: Tool Performance Degradation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#issue-high-memory-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Issue: High Memory Usage
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integration-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔧 Integration Issues
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔧 Integration Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#issue-pre-commit-hooks-failing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Issue: Pre-commit Hooks Failing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#issue-cicd-pipeline-failures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Issue: CI/CD Pipeline Failures
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diagnostic-procedures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagnostic Procedures
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Diagnostic Procedures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#quick-diagnosis-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick Diagnosis Checklist
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-diagnostics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Diagnostics
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prevention-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prevention Strategies
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Prevention Strategies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#proactive-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Proactive Monitoring
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-additional-help" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting Additional Help
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Getting Additional Help">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#self-service-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Self-Service Resources
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#support-escalation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Support Escalation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contributing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="common-issues-database">Common Issues Database<a class="headerlink" href="#common-issues-database" title="Permanent link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>This comprehensive database documents common issues encountered when using the WAN22 project's cleanup and quality improvement tools, along with proven solutions and prevention strategies.</p>
+<h2 id="issue-categories">Issue Categories<a class="headerlink" href="#issue-categories" title="Permanent link">&para;</a></h2>
+<h3 id="test-related-issues">🧪 Test-Related Issues<a class="headerlink" href="#test-related-issues" title="Permanent link">&para;</a></h3>
+<h4 id="issue-tests-fail-after-tool-updates">Issue: Tests Fail After Tool Updates<a class="headerlink" href="#issue-tests-fail-after-tool-updates" title="Permanent link">&para;</a></h4>
+<p><strong>Symptoms</strong>: Previously passing tests now fail after running test auditor or other tools
+<strong>Frequency</strong>: Common
+<strong>Severity</strong>: Medium</p>
+<p><strong>Root Causes</strong>:</p>
+<ul>
+<li>Test fixtures updated to current standards</li>
+<li>Import statements corrected, revealing hidden issues</li>
+<li>Test isolation improved, exposing shared state dependencies</li>
+<li>Test data updated to match current schemas</li>
+</ul>
+<p><strong>Solutions</strong>:</p>
+<ol>
+<li><strong>Review Audit Report</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/test-auditor/cli.py<span class="w"> </span>show-last-report
+</code></pre></div>
+<ol>
+<li><strong>Update Test Fixtures</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/test-auditor/cli.py<span class="w"> </span>fix-fixtures<span class="w"> </span>--interactive
+</code></pre></div>
+<ol>
+<li><strong>Regenerate Test Data</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/test-auditor/cli.py<span class="w"> </span>regenerate-data<span class="w"> </span>--backup
+</code></pre></div>
+<ol>
+<li><strong>Check Breaking Changes</strong>:
+   <div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/test-auditor/cli.py<span class="w"> </span>check-breaking-changes<span class="w"> </span>--since-last-run
+</code></pre></div></li>
+</ol>
+<p><strong>Prevention</strong>:</p>
+<ul>
+<li>Run test auditor with <code>--preview</code> first</li>
+<li>Keep test fixtures up-to-date regularly</li>
+<li>Use proper test isolation from the start</li>
+</ul>
+<hr />
+<h4 id="issue-flaky-tests-detected">Issue: Flaky Tests Detected<a class="headerlink" href="#issue-flaky-tests-detected" title="Permanent link">&para;</a></h4>
+<p><strong>Symptoms</strong>: Tests pass/fail inconsistently, especially in CI/CD
+<strong>Frequency</strong>: Common
+<strong>Severity</strong>: High</p>
+<p><strong>Root Causes</strong>:</p>
+<ul>
+<li>Race conditions in test execution</li>
+<li>Shared state between tests</li>
+<li>External dependencies (network, filesystem)</li>
+<li>Timing-dependent assertions</li>
+<li>Resource contention</li>
+</ul>
+<p><strong>Solutions</strong>:</p>
+<ol>
+<li><strong>Detect Flaky Tests</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/test-quality/cli.py<span class="w"> </span>detect-flaky<span class="w"> </span>--runs<span class="w"> </span><span class="m">10</span><span class="w"> </span>--parallel
+</code></pre></div>
+<ol>
+<li><strong>Analyze Flaky Patterns</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/test-quality/cli.py<span class="w"> </span>analyze-flaky<span class="w"> </span>--test-name<span class="w"> </span>failing_test
+</code></pre></div>
+<ol>
+<li><strong>Fix Common Issues</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Improve test isolation</span>
+python<span class="w"> </span>tools/test-auditor/cli.py<span class="w"> </span>fix-isolation<span class="w"> </span>--test-name<span class="w"> </span>failing_test
+
+<span class="c1"># Add proper cleanup</span>
+python<span class="w"> </span>tools/test-auditor/cli.py<span class="w"> </span>add-cleanup<span class="w"> </span>--test-name<span class="w"> </span>failing_test
+
+<span class="c1"># Adjust timeouts</span>
+python<span class="w"> </span>tools/test-auditor/cli.py<span class="w"> </span>adjust-timeouts<span class="w"> </span>--test-name<span class="w"> </span>failing_test
+</code></pre></div>
+<ol>
+<li><strong>Quarantine Consistently Flaky Tests</strong>:
+   <div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/test-quality/cli.py<span class="w"> </span>quarantine<span class="w"> </span>--test-name<span class="w"> </span>failing_test<span class="w"> </span>--reason<span class="w"> </span><span class="s2">&quot;Investigating race condition&quot;</span>
+</code></pre></div></li>
+</ol>
+<p><strong>Prevention</strong>:</p>
+<ul>
+<li>Use proper test fixtures and cleanup</li>
+<li>Avoid shared state between tests</li>
+<li>Mock external dependencies</li>
+<li>Use deterministic test data</li>
+<li>Implement proper synchronization</li>
+</ul>
+<hr />
+<h4 id="issue-test-performance-degradation">Issue: Test Performance Degradation<a class="headerlink" href="#issue-test-performance-degradation" title="Permanent link">&para;</a></h4>
+<p><strong>Symptoms</strong>: Test suite runs significantly slower than before
+<strong>Frequency</strong>: Occasional
+<strong>Severity</strong>: Medium</p>
+<p><strong>Root Causes</strong>:</p>
+<ul>
+<li>Increased test coverage without optimization</li>
+<li>New tests with expensive operations</li>
+<li>Resource leaks in test fixtures</li>
+<li>Inefficient test data generation</li>
+<li>Lack of test parallelization</li>
+</ul>
+<p><strong>Solutions</strong>:</p>
+<ol>
+<li><strong>Profile Test Performance</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/test-quality/cli.py<span class="w"> </span>profile-performance<span class="w"> </span>--detailed
+</code></pre></div>
+<ol>
+<li><strong>Identify Slow Tests</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/test-quality/cli.py<span class="w"> </span>find-slow<span class="w"> </span>--threshold<span class="w"> </span>10s
+</code></pre></div>
+<ol>
+<li><strong>Optimize Slow Tests</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/test-quality/cli.py<span class="w"> </span>optimize-slow<span class="w"> </span>--auto-fix
+</code></pre></div>
+<ol>
+<li><strong>Enable Parallel Execution</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/test-runner/cli.py<span class="w"> </span>enable-parallel<span class="w"> </span>--workers<span class="w"> </span><span class="m">4</span>
+</code></pre></div>
+<ol>
+<li><strong>Use Test Caching</strong>:
+   <div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/test-runner/cli.py<span class="w"> </span>enable-cache<span class="w"> </span>--cache-expensive-fixtures
+</code></pre></div></li>
+</ol>
+<p><strong>Prevention</strong>:</p>
+<ul>
+<li>Monitor test performance regularly</li>
+<li>Set performance budgets for tests</li>
+<li>Use efficient test data factories</li>
+<li>Implement proper test parallelization</li>
+</ul>
+<hr />
+<h3 id="configuration-issues">⚙️ Configuration Issues<a class="headerlink" href="#configuration-issues" title="Permanent link">&para;</a></h3>
+<h4 id="issue-configuration-conflicts-between-environments">Issue: Configuration Conflicts Between Environments<a class="headerlink" href="#issue-configuration-conflicts-between-environments" title="Permanent link">&para;</a></h4>
+<p><strong>Symptoms</strong>: Application behaves differently across development, staging, and production
+<strong>Frequency</strong>: Common
+<strong>Severity</strong>: High</p>
+<p><strong>Root Causes</strong>:</p>
+<ul>
+<li>Inconsistent configuration values</li>
+<li>Missing environment-specific overrides</li>
+<li>Configuration drift over time</li>
+<li>Manual configuration changes</li>
+</ul>
+<p><strong>Solutions</strong>:</p>
+<ol>
+<li><strong>Detect Configuration Conflicts</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/config-manager/cli.py<span class="w"> </span>detect-conflicts<span class="w"> </span>--all-environments
+</code></pre></div>
+<ol>
+<li><strong>Analyze Configuration Drift</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/config-manager/cli.py<span class="w"> </span>analyze-drift<span class="w"> </span>--baseline<span class="w"> </span>production
+</code></pre></div>
+<ol>
+<li><strong>Resolve Conflicts</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/config-manager/cli.py<span class="w"> </span>resolve-conflicts<span class="w"> </span>--interactive
+</code></pre></div>
+<ol>
+<li><strong>Validate Consistency</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/config-manager/cli.py<span class="w"> </span>validate-consistency<span class="w"> </span>--fix-minor
+</code></pre></div>
+<ol>
+<li><strong>Sync Environments</strong>:
+   <div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/config-manager/cli.py<span class="w"> </span>sync-environments<span class="w"> </span>--dry-run
+</code></pre></div></li>
+</ol>
+<p><strong>Prevention</strong>:</p>
+<ul>
+<li>Use unified configuration management</li>
+<li>Implement configuration validation</li>
+<li>Monitor configuration changes</li>
+<li>Use infrastructure as code</li>
+</ul>
+<hr />
+<h4 id="issue-missing-or-invalid-configuration">Issue: Missing or Invalid Configuration<a class="headerlink" href="#issue-missing-or-invalid-configuration" title="Permanent link">&para;</a></h4>
+<p><strong>Symptoms</strong>: Tools report missing configuration or validation errors
+<strong>Frequency</strong>: Common
+<strong>Severity</strong>: Medium</p>
+<p><strong>Root Causes</strong>:</p>
+<ul>
+<li>Incomplete configuration migration</li>
+<li>New configuration requirements</li>
+<li>Invalid configuration values</li>
+<li>Missing environment variables</li>
+</ul>
+<p><strong>Solutions</strong>:</p>
+<ol>
+<li><strong>Validate Configuration Completeness</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/config-manager/cli.py<span class="w"> </span>validate-completeness<span class="w"> </span>--detailed
+</code></pre></div>
+<ol>
+<li><strong>Generate Missing Configuration</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/config-manager/cli.py<span class="w"> </span>generate-missing<span class="w"> </span>--use-defaults
+</code></pre></div>
+<ol>
+<li><strong>Fix Invalid Values</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/config-manager/cli.py<span class="w"> </span>validate<span class="w"> </span>--fix-invalid
+</code></pre></div>
+<ol>
+<li><strong>Copy from Template</strong>:
+   <div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/config-manager/cli.py<span class="w"> </span>copy-template<span class="w"> </span>--environment<span class="w"> </span>development
+</code></pre></div></li>
+</ol>
+<p><strong>Prevention</strong>:</p>
+<ul>
+<li>Use configuration schemas</li>
+<li>Implement validation in CI/CD</li>
+<li>Document configuration requirements</li>
+<li>Use configuration templates</li>
+</ul>
+<hr />
+<h3 id="code-quality-issues">📝 Code Quality Issues<a class="headerlink" href="#code-quality-issues" title="Permanent link">&para;</a></h3>
+<h4 id="issue-quality-checks-failing-after-standards-update">Issue: Quality Checks Failing After Standards Update<a class="headerlink" href="#issue-quality-checks-failing-after-standards-update" title="Permanent link">&para;</a></h4>
+<p><strong>Symptoms</strong>: Code that previously passed quality checks now fails
+<strong>Frequency</strong>: Occasional
+<strong>Severity</strong>: Medium</p>
+<p><strong>Root Causes</strong>:</p>
+<ul>
+<li>Updated quality standards</li>
+<li>New rules added to quality checker</li>
+<li>Changed formatting requirements</li>
+<li>Stricter documentation requirements</li>
+</ul>
+<p><strong>Solutions</strong>:</p>
+<ol>
+<li><strong>Analyze Quality Violations</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/code-quality/cli.py<span class="w"> </span>analyze-violations<span class="w"> </span>--detailed
+</code></pre></div>
+<ol>
+<li><strong>Auto-fix Safe Violations</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/code-quality/cli.py<span class="w"> </span>auto-fix<span class="w"> </span>--safe-only<span class="w"> </span>--backup
+</code></pre></div>
+<ol>
+<li><strong>Update Quality Standards</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/code-quality/cli.py<span class="w"> </span>update-standards<span class="w"> </span>--project-specific
+</code></pre></div>
+<ol>
+<li><strong>Add Temporary Exceptions</strong>:
+   <div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/code-quality/cli.py<span class="w"> </span>add-exceptions<span class="w"> </span>--file<span class="w"> </span>legacy_module.py<span class="w"> </span>--reason<span class="w"> </span><span class="s2">&quot;Legacy code migration&quot;</span>
+</code></pre></div></li>
+</ol>
+<p><strong>Prevention</strong>:</p>
+<ul>
+<li>Gradually introduce new standards</li>
+<li>Communicate changes to team</li>
+<li>Provide migration guides</li>
+<li>Use progressive enforcement</li>
+</ul>
+<hr />
+<h4 id="issue-documentation-validation-failures">Issue: Documentation Validation Failures<a class="headerlink" href="#issue-documentation-validation-failures" title="Permanent link">&para;</a></h4>
+<p><strong>Symptoms</strong>: Documentation validation reports broken links, missing content, or format issues
+<strong>Frequency</strong>: Common
+<strong>Severity</strong>: Low</p>
+<p><strong>Root Causes</strong>:</p>
+<ul>
+<li>Broken internal or external links</li>
+<li>Outdated documentation content</li>
+<li>Missing documentation for new features</li>
+<li>Inconsistent formatting</li>
+</ul>
+<p><strong>Solutions</strong>:</p>
+<ol>
+<li><strong>Validate All Documentation</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/doc-generator/cli.py<span class="w"> </span>validate-all<span class="w"> </span>--detailed
+</code></pre></div>
+<ol>
+<li><strong>Fix Broken Links</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/doc-generator/cli.py<span class="w"> </span>fix-links<span class="w"> </span>--auto-fix-internal
+</code></pre></div>
+<ol>
+<li><strong>Update Outdated Content</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/doc-generator/cli.py<span class="w"> </span>update-outdated<span class="w"> </span>--interactive
+</code></pre></div>
+<ol>
+<li><strong>Generate Missing Documentation</strong>:
+   <div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/doc-generator/cli.py<span class="w"> </span>generate-missing<span class="w"> </span>--use-templates
+</code></pre></div></li>
+</ol>
+<p><strong>Prevention</strong>:</p>
+<ul>
+<li>Automate documentation generation</li>
+<li>Use link checking in CI/CD</li>
+<li>Regular documentation reviews</li>
+<li>Keep documentation close to code</li>
+</ul>
+<hr />
+<h3 id="performance-issues">🚀 Performance Issues<a class="headerlink" href="#performance-issues" title="Permanent link">&para;</a></h3>
+<h4 id="issue-tool-performance-degradation">Issue: Tool Performance Degradation<a class="headerlink" href="#issue-tool-performance-degradation" title="Permanent link">&para;</a></h4>
+<p><strong>Symptoms</strong>: Tools run significantly slower than expected
+<strong>Frequency</strong>: Occasional
+<strong>Severity</strong>: Medium</p>
+<p><strong>Root Causes</strong>:</p>
+<ul>
+<li>Large project size growth</li>
+<li>Inefficient tool configuration</li>
+<li>Resource contention</li>
+<li>Lack of caching</li>
+<li>Suboptimal algorithms</li>
+</ul>
+<p><strong>Solutions</strong>:</p>
+<ol>
+<li><strong>Profile Tool Performance</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/unified-cli/cli.py<span class="w"> </span>profile-tools<span class="w"> </span>--detailed
+</code></pre></div>
+<ol>
+<li><strong>Optimize Tool Configuration</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/unified-cli/cli.py<span class="w"> </span>optimize-config<span class="w"> </span>--performance-focused
+</code></pre></div>
+<ol>
+<li><strong>Enable Caching</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/unified-cli/cli.py<span class="w"> </span>enable-caching<span class="w"> </span>--aggressive
+</code></pre></div>
+<ol>
+<li><strong>Reduce Scope</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/unified-cli/cli.py<span class="w"> </span>reduce-scope<span class="w"> </span>--exclude-large-files
+</code></pre></div>
+<ol>
+<li><strong>Increase Parallelization</strong>:
+   <div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/unified-cli/cli.py<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>execution.parallel_workers<span class="w"> </span><span class="m">8</span>
+</code></pre></div></li>
+</ol>
+<p><strong>Prevention</strong>:</p>
+<ul>
+<li>Monitor tool performance metrics</li>
+<li>Set performance budgets</li>
+<li>Regular performance testing</li>
+<li>Optimize tool algorithms</li>
+</ul>
+<hr />
+<h4 id="issue-high-memory-usage">Issue: High Memory Usage<a class="headerlink" href="#issue-high-memory-usage" title="Permanent link">&para;</a></h4>
+<p><strong>Symptoms</strong>: Tools consume excessive memory, causing system slowdown
+<strong>Frequency</strong>: Occasional
+<strong>Severity</strong>: High</p>
+<p><strong>Root Causes</strong>:</p>
+<ul>
+<li>Large file processing</li>
+<li>Memory leaks in tools</li>
+<li>Inefficient data structures</li>
+<li>Lack of streaming processing</li>
+</ul>
+<p><strong>Solutions</strong>:</p>
+<ol>
+<li><strong>Monitor Resource Usage</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/health-checker/cli.py<span class="w"> </span>monitor-resources<span class="w"> </span>--memory-focus
+</code></pre></div>
+<ol>
+<li><strong>Enable Streaming Mode</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/unified-cli/cli.py<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>processing.streaming_mode<span class="w"> </span><span class="nb">true</span>
+</code></pre></div>
+<ol>
+<li><strong>Limit Memory Usage</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/unified-cli/cli.py<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>resources.max_memory_mb<span class="w"> </span><span class="m">2048</span>
+</code></pre></div>
+<ol>
+<li><strong>Process Files in Batches</strong>:
+   <div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/unified-cli/cli.py<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>processing.batch_size<span class="w"> </span><span class="m">100</span>
+</code></pre></div></li>
+</ol>
+<p><strong>Prevention</strong>:</p>
+<ul>
+<li>Monitor memory usage</li>
+<li>Use streaming processing</li>
+<li>Implement memory limits</li>
+<li>Regular memory profiling</li>
+</ul>
+<hr />
+<h3 id="integration-issues">🔧 Integration Issues<a class="headerlink" href="#integration-issues" title="Permanent link">&para;</a></h3>
+<h4 id="issue-pre-commit-hooks-failing">Issue: Pre-commit Hooks Failing<a class="headerlink" href="#issue-pre-commit-hooks-failing" title="Permanent link">&para;</a></h4>
+<p><strong>Symptoms</strong>: Git commits fail due to pre-commit hook errors
+<strong>Frequency</strong>: Common
+<strong>Severity</strong>: Medium</p>
+<p><strong>Root Causes</strong>:</p>
+<ul>
+<li>Tool configuration issues</li>
+<li>Missing dependencies</li>
+<li>Incorrect hook installation</li>
+<li>Tool version mismatches</li>
+</ul>
+<p><strong>Solutions</strong>:</p>
+<ol>
+<li><strong>Reinstall Hooks</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/unified-cli/cli.py<span class="w"> </span>install-hooks<span class="w"> </span>--force
+</code></pre></div>
+<ol>
+<li><strong>Check Hook Configuration</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/unified-cli/cli.py<span class="w"> </span>validate-hooks
+</code></pre></div>
+<ol>
+<li><strong>Update Hook Dependencies</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/unified-cli/cli.py<span class="w"> </span>update-hook-dependencies
+</code></pre></div>
+<ol>
+<li><strong>Run Hooks Manually</strong>:
+   <div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/unified-cli/cli.py<span class="w"> </span>run-hooks<span class="w"> </span>--manual<span class="w"> </span>--verbose
+</code></pre></div></li>
+</ol>
+<p><strong>Prevention</strong>:</p>
+<ul>
+<li>Regular hook maintenance</li>
+<li>Version pin dependencies</li>
+<li>Test hooks in CI/CD</li>
+<li>Document hook requirements</li>
+</ul>
+<hr />
+<h4 id="issue-cicd-pipeline-failures">Issue: CI/CD Pipeline Failures<a class="headerlink" href="#issue-cicd-pipeline-failures" title="Permanent link">&para;</a></h4>
+<p><strong>Symptoms</strong>: Continuous integration fails due to tool errors
+<strong>Frequency</strong>: Occasional
+<strong>Severity</strong>: High</p>
+<p><strong>Root Causes</strong>:</p>
+<ul>
+<li>Environment differences</li>
+<li>Missing CI-specific configuration</li>
+<li>Tool timeout issues</li>
+<li>Resource limitations</li>
+</ul>
+<p><strong>Solutions</strong>:</p>
+<ol>
+<li><strong>Run CI Checks Locally</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/unified-cli/cli.py<span class="w"> </span>ci-check<span class="w"> </span>--simulate-ci
+</code></pre></div>
+<ol>
+<li><strong>Check CI Configuration</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/unified-cli/cli.py<span class="w"> </span>validate-ci-config
+</code></pre></div>
+<ol>
+<li><strong>Adjust CI Timeouts</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/unified-cli/cli.py<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>ci.timeout_minutes<span class="w"> </span><span class="m">30</span>
+</code></pre></div>
+<ol>
+<li><strong>Enable CI-specific Mode</strong>:
+   <div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/unified-cli/cli.py<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>ci.optimized_mode<span class="w"> </span><span class="nb">true</span>
+</code></pre></div></li>
+</ol>
+<p><strong>Prevention</strong>:</p>
+<ul>
+<li>Test CI configuration locally</li>
+<li>Use CI-specific tool settings</li>
+<li>Monitor CI performance</li>
+<li>Implement proper error handling</li>
+</ul>
+<hr />
+<h2 id="diagnostic-procedures">Diagnostic Procedures<a class="headerlink" href="#diagnostic-procedures" title="Permanent link">&para;</a></h2>
+<h3 id="quick-diagnosis-checklist">Quick Diagnosis Checklist<a class="headerlink" href="#quick-diagnosis-checklist" title="Permanent link">&para;</a></h3>
+<p>When encountering issues, follow this checklist:</p>
+<ol>
+<li><strong>Check System Health</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/health-checker/cli.py<span class="w"> </span>--quick
+</code></pre></div>
+<ol>
+<li><strong>Review Recent Logs</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/unified-cli/cli.py<span class="w"> </span>logs<span class="w"> </span>--errors<span class="w"> </span>--last<span class="w"> </span>24h
+</code></pre></div>
+<ol>
+<li><strong>Validate Configuration</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/config-manager/cli.py<span class="w"> </span>validate<span class="w"> </span>--quick
+</code></pre></div>
+<ol>
+<li><strong>Check Tool Status</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/unified-cli/cli.py<span class="w"> </span>status<span class="w"> </span>--all-tools
+</code></pre></div>
+<ol>
+<li><strong>Run Diagnostic Tests</strong>:
+   <div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/unified-cli/cli.py<span class="w"> </span>diagnose<span class="w"> </span>--comprehensive
+</code></pre></div></li>
+</ol>
+<h3 id="advanced-diagnostics">Advanced Diagnostics<a class="headerlink" href="#advanced-diagnostics" title="Permanent link">&para;</a></h3>
+<p>For complex issues:</p>
+<ol>
+<li><strong>Create Support Package</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/unified-cli/cli.py<span class="w"> </span>create-support-package<span class="w"> </span>--include-all
+</code></pre></div>
+<ol>
+<li><strong>Enable Debug Logging</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/unified-cli/cli.py<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>logging.level<span class="w"> </span>DEBUG
+</code></pre></div>
+<ol>
+<li><strong>Run in Safe Mode</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/unified-cli/cli.py<span class="w"> </span>--safe-mode
+</code></pre></div>
+<ol>
+<li><strong>Profile Tool Execution</strong>:
+   <div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/unified-cli/cli.py<span class="w"> </span>profile<span class="w"> </span>--tool-name<span class="w"> </span>test-auditor
+</code></pre></div></li>
+</ol>
+<h2 id="prevention-strategies">Prevention Strategies<a class="headerlink" href="#prevention-strategies" title="Permanent link">&para;</a></h2>
+<h3 id="proactive-monitoring">Proactive Monitoring<a class="headerlink" href="#proactive-monitoring" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Daily Health Checks</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Add to cron or scheduled tasks</span>
+python<span class="w"> </span>tools/health-checker/cli.py<span class="w"> </span>--daily-check
+</code></pre></div>
+<ol>
+<li><strong>Weekly Comprehensive Analysis</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/unified-cli/cli.py<span class="w"> </span>weekly-maintenance
+</code></pre></div>
+<ol>
+<li><strong>Monthly Performance Review</strong>:
+   <div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/quality-monitor/cli.py<span class="w"> </span>monthly-report
+</code></pre></div></li>
+</ol>
+<h3 id="best-practices">Best Practices<a class="headerlink" href="#best-practices" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Regular Updates</strong>: Keep tools and dependencies updated</li>
+<li><strong>Configuration Management</strong>: Use version-controlled configuration</li>
+<li><strong>Testing</strong>: Test tool changes in development first</li>
+<li><strong>Documentation</strong>: Keep troubleshooting documentation current</li>
+<li><strong>Training</strong>: Ensure team knows common issues and solutions</li>
+</ol>
+<h2 id="getting-additional-help">Getting Additional Help<a class="headerlink" href="#getting-additional-help" title="Permanent link">&para;</a></h2>
+<h3 id="self-service-resources">Self-Service Resources<a class="headerlink" href="#self-service-resources" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Interactive Troubleshooting</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/unified-cli/cli.py<span class="w"> </span>troubleshoot
+</code></pre></div>
+<ol>
+<li><strong>FAQ</strong>: <a href="../faq/">Frequently Asked Questions</a></li>
+<li><strong>Video Tutorials</strong>: <a href="../video-tutorials/troubleshooting.md">Troubleshooting Videos</a></li>
+<li><strong>Community Forum</strong>: <a href="community-resources.md">Community Support</a></li>
+</ol>
+<h3 id="support-escalation">Support Escalation<a class="headerlink" href="#support-escalation" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Create Support Package</strong>: Include system info, logs, and configuration</li>
+<li><strong>Provide Detailed Description</strong>: Steps to reproduce, expected vs actual behavior</li>
+<li><strong>Include Context</strong>: Recent changes, environment details, error messages</li>
+<li><strong>Follow Up</strong>: Provide additional information as requested</li>
+</ol>
+<h3 id="contributing">Contributing<a class="headerlink" href="#contributing" title="Permanent link">&para;</a></h3>
+<p>Help improve this database:</p>
+<ol>
+<li><strong>Document New Issues</strong>: Add issues you encounter</li>
+<li><strong>Share Solutions</strong>: Contribute working solutions</li>
+<li><strong>Update Existing Entries</strong>: Improve existing documentation</li>
+<li><strong>Suggest Improvements</strong>: Recommend better diagnostic procedures</li>
+</ol>
+<hr />
+<p><strong>Last Updated</strong>: {current_date}
+<strong>Contributors</strong>: WAN22 Development Team
+<strong>Feedback</strong>: Submit improvements via the feedback system</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

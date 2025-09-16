@@ -1,0 +1,29 @@
+---
+category: reference
+last_updated: '2025-09-15T22:49:59.866508'
+original_path: config_templates\test_env.txt
+tags:
+- configuration
+- api
+- performance
+title: Hugging Face Token for model downloads
+---
+
+# Hugging Face Token for model downloads
+HF_TOKEN=hf_your_token_here
+
+# CUDA Configuration
+CUDA_VISIBLE_DEVICES=0
+PYTORCH_CUDA_ALLOC_CONF=max_split_size_mb:512
+
+# Optional: Additional CUDA settings
+CUDA_LAUNCH_BLOCKING=0
+TORCH_CUDNN_V8_API_ENABLED=1
+
+# Optional: Performance tuning
+OMP_NUM_THREADS=4
+MKL_NUM_THREADS=4
+
+# Optional: Logging
+PYTHONUNBUFFERED=1
+LOG_LEVEL=INFO

@@ -1,0 +1,1179 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="WAN2.2 Video Generation System Documentation">
+      
+      
+      
+        <link rel="canonical" href="https://ramcana.github.io/wan/reference/MODELS_TOML_VALIDATOR_SUMMARY/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>Models.toml Validator Implementation Summary - WAN22 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e53b48f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#modelstoml-validator-implementation-summary" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="WAN22 Documentation" class="md-header__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            WAN22 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Models.toml Validator Implementation Summary
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../WAN22_System_Capabilities_Report/" class="md-tabs__link">
+          
+  
+  
+  System Overview
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../model-orchestrator/requirements/" class="md-tabs__link">
+          
+  
+  
+  Model Orchestrator
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../config/models.toml" class="md-tabs__link">
+          
+  
+  
+  Configuration
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="WAN22 Documentation" class="md-nav__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    WAN22 Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    System Overview
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            System Overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../WAN22_System_Capabilities_Report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Capabilities Report
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Model Orchestrator
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Model Orchestrator
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Requirements
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/tasks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tasks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Configuration
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Configuration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Models Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models_simple.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simple Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation Details
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementation Details">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#core-validator-validate_models_tomlpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Validator (validate_models_toml.py)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Validator (validate_models_toml.py)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-schema-version-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Schema Version Validation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-toml-structure-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. TOML Structure Validation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-duplicate-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Duplicate Detection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-path-safety-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Path Safety Validation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-windows-compatibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Windows Compatibility
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-file-specification-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. File Specification Validation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-model-configuration-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Model Configuration Validation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-suite-test_models_toml_validatorpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Suite (test_models_toml_validator.py)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integration-scripts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration Scripts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration Scripts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#validate_current_modelspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      validate_current_models.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#command-line-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      Command Line Interface
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validation-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validation Results
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Validation Results">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#current-modelstoml-status-passed" class="md-nav__link">
+    <span class="md-ellipsis">
+      Current models.toml Status: ✅ PASSED
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#models-validated" class="md-nav__link">
+    <span class="md-ellipsis">
+      Models Validated
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage Examples
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Validation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verbose-output-with-warnings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verbose Output (with warnings)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validate-custom-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validate Custom File
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-test-suite" class="md-nav__link">
+    <span class="md-ellipsis">
+      Run Test Suite
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validate-current-file-with-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validate Current File with Summary
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Examples
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-with-model-registry" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration with Model Registry
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Considerations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-completion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task Completion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="modelstoml-validator-implementation-summary">Models.toml Validator Implementation Summary<a class="headerlink" href="#modelstoml-validator-implementation-summary" title="Permanent link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>Successfully implemented a comprehensive validator for the <code>models.toml</code> manifest file that checks for schema version compatibility, duplicates, path traversal vulnerabilities, and Windows case sensitivity issues.</p>
+<h2 id="implementation-details">Implementation Details<a class="headerlink" href="#implementation-details" title="Permanent link">&para;</a></h2>
+<h3 id="core-validator-validate_models_tomlpy">Core Validator (<code>validate_models_toml.py</code>)<a class="headerlink" href="#core-validator-validate_models_tomlpy" title="Permanent link">&para;</a></h3>
+<p>The <code>ModelsTomlValidator</code> class provides comprehensive validation with the following checks:</p>
+<h4 id="1-schema-version-validation">1. Schema Version Validation<a class="headerlink" href="#1-schema-version-validation" title="Permanent link">&para;</a></h4>
+<ul>
+<li>✅ Validates <code>schema_version</code> field is present</li>
+<li>✅ Ensures schema version is supported (currently version "1")</li>
+<li>✅ Provides clear error messages for unsupported versions</li>
+</ul>
+<h4 id="2-toml-structure-validation">2. TOML Structure Validation<a class="headerlink" href="#2-toml-structure-validation" title="Permanent link">&para;</a></h4>
+<ul>
+<li>✅ Validates TOML syntax and structure</li>
+<li>✅ Checks for required fields in models and files sections</li>
+<li>✅ Validates data types (strings, integers, lists, dictionaries)</li>
+<li>✅ Ensures model ID format follows pattern: <code>model@version</code></li>
+</ul>
+<h4 id="3-duplicate-detection">3. Duplicate Detection<a class="headerlink" href="#3-duplicate-detection" title="Permanent link">&para;</a></h4>
+<ul>
+<li>✅ Detects duplicate model IDs (though impossible with dict structure)</li>
+<li>✅ Detects duplicate file paths within each model</li>
+<li>✅ Provides clear error messages listing duplicates</li>
+</ul>
+<h4 id="4-path-safety-validation">4. Path Safety Validation<a class="headerlink" href="#4-path-safety-validation" title="Permanent link">&para;</a></h4>
+<ul>
+<li>✅ Detects path traversal attempts (<code>../</code> patterns)</li>
+<li>✅ Prevents absolute paths (<code>/</code> or <code>C:\</code> patterns)</li>
+<li>✅ Validates against Windows reserved names (CON, PRN, AUX, etc.)</li>
+<li>✅ Checks for problematic path endings (spaces, dots)</li>
+</ul>
+<h4 id="5-windows-compatibility">5. Windows Compatibility<a class="headerlink" href="#5-windows-compatibility" title="Permanent link">&para;</a></h4>
+<ul>
+<li>✅ Detects case collisions (paths differing only in case)</li>
+<li>✅ Warns about very long paths (&gt;200 characters)</li>
+<li>✅ Identifies Windows-specific path issues</li>
+</ul>
+<h4 id="6-file-specification-validation">6. File Specification Validation<a class="headerlink" href="#6-file-specification-validation" title="Permanent link">&para;</a></h4>
+<ul>
+<li>✅ Validates SHA256 checksums (64-character hex strings)</li>
+<li>✅ Ensures file sizes are non-negative integers</li>
+<li>✅ Checks for required file fields (path, size, sha256)</li>
+</ul>
+<h4 id="7-model-configuration-validation">7. Model Configuration Validation<a class="headerlink" href="#7-model-configuration-validation" title="Permanent link">&para;</a></h4>
+<ul>
+<li>✅ Validates variants list is non-empty</li>
+<li>✅ Ensures default_variant exists in variants list</li>
+<li>✅ Validates sources.priority is non-empty list</li>
+<li>✅ Checks semantic versioning format</li>
+</ul>
+<h3 id="test-suite-test_models_toml_validatorpy">Test Suite (<code>test_models_toml_validator.py</code>)<a class="headerlink" href="#test-suite-test_models_toml_validatorpy" title="Permanent link">&para;</a></h3>
+<p>Comprehensive test suite with 17 test cases covering:</p>
+<ul>
+<li>✅ Valid manifest validation</li>
+<li>✅ Missing schema version detection</li>
+<li>✅ Unsupported schema version detection</li>
+<li>✅ Invalid model ID format detection</li>
+<li>✅ Duplicate file path detection</li>
+<li>✅ Path traversal vulnerability detection</li>
+<li>✅ Absolute path detection</li>
+<li>✅ Windows reserved name detection</li>
+<li>✅ Case collision detection</li>
+<li>✅ Missing required field detection</li>
+<li>✅ Invalid SHA256 length detection</li>
+<li>✅ Invalid file size detection</li>
+<li>✅ Default variant validation</li>
+<li>✅ Malformed TOML handling</li>
+<li>✅ Nonexistent file handling</li>
+<li>✅ Long path warnings</li>
+<li>✅ Trailing space warnings</li>
+</ul>
+<h3 id="integration-scripts">Integration Scripts<a class="headerlink" href="#integration-scripts" title="Permanent link">&para;</a></h3>
+<h4 id="validate_current_modelspy"><code>validate_current_models.py</code><a class="headerlink" href="#validate_current_modelspy" title="Permanent link">&para;</a></h4>
+<ul>
+<li>✅ Validates the actual <code>config/models.toml</code> file</li>
+<li>✅ Provides detailed validation report</li>
+<li>✅ Lists all validation criteria checked</li>
+</ul>
+<h4 id="command-line-interface">Command Line Interface<a class="headerlink" href="#command-line-interface" title="Permanent link">&para;</a></h4>
+<ul>
+<li>✅ Supports <code>--verbose</code> flag for warnings</li>
+<li>✅ Provides clear success/failure indicators</li>
+<li>✅ Returns appropriate exit codes for automation</li>
+</ul>
+<h2 id="validation-results">Validation Results<a class="headerlink" href="#validation-results" title="Permanent link">&para;</a></h2>
+<h3 id="current-modelstoml-status-passed">Current models.toml Status: ✅ PASSED<a class="headerlink" href="#current-modelstoml-status-passed" title="Permanent link">&para;</a></h3>
+<p>The current <code>config/models.toml</code> file successfully passes all validation checks:</p>
+<ul>
+<li>✅ Schema version 1 (supported)</li>
+<li>✅ No duplicate model IDs or file paths</li>
+<li>✅ No path traversal vulnerabilities</li>
+<li>✅ Windows case sensitivity compatible</li>
+<li>✅ All required fields present and valid</li>
+<li>✅ File paths are safe and properly formatted</li>
+<li>✅ SHA256 checksums are valid 64-character hex strings</li>
+<li>✅ File sizes are non-negative integers</li>
+<li>✅ Model variants and defaults are properly configured</li>
+</ul>
+<h3 id="models-validated">Models Validated<a class="headerlink" href="#models-validated" title="Permanent link">&para;</a></h3>
+<p>The validator successfully processed all three WAN2.2 models:</p>
+<ol>
+<li><strong>t2v-A14B@2.2.0</strong> - Text-to-Video A14B Model</li>
+<li>20 files including sharded UNet components</li>
+<li>Required components: text_encoder, unet, vae</li>
+<li><strong>i2v-A14B@2.2.0</strong> - Image-to-Video A14B Model</li>
+<li>20 files including image encoder and sharded UNet</li>
+<li>Required components: image_encoder, unet, vae</li>
+<li><strong>ti2v-5b@2.2.0</strong> - Text+Image-to-Video 5B Model</li>
+<li>8 files with dual conditioning support</li>
+<li>Required components: text_encoder, image_encoder, unet, vae</li>
+</ol>
+<h2 id="usage-examples">Usage Examples<a class="headerlink" href="#usage-examples" title="Permanent link">&para;</a></h2>
+<h3 id="basic-validation">Basic Validation<a class="headerlink" href="#basic-validation" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>backend/core/model_orchestrator/validate_models_toml.py<span class="w"> </span>config/models.toml
+</code></pre></div>
+<h3 id="verbose-output-with-warnings">Verbose Output (with warnings)<a class="headerlink" href="#verbose-output-with-warnings" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>backend/core/model_orchestrator/validate_models_toml.py<span class="w"> </span>config/models.toml<span class="w"> </span>--verbose
+</code></pre></div>
+<h3 id="validate-custom-file">Validate Custom File<a class="headerlink" href="#validate-custom-file" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>backend/core/model_orchestrator/validate_models_toml.py<span class="w"> </span>/path/to/custom/models.toml
+</code></pre></div>
+<h3 id="run-test-suite">Run Test Suite<a class="headerlink" href="#run-test-suite" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>backend/core/model_orchestrator/test_models_toml_validator.py
+</code></pre></div>
+<h3 id="validate-current-file-with-summary">Validate Current File with Summary<a class="headerlink" href="#validate-current-file-with-summary" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>backend/core/model_orchestrator/validate_current_models.py
+</code></pre></div>
+<h2 id="error-examples">Error Examples<a class="headerlink" href="#error-examples" title="Permanent link">&para;</a></h2>
+<p>The validator catches various issues:</p>
+<div class="highlight"><pre><span></span><code>❌ ERRORS:
+  • Unsupported schema version &#39;999&#39;. Supported versions: 1
+  • Invalid model ID format: invalid-model
+  • Model &#39;invalid-model&#39; default_variant &#39;int8&#39; not in variants list
+  • Model &#39;invalid-model&#39; has duplicate file paths: config.json
+  • Model &#39;invalid-model&#39; has path traversal in: ../../../etc/passwd
+  • Model &#39;invalid-model&#39; uses Windows reserved name in path: CON.json
+  • Model &#39;invalid-model&#39; has case collision between: &#39;Model.json&#39; and &#39;model.json&#39;
+</code></pre></div>
+<h2 id="integration-with-model-registry">Integration with Model Registry<a class="headerlink" href="#integration-with-model-registry" title="Permanent link">&para;</a></h2>
+<p>The validator integrates with the existing <code>ModelRegistry</code> class for additional validation, ensuring consistency between the standalone validator and the registry's built-in validation.</p>
+<h2 id="security-considerations">Security Considerations<a class="headerlink" href="#security-considerations" title="Permanent link">&para;</a></h2>
+<p>The validator specifically addresses security concerns:</p>
+<ul>
+<li><strong>Path Traversal Prevention</strong>: Blocks <code>../</code> patterns that could escape model directories</li>
+<li><strong>Absolute Path Prevention</strong>: Prevents hardcoded absolute paths</li>
+<li><strong>Windows Reserved Names</strong>: Blocks problematic Windows reserved filenames</li>
+<li><strong>Case Sensitivity</strong>: Ensures compatibility across case-insensitive file systems</li>
+</ul>
+<h2 id="task-completion">Task Completion<a class="headerlink" href="#task-completion" title="Permanent link">&para;</a></h2>
+<p>✅ <strong>Task Completed Successfully</strong></p>
+<p>The <code>models.toml</code> validator has been implemented and tested. The current <code>config/models.toml</code> file passes all validation criteria:</p>
+<ul>
+<li>✅ Schema version compatibility (version 1)</li>
+<li>✅ No duplicate model IDs or file paths</li>
+<li>✅ No path traversal vulnerabilities</li>
+<li>✅ Windows case sensitivity compatibility</li>
+<li>✅ All required fields present and valid</li>
+<li>✅ Proper TOML structure and syntax</li>
+</ul>
+<p>The validator is ready for production use and can be integrated into CI/CD pipelines to ensure manifest quality.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

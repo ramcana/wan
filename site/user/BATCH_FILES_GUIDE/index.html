@@ -1,0 +1,1359 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="WAN2.2 Video Generation System Documentation">
+      
+      
+      
+        <link rel="canonical" href="https://ramcana.github.io/wan/user/BATCH_FILES_GUIDE/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>WAN2.2 Batch Files Usage Guide - WAN22 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e53b48f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#wan22-batch-files-usage-guide" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="WAN22 Documentation" class="md-header__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            WAN22 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              WAN2.2 Batch Files Usage Guide
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../WAN22_System_Capabilities_Report/" class="md-tabs__link">
+          
+  
+  
+  System Overview
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../model-orchestrator/requirements/" class="md-tabs__link">
+          
+  
+  
+  Model Orchestrator
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../config/models.toml" class="md-tabs__link">
+          
+  
+  
+  Configuration
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="WAN22 Documentation" class="md-nav__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    WAN22 Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    System Overview
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            System Overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../WAN22_System_Capabilities_Report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Capabilities Report
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Model Orchestrator
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Model Orchestrator
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Requirements
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/tasks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tasks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Configuration
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Configuration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Models Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models_simple.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simple Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      📋 Quick Reference
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#for-end-users-most-common" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚀 For End Users (Most Common)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 For End Users (Most Common)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-installbat-main-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. install.bat - Main Installation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-launch_wan22bat-start-wan22-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. launch_wan22.bat - Start WAN2.2 Application
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-launch_web_uibat-start-web-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. launch_web_ui.bat - Start Web Interface
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-run_first_setupbat-initial-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. run_first_setup.bat - Initial Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#for-system-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔧 For System Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔧 For System Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#5-managebat-system-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. manage.bat - System Management
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#for-developers" class="md-nav__link">
+    <span class="md-ellipsis">
+      🛠️ For Developers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠️ For Developers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#6-prepare_releasebat-package-creation" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. prepare_release.bat - Package Creation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-run_testsbat-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. run_tests.bat - Testing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#typical-usage-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      📍 Typical Usage Flow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📍 Typical Usage Flow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#first-time-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      First Time Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#daily-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Daily Usage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maintenance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Maintenance
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#which-file-should-i-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 Which File Should I Use?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 Which File Should I Use?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#im-a-new-user-and-want-to-install-wan22" class="md-nav__link">
+    <span class="md-ellipsis">
+      I'm a new user and want to install WAN2.2:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ive-already-installed-and-want-to-use-wan22" class="md-nav__link">
+    <span class="md-ellipsis">
+      I've already installed and want to use WAN2.2:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#i-just-finished-installing-and-want-to-configure-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      I just finished installing and want to configure settings:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#somethings-not-working-and-i-need-to-fix-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      Something's not working and I need to fix it:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#im-a-developer-creating-a-release" class="md-nav__link">
+    <span class="md-ellipsis">
+      I'm a developer creating a release:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#im-testing-the-installation-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      I'm testing the installation system:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#file-locations" class="md-nav__link">
+    <span class="md-ellipsis">
+      📂 File Locations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📂 File Locations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#main-directory-local_installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Main Directory (local_installation/)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installation-package-wan22-installation-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation Package (WAN22-Installation-Package/)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scripts-directory-scripts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scripts Directory (scripts/)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#important-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚨 Important Notes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚨 Important Notes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#always-start-with-installbat" class="md-nav__link">
+    <span class="md-ellipsis">
+      Always Start With install.bat
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-full-paths-or-navigate-to-directory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use Full Paths or Navigate to Directory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-for-administrator-rights" class="md-nav__link">
+    <span class="md-ellipsis">
+      Check for Administrator Rights
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#read-the-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      Read the Output
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      🆘 Troubleshooting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🆘 Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#command-not-found-error" class="md-nav__link">
+    <span class="md-ellipsis">
+      "Command not found" error:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installation-fails" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation fails:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#application-wont-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      Application won't start:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="wan22-batch-files-usage-guide">WAN2.2 Batch Files Usage Guide<a class="headerlink" href="#wan22-batch-files-usage-guide" title="Permanent link">&para;</a></h1>
+<p>This guide explains which batch files to use for different purposes in the WAN2.2 local installation system.</p>
+<h2 id="quick-reference">📋 Quick Reference<a class="headerlink" href="#quick-reference" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Batch File</th>
+<th>Purpose</th>
+<th>When to Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>install.bat</code></td>
+<td><strong>Main Installation</strong></td>
+<td>First time setup - installs everything</td>
+</tr>
+<tr>
+<td><code>launch_wan22.bat</code></td>
+<td><strong>Start Application</strong></td>
+<td>Daily use - launches WAN2.2 application</td>
+</tr>
+<tr>
+<td><code>launch_web_ui.bat</code></td>
+<td><strong>Start Web Interface</strong></td>
+<td>Daily use - launches web-based UI</td>
+</tr>
+<tr>
+<td><code>run_first_setup.bat</code></td>
+<td><strong>Initial Configuration</strong></td>
+<td>After installation - configure settings</td>
+</tr>
+<tr>
+<td><code>manage.bat</code></td>
+<td><strong>System Management</strong></td>
+<td>Maintenance - update, repair, uninstall</td>
+</tr>
+<tr>
+<td><code>prepare_release.bat</code></td>
+<td><strong>Package Creation</strong></td>
+<td>Development - create distribution package</td>
+</tr>
+<tr>
+<td><code>run_tests.bat</code></td>
+<td><strong>Testing</strong></td>
+<td>Development - run validation tests</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="for-end-users-most-common">🚀 For End Users (Most Common)<a class="headerlink" href="#for-end-users-most-common" title="Permanent link">&para;</a></h2>
+<h3 id="1-installbat-main-installation">1. <strong><code>install.bat</code></strong> - Main Installation<a class="headerlink" href="#1-installbat-main-installation" title="Permanent link">&para;</a></h3>
+<p><strong>Use this FIRST</strong> - This is your starting point!</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Basic installation</span>
+install.bat
+
+<span class="c1"># Silent installation (no prompts)</span>
+install.bat<span class="w"> </span>--silent
+
+<span class="c1"># Installation without downloading models (faster)</span>
+install.bat<span class="w"> </span>--skip-models
+
+<span class="c1"># Test installation without making changes</span>
+install.bat<span class="w"> </span>--dry-run
+</code></pre></div>
+<p><strong>What it does:</strong></p>
+<ul>
+<li>Detects your hardware automatically</li>
+<li>Installs Python and dependencies</li>
+<li>Downloads WAN2.2 models</li>
+<li>Creates optimized configuration</li>
+<li>Sets up desktop shortcuts</li>
+<li>Validates everything works</li>
+</ul>
+<h3 id="2-launch_wan22bat-start-wan22-application">2. <strong><code>launch_wan22.bat</code></strong> - Start WAN2.2 Application<a class="headerlink" href="#2-launch_wan22bat-start-wan22-application" title="Permanent link">&para;</a></h3>
+<p><strong>Use this DAILY</strong> - After installation, use this to run WAN2.2</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Start WAN2.2 application</span>
+launch_wan22.bat
+</code></pre></div>
+<p><strong>What it does:</strong></p>
+<ul>
+<li>Activates the virtual environment</li>
+<li>Starts the WAN2.2 application</li>
+<li>Opens the main interface</li>
+</ul>
+<h3 id="3-launch_web_uibat-start-web-interface">3. <strong><code>launch_web_ui.bat</code></strong> - Start Web Interface<a class="headerlink" href="#3-launch_web_uibat-start-web-interface" title="Permanent link">&para;</a></h3>
+<p><strong>Alternative UI</strong> - Use this for web-based interface</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Start web interface</span>
+launch_web_ui.bat
+</code></pre></div>
+<p><strong>What it does:</strong></p>
+<ul>
+<li>Starts the web server</li>
+<li>Opens browser to WAN2.2 web interface</li>
+<li>Provides web-based controls</li>
+</ul>
+<h3 id="4-run_first_setupbat-initial-configuration">4. <strong><code>run_first_setup.bat</code></strong> - Initial Configuration<a class="headerlink" href="#4-run_first_setupbat-initial-configuration" title="Permanent link">&para;</a></h3>
+<p><strong>Use AFTER installation</strong> - Configure your preferences</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Run first-time setup wizard</span>
+run_first_setup.bat
+</code></pre></div>
+<p><strong>What it does:</strong></p>
+<ul>
+<li>Guides through initial configuration</li>
+<li>Sets up user preferences</li>
+<li>Configures model settings</li>
+<li>Tests basic functionality</li>
+</ul>
+<hr />
+<h2 id="for-system-management">🔧 For System Management<a class="headerlink" href="#for-system-management" title="Permanent link">&para;</a></h2>
+<h3 id="5-managebat-system-management">5. <strong><code>manage.bat</code></strong> - System Management<a class="headerlink" href="#5-managebat-system-management" title="Permanent link">&para;</a></h3>
+<p><strong>Use for maintenance</strong> - Update, repair, or uninstall</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Open management menu</span>
+manage.bat
+
+<span class="c1"># Available options:</span>
+<span class="c1"># - Update WAN2.2</span>
+<span class="c1"># - Repair installation</span>
+<span class="c1"># - Change configuration</span>
+<span class="c1"># - Uninstall</span>
+<span class="c1"># - View logs</span>
+<span class="c1"># - Run diagnostics</span>
+</code></pre></div>
+<p><strong>What it does:</strong></p>
+<ul>
+<li>Provides management interface</li>
+<li>Handles updates and repairs</li>
+<li>Manages configuration changes</li>
+<li>Provides diagnostic tools</li>
+</ul>
+<hr />
+<h2 id="for-developers">🛠️ For Developers<a class="headerlink" href="#for-developers" title="Permanent link">&para;</a></h2>
+<h3 id="6-prepare_releasebat-package-creation">6. <strong><code>prepare_release.bat</code></strong> - Package Creation<a class="headerlink" href="#6-prepare_releasebat-package-creation" title="Permanent link">&para;</a></h3>
+<p><strong>Development only</strong> - Create distribution packages</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Create release package</span>
+prepare_release.bat
+</code></pre></div>
+<p><strong>What it does:</strong></p>
+<ul>
+<li>Creates WAN22-Installation-Package</li>
+<li>Packages all necessary files</li>
+<li>Prepares for distribution</li>
+</ul>
+<h3 id="7-run_testsbat-testing">7. <strong><code>run_tests.bat</code></strong> - Testing<a class="headerlink" href="#7-run_testsbat-testing" title="Permanent link">&para;</a></h3>
+<p><strong>Development only</strong> - Run validation tests</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Run all tests</span>
+run_tests.bat
+
+<span class="c1"># Run specific test</span>
+run_tests.bat<span class="w"> </span>--test<span class="w"> </span>comprehensive
+</code></pre></div>
+<p><strong>What it does:</strong></p>
+<ul>
+<li>Runs comprehensive validation</li>
+<li>Tests all installation components</li>
+<li>Validates hardware compatibility</li>
+</ul>
+<hr />
+<h2 id="typical-usage-flow">📍 Typical Usage Flow<a class="headerlink" href="#typical-usage-flow" title="Permanent link">&para;</a></h2>
+<h3 id="first-time-setup">First Time Setup<a class="headerlink" href="#first-time-setup" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>1. install.bat                 # Install everything
+2. run_first_setup.bat        # Configure preferences
+3. launch_wan22.bat           # Start using WAN2.2
+</code></pre></div>
+<h3 id="daily-usage">Daily Usage<a class="headerlink" href="#daily-usage" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>launch_wan22.bat              # Just start the application
+# OR
+launch_web_ui.bat            # Use web interface
+</code></pre></div>
+<h3 id="maintenance">Maintenance<a class="headerlink" href="#maintenance" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>manage.bat                    # For updates, repairs, etc.
+</code></pre></div>
+<hr />
+<h2 id="which-file-should-i-use">🎯 Which File Should I Use?<a class="headerlink" href="#which-file-should-i-use" title="Permanent link">&para;</a></h2>
+<h3 id="im-a-new-user-and-want-to-install-wan22"><strong>I'm a new user and want to install WAN2.2:</strong><a class="headerlink" href="#im-a-new-user-and-want-to-install-wan22" title="Permanent link">&para;</a></h3>
+<p>→ Use <code>install.bat</code></p>
+<h3 id="ive-already-installed-and-want-to-use-wan22"><strong>I've already installed and want to use WAN2.2:</strong><a class="headerlink" href="#ive-already-installed-and-want-to-use-wan22" title="Permanent link">&para;</a></h3>
+<p>→ Use <code>launch_wan22.bat</code> or <code>launch_web_ui.bat</code></p>
+<h3 id="i-just-finished-installing-and-want-to-configure-settings"><strong>I just finished installing and want to configure settings:</strong><a class="headerlink" href="#i-just-finished-installing-and-want-to-configure-settings" title="Permanent link">&para;</a></h3>
+<p>→ Use <code>run_first_setup.bat</code></p>
+<h3 id="somethings-not-working-and-i-need-to-fix-it"><strong>Something's not working and I need to fix it:</strong><a class="headerlink" href="#somethings-not-working-and-i-need-to-fix-it" title="Permanent link">&para;</a></h3>
+<p>→ Use <code>manage.bat</code></p>
+<h3 id="im-a-developer-creating-a-release"><strong>I'm a developer creating a release:</strong><a class="headerlink" href="#im-a-developer-creating-a-release" title="Permanent link">&para;</a></h3>
+<p>→ Use <code>prepare_release.bat</code></p>
+<h3 id="im-testing-the-installation-system"><strong>I'm testing the installation system:</strong><a class="headerlink" href="#im-testing-the-installation-system" title="Permanent link">&para;</a></h3>
+<p>→ Use <code>run_tests.bat</code></p>
+<hr />
+<h2 id="file-locations">📂 File Locations<a class="headerlink" href="#file-locations" title="Permanent link">&para;</a></h2>
+<h3 id="main-directory-local_installation">Main Directory (<code>local_installation/</code>)<a class="headerlink" href="#main-directory-local_installation" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>install.bat</code> - Main installer</li>
+<li><code>launch_wan22.bat</code> - Application launcher</li>
+<li><code>launch_web_ui.bat</code> - Web UI launcher</li>
+<li><code>run_first_setup.bat</code> - Setup wizard</li>
+<li><code>manage.bat</code> - Management tools</li>
+<li><code>prepare_release.bat</code> - Release preparation</li>
+<li><code>run_tests.bat</code> - Test runner</li>
+</ul>
+<h3 id="installation-package-wan22-installation-package">Installation Package (<code>WAN22-Installation-Package/</code>)<a class="headerlink" href="#installation-package-wan22-installation-package" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>install.bat</code> - Main installer (copy)</li>
+<li><code>launch_wan22.bat</code> - Application launcher (copy)</li>
+<li><code>launch_web_ui.bat</code> - Web UI launcher (copy)</li>
+<li><code>run_first_setup.bat</code> - Setup wizard (copy)</li>
+<li><code>manage.bat</code> - Management tools (copy)</li>
+</ul>
+<h3 id="scripts-directory-scripts">Scripts Directory (<code>scripts/</code>)<a class="headerlink" href="#scripts-directory-scripts" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>install_python.bat</code> - Python installer (internal use)</li>
+</ul>
+<hr />
+<h2 id="important-notes">🚨 Important Notes<a class="headerlink" href="#important-notes" title="Permanent link">&para;</a></h2>
+<h3 id="always-start-with-installbat"><strong>Always Start With <code>install.bat</code></strong><a class="headerlink" href="#always-start-with-installbat" title="Permanent link">&para;</a></h3>
+<p>This is the main entry point. Don't use other files until you've run the installation.</p>
+<h3 id="use-full-paths-or-navigate-to-directory"><strong>Use Full Paths or Navigate to Directory</strong><a class="headerlink" href="#use-full-paths-or-navigate-to-directory" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Good - navigate to directory first</span>
+<span class="nb">cd</span><span class="w"> </span>local_installation
+install.bat
+
+<span class="c1"># Good - use full path</span>
+E:<span class="se">\w</span>an<span class="se">\l</span>ocal_installation<span class="se">\i</span>nstall.bat
+
+<span class="c1"># Bad - might not work</span>
+install.bat
+</code></pre></div>
+<h3 id="check-for-administrator-rights"><strong>Check for Administrator Rights</strong><a class="headerlink" href="#check-for-administrator-rights" title="Permanent link">&para;</a></h3>
+<p>Some operations may require administrator privileges. Run Command Prompt as Administrator if needed.</p>
+<h3 id="read-the-output"><strong>Read the Output</strong><a class="headerlink" href="#read-the-output" title="Permanent link">&para;</a></h3>
+<p>The batch files provide helpful messages. Read them to understand what's happening.</p>
+<hr />
+<h2 id="troubleshooting">🆘 Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<h3 id="command-not-found-error"><strong>"Command not found" error:</strong><a class="headerlink" href="#command-not-found-error" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Make sure you're in the right directory</li>
+<li>Use <code>.\install.bat</code> in PowerShell</li>
+<li>Try running Command Prompt as Administrator</li>
+</ul>
+<h3 id="installation-fails"><strong>Installation fails:</strong><a class="headerlink" href="#installation-fails" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Check <code>logs/installation.log</code> for details</li>
+<li>Try <code>install.bat --verbose</code> for more information</li>
+<li>Use <code>manage.bat</code> to run diagnostics</li>
+</ul>
+<h3 id="application-wont-start"><strong>Application won't start:</strong><a class="headerlink" href="#application-wont-start" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Try <code>manage.bat</code> to repair installation</li>
+<li>Check if installation completed successfully</li>
+<li>Verify all dependencies are installed</li>
+</ul>
+<hr />
+<p><em>This guide covers all batch files in the WAN2.2 local installation system. For more detailed information, see the README.md and GETTING_STARTED.md files.</em></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

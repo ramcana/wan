@@ -1,0 +1,1556 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="WAN2.2 Video Generation System Documentation" name="description"/>
+<link href="https://ramcana.github.io/wan/deployment/system-architecture/" rel="canonical"/>
+<link href="../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.6.20" name="generator"/>
+<title>System Architecture Documentation - WAN22 Documentation</title>
+<link href="../../assets/stylesheets/main.e53b48f4.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="blue" data-md-color-primary="blue" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#system-architecture-documentation">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="WAN22 Documentation" class="md-header__button md-logo" data-md-component="logo" href="../.." title="WAN22 Documentation">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            WAN22 Documentation
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              System Architecture Documentation
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="blue" data-md-color-media="" data-md-color-primary="blue" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="blue" data-md-color-media="" data-md-color-primary="blue" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<a aria-label="Share" class="md-search__icon md-icon" data-clipboard="" data-clipboard-text="" data-md-component="search-share" href="javascript:void(0)" tabindex="-1" title="Share">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
+</a>
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/ramcana/wan" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+</div>
+<div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../..">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../WAN22_System_Capabilities_Report/">
+          
+  
+  
+  System Overview
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../model-orchestrator/requirements/">
+          
+  
+  
+  Model Orchestrator
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../config/models.toml">
+          
+  
+  
+  Configuration
+
+        </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="WAN22 Documentation" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="WAN22 Documentation">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    WAN22 Documentation
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/ramcana/wan" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+</div>
+<div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+<span class="md-ellipsis">
+    Home
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-ellipsis">
+    System Overview
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            System Overview
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../WAN22_System_Capabilities_Report/">
+<span class="md-ellipsis">
+    Capabilities Report
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Model Orchestrator
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            Model Orchestrator
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../model-orchestrator/requirements/">
+<span class="md-ellipsis">
+    Requirements
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../model-orchestrator/tasks/">
+<span class="md-ellipsis">
+    Tasks
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+<span class="md-ellipsis">
+    Configuration
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            Configuration
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../config/models.toml">
+<span class="md-ellipsis">
+    Models Config
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../config/models_simple.toml">
+<span class="md-ellipsis">
+    Simple Config
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#architecture-overview">
+<span class="md-ellipsis">
+      Architecture Overview
+    </span>
+</a>
+<nav aria-label="Architecture Overview" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#high-level-architecture">
+<span class="md-ellipsis">
+      High-Level Architecture
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#component-architecture">
+<span class="md-ellipsis">
+      Component Architecture
+    </span>
+</a>
+<nav aria-label="Component Architecture" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-user-interface-layer">
+<span class="md-ellipsis">
+      1. User Interface Layer
+    </span>
+</a>
+<nav aria-label="1. User Interface Layer" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#command-line-interface-cli">
+<span class="md-ellipsis">
+      Command Line Interface (CLI)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#web-dashboard">
+<span class="md-ellipsis">
+      Web Dashboard
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#rest-api">
+<span class="md-ellipsis">
+      REST API
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-application-layer">
+<span class="md-ellipsis">
+      2. Application Layer
+    </span>
+</a>
+<nav aria-label="2. Application Layer" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#health-checker">
+<span class="md-ellipsis">
+      Health Checker
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#test-orchestrator">
+<span class="md-ellipsis">
+      Test Orchestrator
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#documentation-generator">
+<span class="md-ellipsis">
+      Documentation Generator
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#configuration-manager">
+<span class="md-ellipsis">
+      Configuration Manager
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-core-services">
+<span class="md-ellipsis">
+      3. Core Services
+    </span>
+</a>
+<nav aria-label="3. Core Services" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#test-runner-engine">
+<span class="md-ellipsis">
+      Test Runner Engine
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#coverage-analyzer">
+<span class="md-ellipsis">
+      Coverage Analyzer
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#health-reporter">
+<span class="md-ellipsis">
+      Health Reporter
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#health-notifier">
+<span class="md-ellipsis">
+      Health Notifier
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-data-layer">
+<span class="md-ellipsis">
+      4. Data Layer
+    </span>
+</a>
+<nav aria-label="4. Data Layer" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#sqlite-database">
+<span class="md-ellipsis">
+      SQLite Database
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#file-system-storage">
+<span class="md-ellipsis">
+      File System Storage
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#redis-cache-optional">
+<span class="md-ellipsis">
+      Redis Cache (Optional)
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#data-flow-architecture">
+<span class="md-ellipsis">
+      Data Flow Architecture
+    </span>
+</a>
+<nav aria-label="Data Flow Architecture" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-health-check-execution-flow">
+<span class="md-ellipsis">
+      1. Health Check Execution Flow
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-test-execution-flow">
+<span class="md-ellipsis">
+      2. Test Execution Flow
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-configuration-management-flow">
+<span class="md-ellipsis">
+      3. Configuration Management Flow
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#deployment-architecture">
+<span class="md-ellipsis">
+      Deployment Architecture
+    </span>
+</a>
+<nav aria-label="Deployment Architecture" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#single-server-deployment">
+<span class="md-ellipsis">
+      Single Server Deployment
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#high-availability-deployment">
+<span class="md-ellipsis">
+      High Availability Deployment
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#security-architecture">
+<span class="md-ellipsis">
+      Security Architecture
+    </span>
+</a>
+<nav aria-label="Security Architecture" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#authentication-and-authorization">
+<span class="md-ellipsis">
+      Authentication and Authorization
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#security-controls">
+<span class="md-ellipsis">
+      Security Controls
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#performance-architecture">
+<span class="md-ellipsis">
+      Performance Architecture
+    </span>
+</a>
+<nav aria-label="Performance Architecture" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#caching-strategy">
+<span class="md-ellipsis">
+      Caching Strategy
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#performance-optimization">
+<span class="md-ellipsis">
+      Performance Optimization
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#monitoring-and-observability">
+<span class="md-ellipsis">
+      Monitoring and Observability
+    </span>
+</a>
+<nav aria-label="Monitoring and Observability" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#metrics-collection">
+<span class="md-ellipsis">
+      Metrics Collection
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#key-performance-indicators-kpis">
+<span class="md-ellipsis">
+      Key Performance Indicators (KPIs)
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#disaster-recovery-architecture">
+<span class="md-ellipsis">
+      Disaster Recovery Architecture
+    </span>
+</a>
+<nav aria-label="Disaster Recovery Architecture" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#backup-strategy">
+<span class="md-ellipsis">
+      Backup Strategy
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#recovery-procedures">
+<span class="md-ellipsis">
+      Recovery Procedures
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#integration-architecture">
+<span class="md-ellipsis">
+      Integration Architecture
+    </span>
+</a>
+<nav aria-label="Integration Architecture" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cicd-integration">
+<span class="md-ellipsis">
+      CI/CD Integration
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#external-integrations">
+<span class="md-ellipsis">
+      External Integrations
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#scalability-considerations">
+<span class="md-ellipsis">
+      Scalability Considerations
+    </span>
+</a>
+<nav aria-label="Scalability Considerations" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#horizontal-scaling">
+<span class="md-ellipsis">
+      Horizontal Scaling
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#vertical-scaling">
+<span class="md-ellipsis">
+      Vertical Scaling
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="system-architecture-documentation">System Architecture Documentation<a class="headerlink" href="#system-architecture-documentation" title="Permanent link">¶</a></h1>
+<p>This document provides a comprehensive overview of the project health system architecture, including component relationships, data flow, and operational procedures.</p>
+<h2 id="architecture-overview">Architecture Overview<a class="headerlink" href="#architecture-overview" title="Permanent link">¶</a></h2>
+<p>The project health system is designed as a modular, scalable solution for monitoring and maintaining project health across multiple dimensions: testing, documentation, configuration, and overall system health.</p>
+<h3 id="high-level-architecture">High-Level Architecture<a class="headerlink" href="#high-level-architecture" title="Permanent link">¶</a></h3>
+<div class="mermaid">graph TB
+    subgraph "User Interface Layer"
+        CLI[Command Line Interface]
+        WEB[Web Dashboard]
+        API[REST API]
+    end
+
+    subgraph "Application Layer"
+        HC[Health Checker]
+        TO[Test Orchestrator]
+        DG[Documentation Generator]
+        CM[Configuration Manager]
+    end
+
+    subgraph "Core Services"
+        TR[Test Runner Engine]
+        CA[Coverage Analyzer]
+        DV[Documentation Validator]
+        CV[Configuration Validator]
+        HR[Health Reporter]
+        HN[Health Notifier]
+    end
+
+    subgraph "Data Layer"
+        DB[(SQLite Database)]
+        FS[File System]
+        CACHE[Redis Cache]
+    end
+
+    subgraph "External Integrations"
+        EMAIL[Email Service]
+        SLACK[Slack Integration]
+        GIT[Git Repository]
+        CI[CI/CD Pipeline]
+    end
+
+    CLI --&gt; HC
+    WEB --&gt; API
+    API --&gt; HC
+
+    HC --&gt; TO
+    HC --&gt; DG
+    HC --&gt; CM
+    HC --&gt; HR
+
+    TO --&gt; TR
+    TO --&gt; CA
+    DG --&gt; DV
+    CM --&gt; CV
+    HR --&gt; HN
+
+    TR --&gt; DB
+    CA --&gt; DB
+    DV --&gt; FS
+    CV --&gt; FS
+    HR --&gt; DB
+    HN --&gt; EMAIL
+    HN --&gt; SLACK
+
+    HC --&gt; CACHE
+    API --&gt; CACHE
+
+    TO --&gt; GIT
+    HC --&gt; CI
+</div>
+<h2 id="component-architecture">Component Architecture<a class="headerlink" href="#component-architecture" title="Permanent link">¶</a></h2>
+<h3 id="1-user-interface-layer">1. User Interface Layer<a class="headerlink" href="#1-user-interface-layer" title="Permanent link">¶</a></h3>
+<h4 id="command-line-interface-cli">Command Line Interface (CLI)<a class="headerlink" href="#command-line-interface-cli" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong>Purpose</strong>: Primary interface for system administration and automation</li>
+<li><strong>Location</strong>: <code>tools/health_checker/cli.py</code></li>
+<li><strong>Key Features</strong>:</li>
+<li>Health check execution</li>
+<li>Configuration management</li>
+<li>Report generation</li>
+<li>System maintenance</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># CLI Architecture</span>
+<span class="k">class</span> <span class="nc">HealthCheckerCLI</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">health_checker</span> <span class="o">=</span> <span class="n">ProjectHealthChecker</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">config_manager</span> <span class="o">=</span> <span class="n">ConfigurationManager</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reporter</span> <span class="o">=</span> <span class="n">HealthReporter</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">run_health_check</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">options</span><span class="p">):</span>
+        <span class="c1"># Execute health check with specified options</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">generate_report</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">format</span><span class="p">,</span> <span class="n">output</span><span class="p">):</span>
+        <span class="c1"># Generate and save health report</span>
+        <span class="k">pass</span>
+</code></pre></div>
+<h4 id="web-dashboard">Web Dashboard<a class="headerlink" href="#web-dashboard" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong>Purpose</strong>: Visual interface for monitoring and reporting</li>
+<li><strong>Location</strong>: <code>tools/health_checker/dashboard_server.py</code></li>
+<li><strong>Technology</strong>: Flask/FastAPI with HTML/CSS/JavaScript frontend</li>
+<li><strong>Features</strong>:</li>
+<li>Real-time health metrics</li>
+<li>Interactive charts and graphs</li>
+<li>Historical trend analysis</li>
+<li>Alert management</li>
+</ul>
+<h4 id="rest-api">REST API<a class="headerlink" href="#rest-api" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong>Purpose</strong>: Programmatic access to health system</li>
+<li><strong>Endpoints</strong>:</li>
+<li><code>GET /health</code> - Current health status</li>
+<li><code>GET /health/detailed</code> - Comprehensive health report</li>
+<li><code>POST /health/check</code> - Trigger health check</li>
+<li><code>GET /metrics</code> - Prometheus-compatible metrics</li>
+</ul>
+<h3 id="2-application-layer">2. Application Layer<a class="headerlink" href="#2-application-layer" title="Permanent link">¶</a></h3>
+<h4 id="health-checker">Health Checker<a class="headerlink" href="#health-checker" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong>Purpose</strong>: Central orchestrator for all health monitoring activities</li>
+<li><strong>Location</strong>: <code>tools/health_checker/health_checker.py</code></li>
+<li><strong>Responsibilities</strong>:</li>
+<li>Coordinate health checks across all components</li>
+<li>Aggregate health scores</li>
+<li>Generate recommendations</li>
+<li>Trigger alerts</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">ProjectHealthChecker</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_root</span><span class="p">:</span> <span class="n">Path</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">project_root</span> <span class="o">=</span> <span class="n">project_root</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">checkers</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">TestHealthChecker</span><span class="p">(),</span>
+            <span class="n">DocumentationHealthChecker</span><span class="p">(),</span>
+            <span class="n">ConfigurationHealthChecker</span><span class="p">(),</span>
+            <span class="n">CodeQualityChecker</span><span class="p">()</span>
+        <span class="p">]</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">run_health_check</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">HealthReport</span><span class="p">:</span>
+        <span class="c1"># Execute all health checks and aggregate results</span>
+        <span class="k">pass</span>
+</code></pre></div>
+<h4 id="test-orchestrator">Test Orchestrator<a class="headerlink" href="#test-orchestrator" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong>Purpose</strong>: Manage test execution and analysis</li>
+<li><strong>Location</strong>: <code>tools/test_runner/orchestrator.py</code></li>
+<li><strong>Features</strong>:</li>
+<li>Test categorization and execution</li>
+<li>Parallel test running</li>
+<li>Coverage analysis</li>
+<li>Performance benchmarking</li>
+</ul>
+<h4 id="documentation-generator">Documentation Generator<a class="headerlink" href="#documentation-generator" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong>Purpose</strong>: Consolidate and validate project documentation</li>
+<li><strong>Location</strong>: <code>tools/doc_generator/documentation_generator.py</code></li>
+<li><strong>Features</strong>:</li>
+<li>Documentation consolidation</li>
+<li>Link validation</li>
+<li>Search index generation</li>
+<li>Multi-format output</li>
+</ul>
+<h4 id="configuration-manager">Configuration Manager<a class="headerlink" href="#configuration-manager" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong>Purpose</strong>: Unify and validate system configuration</li>
+<li><strong>Location</strong>: <code>tools/config_manager/config_unifier.py</code></li>
+<li><strong>Features</strong>:</li>
+<li>Configuration migration</li>
+<li>Validation and schema checking</li>
+<li>Environment-specific overrides</li>
+<li>Hot reloading</li>
+</ul>
+<h3 id="3-core-services">3. Core Services<a class="headerlink" href="#3-core-services" title="Permanent link">¶</a></h3>
+<h4 id="test-runner-engine">Test Runner Engine<a class="headerlink" href="#test-runner-engine" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong>Purpose</strong>: Execute tests with advanced features</li>
+<li><strong>Location</strong>: <code>tools/test_runner/runner_engine.py</code></li>
+<li><strong>Capabilities</strong>:</li>
+<li>Timeout handling</li>
+<li>Resource management</li>
+<li>Failure recovery</li>
+<li>Result aggregation</li>
+</ul>
+<h4 id="coverage-analyzer">Coverage Analyzer<a class="headerlink" href="#coverage-analyzer" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong>Purpose</strong>: Analyze code coverage and quality metrics</li>
+<li><strong>Location</strong>: <code>tools/test_runner/coverage_analyzer.py</code></li>
+<li><strong>Metrics</strong>:</li>
+<li>Line coverage</li>
+<li>Branch coverage</li>
+<li>Function coverage</li>
+<li>Complexity analysis</li>
+</ul>
+<h4 id="health-reporter">Health Reporter<a class="headerlink" href="#health-reporter" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong>Purpose</strong>: Generate comprehensive health reports</li>
+<li><strong>Location</strong>: <code>tools/health_checker/health_reporter.py</code></li>
+<li><strong>Output Formats</strong>:</li>
+<li>JSON for API consumption</li>
+<li>HTML for web display</li>
+<li>Markdown for documentation</li>
+<li>PDF for executive reports</li>
+</ul>
+<h4 id="health-notifier">Health Notifier<a class="headerlink" href="#health-notifier" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong>Purpose</strong>: Send alerts and notifications</li>
+<li><strong>Location</strong>: <code>tools/health_checker/health_notifier.py</code></li>
+<li><strong>Channels</strong>:</li>
+<li>Email notifications</li>
+<li>Slack integration</li>
+<li>Webhook callbacks</li>
+<li>SMS alerts (optional)</li>
+</ul>
+<h3 id="4-data-layer">4. Data Layer<a class="headerlink" href="#4-data-layer" title="Permanent link">¶</a></h3>
+<h4 id="sqlite-database">SQLite Database<a class="headerlink" href="#sqlite-database" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong>Purpose</strong>: Persistent storage for health data</li>
+<li><strong>Location</strong>: <code>/var/lib/project-health/health.db</code></li>
+<li><strong>Schema</strong>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1">-- Health Reports Table</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">health_reports</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">AUTOINCREMENT</span><span class="p">,</span>
+<span class="w">    </span><span class="k">timestamp</span><span class="w"> </span><span class="n">DATETIME</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">CURRENT_TIMESTAMP</span><span class="p">,</span>
+<span class="w">    </span><span class="n">overall_score</span><span class="w"> </span><span class="nb">REAL</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">component_scores</span><span class="w"> </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"> </span><span class="c1">-- JSON</span>
+<span class="w">    </span><span class="n">issues</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">,</span><span class="w"> </span><span class="c1">-- JSON</span>
+<span class="w">    </span><span class="n">recommendations</span><span class="w"> </span><span class="nb">TEXT</span><span class="w"> </span><span class="c1">-- JSON</span>
+<span class="p">);</span>
+
+<span class="c1">-- Test Results Table</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">test_results</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">AUTOINCREMENT</span><span class="p">,</span>
+<span class="w">    </span><span class="k">timestamp</span><span class="w"> </span><span class="n">DATETIME</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">CURRENT_TIMESTAMP</span><span class="p">,</span>
+<span class="w">    </span><span class="n">suite_id</span><span class="w"> </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">category</span><span class="w"> </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">total_tests</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">passed_tests</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">failed_tests</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">duration</span><span class="w"> </span><span class="nb">REAL</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">coverage_percent</span><span class="w"> </span><span class="nb">REAL</span>
+<span class="p">);</span>
+
+<span class="c1">-- Configuration Changes Table</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">config_changes</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">AUTOINCREMENT</span><span class="p">,</span>
+<span class="w">    </span><span class="k">timestamp</span><span class="w"> </span><span class="n">DATETIME</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">CURRENT_TIMESTAMP</span><span class="p">,</span>
+<span class="w">    </span><span class="n">file_path</span><span class="w"> </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">change_type</span><span class="w"> </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span><span class="w"> </span><span class="c1">-- 'create', 'update', 'delete'</span>
+<span class="w">    </span><span class="n">old_hash</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">,</span>
+<span class="w">    </span><span class="n">new_hash</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">,</span>
+<span class="w">    </span><span class="n">user_id</span><span class="w"> </span><span class="nb">TEXT</span>
+<span class="p">);</span>
+
+<span class="c1">-- Performance Metrics Table</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">performance_metrics</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="n">AUTOINCREMENT</span><span class="p">,</span>
+<span class="w">    </span><span class="k">timestamp</span><span class="w"> </span><span class="n">DATETIME</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">CURRENT_TIMESTAMP</span><span class="p">,</span>
+<span class="w">    </span><span class="n">metric_name</span><span class="w"> </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">metric_value</span><span class="w"> </span><span class="nb">REAL</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">metric_unit</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">,</span>
+<span class="w">    </span><span class="n">component</span><span class="w"> </span><span class="nb">TEXT</span>
+<span class="p">);</span>
+</code></pre></div>
+<h4 id="file-system-storage">File System Storage<a class="headerlink" href="#file-system-storage" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong>Purpose</strong>: Store configuration files, logs, and temporary data</li>
+<li><strong>Structure</strong>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>/var/lib/project-health/
+├── data/                 # Application data
+├── reports/              # Generated reports
+│   ├── daily/
+│   ├── weekly/
+│   └── monthly/
+├── cache/                # Temporary cache files
+└── backups/              # Local backups
+
+/var/log/project-health/
+├── health.log            # Main application log
+├── tests.log             # Test execution log
+├── docs.log              # Documentation generation log
+├── config.log            # Configuration changes log
+└── performance.log       # Performance metrics log
+
+/etc/project-health/
+├── production.yaml       # Main configuration
+├── monitoring.yaml       # Monitoring settings
+└── secrets.yaml          # Encrypted secrets
+</code></pre></div>
+<h4 id="redis-cache-optional">Redis Cache (Optional)<a class="headerlink" href="#redis-cache-optional" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong>Purpose</strong>: High-performance caching for frequently accessed data</li>
+<li><strong>Use Cases</strong>:</li>
+<li>Health check results caching</li>
+<li>API response caching</li>
+<li>Session storage for web dashboard</li>
+<li>Real-time metrics buffering</li>
+</ul>
+<h2 id="data-flow-architecture">Data Flow Architecture<a class="headerlink" href="#data-flow-architecture" title="Permanent link">¶</a></h2>
+<h3 id="1-health-check-execution-flow">1. Health Check Execution Flow<a class="headerlink" href="#1-health-check-execution-flow" title="Permanent link">¶</a></h3>
+<div class="mermaid">sequenceDiagram
+    participant CLI
+    participant HC as Health Checker
+    participant TC as Test Checker
+    participant DC as Doc Checker
+    participant CC as Config Checker
+    participant DB as Database
+    participant HN as Health Notifier
+
+    CLI-&gt;&gt;HC: run_health_check()
+    HC-&gt;&gt;TC: check_test_health()
+    TC-&gt;&gt;DB: get_recent_test_results()
+    DB--&gt;&gt;TC: test_data
+    TC--&gt;&gt;HC: test_health_score
+
+    HC-&gt;&gt;DC: check_documentation_health()
+    DC-&gt;&gt;DC: validate_links()
+    DC-&gt;&gt;DC: check_coverage()
+    DC--&gt;&gt;HC: doc_health_score
+
+    HC-&gt;&gt;CC: check_configuration_health()
+    CC-&gt;&gt;CC: validate_configs()
+    CC-&gt;&gt;CC: check_consistency()
+    CC--&gt;&gt;HC: config_health_score
+
+    HC-&gt;&gt;HC: calculate_overall_score()
+    HC-&gt;&gt;DB: save_health_report()
+
+    alt score &lt; threshold
+        HC-&gt;&gt;HN: send_alert()
+        HN-&gt;&gt;HN: send_email()
+        HN-&gt;&gt;HN: send_slack()
+    end
+
+    HC--&gt;&gt;CLI: health_report
+</div>
+<h3 id="2-test-execution-flow">2. Test Execution Flow<a class="headerlink" href="#2-test-execution-flow" title="Permanent link">¶</a></h3>
+<div class="mermaid">sequenceDiagram
+    participant TO as Test Orchestrator
+    participant TR as Test Runner
+    participant CA as Coverage Analyzer
+    participant DB as Database
+    participant FS as File System
+
+    TO-&gt;&gt;TO: discover_tests()
+    TO-&gt;&gt;TO: categorize_tests()
+
+    loop for each category
+        TO-&gt;&gt;TR: run_test_category()
+        TR-&gt;&gt;TR: execute_tests()
+        TR-&gt;&gt;CA: analyze_coverage()
+        CA-&gt;&gt;FS: read_source_files()
+        CA--&gt;&gt;TR: coverage_report
+        TR--&gt;&gt;TO: test_results
+    end
+
+    TO-&gt;&gt;TO: aggregate_results()
+    TO-&gt;&gt;DB: save_test_results()
+    TO--&gt;&gt;TO: final_report
+</div>
+<h3 id="3-configuration-management-flow">3. Configuration Management Flow<a class="headerlink" href="#3-configuration-management-flow" title="Permanent link">¶</a></h3>
+<div class="mermaid">sequenceDiagram
+    participant CM as Config Manager
+    participant CV as Config Validator
+    participant FS as File System
+    participant DB as Database
+    participant HN as Health Notifier
+
+    CM-&gt;&gt;FS: scan_config_files()
+    FS--&gt;&gt;CM: config_file_list
+
+    loop for each config file
+        CM-&gt;&gt;FS: read_config_file()
+        FS--&gt;&gt;CM: config_data
+        CM-&gt;&gt;CV: validate_config()
+        CV--&gt;&gt;CM: validation_result
+
+        alt validation failed
+            CM-&gt;&gt;HN: send_config_alert()
+        end
+    end
+
+    CM-&gt;&gt;CM: unify_configurations()
+    CM-&gt;&gt;DB: save_config_state()
+    CM--&gt;&gt;CM: unified_config
+</div>
+<h2 id="deployment-architecture">Deployment Architecture<a class="headerlink" href="#deployment-architecture" title="Permanent link">¶</a></h2>
+<h3 id="single-server-deployment">Single Server Deployment<a class="headerlink" href="#single-server-deployment" title="Permanent link">¶</a></h3>
+<div class="mermaid">graph TB
+    subgraph "Server: project-health-01"
+        subgraph "Application Services"
+            HS[Health Service]
+            WS[Web Server]
+            AS[API Server]
+        end
+
+        subgraph "Data Services"
+            DB[(SQLite DB)]
+            FS[File System]
+            LOGS[Log Files]
+        end
+
+        subgraph "System Services"
+            CRON[Cron Jobs]
+            SYSTEMD[Systemd Services]
+            NGINX[Nginx Proxy]
+        end
+    end
+
+    subgraph "External Services"
+        EMAIL[Email Server]
+        SLACK[Slack API]
+        BACKUP[Backup Storage]
+    end
+
+    HS --&gt; DB
+    HS --&gt; FS
+    WS --&gt; HS
+    AS --&gt; HS
+
+    NGINX --&gt; WS
+    NGINX --&gt; AS
+
+    CRON --&gt; HS
+    SYSTEMD --&gt; HS
+
+    HS --&gt; EMAIL
+    HS --&gt; SLACK
+    FS --&gt; BACKUP
+</div>
+<h3 id="high-availability-deployment">High Availability Deployment<a class="headerlink" href="#high-availability-deployment" title="Permanent link">¶</a></h3>
+<div class="mermaid">graph TB
+    subgraph "Load Balancer"
+        LB[HAProxy/Nginx]
+    end
+
+    subgraph "Application Tier"
+        APP1[Health Service 1]
+        APP2[Health Service 2]
+        APP3[Health Service 3]
+    end
+
+    subgraph "Data Tier"
+        DB1[(Primary DB)]
+        DB2[(Replica DB)]
+        REDIS[(Redis Cluster)]
+        NFS[Shared Storage]
+    end
+
+    subgraph "Monitoring"
+        PROM[Prometheus]
+        GRAF[Grafana]
+        ALERT[AlertManager]
+    end
+
+    LB --&gt; APP1
+    LB --&gt; APP2
+    LB --&gt; APP3
+
+    APP1 --&gt; DB1
+    APP2 --&gt; DB1
+    APP3 --&gt; DB1
+
+    DB1 --&gt; DB2
+
+    APP1 --&gt; REDIS
+    APP2 --&gt; REDIS
+    APP3 --&gt; REDIS
+
+    APP1 --&gt; NFS
+    APP2 --&gt; NFS
+    APP3 --&gt; NFS
+
+    PROM --&gt; APP1
+    PROM --&gt; APP2
+    PROM --&gt; APP3
+
+    GRAF --&gt; PROM
+    ALERT --&gt; PROM
+</div>
+<h2 id="security-architecture">Security Architecture<a class="headerlink" href="#security-architecture" title="Permanent link">¶</a></h2>
+<h3 id="authentication-and-authorization">Authentication and Authorization<a class="headerlink" href="#authentication-and-authorization" title="Permanent link">¶</a></h3>
+<div class="mermaid">graph LR
+    subgraph "Authentication Layer"
+        AUTH[Auth Service]
+        JWT[JWT Tokens]
+        LDAP[LDAP/AD]
+    end
+
+    subgraph "Authorization Layer"
+        RBAC[Role-Based Access]
+        PERMS[Permissions]
+        AUDIT[Audit Log]
+    end
+
+    subgraph "Application Layer"
+        API[API Endpoints]
+        WEB[Web Interface]
+        CLI[CLI Tools]
+    end
+
+    LDAP --&gt; AUTH
+    AUTH --&gt; JWT
+    JWT --&gt; RBAC
+    RBAC --&gt; PERMS
+
+    API --&gt; RBAC
+    WEB --&gt; RBAC
+    CLI --&gt; RBAC
+
+    RBAC --&gt; AUDIT
+</div>
+<h3 id="security-controls">Security Controls<a class="headerlink" href="#security-controls" title="Permanent link">¶</a></h3>
+<ol>
+<li>
+<p><strong>Network Security</strong></p>
+</li>
+<li>
+<p>TLS encryption for all communications</p>
+</li>
+<li>Firewall rules restricting access</li>
+<li>
+<p>VPN access for remote administration</p>
+</li>
+<li>
+<p><strong>Application Security</strong></p>
+</li>
+<li>
+<p>Input validation and sanitization</p>
+</li>
+<li>SQL injection prevention</li>
+<li>XSS protection</li>
+<li>
+<p>CSRF tokens</p>
+</li>
+<li>
+<p><strong>Data Security</strong></p>
+</li>
+<li>Encryption at rest for sensitive data</li>
+<li>Secure key management</li>
+<li>Regular security updates</li>
+<li>Access logging and monitoring</li>
+</ol>
+<h2 id="performance-architecture">Performance Architecture<a class="headerlink" href="#performance-architecture" title="Permanent link">¶</a></h2>
+<h3 id="caching-strategy">Caching Strategy<a class="headerlink" href="#caching-strategy" title="Permanent link">¶</a></h3>
+<div class="mermaid">graph TB
+    subgraph "Cache Layers"
+        L1[Application Cache]
+        L2[Redis Cache]
+        L3[Database Cache]
+    end
+
+    subgraph "Data Sources"
+        DB[(Database)]
+        FS[File System]
+        EXT[External APIs]
+    end
+
+    APP[Application] --&gt; L1
+    L1 --&gt; L2
+    L2 --&gt; L3
+    L3 --&gt; DB
+
+    L2 --&gt; FS
+    L2 --&gt; EXT
+</div>
+<h3 id="performance-optimization">Performance Optimization<a class="headerlink" href="#performance-optimization" title="Permanent link">¶</a></h3>
+<ol>
+<li>
+<p><strong>Database Optimization</strong></p>
+</li>
+<li>
+<p>Proper indexing strategy</p>
+</li>
+<li>Query optimization</li>
+<li>Connection pooling</li>
+<li>
+<p>WAL mode for SQLite</p>
+</li>
+<li>
+<p><strong>Application Optimization</strong></p>
+</li>
+<li>
+<p>Asynchronous processing</p>
+</li>
+<li>Parallel execution</li>
+<li>Memory management</li>
+<li>
+<p>CPU optimization</p>
+</li>
+<li>
+<p><strong>I/O Optimization</strong></p>
+</li>
+<li>Efficient file handling</li>
+<li>Batch operations</li>
+<li>Compression for large data</li>
+<li>SSD storage for performance-critical data</li>
+</ol>
+<h2 id="monitoring-and-observability">Monitoring and Observability<a class="headerlink" href="#monitoring-and-observability" title="Permanent link">¶</a></h2>
+<h3 id="metrics-collection">Metrics Collection<a class="headerlink" href="#metrics-collection" title="Permanent link">¶</a></h3>
+<div class="mermaid">graph TB
+    subgraph "Application Metrics"
+        AM[Health Scores]
+        TM[Test Metrics]
+        PM[Performance Metrics]
+        EM[Error Metrics]
+    end
+
+    subgraph "System Metrics"
+        CPU[CPU Usage]
+        MEM[Memory Usage]
+        DISK[Disk I/O]
+        NET[Network I/O]
+    end
+
+    subgraph "Collection Layer"
+        PROM[Prometheus]
+        LOGS[Log Aggregation]
+        TRACES[Distributed Tracing]
+    end
+
+    subgraph "Visualization"
+        GRAF[Grafana Dashboards]
+        ALERTS[Alert Manager]
+        REPORTS[Health Reports]
+    end
+
+    AM --&gt; PROM
+    TM --&gt; PROM
+    PM --&gt; PROM
+    EM --&gt; PROM
+
+    CPU --&gt; PROM
+    MEM --&gt; PROM
+    DISK --&gt; PROM
+    NET --&gt; PROM
+
+    PROM --&gt; GRAF
+    PROM --&gt; ALERTS
+    LOGS --&gt; REPORTS
+</div>
+<h3 id="key-performance-indicators-kpis">Key Performance Indicators (KPIs)<a class="headerlink" href="#key-performance-indicators-kpis" title="Permanent link">¶</a></h3>
+<ol>
+<li>
+<p><strong>Health Metrics</strong></p>
+</li>
+<li>
+<p>Overall health score (target: &gt;85)</p>
+</li>
+<li>Component health scores</li>
+<li>Health trend analysis</li>
+<li>
+<p>Issue resolution time</p>
+</li>
+<li>
+<p><strong>Performance Metrics</strong></p>
+</li>
+<li>
+<p>Health check execution time (target: &lt;30s)</p>
+</li>
+<li>Test execution time (target: &lt;15min)</li>
+<li>API response time (target: &lt;2s)</li>
+<li>
+<p>System resource utilization</p>
+</li>
+<li>
+<p><strong>Reliability Metrics</strong></p>
+</li>
+<li>System uptime (target: &gt;99.9%)</li>
+<li>Error rate (target: &lt;1%)</li>
+<li>Recovery time (target: &lt;5min)</li>
+<li>Backup success rate (target: 100%)</li>
+</ol>
+<h2 id="disaster-recovery-architecture">Disaster Recovery Architecture<a class="headerlink" href="#disaster-recovery-architecture" title="Permanent link">¶</a></h2>
+<h3 id="backup-strategy">Backup Strategy<a class="headerlink" href="#backup-strategy" title="Permanent link">¶</a></h3>
+<div class="mermaid">graph TB
+    subgraph "Primary Site"
+        APP[Application]
+        DB[(Primary DB)]
+        FS[File System]
+    end
+
+    subgraph "Backup Systems"
+        LOCAL[Local Backups]
+        REMOTE[Remote Backups]
+        CLOUD[Cloud Storage]
+    end
+
+    subgraph "Recovery Site"
+        DR_APP[DR Application]
+        DR_DB[(DR Database)]
+        DR_FS[DR File System]
+    end
+
+    DB --&gt; LOCAL
+    FS --&gt; LOCAL
+
+    LOCAL --&gt; REMOTE
+    LOCAL --&gt; CLOUD
+
+    REMOTE --&gt; DR_DB
+    CLOUD --&gt; DR_FS
+
+    DR_DB --&gt; DR_APP
+    DR_FS --&gt; DR_APP
+</div>
+<h3 id="recovery-procedures">Recovery Procedures<a class="headerlink" href="#recovery-procedures" title="Permanent link">¶</a></h3>
+<ol>
+<li>
+<p><strong>Data Recovery</strong></p>
+</li>
+<li>
+<p>Automated daily backups</p>
+</li>
+<li>Point-in-time recovery capability</li>
+<li>Cross-region backup replication</li>
+<li>
+<p>Backup integrity verification</p>
+</li>
+<li>
+<p><strong>Service Recovery</strong></p>
+</li>
+<li>
+<p>Automated failover procedures</p>
+</li>
+<li>Health check validation</li>
+<li>Service dependency management</li>
+<li>
+<p>Rollback capabilities</p>
+</li>
+<li>
+<p><strong>Business Continuity</strong></p>
+</li>
+<li>Recovery time objective (RTO): 4 hours</li>
+<li>Recovery point objective (RPO): 1 hour</li>
+<li>Communication procedures</li>
+<li>Stakeholder notification</li>
+</ol>
+<h2 id="integration-architecture">Integration Architecture<a class="headerlink" href="#integration-architecture" title="Permanent link">¶</a></h2>
+<h3 id="cicd-integration">CI/CD Integration<a class="headerlink" href="#cicd-integration" title="Permanent link">¶</a></h3>
+<div class="mermaid">graph LR
+    subgraph "Source Control"
+        GIT[Git Repository]
+        PR[Pull Requests]
+    end
+
+    subgraph "CI/CD Pipeline"
+        BUILD[Build Stage]
+        TEST[Test Stage]
+        HEALTH[Health Check]
+        DEPLOY[Deploy Stage]
+    end
+
+    subgraph "Health System"
+        HC[Health Checker]
+        REPORT[Health Report]
+        GATE[Quality Gate]
+    end
+
+    GIT --&gt; BUILD
+    PR --&gt; BUILD
+    BUILD --&gt; TEST
+    TEST --&gt; HEALTH
+    HEALTH --&gt; HC
+    HC --&gt; REPORT
+    REPORT --&gt; GATE
+    GATE --&gt; DEPLOY
+</div>
+<h3 id="external-integrations">External Integrations<a class="headerlink" href="#external-integrations" title="Permanent link">¶</a></h3>
+<ol>
+<li>
+<p><strong>Version Control</strong></p>
+</li>
+<li>
+<p>Git hooks for health checks</p>
+</li>
+<li>Commit message analysis</li>
+<li>Branch protection rules</li>
+<li>
+<p>Automated quality gates</p>
+</li>
+<li>
+<p><strong>Communication</strong></p>
+</li>
+<li>
+<p>Slack notifications</p>
+</li>
+<li>Email alerts</li>
+<li>Webhook integrations</li>
+<li>
+<p>Dashboard embedding</p>
+</li>
+<li>
+<p><strong>Monitoring</strong></p>
+</li>
+<li>Prometheus metrics export</li>
+<li>Grafana dashboard integration</li>
+<li>Log aggregation systems</li>
+<li>APM tool integration</li>
+</ol>
+<h2 id="scalability-considerations">Scalability Considerations<a class="headerlink" href="#scalability-considerations" title="Permanent link">¶</a></h2>
+<h3 id="horizontal-scaling">Horizontal Scaling<a class="headerlink" href="#horizontal-scaling" title="Permanent link">¶</a></h3>
+<ol>
+<li>
+<p><strong>Application Scaling</strong></p>
+</li>
+<li>
+<p>Stateless application design</p>
+</li>
+<li>Load balancer configuration</li>
+<li>Session management</li>
+<li>
+<p>Cache distribution</p>
+</li>
+<li>
+<p><strong>Data Scaling</strong></p>
+</li>
+<li>Database sharding strategies</li>
+<li>Read replica configuration</li>
+<li>Cache clustering</li>
+<li>File system distribution</li>
+</ol>
+<h3 id="vertical-scaling">Vertical Scaling<a class="headerlink" href="#vertical-scaling" title="Permanent link">¶</a></h3>
+<ol>
+<li>
+<p><strong>Resource Optimization</strong></p>
+</li>
+<li>
+<p>CPU and memory tuning</p>
+</li>
+<li>I/O optimization</li>
+<li>Network bandwidth management</li>
+<li>
+<p>Storage performance tuning</p>
+</li>
+<li>
+<p><strong>Capacity Planning</strong></p>
+</li>
+<li>Growth trend analysis</li>
+<li>Resource utilization monitoring</li>
+<li>Performance benchmarking</li>
+<li>Predictive scaling</li>
+</ol>
+<p>This architecture documentation provides a comprehensive view of the project health system design, enabling effective deployment, maintenance, and scaling of the solution.</p>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
+mermaid.initialize({});</script></body>
+</html>

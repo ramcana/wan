@@ -1,0 +1,1076 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="WAN2.2 Video Generation System Documentation" name="description"/>
+<link href="https://ramcana.github.io/wan/user/design/" rel="canonical"/>
+<link href="../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.6.20" name="generator"/>
+<title>Design Document - WAN22 Documentation</title>
+<link href="../../assets/stylesheets/main.e53b48f4.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="blue" data-md-color-primary="blue" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#design-document">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="WAN22 Documentation" class="md-header__button md-logo" data-md-component="logo" href="../.." title="WAN22 Documentation">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            WAN22 Documentation
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Design Document
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="blue" data-md-color-media="" data-md-color-primary="blue" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="blue" data-md-color-media="" data-md-color-primary="blue" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<a aria-label="Share" class="md-search__icon md-icon" data-clipboard="" data-clipboard-text="" data-md-component="search-share" href="javascript:void(0)" tabindex="-1" title="Share">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
+</a>
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/ramcana/wan" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+</div>
+<div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../..">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../WAN22_System_Capabilities_Report/">
+          
+  
+  
+  System Overview
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../model-orchestrator/requirements/">
+          
+  
+  
+  Model Orchestrator
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../config/models.toml">
+          
+  
+  
+  Configuration
+
+        </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="WAN22 Documentation" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="WAN22 Documentation">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    WAN22 Documentation
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/ramcana/wan" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+</div>
+<div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+<span class="md-ellipsis">
+    Home
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-ellipsis">
+    System Overview
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            System Overview
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../WAN22_System_Capabilities_Report/">
+<span class="md-ellipsis">
+    Capabilities Report
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Model Orchestrator
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            Model Orchestrator
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../model-orchestrator/requirements/">
+<span class="md-ellipsis">
+    Requirements
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../model-orchestrator/tasks/">
+<span class="md-ellipsis">
+    Tasks
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+<span class="md-ellipsis">
+    Configuration
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            Configuration
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../config/models.toml">
+<span class="md-ellipsis">
+    Models Config
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../config/models_simple.toml">
+<span class="md-ellipsis">
+    Simple Config
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#overview">
+<span class="md-ellipsis">
+      Overview
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#architecture">
+<span class="md-ellipsis">
+      Architecture
+    </span>
+</a>
+<nav aria-label="Architecture" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#high-level-architecture">
+<span class="md-ellipsis">
+      High-Level Architecture
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#component-integration">
+<span class="md-ellipsis">
+      Component Integration
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#components-and-interfaces">
+<span class="md-ellipsis">
+      Components and Interfaces
+    </span>
+</a>
+<nav aria-label="Components and Interfaces" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-pre-installation-validator">
+<span class="md-ellipsis">
+      1. Pre-Installation Validator
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-reliability-manager">
+<span class="md-ellipsis">
+      2. Reliability Manager
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-auto-recovery-engine">
+<span class="md-ellipsis">
+      3. Auto-Recovery Engine
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-enhanced-error-context-system">
+<span class="md-ellipsis">
+      4. Enhanced Error Context System
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-diagnostic-monitor">
+<span class="md-ellipsis">
+      5. Diagnostic Monitor
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#6-health-reporter">
+<span class="md-ellipsis">
+      6. Health Reporter
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#data-models">
+<span class="md-ellipsis">
+      Data Models
+    </span>
+</a>
+<nav aria-label="Data Models" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#recovery-strategy-registry">
+<span class="md-ellipsis">
+      Recovery Strategy Registry
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#component-reliability-wrapper">
+<span class="md-ellipsis">
+      Component Reliability Wrapper
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#error-handling">
+<span class="md-ellipsis">
+      Error Handling
+    </span>
+</a>
+<nav aria-label="Error Handling" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#enhanced-error-classification">
+<span class="md-ellipsis">
+      Enhanced Error Classification
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#recovery-action-flow">
+<span class="md-ellipsis">
+      Recovery Action Flow
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#timeout-management">
+<span class="md-ellipsis">
+      Timeout Management
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#testing-strategy">
+<span class="md-ellipsis">
+      Testing Strategy
+    </span>
+</a>
+<nav aria-label="Testing Strategy" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#unit-testing">
+<span class="md-ellipsis">
+      Unit Testing
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#integration-testing">
+<span class="md-ellipsis">
+      Integration Testing
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#scenario-testing">
+<span class="md-ellipsis">
+      Scenario Testing
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reliability-testing">
+<span class="md-ellipsis">
+      Reliability Testing
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#implementation-phases">
+<span class="md-ellipsis">
+      Implementation Phases
+    </span>
+</a>
+<nav aria-label="Implementation Phases" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#phase-1-core-reliability-infrastructure">
+<span class="md-ellipsis">
+      Phase 1: Core Reliability Infrastructure
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#phase-2-auto-recovery-engine">
+<span class="md-ellipsis">
+      Phase 2: Auto-Recovery Engine
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#phase-3-advanced-diagnostics">
+<span class="md-ellipsis">
+      Phase 3: Advanced Diagnostics
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#phase-4-reporting-and-analytics">
+<span class="md-ellipsis">
+      Phase 4: Reporting and Analytics
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#performance-considerations">
+<span class="md-ellipsis">
+      Performance Considerations
+    </span>
+</a>
+<nav aria-label="Performance Considerations" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#overhead-minimization">
+<span class="md-ellipsis">
+      Overhead Minimization
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#resource-management">
+<span class="md-ellipsis">
+      Resource Management
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#scalability">
+<span class="md-ellipsis">
+      Scalability
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="design-document">Design Document<a class="headerlink" href="#design-document" title="Permanent link">¶</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">¶</a></h2>
+<p>The Installation Reliability System enhances the existing WAN2.2 installation deployment with advanced reliability mechanisms, intelligent error recovery, and comprehensive diagnostics. This system addresses the specific issues identified in the error log analysis, including missing method implementations, persistent model validation failures, and lack of retry mechanisms.</p>
+<p>The design builds upon the existing error handling infrastructure while adding new components for proactive issue detection, automatic recovery, and enhanced monitoring capabilities.</p>
+<h2 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">¶</a></h2>
+<h3 id="high-level-architecture">High-Level Architecture<a class="headerlink" href="#high-level-architecture" title="Permanent link">¶</a></h3>
+<div class="mermaid">graph TB
+    subgraph "Installation Reliability System"
+        PV[Pre-Installation Validator]
+        RM[Reliability Manager]
+        AR[Auto-Recovery Engine]
+        DM[Diagnostic Monitor]
+        HR[Health Reporter]
+    end
+
+    subgraph "Existing Installation System"
+        EH[Error Handler]
+        MI[Main Installer]
+        DD[Dependency Manager]
+        MD[Model Downloader]
+        CV[Config Validator]
+    end
+
+    subgraph "External Systems"
+        HF[Hugging Face Hub]
+        FS[File System]
+        NET[Network]
+    end
+
+    PV --&gt; RM
+    RM --&gt; AR
+    AR --&gt; DM
+    DM --&gt; HR
+
+    RM --&gt; EH
+    AR --&gt; MI
+    AR --&gt; DD
+    AR --&gt; MD
+    AR --&gt; CV
+
+    MI --&gt; HF
+    MD --&gt; HF
+    DD --&gt; FS
+    CV --&gt; FS
+
+    HR --&gt; FS
+</div>
+<h3 id="component-integration">Component Integration<a class="headerlink" href="#component-integration" title="Permanent link">¶</a></h3>
+<p>The reliability system integrates with existing components through:</p>
+<ol>
+<li><strong>Wrapper Pattern</strong>: Wraps existing components with reliability enhancements</li>
+<li><strong>Observer Pattern</strong>: Monitors component health and performance</li>
+<li><strong>Strategy Pattern</strong>: Provides multiple recovery strategies for different failure types</li>
+<li><strong>Factory Pattern</strong>: Creates appropriate recovery handlers based on error context</li>
+</ol>
+<h2 id="components-and-interfaces">Components and Interfaces<a class="headerlink" href="#components-and-interfaces" title="Permanent link">¶</a></h2>
+<h3 id="1-pre-installation-validator">1. Pre-Installation Validator<a class="headerlink" href="#1-pre-installation-validator" title="Permanent link">¶</a></h3>
+<p><strong>Purpose</strong>: Comprehensive validation before installation begins to prevent predictable failures.</p>
+<p><strong>Interface</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">IPreInstallationValidator</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">validate_system_requirements</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ValidationResult</span><span class="p">:</span> <span class="k">pass</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">validate_network_connectivity</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ValidationResult</span><span class="p">:</span> <span class="k">pass</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">validate_permissions</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ValidationResult</span><span class="p">:</span> <span class="k">pass</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">validate_existing_installation</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ValidationResult</span><span class="p">:</span> <span class="k">pass</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">generate_validation_report</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span> <span class="k">pass</span>
+</code></pre></div>
+<p><strong>Key Features</strong>:</p>
+<ul>
+<li>System resource checks (disk space, memory, CPU)</li>
+<li>Network connectivity validation with timeout testing</li>
+<li>Permission validation for installation directories</li>
+<li>Existing installation conflict detection</li>
+<li>Hardware compatibility verification</li>
+<li>Python environment validation</li>
+</ul>
+<h3 id="2-reliability-manager">2. Reliability Manager<a class="headerlink" href="#2-reliability-manager" title="Permanent link">¶</a></h3>
+<p><strong>Purpose</strong>: Central orchestrator for reliability operations and recovery coordination.</p>
+<p><strong>Interface</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">IReliabilityManager</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">wrap_component</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">component</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">component_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span> <span class="k">pass</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">handle_component_failure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">component</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">error</span><span class="p">:</span> <span class="ne">Exception</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">Dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">RecoveryAction</span><span class="p">:</span> <span class="k">pass</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">get_recovery_strategy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">error_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">component</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">IRecoveryStrategy</span><span class="p">:</span> <span class="k">pass</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">track_reliability_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">component</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">operation</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">success</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">duration</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span> <span class="k">pass</span>
+</code></pre></div>
+<p><strong>Key Features</strong>:</p>
+<ul>
+<li>Component wrapping with reliability enhancements</li>
+<li>Centralized failure handling coordination</li>
+<li>Recovery strategy selection and execution</li>
+<li>Reliability metrics collection and analysis</li>
+<li>Component health monitoring</li>
+</ul>
+<h3 id="3-auto-recovery-engine">3. Auto-Recovery Engine<a class="headerlink" href="#3-auto-recovery-engine" title="Permanent link">¶</a></h3>
+<p><strong>Purpose</strong>: Implements intelligent recovery mechanisms for common failure scenarios.</p>
+<p><strong>Interface</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">IAutoRecoveryEngine</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">recover_missing_methods</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">component</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">method_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span> <span class="k">pass</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">recover_model_validation_failures</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_issues</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span> <span class="k">pass</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">recover_network_failures</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">operation</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">Dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span> <span class="k">pass</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">recover_dependency_failures</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dependency</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">error</span><span class="p">:</span> <span class="ne">Exception</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span> <span class="k">pass</span>
+</code></pre></div>
+<p><strong>Recovery Strategies</strong>:</p>
+<ol>
+<li>
+<p><strong>Missing Method Recovery</strong>:</p>
+</li>
+<li>
+<p>Dynamic method injection for known missing methods</p>
+</li>
+<li>Fallback implementations for common operations</li>
+<li>Version compatibility shims</li>
+<li>
+<p>Alternative class loading</p>
+</li>
+<li>
+<p><strong>Model Validation Recovery</strong>:</p>
+</li>
+<li>
+<p>Automatic model re-download with integrity verification</p>
+</li>
+<li>Model file repair and reconstruction</li>
+<li>Alternative model source selection</li>
+<li>
+<p>Model cache cleanup and rebuild</p>
+</li>
+<li>
+<p><strong>Network Failure Recovery</strong>:</p>
+</li>
+<li>
+<p>Exponential backoff with jitter</p>
+</li>
+<li>Alternative download sources (mirrors, CDNs)</li>
+<li>Resume capability for partial downloads</li>
+<li>
+<p>Proxy and authentication handling</p>
+</li>
+<li>
+<p><strong>Dependency Recovery</strong>:</p>
+</li>
+<li>Alternative package sources (PyPI mirrors)</li>
+<li>Version fallback strategies</li>
+<li>Offline package installation</li>
+<li>Virtual environment recreation</li>
+</ol>
+<h3 id="4-enhanced-error-context-system">4. Enhanced Error Context System<a class="headerlink" href="#4-enhanced-error-context-system" title="Permanent link">¶</a></h3>
+<p><strong>Purpose</strong>: Comprehensive error context tracking with full system state capture.</p>
+<p><strong>Data Models</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">EnhancedErrorContext</span><span class="p">:</span>
+    <span class="n">timestamp</span><span class="p">:</span> <span class="n">datetime</span>
+    <span class="n">phase</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">task</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">component</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">method</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">hardware_profile</span><span class="p">:</span> <span class="n">HardwareProfile</span>
+    <span class="n">system_info</span><span class="p">:</span> <span class="n">SystemInfo</span>
+    <span class="n">environment_vars</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span>
+    <span class="n">stack_trace</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">retry_count</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">previous_errors</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+    <span class="n">recovery_attempts</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+    <span class="n">system_resources</span><span class="p">:</span> <span class="n">ResourceSnapshot</span>
+    <span class="n">network_status</span><span class="p">:</span> <span class="n">NetworkStatus</span>
+
+<span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">SystemInfo</span><span class="p">:</span>
+    <span class="n">os_version</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">python_version</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">available_memory_gb</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">available_disk_gb</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">cpu_usage_percent</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">gpu_info</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">GPUInfo</span><span class="p">]</span>
+    <span class="n">installed_packages</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span>
+
+<span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">ResourceSnapshot</span><span class="p">:</span>
+    <span class="n">memory_usage_mb</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">disk_usage_gb</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">cpu_usage_percent</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">gpu_memory_usage_mb</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">network_bandwidth_mbps</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">open_file_handles</span><span class="p">:</span> <span class="nb">int</span>
+
+<span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">NetworkStatus</span><span class="p">:</span>
+    <span class="n">connectivity</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="n">latency_ms</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">bandwidth_mbps</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">proxy_configured</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="n">dns_resolution</span><span class="p">:</span> <span class="nb">bool</span>
+</code></pre></div>
+<h3 id="5-diagnostic-monitor">5. Diagnostic Monitor<a class="headerlink" href="#5-diagnostic-monitor" title="Permanent link">¶</a></h3>
+<p><strong>Purpose</strong>: Continuous monitoring of installation health and proactive issue detection.</p>
+<p><strong>Interface</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">IDiagnosticMonitor</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">start_monitoring</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">pass</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">stop_monitoring</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">pass</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">check_component_health</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">component</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">HealthStatus</span><span class="p">:</span> <span class="k">pass</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">detect_potential_issues</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">PotentialIssue</span><span class="p">]:</span> <span class="k">pass</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">generate_health_report</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">HealthReport</span><span class="p">:</span> <span class="k">pass</span>
+</code></pre></div>
+<p><strong>Monitoring Capabilities</strong>:</p>
+<ul>
+<li>Real-time resource usage monitoring</li>
+<li>Component response time tracking</li>
+<li>Error pattern detection</li>
+<li>Performance degradation alerts</li>
+<li>Predictive failure analysis</li>
+</ul>
+<h3 id="6-health-reporter">6. Health Reporter<a class="headerlink" href="#6-health-reporter" title="Permanent link">¶</a></h3>
+<p><strong>Purpose</strong>: Comprehensive reporting and analytics for installation reliability.</p>
+<p><strong>Interface</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">IHealthReporter</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">generate_installation_report</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">InstallationReport</span><span class="p">:</span> <span class="k">pass</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">track_error_patterns</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">errors</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">EnhancedErrorContext</span><span class="p">]):</span> <span class="k">pass</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">generate_trend_analysis</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TrendAnalysis</span><span class="p">:</span> <span class="k">pass</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">export_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">format</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span> <span class="k">pass</span>
+</code></pre></div>
+<h2 id="data-models">Data Models<a class="headerlink" href="#data-models" title="Permanent link">¶</a></h2>
+<h3 id="recovery-strategy-registry">Recovery Strategy Registry<a class="headerlink" href="#recovery-strategy-registry" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">RecoveryStrategyRegistry</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Registry of recovery strategies for different error types."""</span>
+
+    <span class="n">strategies</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">"missing_method"</span><span class="p">:</span> <span class="p">[</span>
+            <span class="n">DynamicMethodInjectionStrategy</span><span class="p">(),</span>
+            <span class="n">FallbackImplementationStrategy</span><span class="p">(),</span>
+            <span class="n">AlternativeClassStrategy</span><span class="p">(),</span>
+            <span class="n">ManualInterventionStrategy</span><span class="p">()</span>
+        <span class="p">],</span>
+        <span class="s2">"model_validation"</span><span class="p">:</span> <span class="p">[</span>
+            <span class="n">ModelRedownloadStrategy</span><span class="p">(),</span>
+            <span class="n">ModelRepairStrategy</span><span class="p">(),</span>
+            <span class="n">AlternativeSourceStrategy</span><span class="p">(),</span>
+            <span class="n">SkipModelStrategy</span><span class="p">()</span>
+        <span class="p">],</span>
+        <span class="s2">"network_failure"</span><span class="p">:</span> <span class="p">[</span>
+            <span class="n">RetryWithBackoffStrategy</span><span class="p">(),</span>
+            <span class="n">AlternativeSourceStrategy</span><span class="p">(),</span>
+            <span class="n">ProxyConfigurationStrategy</span><span class="p">(),</span>
+            <span class="n">OfflineModeStrategy</span><span class="p">()</span>
+        <span class="p">],</span>
+        <span class="s2">"dependency_failure"</span><span class="p">:</span> <span class="p">[</span>
+            <span class="n">AlternativeSourceStrategy</span><span class="p">(),</span>
+            <span class="n">VersionFallbackStrategy</span><span class="p">(),</span>
+            <span class="n">OfflineInstallStrategy</span><span class="p">(),</span>
+            <span class="n">VenvRecreationStrategy</span><span class="p">()</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+</code></pre></div>
+<h3 id="component-reliability-wrapper">Component Reliability Wrapper<a class="headerlink" href="#component-reliability-wrapper" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">ReliabilityWrapper</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Wraps components with reliability enhancements."""</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">component</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">reliability_manager</span><span class="p">:</span> <span class="n">IReliabilityManager</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">component</span> <span class="o">=</span> <span class="n">component</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reliability_manager</span> <span class="o">=</span> <span class="n">reliability_manager</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">component_name</span> <span class="o">=</span> <span class="n">component</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span>
+
+    <span class="k">def</span> <span class="fm">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""Intercept method calls and add reliability features."""</span>
+        <span class="n">original_method</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">component</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+
+        <span class="k">def</span> <span class="nf">wrapped_method</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+            <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="n">original_method</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+                <span class="n">duration</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">reliability_manager</span><span class="o">.</span><span class="n">track_reliability_metrics</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">component_name</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="n">duration</span>
+                <span class="p">)</span>
+                <span class="k">return</span> <span class="n">result</span>
+            <span class="k">except</span> <span class="ne">AttributeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="k">if</span> <span class="s2">"has no attribute"</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">):</span>
+                    <span class="c1"># Attempt auto-recovery for missing methods</span>
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">reliability_manager</span><span class="o">.</span><span class="n">recover_missing_method</span><span class="p">(</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">component</span><span class="p">,</span> <span class="n">name</span>
+                    <span class="p">):</span>
+                        <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">component</span><span class="p">,</span> <span class="n">name</span><span class="p">)(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+                <span class="k">raise</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="n">duration</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">reliability_manager</span><span class="o">.</span><span class="n">track_reliability_metrics</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">component_name</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="n">duration</span>
+                <span class="p">)</span>
+
+                <span class="n">context</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="s1">'method'</span><span class="p">:</span> <span class="n">name</span><span class="p">,</span>
+                    <span class="s1">'args'</span><span class="p">:</span> <span class="n">args</span><span class="p">,</span>
+                    <span class="s1">'kwargs'</span><span class="p">:</span> <span class="n">kwargs</span><span class="p">,</span>
+                    <span class="s1">'duration'</span><span class="p">:</span> <span class="n">duration</span>
+                <span class="p">}</span>
+
+                <span class="n">recovery_action</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">reliability_manager</span><span class="o">.</span><span class="n">handle_component_failure</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">component_name</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">context</span>
+                <span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">recovery_action</span> <span class="o">==</span> <span class="n">RecoveryAction</span><span class="o">.</span><span class="n">RETRY</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="n">wrapped_method</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">recovery_action</span> <span class="o">==</span> <span class="n">RecoveryAction</span><span class="o">.</span><span class="n">CONTINUE</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="kc">None</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">raise</span>
+
+        <span class="k">return</span> <span class="n">wrapped_method</span>
+</code></pre></div>
+<h2 id="error-handling">Error Handling<a class="headerlink" href="#error-handling" title="Permanent link">¶</a></h2>
+<h3 id="enhanced-error-classification">Enhanced Error Classification<a class="headerlink" href="#enhanced-error-classification" title="Permanent link">¶</a></h3>
+<p>The system extends the existing error classification with more granular categories:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">EnhancedErrorCategory</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="c1"># Existing categories</span>
+    <span class="n">SYSTEM</span> <span class="o">=</span> <span class="s2">"system"</span>
+    <span class="n">NETWORK</span> <span class="o">=</span> <span class="s2">"network"</span>
+    <span class="n">PERMISSION</span> <span class="o">=</span> <span class="s2">"permission"</span>
+    <span class="n">CONFIGURATION</span> <span class="o">=</span> <span class="s2">"configuration"</span>
+    <span class="n">DEPENDENCY</span> <span class="o">=</span> <span class="s2">"dependency"</span>
+    <span class="n">VALIDATION</span> <span class="o">=</span> <span class="s2">"validation"</span>
+
+    <span class="c1"># New categories</span>
+    <span class="n">MISSING_METHOD</span> <span class="o">=</span> <span class="s2">"missing_method"</span>
+    <span class="n">VERSION_MISMATCH</span> <span class="o">=</span> <span class="s2">"version_mismatch"</span>
+    <span class="n">RESOURCE_EXHAUSTION</span> <span class="o">=</span> <span class="s2">"resource_exhaustion"</span>
+    <span class="n">TIMEOUT</span> <span class="o">=</span> <span class="s2">"timeout"</span>
+    <span class="n">AUTHENTICATION</span> <span class="o">=</span> <span class="s2">"authentication"</span>
+    <span class="n">CORRUPTION</span> <span class="o">=</span> <span class="s2">"corruption"</span>
+</code></pre></div>
+<h3 id="recovery-action-flow">Recovery Action Flow<a class="headerlink" href="#recovery-action-flow" title="Permanent link">¶</a></h3>
+<div class="mermaid">sequenceDiagram
+    participant C as Component
+    participant RW as ReliabilityWrapper
+    participant RM as ReliabilityManager
+    participant ARE as AutoRecoveryEngine
+    participant EH as ErrorHandler
+
+    C-&gt;&gt;RW: method_call()
+    RW-&gt;&gt;C: original_method()
+    C--&gt;&gt;RW: AttributeError: missing method
+    RW-&gt;&gt;RM: handle_component_failure()
+    RM-&gt;&gt;ARE: recover_missing_methods()
+    ARE-&gt;&gt;C: inject_method()
+    ARE--&gt;&gt;RM: recovery_success
+    RM--&gt;&gt;RW: RecoveryAction.RETRY
+    RW-&gt;&gt;C: retry_method_call()
+    C--&gt;&gt;RW: success
+    RW--&gt;&gt;C: result
+</div>
+<h3 id="timeout-management">Timeout Management<a class="headerlink" href="#timeout-management" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">TimeoutManager</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Manages operation timeouts with context-aware limits."""</span>
+
+    <span class="n">DEFAULT_TIMEOUTS</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">'model_download'</span><span class="p">:</span> <span class="mi">1800</span><span class="p">,</span>  <span class="c1"># 30 minutes</span>
+        <span class="s1">'dependency_install'</span><span class="p">:</span> <span class="mi">600</span><span class="p">,</span>  <span class="c1"># 10 minutes</span>
+        <span class="s1">'system_detection'</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>  <span class="c1"># 1 minute</span>
+        <span class="s1">'validation'</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span>  <span class="c1"># 5 minutes</span>
+        <span class="s1">'network_test'</span><span class="p">:</span> <span class="mi">30</span>  <span class="c1"># 30 seconds</span>
+    <span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">get_timeout</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">operation</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">Dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Get context-aware timeout for operation."""</span>
+        <span class="n">base_timeout</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">DEFAULT_TIMEOUTS</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">operation</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
+
+        <span class="c1"># Adjust based on context</span>
+        <span class="k">if</span> <span class="n">context</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'file_size_gb'</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
+            <span class="n">base_timeout</span> <span class="o">*=</span> <span class="mi">2</span>
+        <span class="k">if</span> <span class="n">context</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'network_speed'</span><span class="p">,</span> <span class="s1">'fast'</span><span class="p">)</span> <span class="o">==</span> <span class="s1">'slow'</span><span class="p">:</span>
+            <span class="n">base_timeout</span> <span class="o">*=</span> <span class="mf">1.5</span>
+        <span class="k">if</span> <span class="n">context</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'retry_count'</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">base_timeout</span> <span class="o">*=</span> <span class="mf">1.2</span>
+
+        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">base_timeout</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="testing-strategy">Testing Strategy<a class="headerlink" href="#testing-strategy" title="Permanent link">¶</a></h2>
+<h3 id="unit-testing">Unit Testing<a class="headerlink" href="#unit-testing" title="Permanent link">¶</a></h3>
+<ol>
+<li><strong>Component Wrapper Testing</strong>: Verify reliability wrapper functionality</li>
+<li><strong>Recovery Strategy Testing</strong>: Test individual recovery strategies</li>
+<li><strong>Error Classification Testing</strong>: Validate enhanced error categorization</li>
+<li><strong>Timeout Management Testing</strong>: Test timeout calculation and enforcement</li>
+</ol>
+<h3 id="integration-testing">Integration Testing<a class="headerlink" href="#integration-testing" title="Permanent link">¶</a></h3>
+<ol>
+<li><strong>End-to-End Recovery Testing</strong>: Test complete recovery workflows</li>
+<li><strong>Component Integration Testing</strong>: Verify wrapper integration with existing components</li>
+<li><strong>Performance Impact Testing</strong>: Measure reliability system overhead</li>
+<li><strong>Stress Testing</strong>: Test system behavior under high error rates</li>
+</ol>
+<h3 id="scenario-testing">Scenario Testing<a class="headerlink" href="#scenario-testing" title="Permanent link">¶</a></h3>
+<ol>
+<li><strong>Missing Method Scenarios</strong>: Test recovery from AttributeError exceptions</li>
+<li><strong>Model Validation Scenarios</strong>: Test recovery from persistent model issues</li>
+<li><strong>Network Failure Scenarios</strong>: Test recovery from various network conditions</li>
+<li><strong>Resource Exhaustion Scenarios</strong>: Test behavior under resource constraints</li>
+</ol>
+<h3 id="reliability-testing">Reliability Testing<a class="headerlink" href="#reliability-testing" title="Permanent link">¶</a></h3>
+<ol>
+<li><strong>Failure Injection Testing</strong>: Systematically inject failures to test recovery</li>
+<li><strong>Chaos Engineering</strong>: Random failure injection during normal operations</li>
+<li><strong>Long-Running Stability Testing</strong>: Extended operation under various conditions</li>
+<li><strong>Recovery Effectiveness Testing</strong>: Measure success rates of recovery strategies</li>
+</ol>
+<h2 id="implementation-phases">Implementation Phases<a class="headerlink" href="#implementation-phases" title="Permanent link">¶</a></h2>
+<h3 id="phase-1-core-reliability-infrastructure">Phase 1: Core Reliability Infrastructure<a class="headerlink" href="#phase-1-core-reliability-infrastructure" title="Permanent link">¶</a></h3>
+<ul>
+<li>Implement ReliabilityManager and component wrapping</li>
+<li>Create enhanced error context system</li>
+<li>Implement basic recovery strategies</li>
+<li>Add comprehensive logging and monitoring</li>
+</ul>
+<h3 id="phase-2-auto-recovery-engine">Phase 2: Auto-Recovery Engine<a class="headerlink" href="#phase-2-auto-recovery-engine" title="Permanent link">¶</a></h3>
+<ul>
+<li>Implement missing method recovery</li>
+<li>Add model validation recovery</li>
+<li>Create network failure recovery</li>
+<li>Implement dependency recovery strategies</li>
+</ul>
+<h3 id="phase-3-advanced-diagnostics">Phase 3: Advanced Diagnostics<a class="headerlink" href="#phase-3-advanced-diagnostics" title="Permanent link">¶</a></h3>
+<ul>
+<li>Implement pre-installation validation</li>
+<li>Add continuous health monitoring</li>
+<li>Create predictive failure detection</li>
+<li>Implement performance optimization</li>
+</ul>
+<h3 id="phase-4-reporting-and-analytics">Phase 4: Reporting and Analytics<a class="headerlink" href="#phase-4-reporting-and-analytics" title="Permanent link">¶</a></h3>
+<ul>
+<li>Implement comprehensive health reporting</li>
+<li>Add trend analysis and pattern detection</li>
+<li>Create administrative dashboard</li>
+<li>Implement cross-instance monitoring</li>
+</ul>
+<h2 id="performance-considerations">Performance Considerations<a class="headerlink" href="#performance-considerations" title="Permanent link">¶</a></h2>
+<h3 id="overhead-minimization">Overhead Minimization<a class="headerlink" href="#overhead-minimization" title="Permanent link">¶</a></h3>
+<ul>
+<li>Lazy initialization of reliability components</li>
+<li>Efficient error context capture</li>
+<li>Minimal performance impact on successful operations</li>
+<li>Configurable monitoring levels</li>
+</ul>
+<h3 id="resource-management">Resource Management<a class="headerlink" href="#resource-management" title="Permanent link">¶</a></h3>
+<ul>
+<li>Automatic cleanup of temporary files</li>
+<li>Memory usage monitoring and optimization</li>
+<li>Disk space management during recovery</li>
+<li>Network bandwidth optimization</li>
+</ul>
+<h3 id="scalability">Scalability<a class="headerlink" href="#scalability" title="Permanent link">¶</a></h3>
+<ul>
+<li>Efficient handling of multiple concurrent operations</li>
+<li>Resource pooling for recovery operations</li>
+<li>Configurable retry limits and timeouts</li>
+<li>Graceful degradation under high load</li>
+</ul>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
+mermaid.initialize({});</script></body>
+</html>

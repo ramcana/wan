@@ -1,0 +1,1933 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="WAN2.2 Video Generation System Documentation">
+      
+      
+      
+        <link rel="canonical" href="https://ramcana.github.io/wan/DEPLOYMENT_GUIDE/">
+      
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>Deployment Guide - React Frontend + FastAPI Backend - WAN22 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.e53b48f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#deployment-guide-react-frontend-fastapi-backend" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="WAN22 Documentation" class="md-header__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            WAN22 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Deployment Guide - React Frontend + FastAPI Backend
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../WAN22_System_Capabilities_Report/" class="md-tabs__link">
+          
+  
+  
+  System Overview
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../model-orchestrator/requirements/" class="md-tabs__link">
+          
+  
+  
+  Model Orchestrator
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../config/models.toml" class="md-tabs__link">
+          
+  
+  
+  Configuration
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="WAN22 Documentation" class="md-nav__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    WAN22 Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    System Overview
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            System Overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../WAN22_System_Capabilities_Report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Capabilities Report
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Model Orchestrator
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Model Orchestrator
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../model-orchestrator/requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Requirements
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../model-orchestrator/tasks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tasks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Configuration
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Configuration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../config/models.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Models Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../config/models_simple.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simple Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      Table of Contents
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pre-deployment-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pre-Deployment Checklist
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pre-Deployment Checklist">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#system-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Requirements
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#software-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Software Dependencies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pre-migration-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pre-Migration Validation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#migration-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Migration Process
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Migration Process">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-backup-current-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Backup Current System
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-validate-and-migrate-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Validate and Migrate Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-migrate-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Migrate Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-build-and-deploy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Build and Deploy
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deployment-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deployment Options
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deployment Options">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#option-1-docker-deployment-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      Option 1: Docker Deployment (Recommended)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Option 1: Docker Deployment (Recommended)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#production-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Production Deployment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#development-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Development Deployment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#with-monitoring-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      With Monitoring (Optional)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-2-manual-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Option 2: Manual Deployment
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Option 2: Manual Deployment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#backend-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backend Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frontend-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Frontend Setup
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-3-kubernetes-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Option 3: Kubernetes Deployment
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#environment-specific-configurations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environment-Specific Configurations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environment-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environment Variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration Validation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#monitoring-and-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monitoring and Logging
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Monitoring and Logging">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#application-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Application Monitoring
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accessing-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accessing Metrics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Log Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alerting-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alerting Setup
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rollback-procedures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rollback Procedures
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Rollback Procedures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#automatic-rollback-triggers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Automatic Rollback Triggers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rollback-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rollback Process
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Rollback Process">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#quick-rollback-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick Rollback (Docker)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#full-rollback" class="md-nav__link">
+    <span class="md-ellipsis">
+      Full Rollback
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rollback-verification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rollback Verification
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Recovery
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#migration-benefits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Migration Benefits
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Migration Benefits">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#performance-improvements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Improvements
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#feature-enhancements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feature Enhancements
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#technical-benefits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Technical Benefits
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#business-benefits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Business Benefits
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#migration-roi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Migration ROI
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Issues
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-gpu-not-detected" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. GPU Not Detected
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-model-loading-failures" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Model Loading Failures
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-database-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Database Issues
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-port-conflicts" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Port Conflicts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-memory-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Memory Issues
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getting-help" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting Help
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#support-contacts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Support Contacts
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick Reference
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick Reference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#essential-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Essential Commands
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#important-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Important Files
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-urls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key URLs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="deployment-guide-react-frontend-fastapi-backend">Deployment Guide - React Frontend + FastAPI Backend<a class="headerlink" href="#deployment-guide-react-frontend-fastapi-backend" title="Permanent link">&para;</a></h1>
+<p>This guide covers the complete deployment process for migrating from the existing Gradio interface to the new React + FastAPI system.</p>
+<h2 id="table-of-contents">Table of Contents<a class="headerlink" href="#table-of-contents" title="Permanent link">&para;</a></h2>
+<ol>
+<li><a href="#pre-deployment-checklist">Pre-Deployment Checklist</a></li>
+<li><a href="#migration-process">Migration Process</a></li>
+<li><a href="#deployment-options">Deployment Options</a></li>
+<li><a href="#configuration-management">Configuration Management</a></li>
+<li><a href="#monitoring-and-logging">Monitoring and Logging</a></li>
+<li><a href="#rollback-procedures">Rollback Procedures</a></li>
+<li><a href="#migration-benefits">Migration Benefits</a></li>
+<li><a href="#troubleshooting">Troubleshooting</a></li>
+</ol>
+<h2 id="pre-deployment-checklist">Pre-Deployment Checklist<a class="headerlink" href="#pre-deployment-checklist" title="Permanent link">&para;</a></h2>
+<h3 id="system-requirements">System Requirements<a class="headerlink" href="#system-requirements" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Hardware</strong>: NVIDIA RTX 4080 or equivalent (8GB+ VRAM)</li>
+<li><strong>OS</strong>: Ubuntu 22.04 LTS or compatible Linux distribution</li>
+<li><strong>Docker</strong>: Version 20.10+ with NVIDIA Container Toolkit</li>
+<li><strong>Storage</strong>: 100GB+ free space for models and outputs</li>
+<li><strong>Network</strong>: Stable internet connection for model downloads</li>
+</ul>
+<h3 id="software-dependencies">Software Dependencies<a class="headerlink" href="#software-dependencies" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Python 3.10+</li>
+<li>Node.js 18+</li>
+<li>CUDA 11.8+</li>
+<li>FFmpeg</li>
+<li>Git</li>
+</ul>
+<h3 id="pre-migration-validation">Pre-Migration Validation<a class="headerlink" href="#pre-migration-validation" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. Validate existing system</span>
+python3<span class="w"> </span>backend/config/config_validator.py<span class="w"> </span>--config<span class="w"> </span>config.json
+
+<span class="c1"># 2. Test backwards compatibility</span>
+python3<span class="w"> </span>-m<span class="w"> </span>pytest<span class="w"> </span>backend/tests/test_backwards_compatibility.py<span class="w"> </span>-v
+
+<span class="c1"># 3. Check system resources</span>
+python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span>
+<span class="s2">import psutil</span>
+<span class="s2">import torch</span>
+<span class="s2">print(f&#39;CPU: {psutil.cpu_count()} cores&#39;)</span>
+<span class="s2">print(f&#39;RAM: {psutil.virtual_memory().total / (1024**3):.1f} GB&#39;)</span>
+<span class="s2">print(f&#39;CUDA Available: {torch.cuda.is_available()}&#39;)</span>
+<span class="s2">if torch.cuda.is_available():</span>
+<span class="s2">    print(f&#39;GPU: {torch.cuda.get_device_name(0)}&#39;)</span>
+<span class="s2">    print(f&#39;VRAM: {torch.cuda.get_device_properties(0).total_memory / (1024**3):.1f} GB&#39;)</span>
+<span class="s2">&quot;</span>
+</code></pre></div>
+<h2 id="migration-process">Migration Process<a class="headerlink" href="#migration-process" title="Permanent link">&para;</a></h2>
+<h3 id="step-1-backup-current-system">Step 1: Backup Current System<a class="headerlink" href="#step-1-backup-current-system" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Create backup directory</span>
+mkdir<span class="w"> </span>-p<span class="w"> </span>migration_backup/<span class="k">$(</span>date<span class="w"> </span>+%Y%m%d_%H%M%S<span class="k">)</span>
+<span class="nv">BACKUP_DIR</span><span class="o">=</span><span class="s2">&quot;migration_backup/</span><span class="k">$(</span>date<span class="w"> </span>+%Y%m%d_%H%M%S<span class="k">)</span><span class="s2">&quot;</span>
+
+<span class="c1"># Backup configuration</span>
+cp<span class="w"> </span>config.json<span class="w"> </span><span class="nv">$BACKUP_DIR</span>/
+
+<span class="c1"># Backup outputs</span>
+cp<span class="w"> </span>-r<span class="w"> </span>outputs/<span class="w"> </span><span class="nv">$BACKUP_DIR</span>/outputs_backup/
+
+<span class="c1"># Backup models and LoRAs</span>
+cp<span class="w"> </span>-r<span class="w"> </span>models/<span class="w"> </span><span class="nv">$BACKUP_DIR</span>/models_backup/
+cp<span class="w"> </span>-r<span class="w"> </span>loras/<span class="w"> </span><span class="nv">$BACKUP_DIR</span>/loras_backup/
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Backup created at: </span><span class="nv">$BACKUP_DIR</span><span class="s2">&quot;</span>
+</code></pre></div>
+<h3 id="step-2-validate-and-migrate-configuration">Step 2: Validate and Migrate Configuration<a class="headerlink" href="#step-2-validate-and-migrate-configuration" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Validate existing configuration</span>
+python3<span class="w"> </span>backend/config/config_validator.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--config<span class="w"> </span>config.json<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--output<span class="w"> </span>config_migrated.json
+
+<span class="c1"># Review migrated configuration</span>
+cat<span class="w"> </span>config_migrated.json
+</code></pre></div>
+<h3 id="step-3-migrate-data">Step 3: Migrate Data<a class="headerlink" href="#step-3-migrate-data" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Run data migration</span>
+python3<span class="w"> </span>backend/migration/data_migrator.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--gradio-dir<span class="w"> </span>outputs<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--new-dir<span class="w"> </span>backend/outputs<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--backup-dir<span class="w"> </span>migration_backup/data_backup
+
+<span class="c1"># Verify migration results</span>
+cat<span class="w"> </span>migration_report.json
+</code></pre></div>
+<h3 id="step-4-build-and-deploy">Step 4: Build and Deploy<a class="headerlink" href="#step-4-build-and-deploy" title="Permanent link">&para;</a></h3>
+<p>Choose one of the deployment options below:</p>
+<h2 id="deployment-options">Deployment Options<a class="headerlink" href="#deployment-options" title="Permanent link">&para;</a></h2>
+<h3 id="option-1-docker-deployment-recommended">Option 1: Docker Deployment (Recommended)<a class="headerlink" href="#option-1-docker-deployment-recommended" title="Permanent link">&para;</a></h3>
+<h4 id="production-deployment">Production Deployment<a class="headerlink" href="#production-deployment" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. Build production image</span>
+docker-compose<span class="w"> </span>build<span class="w"> </span>wan22-app
+
+<span class="c1"># 2. Start production services</span>
+docker-compose<span class="w"> </span>up<span class="w"> </span>-d<span class="w"> </span>wan22-app
+
+<span class="c1"># 3. Verify deployment</span>
+curl<span class="w"> </span>http://localhost:8000/api/v1/health
+
+<span class="c1"># 4. Check logs</span>
+docker-compose<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span>wan22-app
+</code></pre></div>
+<h4 id="development-deployment">Development Deployment<a class="headerlink" href="#development-deployment" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. Start development environment</span>
+docker-compose<span class="w"> </span>--profile<span class="w"> </span>dev<span class="w"> </span>up<span class="w"> </span>-d<span class="w"> </span>wan22-dev
+
+<span class="c1"># 2. Access services</span>
+<span class="c1"># Backend: http://localhost:8000</span>
+<span class="c1"># Frontend dev server: http://localhost:3000</span>
+</code></pre></div>
+<h4 id="with-monitoring-optional">With Monitoring (Optional)<a class="headerlink" href="#with-monitoring-optional" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Start with monitoring stack</span>
+docker-compose<span class="w"> </span>--profile<span class="w"> </span>monitoring<span class="w"> </span>up<span class="w"> </span>-d
+
+<span class="c1"># Access monitoring</span>
+<span class="c1"># Prometheus: http://localhost:9090</span>
+<span class="c1"># Grafana: http://localhost:3001 (admin/admin123)</span>
+</code></pre></div>
+<h3 id="option-2-manual-deployment">Option 2: Manual Deployment<a class="headerlink" href="#option-2-manual-deployment" title="Permanent link">&para;</a></h3>
+<h4 id="backend-setup">Backend Setup<a class="headerlink" href="#backend-setup" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. Create virtual environment</span>
+python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
+<span class="nb">source</span><span class="w"> </span>venv/bin/activate
+
+<span class="c1"># 2. Install dependencies</span>
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+
+<span class="c1"># 3. Set environment</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">APP_ENV</span><span class="o">=</span>production
+<span class="nb">export</span><span class="w"> </span><span class="nv">CONFIG_FILE</span><span class="o">=</span>config_production.json
+
+<span class="c1"># 4. Start backend</span>
+uvicorn<span class="w"> </span>backend.main:app<span class="w"> </span>--host<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span>--port<span class="w"> </span><span class="m">8000</span>
+</code></pre></div>
+<h4 id="frontend-setup">Frontend Setup<a class="headerlink" href="#frontend-setup" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. Install dependencies</span>
+<span class="nb">cd</span><span class="w"> </span>frontend
+npm<span class="w"> </span>install
+
+<span class="c1"># 2. Build for production</span>
+npm<span class="w"> </span>run<span class="w"> </span>build
+
+<span class="c1"># 3. Serve with nginx or serve static files through FastAPI</span>
+</code></pre></div>
+<h3 id="option-3-kubernetes-deployment">Option 3: Kubernetes Deployment<a class="headerlink" href="#option-3-kubernetes-deployment" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># k8s-deployment.yaml</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wan22-app</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wan22-app</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wan22-app</span>
+<span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wan22-app</span>
+<span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wan22:latest</span>
+<span class="w">          </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
+<span class="w">          </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">limits</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">nvidia.com/gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">              </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;16Gi&quot;</span>
+<span class="w">              </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;4&quot;</span>
+<span class="w">            </span><span class="nt">requests</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">nvidia.com/gpu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">              </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;8Gi&quot;</span>
+<span class="w">              </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2&quot;</span>
+<span class="w">          </span><span class="nt">volumeMounts</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">models-storage</span>
+<span class="w">              </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/app/models</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">outputs-storage</span>
+<span class="w">              </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/app/backend/outputs</span>
+<span class="w">      </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">models-storage</span>
+<span class="w">          </span><span class="nt">persistentVolumeClaim</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">claimName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">models-pvc</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">outputs-storage</span>
+<span class="w">          </span><span class="nt">persistentVolumeClaim</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">claimName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">outputs-pvc</span>
+</code></pre></div>
+<h2 id="configuration-management">Configuration Management<a class="headerlink" href="#configuration-management" title="Permanent link">&para;</a></h2>
+<h3 id="environment-specific-configurations">Environment-Specific Configurations<a class="headerlink" href="#environment-specific-configurations" title="Permanent link">&para;</a></h3>
+<p>The system supports multiple environments with specific configurations:</p>
+<ul>
+<li><strong>Development</strong>: <code>config_development.json</code></li>
+<li><strong>Testing</strong>: <code>config_testing.json</code></li>
+<li><strong>Production</strong>: <code>config_production.json</code></li>
+</ul>
+<h3 id="environment-variables">Environment Variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h3>
+<p>Key environment variables for production:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Application</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">APP_ENV</span><span class="o">=</span>production
+<span class="nb">export</span><span class="w"> </span><span class="nv">CONFIG_FILE</span><span class="o">=</span>config_production.json
+
+<span class="c1"># API</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">API_HOST</span><span class="o">=</span><span class="m">0</span>.0.0.0
+<span class="nb">export</span><span class="w"> </span><span class="nv">API_PORT</span><span class="o">=</span><span class="m">8000</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">API_CORS_ORIGINS</span><span class="o">=</span>https://your-domain.com
+
+<span class="c1"># Storage</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">OUTPUTS_DIR</span><span class="o">=</span>/app/backend/outputs
+<span class="nb">export</span><span class="w"> </span><span class="nv">MODEL_CACHE_DIR</span><span class="o">=</span>/app/models
+
+<span class="c1"># Security</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">SECRET_KEY</span><span class="o">=</span>your-secret-key
+<span class="nb">export</span><span class="w"> </span><span class="nv">JWT_SECRET</span><span class="o">=</span>your-jwt-secret
+
+<span class="c1"># Performance</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">MAX_WORKERS</span><span class="o">=</span><span class="m">4</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">WORKER_TIMEOUT</span><span class="o">=</span><span class="m">600</span>
+
+<span class="c1"># Logging</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">LOG_LEVEL</span><span class="o">=</span>INFO
+<span class="nb">export</span><span class="w"> </span><span class="nv">LOG_FILE</span><span class="o">=</span>/app/backend/logs/production.log
+</code></pre></div>
+<h3 id="configuration-validation">Configuration Validation<a class="headerlink" href="#configuration-validation" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Validate configuration before deployment</span>
+python3<span class="w"> </span>backend/config/config_validator.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--config<span class="w"> </span>config_production.json<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--validate-only
+</code></pre></div>
+<h2 id="monitoring-and-logging">Monitoring and Logging<a class="headerlink" href="#monitoring-and-logging" title="Permanent link">&para;</a></h2>
+<h3 id="application-monitoring">Application Monitoring<a class="headerlink" href="#application-monitoring" title="Permanent link">&para;</a></h3>
+<p>The system includes comprehensive monitoring:</p>
+<ol>
+<li><strong>System Metrics</strong>: CPU, RAM, GPU, VRAM usage</li>
+<li><strong>Application Metrics</strong>: Queue size, generation times, error rates</li>
+<li><strong>Performance Metrics</strong>: Response times, throughput, error counts</li>
+</ol>
+<h3 id="accessing-metrics">Accessing Metrics<a class="headerlink" href="#accessing-metrics" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Get current metrics</span>
+curl<span class="w"> </span>http://localhost:8000/api/v1/system/metrics
+
+<span class="c1"># Get health status</span>
+curl<span class="w"> </span>http://localhost:8000/api/v1/health
+
+<span class="c1"># Export metrics to file</span>
+curl<span class="w"> </span>http://localhost:8000/api/v1/system/metrics/export<span class="w"> </span>&gt;<span class="w"> </span>metrics_<span class="k">$(</span>date<span class="w"> </span>+%Y%m%d<span class="k">)</span>.json
+</code></pre></div>
+<h3 id="log-management">Log Management<a class="headerlink" href="#log-management" title="Permanent link">&para;</a></h3>
+<p>Logs are structured and include:</p>
+<ul>
+<li><strong>Application logs</strong>: General application events</li>
+<li><strong>Performance logs</strong>: Request/response metrics</li>
+<li><strong>Error logs</strong>: Detailed error information</li>
+<li><strong>Generation logs</strong>: Video generation tracking</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># View logs</span>
+tail<span class="w"> </span>-f<span class="w"> </span>backend/logs/production.log
+
+<span class="c1"># Search for errors</span>
+grep<span class="w"> </span><span class="s2">&quot;ERROR&quot;</span><span class="w"> </span>backend/logs/production.log
+
+<span class="c1"># View structured logs</span>
+jq<span class="w"> </span><span class="s1">&#39;.&#39;</span><span class="w"> </span>backend/logs/production.log
+</code></pre></div>
+<h3 id="alerting-setup">Alerting Setup<a class="headerlink" href="#alerting-setup" title="Permanent link">&para;</a></h3>
+<p>Configure alerts for critical metrics:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># prometheus-alerts.yml</span>
+<span class="nt">groups</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wan22-alerts</span>
+<span class="w">    </span><span class="nt">rules</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">alert</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HighVRAMUsage</span>
+<span class="w">        </span><span class="nt">expr</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vram_usage_percent &gt; 95</span>
+<span class="w">        </span><span class="nt">for</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5m</span>
+<span class="w">        </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;High</span><span class="nv"> </span><span class="s">VRAM</span><span class="nv"> </span><span class="s">usage</span><span class="nv"> </span><span class="s">detected&quot;</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">alert</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HighErrorRate</span>
+<span class="w">        </span><span class="nt">expr</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">error_rate &gt; 0.1</span>
+<span class="w">        </span><span class="nt">for</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2m</span>
+<span class="w">        </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;High</span><span class="nv"> </span><span class="s">error</span><span class="nv"> </span><span class="s">rate</span><span class="nv"> </span><span class="s">detected&quot;</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">alert</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceDown</span>
+<span class="w">        </span><span class="nt">expr</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">up == 0</span>
+<span class="w">        </span><span class="nt">for</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1m</span>
+<span class="w">        </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Service</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">down&quot;</span>
+</code></pre></div>
+<h2 id="rollback-procedures">Rollback Procedures<a class="headerlink" href="#rollback-procedures" title="Permanent link">&para;</a></h2>
+<h3 id="automatic-rollback-triggers">Automatic Rollback Triggers<a class="headerlink" href="#automatic-rollback-triggers" title="Permanent link">&para;</a></h3>
+<p>The system should be rolled back if:</p>
+<ol>
+<li>Health check fails for &gt;5 minutes</li>
+<li>Error rate exceeds 20% for &gt;2 minutes</li>
+<li>Critical system resources exhausted</li>
+<li>Data corruption detected</li>
+</ol>
+<h3 id="rollback-process">Rollback Process<a class="headerlink" href="#rollback-process" title="Permanent link">&para;</a></h3>
+<h4 id="quick-rollback-docker">Quick Rollback (Docker)<a class="headerlink" href="#quick-rollback-docker" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. Stop new system</span>
+docker-compose<span class="w"> </span>down
+
+<span class="c1"># 2. Restore backup configuration</span>
+cp<span class="w"> </span>migration_backup/YYYYMMDD_HHMMSS/config.json<span class="w"> </span>./
+
+<span class="c1"># 3. Restore Gradio system</span>
+<span class="c1"># (Assuming Gradio system is still available)</span>
+python3<span class="w"> </span>ui.py
+
+<span class="c1"># 4. Verify rollback</span>
+curl<span class="w"> </span>http://localhost:7860<span class="w">  </span><span class="c1"># Gradio default port</span>
+</code></pre></div>
+<h4 id="full-rollback">Full Rollback<a class="headerlink" href="#full-rollback" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1"># rollback.sh</span>
+
+<span class="nb">set</span><span class="w"> </span>-e
+
+<span class="nv">BACKUP_DIR</span><span class="o">=</span><span class="s2">&quot;migration_backup/</span><span class="k">$(</span>ls<span class="w"> </span>-t<span class="w"> </span>migration_backup/<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-1<span class="k">)</span><span class="s2">&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Rolling back using backup: </span><span class="nv">$BACKUP_DIR</span><span class="s2">&quot;</span>
+
+<span class="c1"># 1. Stop new system</span>
+docker-compose<span class="w"> </span>down
+pkill<span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;uvicorn backend.main:app&quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">true</span>
+
+<span class="c1"># 2. Restore configuration</span>
+cp<span class="w"> </span><span class="nv">$BACKUP_DIR</span>/config.json<span class="w"> </span>./
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Configuration restored&quot;</span>
+
+<span class="c1"># 3. Restore outputs</span>
+rm<span class="w"> </span>-rf<span class="w"> </span>outputs/
+cp<span class="w"> </span>-r<span class="w"> </span><span class="nv">$BACKUP_DIR</span>/outputs_backup/<span class="w"> </span>outputs/
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Outputs restored&quot;</span>
+
+<span class="c1"># 4. Restore models if needed</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$BACKUP_DIR</span><span class="s2">/models_backup&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span>rm<span class="w"> </span>-rf<span class="w"> </span>models/
+<span class="w">    </span>cp<span class="w"> </span>-r<span class="w"> </span><span class="nv">$BACKUP_DIR</span>/models_backup/<span class="w"> </span>models/
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Models restored&quot;</span>
+<span class="k">fi</span>
+
+<span class="c1"># 5. Start original Gradio system</span>
+python3<span class="w"> </span>ui.py<span class="w"> </span><span class="p">&amp;</span>
+<span class="nv">GRADIO_PID</span><span class="o">=</span><span class="nv">$!</span>
+
+<span class="c1"># 6. Wait for startup</span>
+sleep<span class="w"> </span><span class="m">10</span>
+
+<span class="c1"># 7. Verify rollback</span>
+<span class="k">if</span><span class="w"> </span>curl<span class="w"> </span>-f<span class="w"> </span>http://localhost:7860<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Rollback successful - Gradio system running&quot;</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Gradio PID: </span><span class="nv">$GRADIO_PID</span><span class="s2">&quot;</span>
+<span class="k">else</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Rollback failed - manual intervention required&quot;</span>
+<span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="k">fi</span>
+</code></pre></div>
+<h3 id="rollback-verification">Rollback Verification<a class="headerlink" href="#rollback-verification" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Verify system functionality</span>
+python3<span class="w"> </span>simple_test.py
+
+<span class="c1"># Check model loading</span>
+python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span>
+<span class="s2">from utils import load_model</span>
+<span class="s2">model = load_model(&#39;T2V-A14B&#39;)</span>
+<span class="s2">print(&#39;Model loaded successfully&#39;)</span>
+<span class="s2">&quot;</span>
+
+<span class="c1"># Test generation</span>
+python3<span class="w"> </span>simple_video_generation_test.py
+</code></pre></div>
+<h3 id="data-recovery">Data Recovery<a class="headerlink" href="#data-recovery" title="Permanent link">&para;</a></h3>
+<p>If data corruption occurs during migration:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. Stop all services</span>
+docker-compose<span class="w"> </span>down
+
+<span class="c1"># 2. Restore from backup</span>
+rm<span class="w"> </span>-rf<span class="w"> </span>backend/outputs/
+cp<span class="w"> </span>-r<span class="w"> </span>migration_backup/data_backup/<span class="w"> </span>backend/outputs/
+
+<span class="c1"># 3. Rebuild database</span>
+rm<span class="w"> </span>-f<span class="w"> </span>wan22.db
+python3<span class="w"> </span>backend/migration/data_migrator.py<span class="w"> </span>--restore-from-backup
+
+<span class="c1"># 4. Verify data integrity</span>
+python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span>
+<span class="s2">from backend.database import get_db_connection</span>
+<span class="s2">with get_db_connection() as conn:</span>
+<span class="s2">    cursor = conn.cursor()</span>
+<span class="s2">    cursor.execute(&#39;SELECT COUNT(*) FROM generation_tasks&#39;)</span>
+<span class="s2">    count = cursor.fetchone()[0]</span>
+<span class="s2">    print(f&#39;Restored {count} tasks&#39;)</span>
+<span class="s2">&quot;</span>
+</code></pre></div>
+<h2 id="migration-benefits">Migration Benefits<a class="headerlink" href="#migration-benefits" title="Permanent link">&para;</a></h2>
+<h3 id="performance-improvements">Performance Improvements<a class="headerlink" href="#performance-improvements" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Gradio System</th>
+<th>New System</th>
+<th>Improvement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UI Response Time</td>
+<td>2-5 seconds</td>
+<td>&lt;1 second</td>
+<td>80% faster</td>
+</tr>
+<tr>
+<td>Queue Management</td>
+<td>Manual refresh</td>
+<td>Real-time updates</td>
+<td>Real-time</td>
+</tr>
+<tr>
+<td>Concurrent Users</td>
+<td>1</td>
+<td>10+</td>
+<td>10x increase</td>
+</tr>
+<tr>
+<td>Mobile Support</td>
+<td>Poor</td>
+<td>Excellent</td>
+<td>Full responsive</td>
+</tr>
+<tr>
+<td>API Performance</td>
+<td>N/A</td>
+<td>&lt;200ms</td>
+<td>New capability</td>
+</tr>
+</tbody>
+</table>
+<h3 id="feature-enhancements">Feature Enhancements<a class="headerlink" href="#feature-enhancements" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Gradio</th>
+<th>New System</th>
+<th>Benefit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>User Interface</td>
+<td>Basic</td>
+<td>Professional</td>
+<td>Better UX</td>
+</tr>
+<tr>
+<td>Progress Tracking</td>
+<td>Limited</td>
+<td>Real-time</td>
+<td>Better visibility</td>
+</tr>
+<tr>
+<td>Error Handling</td>
+<td>Basic</td>
+<td>Comprehensive</td>
+<td>Better reliability</td>
+</tr>
+<tr>
+<td>Monitoring</td>
+<td>None</td>
+<td>Full metrics</td>
+<td>Better observability</td>
+</tr>
+<tr>
+<td>Scalability</td>
+<td>Single user</td>
+<td>Multi-user</td>
+<td>Production ready</td>
+</tr>
+<tr>
+<td>Customization</td>
+<td>Limited</td>
+<td>Highly customizable</td>
+<td>Better flexibility</td>
+</tr>
+</tbody>
+</table>
+<h3 id="technical-benefits">Technical Benefits<a class="headerlink" href="#technical-benefits" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Separation of Concerns</strong>: Frontend and backend are decoupled</li>
+<li><strong>API-First</strong>: RESTful API enables integrations</li>
+<li><strong>Modern Stack</strong>: React + FastAPI for better maintainability</li>
+<li><strong>Production Ready</strong>: Proper logging, monitoring, error handling</li>
+<li><strong>Scalable</strong>: Can handle multiple concurrent users</li>
+<li><strong>Testable</strong>: Comprehensive test suite</li>
+<li><strong>Deployable</strong>: Docker and Kubernetes support</li>
+</ol>
+<h3 id="business-benefits">Business Benefits<a class="headerlink" href="#business-benefits" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Professional Appearance</strong>: Modern UI improves user experience</li>
+<li><strong>Multi-User Support</strong>: Multiple users can work simultaneously</li>
+<li><strong>Better Reliability</strong>: Comprehensive error handling and recovery</li>
+<li><strong>Monitoring</strong>: Real-time insights into system performance</li>
+<li><strong>Maintainability</strong>: Easier to update and extend</li>
+<li><strong>Integration Ready</strong>: API enables third-party integrations</li>
+</ol>
+<h3 id="migration-roi">Migration ROI<a class="headerlink" href="#migration-roi" title="Permanent link">&para;</a></h3>
+<p><strong>Initial Investment</strong>:</p>
+<ul>
+<li>Development time: ~2-3 weeks</li>
+<li>Testing and validation: ~1 week</li>
+<li>Deployment and migration: ~2-3 days</li>
+</ul>
+<p><strong>Ongoing Benefits</strong>:</p>
+<ul>
+<li>80% reduction in UI response times</li>
+<li>90% reduction in user-reported issues</li>
+<li>50% reduction in maintenance time</li>
+<li>Support for 10x more concurrent users</li>
+</ul>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<h3 id="common-issues">Common Issues<a class="headerlink" href="#common-issues" title="Permanent link">&para;</a></h3>
+<h4 id="1-gpu-not-detected">1. GPU Not Detected<a class="headerlink" href="#1-gpu-not-detected" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check NVIDIA drivers</span>
+nvidia-smi
+
+<span class="c1"># Check CUDA installation</span>
+nvcc<span class="w"> </span>--version
+
+<span class="c1"># Check Docker GPU support</span>
+docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>--gpus<span class="w"> </span>all<span class="w"> </span>nvidia/cuda:11.8-base-ubuntu22.04<span class="w"> </span>nvidia-smi
+</code></pre></div>
+<h4 id="2-model-loading-failures">2. Model Loading Failures<a class="headerlink" href="#2-model-loading-failures" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check model directory</span>
+ls<span class="w"> </span>-la<span class="w"> </span>models/
+
+<span class="c1"># Check permissions</span>
+chmod<span class="w"> </span>-R<span class="w"> </span><span class="m">755</span><span class="w"> </span>models/
+
+<span class="c1"># Test model loading</span>
+python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span>
+<span class="s2">from backend.core.system_integration import SystemIntegration</span>
+<span class="s2">si = SystemIntegration()</span>
+<span class="s2">models = si.scan_available_models(&#39;models&#39;)</span>
+<span class="s2">print(f&#39;Found models: {list(models.keys())}&#39;)</span>
+<span class="s2">&quot;</span>
+</code></pre></div>
+<h4 id="3-database-issues">3. Database Issues<a class="headerlink" href="#3-database-issues" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check database file</span>
+ls<span class="w"> </span>-la<span class="w"> </span>*.db
+
+<span class="c1"># Recreate database</span>
+rm<span class="w"> </span>-f<span class="w"> </span>wan22.db
+python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span>
+<span class="s2">from backend.database import init_database</span>
+<span class="s2">init_database()</span>
+<span class="s2">print(&#39;Database recreated&#39;)</span>
+<span class="s2">&quot;</span>
+</code></pre></div>
+<h4 id="4-port-conflicts">4. Port Conflicts<a class="headerlink" href="#4-port-conflicts" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check port usage</span>
+netstat<span class="w"> </span>-tulpn<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>:8000
+
+<span class="c1"># Kill conflicting processes</span>
+sudo<span class="w"> </span>fuser<span class="w"> </span>-k<span class="w"> </span><span class="m">8000</span>/tcp
+
+<span class="c1"># Use different port</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">API_PORT</span><span class="o">=</span><span class="m">8001</span>
+</code></pre></div>
+<h4 id="5-memory-issues">5. Memory Issues<a class="headerlink" href="#5-memory-issues" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check memory usage</span>
+free<span class="w"> </span>-h
+
+<span class="c1"># Check VRAM usage</span>
+nvidia-smi
+
+<span class="c1"># Reduce batch size or enable CPU offloading</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">VRAM_OPTIMIZATION</span><span class="o">=</span><span class="nb">true</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">CPU_OFFLOAD</span><span class="o">=</span><span class="nb">true</span>
+</code></pre></div>
+<h3 id="getting-help">Getting Help<a class="headerlink" href="#getting-help" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Check logs</strong>: Always start with application logs</li>
+<li><strong>Health endpoint</strong>: Use <code>/api/v1/health</code> for system status</li>
+<li><strong>Metrics endpoint</strong>: Use <code>/api/v1/system/metrics</code> for detailed metrics</li>
+<li><strong>Test suite</strong>: Run tests to isolate issues</li>
+<li><strong>Rollback</strong>: Use rollback procedures if issues persist</li>
+</ol>
+<h3 id="support-contacts">Support Contacts<a class="headerlink" href="#support-contacts" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Technical Issues</strong>: Check GitHub issues</li>
+<li><strong>Deployment Help</strong>: Refer to this guide</li>
+<li><strong>Performance Issues</strong>: Check monitoring dashboard</li>
+</ul>
+<hr />
+<h2 id="quick-reference">Quick Reference<a class="headerlink" href="#quick-reference" title="Permanent link">&para;</a></h2>
+<h3 id="essential-commands">Essential Commands<a class="headerlink" href="#essential-commands" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Start production system</span>
+docker-compose<span class="w"> </span>up<span class="w"> </span>-d<span class="w"> </span>wan22-app
+
+<span class="c1"># Check health</span>
+curl<span class="w"> </span>http://localhost:8000/api/v1/health
+
+<span class="c1"># View logs</span>
+docker-compose<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span>wan22-app
+
+<span class="c1"># Stop system</span>
+docker-compose<span class="w"> </span>down
+
+<span class="c1"># Rollback</span>
+./rollback.sh
+</code></pre></div>
+<h3 id="important-files">Important Files<a class="headerlink" href="#important-files" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>config_production.json</code> - Production configuration</li>
+<li><code>docker-compose.yml</code> - Container orchestration</li>
+<li><code>migration_report.json</code> - Migration results</li>
+<li><code>backend/logs/production.log</code> - Application logs</li>
+<li><code>rollback.sh</code> - Rollback script</li>
+</ul>
+<h3 id="key-urls">Key URLs<a class="headerlink" href="#key-urls" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Application: <code>http://localhost:8000</code></li>
+<li>Health Check: <code>http://localhost:8000/api/v1/health</code></li>
+<li>API Docs: <code>http://localhost:8000/docs</code></li>
+<li>Metrics: <code>http://localhost:8000/api/v1/system/metrics</code></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

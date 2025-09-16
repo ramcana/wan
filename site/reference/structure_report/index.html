@@ -1,0 +1,1982 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="WAN2.2 Video Generation System Documentation">
+      
+      
+      
+        <link rel="canonical" href="https://ramcana.github.io/wan/reference/structure_report/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>Project Structure Analysis Report - WAN22 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e53b48f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#project-structure-analysis-report" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="WAN22 Documentation" class="md-header__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            WAN22 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Project Structure Analysis Report
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../WAN22_System_Capabilities_Report/" class="md-tabs__link">
+          
+  
+  
+  System Overview
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../model-orchestrator/requirements/" class="md-tabs__link">
+          
+  
+  
+  Model Orchestrator
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../config/models.toml" class="md-tabs__link">
+          
+  
+  
+  Configuration
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="WAN22 Documentation" class="md-nav__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    WAN22 Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    System Overview
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            System Overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../WAN22_System_Capabilities_Report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Capabilities Report
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Model Orchestrator
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Model Orchestrator
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Requirements
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/tasks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tasks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Configuration
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Configuration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Models Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models_simple.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simple Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#main-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Main Components
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#file-categories" class="md-nav__link">
+    <span class="md-ellipsis">
+      File Categories
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#application-entry-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      Application Entry Points
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="project-structure-analysis-report">Project Structure Analysis Report<a class="headerlink" href="#project-structure-analysis-report" title="Permanent link">&para;</a></h1>
+<p><strong>Project Root:</strong> E:\wan
+<strong>Total Files:</strong> 2,329
+<strong>Total Directories:</strong> 421
+<strong>Total Size:</strong> 287836.3 MB</p>
+<h2 id="main-components">Main Components<a class="headerlink" href="#main-components" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>utils_new</strong> (utils_new)</li>
+<li>Purpose: Python Package</li>
+<li>Files: 305, Subdirs: 6</li>
+<li>Size: 4.6 MB</li>
+<li>
+<p>Python Package: Yes</p>
+</li>
+<li>
+<p><strong>local_installation</strong> (local_installation)</p>
+</li>
+<li>Purpose: Local Installation Package</li>
+<li>Files: 112, Subdirs: 12</li>
+<li>
+<p>Size: 1.3 MB</p>
+</li>
+<li>
+<p><strong>docs</strong> (docs)</p>
+</li>
+<li>Purpose: Documentation</li>
+<li>Files: 103, Subdirs: 7</li>
+<li>
+<p>Size: 1.0 MB</p>
+</li>
+<li>
+<p><strong>wan</strong> (.)</p>
+</li>
+<li>Purpose: Test Directory</li>
+<li>Files: 84, Subdirs: 54</li>
+<li>
+<p>Size: 97.8 MB</p>
+</li>
+<li>
+<p><strong>tests</strong> (backend\tests)</p>
+</li>
+<li>Purpose: Test Suite</li>
+<li>Files: 72, Subdirs: 3</li>
+<li>
+<p>Size: 1.1 MB</p>
+</li>
+<li>
+<p><strong>scripts</strong> (local_installation\scripts)</p>
+</li>
+<li>Purpose: Automation Scripts</li>
+<li>Files: 59, Subdirs: 1</li>
+<li>Size: 1.3 MB</li>
+<li>
+<p>Python Package: Yes</p>
+</li>
+<li>
+<p><strong>backend</strong> (backend)</p>
+</li>
+<li>Purpose: Backend Application Code</li>
+<li>Files: 29, Subdirs: 20</li>
+<li>
+<p>Size: 0.2 MB</p>
+</li>
+<li>
+<p><strong>frontend</strong> (frontend)</p>
+</li>
+<li>Purpose: Frontend Application Code</li>
+<li>Files: 36, Subdirs: 2</li>
+<li>
+<p>Size: 1.3 MB</p>
+</li>
+<li>
+<p><strong>services</strong> (core\services)</p>
+</li>
+<li>Purpose: Business Logic Services</li>
+<li>Files: 48, Subdirs: 0</li>
+<li>Size: 1.1 MB</li>
+<li>
+<p>Python Package: Yes</p>
+</li>
+<li>
+<p><strong>hardware</strong> (infrastructure\hardware)</p>
+</li>
+<li>Purpose: Python Package</li>
+<li>Files: 41, Subdirs: 0</li>
+<li>Size: 1.0 MB</li>
+<li>Python Package: Yes</li>
+</ul>
+<h2 id="file-categories">File Categories<a class="headerlink" href="#file-categories" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Configuration Files:</strong> 520</li>
+<li><strong>Documentation Files:</strong> 366</li>
+<li><strong>Test Files:</strong> 438</li>
+<li><strong>Script Files:</strong> 194</li>
+<li><strong>Entry Points:</strong> 1030</li>
+</ul>
+<h2 id="application-entry-points">Application Entry Points<a class="headerlink" href="#application-entry-points" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>comprehensive_model_fix.py</strong> (comprehensive_model_fix.py)</li>
+<li><strong>debug_vram.py</strong> (debug_vram.py)</li>
+<li><strong>demo_health_check_integration.py</strong> (demo_health_check_integration.py)</li>
+<li><strong>main.py</strong> (main.py)</li>
+<li>Application Entry Point</li>
+<li><strong>optimize_model_loading_rtx4080.py</strong> (optimize_model_loading_rtx4080.py)</li>
+<li><strong>quick_test_fix.py</strong> (quick_test_fix.py)</li>
+<li><strong>start.py</strong> (start.py)</li>
+<li>Application Entry Point</li>
+<li><strong>start_server.py</strong> (start_server.py)</li>
+<li><strong>test_backend.py</strong> (test_backend.py)</li>
+<li><strong>test_enhanced_integration.py</strong> (test_enhanced_integration.py)</li>
+<li><strong>test_method_check.py</strong> (test_method_check.py)</li>
+<li><strong>test_model_integration_fix.py</strong> (test_model_integration_fix.py)</li>
+<li><strong>test_pipeline_fix_validation.py</strong> (test_pipeline_fix_validation.py)</li>
+<li><strong>test_pipeline_while_loading.py</strong> (test_pipeline_while_loading.py)</li>
+<li><strong>test_single_frame_quick.py</strong> (test_single_frame_quick.py)</li>
+<li><strong>app.py</strong> (backend\app.py)</li>
+<li>Application Entry Point</li>
+<li><strong>demo_cors_validation.py</strong> (backend\demo_cors_validation.py)</li>
+<li><strong>diagnose_system.py</strong> (backend\diagnose_system.py)</li>
+<li><strong>final_system_check.py</strong> (backend\final_system_check.py)</li>
+<li><strong>fix_imports.py</strong> (backend\fix_imports.py)</li>
+<li><strong>fix_vram_validation.py</strong> (backend\fix_vram_validation.py)</li>
+<li><strong>init_db.py</strong> (backend\init_db.py)</li>
+<li><strong>main.py</strong> (backend\main.py)</li>
+<li>Application Entry Point</li>
+<li><strong>optimize_for_rtx4080.py</strong> (backend\optimize_for_rtx4080.py)</li>
+<li><strong>start_full_stack.py</strong> (backend\start_full_stack.py)</li>
+<li><strong>start_server.py</strong> (backend\start_server.py)</li>
+<li><strong>test_cuda_detection.py</strong> (backend\test_cuda_detection.py)</li>
+<li><strong>test_enhanced_endpoints_simple.py</strong> (backend\test_enhanced_endpoints_simple.py)</li>
+<li><strong>test_json_request.py</strong> (backend\test_json_request.py)</li>
+<li><strong>test_real_ai_ready.py</strong> (backend\test_real_ai_ready.py)</li>
+<li><strong>deployment_health.py</strong> (backend\api\deployment_health.py)</li>
+<li><strong>enhanced_model_configuration.py</strong> (backend\api\enhanced_model_configuration.py)</li>
+<li>Configuration File</li>
+<li><strong>enhanced_model_management.py</strong> (backend\api\enhanced_model_management.py)</li>
+<li><strong>fallback_recovery.py</strong> (backend\api\fallback_recovery.py)</li>
+<li><strong>model_management.py</strong> (backend\api\model_management.py)</li>
+<li><strong>performance.py</strong> (backend\api\performance.py)</li>
+<li><strong>performance_dashboard.py</strong> (backend\api\performance_dashboard.py)</li>
+<li><strong><strong>init</strong>.py</strong> (backend\api__init__.py)</li>
+<li><strong><strong>init</strong>.py</strong> (backend\api\middleware__init__.py)</li>
+<li><strong>analytics.py</strong> (backend\api\routes\analytics.py)</li>
+<li><strong><strong>init</strong>.py</strong> (backend\api\routes__init__.py)</li>
+<li><strong><strong>init</strong>.py</strong> (backend\api\v1__init__.py)</li>
+<li><strong>generation.py</strong> (backend\api\v1\endpoints\generation.py)</li>
+<li><strong>lora.py</strong> (backend\api\v1\endpoints\lora.py)</li>
+<li><strong>models.py</strong> (backend\api\v1\endpoints\models.py)</li>
+<li><strong>optimization.py</strong> (backend\api\v1\endpoints\optimization.py)</li>
+<li><strong>outputs.py</strong> (backend\api\v1\endpoints\outputs.py)</li>
+<li><strong>prompt.py</strong> (backend\api\v1\endpoints\prompt.py)</li>
+<li><strong>queue.py</strong> (backend\api\v1\endpoints\queue.py)</li>
+<li><strong>system.py</strong> (backend\api\v1\endpoints\system.py)</li>
+<li><strong>websocket.py</strong> (backend\api\v1\endpoints\websocket.py)</li>
+<li><strong><strong>init</strong>.py</strong> (backend\api\v1\endpoints__init__.py)</li>
+<li><strong>config_validator.py</strong> (backend\config\config_validator.py)</li>
+<li>Configuration File</li>
+<li><strong>environment.py</strong> (backend\config\environment.py)</li>
+<li><strong><strong>init</strong>.py</strong> (backend\config__init__.py)</li>
+<li><strong>configuration_bridge.py</strong> (backend\core\configuration_bridge.py)</li>
+<li>Configuration File</li>
+<li><strong>config_validation.py</strong> (backend\core\config_validation.py)</li>
+<li>Configuration File</li>
+<li><strong>cors_validator.py</strong> (backend\core\cors_validator.py)</li>
+<li><strong>enhanced_error_recovery.py</strong> (backend\core\enhanced_error_recovery.py)</li>
+<li><strong>enhanced_model_config.py</strong> (backend\core\enhanced_model_config.py)</li>
+<li>Configuration File</li>
+<li><strong>enhanced_model_downloader.py</strong> (backend\core\enhanced_model_downloader.py)</li>
+<li><strong>fallback_recovery_system.py</strong> (backend\core\fallback_recovery_system.py)</li>
+<li><strong>integrated_error_handler.py</strong> (backend\core\integrated_error_handler.py)</li>
+<li><strong>intelligent_fallback_manager.py</strong> (backend\core\intelligent_fallback_manager.py)</li>
+<li><strong>model_availability_manager.py</strong> (backend\core\model_availability_manager.py)</li>
+<li><strong>model_health_monitor.py</strong> (backend\core\model_health_monitor.py)</li>
+<li><strong>model_integration_bridge.py</strong> (backend\core\model_integration_bridge.py)</li>
+<li><strong>model_update_manager.py</strong> (backend\core\model_update_manager.py)</li>
+<li><strong>model_usage_analytics.py</strong> (backend\core\model_usage_analytics.py)</li>
+<li><strong>performance_monitor.py</strong> (backend\core\performance_monitor.py)</li>
+<li><strong>performance_monitoring_system.py</strong> (backend\core\performance_monitoring_system.py)</li>
+<li><strong>runtime_config_updater.py</strong> (backend\core\runtime_config_updater.py)</li>
+<li>Configuration File</li>
+<li><strong>system_integration.py</strong> (backend\core\system_integration.py)</li>
+<li><strong><strong>init</strong>.py</strong> (backend\core__init__.py)</li>
+<li><strong>enhanced_downloader_demo.py</strong> (backend\examples\enhanced_downloader_demo.py)</li>
+<li><strong>enhanced_error_recovery_demo.py</strong> (backend\examples\enhanced_error_recovery_demo.py)</li>
+<li><strong>enhanced_model_configuration_demo.py</strong> (backend\examples\enhanced_model_configuration_demo.py)</li>
+<li>Configuration File</li>
+<li><strong>hardware_optimization_integration_example.py</strong> (backend\examples\hardware_optimization_integration_example.py)</li>
+<li><strong>integrated_error_handler_example.py</strong> (backend\examples\integrated_error_handler_example.py)</li>
+<li><strong>intelligent_fallback_manager_demo.py</strong> (backend\examples\intelligent_fallback_manager_demo.py)</li>
+<li><strong>model_health_monitor_demo.py</strong> (backend\examples\model_health_monitor_demo.py)</li>
+<li><strong>model_update_manager_demo.py</strong> (backend\examples\model_update_manager_demo.py)</li>
+<li><strong>model_usage_analytics_demo.py</strong> (backend\examples\model_usage_analytics_demo.py)</li>
+<li><strong>real_generation_example.py</strong> (backend\examples\real_generation_example.py)</li>
+<li><strong>websocket_model_notifications_demo.py</strong> (backend\examples\websocket_model_notifications_demo.py)</li>
+<li><strong>data_migrator.py</strong> (backend\migration\data_migrator.py)</li>
+<li><strong><strong>init</strong>.py</strong> (backend\migration__init__.py)</li>
+<li><strong><strong>init</strong>.py</strong> (backend\models__init__.py)</li>
+<li><strong>logger.py</strong> (backend\monitoring\logger.py)</li>
+<li><strong>metrics.py</strong> (backend\monitoring\metrics.py)</li>
+<li><strong><strong>init</strong>.py</strong> (backend\monitoring__init__.py)</li>
+<li><strong>database.py</strong> (backend\repositories\database.py)</li>
+<li><strong><strong>init</strong>.py</strong> (backend\repositories__init__.py)</li>
+<li><strong>schemas.py</strong> (backend\schemas\schemas.py)</li>
+<li><strong><strong>init</strong>.py</strong> (backend\schemas__init__.py)</li>
+<li><strong>config_migration.py</strong> (backend\scripts\config_migration.py)</li>
+<li>Configuration File</li>
+<li><strong>config_migration_tool.py</strong> (backend\scripts\config_migration_tool.py)</li>
+<li>Configuration File</li>
+<li><strong>deployment_validator.py</strong> (backend\scripts\deployment_validator.py)</li>
+<li><strong>final_validation.py</strong> (backend\scripts\final_validation.py)</li>
+<li><strong>migrate_to_real_generation.py</strong> (backend\scripts\migrate_to_real_generation.py)</li>
+<li><strong>performance_dashboard.py</strong> (backend\scripts\performance_dashboard.py)</li>
+<li><strong>config_backup_restore.py</strong> (backend\scripts\deployment\config_backup_restore.py)</li>
+<li>Configuration File</li>
+<li><strong>deploy.py</strong> (backend\scripts\deployment\deploy.py)</li>
+<li><strong>deployment_validator.py</strong> (backend\scripts\deployment\deployment_validator.py)</li>
+<li><strong>model_migration.py</strong> (backend\scripts\deployment\model_migration.py)</li>
+<li><strong>monitoring_setup.py</strong> (backend\scripts\deployment\monitoring_setup.py)</li>
+<li><strong>rollback_manager.py</strong> (backend\scripts\deployment\rollback_manager.py)</li>
+<li><strong>generation_service.py</strong> (backend\services\generation_service.py)</li>
+<li><strong>generation_service_analytics_integration.py</strong> (backend\services\generation_service_analytics_integration.py)</li>
+<li><strong>real_generation_pipeline.py</strong> (backend\services\real_generation_pipeline.py)</li>
+<li><strong><strong>init</strong>.py</strong> (backend\services__init__.py)</li>
+<li><strong>debug_comprehensive.py</strong> (backend\tests\debug_comprehensive.py)</li>
+<li><strong>run_comprehensive_tests.py</strong> (backend\tests\run_comprehensive_tests.py)</li>
+<li><strong>run_comprehensive_test_validation.py</strong> (backend\tests\run_comprehensive_test_validation.py)</li>
+<li><strong>run_enhanced_model_availability_tests.py</strong> (backend\tests\run_enhanced_model_availability_tests.py)</li>
+<li><strong>test_advanced_system_features.py</strong> (backend\tests\test_advanced_system_features.py)</li>
+<li><strong>test_analytics_simple.py</strong> (backend\tests\test_analytics_simple.py)</li>
+<li><strong>test_backwards_compatibility.py</strong> (backend\tests\test_backwards_compatibility.py)</li>
+<li><strong>test_chaos_engineering.py</strong> (backend\tests\test_chaos_engineering.py)</li>
+<li><strong>test_comprehensive_api.py</strong> (backend\tests\test_comprehensive_api.py)</li>
+<li><strong>test_comprehensive_integration_suite.py</strong> (backend\tests\test_comprehensive_integration_suite.py)</li>
+<li><strong>test_configuration_bridge.py</strong> (backend\tests\test_configuration_bridge.py)</li>
+<li>Configuration File</li>
+<li><strong>test_cors_validation.py</strong> (backend\tests\test_cors_validation.py)</li>
+<li><strong>test_deployment_system.py</strong> (backend\tests\test_deployment_system.py)</li>
+<li><strong>test_download_stress_testing.py</strong> (backend\tests\test_download_stress_testing.py)</li>
+<li><strong>test_e2e_integration.py</strong> (backend\tests\test_e2e_integration.py)</li>
+<li><strong>test_end_to_end_comprehensive.py</strong> (backend\tests\test_end_to_end_comprehensive.py)</li>
+<li><strong>test_enhanced_error_recovery.py</strong> (backend\tests\test_enhanced_error_recovery.py)</li>
+<li><strong>test_enhanced_generation_service_integration.py</strong> (backend\tests\test_enhanced_generation_service_integration.py)</li>
+<li><strong>test_enhanced_model_availability_comprehensive.py</strong> (backend\tests\test_enhanced_model_availability_comprehensive.py)</li>
+<li><strong>test_enhanced_model_availability_integration.py</strong> (backend\tests\test_enhanced_model_availability_integration.py)</li>
+<li><strong>test_enhanced_model_configuration.py</strong> (backend\tests\test_enhanced_model_configuration.py)</li>
+<li>Configuration File</li>
+<li><strong>test_enhanced_model_downloader.py</strong> (backend\tests\test_enhanced_model_downloader.py)</li>
+<li><strong>test_enhanced_model_management_api.py</strong> (backend\tests\test_enhanced_model_management_api.py)</li>
+<li><strong>test_error_handling.py</strong> (backend\tests\test_error_handling.py)</li>
+<li><strong>test_fallback_recovery_system.py</strong> (backend\tests\test_fallback_recovery_system.py)</li>
+<li><strong>test_final_integration_validation.py</strong> (backend\tests\test_final_integration_validation.py)</li>
+<li><strong>test_hardware_optimization_integration.py</strong> (backend\tests\test_hardware_optimization_integration.py)</li>
+<li><strong>test_health_endpoint.py</strong> (backend\tests\test_health_endpoint.py)</li>
+<li><strong>test_health_endpoint_integration.py</strong> (backend\tests\test_health_endpoint_integration.py)</li>
+<li><strong>test_i2v_ti2v_api.py</strong> (backend\tests\test_i2v_ti2v_api.py)</li>
+<li><strong>test_integrated_error_handler.py</strong> (backend\tests\test_integrated_error_handler.py)</li>
+<li><strong>test_intelligent_fallback_manager.py</strong> (backend\tests\test_intelligent_fallback_manager.py)</li>
+<li><strong>test_lora_integration.py</strong> (backend\tests\test_lora_integration.py)</li>
+<li><strong>test_lora_integration_simple.py</strong> (backend\tests\test_lora_integration_simple.py)</li>
+<li><strong>test_lora_validation.py</strong> (backend\tests\test_lora_validation.py)</li>
+<li><strong>test_model_availability_manager.py</strong> (backend\tests\test_model_availability_manager.py)</li>
+<li><strong>test_model_availability_manager_basic.py</strong> (backend\tests\test_model_availability_manager_basic.py)</li>
+<li><strong>test_model_availability_manager_simple.py</strong> (backend\tests\test_model_availability_manager_simple.py)</li>
+<li><strong>test_model_download_integration.py</strong> (backend\tests\test_model_download_integration.py)</li>
+<li><strong>test_model_health_monitor.py</strong> (backend\tests\test_model_health_monitor.py)</li>
+<li><strong>test_model_integration_bridge.py</strong> (backend\tests\test_model_integration_bridge.py)</li>
+<li><strong>test_model_integration_comprehensive.py</strong> (backend\tests\test_model_integration_comprehensive.py)</li>
+<li><strong>test_model_management_endpoints.py</strong> (backend\tests\test_model_management_endpoints.py)</li>
+<li><strong>test_model_update_manager.py</strong> (backend\tests\test_model_update_manager.py)</li>
+<li><strong>test_model_update_manager_simple.py</strong> (backend\tests\test_model_update_manager_simple.py)</li>
+<li><strong>test_model_usage_analytics.py</strong> (backend\tests\test_model_usage_analytics.py)</li>
+<li><strong>test_performance_benchmarks.py</strong> (backend\tests\test_performance_benchmarks.py)</li>
+<li><strong>test_performance_benchmarks_enhanced.py</strong> (backend\tests\test_performance_benchmarks_enhanced.py)</li>
+<li><strong>test_performance_integration.py</strong> (backend\tests\test_performance_integration.py)</li>
+<li><strong>test_performance_monitoring.py</strong> (backend\tests\test_performance_monitoring.py)</li>
+<li><strong>test_performance_monitoring_system.py</strong> (backend\tests\test_performance_monitoring_system.py)</li>
+<li><strong>test_performance_validation.py</strong> (backend\tests\test_performance_validation.py)</li>
+<li><strong>test_prompt_enhancement.py</strong> (backend\tests\test_prompt_enhancement.py)</li>
+<li><strong>test_queue_api_integration.py</strong> (backend\tests\test_queue_api_integration.py)</li>
+<li><strong>test_queue_persistence.py</strong> (backend\tests\test_queue_persistence.py)</li>
+<li><strong>test_queue_simple.py</strong> (backend\tests\test_queue_simple.py)</li>
+<li><strong>test_real_generation_pipeline.py</strong> (backend\tests\test_real_generation_pipeline.py)</li>
+<li><strong>test_resource_limits.py</strong> (backend\tests\test_resource_limits.py)</li>
+<li><strong>test_setup.py</strong> (backend\tests\test_setup.py)</li>
+<li><strong>test_simple_validation.py</strong> (backend\tests\test_simple_validation.py)</li>
+<li><strong>test_system_monitoring.py</strong> (backend\tests\test_system_monitoring.py)</li>
+<li><strong>test_t2v_generation.py</strong> (backend\tests\test_t2v_generation.py)</li>
+<li><strong>test_task_2_3_validation.py</strong> (backend\tests\test_task_2_3_validation.py)</li>
+<li><strong>test_task_2_4_validation.py</strong> (backend\tests\test_task_2_4_validation.py)</li>
+<li><strong>test_user_acceptance_workflows.py</strong> (backend\tests\test_user_acceptance_workflows.py)</li>
+<li><strong>test_websocket_model_notifications.py</strong> (backend\tests\test_websocket_model_notifications.py)</li>
+<li><strong>test_websocket_progress_integration.py</strong> (backend\tests\test_websocket_progress_integration.py)</li>
+<li><strong>validate_test_suite.py</strong> (backend\tests\validate_test_suite.py)</li>
+<li><strong>thumbnail_generator.py</strong> (backend\utils\thumbnail_generator.py)</li>
+<li><strong><strong>init</strong>.py</strong> (backend\utils__init__.py)</li>
+<li><strong>manager.py</strong> (backend\websocket\manager.py)</li>
+<li><strong>model_notifications.py</strong> (backend\websocket\model_notifications.py)</li>
+<li><strong>progress_integration.py</strong> (backend\websocket\progress_integration.py)</li>
+<li><strong><strong>init</strong>.py</strong> (backend\websocket__init__.py)</li>
+<li><strong><strong>init</strong>.py</strong> (core__init__.py)</li>
+<li><strong><strong>init</strong>.py</strong> (core\interfaces__init__.py)</li>
+<li><strong><strong>init</strong>.py</strong> (core\models__init__.py)</li>
+<li><strong>apply_model_fixes.py</strong> (core\services\apply_model_fixes.py)</li>
+<li><strong>compare_wan22_models.py</strong> (core\services\compare_wan22_models.py)</li>
+<li><strong>compare_wan_models_correct.py</strong> (core\services\compare_wan_models_correct.py)</li>
+<li><strong>debug_optimization.py</strong> (core\services\debug_optimization.py)</li>
+<li><strong>debug_pipeline_loading.py</strong> (core\services\debug_pipeline_loading.py)</li>
+<li><strong>debug_wan_model_loading.py</strong> (core\services\debug_wan_model_loading.py)</li>
+<li><strong>debug_wan_pipeline_signature.py</strong> (core\services\debug_wan_pipeline_signature.py)</li>
+<li><strong>dependency_manager.py</strong> (core\services\dependency_manager.py)</li>
+<li><strong>emergency_model_fix.py</strong> (core\services\emergency_model_fix.py)</li>
+<li><strong>enhanced_generation_pipeline.py</strong> (core\services\enhanced_generation_pipeline.py)</li>
+<li><strong>enhanced_model_manager.py</strong> (core\services\enhanced_model_manager.py)</li>
+<li><strong>fix_model_loading_issues.py</strong> (core\services\fix_model_loading_issues.py)</li>
+<li><strong>fix_wan22_pipeline.py</strong> (core\services\fix_wan22_pipeline.py)</li>
+<li><strong>frame_tensor_handler.py</strong> (core\services\frame_tensor_handler.py)</li>
+<li><strong>generation_history_manager.py</strong> (core\services\generation_history_manager.py)</li>
+<li><strong>generation_logger.py</strong> (core\services\generation_logger.py)</li>
+<li><strong>generation_mode_router.py</strong> (core\services\generation_mode_router.py)</li>
+<li><strong>generation_orchestrator.py</strong> (core\services\generation_orchestrator.py)</li>
+<li><strong>generation_queue_manager.py</strong> (core\services\generation_queue_manager.py)</li>
+<li><strong>lora_upload_handler.py</strong> (core\services\lora_upload_handler.py)</li>
+<li><strong>model_fallback_system.py</strong> (core\services\model_fallback_system.py)</li>
+<li><strong>model_index_schema.py</strong> (core\services\model_index_schema.py)</li>
+<li><strong>model_loading_manager.py</strong> (core\services\model_loading_manager.py)</li>
+<li><strong>model_manager.py</strong> (core\services\model_manager.py)</li>
+<li><strong>model_override.py</strong> (core\services\model_override.py)</li>
+<li><strong>model_validator.py</strong> (core\services\model_validator.py)</li>
+<li><strong>optimization_manager.py</strong> (core\services\optimization_manager.py)</li>
+<li><strong>optimization_service.py</strong> (core\services\optimization_service.py)</li>
+<li><strong>pipeline_manager.py</strong> (core\services\pipeline_manager.py)</li>
+<li><strong>pipeline_service.py</strong> (core\services\pipeline_service.py)</li>
+<li><strong>port_manager.py</strong> (core\services\port_manager.py)</li>
+<li><strong>quantization_controller.py</strong> (core\services\quantization_controller.py)</li>
+<li><strong>quantization_fallback_system.py</strong> (core\services\quantization_fallback_system.py)</li>
+<li><strong>quantization_integration_example.py</strong> (core\services\quantization_integration_example.py)</li>
+<li><strong>quantization_quality_validator.py</strong> (core\services\quantization_quality_validator.py)</li>
+<li><strong>resolution_manager.py</strong> (core\services\resolution_manager.py)</li>
+<li><strong>safe_load_manager.py</strong> (core\services\safe_load_manager.py)</li>
+<li><strong>start_optimized_video_generation.py</strong> (core\services\start_optimized_video_generation.py)</li>
+<li><strong>utils.py</strong> (core\services\utils.py)</li>
+<li><strong>vae_compatibility_handler.py</strong> (core\services\vae_compatibility_handler.py)</li>
+<li><strong>verify_model_fix.py</strong> (core\services\verify_model_fix.py)</li>
+<li><strong>wan22_final_integration.py</strong> (core\services\wan22_final_integration.py)</li>
+<li><strong>wan22_system_optimizer.py</strong> (core\services\wan22_system_optimizer.py)</li>
+<li><strong>wan_model_compatibility_fix.py</strong> (core\services\wan_model_compatibility_fix.py)</li>
+<li><strong>wan_pipeline_final_fix.py</strong> (core\services\wan_pipeline_final_fix.py)</li>
+<li><strong>wan_pipeline_loader.py</strong> (core\services\wan_pipeline_loader.py)</li>
+<li><strong>wan_pipeline_loading_fix.py</strong> (core\services\wan_pipeline_loading_fix.py)</li>
+<li><strong><strong>init</strong>.py</strong> (core\services__init__.py)</li>
+<li><strong>contextual_help_system.py</strong> (frontend\contextual_help_system.py)</li>
+<li><strong>enhanced_ui_creator.py</strong> (frontend\enhanced_ui_creator.py)</li>
+<li><strong>help_text_system.py</strong> (frontend\help_text_system.py)</li>
+<li><strong>lora_ui_state.py</strong> (frontend\lora_ui_state.py)</li>
+<li><strong>recovery_guidance_system.py</strong> (frontend\recovery_guidance_system.py)</li>
+<li><strong>test_error_recovery.py</strong> (frontend\test_error_recovery.py)</li>
+<li><strong>ui.py</strong> (frontend\ui.py)</li>
+<li><strong>ui_backup_rtx4080.py</strong> (frontend\ui_backup_rtx4080.py)</li>
+<li><strong>ui_compatibility_integration.py</strong> (frontend\ui_compatibility_integration.py)</li>
+<li><strong>ui_creation_validator.py</strong> (frontend\ui_creation_validator.py)</li>
+<li><strong>ui_error_recovery.py</strong> (frontend\ui_error_recovery.py)</li>
+<li><strong>ui_error_recovery_integration.py</strong> (frontend\ui_error_recovery_integration.py)</li>
+<li><strong>ui_event_handlers.py</strong> (frontend\ui_event_handlers.py)</li>
+<li><strong>ui_event_handlers_enhanced.py</strong> (frontend\ui_event_handlers_enhanced.py)</li>
+<li><strong>ui_event_handlers_enhanced_backup_rtx4080.py</strong> (frontend\ui_event_handlers_enhanced_backup_rtx4080.py)</li>
+<li><strong>ui_session_integration.py</strong> (frontend\ui_session_integration.py)</li>
+<li><strong>ui_with_error_recovery_example.py</strong> (frontend\ui_with_error_recovery_example.py)</li>
+<li><strong>vram_detection_override.py</strong> (frontend\vram_detection_override.py)</li>
+<li><strong>vram_optimizer_rtx4080.py</strong> (frontend\vram_optimizer_rtx4080.py)</li>
+<li><strong><strong>init</strong>.py</strong> (infrastructure__init__.py)</li>
+<li><strong>compatibility_registry.py</strong> (infrastructure\config\compatibility_registry.py)</li>
+<li><strong>config_recovery_system.py</strong> (infrastructure\config\config_recovery_system.py)</li>
+<li>Configuration File</li>
+<li><strong>config_validator.py</strong> (infrastructure\config\config_validator.py)</li>
+<li>Configuration File</li>
+<li><strong>model_config_validator.py</strong> (infrastructure\config\model_config_validator.py)</li>
+<li>Configuration File</li>
+<li><strong>vram_config_manager.py</strong> (infrastructure\config\vram_config_manager.py)</li>
+<li>Configuration File</li>
+<li><strong>wan22_compatibility.py</strong> (infrastructure\config\wan22_compatibility.py)</li>
+<li><strong>wan22_compatibility_clean.py</strong> (infrastructure\config\wan22_compatibility_clean.py)</li>
+<li><strong>wan22_compatibility_layer.py</strong> (infrastructure\config\wan22_compatibility_layer.py)</li>
+<li><strong>wan22_compatibility_system.py</strong> (infrastructure\config\wan22_compatibility_system.py)</li>
+<li><strong>wan22_config_manager.py</strong> (infrastructure\config\wan22_config_manager.py)</li>
+<li>Configuration File</li>
+<li><strong>wan22_config_migration.py</strong> (infrastructure\config\wan22_config_migration.py)</li>
+<li>Configuration File</li>
+<li><strong>wan22_config_presets.py</strong> (infrastructure\config\wan22_config_presets.py)</li>
+<li>Configuration File</li>
+<li><strong>wan_config_manager.py</strong> (infrastructure\config\wan_config_manager.py)</li>
+<li>Configuration File</li>
+<li><strong><strong>init</strong>.py</strong> (infrastructure\config__init__.py)</li>
+<li><strong>architecture_detector.py</strong> (infrastructure\hardware\architecture_detector.py)</li>
+<li><strong>cpu_monitor.py</strong> (infrastructure\hardware\cpu_monitor.py)</li>
+<li><strong>critical_hardware_protection.py</strong> (infrastructure\hardware\critical_hardware_protection.py)</li>
+<li><strong>debug_hardware.py</strong> (infrastructure\hardware\debug_hardware.py)</li>
+<li><strong>debug_low_memory.py</strong> (infrastructure\hardware\debug_low_memory.py)</li>
+<li><strong>diagnostic_collector.py</strong> (infrastructure\hardware\diagnostic_collector.py)</li>
+<li><strong>enhanced_error_messaging.py</strong> (infrastructure\hardware\enhanced_error_messaging.py)</li>
+<li><strong>enhanced_memory_manager.py</strong> (infrastructure\hardware\enhanced_memory_manager.py)</li>
+<li><strong>error_handler.py</strong> (infrastructure\hardware\error_handler.py)</li>
+<li><strong>error_messaging_system.py</strong> (infrastructure\hardware\error_messaging_system.py)</li>
+<li><strong>error_recovery_system.py</strong> (infrastructure\hardware\error_recovery_system.py)</li>
+<li><strong>fallback_handler.py</strong> (infrastructure\hardware\fallback_handler.py)</li>
+<li><strong>gpu_load_balancer.py</strong> (infrastructure\hardware\gpu_load_balancer.py)</li>
+<li><strong>hardware_optimizer.py</strong> (infrastructure\hardware\hardware_optimizer.py)</li>
+<li><strong>hardware_optimizer_simple.py</strong> (infrastructure\hardware\hardware_optimizer_simple.py)</li>
+<li><strong>hardware_parameter_recommender.py</strong> (infrastructure\hardware\hardware_parameter_recommender.py)</li>
+<li><strong>health_monitor.py</strong> (infrastructure\hardware\health_monitor.py)</li>
+<li><strong>health_monitoring_dashboard.py</strong> (infrastructure\hardware\health_monitoring_dashboard.py)</li>
+<li><strong>image_error_handler.py</strong> (infrastructure\hardware\image_error_handler.py)</li>
+<li><strong>image_performance_profiler.py</strong> (infrastructure\hardware\image_performance_profiler.py)</li>
+<li><strong>interactive_error_resolver.py</strong> (infrastructure\hardware\interactive_error_resolver.py)</li>
+<li><strong>log_analyzer.py</strong> (infrastructure\hardware\log_analyzer.py)</li>
+<li><strong>optimize_performance.py</strong> (infrastructure\hardware\optimize_performance.py)</li>
+<li><strong>performance_benchmark_suite.py</strong> (infrastructure\hardware\performance_benchmark_suite.py)</li>
+<li><strong>performance_benchmark_system.py</strong> (infrastructure\hardware\performance_benchmark_system.py)</li>
+<li><strong>performance_comparison_analysis.py</strong> (infrastructure\hardware\performance_comparison_analysis.py)</li>
+<li><strong>performance_monitor.py</strong> (infrastructure\hardware\performance_monitor.py)</li>
+<li><strong>performance_optimization_integration.py</strong> (infrastructure\hardware\performance_optimization_integration.py)</li>
+<li><strong>performance_optimization_tuning.py</strong> (infrastructure\hardware\performance_optimization_tuning.py)</li>
+<li><strong>performance_profiler.py</strong> (infrastructure\hardware\performance_profiler.py)</li>
+<li><strong>progress_performance_monitor.py</strong> (infrastructure\hardware\progress_performance_monitor.py)</li>
+<li><strong>progress_tracker.py</strong> (infrastructure\hardware\progress_tracker.py)</li>
+<li><strong>recovery_workflows.py</strong> (infrastructure\hardware\recovery_workflows.py)</li>
+<li><strong>safe_event_handler.py</strong> (infrastructure\hardware\safe_event_handler.py)</li>
+<li><strong>vram_manager.py</strong> (infrastructure\hardware\vram_manager.py)</li>
+<li><strong>vram_monitor_ui.py</strong> (infrastructure\hardware\vram_monitor_ui.py)</li>
+<li><strong>wan22_logging_system.py</strong> (infrastructure\hardware\wan22_logging_system.py)</li>
+<li><strong>wan22_performance_benchmarks.py</strong> (infrastructure\hardware\wan22_performance_benchmarks.py)</li>
+<li><strong>wan22_performance_optimizer.py</strong> (infrastructure\hardware\wan22_performance_optimizer.py)</li>
+<li><strong>wan_diagnostic_collector.py</strong> (infrastructure\hardware\wan_diagnostic_collector.py)</li>
+<li><strong><strong>init</strong>.py</strong> (infrastructure\hardware__init__.py)</li>
+<li><strong>resource_manager.py</strong> (infrastructure\storage\resource_manager.py)</li>
+<li><strong><strong>init</strong>.py</strong> (infrastructure\storage__init__.py)</li>
+<li><strong>create_model_config.py</strong> (local_installation\create_model_config.py)</li>
+<li>Configuration File</li>
+<li><strong>demo_dependency_recovery.py</strong> (local_installation\demo_dependency_recovery.py)</li>
+<li><strong>demo_diagnostic_monitor.py</strong> (local_installation\demo_diagnostic_monitor.py)</li>
+<li><strong>demo_enhanced_user_guidance.py</strong> (local_installation\demo_enhanced_user_guidance.py)</li>
+<li><strong>demo_health_reporter.py</strong> (local_installation\demo_health_reporter.py)</li>
+<li><strong>demo_health_reporter_simple.py</strong> (local_installation\demo_health_reporter_simple.py)</li>
+<li><strong>demo_model_validation_recovery.py</strong> (local_installation\demo_model_validation_recovery.py)</li>
+<li><strong>demo_network_failure_recovery.py</strong> (local_installation\demo_network_failure_recovery.py)</li>
+<li><strong>demo_pre_installation_validator.py</strong> (local_installation\demo_pre_installation_validator.py)</li>
+<li><strong>demo_release_preparation.py</strong> (local_installation\demo_release_preparation.py)</li>
+<li><strong>demo_reliability_manager.py</strong> (local_installation\demo_reliability_manager.py)</li>
+<li><strong>demo_timeout_manager.py</strong> (local_installation\demo_timeout_manager.py)</li>
+<li><strong>demo_version_rollback_integration.py</strong> (local_installation\demo_version_rollback_integration.py)</li>
+<li><strong>fix_imports.py</strong> (local_installation\fix_imports.py)</li>
+<li><strong>fix_pytorch_dll.py</strong> (local_installation\fix_pytorch_dll.py)</li>
+<li><strong>quick_fix_test.py</strong> (local_installation\quick_fix_test.py)</li>
+<li><strong>run_automated_tests.py</strong> (local_installation\run_automated_tests.py)</li>
+<li><strong>run_comprehensive_reliability_tests.py</strong> (local_installation\run_comprehensive_reliability_tests.py)</li>
+<li><strong>test_basic_integration.py</strong> (local_installation\test_basic_integration.py)</li>
+<li><strong>test_comprehensive_reliability_suite.py</strong> (local_installation\test_comprehensive_reliability_suite.py)</li>
+<li><strong>test_comprehensive_validation.py</strong> (local_installation\test_comprehensive_validation.py)</li>
+<li><strong>test_config_generator.py</strong> (local_installation\test_config_generator.py)</li>
+<li>Configuration File</li>
+<li><strong>test_config_manager.py</strong> (local_installation\test_config_manager.py)</li>
+<li>Configuration File</li>
+<li><strong>test_config_validator.py</strong> (local_installation\test_config_validator.py)</li>
+<li>Configuration File</li>
+<li><strong>test_dependency_management.py</strong> (local_installation\test_dependency_management.py)</li>
+<li><strong>test_dependency_recovery.py</strong> (local_installation\test_dependency_recovery.py)</li>
+<li><strong>test_diagnostic_monitor.py</strong> (local_installation\test_diagnostic_monitor.py)</li>
+<li><strong>test_diagnostic_monitor_integration.py</strong> (local_installation\test_diagnostic_monitor_integration.py)</li>
+<li><strong>test_diagnostic_monitor_simple.py</strong> (local_installation\test_diagnostic_monitor_simple.py)</li>
+<li><strong>test_distribution_manager.py</strong> (local_installation\test_distribution_manager.py)</li>
+<li><strong>test_distribution_preparation.py</strong> (local_installation\test_distribution_preparation.py)</li>
+<li><strong>test_end_to_end_integration.py</strong> (local_installation\test_end_to_end_integration.py)</li>
+<li><strong>test_enhanced_error_context.py</strong> (local_installation\test_enhanced_error_context.py)</li>
+<li><strong>test_enhanced_user_guidance.py</strong> (local_installation\test_enhanced_user_guidance.py)</li>
+<li><strong>test_error_handling.py</strong> (local_installation\test_error_handling.py)</li>
+<li><strong>test_error_integration.py</strong> (local_installation\test_error_integration.py)</li>
+<li><strong>test_error_scenario_suite.py</strong> (local_installation\test_error_scenario_suite.py)</li>
+<li><strong>test_failure_injection_suite.py</strong> (local_installation\test_failure_injection_suite.py)</li>
+<li><strong>test_hardware_detection.py</strong> (local_installation\test_hardware_detection.py)</li>
+<li><strong>test_health_reporter.py</strong> (local_installation\test_health_reporter.py)</li>
+<li><strong>test_health_reporter_simple.py</strong> (local_installation\test_health_reporter_simple.py)</li>
+<li><strong>test_installation_direct.py</strong> (local_installation\test_installation_direct.py)</li>
+<li><strong>test_installer_packaging.py</strong> (local_installation\test_installer_packaging.py)</li>
+<li><strong>test_integrated_installation.py</strong> (local_installation\test_integrated_installation.py)</li>
+<li><strong>test_intelligent_retry_comprehensive.py</strong> (local_installation\test_intelligent_retry_comprehensive.py)</li>
+<li><strong>test_intelligent_retry_system.py</strong> (local_installation\test_intelligent_retry_system.py)</li>
+<li><strong>test_missing_method_recovery.py</strong> (local_installation\test_missing_method_recovery.py)</li>
+<li><strong>test_model_configuration.py</strong> (local_installation\test_model_configuration.py)</li>
+<li>Configuration File</li>
+<li><strong>test_model_config_simple.py</strong> (local_installation\test_model_config_simple.py)</li>
+<li>Configuration File</li>
+<li><strong>test_model_downloader.py</strong> (local_installation\test_model_downloader.py)</li>
+<li><strong>test_model_validation_recovery.py</strong> (local_installation\test_model_validation_recovery.py)</li>
+<li><strong>test_network_failure_recovery.py</strong> (local_installation\test_network_failure_recovery.py)</li>
+<li><strong>test_performance_impact_suite.py</strong> (local_installation\test_performance_impact_suite.py)</li>
+<li><strong>test_post_install_setup.py</strong> (local_installation\test_post_install_setup.py)</li>
+<li><strong>test_pre_installation_validator.py</strong> (local_installation\test_pre_installation_validator.py)</li>
+<li><strong>test_reliability_deployment_config.py</strong> (local_installation\test_reliability_deployment_config.py)</li>
+<li>Configuration File</li>
+<li><strong>test_reliability_integration.py</strong> (local_installation\test_reliability_integration.py)</li>
+<li><strong>test_reliability_manager.py</strong> (local_installation\test_reliability_manager.py)</li>
+<li><strong>test_reliability_wrapper.py</strong> (local_installation\test_reliability_wrapper.py)</li>
+<li><strong>test_retry_system_simple.py</strong> (local_installation\test_retry_system_simple.py)</li>
+<li><strong>test_rollback_recovery.py</strong> (local_installation\test_rollback_recovery.py)</li>
+<li><strong>test_simple.py</strong> (local_installation\test_simple.py)</li>
+<li><strong>test_system_detection.py</strong> (local_installation\test_system_detection.py)</li>
+<li><strong>test_timeout_manager.py</strong> (local_installation\test_timeout_manager.py)</li>
+<li><strong>test_validation_framework.py</strong> (local_installation\test_validation_framework.py)</li>
+<li><strong>test_version_manager.py</strong> (local_installation\test_version_manager.py)</li>
+<li><strong>validate_imports.py</strong> (local_installation\validate_imports.py)</li>
+<li><strong>validate_reliability_deployment.py</strong> (local_installation\validate_reliability_deployment.py)</li>
+<li><strong>main.py</strong> (local_installation\application\main.py)</li>
+<li>Application Entry Point</li>
+<li><strong>ui.py</strong> (local_installation\application\ui.py)</li>
+<li><strong>wan22_ui.py</strong> (local_installation\application\wan22_ui.py)</li>
+<li><strong>web_ui.py</strong> (local_installation\application\web_ui.py)</li>
+<li><strong><strong>init</strong>.py</strong> (local_installation\application__init__.py)</li>
+<li><strong>error_handler.py</strong> (local_installation\backups\reliability_deployment_20250805_183848\scripts\error_handler.py)</li>
+<li><strong>main_installer.py</strong> (local_installation\backups\reliability_deployment_20250805_183848\scripts\main_installer.py)</li>
+<li><strong>reliability_manager.py</strong> (local_installation\backups\reliability_deployment_20250805_183848\scripts\reliability_manager.py)</li>
+<li><strong>error_handler.py</strong> (local_installation\backups\reliability_deployment_20250805_183919\scripts\error_handler.py)</li>
+<li><strong>main_installer.py</strong> (local_installation\backups\reliability_deployment_20250805_183919\scripts\main_installer.py)</li>
+<li><strong>reliability_manager.py</strong> (local_installation\backups\reliability_deployment_20250805_183919\scripts\reliability_manager.py)</li>
+<li><strong>error_handler.py</strong> (local_installation\backups\reliability_deployment_20250805_183952\scripts\error_handler.py)</li>
+<li><strong>main_installer.py</strong> (local_installation\backups\reliability_deployment_20250805_183952\scripts\main_installer.py)</li>
+<li><strong>reliability_manager.py</strong> (local_installation\backups\reliability_deployment_20250805_183952\scripts\reliability_manager.py)</li>
+<li><strong>error_handler.py</strong> (local_installation\backups\reliability_deployment_20250805_184024\scripts\error_handler.py)</li>
+<li><strong>main_installer.py</strong> (local_installation\backups\reliability_deployment_20250805_184024\scripts\main_installer.py)</li>
+<li><strong>reliability_manager.py</strong> (local_installation\backups\reliability_deployment_20250805_184024\scripts\reliability_manager.py)</li>
+<li><strong>error_handler.py</strong> (local_installation\backups\reliability_deployment_20250805_184057\scripts\error_handler.py)</li>
+<li><strong>main_installer.py</strong> (local_installation\backups\reliability_deployment_20250805_184057\scripts\main_installer.py)</li>
+<li><strong>reliability_manager.py</strong> (local_installation\backups\reliability_deployment_20250805_184057\scripts\reliability_manager.py)</li>
+<li><strong>main_installer.py</strong> (local_installation\backups\reliability_deployment_20250902_000517\scripts\main_installer.py)</li>
+<li><strong>main_installer.py</strong> (local_installation\backups\reliability_deployment_20250902_000519\scripts\main_installer.py)</li>
+<li><strong>main_installer.py</strong> (local_installation\backups\reliability_deployment_20250902_091751\scripts\main_installer.py)</li>
+<li><strong>main_installer.py</strong> (local_installation\backups\reliability_deployment_20250902_091753\scripts\main_installer.py)</li>
+<li><strong>dependency_management_example.py</strong> (local_installation\examples\dependency_management_example.py)</li>
+<li><strong>create_icons.py</strong> (local_installation\resources\create_icons.py)</li>
+<li><strong>base_classes.py</strong> (local_installation\scripts\base_classes.py)</li>
+<li><strong>config_manager.py</strong> (local_installation\scripts\config_manager.py)</li>
+<li>Configuration File</li>
+<li><strong>config_validator.py</strong> (local_installation\scripts\config_validator.py)</li>
+<li>Configuration File</li>
+<li><strong>create_shortcuts.py</strong> (local_installation\scripts\create_shortcuts.py)</li>
+<li><strong>dependency_recovery.py</strong> (local_installation\scripts\dependency_recovery.py)</li>
+<li><strong>deploy_reliability_system.py</strong> (local_installation\scripts\deploy_reliability_system.py)</li>
+<li><strong>detect_system.py</strong> (local_installation\scripts\detect_system.py)</li>
+<li><strong>diagnostic_monitor.py</strong> (local_installation\scripts\diagnostic_monitor.py)</li>
+<li><strong>diagnostic_tool.py</strong> (local_installation\scripts\diagnostic_tool.py)</li>
+<li><strong>distribution_manager.py</strong> (local_installation\scripts\distribution_manager.py)</li>
+<li><strong>download_models.py</strong> (local_installation\scripts\download_models.py)</li>
+<li><strong>environment_detector.py</strong> (local_installation\scripts\environment_detector.py)</li>
+<li><strong>error_handler.py</strong> (local_installation\scripts\error_handler.py)</li>
+<li><strong>feature_flags.py</strong> (local_installation\scripts\feature_flags.py)</li>
+<li><strong>functionality_tester.py</strong> (local_installation\scripts\functionality_tester.py)</li>
+<li><strong>generate_config.py</strong> (local_installation\scripts\generate_config.py)</li>
+<li>Configuration File</li>
+<li><strong>health_reporter.py</strong> (local_installation\scripts\health_reporter.py)</li>
+<li><strong>installation_cli.py</strong> (local_installation\scripts\installation_cli.py)</li>
+<li><strong>installation_flow_controller.py</strong> (local_installation\scripts\installation_flow_controller.py)</li>
+<li><strong>installer_packager.py</strong> (local_installation\scripts\installer_packager.py)</li>
+<li><strong>integrated_installer.py</strong> (local_installation\scripts\integrated_installer.py)</li>
+<li><strong>intelligent_retry_system.py</strong> (local_installation\scripts\intelligent_retry_system.py)</li>
+<li><strong>interfaces.py</strong> (local_installation\scripts\interfaces.py)</li>
+<li><strong>logging_system.py</strong> (local_installation\scripts\logging_system.py)</li>
+<li><strong>main_installer.py</strong> (local_installation\scripts\main_installer.py)</li>
+<li><strong>missing_method_recovery.py</strong> (local_installation\scripts\missing_method_recovery.py)</li>
+<li><strong>model_configuration.py</strong> (local_installation\scripts\model_configuration.py)</li>
+<li>Configuration File</li>
+<li><strong>model_validation_recovery.py</strong> (local_installation\scripts\model_validation_recovery.py)</li>
+<li><strong>monitor_reliability.py</strong> (local_installation\scripts\monitor_reliability.py)</li>
+<li><strong>network_failure_recovery.py</strong> (local_installation\scripts\network_failure_recovery.py)</li>
+<li><strong>package_installer.py</strong> (local_installation\scripts\package_installer.py)</li>
+<li><strong>package_resolver.py</strong> (local_installation\scripts\package_resolver.py)</li>
+<li><strong>post_install_setup.py</strong> (local_installation\scripts\post_install_setup.py)</li>
+<li><strong>prepare_release.py</strong> (local_installation\scripts\prepare_release.py)</li>
+<li><strong>pre_installation_validator.py</strong> (local_installation\scripts\pre_installation_validator.py)</li>
+<li><strong>production_monitoring.py</strong> (local_installation\scripts\production_monitoring.py)</li>
+<li><strong>reliability_config.py</strong> (local_installation\scripts\reliability_config.py)</li>
+<li>Configuration File</li>
+<li><strong>reliability_integration.py</strong> (local_installation\scripts\reliability_integration.py)</li>
+<li><strong>reliability_manager.py</strong> (local_installation\scripts\reliability_manager.py)</li>
+<li><strong>reliability_wrapper.py</strong> (local_installation\scripts\reliability_wrapper.py)</li>
+<li><strong>retry_system.py</strong> (local_installation\scripts\retry_system.py)</li>
+<li><strong>rollback_manager.py</strong> (local_installation\scripts\rollback_manager.py)</li>
+<li><strong>run_diagnostics.py</strong> (local_installation\scripts\run_diagnostics.py)</li>
+<li><strong>run_troubleshooter.py</strong> (local_installation\scripts\run_troubleshooter.py)</li>
+<li><strong>setup_dependencies.py</strong> (local_installation\scripts\setup_dependencies.py)</li>
+<li><strong>timeout_manager.py</strong> (local_installation\scripts\timeout_manager.py)</li>
+<li><strong>user_guidance.py</strong> (local_installation\scripts\user_guidance.py)</li>
+<li><strong>validate_installation.py</strong> (local_installation\scripts\validate_installation.py)</li>
+<li><strong>version_manager.py</strong> (local_installation\scripts\version_manager.py)</li>
+<li><strong><strong>init</strong>.py</strong> (local_installation\scripts__init__.py)</li>
+<li><strong>hardware_simulation_tests.py</strong> (local_installation\tests\hardware_simulation_tests.py)</li>
+<li><strong>integration_tests.py</strong> (local_installation\tests\integration_tests.py)</li>
+<li><strong>test_config.py</strong> (local_installation\tests\test_config.py)</li>
+<li>Configuration File</li>
+<li><strong>test_runner.py</strong> (local_installation\tests\test_runner.py)</li>
+<li><strong>unit_tests.py</strong> (local_installation\tests\unit_tests.py)</li>
+<li><strong><strong>init</strong>.py</strong> (local_installation\tests__init__.py)</li>
+<li><strong>main.py</strong> (local_installation\WAN22-Installation-Package\application\main.py)</li>
+<li>Application Entry Point</li>
+<li><strong>ui.py</strong> (local_installation\WAN22-Installation-Package\application\ui.py)</li>
+<li><strong>wan22_ui.py</strong> (local_installation\WAN22-Installation-Package\application\wan22_ui.py)</li>
+<li><strong>web_ui.py</strong> (local_installation\WAN22-Installation-Package\application\web_ui.py)</li>
+<li><strong><strong>init</strong>.py</strong> (local_installation\WAN22-Installation-Package\application__init__.py)</li>
+<li><strong>dependency_management_example.py</strong> (local_installation\WAN22-Installation-Package\examples\dependency_management_example.py)</li>
+<li><strong>create_icons.py</strong> (local_installation\WAN22-Installation-Package\resources\create_icons.py)</li>
+<li><strong>base_classes.py</strong> (local_installation\WAN22-Installation-Package\scripts\base_classes.py)</li>
+<li><strong>config_manager.py</strong> (local_installation\WAN22-Installation-Package\scripts\config_manager.py)</li>
+<li>Configuration File</li>
+<li><strong>config_validator.py</strong> (local_installation\WAN22-Installation-Package\scripts\config_validator.py)</li>
+<li>Configuration File</li>
+<li><strong>create_shortcuts.py</strong> (local_installation\WAN22-Installation-Package\scripts\create_shortcuts.py)</li>
+<li><strong>detect_system.py</strong> (local_installation\WAN22-Installation-Package\scripts\detect_system.py)</li>
+<li><strong>diagnostic_tool.py</strong> (local_installation\WAN22-Installation-Package\scripts\diagnostic_tool.py)</li>
+<li><strong>distribution_manager.py</strong> (local_installation\WAN22-Installation-Package\scripts\distribution_manager.py)</li>
+<li><strong>download_models.py</strong> (local_installation\WAN22-Installation-Package\scripts\download_models.py)</li>
+<li><strong>environment_detector.py</strong> (local_installation\WAN22-Installation-Package\scripts\environment_detector.py)</li>
+<li><strong>error_handler.py</strong> (local_installation\WAN22-Installation-Package\scripts\error_handler.py)</li>
+<li><strong>functionality_tester.py</strong> (local_installation\WAN22-Installation-Package\scripts\functionality_tester.py)</li>
+<li><strong>generate_config.py</strong> (local_installation\WAN22-Installation-Package\scripts\generate_config.py)</li>
+<li>Configuration File</li>
+<li><strong>installation_cli.py</strong> (local_installation\WAN22-Installation-Package\scripts\installation_cli.py)</li>
+<li><strong>installation_flow_controller.py</strong> (local_installation\WAN22-Installation-Package\scripts\installation_flow_controller.py)</li>
+<li><strong>installer_packager.py</strong> (local_installation\WAN22-Installation-Package\scripts\installer_packager.py)</li>
+<li><strong>integrated_installer.py</strong> (local_installation\WAN22-Installation-Package\scripts\integrated_installer.py)</li>
+<li><strong>interfaces.py</strong> (local_installation\WAN22-Installation-Package\scripts\interfaces.py)</li>
+<li><strong>logging_system.py</strong> (local_installation\WAN22-Installation-Package\scripts\logging_system.py)</li>
+<li><strong>main_installer.py</strong> (local_installation\WAN22-Installation-Package\scripts\main_installer.py)</li>
+<li><strong>model_configuration.py</strong> (local_installation\WAN22-Installation-Package\scripts\model_configuration.py)</li>
+<li>Configuration File</li>
+<li><strong>package_installer.py</strong> (local_installation\WAN22-Installation-Package\scripts\package_installer.py)</li>
+<li><strong>package_resolver.py</strong> (local_installation\WAN22-Installation-Package\scripts\package_resolver.py)</li>
+<li><strong>post_install_setup.py</strong> (local_installation\WAN22-Installation-Package\scripts\post_install_setup.py)</li>
+<li><strong>prepare_release.py</strong> (local_installation\WAN22-Installation-Package\scripts\prepare_release.py)</li>
+<li><strong>rollback_manager.py</strong> (local_installation\WAN22-Installation-Package\scripts\rollback_manager.py)</li>
+<li><strong>run_diagnostics.py</strong> (local_installation\WAN22-Installation-Package\scripts\run_diagnostics.py)</li>
+<li><strong>run_troubleshooter.py</strong> (local_installation\WAN22-Installation-Package\scripts\run_troubleshooter.py)</li>
+<li><strong>setup_dependencies.py</strong> (local_installation\WAN22-Installation-Package\scripts\setup_dependencies.py)</li>
+<li><strong>user_guidance.py</strong> (local_installation\WAN22-Installation-Package\scripts\user_guidance.py)</li>
+<li><strong>validate_installation.py</strong> (local_installation\WAN22-Installation-Package\scripts\validate_installation.py)</li>
+<li><strong>version_manager.py</strong> (local_installation\WAN22-Installation-Package\scripts\version_manager.py)</li>
+<li><strong><strong>init</strong>.py</strong> (local_installation\WAN22-Installation-Package\scripts__init__.py)</li>
+<li><strong>continuous_monitor.py</strong> (local_testing_framework\continuous_monitor.py)</li>
+<li><strong>diagnostic_tool.py</strong> (local_testing_framework\diagnostic_tool.py)</li>
+<li><strong>environment_validator.py</strong> (local_testing_framework\environment_validator.py)</li>
+<li><strong>integration_tester.py</strong> (local_testing_framework\integration_tester.py)</li>
+<li><strong>integration_test_report_generator.py</strong> (local_testing_framework\integration_test_report_generator.py)</li>
+<li><strong>performance_tester.py</strong> (local_testing_framework\performance_tester.py)</li>
+<li><strong>production_validator.py</strong> (local_testing_framework\production_validator.py)</li>
+<li><strong>report_generator.py</strong> (local_testing_framework\report_generator.py)</li>
+<li><strong>sample_manager.py</strong> (local_testing_framework\sample_manager.py)</li>
+<li><strong>test_manager.py</strong> (local_testing_framework\test_manager.py)</li>
+<li><strong><strong>init</strong>.py</strong> (local_testing_framework__init__.py)</li>
+<li><strong><strong>main</strong>.py</strong> (local_testing_framework__main__.py)</li>
+<li>Application Entry Point</li>
+<li><strong>main.py</strong> (local_testing_framework\cli\main.py)</li>
+<li>Application Entry Point</li>
+<li><strong><strong>init</strong>.py</strong> (local_testing_framework\cli__init__.py)</li>
+<li><strong>continuous_monitoring_workflow.py</strong> (local_testing_framework\examples\workflows\continuous_monitoring_workflow.py)</li>
+<li><strong>daily_development_workflow.py</strong> (local_testing_framework\examples\workflows\daily_development_workflow.py)</li>
+<li><strong>pre_deployment_validation.py</strong> (local_testing_framework\examples\workflows\pre_deployment_validation.py)</li>
+<li><strong>configuration.py</strong> (local_testing_framework\models\configuration.py)</li>
+<li>Configuration File</li>
+<li><strong>test_results.py</strong> (local_testing_framework\models\test_results.py)</li>
+<li><strong><strong>init</strong>.py</strong> (local_testing_framework\models__init__.py)</li>
+<li><strong>run_integration_tests.py</strong> (local_testing_framework\tests\run_integration_tests.py)</li>
+<li><strong>run_tests.py</strong> (local_testing_framework\tests\run_tests.py)</li>
+<li><strong>test_cli.py</strong> (local_testing_framework\tests\test_cli.py)</li>
+<li><strong>test_continuous_monitor.py</strong> (local_testing_framework\tests\test_continuous_monitor.py)</li>
+<li><strong>test_cross_platform.py</strong> (local_testing_framework\tests\test_cross_platform.py)</li>
+<li><strong>test_diagnostic_tool.py</strong> (local_testing_framework\tests\test_diagnostic_tool.py)</li>
+<li><strong>test_end_to_end.py</strong> (local_testing_framework\tests\test_end_to_end.py)</li>
+<li><strong>test_environment_validator.py</strong> (local_testing_framework\tests\test_environment_validator.py)</li>
+<li><strong>test_integration_tester.py</strong> (local_testing_framework\tests\test_integration_tester.py)</li>
+<li><strong>test_integration_workflows.py</strong> (local_testing_framework\tests\test_integration_workflows.py)</li>
+<li><strong>test_performance_tester.py</strong> (local_testing_framework\tests\test_performance_tester.py)</li>
+<li><strong>test_production_validator.py</strong> (local_testing_framework\tests\test_production_validator.py)</li>
+<li><strong>test_report_generator.py</strong> (local_testing_framework\tests\test_report_generator.py)</li>
+<li><strong>test_sample_manager.py</strong> (local_testing_framework\tests\test_sample_manager.py)</li>
+<li><strong>test_test_manager.py</strong> (local_testing_framework\tests\test_test_manager.py)</li>
+<li><strong><strong>init</strong>.py</strong> (local_testing_framework\tests__init__.py)</li>
+<li><strong>deploy_production_health.py</strong> (scripts\deploy_production_health.py)</li>
+<li><strong>fix_health_checker_imports.py</strong> (scripts\fix_health_checker_imports.py)</li>
+<li><strong>manage_alerts.py</strong> (scripts\manage_alerts.py)</li>
+<li><strong>performance-validation.py</strong> (scripts\performance-validation.py)</li>
+<li><strong>run-comprehensive-tests.py</strong> (scripts\run-comprehensive-tests.py)</li>
+<li><strong>setup_alerting.py</strong> (scripts\setup_alerting.py)</li>
+<li><strong>startup_manager.py</strong> (scripts\startup_manager.py)</li>
+<li><strong>validate-task-14-completion.py</strong> (scripts\validate-task-14-completion.py)</li>
+<li><strong><strong>init</strong>.py</strong> (scripts__init__.py)</li>
+<li><strong>configure_branch_protection.py</strong> (scripts\setup\configure_branch_protection.py)</li>
+<li>Configuration File</li>
+<li><strong>install_pre_commit_hooks.py</strong> (scripts\setup\install_pre_commit_hooks.py)</li>
+<li><strong>analytics.py</strong> (scripts\startup_manager\analytics.py)</li>
+<li><strong>cli.py</strong> (scripts\startup_manager\cli.py)</li>
+<li><strong>config.py</strong> (scripts\startup_manager\config.py)</li>
+<li>Configuration File</li>
+<li><strong>diagnostics.py</strong> (scripts\startup_manager\diagnostics.py)</li>
+<li><strong>environment_validator.py</strong> (scripts\startup_manager\environment_validator.py)</li>
+<li><strong>error_handler.py</strong> (scripts\startup_manager\error_handler.py)</li>
+<li><strong>logger.py</strong> (scripts\startup_manager\logger.py)</li>
+<li><strong>performance_monitor.py</strong> (scripts\startup_manager\performance_monitor.py)</li>
+<li><strong>port_manager.py</strong> (scripts\startup_manager\port_manager.py)</li>
+<li><strong>preferences.py</strong> (scripts\startup_manager\preferences.py)</li>
+<li><strong>preference_cli.py</strong> (scripts\startup_manager\preference_cli.py)</li>
+<li><strong>process_manager.py</strong> (scripts\startup_manager\process_manager.py)</li>
+<li><strong>recovery_engine.py</strong> (scripts\startup_manager\recovery_engine.py)</li>
+<li><strong>service_wrapper.py</strong> (scripts\startup_manager\service_wrapper.py)</li>
+<li><strong>utils.py</strong> (scripts\startup_manager\utils.py)</li>
+<li><strong>windows_utils.py</strong> (scripts\startup_manager\windows_utils.py)</li>
+<li><strong><strong>init</strong>.py</strong> (scripts\startup_manager__init__.py)</li>
+<li><strong>conftest.py</strong> (tests\conftest.py)</li>
+<li><strong><strong>init</strong>.py</strong> (tests__init__.py)</li>
+<li><strong>conftest.py</strong> (tests\config\conftest.py)</li>
+<li><strong>environment_validator.py</strong> (tests\config\environment_validator.py)</li>
+<li><strong>test_config.py</strong> (tests\config\test_config.py)</li>
+<li>Configuration File</li>
+<li><strong><strong>init</strong>.py</strong> (tests\config__init__.py)</li>
+<li><strong>test_recovery_engine.py</strong> (tests\e2e\test_recovery_engine.py)</li>
+<li><strong><strong>init</strong>.py</strong> (tests\e2e__init__.py)</li>
+<li><strong>test_comprehensive_isolation_example.py</strong> (tests\examples\test_comprehensive_isolation_example.py)</li>
+<li><strong>test_configuration_integration_example.py</strong> (tests\examples\test_configuration_integration_example.py)</li>
+<li>Configuration File</li>
+<li><strong>fixture_manager.py</strong> (tests\fixtures\fixture_manager.py)</li>
+<li><strong><strong>init</strong>.py</strong> (tests\fixtures__init__.py)</li>
+<li><strong>test_component_interaction.py</strong> (tests\integration\test_component_interaction.py)</li>
+<li><strong>test_environment_validator.py</strong> (tests\integration\test_environment_validator.py)</li>
+<li><strong>test_error_handling_integration.py</strong> (tests\integration\test_error_handling_integration.py)</li>
+<li><strong>test_port_manager.py</strong> (tests\integration\test_port_manager.py)</li>
+<li><strong>test_port_manager_integration.py</strong> (tests\integration\test_port_manager_integration.py)</li>
+<li><strong>test_preferences_integration.py</strong> (tests\integration\test_preferences_integration.py)</li>
+<li><strong>test_process_manager.py</strong> (tests\integration\test_process_manager.py)</li>
+<li><strong>test_project_health_system_e2e.py</strong> (tests\integration\test_project_health_system_e2e.py)</li>
+<li><strong>test_recovery_engine_integration.py</strong> (tests\integration\test_recovery_engine_integration.py)</li>
+<li><strong>test_startup_manager_config.py</strong> (tests\integration\test_startup_manager_config.py)</li>
+<li>Configuration File</li>
+<li><strong>test_windows_integration.py</strong> (tests\integration\test_windows_integration.py)</li>
+<li><strong><strong>init</strong>.py</strong> (tests\integration__init__.py)</li>
+<li><strong>test_analytics.py</strong> (tests\performance\test_analytics.py)</li>
+<li><strong>test_cli_interface.py</strong> (tests\performance\test_cli_interface.py)</li>
+<li><strong>test_comprehensive_integration.py</strong> (tests\performance\test_comprehensive_integration.py)</li>
+<li><strong>test_configuration_integration.py</strong> (tests\performance\test_configuration_integration.py)</li>
+<li>Configuration File</li>
+<li><strong>test_configuration_validator.py</strong> (tests\performance\test_configuration_validator.py)</li>
+<li>Configuration File</li>
+<li><strong>test_diagnostics_integration.py</strong> (tests\performance\test_diagnostics_integration.py)</li>
+<li><strong>test_logger.py</strong> (tests\performance\test_logger.py)</li>
+<li><strong>test_monitoring_analytics_integration.py</strong> (tests\performance\test_monitoring_analytics_integration.py)</li>
+<li><strong>test_performance_benchmarks.py</strong> (tests\performance\test_performance_benchmarks.py)</li>
+<li><strong>test_performance_monitor.py</strong> (tests\performance\test_performance_monitor.py)</li>
+<li><strong>test_performance_optimization.py</strong> (tests\performance\test_performance_optimization.py)</li>
+<li><strong>test_preference_cli.py</strong> (tests\performance\test_preference_cli.py)</li>
+<li><strong>test_process_lifecycle_integration.py</strong> (tests\performance\test_process_lifecycle_integration.py)</li>
+<li><strong>test_system_performance_benchmarks.py</strong> (tests\performance\test_system_performance_benchmarks.py)</li>
+<li><strong><strong>init</strong>.py</strong> (tests\performance__init__.py)</li>
+<li><strong>test_system_reliability.py</strong> (tests\reliability\test_system_reliability.py)</li>
+<li><strong>test_high_load_scenarios.py</strong> (tests\stress\test_high_load_scenarios.py)</li>
+<li><strong>test_config_system.py</strong> (tests\unit\test_config_system.py)</li>
+<li>Configuration File</li>
+<li><strong>test_enhanced_isolation.py</strong> (tests\unit\test_enhanced_isolation.py)</li>
+<li><strong>test_environment_validator.py</strong> (tests\unit\test_environment_validator.py)</li>
+<li><strong>test_fixture_manager.py</strong> (tests\unit\test_fixture_manager.py)</li>
+<li><strong>test_simple_isolation.py</strong> (tests\unit\test_simple_isolation.py)</li>
+<li><strong>test_startup_manager_utils.py</strong> (tests\unit\test_startup_manager_utils.py)</li>
+<li><strong>test_test_execution_engine.py</strong> (tests\unit\test_test_execution_engine.py)</li>
+<li><strong>test_unified_config.py</strong> (tests\unit\test_unified_config.py)</li>
+<li>Configuration File</li>
+<li><strong><strong>init</strong>.py</strong> (tests\unit__init__.py)</li>
+<li><strong>example_usage.py</strong> (tests\utils\example_usage.py)</li>
+<li><strong>import_fixer.py</strong> (tests\utils\import_fixer.py)</li>
+<li><strong>mock_startup_manager.py</strong> (tests\utils\mock_startup_manager.py)</li>
+<li><strong>run_comprehensive_test_suite.py</strong> (tests\utils\run_comprehensive_test_suite.py)</li>
+<li><strong>shared_fixtures.py</strong> (tests\utils\shared_fixtures.py)</li>
+<li><strong>test_data_factories.py</strong> (tests\utils\test_data_factories.py)</li>
+<li><strong>test_execution_engine.py</strong> (tests\utils\test_execution_engine.py)</li>
+<li><strong>test_execution_engine_integration.py</strong> (tests\utils\test_execution_engine_integration.py)</li>
+<li><strong>test_isolation.py</strong> (tests\utils\test_isolation.py)</li>
+<li><strong>test_runner_cli.py</strong> (tests\utils\test_runner_cli.py)</li>
+<li><strong><strong>init</strong>.py</strong> (tests\utils__init__.py)</li>
+<li><strong><strong>init</strong>.py</strong> (tools__init__.py)</li>
+<li><strong>cli.py</strong> (tools\config-analyzer\cli.py)</li>
+<li><strong>config_dependency_mapper.py</strong> (tools\config-analyzer\config_dependency_mapper.py)</li>
+<li>Configuration File</li>
+<li><strong>config_landscape_analyzer.py</strong> (tools\config-analyzer\config_landscape_analyzer.py)</li>
+<li>Configuration File</li>
+<li><strong>config_api.py</strong> (tools\config_manager\config_api.py)</li>
+<li>Configuration File</li>
+<li><strong>config_cli.py</strong> (tools\config_manager\config_cli.py)</li>
+<li>Configuration File</li>
+<li><strong>config_unifier.py</strong> (tools\config_manager\config_unifier.py)</li>
+<li>Configuration File</li>
+<li><strong>config_validator.py</strong> (tools\config_manager\config_validator.py)</li>
+<li>Configuration File</li>
+<li><strong>migration_cli.py</strong> (tools\config_manager\migration_cli.py)</li>
+<li><strong>pre_commit_config_validation.py</strong> (tools\config_manager\pre_commit_config_validation.py)</li>
+<li>Configuration File</li>
+<li><strong>unified_config.py</strong> (tools\config_manager\unified_config.py)</li>
+<li>Configuration File</li>
+<li><strong><strong>init</strong>.py</strong> (tools\config_manager__init__.py)</li>
+<li><strong>dependency_detector.py</strong> (tools\dev-environment\dependency_detector.py)</li>
+<li><strong>dev_environment_cli.py</strong> (tools\dev-environment\dev_environment_cli.py)</li>
+<li><strong>environment_validator.py</strong> (tools\dev-environment\environment_validator.py)</li>
+<li><strong>setup_dev_environment.py</strong> (tools\dev-environment\setup_dev_environment.py)</li>
+<li><strong>config_watcher.py</strong> (tools\dev-feedback\config_watcher.py)</li>
+<li>Configuration File</li>
+<li><strong>debug_tools.py</strong> (tools\dev-feedback\debug_tools.py)</li>
+<li><strong>feedback_cli.py</strong> (tools\dev-feedback\feedback_cli.py)</li>
+<li><strong>test_watcher.py</strong> (tools\dev-feedback\test_watcher.py)</li>
+<li><strong>cli.py</strong> (tools\doc-generator\cli.py)</li>
+<li><strong>documentation_generator.py</strong> (tools\doc-generator\documentation_generator.py)</li>
+<li><strong>generate_docs.py</strong> (tools\doc-generator\generate_docs.py)</li>
+<li><strong>metadata_manager.py</strong> (tools\doc-generator\metadata_manager.py)</li>
+<li><strong>migration_tool.py</strong> (tools\doc-generator\migration_tool.py)</li>
+<li><strong>navigation_generator.py</strong> (tools\doc-generator\navigation_generator.py)</li>
+<li><strong>pre_commit_link_check.py</strong> (tools\doc-generator\pre_commit_link_check.py)</li>
+<li><strong>search_indexer.py</strong> (tools\doc-generator\search_indexer.py)</li>
+<li><strong>server.py</strong> (tools\doc-generator\server.py)</li>
+<li><strong>validator.py</strong> (tools\doc-generator\validator.py)</li>
+<li><strong><strong>init</strong>.py</strong> (tools\doc-generator__init__.py)</li>
+<li><strong>automated_alerting.py</strong> (tools\health-checker\automated_alerting.py)</li>
+<li><strong>automated_monitoring.py</strong> (tools\health-checker\automated_monitoring.py)</li>
+<li><strong>badge_generator.py</strong> (tools\health-checker\badge_generator.py)</li>
+<li><strong>baseline_and_improvement.py</strong> (tools\health-checker\baseline_and_improvement.py)</li>
+<li><strong>ci_integration.py</strong> (tools\health-checker\ci_integration.py)</li>
+<li><strong>cli.py</strong> (tools\health-checker\cli.py)</li>
+<li><strong>dashboard_server.py</strong> (tools\health-checker\dashboard_server.py)</li>
+<li><strong>establish_baseline.py</strong> (tools\health-checker\establish_baseline.py)</li>
+<li><strong>example_usage.py</strong> (tools\health-checker\example_usage.py)</li>
+<li><strong>health_analytics.py</strong> (tools\health-checker\health_analytics.py)</li>
+<li><strong>health_checker.py</strong> (tools\health-checker\health_checker.py)</li>
+<li><strong>health_models.py</strong> (tools\health-checker\health_models.py)</li>
+<li><strong>health_notifier.py</strong> (tools\health-checker\health_notifier.py)</li>
+<li><strong>health_reporter.py</strong> (tools\health-checker\health_reporter.py)</li>
+<li><strong>parallel_executor.py</strong> (tools\health-checker\parallel_executor.py)</li>
+<li><strong>performance_optimizer.py</strong> (tools\health-checker\performance_optimizer.py)</li>
+<li><strong>pre_commit_import_validation.py</strong> (tools\health-checker\pre_commit_import_validation.py)</li>
+<li><strong>pre_commit_test_health.py</strong> (tools\health-checker\pre_commit_test_health.py)</li>
+<li><strong>production_deployment.py</strong> (tools\health-checker\production_deployment.py)</li>
+<li><strong>production_deployment_simple.py</strong> (tools\health-checker\production_deployment_simple.py)</li>
+<li><strong>production_health_checks.py</strong> (tools\health-checker\production_health_checks.py)</li>
+<li><strong>recommendation_engine.py</strong> (tools\health-checker\recommendation_engine.py)</li>
+<li><strong>run_baseline_implementation.py</strong> (tools\health-checker\run_baseline_implementation.py)</li>
+<li><strong>run_performance_tests.py</strong> (tools\health-checker\run_performance_tests.py)</li>
+<li><strong>start_health_monitoring.py</strong> (tools\health-checker\start_health_monitoring.py)</li>
+<li><strong>task_9_3_implementation.py</strong> (tools\health-checker\task_9_3_implementation.py)</li>
+<li><strong>test_monitoring.py</strong> (tools\health-checker\test_monitoring.py)</li>
+<li><strong><strong>init</strong>.py</strong> (tools\health-checker__init__.py)</li>
+<li><strong>code_quality_checker.py</strong> (tools\health-checker\checkers\code_quality_checker.py)</li>
+<li><strong>configuration_health_checker.py</strong> (tools\health-checker\checkers\configuration_health_checker.py)</li>
+<li>Configuration File</li>
+<li><strong>documentation_health_checker.py</strong> (tools\health-checker\checkers\documentation_health_checker.py)</li>
+<li><strong>test_health_checker.py</strong> (tools\health-checker\checkers\test_health_checker.py)</li>
+<li><strong><strong>init</strong>.py</strong> (tools\health-checker\checkers__init__.py)</li>
+<li><strong>developer_checklist.py</strong> (tools\onboarding\developer_checklist.py)</li>
+<li><strong>onboarding_cli.py</strong> (tools\onboarding\onboarding_cli.py)</li>
+<li><strong>setup_wizard.py</strong> (tools\onboarding\setup_wizard.py)</li>
+<li><strong>cli.py</strong> (tools\project-structure-analyzer\cli.py)</li>
+<li><strong>complexity_analyzer.py</strong> (tools\project-structure-analyzer\complexity_analyzer.py)</li>
+<li><strong>component_analyzer.py</strong> (tools\project-structure-analyzer\component_analyzer.py)</li>
+<li><strong>documentation_generator.py</strong> (tools\project-structure-analyzer\documentation_generator.py)</li>
+<li><strong>documentation_validator.py</strong> (tools\project-structure-analyzer\documentation_validator.py)</li>
+<li><strong>example_usage.py</strong> (tools\project-structure-analyzer\example_usage.py)</li>
+<li><strong>structure_analyzer.py</strong> (tools\project-structure-analyzer\structure_analyzer.py)</li>
+<li><strong>visualization_generator.py</strong> (tools\project-structure-analyzer\visualization_generator.py)</li>
+<li><strong><strong>init</strong>.py</strong> (tools\project-structure-analyzer__init__.py)</li>
+<li><strong>cli.py</strong> (tools\test-auditor\cli.py)</li>
+<li><strong>coverage_analyzer.py</strong> (tools\test-auditor\coverage_analyzer.py)</li>
+<li><strong>example_usage.py</strong> (tools\test-auditor\example_usage.py)</li>
+<li><strong>orchestrator.py</strong> (tools\test-auditor\orchestrator.py)</li>
+<li><strong>test_auditor.py</strong> (tools\test-auditor\test_auditor.py)</li>
+<li><strong>test_runner.py</strong> (tools\test-auditor\test_runner.py)</li>
+<li><strong><strong>init</strong>.py</strong> (tools\test-auditor__init__.py)</li>
+<li><strong>coverage_cli.py</strong> (tools\test-quality\coverage_cli.py)</li>
+<li><strong>coverage_system.py</strong> (tools\test-quality\coverage_system.py)</li>
+<li><strong>example_usage.py</strong> (tools\test-quality\example_usage.py)</li>
+<li><strong>flaky_test_detector.py</strong> (tools\test-quality\flaky_test_detector.py)</li>
+<li><strong>integration_example.py</strong> (tools\test-quality\integration_example.py)</li>
+<li><strong>performance_optimizer.py</strong> (tools\test-quality\performance_optimizer.py)</li>
+<li><strong>test_quality_cli.py</strong> (tools\test-quality\test_quality_cli.py)</li>
+<li><strong><strong>init</strong>.py</strong> (tools\test-quality__init__.py)</li>
+<li><strong>coverage_analyzer.py</strong> (tools\test-runner\coverage_analyzer.py)</li>
+<li><strong>example_usage.py</strong> (tools\test-runner\example_usage.py)</li>
+<li><strong>orchestrator.py</strong> (tools\test-runner\orchestrator.py)</li>
+<li><strong>runner_engine.py</strong> (tools\test-runner\runner_engine.py)</li>
+<li><strong>run_test_audit.py</strong> (tools\test-runner\run_test_audit.py)</li>
+<li><strong>test_auditor.py</strong> (tools\test-runner\test_auditor.py)</li>
+<li><strong><strong>init</strong>.py</strong> (tools\test-runner__init__.py)</li>
+<li><strong>automated_syntax_check.py</strong> (utils_new\automated_syntax_check.py)</li>
+<li><strong>check_missing_modules.py</strong> (utils_new\check_missing_modules.py)</li>
+<li><strong>component_validator.py</strong> (utils_new\component_validator.py)</li>
+<li><strong>comprehensive_system_integration_test.py</strong> (utils_new\comprehensive_system_integration_test.py)</li>
+<li><strong>comprehensive_test_runner.py</strong> (utils_new\comprehensive_test_runner.py)</li>
+<li><strong>debug_dependencies.py</strong> (utils_new\debug_dependencies.py)</li>
+<li><strong>debug_security.py</strong> (utils_new\debug_security.py)</li>
+<li><strong>demo_compatibility_registry.py</strong> (utils_new\demo_compatibility_registry.py)</li>
+<li><strong>demo_config_recovery_system.py</strong> (utils_new\demo_config_recovery_system.py)</li>
+<li>Configuration File</li>
+<li><strong>demo_dependency_management.py</strong> (utils_new\demo_dependency_management.py)</li>
+<li><strong>demo_diagnostic_collector.py</strong> (utils_new\demo_diagnostic_collector.py)</li>
+<li><strong>demo_enhanced_image_validation.py</strong> (utils_new\demo_enhanced_image_validation.py)</li>
+<li><strong>demo_enhanced_model_management.py</strong> (utils_new\demo_enhanced_model_management.py)</li>
+<li><strong>demo_environment_validation.py</strong> (utils_new\demo_environment_validation.py)</li>
+<li><strong>demo_error_handling.py</strong> (utils_new\demo_error_handling.py)</li>
+<li><strong>demo_error_messaging_comprehensive.py</strong> (utils_new\demo_error_messaging_comprehensive.py)</li>
+<li><strong>demo_error_recovery_system.py</strong> (utils_new\demo_error_recovery_system.py)</li>
+<li><strong>demo_generation_task_lora_support.py</strong> (utils_new\demo_generation_task_lora_support.py)</li>
+<li><strong>demo_help_text_system.py</strong> (utils_new\demo_help_text_system.py)</li>
+<li><strong>demo_help_text_system_integration.py</strong> (utils_new\demo_help_text_system_integration.py)</li>
+<li><strong>demo_integration_tests.py</strong> (utils_new\demo_integration_tests.py)</li>
+<li><strong>demo_logging_system.py</strong> (utils_new\demo_logging_system.py)</li>
+<li><strong>demo_lora_generation_pipeline.py</strong> (utils_new\demo_lora_generation_pipeline.py)</li>
+<li><strong>demo_model_index_schema.py</strong> (utils_new\demo_model_index_schema.py)</li>
+<li><strong>demo_model_loading_optimization.py</strong> (utils_new\demo_model_loading_optimization.py)</li>
+<li><strong>demo_model_management_simple.py</strong> (utils_new\demo_model_management_simple.py)</li>
+<li><strong>demo_optimization_system.py</strong> (utils_new\demo_optimization_system.py)</li>
+<li><strong>demo_output_management.py</strong> (utils_new\demo_output_management.py)</li>
+<li><strong>demo_performance_benchmark_system.py</strong> (utils_new\demo_performance_benchmark_system.py)</li>
+<li><strong>demo_performance_profiler_fix.py</strong> (utils_new\demo_performance_profiler_fix.py)</li>
+<li><strong>demo_progress_tracker_integration.py</strong> (utils_new\demo_progress_tracker_integration.py)</li>
+<li><strong>demo_resource_management.py</strong> (utils_new\demo_resource_management.py)</li>
+<li><strong>demo_safe_load_manager.py</strong> (utils_new\demo_safe_load_manager.py)</li>
+<li><strong>demo_threadripper_pro_optimizations.py</strong> (utils_new\demo_threadripper_pro_optimizations.py)</li>
+<li><strong>demo_ui.py</strong> (utils_new\demo_ui.py)</li>
+<li><strong>demo_ui_compatibility_integration.py</strong> (utils_new\demo_ui_compatibility_integration.py)</li>
+<li><strong>demo_ui_validation_feedback.py</strong> (utils_new\demo_ui_validation_feedback.py)</li>
+<li><strong>demo_vae_compatibility_integration.py</strong> (utils_new\demo_vae_compatibility_integration.py)</li>
+<li><strong>demo_vram_fallback_config.py</strong> (utils_new\demo_vram_fallback_config.py)</li>
+<li>Configuration File</li>
+<li><strong>demo_wan22_config_system.py</strong> (utils_new\demo_wan22_config_system.py)</li>
+<li>Configuration File</li>
+<li><strong>demo_wan22_system_optimizer.py</strong> (utils_new\demo_wan22_system_optimizer.py)</li>
+<li><strong>documentation_integration.py</strong> (utils_new\documentation_integration.py)</li>
+<li><strong>enhanced_image_preview_manager.py</strong> (utils_new\enhanced_image_preview_manager.py)</li>
+<li><strong>enhanced_image_validation.py</strong> (utils_new\enhanced_image_validation.py)</li>
+<li><strong>final_system_validation_summary.py</strong> (utils_new\final_system_validation_summary.py)</li>
+<li><strong>fix_dependencies.py</strong> (utils_new\fix_dependencies.py)</li>
+<li><strong>fix_diffusers_installation.py</strong> (utils_new\fix_diffusers_installation.py)</li>
+<li><strong>fix_event_handlers.py</strong> (utils_new\fix_event_handlers.py)</li>
+<li><strong>generate_actual_videos_test.py</strong> (utils_new\generate_actual_videos_test.py)</li>
+<li><strong>image_session_manager.py</strong> (utils_new\image_session_manager.py)</li>
+<li><strong>input_validation.py</strong> (utils_new\input_validation.py)</li>
+<li><strong>integration_test_suite.py</strong> (utils_new\integration_test_suite.py)</li>
+<li><strong>optimized_image_cache.py</strong> (utils_new\optimized_image_cache.py)</li>
+<li><strong>production_system_integration_test.py</strong> (utils_new\production_system_integration_test.py)</li>
+<li><strong>realtime_generation_test.py</strong> (utils_new\realtime_generation_test.py)</li>
+<li><strong>responsive_image_interface.py</strong> (utils_new\responsive_image_interface.py)</li>
+<li><strong>run-performance-tests.py</strong> (utils_new\run-performance-tests.py)</li>
+<li><strong>runtime_fixes.py</strong> (utils_new\runtime_fixes.py)</li>
+<li><strong>run_all_tests.py</strong> (utils_new\run_all_tests.py)</li>
+<li><strong>run_end_to_end_integration_tests.py</strong> (utils_new\run_end_to_end_integration_tests.py)</li>
+<li><strong>run_integration_tests.py</strong> (utils_new\run_integration_tests.py)</li>
+<li><strong>run_wan22_system_validation.py</strong> (utils_new\run_wan22_system_validation.py)</li>
+<li><strong>simple_error_test.py</strong> (utils_new\simple_error_test.py)</li>
+<li><strong>simple_test.py</strong> (utils_new\simple_test.py)</li>
+<li><strong>simple_video_generation_test.py</strong> (utils_new\simple_video_generation_test.py)</li>
+<li><strong>smoke_test_runner.py</strong> (utils_new\smoke_test_runner.py)</li>
+<li><strong>syntax_validator.py</strong> (utils_new\syntax_validator.py)</li>
+<li><strong>test_architecture_detector.py</strong> (utils_new\test_architecture_detector.py)</li>
+<li><strong>test_clean_wan22_fix.py</strong> (utils_new\test_clean_wan22_fix.py)</li>
+<li><strong>test_compatibility_registry.py</strong> (utils_new\test_compatibility_registry.py)</li>
+<li><strong>test_compatibility_registry_integration.py</strong> (utils_new\test_compatibility_registry_integration.py)</li>
+<li><strong>test_component_validator.py</strong> (utils_new\test_component_validator.py)</li>
+<li><strong>test_comprehensive_image_functionality.py</strong> (utils_new\test_comprehensive_image_functionality.py)</li>
+<li><strong>test_comprehensive_image_functionality_complete.py</strong> (utils_new\test_comprehensive_image_functionality_complete.py)</li>
+<li><strong>test_comprehensive_image_functionality_runner.py</strong> (utils_new\test_comprehensive_image_functionality_runner.py)</li>
+<li><strong>test_config_recovery_integration.py</strong> (utils_new\test_config_recovery_integration.py)</li>
+<li>Configuration File</li>
+<li><strong>test_config_recovery_system.py</strong> (utils_new\test_config_recovery_system.py)</li>
+<li>Configuration File</li>
+<li><strong>test_config_validator.py</strong> (utils_new\test_config_validator.py)</li>
+<li>Configuration File</li>
+<li><strong>test_config_validator_unit.py</strong> (utils_new\test_config_validator_unit.py)</li>
+<li>Configuration File</li>
+<li><strong>test_continuous_monitor_simple.py</strong> (utils_new\test_continuous_monitor_simple.py)</li>
+<li><strong>test_core_functionality.py</strong> (utils_new\test_core_functionality.py)</li>
+<li><strong>test_core_functionality_simple.py</strong> (utils_new\test_core_functionality_simple.py)</li>
+<li><strong>test_coverage_validator.py</strong> (utils_new\test_coverage_validator.py)</li>
+<li><strong>test_cpu_monitoring.py</strong> (utils_new\test_cpu_monitoring.py)</li>
+<li><strong>test_cpu_monitor_fix.py</strong> (utils_new\test_cpu_monitor_fix.py)</li>
+<li><strong>test_critical_hardware_protection.py</strong> (utils_new\test_critical_hardware_protection.py)</li>
+<li><strong>test_dependency_manager.py</strong> (utils_new\test_dependency_manager.py)</li>
+<li><strong>test_dynamic_ui.py</strong> (utils_new\test_dynamic_ui.py)</li>
+<li><strong>test_dynamic_ui_simple.py</strong> (utils_new\test_dynamic_ui_simple.py)</li>
+<li><strong>test_end_to_end_image_generation.py</strong> (utils_new\test_end_to_end_image_generation.py)</li>
+<li><strong>test_end_to_end_image_generation_enhanced.py</strong> (utils_new\test_end_to_end_image_generation_enhanced.py)</li>
+<li><strong>test_end_to_end_integration.py</strong> (utils_new\test_end_to_end_integration.py)</li>
+<li><strong>test_enhanced_generation_pipeline.py</strong> (utils_new\test_enhanced_generation_pipeline.py)</li>
+<li><strong>test_enhanced_image_data_integration.py</strong> (utils_new\test_enhanced_image_data_integration.py)</li>
+<li><strong>test_enhanced_image_preview.py</strong> (utils_new\test_enhanced_image_preview.py)</li>
+<li><strong>test_enhanced_image_validation.py</strong> (utils_new\test_enhanced_image_validation.py)</li>
+<li><strong>test_enhanced_model_manager.py</strong> (utils_new\test_enhanced_model_manager.py)</li>
+<li><strong>test_enhanced_model_manager_simple.py</strong> (utils_new\test_enhanced_model_manager_simple.py)</li>
+<li><strong>test_enhanced_pipeline_simple.py</strong> (utils_new\test_enhanced_pipeline_simple.py)</li>
+<li><strong>test_environment_validator_simple.py</strong> (utils_new\test_environment_validator_simple.py)</li>
+<li><strong>test_error_handler.py</strong> (utils_new\test_error_handler.py)</li>
+<li><strong>test_error_handler_integration.py</strong> (utils_new\test_error_handler_integration.py)</li>
+<li><strong>test_error_handling.py</strong> (utils_new\test_error_handling.py)</li>
+<li><strong>test_error_handling_scenarios.py</strong> (utils_new\test_error_handling_scenarios.py)</li>
+<li><strong>test_error_injection_recovery.py</strong> (utils_new\test_error_injection_recovery.py)</li>
+<li><strong>test_error_integration.py</strong> (utils_new\test_error_integration.py)</li>
+<li><strong>test_error_messaging_system.py</strong> (utils_new\test_error_messaging_system.py)</li>
+<li><strong>test_error_recovery_system.py</strong> (utils_new\test_error_recovery_system.py)</li>
+<li><strong>test_error_recovery_system_unit.py</strong> (utils_new\test_error_recovery_system_unit.py)</li>
+<li><strong>test_error_scenarios_integration.py</strong> (utils_new\test_error_scenarios_integration.py)</li>
+<li><strong>test_event_handlers.py</strong> (utils_new\test_event_handlers.py)</li>
+<li><strong>test_event_handlers_simple.py</strong> (utils_new\test_event_handlers_simple.py)</li>
+<li><strong>test_fallback_handler.py</strong> (utils_new\test_fallback_handler.py)</li>
+<li><strong>test_fallback_integration.py</strong> (utils_new\test_fallback_integration.py)</li>
+<li><strong>test_fallback_requirements.py</strong> (utils_new\test_fallback_requirements.py)</li>
+<li><strong>test_file_write.py</strong> (utils_new\test_file_write.py)</li>
+<li><strong>test_final_wan22_fix.py</strong> (utils_new\test_final_wan22_fix.py)</li>
+<li><strong>test_frame_processing_integration.py</strong> (utils_new\test_frame_processing_integration.py)</li>
+<li><strong>test_frame_tensor_handler.py</strong> (utils_new\test_frame_tensor_handler.py)</li>
+<li><strong>test_full_stack_generation.py</strong> (utils_new\test_full_stack_generation.py)</li>
+<li><strong>test_generation_logger.py</strong> (utils_new\test_generation_logger.py)</li>
+<li><strong>test_generation_modes_integration.py</strong> (utils_new\test_generation_modes_integration.py)</li>
+<li><strong>test_generation_orchestrator.py</strong> (utils_new\test_generation_orchestrator.py)</li>
+<li><strong>test_generation_pipeline_integration.py</strong> (utils_new\test_generation_pipeline_integration.py)</li>
+<li><strong>test_generation_task_integration.py</strong> (utils_new\test_generation_task_integration.py)</li>
+<li><strong>test_generation_task_lora_support.py</strong> (utils_new\test_generation_task_lora_support.py)</li>
+<li><strong>test_generation_task_lora_support_minimal.py</strong> (utils_new\test_generation_task_lora_support_minimal.py)</li>
+<li><strong>test_gpu_load_balancer.py</strong> (utils_new\test_gpu_load_balancer.py)</li>
+<li><strong>test_gradio_ui_structure.py</strong> (utils_new\test_gradio_ui_structure.py)</li>
+<li><strong>test_hardware_minimal.py</strong> (utils_new\test_hardware_minimal.py)</li>
+<li><strong>test_hardware_optimizer_rtx4080.py</strong> (utils_new\test_hardware_optimizer_rtx4080.py)</li>
+<li><strong>test_hardware_optimizer_unit.py</strong> (utils_new\test_hardware_optimizer_unit.py)</li>
+<li><strong>test_health_monitor.py</strong> (utils_new\test_health_monitor.py)</li>
+<li><strong>test_health_monitoring_dashboard.py</strong> (utils_new\test_health_monitoring_dashboard.py)</li>
+<li><strong>test_health_monitor_unit.py</strong> (utils_new\test_health_monitor_unit.py)</li>
+<li><strong>test_help_text_integration.py</strong> (utils_new\test_help_text_integration.py)</li>
+<li><strong>test_help_text_system.py</strong> (utils_new\test_help_text_system.py)</li>
+<li><strong>test_image_clearing_integration.py</strong> (utils_new\test_image_clearing_integration.py)</li>
+<li><strong>test_image_clearing_replacement.py</strong> (utils_new\test_image_clearing_replacement.py)</li>
+<li><strong>test_image_data_integration.py</strong> (utils_new\test_image_data_integration.py)</li>
+<li><strong>test_image_error_handling.py</strong> (utils_new\test_image_error_handling.py)</li>
+<li><strong>test_image_generation_working.py</strong> (utils_new\test_image_generation_working.py)</li>
+<li><strong>test_image_integration_quick.py</strong> (utils_new\test_image_integration_quick.py)</li>
+<li><strong>test_image_integration_simple.py</strong> (utils_new\test_image_integration_simple.py)</li>
+<li><strong>test_image_validation_unit_tests.py</strong> (utils_new\test_image_validation_unit_tests.py)</li>
+<li><strong>test_image_validation_unit_tests_complete.py</strong> (utils_new\test_image_validation_unit_tests_complete.py)</li>
+<li><strong>test_import.py</strong> (utils_new\test_import.py)</li>
+<li><strong>test_imports.py</strong> (utils_new\test_imports.py)</li>
+<li><strong>test_input_validation.py</strong> (utils_new\test_input_validation.py)</li>
+<li><strong>test_integration.py</strong> (utils_new\test_integration.py)</li>
+<li><strong>test_integration_error_handling.py</strong> (utils_new\test_integration_error_handling.py)</li>
+<li><strong>test_integration_tester_simple.py</strong> (utils_new\test_integration_tester_simple.py)</li>
+<li><strong>test_local_model_detection.py</strong> (utils_new\test_local_model_detection.py)</li>
+<li><strong>test_lora_generation_integration.py</strong> (utils_new\test_lora_generation_integration.py)</li>
+<li><strong>test_lora_generation_integration_simple.py</strong> (utils_new\test_lora_generation_integration_simple.py)</li>
+<li><strong>test_lora_generation_pipeline.py</strong> (utils_new\test_lora_generation_pipeline.py)</li>
+<li><strong>test_lora_generation_simple.py</strong> (utils_new\test_lora_generation_simple.py)</li>
+<li><strong>test_lora_generation_ui_integration.py</strong> (utils_new\test_lora_generation_ui_integration.py)</li>
+<li><strong>test_lora_manager_methods_only.py</strong> (utils_new\test_lora_manager_methods_only.py)</li>
+<li><strong>test_lora_manager_ui_integration.py</strong> (utils_new\test_lora_manager_ui_integration.py)</li>
+<li><strong>test_lora_manager_ui_integration_simple.py</strong> (utils_new\test_lora_manager_ui_integration_simple.py)</li>
+<li><strong>test_lora_tab_simple.py</strong> (utils_new\test_lora_tab_simple.py)</li>
+<li><strong>test_lora_ui_integration.py</strong> (utils_new\test_lora_ui_integration.py)</li>
+<li><strong>test_lora_ui_integration_complete.py</strong> (utils_new\test_lora_ui_integration_complete.py)</li>
+<li><strong>test_lora_ui_state.py</strong> (utils_new\test_lora_ui_state.py)</li>
+<li><strong>test_lora_upload_handler.py</strong> (utils_new\test_lora_upload_handler.py)</li>
+<li><strong>test_main_config_only.py</strong> (utils_new\test_main_config_only.py)</li>
+<li>Configuration File</li>
+<li><strong>test_main_help.py</strong> (utils_new\test_main_help.py)</li>
+<li><strong>test_main_structure.py</strong> (utils_new\test_main_structure.py)</li>
+<li><strong>test_migration_deployment.py</strong> (utils_new\test_migration_deployment.py)</li>
+<li><strong>test_model_config_validator.py</strong> (utils_new\test_model_config_validator.py)</li>
+<li>Configuration File</li>
+<li><strong>test_model_download_fix.py</strong> (utils_new\test_model_download_fix.py)</li>
+<li><strong>test_model_fallback_system.py</strong> (utils_new\test_model_fallback_system.py)</li>
+<li><strong>test_model_fix.py</strong> (utils_new\test_model_fix.py)</li>
+<li><strong>test_model_index_schema.py</strong> (utils_new\test_model_index_schema.py)</li>
+<li><strong>test_model_loading_fix.py</strong> (utils_new\test_model_loading_fix.py)</li>
+<li><strong>test_model_loading_manager.py</strong> (utils_new\test_model_loading_manager.py)</li>
+<li><strong>test_model_loading_manager_unit.py</strong> (utils_new\test_model_loading_manager_unit.py)</li>
+<li><strong>test_model_management_functionality.py</strong> (utils_new\test_model_management_functionality.py)</li>
+<li><strong>test_model_override.py</strong> (utils_new\test_model_override.py)</li>
+<li><strong>test_model_repositories.py</strong> (utils_new\test_model_repositories.py)</li>
+<li><strong>test_model_type_fix.py</strong> (utils_new\test_model_type_fix.py)</li>
+<li><strong>test_optimization_manager.py</strong> (utils_new\test_optimization_manager.py)</li>
+<li><strong>test_optimization_simple.py</strong> (utils_new\test_optimization_simple.py)</li>
+<li><strong>test_output_management.py</strong> (utils_new\test_output_management.py)</li>
+<li><strong>test_output_management_minimal.py</strong> (utils_new\test_output_management_minimal.py)</li>
+<li><strong>test_output_management_simple.py</strong> (utils_new\test_output_management_simple.py)</li>
+<li><strong>test_performance_benchmarks.py</strong> (utils_new\test_performance_benchmarks.py)</li>
+<li><strong>test_performance_benchmark_system.py</strong> (utils_new\test_performance_benchmark_system.py)</li>
+<li><strong>test_performance_components_simple.py</strong> (utils_new\test_performance_components_simple.py)</li>
+<li><strong>test_performance_monitor.py</strong> (utils_new\test_performance_monitor.py)</li>
+<li><strong>test_performance_optimization_comprehensive.py</strong> (utils_new\test_performance_optimization_comprehensive.py)</li>
+<li><strong>test_performance_optimization_suite.py</strong> (utils_new\test_performance_optimization_suite.py)</li>
+<li><strong>test_performance_profiler_fix.py</strong> (utils_new\test_performance_profiler_fix.py)</li>
+<li><strong>test_performance_resource_integration.py</strong> (utils_new\test_performance_resource_integration.py)</li>
+<li><strong>test_performance_tester_simple.py</strong> (utils_new\test_performance_tester_simple.py)</li>
+<li><strong>test_pipeline_basic.py</strong> (utils_new\test_pipeline_basic.py)</li>
+<li><strong>test_pipeline_manager.py</strong> (utils_new\test_pipeline_manager.py)</li>
+<li><strong>test_production_validator_simple.py</strong> (utils_new\test_production_validator_simple.py)</li>
+<li><strong>test_progress_bar_integration.py</strong> (utils_new\test_progress_bar_integration.py)</li>
+<li><strong>test_progress_tracker.py</strong> (utils_new\test_progress_tracker.py)</li>
+<li><strong>test_progress_tracker_simple.py</strong> (utils_new\test_progress_tracker_simple.py)</li>
+<li><strong>test_progress_tracking_functionality.py</strong> (utils_new\test_progress_tracking_functionality.py)</li>
+<li><strong>test_progress_tracking_functionality_complete.py</strong> (utils_new\test_progress_tracking_functionality_complete.py)</li>
+<li><strong>test_prompt_enhancement.py</strong> (utils_new\test_prompt_enhancement.py)</li>
+<li><strong>test_prompt_enhancement_minimal.py</strong> (utils_new\test_prompt_enhancement_minimal.py)</li>
+<li><strong>test_pytorch_fix.py</strong> (utils_new\test_pytorch_fix.py)</li>
+<li><strong>test_quantization_controller_unit.py</strong> (utils_new\test_quantization_controller_unit.py)</li>
+<li><strong>test_quantization_fix.py</strong> (utils_new\test_quantization_fix.py)</li>
+<li><strong>test_queue_management.py</strong> (utils_new\test_queue_management.py)</li>
+<li><strong>test_queue_management_minimal.py</strong> (utils_new\test_queue_management_minimal.py)</li>
+<li><strong>test_requirements_verification.py</strong> (utils_new\test_requirements_verification.py)</li>
+<li><strong>test_resolution_dropdown_integration.py</strong> (utils_new\test_resolution_dropdown_integration.py)</li>
+<li><strong>test_resolution_manager.py</strong> (utils_new\test_resolution_manager.py)</li>
+<li><strong>test_resource_constraint_simulation.py</strong> (utils_new\test_resource_constraint_simulation.py)</li>
+<li><strong>test_resource_manager.py</strong> (utils_new\test_resource_manager.py)</li>
+<li><strong>test_resource_manager_integration.py</strong> (utils_new\test_resource_manager_integration.py)</li>
+<li><strong>test_resource_monitoring.py</strong> (utils_new\test_resource_monitoring.py)</li>
+<li><strong>test_resource_monitoring_minimal.py</strong> (utils_new\test_resource_monitoring_minimal.py)</li>
+<li><strong>test_responsive_image_interface.py</strong> (utils_new\test_responsive_image_interface.py)</li>
+<li><strong>test_responsive_ui_integration.py</strong> (utils_new\test_responsive_ui_integration.py)</li>
+<li><strong>test_rtx4080_direct.py</strong> (utils_new\test_rtx4080_direct.py)</li>
+<li><strong>test_rtx4080_final.py</strong> (utils_new\test_rtx4080_final.py)</li>
+<li><strong>test_safe_event_handler.py</strong> (utils_new\test_safe_event_handler.py)</li>
+<li><strong>test_safe_load_manager.py</strong> (utils_new\test_safe_load_manager.py)</li>
+<li><strong>test_safe_load_manager_integration.py</strong> (utils_new\test_safe_load_manager_integration.py)</li>
+<li><strong>test_sample_manager_simple.py</strong> (utils_new\test_sample_manager_simple.py)</li>
+<li><strong>test_session_integration_simple.py</strong> (utils_new\test_session_integration_simple.py)</li>
+<li><strong>test_session_management.py</strong> (utils_new\test_session_management.py)</li>
+<li><strong>test_simple_import.py</strong> (utils_new\test_simple_import.py)</li>
+<li><strong>test_stress_testing.py</strong> (utils_new\test_stress_testing.py)</li>
+<li><strong>test_syntax_validator.py</strong> (utils_new\test_syntax_validator.py)</li>
+<li><strong>test_syntax_validator_unit.py</strong> (utils_new\test_syntax_validator_unit.py)</li>
+<li><strong>test_testing_framework.py</strong> (utils_new\test_testing_framework.py)</li>
+<li><strong>test_threadripper_pro_optimizations.py</strong> (utils_new\test_threadripper_pro_optimizations.py)</li>
+<li><strong>test_ti2v_5b_fixed.py</strong> (utils_new\test_ti2v_5b_fixed.py)</li>
+<li><strong>test_ti2v_5b_model.py</strong> (utils_new\test_ti2v_5b_model.py)</li>
+<li><strong>test_ui_compatibility_integration.py</strong> (utils_new\test_ui_compatibility_integration.py)</li>
+<li><strong>test_ui_components_integration.py</strong> (utils_new\test_ui_components_integration.py)</li>
+<li><strong>test_ui_event_handlers_enhanced.py</strong> (utils_new\test_ui_event_handlers_enhanced.py)</li>
+<li><strong>test_ui_event_handlers_integration.py</strong> (utils_new\test_ui_event_handlers_integration.py)</li>
+<li><strong>test_ui_event_handlers_integration_task11.py</strong> (utils_new\test_ui_event_handlers_integration_task11.py)</li>
+<li><strong>test_ui_image_preview_integration.py</strong> (utils_new\test_ui_image_preview_integration.py)</li>
+<li><strong>test_ui_image_validation_integration.py</strong> (utils_new\test_ui_image_validation_integration.py)</li>
+<li><strong>test_ui_integration.py</strong> (utils_new\test_ui_integration.py)</li>
+<li><strong>test_ui_model_switching_integration.py</strong> (utils_new\test_ui_model_switching_integration.py)</li>
+<li><strong>test_ui_model_switching_integration_complete.py</strong> (utils_new\test_ui_model_switching_integration_complete.py)</li>
+<li><strong>test_ui_resolution_integration.py</strong> (utils_new\test_ui_resolution_integration.py)</li>
+<li><strong>test_ui_structure.py</strong> (utils_new\test_ui_structure.py)</li>
+<li><strong>test_ui_validation_integration.py</strong> (utils_new\test_ui_validation_integration.py)</li>
+<li><strong>test_ui_validation_simple.py</strong> (utils_new\test_ui_validation_simple.py)</li>
+<li><strong>test_user_experience_enhancements.py</strong> (utils_new\test_user_experience_enhancements.py)</li>
+<li><strong>test_utils_prompt.py</strong> (utils_new\test_utils_prompt.py)</li>
+<li><strong>test_utils_resource.py</strong> (utils_new\test_utils_resource.py)</li>
+<li><strong>test_vae_compatibility_handler.py</strong> (utils_new\test_vae_compatibility_handler.py)</li>
+<li><strong>test_vae_compatibility_simple.py</strong> (utils_new\test_vae_compatibility_simple.py)</li>
+<li><strong>test_vae_requirements_validation.py</strong> (utils_new\test_vae_requirements_validation.py)</li>
+<li><strong>test_validation_basic.py</strong> (utils_new\test_validation_basic.py)</li>
+<li><strong>test_validation_comprehensive.py</strong> (utils_new\test_validation_comprehensive.py)</li>
+<li><strong>test_validation_comprehensive_new.py</strong> (utils_new\test_validation_comprehensive_new.py)</li>
+<li><strong>test_validation_framework.py</strong> (utils_new\test_validation_framework.py)</li>
+<li><strong>test_validation_simple.py</strong> (utils_new\test_validation_simple.py)</li>
+<li><strong>test_validation_tests.py</strong> (utils_new\test_validation_tests.py)</li>
+<li><strong>test_video_encoder.py</strong> (utils_new\test_video_encoder.py)</li>
+<li><strong>test_video_encoder_codecs.py</strong> (utils_new\test_video_encoder_codecs.py)</li>
+<li><strong>test_vram_config_manager.py</strong> (utils_new\test_vram_config_manager.py)</li>
+<li>Configuration File</li>
+<li><strong>test_vram_manager.py</strong> (utils_new\test_vram_manager.py)</li>
+<li><strong>test_vram_manager_unit.py</strong> (utils_new\test_vram_manager_unit.py)</li>
+<li><strong>test_wan22_compatibility.py</strong> (utils_new\test_wan22_compatibility.py)</li>
+<li><strong>test_wan22_config_manager.py</strong> (utils_new\test_wan22_config_manager.py)</li>
+<li>Configuration File</li>
+<li><strong>test_wan22_config_migration.py</strong> (utils_new\test_wan22_config_migration.py)</li>
+<li>Configuration File</li>
+<li><strong>test_wan22_config_presets.py</strong> (utils_new\test_wan22_config_presets.py)</li>
+<li>Configuration File</li>
+<li><strong>test_wan22_config_validation.py</strong> (utils_new\test_wan22_config_validation.py)</li>
+<li>Configuration File</li>
+<li><strong>test_wan22_final_integration.py</strong> (utils_new\test_wan22_final_integration.py)</li>
+<li><strong>test_wan22_fix.py</strong> (utils_new\test_wan22_fix.py)</li>
+<li><strong>test_wan22_generation_cli.py</strong> (utils_new\test_wan22_generation_cli.py)</li>
+<li><strong>test_wan22_generation_no_quant.py</strong> (utils_new\test_wan22_generation_no_quant.py)</li>
+<li><strong>test_wan22_no_quantization.py</strong> (utils_new\test_wan22_no_quantization.py)</li>
+<li><strong>test_wan22_performance_benchmarks.py</strong> (utils_new\test_wan22_performance_benchmarks.py)</li>
+<li><strong>test_wan22_pipeline_only.py</strong> (utils_new\test_wan22_pipeline_only.py)</li>
+<li><strong>test_wan22_system_optimization_integration.py</strong> (utils_new\test_wan22_system_optimization_integration.py)</li>
+<li><strong>test_wan22_system_optimizer.py</strong> (utils_new\test_wan22_system_optimizer.py)</li>
+<li><strong>test_wan_config_manager.py</strong> (utils_new\test_wan_config_manager.py)</li>
+<li>Configuration File</li>
+<li><strong>test_wan_diagnostic_collector.py</strong> (utils_new\test_wan_diagnostic_collector.py)</li>
+<li><strong>test_wan_model_compatibility_integration.py</strong> (utils_new\test_wan_model_compatibility_integration.py)</li>
+<li><strong>test_wan_model_variants.py</strong> (utils_new\test_wan_model_variants.py)</li>
+<li><strong>test_wan_pipeline_fix.py</strong> (utils_new\test_wan_pipeline_fix.py)</li>
+<li><strong>test_wan_pipeline_loader.py</strong> (utils_new\test_wan_pipeline_loader.py)</li>
+<li><strong>test_wan_pipeline_loading_comprehensive.py</strong> (utils_new\test_wan_pipeline_loading_comprehensive.py)</li>
+<li><strong>test_wan_t2v_5b_corrected.py</strong> (utils_new\test_wan_t2v_5b_corrected.py)</li>
+<li><strong>test_wan_ti2v_5b_correct.py</strong> (utils_new\test_wan_ti2v_5b_correct.py)</li>
+<li><strong>ui_validation.py</strong> (utils_new\ui_validation.py)</li>
+<li><strong>update_imports.py</strong> (utils_new\update_imports.py)</li>
+<li><strong>validate_image_preview_implementation.py</strong> (utils_new\validate_image_preview_implementation.py)</li>
+<li><strong>validate_progress_bar_implementation.py</strong> (utils_new\validate_progress_bar_implementation.py)</li>
+<li><strong>validate_resolution_fix.py</strong> (utils_new\validate_resolution_fix.py)</li>
+<li><strong>validate_responsive_implementation.py</strong> (utils_new\validate_responsive_implementation.py)</li>
+<li><strong>validate_task_5_3_completion.py</strong> (utils_new\validate_task_5_3_completion.py)</li>
+<li><strong>validate_vae_handler.py</strong> (utils_new\validate_vae_handler.py)</li>
+<li><strong>validation_framework.py</strong> (utils_new\validation_framework.py)</li>
+<li><strong>video_encoder.py</strong> (utils_new\video_encoder.py)</li>
+<li><strong>wan22_config_validation.py</strong> (utils_new\wan22_config_validation.py)</li>
+<li>Configuration File</li>
+<li><strong>wan22_system_validation.py</strong> (utils_new\wan22_system_validation.py)</li>
+<li><strong>wan22_system_validation_tests.py</strong> (utils_new\wan22_system_validation_tests.py)</li>
+<li><strong><strong>init</strong>.py</strong> (utils_new__init__.py)</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1134 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="WAN2.2 Video Generation System Documentation">
+      
+      
+      
+        <link rel="canonical" href="https://ramcana.github.io/wan/api/core-model_orchestrator-garbage_collector/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>core.model_orchestrator.garbage_collector - WAN22 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e53b48f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#coremodel_orchestratorgarbage_collector" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="WAN22 Documentation" class="md-header__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            WAN22 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              core.model_orchestrator.garbage_collector
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../WAN22_System_Capabilities_Report/" class="md-tabs__link">
+          
+  
+  
+  System Overview
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../model-orchestrator/requirements/" class="md-tabs__link">
+          
+  
+  
+  Model Orchestrator
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../config/models.toml" class="md-tabs__link">
+          
+  
+  
+  Configuration
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="WAN22 Documentation" class="md-nav__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    WAN22 Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    System Overview
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            System Overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../WAN22_System_Capabilities_Report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Capabilities Report
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Model Orchestrator
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Model Orchestrator
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Requirements
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/tasks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tasks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Configuration
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Configuration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Models Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models_simple.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simple Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Classes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gctrigger" class="md-nav__link">
+    <span class="md-ellipsis">
+      GCTrigger
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modelinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      ModelInfo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gcconfig" class="md-nav__link">
+    <span class="md-ellipsis">
+      GCConfig
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gcresult" class="md-nav__link">
+    <span class="md-ellipsis">
+      GCResult
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diskusage" class="md-nav__link">
+    <span class="md-ellipsis">
+      DiskUsage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#garbagecollector" class="md-nav__link">
+    <span class="md-ellipsis">
+      GarbageCollector
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GarbageCollector">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initself-any-registry-modelregistry-resolver-modelresolver-config-component_deduplicator-any" class="md-nav__link">
+    <span class="md-ellipsis">
+      init(self: Any, registry: ModelRegistry, resolver: ModelResolver, config: , component_deduplicator: Any)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#collectself-any-dry_run-bool-trigger-gctrigger-gcresult" class="md-nav__link">
+    <span class="md-ellipsis">
+      collect(self: Any, dry_run: bool, trigger: GCTrigger) -&gt; GCResult
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pin_modelself-any-model_id-str-variant-none" class="md-nav__link">
+    <span class="md-ellipsis">
+      pin_model(self: Any, model_id: str, variant: ) -&gt; None
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unpin_modelself-any-model_id-str-variant-none" class="md-nav__link">
+    <span class="md-ellipsis">
+      unpin_model(self: Any, model_id: str, variant: ) -&gt; None
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is_pinnedself-any-model_id-str-variant-bool" class="md-nav__link">
+    <span class="md-ellipsis">
+      is_pinned(self: Any, model_id: str, variant: ) -&gt; bool
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_disk_usageself-any-diskusage" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_disk_usage(self: Any) -&gt; DiskUsage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estimate_reclaimable_spaceself-any-int" class="md-nav__link">
+    <span class="md-ellipsis">
+      estimate_reclaimable_space(self: Any) -&gt; int
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#should_trigger_gcself-any-" class="md-nav__link">
+    <span class="md-ellipsis">
+      should_trigger_gc(self: Any) -&gt;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_perform_collectionself-any-dry_run-bool-trigger-gctrigger-gcresult" class="md-nav__link">
+    <span class="md-ellipsis">
+      _perform_collection(self: Any, dry_run: bool, trigger: GCTrigger) -&gt; GCResult
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_discover_modelsself-any-" class="md-nav__link">
+    <span class="md-ellipsis">
+      _discover_models(self: Any) -&gt;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_analyze_model_directoryself-any-model_dir-path-" class="md-nav__link">
+    <span class="md-ellipsis">
+      _analyze_model_directory(self: Any, model_dir: Path) -&gt;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_select_removal_candidatesself-any-models-dry_run-bool-" class="md-nav__link">
+    <span class="md-ellipsis">
+      _select_removal_candidates(self: Any, models: , dry_run: bool) -&gt;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_auto_pin_recent_modelsself-any-models-none" class="md-nav__link">
+    <span class="md-ellipsis">
+      _auto_pin_recent_models(self: Any, models: ) -&gt; None
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_remove_modelself-any-model-modelinfo-none" class="md-nav__link">
+    <span class="md-ellipsis">
+      _remove_model(self: Any, model: ModelInfo) -&gt; None
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_calculate_directory_sizeself-any-directory-path-int" class="md-nav__link">
+    <span class="md-ellipsis">
+      _calculate_directory_size(self: Any, directory: Path) -&gt; int
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_get_last_access_timeself-any-model_dir-path-float" class="md-nav__link">
+    <span class="md-ellipsis">
+      _get_last_access_time(self: Any, model_dir: Path) -&gt; float
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_get_verification_timeself-any-model_dir-path-" class="md-nav__link">
+    <span class="md-ellipsis">
+      _get_verification_time(self: Any, model_dir: Path) -&gt;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_get_model_keyself-any-model_id-str-variant-str" class="md-nav__link">
+    <span class="md-ellipsis">
+      _get_model_key(self: Any, model_id: str, variant: ) -&gt; str
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_load_pinned_modelsself-any-" class="md-nav__link">
+    <span class="md-ellipsis">
+      _load_pinned_models(self: Any) -&gt;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_save_pinned_modelsself-any-none" class="md-nav__link">
+    <span class="md-ellipsis">
+      _save_pinned_models(self: Any) -&gt; None
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#constants" class="md-nav__link">
+    <span class="md-ellipsis">
+      Constants
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Constants">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#manual" class="md-nav__link">
+    <span class="md-ellipsis">
+      MANUAL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quota_exceeded" class="md-nav__link">
+    <span class="md-ellipsis">
+      QUOTA_EXCEEDED
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#low_disk_space" class="md-nav__link">
+    <span class="md-ellipsis">
+      LOW_DISK_SPACE
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scheduled" class="md-nav__link">
+    <span class="md-ellipsis">
+      SCHEDULED
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="coremodel_orchestratorgarbage_collector">core.model_orchestrator.garbage_collector<a class="headerlink" href="#coremodel_orchestratorgarbage_collector" title="Permanent link">&para;</a></h1>
+<p>Garbage Collector - Disk space management with LRU-based cleanup.</p>
+<h2 id="classes">Classes<a class="headerlink" href="#classes" title="Permanent link">&para;</a></h2>
+<h3 id="gctrigger">GCTrigger<a class="headerlink" href="#gctrigger" title="Permanent link">&para;</a></h3>
+<p>Reasons for triggering garbage collection.</p>
+<h3 id="modelinfo">ModelInfo<a class="headerlink" href="#modelinfo" title="Permanent link">&para;</a></h3>
+<p>Information about a model for garbage collection.</p>
+<h3 id="gcconfig">GCConfig<a class="headerlink" href="#gcconfig" title="Permanent link">&para;</a></h3>
+<p>Configuration for garbage collection.</p>
+<h3 id="gcresult">GCResult<a class="headerlink" href="#gcresult" title="Permanent link">&para;</a></h3>
+<p>Result of garbage collection operation.</p>
+<h3 id="diskusage">DiskUsage<a class="headerlink" href="#diskusage" title="Permanent link">&para;</a></h3>
+<p>Disk usage information.</p>
+<h3 id="garbagecollector">GarbageCollector<a class="headerlink" href="#garbagecollector" title="Permanent link">&para;</a></h3>
+<p>Manages disk space through configurable retention policies.</p>
+<h4 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h4>
+<h5 id="initself-any-registry-modelregistry-resolver-modelresolver-config-component_deduplicator-any"><strong>init</strong>(self: Any, registry: ModelRegistry, resolver: ModelResolver, config: <ast.Subscript object at 0x00000194340B0AF0>, component_deduplicator: Any)<a class="headerlink" href="#initself-any-registry-modelregistry-resolver-modelresolver-config-component_deduplicator-any" title="Permanent link">&para;</a></h5>
+<h5 id="collectself-any-dry_run-bool-trigger-gctrigger-gcresult">collect(self: Any, dry_run: bool, trigger: GCTrigger) -&gt; GCResult<a class="headerlink" href="#collectself-any-dry_run-bool-trigger-gctrigger-gcresult" title="Permanent link">&para;</a></h5>
+<p>Perform garbage collection with configurable policies.</p>
+<h5 id="pin_modelself-any-model_id-str-variant-none">pin_model(self: Any, model_id: str, variant: <ast.Subscript object at 0x00000194340B3BB0>) -&gt; None<a class="headerlink" href="#pin_modelself-any-model_id-str-variant-none" title="Permanent link">&para;</a></h5>
+<p>Pin a model to protect it from garbage collection.</p>
+<h5 id="unpin_modelself-any-model_id-str-variant-none">unpin_model(self: Any, model_id: str, variant: <ast.Subscript object at 0x00000194340B0BE0>) -&gt; None<a class="headerlink" href="#unpin_modelself-any-model_id-str-variant-none" title="Permanent link">&para;</a></h5>
+<p>Unpin a model to allow garbage collection.</p>
+<h5 id="is_pinnedself-any-model_id-str-variant-bool">is_pinned(self: Any, model_id: str, variant: <ast.Subscript object at 0x00000194340B35B0>) -&gt; bool<a class="headerlink" href="#is_pinnedself-any-model_id-str-variant-bool" title="Permanent link">&para;</a></h5>
+<p>Check if a model is pinned.</p>
+<h5 id="get_disk_usageself-any-diskusage">get_disk_usage(self: Any) -&gt; DiskUsage<a class="headerlink" href="#get_disk_usageself-any-diskusage" title="Permanent link">&para;</a></h5>
+<p>Get current disk usage information.</p>
+<h5 id="estimate_reclaimable_spaceself-any-int">estimate_reclaimable_space(self: Any) -&gt; int<a class="headerlink" href="#estimate_reclaimable_spaceself-any-int" title="Permanent link">&para;</a></h5>
+<p>Estimate how much space could be reclaimed by garbage collection.</p>
+<h5 id="should_trigger_gcself-any-">should_trigger_gc(self: Any) -&gt; <ast.Subscript object at 0x00000194319A3940><a class="headerlink" href="#should_trigger_gcself-any-" title="Permanent link">&para;</a></h5>
+<p>Check if garbage collection should be triggered automatically.</p>
+<h5 id="_perform_collectionself-any-dry_run-bool-trigger-gctrigger-gcresult">_perform_collection(self: Any, dry_run: bool, trigger: GCTrigger) -&gt; GCResult<a class="headerlink" href="#_perform_collectionself-any-dry_run-bool-trigger-gctrigger-gcresult" title="Permanent link">&para;</a></h5>
+<p>Perform the actual garbage collection.</p>
+<h5 id="_discover_modelsself-any-">_discover_models(self: Any) -&gt; <ast.Subscript object at 0x00000194344785B0><a class="headerlink" href="#_discover_modelsself-any-" title="Permanent link">&para;</a></h5>
+<p>Discover all models in the models directory.</p>
+<h5 id="_analyze_model_directoryself-any-model_dir-path-">_analyze_model_directory(self: Any, model_dir: Path) -&gt; <ast.Subscript object at 0x00000194302698D0><a class="headerlink" href="#_analyze_model_directoryself-any-model_dir-path-" title="Permanent link">&para;</a></h5>
+<p>Analyze a model directory to extract information.</p>
+<h5 id="_select_removal_candidatesself-any-models-dry_run-bool-">_select_removal_candidates(self: Any, models: <ast.Subscript object at 0x000001943026BFA0>, dry_run: bool) -&gt; <ast.Subscript object at 0x0000019430269AE0><a class="headerlink" href="#_select_removal_candidatesself-any-models-dry_run-bool-" title="Permanent link">&para;</a></h5>
+<p>Select models for removal based on configured policies.</p>
+<h5 id="_auto_pin_recent_modelsself-any-models-none">_auto_pin_recent_models(self: Any, models: <ast.Subscript object at 0x00000194302693F0>) -&gt; None<a class="headerlink" href="#_auto_pin_recent_modelsself-any-models-none" title="Permanent link">&para;</a></h5>
+<p>Automatically pin recently accessed models.</p>
+<h5 id="_remove_modelself-any-model-modelinfo-none">_remove_model(self: Any, model: ModelInfo) -&gt; None<a class="headerlink" href="#_remove_modelself-any-model-modelinfo-none" title="Permanent link">&para;</a></h5>
+<p>Remove a model from disk.</p>
+<h5 id="_calculate_directory_sizeself-any-directory-path-int">_calculate_directory_size(self: Any, directory: Path) -&gt; int<a class="headerlink" href="#_calculate_directory_sizeself-any-directory-path-int" title="Permanent link">&para;</a></h5>
+<p>Calculate the total size of a directory.</p>
+<h5 id="_get_last_access_timeself-any-model_dir-path-float">_get_last_access_time(self: Any, model_dir: Path) -&gt; float<a class="headerlink" href="#_get_last_access_timeself-any-model_dir-path-float" title="Permanent link">&para;</a></h5>
+<p>Get the last access time for a model directory.</p>
+<h5 id="_get_verification_timeself-any-model_dir-path-">_get_verification_time(self: Any, model_dir: Path) -&gt; <ast.Subscript object at 0x000001942F00B370><a class="headerlink" href="#_get_verification_timeself-any-model_dir-path-" title="Permanent link">&para;</a></h5>
+<p>Get the verification time from the verification file.</p>
+<h5 id="_get_model_keyself-any-model_id-str-variant-str">_get_model_key(self: Any, model_id: str, variant: <ast.Subscript object at 0x000001942F00BEB0>) -&gt; str<a class="headerlink" href="#_get_model_keyself-any-model_id-str-variant-str" title="Permanent link">&para;</a></h5>
+<p>Get a unique key for a model.</p>
+<h5 id="_load_pinned_modelsself-any-">_load_pinned_models(self: Any) -&gt; <ast.Subscript object at 0x000001942EF94040><a class="headerlink" href="#_load_pinned_modelsself-any-" title="Permanent link">&para;</a></h5>
+<p>Load pinned models from disk.</p>
+<h5 id="_save_pinned_modelsself-any-none">_save_pinned_models(self: Any) -&gt; None<a class="headerlink" href="#_save_pinned_modelsself-any-none" title="Permanent link">&para;</a></h5>
+<p>Save pinned models to disk.</p>
+<h2 id="constants">Constants<a class="headerlink" href="#constants" title="Permanent link">&para;</a></h2>
+<h3 id="manual">MANUAL<a class="headerlink" href="#manual" title="Permanent link">&para;</a></h3>
+<p>Type: <code>str</code></p>
+<p>Value: <code>manual</code></p>
+<h3 id="quota_exceeded">QUOTA_EXCEEDED<a class="headerlink" href="#quota_exceeded" title="Permanent link">&para;</a></h3>
+<p>Type: <code>str</code></p>
+<p>Value: <code>quota_exceeded</code></p>
+<h3 id="low_disk_space">LOW_DISK_SPACE<a class="headerlink" href="#low_disk_space" title="Permanent link">&para;</a></h3>
+<p>Type: <code>str</code></p>
+<p>Value: <code>low_disk_space</code></p>
+<h3 id="scheduled">SCHEDULED<a class="headerlink" href="#scheduled" title="Permanent link">&para;</a></h3>
+<p>Type: <code>str</code></p>
+<p>Value: <code>scheduled</code></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

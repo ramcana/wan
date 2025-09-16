@@ -1,0 +1,1311 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="WAN2.2 Video Generation System Documentation">
+      
+      
+      
+        <link rel="canonical" href="https://ramcana.github.io/wan/reference/WAN_GENERATION_SERVICE_UPDATE_SUMMARY/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>WAN Generation Service Update Summary - WAN22 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e53b48f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#wan-generation-service-update-summary" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="WAN22 Documentation" class="md-header__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            WAN22 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              WAN Generation Service Update Summary
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../WAN22_System_Capabilities_Report/" class="md-tabs__link">
+          
+  
+  
+  System Overview
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../model-orchestrator/requirements/" class="md-tabs__link">
+          
+  
+  
+  Model Orchestrator
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../config/models.toml" class="md-tabs__link">
+          
+  
+  
+  Configuration
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="WAN22 Documentation" class="md-nav__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    WAN22 Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    System Overview
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            System Overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../WAN22_System_Capabilities_Report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Capabilities Report
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Model Orchestrator
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Model Orchestrator
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Requirements
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/tasks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tasks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Configuration
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Configuration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Models Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models_simple.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simple Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-changes-made" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Changes Made
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Changes Made">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-real-wan-model-integration-requirement-11-41" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Real WAN Model Integration (Requirement 1.1, 4.1)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Real WAN Model Integration (Requirement 1.1, 4.1)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhanced-_run_real_generation-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enhanced _run_real_generation Method
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wan-model-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      WAN Model Validation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-wan-model-resource-monitoring-requirement-71" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. WAN Model Resource Monitoring (Requirement 7.1)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. WAN Model Resource Monitoring (Requirement 7.1)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhanced-vram-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enhanced VRAM Monitoring
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vram-optimization-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      VRAM Optimization Strategies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#critical-vram-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Critical VRAM Management
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-wan-model-optimization-during-generation-requirement-81" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. WAN Model Optimization During Generation (Requirement 8.1)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. WAN Model Optimization During Generation (Requirement 8.1)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pre-generation-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pre-Generation Optimization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#real-time-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Real-Time Monitoring
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-wan-model-fallback-strategies-requirement-81" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. WAN Model Fallback Strategies (Requirement 8.1)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. WAN Model Fallback Strategies (Requirement 8.1)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#alternative-model-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alternative Model Selection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fallback-hierarchy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fallback Hierarchy
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-enhanced-initialization-and-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Enhanced Initialization and Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Enhanced Initialization and Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wan-model-verification" class="md-nav__link">
+    <span class="md-ellipsis">
+      WAN Model Verification
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pipeline-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pipeline Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-generation-mode-updates" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Generation Mode Updates
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Generation Mode Updates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#priority-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Priority Changes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#technical-implementation-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Technical Implementation Details
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Technical Implementation Details">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wan-model-vram-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      WAN Model VRAM Requirements
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimization-strategies-by-hardware" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optimization Strategies by Hardware
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#websocket-notification-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      WebSocket Notification Types
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requirements-addressed" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements Addressed
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirements Addressed">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-real-wan-model-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 - Real WAN Model Integration ✅
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#41-generation-task-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 - Generation Task Processing ✅
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#71-wan-model-resource-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.1 - WAN Model Resource Monitoring ✅
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#81-wan-model-fallback-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.1 - WAN Model Fallback Strategies ✅
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#benefits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Benefits
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next Steps
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#files-modified" class="md-nav__link">
+    <span class="md-ellipsis">
+      Files Modified
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="wan-generation-service-update-summary">WAN Generation Service Update Summary<a class="headerlink" href="#wan-generation-service-update-summary" title="Permanent link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>Updated the Generation Service (<code>backend/services/generation_service.py</code>) to use real WAN models instead of simulation, implementing enhanced resource monitoring, optimization, and fallback strategies specifically designed for WAN model inference.</p>
+<h2 id="key-changes-made">Key Changes Made<a class="headerlink" href="#key-changes-made" title="Permanent link">&para;</a></h2>
+<h3 id="1-real-wan-model-integration-requirement-11-41">1. Real WAN Model Integration (Requirement 1.1, 4.1)<a class="headerlink" href="#1-real-wan-model-integration-requirement-11-41" title="Permanent link">&para;</a></h3>
+<h4 id="enhanced-_run_real_generation-method">Enhanced <code>_run_real_generation</code> Method<a class="headerlink" href="#enhanced-_run_real_generation-method" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Before</strong>: Generic model loading with basic VRAM checks</li>
+<li><strong>After</strong>: WAN model-specific validation, loading, and optimization</li>
+<li><strong>Key Features</strong>:</li>
+<li>WAN model availability and integrity validation</li>
+<li>Hardware compatibility checking</li>
+<li>Enhanced VRAM monitoring with WAN model-specific thresholds</li>
+<li>WAN model-specific progress tracking and WebSocket notifications</li>
+</ul>
+<h4 id="wan-model-validation">WAN Model Validation<a class="headerlink" href="#wan-model-validation" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Validates WAN model status before generation</span>
+<span class="n">model_status</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_integration_bridge</span><span class="o">.</span><span class="n">check_model_availability</span><span class="p">(</span><span class="n">model_type</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">model_status</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="s2">&quot;missing&quot;</span><span class="p">:</span>
+    <span class="c1"># Handle missing model</span>
+<span class="k">elif</span> <span class="n">model_status</span><span class="o">.</span><span class="n">status</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="s2">&quot;corrupted&quot;</span><span class="p">:</span>
+    <span class="c1"># Handle corrupted model</span>
+<span class="k">elif</span> <span class="ow">not</span> <span class="n">model_status</span><span class="o">.</span><span class="n">hardware_compatible</span><span class="p">:</span>
+    <span class="c1"># Handle hardware incompatibility</span>
+</code></pre></div>
+<h3 id="2-wan-model-resource-monitoring-requirement-71">2. WAN Model Resource Monitoring (Requirement 7.1)<a class="headerlink" href="#2-wan-model-resource-monitoring-requirement-71" title="Permanent link">&para;</a></h3>
+<h4 id="enhanced-vram-monitoring">Enhanced VRAM Monitoring<a class="headerlink" href="#enhanced-vram-monitoring" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong><code>_estimate_wan_model_vram_requirements()</code></strong>: Precise VRAM estimation for each WAN model type</li>
+<li>T2V A14B: 10GB base requirement</li>
+<li>I2V A14B: 11GB base requirement (includes image processing)</li>
+<li>TI2V 5B: 6GB base requirement</li>
+<li>Dynamic resolution-based scaling</li>
+</ul>
+<h4 id="vram-optimization-strategies">VRAM Optimization Strategies<a class="headerlink" href="#vram-optimization-strategies" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong><code>_apply_wan_model_vram_optimizations()</code></strong>: WAN model-specific optimizations</li>
+<li>Model offloading configuration</li>
+<li>VAE tile size adjustment based on model type</li>
+<li>Attention slicing enablement</li>
+<li>Integration with WAN22SystemOptimizer</li>
+</ul>
+<h4 id="critical-vram-management">Critical VRAM Management<a class="headerlink" href="#critical-vram-management" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong><code>_enable_wan_model_aggressive_optimization()</code></strong>: Emergency optimization when VRAM usage exceeds 90%</li>
+<li>Sequential CPU offload</li>
+<li>Minimal VAE tile sizes (128px)</li>
+<li>FP16 precision enforcement</li>
+<li>All available memory optimizations</li>
+</ul>
+<h3 id="3-wan-model-optimization-during-generation-requirement-81">3. WAN Model Optimization During Generation (Requirement 8.1)<a class="headerlink" href="#3-wan-model-optimization-during-generation-requirement-81" title="Permanent link">&para;</a></h3>
+<h4 id="pre-generation-optimization">Pre-Generation Optimization<a class="headerlink" href="#pre-generation-optimization" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong><code>_apply_wan_model_pre_generation_optimizations()</code></strong>: Model-specific optimization profiles</li>
+<li>CPU offload configuration</li>
+<li>Optimal VAE tile size selection</li>
+<li>Quantization level setting</li>
+<li>Hardware-specific optimizations</li>
+</ul>
+<h4 id="real-time-monitoring">Real-Time Monitoring<a class="headerlink" href="#real-time-monitoring" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Enhanced progress callbacks with WAN model metadata</li>
+<li>VRAM usage tracking during generation</li>
+<li>Performance metrics collection</li>
+<li>WebSocket notifications with WAN model context</li>
+</ul>
+<h3 id="4-wan-model-fallback-strategies-requirement-81">4. WAN Model Fallback Strategies (Requirement 8.1)<a class="headerlink" href="#4-wan-model-fallback-strategies-requirement-81" title="Permanent link">&para;</a></h3>
+<h4 id="alternative-model-selection">Alternative Model Selection<a class="headerlink" href="#alternative-model-selection" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong><code>_get_alternative_wan_models()</code></strong>: Intelligent fallback model selection</li>
+<li>Hardware-aware model prioritization</li>
+<li>Capability-based alternatives (T2V → TI2V → I2V)</li>
+<li>VRAM-based model selection (low VRAM → smaller models)</li>
+</ul>
+<h4 id="fallback-hierarchy">Fallback Hierarchy<a class="headerlink" href="#fallback-hierarchy" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>Primary WAN Model</strong>: Requested model with full optimization</li>
+<li><strong>Alternative WAN Models</strong>: Compatible models with similar capabilities</li>
+<li><strong>Mock Generation</strong>: Only as final fallback when all WAN models fail</li>
+</ol>
+<h3 id="5-enhanced-initialization-and-configuration">5. Enhanced Initialization and Configuration<a class="headerlink" href="#5-enhanced-initialization-and-configuration" title="Permanent link">&para;</a></h3>
+<h4 id="wan-model-verification">WAN Model Verification<a class="headerlink" href="#wan-model-verification" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong><code>_verify_wan_model_availability()</code></strong>: Startup verification of available WAN models</li>
+<li>Model status checking and availability reporting</li>
+<li>WebSocket notifications for missing models</li>
+</ul>
+<h4 id="pipeline-configuration">Pipeline Configuration<a class="headerlink" href="#pipeline-configuration" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong><code>_configure_pipeline_for_wan_models()</code></strong>: WAN model-specific pipeline setup</li>
+<li>Hardware profile integration</li>
+<li>WAN model feature enablement</li>
+<li>Optimization parameter configuration</li>
+</ul>
+<h3 id="6-generation-mode-updates">6. Generation Mode Updates<a class="headerlink" href="#6-generation-mode-updates" title="Permanent link">&para;</a></h3>
+<h4 id="priority-changes">Priority Changes<a class="headerlink" href="#priority-changes" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Before</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">use_real_generation</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">fallback_to_simulation</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="c1"># After</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">use_real_generation</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">fallback_to_simulation</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1"># Disabled by default</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">prefer_wan_models</span> <span class="o">=</span> <span class="kc">True</span>        <span class="c1"># Prefer WAN models</span>
+</code></pre></div>
+<h2 id="technical-implementation-details">Technical Implementation Details<a class="headerlink" href="#technical-implementation-details" title="Permanent link">&para;</a></h2>
+<h3 id="wan-model-vram-requirements">WAN Model VRAM Requirements<a class="headerlink" href="#wan-model-vram-requirements" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Model Type</th>
+<th>Base VRAM</th>
+<th>With Resolution Scaling</th>
+<th>Optimization Potential</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T2V A14B</td>
+<td>10GB</td>
+<td>10-15GB (1080p+)</td>
+<td>7-8GB (optimized)</td>
+</tr>
+<tr>
+<td>I2V A14B</td>
+<td>11GB</td>
+<td>11-16GB (1080p+)</td>
+<td>8-9GB (optimized)</td>
+</tr>
+<tr>
+<td>TI2V 5B</td>
+<td>6GB</td>
+<td>6-9GB (1080p+)</td>
+<td>4-5GB (optimized)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="optimization-strategies-by-hardware">Optimization Strategies by Hardware<a class="headerlink" href="#optimization-strategies-by-hardware" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>VRAM Available</th>
+<th>Strategy</th>
+<th>Models Prioritized</th>
+<th>Optimizations Applied</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&lt; 8GB</td>
+<td>Aggressive</td>
+<td>TI2V 5B only</td>
+<td>All optimizations + offload</td>
+</tr>
+<tr>
+<td>8-12GB</td>
+<td>Balanced</td>
+<td>TI2V 5B → A14B</td>
+<td>Selective optimizations</td>
+</tr>
+<tr>
+<td>&gt; 12GB</td>
+<td>Performance</td>
+<td>A14B → TI2V 5B</td>
+<td>Minimal optimizations</td>
+</tr>
+</tbody>
+</table>
+<h3 id="websocket-notification-types">WebSocket Notification Types<a class="headerlink" href="#websocket-notification-types" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>wan_generation_started</code>: WAN model generation initiation</li>
+<li><code>wan_generation_completed</code>: Successful completion with metrics</li>
+<li><code>wan_generation_failed</code>: Failure with error context</li>
+<li><code>wan_vram_warning</code>: VRAM usage warnings with suggestions</li>
+<li><code>wan_models_unavailable</code>: Missing model notifications</li>
+</ul>
+<h2 id="requirements-addressed">Requirements Addressed<a class="headerlink" href="#requirements-addressed" title="Permanent link">&para;</a></h2>
+<h3 id="11-real-wan-model-integration">1.1 - Real WAN Model Integration ✅<a class="headerlink" href="#11-real-wan-model-integration" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Replaced simulation with actual WAN model inference</li>
+<li>Integrated T2V A14B, I2V A14B, and TI2V 5B models</li>
+<li>Enhanced model loading and validation</li>
+</ul>
+<h3 id="41-generation-task-processing">4.1 - Generation Task Processing ✅<a class="headerlink" href="#41-generation-task-processing" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Updated task processing to handle WAN model inference</li>
+<li>Enhanced progress tracking and status updates</li>
+<li>Improved error handling and recovery</li>
+</ul>
+<h3 id="71-wan-model-resource-monitoring">7.1 - WAN Model Resource Monitoring ✅<a class="headerlink" href="#71-wan-model-resource-monitoring" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Implemented precise VRAM monitoring for WAN models</li>
+<li>Real-time resource usage tracking</li>
+<li>Optimization suggestions and automatic adjustments</li>
+</ul>
+<h3 id="81-wan-model-fallback-strategies">8.1 - WAN Model Fallback Strategies ✅<a class="headerlink" href="#81-wan-model-fallback-strategies" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Intelligent model selection based on hardware compatibility</li>
+<li>Multi-tier fallback system with alternative WAN models</li>
+<li>Enhanced error recovery with model-specific strategies</li>
+</ul>
+<h2 id="benefits">Benefits<a class="headerlink" href="#benefits" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Improved Performance</strong>: Real WAN model inference instead of simulation</li>
+<li><strong>Better Resource Management</strong>: Precise VRAM monitoring and optimization</li>
+<li><strong>Enhanced Reliability</strong>: Multi-tier fallback strategies prevent generation failures</li>
+<li><strong>Hardware Optimization</strong>: Automatic optimization based on available hardware</li>
+<li><strong>Better User Experience</strong>: Real-time progress updates and detailed error reporting</li>
+</ol>
+<h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Testing</strong>: Comprehensive testing with different WAN models and hardware configurations</li>
+<li><strong>Performance Tuning</strong>: Fine-tune optimization parameters based on real-world usage</li>
+<li><strong>Monitoring</strong>: Implement detailed analytics for WAN model performance tracking</li>
+<li><strong>Documentation</strong>: Update API documentation to reflect WAN model capabilities</li>
+</ol>
+<h2 id="files-modified">Files Modified<a class="headerlink" href="#files-modified" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>backend/services/generation_service.py</code>: Main generation service updates</li>
+<li>Added WAN model-specific methods and optimizations</li>
+<li>Enhanced resource monitoring and fallback strategies</li>
+<li>Improved initialization and configuration for WAN models</li>
+</ul>
+<p>This update transforms the Generation Service from a simulation-based system to a production-ready WAN model inference engine with comprehensive resource management and optimization capabilities.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1815 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="WAN2.2 Video Generation System Documentation">
+      
+      
+      
+        <link rel="canonical" href="https://ramcana.github.io/wan/training/onboarding/hands-on-exercises/">
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>Hands-on Exercises - WAN22 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.e53b48f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#hands-on-exercises" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="WAN22 Documentation" class="md-header__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            WAN22 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Hands-on Exercises
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../WAN22_System_Capabilities_Report/" class="md-tabs__link">
+          
+  
+  
+  System Overview
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../model-orchestrator/requirements/" class="md-tabs__link">
+          
+  
+  
+  Model Orchestrator
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../config/models.toml" class="md-tabs__link">
+          
+  
+  
+  Configuration
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="WAN22 Documentation" class="md-nav__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    WAN22 Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    System Overview
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            System Overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../WAN22_System_Capabilities_Report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Capabilities Report
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Model Orchestrator
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Model Orchestrator
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../model-orchestrator/requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Requirements
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../model-orchestrator/tasks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tasks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Configuration
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Configuration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../config/models.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Models Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../config/models_simple.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simple Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-1-health-check-and-system-validation-15-minutes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 1: Health Check and System Validation (15 minutes)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercise 1: Health Check and System Validation (15 minutes)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objective" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objective
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Steps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verification
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-2-test-suite-analysis-and-repair-20-minutes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 2: Test Suite Analysis and Repair (20 minutes)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercise 2: Test Suite Analysis and Repair (20 minutes)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objective_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objective
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#steps_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Steps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verification_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verification
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-3-configuration-analysis-and-consolidation-20-minutes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 3: Configuration Analysis and Consolidation (20 minutes)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercise 3: Configuration Analysis and Consolidation (20 minutes)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objective_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objective
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#steps_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Steps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verification_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verification
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-4-code-quality-assessment-and-improvement-25-minutes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 4: Code Quality Assessment and Improvement (25 minutes)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercise 4: Code Quality Assessment and Improvement (25 minutes)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objective_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objective
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#steps_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Steps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verification_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verification
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-5-documentation-generation-and-validation-15-minutes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 5: Documentation Generation and Validation (15 minutes)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercise 5: Documentation Generation and Validation (15 minutes)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objective_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objective
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#steps_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Steps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verification_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verification
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-6-codebase-cleanup-and-organization-20-minutes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 6: Codebase Cleanup and Organization (20 minutes)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercise 6: Codebase Cleanup and Organization (20 minutes)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objective_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objective
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#steps_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Steps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verification_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verification
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-7-unified-cli-and-workflow-integration-15-minutes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 7: Unified CLI and Workflow Integration (15 minutes)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercise 7: Unified CLI and Workflow Integration (15 minutes)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objective_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objective
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#steps_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Steps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verification_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verification
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-8-troubleshooting-and-recovery-10-minutes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 8: Troubleshooting and Recovery (10 minutes)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercise 8: Troubleshooting and Recovery (10 minutes)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objective_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objective
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#steps_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Steps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verification_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verification
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#final-integration-exercise-15-minutes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Final Integration Exercise (15 minutes)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Final Integration Exercise (15 minutes)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objective_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objective
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#steps_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Steps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verification_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verification
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercise-completion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise Completion
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercise Completion">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#self-assessment-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      Self-Assessment Checklist
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Self-Assessment Checklist">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#knowledge-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      Knowledge Check
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#practical-skills" class="md-nav__link">
+    <span class="md-ellipsis">
+      Practical Skills
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#confidence-level" class="md-nav__link">
+    <span class="md-ellipsis">
+      Confidence Level
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next Steps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getting-help" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting Help
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#feedback" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feedback
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="hands-on-exercises">Hands-on Exercises<a class="headerlink" href="#hands-on-exercises" title="Permanent link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>These interactive exercises provide practical experience with the WAN22 project's cleanup and quality improvement tools. Complete all exercises to gain confidence using the tools in real scenarios.</p>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[ ] Completed <a href="development-setup.md">Development Environment Setup</a></li>
+<li>[ ] All tools installed and verified</li>
+<li>[ ] Basic understanding of the project structure</li>
+</ul>
+<h2 id="exercise-1-health-check-and-system-validation-15-minutes">Exercise 1: Health Check and System Validation (15 minutes)<a class="headerlink" href="#exercise-1-health-check-and-system-validation-15-minutes" title="Permanent link">&para;</a></h2>
+<h3 id="objective">Objective<a class="headerlink" href="#objective" title="Permanent link">&para;</a></h3>
+<p>Learn to assess project health and identify issues using the health checker.</p>
+<h3 id="steps">Steps<a class="headerlink" href="#steps" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Run Initial Health Check</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/health-checker/cli.py<span class="w"> </span>--quick
+</code></pre></div>
+<p><strong>Expected Output</strong>: Summary of project health status</p>
+<p><strong>Questions</strong>:</p>
+<ul>
+<li>What components are healthy?</li>
+<li>Are there any warnings or errors?</li>
+<li>
+<p>What does the overall health score indicate?</p>
+</li>
+<li>
+<p><strong>Comprehensive Health Analysis</strong></p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/health-checker/cli.py<span class="w"> </span>--full<span class="w"> </span>--export-report<span class="w"> </span>health-report.json
+</code></pre></div>
+<p><strong>Task</strong>: Review the generated report and identify:</p>
+<ul>
+<li>Top 3 health issues</li>
+<li>Recommended actions</li>
+<li>
+<p>Priority levels</p>
+</li>
+<li>
+<p><strong>Component-Specific Health Check</strong></p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/health-checker/cli.py<span class="w"> </span>--component<span class="w"> </span>tests
+python<span class="w"> </span>tools/health-checker/cli.py<span class="w"> </span>--component<span class="w"> </span>configuration
+python<span class="w"> </span>tools/health-checker/cli.py<span class="w"> </span>--component<span class="w"> </span>documentation
+</code></pre></div>
+<p><strong>Task</strong>: Compare component health scores and note differences.</p>
+<h3 id="verification">Verification<a class="headerlink" href="#verification" title="Permanent link">&para;</a></h3>
+<ul>
+<li>[ ] Successfully ran all health check commands</li>
+<li>[ ] Generated and reviewed health report</li>
+<li>[ ] Identified key health issues</li>
+<li>[ ] Understood health scoring system</li>
+</ul>
+<h2 id="exercise-2-test-suite-analysis-and-repair-20-minutes">Exercise 2: Test Suite Analysis and Repair (20 minutes)<a class="headerlink" href="#exercise-2-test-suite-analysis-and-repair-20-minutes" title="Permanent link">&para;</a></h2>
+<h3 id="objective_1">Objective<a class="headerlink" href="#objective_1" title="Permanent link">&para;</a></h3>
+<p>Learn to identify and fix test suite issues using the test auditor.</p>
+<h3 id="steps_1">Steps<a class="headerlink" href="#steps_1" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Audit Test Suite</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/test-auditor/cli.py<span class="w"> </span>audit<span class="w"> </span>--comprehensive
+</code></pre></div>
+<p><strong>Task</strong>: Review the audit results and identify:</p>
+<ul>
+<li>Number of broken tests</li>
+<li>Common failure patterns</li>
+<li>
+<p>Missing test coverage areas</p>
+</li>
+<li>
+<p><strong>Fix Broken Tests</strong></p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/test-auditor/cli.py<span class="w"> </span>fix<span class="w"> </span>--auto<span class="w"> </span>--backup
+</code></pre></div>
+<p><strong>Task</strong>:</p>
+<ul>
+<li>Monitor the fixing process</li>
+<li>Review the backup created</li>
+<li>
+<p>Check which tests were automatically fixed</p>
+</li>
+<li>
+<p><strong>Run Test Suite</strong></p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/test-runner/cli.py<span class="w"> </span>--all<span class="w"> </span>--timeout<span class="w"> </span><span class="m">300</span>
+</code></pre></div>
+<p><strong>Task</strong>: Compare results before and after fixes:</p>
+<ul>
+<li>Test pass rate improvement</li>
+<li>Execution time changes</li>
+<li>
+<p>Remaining issues</p>
+</li>
+<li>
+<p><strong>Analyze Test Coverage</strong></p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/test-quality/cli.py<span class="w"> </span>coverage<span class="w"> </span>--generate-report
+</code></pre></div>
+<p><strong>Task</strong>: Review coverage report and identify:</p>
+<ul>
+<li>Overall coverage percentage</li>
+<li>Uncovered code areas</li>
+<li>Critical paths without tests</li>
+</ul>
+<h3 id="verification_1">Verification<a class="headerlink" href="#verification_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>[ ] Successfully audited test suite</li>
+<li>[ ] Fixed broken tests with backups</li>
+<li>[ ] Improved test pass rate</li>
+<li>[ ] Generated coverage report</li>
+<li>[ ] Identified coverage gaps</li>
+</ul>
+<h2 id="exercise-3-configuration-analysis-and-consolidation-20-minutes">Exercise 3: Configuration Analysis and Consolidation (20 minutes)<a class="headerlink" href="#exercise-3-configuration-analysis-and-consolidation-20-minutes" title="Permanent link">&para;</a></h2>
+<h3 id="objective_2">Objective<a class="headerlink" href="#objective_2" title="Permanent link">&para;</a></h3>
+<p>Learn to analyze and consolidate scattered configuration files.</p>
+<h3 id="steps_2">Steps<a class="headerlink" href="#steps_2" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Analyze Configuration Landscape</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/config-analyzer/cli.py<span class="w"> </span>analyze<span class="w"> </span>--export<span class="w"> </span>config-analysis.json
+</code></pre></div>
+<p><strong>Task</strong>: Review the analysis and identify:</p>
+<ul>
+<li>Number of configuration files found</li>
+<li>Duplicate settings across files</li>
+<li>Configuration conflicts</li>
+<li>
+<p>Consolidation opportunities</p>
+</li>
+<li>
+<p><strong>Create Unified Configuration</strong></p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/config-manager/cli.py<span class="w"> </span>unify<span class="w"> </span>--dry-run<span class="w"> </span>--preview
+</code></pre></div>
+<p><strong>Task</strong>: Review the unification preview:</p>
+<ul>
+<li>Proposed unified structure</li>
+<li>Migration plan</li>
+<li>
+<p>Potential issues</p>
+</li>
+<li>
+<p><strong>Validate Configuration Consistency</strong></p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/config-manager/cli.py<span class="w"> </span>validate<span class="w"> </span>--all<span class="w"> </span>--detailed
+</code></pre></div>
+<p><strong>Task</strong>: Check validation results:</p>
+<ul>
+<li>Configuration errors found</li>
+<li>Inconsistencies between environments</li>
+<li>
+<p>Missing required settings</p>
+</li>
+<li>
+<p><strong>Test Configuration Migration</strong></p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/config-manager/cli.py<span class="w"> </span>migrate<span class="w"> </span>--test-mode<span class="w"> </span>--backup
+</code></pre></div>
+<p><strong>Task</strong>: Verify migration process:</p>
+<ul>
+<li>Backup creation</li>
+<li>Migration steps</li>
+<li>Rollback capability</li>
+</ul>
+<h3 id="verification_2">Verification<a class="headerlink" href="#verification_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li>[ ] Analyzed configuration landscape</li>
+<li>[ ] Identified consolidation opportunities</li>
+<li>[ ] Validated configuration consistency</li>
+<li>[ ] Tested migration process</li>
+<li>[ ] Understood rollback procedures</li>
+</ul>
+<h2 id="exercise-4-code-quality-assessment-and-improvement-25-minutes">Exercise 4: Code Quality Assessment and Improvement (25 minutes)<a class="headerlink" href="#exercise-4-code-quality-assessment-and-improvement-25-minutes" title="Permanent link">&para;</a></h2>
+<h3 id="objective_3">Objective<a class="headerlink" href="#objective_3" title="Permanent link">&para;</a></h3>
+<p>Learn to assess and improve code quality using automated tools.</p>
+<h3 id="steps_3">Steps<a class="headerlink" href="#steps_3" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Run Code Quality Analysis</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/code-quality/cli.py<span class="w"> </span>analyze<span class="w"> </span>--comprehensive<span class="w"> </span>--export<span class="w"> </span>quality-report.json
+</code></pre></div>
+<p><strong>Task</strong>: Review quality report and identify:</p>
+<ul>
+<li>Overall quality score</li>
+<li>Most common violations</li>
+<li>Files with lowest quality scores</li>
+<li>
+<p>Improvement recommendations</p>
+</li>
+<li>
+<p><strong>Automated Code Formatting</strong></p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/code-quality/cli.py<span class="w"> </span>format<span class="w"> </span>--preview<span class="w"> </span>--diff
+</code></pre></div>
+<p><strong>Task</strong>: Review formatting changes:</p>
+<ul>
+<li>Files to be modified</li>
+<li>Types of formatting changes</li>
+<li>
+<p>Impact on code readability</p>
+</li>
+<li>
+<p><strong>Apply Quality Improvements</strong></p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/code-quality/cli.py<span class="w"> </span>fix<span class="w"> </span>--auto<span class="w"> </span>--safe<span class="w"> </span>--backup
+</code></pre></div>
+<p><strong>Task</strong>: Monitor improvement process:</p>
+<ul>
+<li>Changes applied automatically</li>
+<li>Manual fixes required</li>
+<li>
+<p>Quality score improvement</p>
+</li>
+<li>
+<p><strong>Validate Documentation</strong></p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/code-quality/cli.py<span class="w"> </span>validate-docs<span class="w"> </span>--generate-missing
+</code></pre></div>
+<p><strong>Task</strong>: Check documentation status:</p>
+<ul>
+<li>Functions without documentation</li>
+<li>Generated documentation templates</li>
+<li>
+<p>Documentation quality score</p>
+</li>
+<li>
+<p><strong>Check Type Hints</strong></p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/code-quality/cli.py<span class="w"> </span>validate-types<span class="w"> </span>--add-missing
+</code></pre></div>
+<p><strong>Task</strong>: Review type hint coverage:</p>
+<ul>
+<li>Functions missing type hints</li>
+<li>Automatically added hints</li>
+<li>Type checking results</li>
+</ul>
+<h3 id="verification_3">Verification<a class="headerlink" href="#verification_3" title="Permanent link">&para;</a></h3>
+<ul>
+<li>[ ] Analyzed code quality comprehensively</li>
+<li>[ ] Applied automated formatting</li>
+<li>[ ] Fixed quality violations</li>
+<li>[ ] Improved documentation coverage</li>
+<li>[ ] Enhanced type hint coverage</li>
+</ul>
+<h2 id="exercise-5-documentation-generation-and-validation-15-minutes">Exercise 5: Documentation Generation and Validation (15 minutes)<a class="headerlink" href="#exercise-5-documentation-generation-and-validation-15-minutes" title="Permanent link">&para;</a></h2>
+<h3 id="objective_4">Objective<a class="headerlink" href="#objective_4" title="Permanent link">&para;</a></h3>
+<p>Learn to generate and maintain project documentation automatically.</p>
+<h3 id="steps_4">Steps<a class="headerlink" href="#steps_4" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Generate Project Documentation</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/doc-generator/cli.py<span class="w"> </span>generate<span class="w"> </span>--all<span class="w"> </span>--include-diagrams
+</code></pre></div>
+<p><strong>Task</strong>: Review generated documentation:</p>
+<ul>
+<li>Project structure documentation</li>
+<li>Component relationship diagrams</li>
+<li>API documentation</li>
+<li>
+<p>Configuration documentation</p>
+</li>
+<li>
+<p><strong>Validate Documentation Links</strong></p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/doc-generator/cli.py<span class="w"> </span>validate-links<span class="w"> </span>--fix-broken
+</code></pre></div>
+<p><strong>Task</strong>: Check link validation results:</p>
+<ul>
+<li>Broken links found</li>
+<li>Automatically fixed links</li>
+<li>
+<p>External link status</p>
+</li>
+<li>
+<p><strong>Update Documentation Index</strong></p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/doc-generator/cli.py<span class="w"> </span>update-index<span class="w"> </span>--create-search
+</code></pre></div>
+<p><strong>Task</strong>: Verify documentation index:</p>
+<ul>
+<li>Navigation structure</li>
+<li>Search functionality</li>
+<li>
+<p>Cross-references</p>
+</li>
+<li>
+<p><strong>Check Documentation Freshness</strong></p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/doc-generator/cli.py<span class="w"> </span>check-freshness<span class="w"> </span>--update-stale
+</code></pre></div>
+<p><strong>Task</strong>: Review freshness report:</p>
+<ul>
+<li>Outdated documentation</li>
+<li>Recently updated content</li>
+<li>Maintenance recommendations</li>
+</ul>
+<h3 id="verification_4">Verification<a class="headerlink" href="#verification_4" title="Permanent link">&para;</a></h3>
+<ul>
+<li>[ ] Generated comprehensive documentation</li>
+<li>[ ] Validated and fixed broken links</li>
+<li>[ ] Created searchable documentation index</li>
+<li>[ ] Identified and updated stale content</li>
+</ul>
+<h2 id="exercise-6-codebase-cleanup-and-organization-20-minutes">Exercise 6: Codebase Cleanup and Organization (20 minutes)<a class="headerlink" href="#exercise-6-codebase-cleanup-and-organization-20-minutes" title="Permanent link">&para;</a></h2>
+<h3 id="objective_5">Objective<a class="headerlink" href="#objective_5" title="Permanent link">&para;</a></h3>
+<p>Learn to clean up and organize the codebase using automated tools.</p>
+<h3 id="steps_5">Steps<a class="headerlink" href="#steps_5" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Detect Duplicate Files</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/codebase-cleanup/cli.py<span class="w"> </span>detect-duplicates<span class="w"> </span>--similarity<span class="w"> </span><span class="m">0</span>.8
+</code></pre></div>
+<p><strong>Task</strong>: Review duplicate detection results:</p>
+<ul>
+<li>Exact duplicates found</li>
+<li>Similar files identified</li>
+<li>
+<p>Consolidation recommendations</p>
+</li>
+<li>
+<p><strong>Analyze Dead Code</strong></p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/codebase-cleanup/cli.py<span class="w"> </span>analyze-dead-code<span class="w"> </span>--include-imports
+</code></pre></div>
+<p><strong>Task</strong>: Check dead code analysis:</p>
+<ul>
+<li>Unused functions and classes</li>
+<li>Unused imports</li>
+<li>
+<p>Unreachable code paths</p>
+</li>
+<li>
+<p><strong>Standardize Naming Conventions</strong></p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/codebase-cleanup/cli.py<span class="w"> </span>standardize-naming<span class="w"> </span>--preview
+</code></pre></div>
+<p><strong>Task</strong>: Review naming standardization:</p>
+<ul>
+<li>Inconsistent naming patterns</li>
+<li>Proposed naming changes</li>
+<li>
+<p>Impact on codebase</p>
+</li>
+<li>
+<p><strong>Safe Cleanup Operations</strong></p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/codebase-cleanup/cli.py<span class="w"> </span>cleanup<span class="w"> </span>--safe<span class="w"> </span>--backup<span class="w"> </span>--dry-run
+</code></pre></div>
+<p><strong>Task</strong>: Review cleanup plan:</p>
+<ul>
+<li>Files to be removed</li>
+<li>Refactoring operations</li>
+<li>Safety measures in place</li>
+</ul>
+<h3 id="verification_5">Verification<a class="headerlink" href="#verification_5" title="Permanent link">&para;</a></h3>
+<ul>
+<li>[ ] Detected and analyzed duplicates</li>
+<li>[ ] Identified dead code</li>
+<li>[ ] Reviewed naming standardization</li>
+<li>[ ] Planned safe cleanup operations</li>
+</ul>
+<h2 id="exercise-7-unified-cli-and-workflow-integration-15-minutes">Exercise 7: Unified CLI and Workflow Integration (15 minutes)<a class="headerlink" href="#exercise-7-unified-cli-and-workflow-integration-15-minutes" title="Permanent link">&para;</a></h2>
+<h3 id="objective_6">Objective<a class="headerlink" href="#objective_6" title="Permanent link">&para;</a></h3>
+<p>Learn to use the unified CLI for integrated workflow management.</p>
+<h3 id="steps_6">Steps<a class="headerlink" href="#steps_6" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Explore Unified CLI</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/unified-cli/cli.py<span class="w"> </span>--help
+python<span class="w"> </span>tools/unified-cli/cli.py<span class="w"> </span>status
+python<span class="w"> </span>tools/unified-cli/cli.py<span class="w"> </span>metrics
+</code></pre></div>
+<p><strong>Task</strong>: Familiarize yourself with:</p>
+<ul>
+<li>Available commands</li>
+<li>Current system status</li>
+<li>
+<p>Quality metrics dashboard</p>
+</li>
+<li>
+<p><strong>Run Integrated Workflow</strong></p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/unified-cli/cli.py<span class="w"> </span>workflow<span class="w"> </span>daily-check
+</code></pre></div>
+<p><strong>Task</strong>: Observe the integrated workflow:</p>
+<ul>
+<li>Tools executed in sequence</li>
+<li>Results aggregation</li>
+<li>
+<p>Summary report</p>
+</li>
+<li>
+<p><strong>Configure Personal Preferences</strong></p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/unified-cli/cli.py<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;Your Name&quot;</span>
+python<span class="w"> </span>tools/unified-cli/cli.py<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>workflow.auto_fix<span class="w"> </span><span class="nb">true</span>
+python<span class="w"> </span>tools/unified-cli/cli.py<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>notifications.email<span class="w"> </span><span class="s2">&quot;your@email.com&quot;</span>
+</code></pre></div>
+<p><strong>Task</strong>: Customize your environment:</p>
+<ul>
+<li>Personal settings</li>
+<li>Workflow preferences</li>
+<li>
+<p>Notification configuration</p>
+</li>
+<li>
+<p><strong>Test Pre-commit Integration</strong></p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/unified-cli/cli.py<span class="w"> </span>install-hooks
+<span class="c1"># Make a small change to a file</span>
+git<span class="w"> </span>add<span class="w"> </span>.
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Test commit for pre-commit hooks&quot;</span>
+</code></pre></div>
+<p><strong>Task</strong>: Verify pre-commit integration:</p>
+<ul>
+<li>Hooks installation</li>
+<li>Automatic quality checks</li>
+<li>Commit process enhancement</li>
+</ul>
+<h3 id="verification_6">Verification<a class="headerlink" href="#verification_6" title="Permanent link">&para;</a></h3>
+<ul>
+<li>[ ] Explored unified CLI capabilities</li>
+<li>[ ] Ran integrated workflows</li>
+<li>[ ] Configured personal preferences</li>
+<li>[ ] Tested pre-commit integration</li>
+</ul>
+<h2 id="exercise-8-troubleshooting-and-recovery-10-minutes">Exercise 8: Troubleshooting and Recovery (10 minutes)<a class="headerlink" href="#exercise-8-troubleshooting-and-recovery-10-minutes" title="Permanent link">&para;</a></h2>
+<h3 id="objective_7">Objective<a class="headerlink" href="#objective_7" title="Permanent link">&para;</a></h3>
+<p>Learn to troubleshoot issues and recover from problems.</p>
+<h3 id="steps_7">Steps<a class="headerlink" href="#steps_7" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Use Interactive Troubleshooting</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/unified-cli/cli.py<span class="w"> </span>troubleshoot
+</code></pre></div>
+<p><strong>Task</strong>: Follow the interactive troubleshooting wizard:</p>
+<ul>
+<li>Describe a hypothetical issue</li>
+<li>Follow diagnostic steps</li>
+<li>
+<p>Review suggested solutions</p>
+</li>
+<li>
+<p><strong>Create Support Package</strong></p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/unified-cli/cli.py<span class="w"> </span>create-support-package<span class="w"> </span>--include-logs
+</code></pre></div>
+<p><strong>Task</strong>: Review support package contents:</p>
+<ul>
+<li>System information</li>
+<li>Configuration files</li>
+<li>Recent logs</li>
+<li>
+<p>Error reports</p>
+</li>
+<li>
+<p><strong>Test Rollback Functionality</strong></p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/unified-cli/cli.py<span class="w"> </span>rollback<span class="w"> </span>--list
+python<span class="w"> </span>tools/unified-cli/cli.py<span class="w"> </span>rollback<span class="w"> </span>--preview<span class="w"> </span>--last
+</code></pre></div>
+<p><strong>Task</strong>: Understand rollback capabilities:</p>
+<ul>
+<li>Available rollback points</li>
+<li>Rollback preview</li>
+<li>Recovery procedures</li>
+</ul>
+<h3 id="verification_7">Verification<a class="headerlink" href="#verification_7" title="Permanent link">&para;</a></h3>
+<ul>
+<li>[ ] Used interactive troubleshooting</li>
+<li>[ ] Created comprehensive support package</li>
+<li>[ ] Understood rollback procedures</li>
+</ul>
+<h2 id="final-integration-exercise-15-minutes">Final Integration Exercise (15 minutes)<a class="headerlink" href="#final-integration-exercise-15-minutes" title="Permanent link">&para;</a></h2>
+<h3 id="objective_8">Objective<a class="headerlink" href="#objective_8" title="Permanent link">&para;</a></h3>
+<p>Integrate all learned skills in a comprehensive workflow.</p>
+<h3 id="steps_8">Steps<a class="headerlink" href="#steps_8" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Complete Daily Workflow</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Morning routine</span>
+python<span class="w"> </span>tools/unified-cli/cli.py<span class="w"> </span>workflow<span class="w"> </span>morning-check
+
+<span class="c1"># Development workflow</span>
+python<span class="w"> </span>tools/unified-cli/cli.py<span class="w"> </span>workflow<span class="w"> </span>dev-ready
+
+<span class="c1"># Pre-commit workflow</span>
+python<span class="w"> </span>tools/unified-cli/cli.py<span class="w"> </span>workflow<span class="w"> </span>pre-commit
+
+<span class="c1"># End-of-day workflow</span>
+python<span class="w"> </span>tools/unified-cli/cli.py<span class="w"> </span>workflow<span class="w"> </span>end-of-day
+</code></pre></div>
+<ol>
+<li><strong>Generate Comprehensive Report</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/unified-cli/cli.py<span class="w"> </span>generate-report<span class="w"> </span>--comprehensive<span class="w"> </span>--export
+</code></pre></div>
+<ol>
+<li><strong>Plan Maintenance Activities</strong>
+   <div class="highlight"><pre><span></span><code>python<span class="w"> </span>tools/maintenance-scheduler/cli.py<span class="w"> </span>plan-weekly-maintenance
+</code></pre></div></li>
+</ol>
+<h3 id="verification_8">Verification<a class="headerlink" href="#verification_8" title="Permanent link">&para;</a></h3>
+<ul>
+<li>[ ] Completed full daily workflow</li>
+<li>[ ] Generated comprehensive report</li>
+<li>[ ] Planned maintenance activities</li>
+</ul>
+<h2 id="exercise-completion">Exercise Completion<a class="headerlink" href="#exercise-completion" title="Permanent link">&para;</a></h2>
+<h3 id="self-assessment-checklist">Self-Assessment Checklist<a class="headerlink" href="#self-assessment-checklist" title="Permanent link">&para;</a></h3>
+<h4 id="knowledge-check">Knowledge Check<a class="headerlink" href="#knowledge-check" title="Permanent link">&para;</a></h4>
+<ul>
+<li>[ ] I understand the purpose of each tool category</li>
+<li>[ ] I can run basic health checks and interpret results</li>
+<li>[ ] I know how to fix common test issues</li>
+<li>[ ] I can analyze and consolidate configurations</li>
+<li>[ ] I understand code quality assessment and improvement</li>
+<li>[ ] I can generate and maintain documentation</li>
+<li>[ ] I know how to clean up and organize code</li>
+<li>[ ] I can use the unified CLI effectively</li>
+<li>[ ] I understand troubleshooting and recovery procedures</li>
+</ul>
+<h4 id="practical-skills">Practical Skills<a class="headerlink" href="#practical-skills" title="Permanent link">&para;</a></h4>
+<ul>
+<li>[ ] I can identify project health issues</li>
+<li>[ ] I can fix broken tests automatically</li>
+<li>[ ] I can consolidate scattered configurations</li>
+<li>[ ] I can improve code quality systematically</li>
+<li>[ ] I can generate comprehensive documentation</li>
+<li>[ ] I can clean up duplicate and dead code</li>
+<li>[ ] I can integrate tools into my workflow</li>
+<li>[ ] I can troubleshoot and recover from issues</li>
+</ul>
+<h4 id="confidence-level">Confidence Level<a class="headerlink" href="#confidence-level" title="Permanent link">&para;</a></h4>
+<p>Rate your confidence (1-5) in using each tool category:</p>
+<ul>
+<li>Health Checker: ___/5</li>
+<li>Test Management: ___/5</li>
+<li>Configuration Management: ___/5</li>
+<li>Code Quality: ___/5</li>
+<li>Documentation: ___/5</li>
+<li>Codebase Cleanup: ___/5</li>
+<li>Unified CLI: ___/5</li>
+<li>Troubleshooting: ___/5</li>
+</ul>
+<h3 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Practice Regularly</strong>: Use tools in your daily development workflow</li>
+<li><strong>Explore Advanced Features</strong>: Dive deeper into tool customization</li>
+<li><strong>Share Knowledge</strong>: Help other team members learn the tools</li>
+<li><strong>Provide Feedback</strong>: Suggest improvements to tools and documentation</li>
+<li><strong>Stay Updated</strong>: Keep up with tool updates and new features</li>
+</ol>
+<h3 id="getting-help">Getting Help<a class="headerlink" href="#getting-help" title="Permanent link">&para;</a></h3>
+<p>If you encountered issues during exercises:</p>
+<ul>
+<li><strong>Review Documentation</strong>: Check tool-specific documentation</li>
+<li><strong>Check FAQ</strong>: Visit <a href="../../troubleshooting/faq/">Frequently Asked Questions</a></li>
+<li><strong>Use Troubleshooting Guide</strong>: Follow <a href="../../troubleshooting/">Troubleshooting Guide</a></li>
+<li><strong>Ask for Help</strong>: Contact team members or support</li>
+</ul>
+<h3 id="feedback">Feedback<a class="headerlink" href="#feedback" title="Permanent link">&para;</a></h3>
+<p>Please provide feedback on these exercises:</p>
+<ul>
+<li>Which exercises were most helpful?</li>
+<li>What was confusing or unclear?</li>
+<li>What additional exercises would be valuable?</li>
+<li>How can we improve the learning experience?</li>
+</ul>
+<p><strong>Congratulations!</strong> You've completed the hands-on exercises and are ready to use the WAN22 project's cleanup and quality improvement tools effectively.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

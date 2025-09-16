@@ -1,0 +1,1565 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="WAN2.2 Video Generation System Documentation" name="description"/>
+<link href="https://ramcana.github.io/wan/deployment/health-monitoring-operations-guide/" rel="canonical"/>
+<link href="../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.6.20" name="generator"/>
+<title>Health Monitoring Operations Guide - WAN22 Documentation</title>
+<link href="../../assets/stylesheets/main.e53b48f4.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="blue" data-md-color-primary="blue" data-md-color-scheme="default" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#health-monitoring-operations-guide">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="WAN22 Documentation" class="md-header__button md-logo" data-md-component="logo" href="../.." title="WAN22 Documentation">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            WAN22 Documentation
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Health Monitoring Operations Guide
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="blue" data-md-color-media="" data-md-color-primary="blue" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="blue" data-md-color-media="" data-md-color-primary="blue" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+</label>
+</form>
+<script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<a aria-label="Share" class="md-search__icon md-icon" data-clipboard="" data-clipboard-text="" data-md-component="search-share" href="javascript:void(0)" tabindex="-1" title="Share">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
+</a>
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/ramcana/wan" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+</div>
+<div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="Tabs" class="md-tabs" data-md-component="tabs">
+<div class="md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../..">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../WAN22_System_Capabilities_Report/">
+          
+  
+  
+  System Overview
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../model-orchestrator/requirements/">
+          
+  
+  
+  Model Orchestrator
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../config/models.toml">
+          
+  
+  
+  Configuration
+
+        </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="WAN22 Documentation" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="WAN22 Documentation">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    WAN22 Documentation
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/ramcana/wan" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+</div>
+<div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+<span class="md-ellipsis">
+    Home
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-ellipsis">
+    System Overview
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            System Overview
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../WAN22_System_Capabilities_Report/">
+<span class="md-ellipsis">
+    Capabilities Report
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+<span class="md-ellipsis">
+    Model Orchestrator
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            Model Orchestrator
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../model-orchestrator/requirements/">
+<span class="md-ellipsis">
+    Requirements
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../model-orchestrator/tasks/">
+<span class="md-ellipsis">
+    Tasks
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+<span class="md-ellipsis">
+    Configuration
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            Configuration
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../config/models.toml">
+<span class="md-ellipsis">
+    Models Config
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../config/models_simple.toml">
+<span class="md-ellipsis">
+    Simple Config
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#overview">
+<span class="md-ellipsis">
+      Overview
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#table-of-contents">
+<span class="md-ellipsis">
+      Table of Contents
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#system-architecture">
+<span class="md-ellipsis">
+      System Architecture
+    </span>
+</a>
+<nav aria-label="System Architecture" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#components-overview">
+<span class="md-ellipsis">
+      Components Overview
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#service-dependencies">
+<span class="md-ellipsis">
+      Service Dependencies
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#file-system-layout">
+<span class="md-ellipsis">
+      File System Layout
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#daily-operations">
+<span class="md-ellipsis">
+      Daily Operations
+    </span>
+</a>
+<nav aria-label="Daily Operations" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#morning-health-check-routine">
+<span class="md-ellipsis">
+      Morning Health Check Routine
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#weekly-review-process">
+<span class="md-ellipsis">
+      Weekly Review Process
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#monthly-maintenance">
+<span class="md-ellipsis">
+      Monthly Maintenance
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#monitoring-and-alerting">
+<span class="md-ellipsis">
+      Monitoring and Alerting
+    </span>
+</a>
+<nav aria-label="Monitoring and Alerting" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#alert-levels-and-response-times">
+<span class="md-ellipsis">
+      Alert Levels and Response Times
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#alert-response-procedures">
+<span class="md-ellipsis">
+      Alert Response Procedures
+    </span>
+</a>
+<nav aria-label="Alert Response Procedures" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#critical-health-score-alert">
+<span class="md-ellipsis">
+      Critical Health Score Alert
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#test-failure-alert">
+<span class="md-ellipsis">
+      Test Failure Alert
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#security-alert">
+<span class="md-ellipsis">
+      Security Alert
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#alert-management-commands">
+<span class="md-ellipsis">
+      Alert Management Commands
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#maintenance-procedures">
+<span class="md-ellipsis">
+      Maintenance Procedures
+    </span>
+</a>
+<nav aria-label="Maintenance Procedures" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#regular-maintenance-tasks">
+<span class="md-ellipsis">
+      Regular Maintenance Tasks
+    </span>
+</a>
+<nav aria-label="Regular Maintenance Tasks" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#daily-tasks-automated">
+<span class="md-ellipsis">
+      Daily Tasks (Automated)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#weekly-tasks">
+<span class="md-ellipsis">
+      Weekly Tasks
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#monthly-tasks">
+<span class="md-ellipsis">
+      Monthly Tasks
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#configuration-management">
+<span class="md-ellipsis">
+      Configuration Management
+    </span>
+</a>
+<nav aria-label="Configuration Management" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#updating-health-thresholds">
+<span class="md-ellipsis">
+      Updating Health Thresholds
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#managing-alert-rules">
+<span class="md-ellipsis">
+      Managing Alert Rules
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#troubleshooting">
+<span class="md-ellipsis">
+      Troubleshooting
+    </span>
+</a>
+<nav aria-label="Troubleshooting" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#common-issues-and-solutions">
+<span class="md-ellipsis">
+      Common Issues and Solutions
+    </span>
+</a>
+<nav aria-label="Common Issues and Solutions" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#health-monitoring-service-not-running">
+<span class="md-ellipsis">
+      Health Monitoring Service Not Running
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#high-false-positive-alert-rate">
+<span class="md-ellipsis">
+      High False Positive Alert Rate
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#health-checks-taking-too-long">
+<span class="md-ellipsis">
+      Health Checks Taking Too Long
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#missing-health-reports">
+<span class="md-ellipsis">
+      Missing Health Reports
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#diagnostic-commands">
+<span class="md-ellipsis">
+      Diagnostic Commands
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#emergency-response">
+<span class="md-ellipsis">
+      Emergency Response
+    </span>
+</a>
+<nav aria-label="Emergency Response" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#critical-system-failure">
+<span class="md-ellipsis">
+      Critical System Failure
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#service-degradation">
+<span class="md-ellipsis">
+      Service Degradation
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#communication-procedures">
+<span class="md-ellipsis">
+      Communication Procedures
+    </span>
+</a>
+<nav aria-label="Communication Procedures" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#internal-communication">
+<span class="md-ellipsis">
+      Internal Communication
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#external-communication">
+<span class="md-ellipsis">
+      External Communication
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#performance-optimization">
+<span class="md-ellipsis">
+      Performance Optimization
+    </span>
+</a>
+<nav aria-label="Performance Optimization" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#monitoring-performance-metrics">
+<span class="md-ellipsis">
+      Monitoring Performance Metrics
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#optimization-strategies">
+<span class="md-ellipsis">
+      Optimization Strategies
+    </span>
+</a>
+<nav aria-label="Optimization Strategies" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#health-check-optimization">
+<span class="md-ellipsis">
+      Health Check Optimization
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#alert-system-optimization">
+<span class="md-ellipsis">
+      Alert System Optimization
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#performance-baselines">
+<span class="md-ellipsis">
+      Performance Baselines
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#security-considerations">
+<span class="md-ellipsis">
+      Security Considerations
+    </span>
+</a>
+<nav aria-label="Security Considerations" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#access-control">
+<span class="md-ellipsis">
+      Access Control
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#sensitive-data-protection">
+<span class="md-ellipsis">
+      Sensitive Data Protection
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#audit-logging">
+<span class="md-ellipsis">
+      Audit Logging
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#network-security">
+<span class="md-ellipsis">
+      Network Security
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#appendices">
+<span class="md-ellipsis">
+      Appendices
+    </span>
+</a>
+<nav aria-label="Appendices" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#a-configuration-reference">
+<span class="md-ellipsis">
+      A. Configuration Reference
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#b-api-reference">
+<span class="md-ellipsis">
+      B. API Reference
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#c-log-file-locations">
+<span class="md-ellipsis">
+      C. Log File Locations
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#d-contact-information">
+<span class="md-ellipsis">
+      D. Contact Information
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="health-monitoring-operations-guide">Health Monitoring Operations Guide<a class="headerlink" href="#health-monitoring-operations-guide" title="Permanent link">¶</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">¶</a></h2>
+<p>This guide provides comprehensive operational procedures for managing the WAN22 project health monitoring system in production environments. It covers daily operations, maintenance tasks, troubleshooting procedures, and emergency response protocols.</p>
+<h2 id="table-of-contents">Table of Contents<a class="headerlink" href="#table-of-contents" title="Permanent link">¶</a></h2>
+<ol>
+<li><a href="#system-architecture">System Architecture</a></li>
+<li><a href="#daily-operations">Daily Operations</a></li>
+<li><a href="#monitoring-and-alerting">Monitoring and Alerting</a></li>
+<li><a href="#maintenance-procedures">Maintenance Procedures</a></li>
+<li><a href="#troubleshooting">Troubleshooting</a></li>
+<li><a href="#emergency-response">Emergency Response</a></li>
+<li><a href="#performance-optimization">Performance Optimization</a></li>
+<li><a href="#security-considerations">Security Considerations</a></li>
+</ol>
+<h2 id="system-architecture">System Architecture<a class="headerlink" href="#system-architecture" title="Permanent link">¶</a></h2>
+<h3 id="components-overview">Components Overview<a class="headerlink" href="#components-overview" title="Permanent link">¶</a></h3>
+<p>The health monitoring system consists of several key components:</p>
+<ul>
+<li><strong>Health Checker</strong>: Core monitoring engine that evaluates project health</li>
+<li><strong>Alerting System</strong>: Automated notification and escalation system</li>
+<li><strong>Reporting Engine</strong>: Generates daily, weekly, and on-demand reports</li>
+<li><strong>Dashboard</strong>: Web-based interface for real-time monitoring</li>
+<li><strong>Configuration Manager</strong>: Centralized configuration management</li>
+<li><strong>Data Storage</strong>: Health metrics, logs, and historical data</li>
+</ul>
+<h3 id="service-dependencies">Service Dependencies<a class="headerlink" href="#service-dependencies" title="Permanent link">¶</a></h3>
+<div class="mermaid">graph TB
+    A[Health Monitor Service] --&gt; B[Health Checker]
+    A --&gt; C[Alerting System]
+    A --&gt; D[Report Generator]
+
+    B --&gt; E[Test Suite]
+    B --&gt; F[Documentation System]
+    B --&gt; G[Configuration System]
+
+    C --&gt; H[Email Service]
+    C --&gt; I[Slack Integration]
+    C --&gt; J[SMS Service]
+
+    D --&gt; K[File System]
+    D --&gt; L[Web Server]
+</div>
+<h3 id="file-system-layout">File System Layout<a class="headerlink" href="#file-system-layout" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code>/project-root/
+├── config/
+│   ├── production-health.yaml      # Production health config
+│   ├── alerting-config.yaml        # Alert rules and policies
+│   └── unified-config.yaml         # Main system config
+├── logs/
+│   ├── health-monitoring/          # Health check logs
+│   ├── alerting/                   # Alert system logs
+│   └── incidents/                  # Critical incident reports
+├── reports/
+│   ├── daily/                      # Daily health reports
+│   ├── weekly/                     # Weekly trend reports
+│   └── alerting/                   # Alert dashboard
+├── tools/health-checker/           # Health monitoring tools
+└── scripts/                       # Operational scripts
+</code></pre></div>
+<h2 id="daily-operations">Daily Operations<a class="headerlink" href="#daily-operations" title="Permanent link">¶</a></h2>
+<h3 id="morning-health-check-routine">Morning Health Check Routine<a class="headerlink" href="#morning-health-check-routine" title="Permanent link">¶</a></h3>
+<p><strong>Time</strong>: 08:00 UTC (or configured time)
+<strong>Frequency</strong>: Daily
+<strong>Automated</strong>: Yes</p>
+<ol>
+<li><strong>Review Daily Health Report</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check latest daily report</span>
+ls<span class="w"> </span>-la<span class="w"> </span>reports/daily/
+
+<span class="c1"># View today's report</span>
+open<span class="w"> </span>reports/daily/health_report_<span class="k">$(</span>date<span class="w"> </span>+%Y%m%d<span class="k">)</span>.html
+</code></pre></div>
+<ol>
+<li><strong>Check Active Alerts</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># List active alerts</span>
+python<span class="w"> </span>scripts/manage_alerts.py<span class="w"> </span>list
+
+<span class="c1"># Check alert logs</span>
+tail<span class="w"> </span>-f<span class="w"> </span>logs/alerting/alerting_<span class="k">$(</span>date<span class="w"> </span>+%Y%m%d<span class="k">)</span>.log
+</code></pre></div>
+<ol>
+<li><strong>Verify System Health</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Run manual health check</span>
+python<span class="w"> </span>-m<span class="w"> </span>tools.health_checker.production_deployment_simple
+
+<span class="c1"># Check service status (Linux)</span>
+systemctl<span class="w"> </span>status<span class="w"> </span>wan22-health-monitor
+</code></pre></div>
+<h3 id="weekly-review-process">Weekly Review Process<a class="headerlink" href="#weekly-review-process" title="Permanent link">¶</a></h3>
+<p><strong>Time</strong>: Monday 08:00 UTC
+<strong>Frequency</strong>: Weekly
+<strong>Automated</strong>: Partially</p>
+<ol>
+<li>
+<p><strong>Review Weekly Trends</strong></p>
+</li>
+<li>
+<p>Analyze weekly health report</p>
+</li>
+<li>Identify degradation patterns</li>
+<li>
+<p>Review improvement progress</p>
+</li>
+<li>
+<p><strong>Update Health Baselines</strong></p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Update baseline metrics</span>
+python<span class="w"> </span>tools/health-checker/establish_baseline.py<span class="w"> </span>--update
+</code></pre></div>
+<ol>
+<li><strong>Review Alert Effectiveness</strong></li>
+<li>Check alert response times</li>
+<li>Review false positive rates</li>
+<li>Update alert thresholds if needed</li>
+</ol>
+<h3 id="monthly-maintenance">Monthly Maintenance<a class="headerlink" href="#monthly-maintenance" title="Permanent link">¶</a></h3>
+<p><strong>Frequency</strong>: First Saturday of each month
+<strong>Automated</strong>: Partially</p>
+<ol>
+<li><strong>System Cleanup</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Clean old reports and logs</span>
+python<span class="w"> </span>-c<span class="w"> </span><span class="s2">"</span>
+<span class="s2">from tools.health_checker.production_deployment_simple import ProductionHealthMonitor</span>
+<span class="s2">import asyncio</span>
+<span class="s2">monitor = ProductionHealthMonitor()</span>
+<span class="s2">asyncio.run(monitor.cleanup_old_reports())</span>
+<span class="s2">"</span>
+</code></pre></div>
+<ol>
+<li>
+<p><strong>Configuration Review</strong></p>
+</li>
+<li>
+<p>Review and update health thresholds</p>
+</li>
+<li>Update notification channels</li>
+<li>
+<p>Review escalation policies</p>
+</li>
+<li>
+<p><strong>Performance Analysis</strong></p>
+</li>
+<li>Analyze system performance trends</li>
+<li>Identify optimization opportunities</li>
+<li>Update resource allocations</li>
+</ol>
+<h2 id="monitoring-and-alerting">Monitoring and Alerting<a class="headerlink" href="#monitoring-and-alerting" title="Permanent link">¶</a></h2>
+<h3 id="alert-levels-and-response-times">Alert Levels and Response Times<a class="headerlink" href="#alert-levels-and-response-times" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Alert Level</th>
+<th>Response Time</th>
+<th>Escalation Time</th>
+<th>Channels</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Info</td>
+<td>4 hours</td>
+<td>None</td>
+<td>Slack</td>
+</tr>
+<tr>
+<td>Warning</td>
+<td>1 hour</td>
+<td>2 hours</td>
+<td>Slack</td>
+</tr>
+<tr>
+<td>Critical</td>
+<td>15 minutes</td>
+<td>30 minutes</td>
+<td>Email, Slack</td>
+</tr>
+<tr>
+<td>Emergency</td>
+<td>Immediate</td>
+<td>15 minutes</td>
+<td>Email, Slack, SMS</td>
+</tr>
+</tbody>
+</table>
+<h3 id="alert-response-procedures">Alert Response Procedures<a class="headerlink" href="#alert-response-procedures" title="Permanent link">¶</a></h3>
+<h4 id="critical-health-score-alert">Critical Health Score Alert<a class="headerlink" href="#critical-health-score-alert" title="Permanent link">¶</a></h4>
+<p><strong>Trigger</strong>: Overall health score &lt; 70
+<strong>Response Time</strong>: 15 minutes</p>
+<ol>
+<li><strong>Immediate Actions</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check current health status</span>
+python<span class="w"> </span>-m<span class="w"> </span>tools.health_checker.health_checker<span class="w"> </span>--quick
+
+<span class="c1"># Review recent changes</span>
+git<span class="w"> </span>log<span class="w"> </span>--oneline<span class="w"> </span>-10
+
+<span class="c1"># Check system resources</span>
+python<span class="w"> </span>tools/health_checker/production_health_checks.py
+</code></pre></div>
+<ol>
+<li>
+<p><strong>Investigation Steps</strong></p>
+</li>
+<li>
+<p>Identify failing components</p>
+</li>
+<li>Check recent deployments</li>
+<li>Review error logs</li>
+<li>
+<p>Verify system resources</p>
+</li>
+<li>
+<p><strong>Resolution Actions</strong></p>
+</li>
+<li>Fix identified issues</li>
+<li>Acknowledge alert when investigation starts</li>
+<li>Resolve alert when issue is fixed</li>
+</ol>
+<h4 id="test-failure-alert">Test Failure Alert<a class="headerlink" href="#test-failure-alert" title="Permanent link">¶</a></h4>
+<p><strong>Trigger</strong>: Critical test failures detected
+<strong>Response Time</strong>: 30 minutes</p>
+<ol>
+<li><strong>Check Test Status</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Run test suite</span>
+python<span class="w"> </span>-m<span class="w"> </span>pytest<span class="w"> </span>tests/<span class="w"> </span>-v<span class="w"> </span>--tb<span class="o">=</span>short
+
+<span class="c1"># Check test health</span>
+python<span class="w"> </span>tools/health_checker/checkers/test_health_checker.py
+</code></pre></div>
+<ol>
+<li><strong>Common Resolutions</strong></li>
+<li>Fix failing tests</li>
+<li>Update test configurations</li>
+<li>Resolve dependency issues</li>
+</ol>
+<h4 id="security-alert">Security Alert<a class="headerlink" href="#security-alert" title="Permanent link">¶</a></h4>
+<p><strong>Trigger</strong>: High/Critical security issues
+<strong>Response Time</strong>: 10 minutes</p>
+<ol>
+<li><strong>Immediate Assessment</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check security status</span>
+python<span class="w"> </span>tools/health_checker/checkers/security_checker.py
+
+<span class="c1"># Review recent security scans</span>
+cat<span class="w"> </span>logs/health-monitoring/security_scan_*.log
+</code></pre></div>
+<ol>
+<li><strong>Security Response</strong></li>
+<li>Assess threat level</li>
+<li>Apply security patches</li>
+<li>Update vulnerable dependencies</li>
+<li>Review access controls</li>
+</ol>
+<h3 id="alert-management-commands">Alert Management Commands<a class="headerlink" href="#alert-management-commands" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># List all active alerts</span>
+python<span class="w"> </span>scripts/manage_alerts.py<span class="w"> </span>list
+
+<span class="c1"># Acknowledge an alert</span>
+python<span class="w"> </span>scripts/manage_alerts.py<span class="w"> </span>acknowledge<span class="w"> </span>critical_health_score<span class="w"> </span>--by<span class="w"> </span><span class="s2">"John Doe"</span>
+
+<span class="c1"># Resolve an alert</span>
+python<span class="w"> </span>scripts/manage_alerts.py<span class="w"> </span>resolve<span class="w"> </span>critical_health_score<span class="w"> </span>--by<span class="w"> </span><span class="s2">"Jane Smith"</span><span class="w"> </span>--notes<span class="w"> </span><span class="s2">"Fixed configuration issue"</span>
+
+<span class="c1"># Test alert system</span>
+python<span class="w"> </span>scripts/manage_alerts.py<span class="w"> </span><span class="nb">test</span><span class="w"> </span>critical_health_score
+</code></pre></div>
+<h2 id="maintenance-procedures">Maintenance Procedures<a class="headerlink" href="#maintenance-procedures" title="Permanent link">¶</a></h2>
+<h3 id="regular-maintenance-tasks">Regular Maintenance Tasks<a class="headerlink" href="#regular-maintenance-tasks" title="Permanent link">¶</a></h3>
+<h4 id="daily-tasks-automated">Daily Tasks (Automated)<a class="headerlink" href="#daily-tasks-automated" title="Permanent link">¶</a></h4>
+<ul>
+<li>Health check execution</li>
+<li>Report generation</li>
+<li>Log rotation</li>
+<li>Alert evaluation</li>
+</ul>
+<h4 id="weekly-tasks">Weekly Tasks<a class="headerlink" href="#weekly-tasks" title="Permanent link">¶</a></h4>
+<ol>
+<li><strong>Configuration Backup</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Backup configurations</span>
+mkdir<span class="w"> </span>-p<span class="w"> </span>backups/config/<span class="k">$(</span>date<span class="w"> </span>+%Y%m%d<span class="k">)</span>
+cp<span class="w"> </span>config/*.yaml<span class="w"> </span>backups/config/<span class="k">$(</span>date<span class="w"> </span>+%Y%m%d<span class="k">)</span>/
+</code></pre></div>
+<ol>
+<li><strong>Performance Review</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Generate performance report</span>
+python<span class="w"> </span>tools/health_checker/performance_optimizer.py<span class="w"> </span>--report
+</code></pre></div>
+<ol>
+<li><strong>Update Health Baselines</strong>
+<div class="highlight"><pre><span></span><code><span class="c1"># Update baseline metrics</span>
+python<span class="w"> </span>tools/health_checker/establish_baseline.py<span class="w"> </span>--update
+</code></pre></div></li>
+</ol>
+<h4 id="monthly-tasks">Monthly Tasks<a class="headerlink" href="#monthly-tasks" title="Permanent link">¶</a></h4>
+<ol>
+<li><strong>System Health Assessment</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Comprehensive health analysis</span>
+python<span class="w"> </span>tools/health_checker/health_analytics.py<span class="w"> </span>--comprehensive
+</code></pre></div>
+<ol>
+<li>
+<p><strong>Configuration Optimization</strong></p>
+</li>
+<li>
+<p>Review alert thresholds</p>
+</li>
+<li>Update notification settings</li>
+<li>
+<p>Optimize performance parameters</p>
+</li>
+<li>
+<p><strong>Security Review</strong>
+<div class="highlight"><pre><span></span><code><span class="c1"># Security audit</span>
+python<span class="w"> </span>tools/health_checker/checkers/security_checker.py<span class="w"> </span>--audit
+</code></pre></div></p>
+</li>
+</ol>
+<h3 id="configuration-management">Configuration Management<a class="headerlink" href="#configuration-management" title="Permanent link">¶</a></h3>
+<h4 id="updating-health-thresholds">Updating Health Thresholds<a class="headerlink" href="#updating-health-thresholds" title="Permanent link">¶</a></h4>
+<ol>
+<li><strong>Edit Configuration</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Edit production health config</span>
+nano<span class="w"> </span>config/production-health.yaml
+</code></pre></div>
+<ol>
+<li><strong>Validate Configuration</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Validate configuration</span>
+python<span class="w"> </span>tools/config_manager/config_validator.py<span class="w"> </span>config/production-health.yaml
+</code></pre></div>
+<ol>
+<li><strong>Apply Changes</strong>
+<div class="highlight"><pre><span></span><code><span class="c1"># Restart health monitoring service</span>
+systemctl<span class="w"> </span>restart<span class="w"> </span>wan22-health-monitor
+</code></pre></div></li>
+</ol>
+<h4 id="managing-alert-rules">Managing Alert Rules<a class="headerlink" href="#managing-alert-rules" title="Permanent link">¶</a></h4>
+<ol>
+<li><strong>Edit Alert Rules</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Edit alerting configuration</span>
+nano<span class="w"> </span>config/alerting-config.yaml
+</code></pre></div>
+<ol>
+<li><strong>Test Alert Rules</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Test specific alert rule</span>
+python<span class="w"> </span>scripts/manage_alerts.py<span class="w"> </span><span class="nb">test</span><span class="w"> </span>rule_name
+</code></pre></div>
+<ol>
+<li><strong>Deploy Changes</strong>
+<div class="highlight"><pre><span></span><code><span class="c1"># Reload alerting configuration</span>
+python<span class="w"> </span>-c<span class="w"> </span><span class="s2">"</span>
+<span class="s2">from tools.health_checker.automated_alerting import AutomatedAlertingSystem</span>
+<span class="s2">system = AutomatedAlertingSystem()</span>
+<span class="s2">system.save_configuration()</span>
+<span class="s2">"</span>
+</code></pre></div></li>
+</ol>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">¶</a></h2>
+<h3 id="common-issues-and-solutions">Common Issues and Solutions<a class="headerlink" href="#common-issues-and-solutions" title="Permanent link">¶</a></h3>
+<h4 id="health-monitoring-service-not-running">Health Monitoring Service Not Running<a class="headerlink" href="#health-monitoring-service-not-running" title="Permanent link">¶</a></h4>
+<p><strong>Symptoms</strong>: No health reports generated, alerts not firing</p>
+<p><strong>Diagnosis</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check service status</span>
+systemctl<span class="w"> </span>status<span class="w"> </span>wan22-health-monitor
+
+<span class="c1"># Check process</span>
+ps<span class="w"> </span>aux<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>health_monitor
+
+<span class="c1"># Check logs</span>
+tail<span class="w"> </span>-f<span class="w"> </span>logs/health-monitoring/health_monitor_<span class="k">$(</span>date<span class="w"> </span>+%Y%m%d<span class="k">)</span>.log
+</code></pre></div>
+<p><strong>Solutions</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Restart service</span>
+systemctl<span class="w"> </span>restart<span class="w"> </span>wan22-health-monitor
+
+<span class="c1"># Check configuration</span>
+python<span class="w"> </span>tools/config_manager/config_validator.py<span class="w"> </span>config/production-health.yaml
+
+<span class="c1"># Manual start for debugging</span>
+python<span class="w"> </span>-m<span class="w"> </span>tools.health_checker.production_deployment_simple
+</code></pre></div>
+<h4 id="high-false-positive-alert-rate">High False Positive Alert Rate<a class="headerlink" href="#high-false-positive-alert-rate" title="Permanent link">¶</a></h4>
+<p><strong>Symptoms</strong>: Too many alerts for non-critical issues</p>
+<p><strong>Diagnosis</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Review alert history</span>
+grep<span class="w"> </span><span class="s2">"Alert triggered"</span><span class="w"> </span>logs/alerting/alerting_*.log<span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-20
+
+<span class="c1"># Check alert thresholds</span>
+cat<span class="w"> </span>config/alerting-config.yaml<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-A<span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="s2">"alert_rules"</span>
+</code></pre></div>
+<p><strong>Solutions</strong>:</p>
+<ol>
+<li>Adjust alert thresholds in <code>config/alerting-config.yaml</code></li>
+<li>Increase cooldown periods</li>
+<li>Add maintenance windows</li>
+<li>Refine alert conditions</li>
+</ol>
+<h4 id="health-checks-taking-too-long">Health Checks Taking Too Long<a class="headerlink" href="#health-checks-taking-too-long" title="Permanent link">¶</a></h4>
+<p><strong>Symptoms</strong>: Health checks timeout or take excessive time</p>
+<p><strong>Diagnosis</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check health check performance</span>
+python<span class="w"> </span>tools/health_checker/performance_optimizer.py<span class="w"> </span>--analyze
+
+<span class="c1"># Review system resources</span>
+python<span class="w"> </span>tools/health_checker/production_health_checks.py
+</code></pre></div>
+<p><strong>Solutions</strong>:</p>
+<ol>
+<li>Optimize health check queries</li>
+<li>Increase timeout values</li>
+<li>Enable parallel execution</li>
+<li>Add resource monitoring</li>
+</ol>
+<h4 id="missing-health-reports">Missing Health Reports<a class="headerlink" href="#missing-health-reports" title="Permanent link">¶</a></h4>
+<p><strong>Symptoms</strong>: Daily/weekly reports not generated</p>
+<p><strong>Diagnosis</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check report generation logs</span>
+grep<span class="w"> </span><span class="s2">"report"</span><span class="w"> </span>logs/health-monitoring/health_monitor_*.log
+
+<span class="c1"># Check file permissions</span>
+ls<span class="w"> </span>-la<span class="w"> </span>reports/daily/
+
+<span class="c1"># Check disk space</span>
+df<span class="w"> </span>-h
+</code></pre></div>
+<p><strong>Solutions</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Fix permissions</span>
+chmod<span class="w"> </span><span class="m">755</span><span class="w"> </span>reports/daily/
+chmod<span class="w"> </span><span class="m">755</span><span class="w"> </span>reports/weekly/
+
+<span class="c1"># Manual report generation</span>
+python<span class="w"> </span>-c<span class="w"> </span><span class="s2">"</span>
+<span class="s2">from tools.health_checker.production_deployment_simple import ProductionHealthMonitor</span>
+<span class="s2">import asyncio</span>
+<span class="s2">monitor = ProductionHealthMonitor()</span>
+<span class="s2">asyncio.run(monitor.generate_daily_report())</span>
+<span class="s2">"</span>
+</code></pre></div>
+<h3 id="diagnostic-commands">Diagnostic Commands<a class="headerlink" href="#diagnostic-commands" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># System health overview</span>
+python<span class="w"> </span>tools/health_checker/health_checker.py<span class="w"> </span>--summary
+
+<span class="c1"># Performance diagnostics</span>
+python<span class="w"> </span>tools/health_checker/performance_optimizer.py<span class="w"> </span>--diagnose
+
+<span class="c1"># Configuration validation</span>
+python<span class="w"> </span>tools/config_manager/config_validator.py<span class="w"> </span>--all
+
+<span class="c1"># Alert system status</span>
+python<span class="w"> </span>scripts/manage_alerts.py<span class="w"> </span>list<span class="w"> </span>--verbose
+
+<span class="c1"># Log analysis</span>
+python<span class="w"> </span>tools/health_checker/health_analytics.py<span class="w"> </span>--logs
+</code></pre></div>
+<h2 id="emergency-response">Emergency Response<a class="headerlink" href="#emergency-response" title="Permanent link">¶</a></h2>
+<h3 id="critical-system-failure">Critical System Failure<a class="headerlink" href="#critical-system-failure" title="Permanent link">¶</a></h3>
+<p><strong>Definition</strong>: Health score &lt; 50 or system completely down</p>
+<p><strong>Response Procedure</strong>:</p>
+<ol>
+<li><strong>Immediate Assessment</strong> (0-5 minutes)</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Quick system check</span>
+python<span class="w"> </span>tools/health_checker/health_checker.py<span class="w"> </span>--emergency
+
+<span class="c1"># Check system resources</span>
+top
+df<span class="w"> </span>-h
+free<span class="w"> </span>-m
+</code></pre></div>
+<ol>
+<li>
+<p><strong>Incident Declaration</strong> (5-10 minutes)</p>
+</li>
+<li>
+<p>Notify incident response team</p>
+</li>
+<li>Create incident ticket</li>
+<li>
+<p>Start incident log</p>
+</li>
+<li>
+<p><strong>Investigation</strong> (10-30 minutes)</p>
+</li>
+<li>
+<p>Identify root cause</p>
+</li>
+<li>Assess impact scope</li>
+<li>
+<p>Determine recovery strategy</p>
+</li>
+<li>
+<p><strong>Recovery Actions</strong> (30+ minutes)</p>
+</li>
+<li>Implement fixes</li>
+<li>Verify system recovery</li>
+<li>Monitor for stability</li>
+</ol>
+<h3 id="service-degradation">Service Degradation<a class="headerlink" href="#service-degradation" title="Permanent link">¶</a></h3>
+<p><strong>Definition</strong>: Health score 50-70 or significant performance issues</p>
+<p><strong>Response Procedure</strong>:</p>
+<ol>
+<li><strong>Assessment</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Detailed health analysis</span>
+python<span class="w"> </span>tools/health_checker/health_analytics.py<span class="w"> </span>--detailed
+
+<span class="c1"># Performance analysis</span>
+python<span class="w"> </span>tools/health_checker/performance_optimizer.py<span class="w"> </span>--analyze
+</code></pre></div>
+<ol>
+<li>
+<p><strong>Mitigation</strong></p>
+</li>
+<li>
+<p>Apply temporary fixes</p>
+</li>
+<li>Scale resources if needed</li>
+<li>
+<p>Implement workarounds</p>
+</li>
+<li>
+<p><strong>Resolution</strong></p>
+</li>
+<li>Identify permanent solution</li>
+<li>Plan implementation</li>
+<li>Execute fix during maintenance window</li>
+</ol>
+<h3 id="communication-procedures">Communication Procedures<a class="headerlink" href="#communication-procedures" title="Permanent link">¶</a></h3>
+<h4 id="internal-communication">Internal Communication<a class="headerlink" href="#internal-communication" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong>Slack</strong>: #project-health-alerts channel</li>
+<li><strong>Email</strong>: dev-team@company.com, ops-team@company.com</li>
+<li><strong>Incident Management</strong>: Create ticket in issue tracking system</li>
+</ul>
+<h4 id="external-communication">External Communication<a class="headerlink" href="#external-communication" title="Permanent link">¶</a></h4>
+<ul>
+<li><strong>Status Page</strong>: Update system status</li>
+<li><strong>Customer Notifications</strong>: If user-facing impact</li>
+<li><strong>Stakeholder Updates</strong>: Regular progress updates</li>
+</ul>
+<h2 id="performance-optimization">Performance Optimization<a class="headerlink" href="#performance-optimization" title="Permanent link">¶</a></h2>
+<h3 id="monitoring-performance-metrics">Monitoring Performance Metrics<a class="headerlink" href="#monitoring-performance-metrics" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Health check execution time</span>
+python<span class="w"> </span>tools/health_checker/performance_optimizer.py<span class="w"> </span>--metrics
+
+<span class="c1"># System resource usage</span>
+python<span class="w"> </span>tools/health_checker/production_health_checks.py<span class="w"> </span>--resources
+
+<span class="c1"># Alert response times</span>
+python<span class="w"> </span>scripts/manage_alerts.py<span class="w"> </span>stats
+</code></pre></div>
+<h3 id="optimization-strategies">Optimization Strategies<a class="headerlink" href="#optimization-strategies" title="Permanent link">¶</a></h3>
+<h4 id="health-check-optimization">Health Check Optimization<a class="headerlink" href="#health-check-optimization" title="Permanent link">¶</a></h4>
+<ol>
+<li><strong>Parallel Execution</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># config/production-health.yaml</span>
+<span class="nt">max_concurrent_checks</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
+<span class="nt">parallel_execution</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<ol>
+<li><strong>Caching</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Enable result caching</span>
+<span class="nt">enable_caching</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">cache_duration_minutes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15</span>
+</code></pre></div>
+<ol>
+<li><strong>Selective Checks</strong>
+<div class="highlight"><pre><span></span><code><span class="c1"># Run only critical checks</span>
+python<span class="w"> </span>tools/health_checker/health_checker.py<span class="w"> </span>--critical-only
+</code></pre></div></li>
+</ol>
+<h4 id="alert-system-optimization">Alert System Optimization<a class="headerlink" href="#alert-system-optimization" title="Permanent link">¶</a></h4>
+<ol>
+<li><strong>Rate Limiting</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># config/alerting-config.yaml</span>
+<span class="nt">global_rate_limit</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">max_alerts_per_minute</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+<span class="w">  </span><span class="nt">max_alerts_per_hour</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50</span>
+</code></pre></div>
+<ol>
+<li><strong>Alert Grouping</strong>
+<div class="highlight"><pre><span></span><code><span class="c1"># Group similar alerts</span>
+<span class="nt">grouping</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">group_by</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"alert_level"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"category"</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">group_window_minutes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
+</code></pre></div></li>
+</ol>
+<h3 id="performance-baselines">Performance Baselines<a class="headerlink" href="#performance-baselines" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Target</th>
+<th>Warning</th>
+<th>Critical</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Health Check Duration</td>
+<td>&lt; 60s</td>
+<td>&gt; 120s</td>
+<td>&gt; 300s</td>
+</tr>
+<tr>
+<td>Alert Response Time</td>
+<td>&lt; 30s</td>
+<td>&gt; 60s</td>
+<td>&gt; 120s</td>
+</tr>
+<tr>
+<td>Report Generation</td>
+<td>&lt; 30s</td>
+<td>&gt; 60s</td>
+<td>&gt; 120s</td>
+</tr>
+<tr>
+<td>Memory Usage</td>
+<td>&lt; 512MB</td>
+<td>&gt; 1GB</td>
+<td>&gt; 2GB</td>
+</tr>
+<tr>
+<td>CPU Usage</td>
+<td>&lt; 50%</td>
+<td>&gt; 80%</td>
+<td>&gt; 95%</td>
+</tr>
+</tbody>
+</table>
+<h2 id="security-considerations">Security Considerations<a class="headerlink" href="#security-considerations" title="Permanent link">¶</a></h2>
+<h3 id="access-control">Access Control<a class="headerlink" href="#access-control" title="Permanent link">¶</a></h3>
+<ol>
+<li><strong>File Permissions</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Set secure permissions</span>
+chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>config/*.yaml
+chmod<span class="w"> </span><span class="m">700</span><span class="w"> </span>logs/
+chmod<span class="w"> </span><span class="m">755</span><span class="w"> </span>scripts/
+</code></pre></div>
+<ol>
+<li><strong>Service Account</strong>
+<div class="highlight"><pre><span></span><code><span class="c1"># Run service as dedicated user</span>
+sudo<span class="w"> </span>useradd<span class="w"> </span>-r<span class="w"> </span>-s<span class="w"> </span>/bin/false<span class="w"> </span>healthmonitor
+sudo<span class="w"> </span>chown<span class="w"> </span>-R<span class="w"> </span>healthmonitor:healthmonitor<span class="w"> </span>/path/to/health-monitoring
+</code></pre></div></li>
+</ol>
+<h3 id="sensitive-data-protection">Sensitive Data Protection<a class="headerlink" href="#sensitive-data-protection" title="Permanent link">¶</a></h3>
+<ol>
+<li><strong>Environment Variables</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Store secrets in environment variables</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">SMTP_PASSWORD</span><span class="o">=</span><span class="s2">"secure_password"</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">SLACK_WEBHOOK_URL</span><span class="o">=</span><span class="s2">"https://hooks.slack.com/..."</span>
+</code></pre></div>
+<ol>
+<li><strong>Configuration Encryption</strong>
+<div class="highlight"><pre><span></span><code><span class="c1"># Encrypt sensitive configuration files</span>
+gpg<span class="w"> </span>--symmetric<span class="w"> </span>--cipher-algo<span class="w"> </span>AES256<span class="w"> </span>config/production-health.yaml
+</code></pre></div></li>
+</ol>
+<h3 id="audit-logging">Audit Logging<a class="headerlink" href="#audit-logging" title="Permanent link">¶</a></h3>
+<ol>
+<li><strong>Enable Audit Logs</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># config/production-health.yaml</span>
+<span class="nt">audit_logging</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">log_file</span><span class="p">:</span><span class="w"> </span><span class="s">"logs/audit/health_audit.log"</span>
+<span class="w">  </span><span class="nt">log_level</span><span class="p">:</span><span class="w"> </span><span class="s">"INFO"</span>
+</code></pre></div>
+<ol>
+<li><strong>Review Audit Logs</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Review recent audit events</span>
+tail<span class="w"> </span>-f<span class="w"> </span>logs/audit/health_audit.log
+
+<span class="c1"># Search for specific events</span>
+grep<span class="w"> </span><span class="s2">"configuration_change"</span><span class="w"> </span>logs/audit/health_audit.log
+</code></pre></div>
+<h3 id="network-security">Network Security<a class="headerlink" href="#network-security" title="Permanent link">¶</a></h3>
+<ol>
+<li><strong>Firewall Rules</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Allow only necessary ports</span>
+ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">8080</span>/tcp<span class="w">  </span><span class="c1"># Health dashboard</span>
+ufw<span class="w"> </span>deny<span class="w"> </span><span class="m">22</span>/tcp<span class="w">     </span><span class="c1"># SSH (if not needed)</span>
+</code></pre></div>
+<ol>
+<li><strong>TLS Configuration</strong>
+<div class="highlight"><pre><span></span><code><span class="c1"># Enable TLS for web interfaces</span>
+<span class="nt">dashboard</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">enable_tls</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">cert_file</span><span class="p">:</span><span class="w"> </span><span class="s">"/path/to/cert.pem"</span>
+<span class="w">  </span><span class="nt">key_file</span><span class="p">:</span><span class="w"> </span><span class="s">"/path/to/key.pem"</span>
+</code></pre></div></li>
+</ol>
+<h2 id="appendices">Appendices<a class="headerlink" href="#appendices" title="Permanent link">¶</a></h2>
+<h3 id="a-configuration-reference">A. Configuration Reference<a class="headerlink" href="#a-configuration-reference" title="Permanent link">¶</a></h3>
+<p>See individual configuration files:</p>
+<ul>
+<li><code>config/production-health.yaml</code></li>
+<li><code>config/alerting-config.yaml</code></li>
+<li><code>config/unified-config.yaml</code></li>
+</ul>
+<h3 id="b-api-reference">B. API Reference<a class="headerlink" href="#b-api-reference" title="Permanent link">¶</a></h3>
+<p>Health monitoring system provides REST API endpoints:</p>
+<div class="highlight"><pre><span></span><code>GET /health              # Current health status
+GET /health/history      # Historical health data
+GET /alerts              # Active alerts
+POST /alerts/{id}/ack    # Acknowledge alert
+POST /alerts/{id}/resolve # Resolve alert
+</code></pre></div>
+<h3 id="c-log-file-locations">C. Log File Locations<a class="headerlink" href="#c-log-file-locations" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Log Location</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Health Monitor</td>
+<td><code>logs/health-monitoring/health_monitor_YYYYMMDD.log</code></td>
+</tr>
+<tr>
+<td>Alerting System</td>
+<td><code>logs/alerting/alerting_YYYYMMDD.log</code></td>
+</tr>
+<tr>
+<td>Incidents</td>
+<td><code>logs/incidents/incident_YYYYMMDD_HHMMSS.json</code></td>
+</tr>
+<tr>
+<td>Audit</td>
+<td><code>logs/audit/health_audit.log</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="d-contact-information">D. Contact Information<a class="headerlink" href="#d-contact-information" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Contact</th>
+<th>Escalation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Primary On-Call</td>
+<td>dev-team@company.com</td>
+<td>15 minutes</td>
+</tr>
+<tr>
+<td>Secondary On-Call</td>
+<td>ops-team@company.com</td>
+<td>30 minutes</td>
+</tr>
+<tr>
+<td>Manager</td>
+<td>manager@company.com</td>
+<td>60 minutes</td>
+</tr>
+<tr>
+<td>Emergency</td>
+<td>emergency@company.com</td>
+<td>Immediate</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<p><strong>Document Version</strong>: 1.0<br/>
+<strong>Last Updated</strong>: 2025-09-01<br/>
+<strong>Next Review</strong>: 2025-12-01</p>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+<button class="md-top md-icon" data-md-component="top" hidden="" type="button">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+<script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
+mermaid.initialize({});</script></body>
+</html>

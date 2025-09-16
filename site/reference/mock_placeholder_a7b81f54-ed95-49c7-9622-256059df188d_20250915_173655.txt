@@ -1,0 +1,11 @@
+---
+category: reference
+last_updated: '2025-09-15T17:36:55.890887'
+original_path: outputs\videos\mock_placeholder_a7b81f54-ed95-49c7-9622-256059df188d_20250915_173655.txt
+tags: []
+title: Mock Placeholder A7B81F54 Ed95 49C7 9622 256059Df188D 20250915 173655
+---
+
+Mock generation placeholder for task a7b81f54-ed95-49c7-9622-256059df188d
+Model: t2v-A14B
+Prompt: A young, solitary lighthouse keeper on a remote rocky island discovers that the drifting fog delivers lost, mundane objects, each one glowing with a soft, magical light and containing a forgotten memory, cinematic lighting, highly detailed, cinematic style, dramatic lighting

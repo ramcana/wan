@@ -1,0 +1,1179 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="WAN2.2 Video Generation System Documentation">
+      
+      
+      
+        <link rel="canonical" href="https://ramcana.github.io/wan/developer/requirements/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>Requirements Document - WAN22 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e53b48f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#requirements-document" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="WAN22 Documentation" class="md-header__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            WAN22 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Requirements Document
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../WAN22_System_Capabilities_Report/" class="md-tabs__link">
+          
+  
+  
+  System Overview
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../model-orchestrator/requirements/" class="md-tabs__link">
+          
+  
+  
+  Model Orchestrator
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../config/models.toml" class="md-tabs__link">
+          
+  
+  
+  Configuration
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="WAN22 Documentation" class="md-nav__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    WAN22 Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    System Overview
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            System Overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../WAN22_System_Capabilities_Report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Capabilities Report
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Model Orchestrator
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Model Orchestrator
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Requirements
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/tasks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tasks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Configuration
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Configuration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Models Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models_simple.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simple Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#requirement-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirement 1
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirement 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acceptance-criteria" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acceptance Criteria
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirement 2
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirement 2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acceptance-criteria_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acceptance Criteria
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirement 3
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirement 3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acceptance-criteria_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acceptance Criteria
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirement 4
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirement 4">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acceptance-criteria_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acceptance Criteria
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirement 5
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirement 5">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acceptance-criteria_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acceptance Criteria
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirement 6
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirement 6">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acceptance-criteria_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acceptance Criteria
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement-7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirement 7
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirement 7">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acceptance-criteria_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acceptance Criteria
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirement 8
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirement 8">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acceptance-criteria_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acceptance Criteria
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement-9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirement 9
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirement 9">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acceptance-criteria_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acceptance Criteria
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirement 10
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirement 10">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acceptance-criteria_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acceptance Criteria
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirement 11
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirement 11">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acceptance-criteria_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acceptance Criteria
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement-12" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirement 12
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirement 12">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acceptance-criteria_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acceptance Criteria
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="requirements-document">Requirements Document<a class="headerlink" href="#requirements-document" title="Permanent link">&para;</a></h1>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>This document outlines the requirements for developing a modern React-based frontend with FastAPI backend to replace the existing Gradio interface for the Wan2.2 video generation system. The new frontend will provide a professional, responsive user interface while maintaining all existing functionality through RESTful API endpoints. The system will support the same advanced features including Text-to-Video (T2V), Image-to-Video (I2V), and Text-Image-to-Video (TI2V) generation modes with comprehensive VRAM optimization and queue management.</p>
+<h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">&para;</a></h2>
+<h3 id="requirement-1">Requirement 1<a class="headerlink" href="#requirement-1" title="Permanent link">&para;</a></h3>
+<p><strong>User Story:</strong> As a content creator, I want a modern, professional-looking web interface to generate videos from text prompts, so that I can create visual content with an intuitive and responsive user experience.</p>
+<h4 id="acceptance-criteria">Acceptance Criteria<a class="headerlink" href="#acceptance-criteria" title="Permanent link">&para;</a></h4>
+<ol>
+<li>WHEN the user accesses the web interface THEN the system SHALL display a React-based UI with modern design principles and responsive layout</li>
+<li>WHEN the user enters a text prompt THEN the system SHALL accept prompts up to 500 characters with real-time character count display</li>
+<li>WHEN the user selects Text-to-Video (T2V) mode THEN the system SHALL generate video content based solely on the text prompt via FastAPI endpoints</li>
+<li>WHEN the user initiates video generation THEN the system SHALL provide real-time progress updates through WebSocket connections</li>
+<li>WHEN generation completes THEN the system SHALL display results with smooth animations and professional styling</li>
+</ol>
+<h3 id="requirement-2">Requirement 2<a class="headerlink" href="#requirement-2" title="Permanent link">&para;</a></h3>
+<p><strong>User Story:</strong> As a video editor, I want to upload images through a modern drag-and-drop interface, so that I can generate videos from existing images with an enhanced user experience.</p>
+<h4 id="acceptance-criteria_1">Acceptance Criteria<a class="headerlink" href="#acceptance-criteria_1" title="Permanent link">&para;</a></h4>
+<ol>
+<li>WHEN the user selects Image-to-Video (I2V) mode THEN the system SHALL display a modern drag-and-drop image upload interface</li>
+<li>WHEN the user drags an image over the upload area THEN the system SHALL provide visual feedback with hover states and animations</li>
+<li>WHEN the user uploads an image THEN the system SHALL display image preview with metadata and validation status</li>
+<li>WHEN the user provides both image and text prompt THEN the system SHALL send requests to FastAPI endpoints for I2V generation</li>
+<li>WHEN using I2V mode THEN the system SHALL maintain visual consistency between input image and generated video frames</li>
+</ol>
+<h3 id="requirement-3">Requirement 3<a class="headerlink" href="#requirement-3" title="Permanent link">&para;</a></h3>
+<p><strong>User Story:</strong> As an AI researcher, I want to use hybrid Text-Image-to-Video generation through a streamlined interface, so that I can leverage both textual and visual inputs efficiently.</p>
+<h4 id="acceptance-criteria_2">Acceptance Criteria<a class="headerlink" href="#acceptance-criteria_2" title="Permanent link">&para;</a></h4>
+<ol>
+<li>WHEN the user selects TI2V mode THEN the system SHALL accept both text prompt and image input through a unified interface</li>
+<li>WHEN both inputs are provided THEN the system SHALL validate inputs client-side before sending to FastAPI backend</li>
+<li>WHEN using TI2V-5B model THEN the system SHALL support resolutions up to 1920x1080 with clear resolution indicators</li>
+<li>WHEN processing TI2V requests THEN the system SHALL display estimated completion times and progress indicators</li>
+</ol>
+<h3 id="requirement-4">Requirement 4<a class="headerlink" href="#requirement-4" title="Permanent link">&para;</a></h3>
+<p><strong>User Story:</strong> As a user with limited GPU memory, I want accessible VRAM optimization controls, so that I can adjust settings through an intuitive interface without technical complexity.</p>
+<h4 id="acceptance-criteria_3">Acceptance Criteria<a class="headerlink" href="#acceptance-criteria_3" title="Permanent link">&para;</a></h4>
+<ol>
+<li>WHEN the user accesses optimization settings THEN the system SHALL provide a modern settings panel with quantization options (fp16, bf16, int8)</li>
+<li>WHEN the user adjusts optimization settings THEN the system SHALL provide real-time VRAM usage estimates and recommendations</li>
+<li>WHEN the user enables model offloading THEN the system SHALL display clear explanations of performance trade-offs</li>
+<li>WHEN the user adjusts VAE tile size THEN the system SHALL use modern slider components with visual feedback</li>
+<li>WHEN VRAM usage exceeds limits THEN the system SHALL display professional error dialogs with actionable suggestions</li>
+</ol>
+<h3 id="requirement-5">Requirement 5<a class="headerlink" href="#requirement-5" title="Permanent link">&para;</a></h3>
+<p><strong>User Story:</strong> As a content creator, I want an enhanced prompt editing experience, so that I can improve my prompts with modern text editing features and suggestions.</p>
+<h4 id="acceptance-criteria_4">Acceptance Criteria<a class="headerlink" href="#acceptance-criteria_4" title="Permanent link">&para;</a></h4>
+<ol>
+<li>WHEN the user types in the prompt field THEN the system SHALL provide syntax highlighting and auto-suggestions</li>
+<li>WHEN the user clicks "Enhance Prompt" THEN the system SHALL call FastAPI endpoints and display enhanced prompts with diff highlighting</li>
+<li>WHEN VACE aesthetics are detected THEN the system SHALL provide visual indicators and style previews</li>
+<li>WHEN prompt enhancement is applied THEN the system SHALL allow users to accept, reject, or modify suggestions</li>
+<li>WHEN enhanced prompts are generated THEN the system SHALL maintain edit history with undo/redo functionality</li>
+</ol>
+<h3 id="requirement-6">Requirement 6<a class="headerlink" href="#requirement-6" title="Permanent link">&para;</a></h3>
+<p><strong>User Story:</strong> As a user generating multiple videos, I want a modern queue management interface, so that I can efficiently manage batch processing with visual feedback.</p>
+<h4 id="acceptance-criteria_5">Acceptance Criteria<a class="headerlink" href="#acceptance-criteria_5" title="Permanent link">&para;</a></h4>
+<ol>
+<li>WHEN the user clicks "Add to Queue" THEN the system SHALL add tasks to queue with visual confirmation and animations</li>
+<li>WHEN multiple items are in queue THEN the system SHALL display them in a modern card-based layout with drag-and-drop reordering</li>
+<li>WHEN queue processing is active THEN the system SHALL show real-time progress with modern progress bars and status indicators</li>
+<li>WHEN a queued task completes THEN the system SHALL provide desktop notifications and update UI with smooth transitions</li>
+<li>WHEN queue is empty THEN the system SHALL display an attractive empty state with helpful suggestions</li>
+</ol>
+<h3 id="requirement-7">Requirement 7<a class="headerlink" href="#requirement-7" title="Permanent link">&para;</a></h3>
+<p><strong>User Story:</strong> As a system administrator, I want a comprehensive dashboard for resource monitoring, so that I can track system performance through modern data visualizations.</p>
+<h4 id="acceptance-criteria_6">Acceptance Criteria<a class="headerlink" href="#acceptance-criteria_6" title="Permanent link">&para;</a></h4>
+<ol>
+<li>WHEN the user accesses the monitoring dashboard THEN the system SHALL display real-time charts and graphs for CPU, RAM, GPU, and VRAM usage</li>
+<li>WHEN stats are displayed THEN the system SHALL update metrics through WebSocket connections with smooth chart animations</li>
+<li>WHEN the user interacts with charts THEN the system SHALL provide tooltips and detailed breakdowns</li>
+<li>WHEN VRAM usage approaches 90% THEN the system SHALL display prominent warnings with modern alert components</li>
+<li>WHEN system resources are monitored THEN the system SHALL show historical data with interactive time range selection</li>
+</ol>
+<h3 id="requirement-8">Requirement 8<a class="headerlink" href="#requirement-8" title="Permanent link">&para;</a></h3>
+<p><strong>User Story:</strong> As a content creator, I want a modern media gallery to browse generated videos, so that I can review and organize content with an enhanced visual experience.</p>
+<h4 id="acceptance-criteria_7">Acceptance Criteria<a class="headerlink" href="#acceptance-criteria_7" title="Permanent link">&para;</a></h4>
+<ol>
+<li>WHEN videos are generated THEN the system SHALL save them and update the gallery through FastAPI endpoints</li>
+<li>WHEN the user accesses the gallery THEN the system SHALL display videos in a responsive grid with lazy loading</li>
+<li>WHEN videos are displayed THEN the system SHALL show hover previews and detailed metadata overlays</li>
+<li>WHEN the user clicks on a video THEN the system SHALL open a modern lightbox with full playback controls</li>
+<li>WHEN videos are managed THEN the system SHALL provide bulk operations with modern selection interfaces</li>
+</ol>
+<h3 id="requirement-9">Requirement 9<a class="headerlink" href="#requirement-9" title="Permanent link">&para;</a></h3>
+<p><strong>User Story:</strong> As an advanced user, I want LoRA support integrated into the modern interface, so that I can apply artistic styles through an intuitive file management system.</p>
+<h4 id="acceptance-criteria_8">Acceptance Criteria<a class="headerlink" href="#acceptance-criteria_8" title="Permanent link">&para;</a></h4>
+<ol>
+<li>WHEN the user manages LoRA files THEN the system SHALL provide a modern file browser with preview capabilities</li>
+<li>WHEN VACE LoRA is applied THEN the system SHALL show style previews and strength adjustment controls</li>
+<li>WHEN LoRA files are unavailable THEN the system SHALL display helpful error states with recovery suggestions</li>
+<li>WHEN LoRA weights are loaded THEN the system SHALL provide real-time strength adjustment with visual feedback</li>
+</ol>
+<h3 id="requirement-10">Requirement 10<a class="headerlink" href="#requirement-10" title="Permanent link">&para;</a></h3>
+<p><strong>User Story:</strong> As a developer, I want a well-structured FastAPI backend, so that the React frontend can communicate efficiently with the existing Python generation system.</p>
+<h4 id="acceptance-criteria_9">Acceptance Criteria<a class="headerlink" href="#acceptance-criteria_9" title="Permanent link">&para;</a></h4>
+<ol>
+<li>WHEN the React app makes API requests THEN the FastAPI backend SHALL provide RESTful endpoints for all generation operations</li>
+<li>WHEN models are processed THEN the system SHALL provide WebSocket endpoints for real-time progress updates</li>
+<li>WHEN API responses are sent THEN the system SHALL include proper HTTP status codes and structured JSON responses</li>
+<li>WHEN errors occur THEN the system SHALL provide detailed error information with recovery suggestions</li>
+<li>WHEN the API is accessed THEN the system SHALL include proper CORS configuration for React development</li>
+</ol>
+<h3 id="requirement-11">Requirement 11<a class="headerlink" href="#requirement-11" title="Permanent link">&para;</a></h3>
+<p><strong>User Story:</strong> As a user, I want the React frontend to be responsive and accessible, so that I can use the application on different devices and screen sizes.</p>
+<h4 id="acceptance-criteria_10">Acceptance Criteria<a class="headerlink" href="#acceptance-criteria_10" title="Permanent link">&para;</a></h4>
+<ol>
+<li>WHEN the user accesses the app on mobile devices THEN the system SHALL provide a responsive layout optimized for touch interaction</li>
+<li>WHEN the user navigates with keyboard THEN the system SHALL support full keyboard navigation and accessibility features</li>
+<li>WHEN the user has visual impairments THEN the system SHALL provide proper ARIA labels and screen reader support</li>
+<li>WHEN the user prefers dark mode THEN the system SHALL provide theme switching with persistent preferences</li>
+<li>WHEN the app loads THEN the system SHALL provide loading states and skeleton screens for better perceived performance</li>
+</ol>
+<h3 id="requirement-12">Requirement 12<a class="headerlink" href="#requirement-12" title="Permanent link">&para;</a></h3>
+<p><strong>User Story:</strong> As a user, I want the React app to work offline for basic operations, so that I can continue working even with intermittent internet connectivity.</p>
+<h4 id="acceptance-criteria_11">Acceptance Criteria<a class="headerlink" href="#acceptance-criteria_11" title="Permanent link">&para;</a></h4>
+<ol>
+<li>WHEN the user loses internet connection THEN the system SHALL cache essential UI components and continue basic operations</li>
+<li>WHEN the user is offline THEN the system SHALL queue API requests and sync when connection is restored</li>
+<li>WHEN cached data is available THEN the system SHALL display previously loaded content and indicate offline status</li>
+<li>WHEN connection is restored THEN the system SHALL automatically sync queued operations and update UI</li>
+<li>WHEN offline features are used THEN the system SHALL provide clear indicators of offline status and limitations</li>
+</ol>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

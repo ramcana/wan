@@ -1,0 +1,1648 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="WAN2.2 Video Generation System Documentation">
+      
+      
+      
+        <link rel="canonical" href="https://ramcana.github.io/wan/STARTUP_MANAGER_MIGRATION_GUIDE/">
+      
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>WAN22 Startup Manager Migration Guide - WAN22 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.e53b48f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#wan22-startup-manager-migration-guide" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="WAN22 Documentation" class="md-header__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            WAN22 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              WAN22 Startup Manager Migration Guide
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../WAN22_System_Capabilities_Report/" class="md-tabs__link">
+          
+  
+  
+  System Overview
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../model-orchestrator/requirements/" class="md-tabs__link">
+          
+  
+  
+  Model Orchestrator
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../config/models.toml" class="md-tabs__link">
+          
+  
+  
+  Configuration
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="WAN22 Documentation" class="md-nav__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    WAN22 Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    System Overview
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            System Overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../WAN22_System_Capabilities_Report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Capabilities Report
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Model Orchestrator
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Model Orchestrator
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../model-orchestrator/requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Requirements
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../model-orchestrator/tasks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tasks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Configuration
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Configuration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../config/models.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Models Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../config/models_simple.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simple Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#migration-scenarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Migration Scenarios
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Migration Scenarios">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scenario-1-no-changes-required-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scenario 1: No Changes Required (Recommended)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scenario-2-manual-server-startup-users" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scenario 2: Manual Server Startup Users
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Scenario 2: Manual Server Startup Users">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#before-manual-startup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Before (Manual Startup)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#after-option-1-continue-manual-no-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      After (Option 1: Continue Manual - No Changes)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#after-option-2-switch-to-startup-manager" class="md-nav__link">
+    <span class="md-ellipsis">
+      After (Option 2: Switch to Startup Manager)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scenario-3-custom-port-users" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scenario 3: Custom Port Users
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Scenario 3: Custom Port Users">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#before-manual-port-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Before (Manual Port Management)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#after-automatic-port-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      After (Automatic Port Management)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scenario-4-ide-integration-users" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scenario 4: IDE Integration Users
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Scenario 4: IDE Integration Users">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#before-ide-run-configurations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Before (IDE Run Configurations)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#after-option-1-keep-ide-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      After (Option 1: Keep IDE Integration)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#after-option-2-use-startup-manager-in-ide" class="md-nav__link">
+    <span class="md-ellipsis">
+      After (Option 2: Use Startup Manager in IDE)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#after-option-3-terminal-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      After (Option 3: Terminal Integration)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-migration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration Migration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration Migration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#legacy-configuration-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Legacy Configuration Files
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#new-configuration-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      New Configuration Options
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environment-variable-migration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environment Variable Migration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workflow-migration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Workflow Migration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Workflow Migration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#development-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Development Workflow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Development Workflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#before" class="md-nav__link">
+    <span class="md-ellipsis">
+      Before
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#after-minimal-change" class="md-nav__link">
+    <span class="md-ellipsis">
+      After (Minimal Change)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#after-advanced-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      After (Advanced Usage)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing Workflow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing Workflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#before_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Before
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#after" class="md-nav__link">
+    <span class="md-ellipsis">
+      After
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deployment-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deployment Workflow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deployment Workflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#before_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Before
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#after_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      After
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#team-migration-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Team Migration Strategies
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Team Migration Strategies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#strategy-1-gradual-adoption-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      Strategy 1: Gradual Adoption (Recommended)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strategy-2-immediate-adoption" class="md-nav__link">
+    <span class="md-ellipsis">
+      Strategy 2: Immediate Adoption
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strategy-3-selective-adoption" class="md-nav__link">
+    <span class="md-ellipsis">
+      Strategy 3: Selective Adoption
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rollback-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rollback Plan
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Rollback Plan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#if-issues-occur" class="md-nav__link">
+    <span class="md-ellipsis">
+      If Issues Occur
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#migration-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      Migration Checklist
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Migration Checklist">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pre-migration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pre-Migration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#during-migration" class="md-nav__link">
+    <span class="md-ellipsis">
+      During Migration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-migration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Post-Migration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting-migration-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting Migration Issues
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting Migration Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-migration-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Migration Issues
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getting-help" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting Help
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#success-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Success Metrics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Success Metrics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#individual-developer-benefits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Individual Developer Benefits
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#team-benefits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Team Benefits
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="wan22-startup-manager-migration-guide">WAN22 Startup Manager Migration Guide<a class="headerlink" href="#wan22-startup-manager-migration-guide" title="Permanent link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>This guide helps developers migrate from the legacy startup methods to the new intelligent startup manager while maintaining their existing workflows and preferences.</p>
+<h2 id="migration-scenarios">Migration Scenarios<a class="headerlink" href="#migration-scenarios" title="Permanent link">&para;</a></h2>
+<h3 id="scenario-1-no-changes-required-recommended">Scenario 1: No Changes Required (Recommended)<a class="headerlink" href="#scenario-1-no-changes-required-recommended" title="Permanent link">&para;</a></h3>
+<p><strong>Who</strong>: Developers who want immediate benefits without any changes
+<strong>What</strong>: Continue using <code>start_both_servers.bat</code> as before
+<strong>Benefits</strong>: Automatic error recovery, port conflict resolution, better logging</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Before (still works exactly the same)</span>
+start_both_servers.bat
+
+<span class="c1"># After (same command, enhanced functionality)</span>
+start_both_servers.bat
+</code></pre></div>
+<p><strong>What Changed</strong>:</p>
+<ul>
+<li>✅ Enhanced error messages and recovery</li>
+<li>✅ Automatic port conflict detection and resolution</li>
+<li>✅ Improved logging with timestamps and context</li>
+<li>✅ Performance monitoring and optimization suggestions</li>
+<li>✅ Windows firewall integration</li>
+<li>✅ Process health monitoring</li>
+</ul>
+<p><strong>What Stayed the Same</strong>:</p>
+<ul>
+<li>✅ Same command to start servers</li>
+<li>✅ Same default ports (8000 backend, 3000 frontend)</li>
+<li>✅ Same server URLs and access points</li>
+<li>✅ Same configuration files</li>
+<li>✅ Same development workflow</li>
+</ul>
+<h3 id="scenario-2-manual-server-startup-users">Scenario 2: Manual Server Startup Users<a class="headerlink" href="#scenario-2-manual-server-startup-users" title="Permanent link">&para;</a></h3>
+<p><strong>Who</strong>: Developers who manually start backend and frontend servers
+<strong>Migration</strong>: Optional - can continue manual startup or switch to batch file</p>
+<h4 id="before-manual-startup">Before (Manual Startup)<a class="headerlink" href="#before-manual-startup" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Terminal 1 - Backend</span>
+<span class="nb">cd</span><span class="w"> </span>backend
+python<span class="w"> </span>start_server.py
+
+<span class="c1"># Terminal 2 - Frontend</span>
+<span class="nb">cd</span><span class="w"> </span>frontend
+npm<span class="w"> </span>run<span class="w"> </span>dev
+</code></pre></div>
+<h4 id="after-option-1-continue-manual-no-changes">After (Option 1: Continue Manual - No Changes)<a class="headerlink" href="#after-option-1-continue-manual-no-changes" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Same as before - still works</span>
+<span class="nb">cd</span><span class="w"> </span>backend
+python<span class="w"> </span>start_server.py
+
+<span class="nb">cd</span><span class="w"> </span>frontend
+npm<span class="w"> </span>run<span class="w"> </span>dev
+</code></pre></div>
+<h4 id="after-option-2-switch-to-startup-manager">After (Option 2: Switch to Startup Manager)<a class="headerlink" href="#after-option-2-switch-to-startup-manager" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Single command replaces both terminals</span>
+start_both_servers.bat
+
+<span class="c1"># Or with custom ports</span>
+start_both_servers.bat<span class="w"> </span>--backend-port<span class="w"> </span><span class="m">8080</span><span class="w"> </span>--frontend-port<span class="w"> </span><span class="m">3001</span>
+</code></pre></div>
+<p><strong>Benefits of Switching</strong>:</p>
+<ul>
+<li>Single command instead of multiple terminals</li>
+<li>Automatic port conflict resolution</li>
+<li>Health monitoring and automatic restart</li>
+<li>Coordinated shutdown</li>
+<li>Better error handling</li>
+</ul>
+<h3 id="scenario-3-custom-port-users">Scenario 3: Custom Port Users<a class="headerlink" href="#scenario-3-custom-port-users" title="Permanent link">&para;</a></h3>
+<p><strong>Who</strong>: Developers who use non-default ports due to conflicts
+<strong>Migration</strong>: Simplified - no more manual port management needed</p>
+<h4 id="before-manual-port-management">Before (Manual Port Management)<a class="headerlink" href="#before-manual-port-management" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check what&#39;s using port 8000</span>
+netstat<span class="w"> </span>-ano<span class="w"> </span><span class="p">|</span><span class="w"> </span>findstr<span class="w"> </span>:8000
+
+<span class="c1"># Kill process or find alternative port</span>
+taskkill<span class="w"> </span>/PID<span class="w"> </span><span class="m">1234</span><span class="w"> </span>/F
+
+<span class="c1"># Start with alternative port</span>
+<span class="nb">cd</span><span class="w"> </span>backend
+python<span class="w"> </span>start_server.py<span class="w"> </span>--port<span class="w"> </span><span class="m">8080</span>
+
+<span class="nb">cd</span><span class="w"> </span>frontend
+<span class="c1"># Manually edit package.json or use PORT=3001 npm run dev</span>
+</code></pre></div>
+<h4 id="after-automatic-port-management">After (Automatic Port Management)<a class="headerlink" href="#after-automatic-port-management" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Startup manager handles port conflicts automatically</span>
+start_both_servers.bat
+
+<span class="c1"># Or specify preferred ports (will find alternatives if occupied)</span>
+start_both_servers.bat<span class="w"> </span>--backend-port<span class="w"> </span><span class="m">8080</span><span class="w"> </span>--frontend-port<span class="w"> </span><span class="m">3001</span>
+</code></pre></div>
+<p><strong>Benefits</strong>:</p>
+<ul>
+<li>No more manual port conflict resolution</li>
+<li>Automatic alternative port finding</li>
+<li>Clear messages about which ports are being used</li>
+<li>Automatic configuration updates</li>
+</ul>
+<h3 id="scenario-4-ide-integration-users">Scenario 4: IDE Integration Users<a class="headerlink" href="#scenario-4-ide-integration-users" title="Permanent link">&para;</a></h3>
+<p><strong>Who</strong>: Developers who start servers from IDE (VS Code, PyCharm, etc.)
+<strong>Migration</strong>: Optional - can integrate startup manager with IDE</p>
+<h4 id="before-ide-run-configurations">Before (IDE Run Configurations)<a class="headerlink" href="#before-ide-run-configurations" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">// VS Code launch.json</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Start Backend&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;python&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;request&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;launch&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;program&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;backend/start_server.py&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;cwd&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${workspaceFolder}&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="after-option-1-keep-ide-integration">After (Option 1: Keep IDE Integration)<a class="headerlink" href="#after-option-1-keep-ide-integration" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">// Same configuration still works</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Start Backend&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;python&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;request&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;launch&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;program&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;backend/start_server.py&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;cwd&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${workspaceFolder}&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="after-option-2-use-startup-manager-in-ide">After (Option 2: Use Startup Manager in IDE)<a class="headerlink" href="#after-option-2-use-startup-manager-in-ide" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">// New configuration using startup manager</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Start Both Servers&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;python&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;request&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;launch&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;program&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;scripts/startup_manager.py&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;cwd&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${workspaceFolder}&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;--verbose&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="after-option-3-terminal-integration">After (Option 3: Terminal Integration)<a class="headerlink" href="#after-option-3-terminal-integration" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">// VS Code tasks.json</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Start WAN22 Servers&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;shell&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;start_both_servers.bat&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;--verbose&quot;</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;group&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;build&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;presentation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;echo&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;reveal&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;always&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;focus&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;panel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;new&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="configuration-migration">Configuration Migration<a class="headerlink" href="#configuration-migration" title="Permanent link">&para;</a></h2>
+<h3 id="legacy-configuration-files">Legacy Configuration Files<a class="headerlink" href="#legacy-configuration-files" title="Permanent link">&para;</a></h3>
+<p><strong>No changes required</strong> - all existing configuration files continue to work:</p>
+<ul>
+<li><code>backend/config.json</code> - Backend configuration (unchanged)</li>
+<li><code>frontend/package.json</code> - Frontend configuration (unchanged)</li>
+<li><code>.env</code> files - Environment variables (unchanged)</li>
+</ul>
+<h3 id="new-configuration-options">New Configuration Options<a class="headerlink" href="#new-configuration-options" title="Permanent link">&para;</a></h3>
+<p><strong>Optional</strong> - Add <code>startup_config.json</code> for startup manager customization:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;backend&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">8000</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;auto_port&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;timeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;frontend&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3000</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;auto_port&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;timeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;retry_attempts&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;verbose_logging&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;auto_fix_issues&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="environment-variable-migration">Environment Variable Migration<a class="headerlink" href="#environment-variable-migration" title="Permanent link">&para;</a></h3>
+<p><strong>Optional</strong> - Use new environment variables for deployment:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Legacy (still works)</span>
+<span class="nb">set</span><span class="w"> </span><span class="nv">PORT</span><span class="o">=</span><span class="m">8080</span>
+<span class="nb">set</span><span class="w"> </span><span class="nv">NODE_ENV</span><span class="o">=</span>development
+
+<span class="c1"># New options (additional)</span>
+<span class="nb">set</span><span class="w"> </span><span class="nv">WAN22_BACKEND_PORT</span><span class="o">=</span><span class="m">8080</span>
+<span class="nb">set</span><span class="w"> </span><span class="nv">WAN22_FRONTEND_PORT</span><span class="o">=</span><span class="m">3001</span>
+<span class="nb">set</span><span class="w"> </span><span class="nv">WAN22_VERBOSE_LOGGING</span><span class="o">=</span><span class="nb">true</span>
+</code></pre></div>
+<h2 id="workflow-migration">Workflow Migration<a class="headerlink" href="#workflow-migration" title="Permanent link">&para;</a></h2>
+<h3 id="development-workflow">Development Workflow<a class="headerlink" href="#development-workflow" title="Permanent link">&para;</a></h3>
+<h4 id="before">Before<a class="headerlink" href="#before" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Daily development routine</span>
+<span class="m">1</span>.<span class="w"> </span>Open<span class="w"> </span>terminal
+<span class="m">2</span>.<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>backend<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>python<span class="w"> </span>start_server.py
+<span class="m">3</span>.<span class="w"> </span>Open<span class="w"> </span>another<span class="w"> </span>terminal
+<span class="m">4</span>.<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>frontend<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>npm<span class="w"> </span>run<span class="w"> </span>dev
+<span class="m">5</span>.<span class="w"> </span>Deal<span class="w"> </span>with<span class="w"> </span>port<span class="w"> </span>conflicts<span class="w"> </span>manually
+<span class="m">6</span>.<span class="w"> </span>Check<span class="w"> </span>multiple<span class="w"> </span>terminal<span class="w"> </span>windows<span class="w"> </span><span class="k">for</span><span class="w"> </span>errors
+<span class="m">7</span>.<span class="w"> </span>Manually<span class="w"> </span>stop<span class="w"> </span>servers<span class="w"> </span><span class="o">(</span>Ctrl+C<span class="w"> </span><span class="k">in</span><span class="w"> </span>each<span class="w"> </span>terminal<span class="o">)</span>
+</code></pre></div>
+<h4 id="after-minimal-change">After (Minimal Change)<a class="headerlink" href="#after-minimal-change" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Simplified daily routine</span>
+<span class="m">1</span>.<span class="w"> </span>Double-click<span class="w"> </span>start_both_servers.bat<span class="w"> </span><span class="o">(</span>or<span class="w"> </span>run<span class="w"> </span>from<span class="w"> </span>terminal<span class="o">)</span>
+<span class="m">2</span>.<span class="w"> </span>Servers<span class="w"> </span>start<span class="w"> </span>automatically<span class="w"> </span>with<span class="w"> </span>conflict<span class="w"> </span>resolution
+<span class="m">3</span>.<span class="w"> </span>Single<span class="w"> </span>window<span class="w"> </span>shows<span class="w"> </span>status<span class="w"> </span>of<span class="w"> </span>both<span class="w"> </span>servers
+<span class="m">4</span>.<span class="w"> </span>Close<span class="w"> </span>window<span class="w"> </span>or<span class="w"> </span>Ctrl+C<span class="w"> </span>to<span class="w"> </span>stop<span class="w"> </span>both<span class="w"> </span>servers
+</code></pre></div>
+<h4 id="after-advanced-usage">After (Advanced Usage)<a class="headerlink" href="#after-advanced-usage" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Power user routine</span>
+<span class="m">1</span>.<span class="w"> </span>start_both_servers.bat<span class="w"> </span>--verbose<span class="w"> </span>--debug
+<span class="m">2</span>.<span class="w"> </span>Monitor<span class="w"> </span>performance<span class="w"> </span>metrics<span class="w"> </span>and<span class="w"> </span>optimization<span class="w"> </span>suggestions
+<span class="m">3</span>.<span class="w"> </span>Use<span class="w"> </span>diagnostic<span class="w"> </span>mode<span class="w"> </span><span class="k">for</span><span class="w"> </span>troubleshooting
+<span class="m">4</span>.<span class="w"> </span>Leverage<span class="w"> </span>automatic<span class="w"> </span>error<span class="w"> </span>recovery
+</code></pre></div>
+<h3 id="testing-workflow">Testing Workflow<a class="headerlink" href="#testing-workflow" title="Permanent link">&para;</a></h3>
+<h4 id="before_1">Before<a class="headerlink" href="#before_1" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Testing routine</span>
+<span class="m">1</span>.<span class="w"> </span>Manually<span class="w"> </span>start<span class="w"> </span>servers
+<span class="m">2</span>.<span class="w"> </span>Run<span class="w"> </span>tests
+<span class="m">3</span>.<span class="w"> </span>Deal<span class="w"> </span>with<span class="w"> </span>port<span class="w"> </span>conflicts<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nb">test</span><span class="w"> </span>environment
+<span class="m">4</span>.<span class="w"> </span>Manually<span class="w"> </span>stop<span class="w"> </span>servers
+<span class="m">5</span>.<span class="w"> </span>Repeat<span class="w"> </span><span class="k">for</span><span class="w"> </span>different<span class="w"> </span>configurations
+</code></pre></div>
+<h4 id="after">After<a class="headerlink" href="#after" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Automated testing routine</span>
+<span class="m">1</span>.<span class="w"> </span>start_both_servers.bat<span class="w"> </span>--backend-port<span class="w"> </span><span class="m">8001</span><span class="w"> </span>--frontend-port<span class="w"> </span><span class="m">3001</span>
+<span class="m">2</span>.<span class="w"> </span>Run<span class="w"> </span>tests<span class="w"> </span><span class="o">(</span>servers<span class="w"> </span>automatically<span class="w"> </span>use<span class="w"> </span>alternative<span class="w"> </span>ports<span class="o">)</span>
+<span class="m">3</span>.<span class="w"> </span>Servers<span class="w"> </span>automatically<span class="w"> </span>shut<span class="w"> </span>down<span class="w"> </span>cleanly
+<span class="m">4</span>.<span class="w"> </span>Startup<span class="w"> </span>manager<span class="w"> </span>handles<span class="w"> </span><span class="nb">test</span><span class="w"> </span>environment<span class="w"> </span>configuration
+</code></pre></div>
+<h3 id="deployment-workflow">Deployment Workflow<a class="headerlink" href="#deployment-workflow" title="Permanent link">&para;</a></h3>
+<h4 id="before_2">Before<a class="headerlink" href="#before_2" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Deployment preparation</span>
+<span class="m">1</span>.<span class="w"> </span>Manually<span class="w"> </span>configure<span class="w"> </span>ports<span class="w"> </span><span class="k">for</span><span class="w"> </span>environment
+<span class="m">2</span>.<span class="w"> </span>Set<span class="w"> </span>up<span class="w"> </span>environment<span class="w"> </span>variables
+<span class="m">3</span>.<span class="w"> </span>Handle<span class="w"> </span>firewall<span class="w"> </span>and<span class="w"> </span>permission<span class="w"> </span>issues<span class="w"> </span>manually
+<span class="m">4</span>.<span class="w"> </span>Start<span class="w"> </span>servers<span class="w"> </span>with<span class="w"> </span>custom<span class="w"> </span>scripts
+</code></pre></div>
+<h4 id="after_1">After<a class="headerlink" href="#after_1" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Streamlined deployment</span>
+<span class="m">1</span>.<span class="w"> </span>Set<span class="w"> </span>WAN22_*<span class="w"> </span>environment<span class="w"> </span>variables
+<span class="m">2</span>.<span class="w"> </span>start_both_servers.bat<span class="w"> </span><span class="o">(</span>automatically<span class="w"> </span>configures<span class="w"> </span><span class="k">for</span><span class="w"> </span>environment<span class="o">)</span>
+<span class="m">3</span>.<span class="w"> </span>Startup<span class="w"> </span>manager<span class="w"> </span>handles<span class="w"> </span>firewall<span class="w"> </span>and<span class="w"> </span>permissions
+<span class="m">4</span>.<span class="w"> </span>Monitoring<span class="w"> </span>and<span class="w"> </span>health<span class="w"> </span>checks<span class="w"> </span>included
+</code></pre></div>
+<h2 id="team-migration-strategies">Team Migration Strategies<a class="headerlink" href="#team-migration-strategies" title="Permanent link">&para;</a></h2>
+<h3 id="strategy-1-gradual-adoption-recommended">Strategy 1: Gradual Adoption (Recommended)<a class="headerlink" href="#strategy-1-gradual-adoption-recommended" title="Permanent link">&para;</a></h3>
+<p><strong>Week 1</strong>: No changes - everyone continues current workflow</p>
+<ul>
+<li>Startup manager provides automatic benefits</li>
+<li>Team gets familiar with enhanced error messages</li>
+<li>Collect feedback on automatic port resolution</li>
+</ul>
+<p><strong>Week 2</strong>: Optional adoption</p>
+<ul>
+<li>Developers can try <code>--verbose</code> mode for more information</li>
+<li>Share startup manager benefits in team meetings</li>
+<li>Document any issues or questions</li>
+</ul>
+<p><strong>Week 3</strong>: Encourage adoption</p>
+<ul>
+<li>Share success stories and time savings</li>
+<li>Provide training on advanced features</li>
+<li>Update team documentation</li>
+</ul>
+<p><strong>Week 4</strong>: Full adoption</p>
+<ul>
+<li>Make startup manager the recommended method</li>
+<li>Update onboarding documentation</li>
+<li>Provide troubleshooting support</li>
+</ul>
+<h3 id="strategy-2-immediate-adoption">Strategy 2: Immediate Adoption<a class="headerlink" href="#strategy-2-immediate-adoption" title="Permanent link">&para;</a></h3>
+<p><strong>Day 1</strong>: Team announcement and training</p>
+<ul>
+<li>Demonstrate startup manager benefits</li>
+<li>Show fallback to basic mode if issues occur</li>
+<li>Provide support channels</li>
+</ul>
+<p><strong>Day 2-5</strong>: Monitoring and support</p>
+<ul>
+<li>Monitor for any issues or questions</li>
+<li>Provide immediate support for any problems</li>
+<li>Collect feedback and suggestions</li>
+</ul>
+<h3 id="strategy-3-selective-adoption">Strategy 3: Selective Adoption<a class="headerlink" href="#strategy-3-selective-adoption" title="Permanent link">&para;</a></h3>
+<p><strong>Senior developers</strong>: Use advanced features immediately</p>
+<ul>
+<li>Leverage diagnostic mode and performance monitoring</li>
+<li>Provide feedback on advanced features</li>
+<li>Help junior developers with migration</li>
+</ul>
+<p><strong>Junior developers</strong>: Start with basic usage</p>
+<ul>
+<li>Use startup manager with default settings</li>
+<li>Focus on learning enhanced error messages</li>
+<li>Gradually adopt advanced features</li>
+</ul>
+<h2 id="rollback-plan">Rollback Plan<a class="headerlink" href="#rollback-plan" title="Permanent link">&para;</a></h2>
+<h3 id="if-issues-occur">If Issues Occur<a class="headerlink" href="#if-issues-occur" title="Permanent link">&para;</a></h3>
+<p><strong>Immediate rollback</strong> (no changes needed):</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Force basic mode (bypasses startup manager)</span>
+start_both_servers.bat<span class="w"> </span>--basic
+
+<span class="c1"># Or use manual startup</span>
+<span class="nb">cd</span><span class="w"> </span>backend<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>python<span class="w"> </span>start_server.py
+<span class="nb">cd</span><span class="w"> </span>frontend<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>npm<span class="w"> </span>run<span class="w"> </span>dev
+</code></pre></div>
+<p><strong>Temporary rollback</strong> (disable specific features):</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// startup_config.json</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;auto_fix_issues&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;performance_monitoring&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;windows_optimizations&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Complete rollback</strong> (remove startup manager):</p>
+<ol>
+<li>Delete <code>scripts/startup_manager/</code> directory</li>
+<li>Batch file automatically falls back to basic mode</li>
+<li>All existing workflows continue unchanged</li>
+</ol>
+<h2 id="migration-checklist">Migration Checklist<a class="headerlink" href="#migration-checklist" title="Permanent link">&para;</a></h2>
+<h3 id="pre-migration">Pre-Migration<a class="headerlink" href="#pre-migration" title="Permanent link">&para;</a></h3>
+<ul>
+<li>[ ] Backup current configuration files</li>
+<li>[ ] Document current startup process</li>
+<li>[ ] Test startup manager in development environment</li>
+<li>[ ] Verify fallback mechanisms work</li>
+</ul>
+<h3 id="during-migration">During Migration<a class="headerlink" href="#during-migration" title="Permanent link">&para;</a></h3>
+<ul>
+<li>[ ] Communicate changes to team</li>
+<li>[ ] Provide training and documentation</li>
+<li>[ ] Monitor for issues and provide support</li>
+<li>[ ] Collect feedback and suggestions</li>
+</ul>
+<h3 id="post-migration">Post-Migration<a class="headerlink" href="#post-migration" title="Permanent link">&para;</a></h3>
+<ul>
+<li>[ ] Update team documentation</li>
+<li>[ ] Share success metrics and benefits</li>
+<li>[ ] Plan for advanced feature adoption</li>
+<li>[ ] Establish ongoing support process</li>
+</ul>
+<h2 id="troubleshooting-migration-issues">Troubleshooting Migration Issues<a class="headerlink" href="#troubleshooting-migration-issues" title="Permanent link">&para;</a></h2>
+<h3 id="common-migration-issues">Common Migration Issues<a class="headerlink" href="#common-migration-issues" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>"Python not found" error</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Solution: Install Python or add to PATH</span>
+<span class="c1"># Fallback: Use --basic mode</span>
+start_both_servers.bat<span class="w"> </span>--basic
+</code></pre></div>
+<ol>
+<li><strong>Import errors</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Solution: Install dependencies</span>
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+
+<span class="c1"># Fallback: Use basic mode</span>
+start_both_servers.bat<span class="w"> </span>--basic
+</code></pre></div>
+<ol>
+<li><strong>Permission issues</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Solution: Run as administrator</span>
+<span class="c1"># Or disable Windows optimizations</span>
+start_both_servers.bat<span class="w"> </span>--verbose
+</code></pre></div>
+<ol>
+<li><strong>Port conflicts not resolved</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Solution: Use verbose mode to see details</span>
+start_both_servers.bat<span class="w"> </span>--verbose
+
+<span class="c1"># Or specify different ports</span>
+start_both_servers.bat<span class="w"> </span>--backend-port<span class="w"> </span><span class="m">8080</span>
+</code></pre></div>
+<h3 id="getting-help">Getting Help<a class="headerlink" href="#getting-help" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Verbose mode</strong>: <code>start_both_servers.bat --verbose</code></li>
+<li><strong>Debug mode</strong>: <code>start_both_servers.bat --debug</code></li>
+<li><strong>Diagnostic mode</strong>: <code>python scripts/startup_manager.py --diagnostics</code></li>
+<li><strong>Log files</strong>: Check <code>logs/startup_*.log</code></li>
+<li><strong>Team support</strong>: Contact team lead or senior developers</li>
+</ol>
+<h2 id="success-metrics">Success Metrics<a class="headerlink" href="#success-metrics" title="Permanent link">&para;</a></h2>
+<h3 id="individual-developer-benefits">Individual Developer Benefits<a class="headerlink" href="#individual-developer-benefits" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Time savings</strong>: 2-5 minutes per startup (no manual port management)</li>
+<li><strong>Error reduction</strong>: 80% fewer startup-related issues</li>
+<li><strong>Consistency</strong>: Same experience across different environments</li>
+<li><strong>Productivity</strong>: Less time troubleshooting, more time developing</li>
+</ul>
+<h3 id="team-benefits">Team Benefits<a class="headerlink" href="#team-benefits" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Onboarding time</strong>: 50% faster new developer setup</li>
+<li><strong>Support requests</strong>: 70% fewer startup-related support tickets</li>
+<li><strong>Environment consistency</strong>: Standardized development environment</li>
+<li><strong>Knowledge sharing</strong>: Better error messages reduce knowledge silos</li>
+</ul>
+<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
+<p>The migration to WAN22 Startup Manager is designed to be seamless and non-disruptive. Most developers can immediately benefit from enhanced functionality without changing their existing workflows. The migration can be gradual, allowing teams to adopt advanced features at their own pace while maintaining full backward compatibility.</p>
+<p>The key principle is <strong>no forced changes</strong> - developers can continue their existing workflows while gradually adopting new features as they see value. The startup manager provides immediate benefits (better error handling, automatic port resolution) while offering advanced features for those who want them.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

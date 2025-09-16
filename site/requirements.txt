@@ -1,0 +1,40 @@
+# Core ML and AI dependencies - Fixed versions for compatibility
+torch==2.5.1+cu121
+torchvision==0.20.1+cu121
+transformers>=4.30.0,<5.0.0
+diffusers>=0.20.0,<0.30.0
+accelerate>=0.20.0,<1.0.0
+
+# Hugging Face Hub for model downloading
+huggingface-hub>=0.16.0,<1.0.0
+
+# Image and video processing
+Pillow>=9.5.0,<11.0.0
+opencv-python>=4.8.0,<5.0.0
+imageio>=2.31.0,<3.0.0
+imageio-ffmpeg>=0.4.8,<1.0.0
+
+# Web interface
+gradio>=3.40.0,<5.0.0
+
+# System monitoring and utilities
+psutil>=5.9.0,<6.0.0
+GPUtil>=1.4.0,<2.0.0
+pynvml>=11.5.0,<12.0.0
+
+# Data handling
+numpy>=1.24.0,<2.0.0
+pandas>=2.0.0,<3.0.0
+
+# Configuration and file handling
+pyyaml>=6.0,<7.0.0
+tqdm>=4.65.0,<5.0.0
+
+# Optional: For better performance - Compatible versions
+# xformers - Skip for now due to compatibility issues, will use PyTorch native attention
+bitsandbytes>=0.41.0,<1.0.0  # Quantization support
+
+# Development and testing (optional)
+pytest>=7.4.0
+black>=23.0.0
+flake8>=6.0.0

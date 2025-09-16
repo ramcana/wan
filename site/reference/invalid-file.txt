@@ -1,0 +1,9 @@
+---
+category: reference
+last_updated: '2025-09-13T17:15:00.298234'
+original_path: frontend\src\tests\fixtures\invalid-file.txt
+tags: []
+title: Invalid File
+---
+
+This is not an image file

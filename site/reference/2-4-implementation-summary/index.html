@@ -1,0 +1,1257 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="WAN2.2 Video Generation System Documentation">
+      
+      
+      
+        <link rel="canonical" href="https://ramcana.github.io/wan/reference/2-4-implementation-summary/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>Task 2.4 Implementation Summary - WAN22 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e53b48f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#task-24-implementation-summary" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="WAN22 Documentation" class="md-header__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            WAN22 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Task 2.4 Implementation Summary
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../WAN22_System_Capabilities_Report/" class="md-tabs__link">
+          
+  
+  
+  System Overview
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../model-orchestrator/requirements/" class="md-tabs__link">
+          
+  
+  
+  Model Orchestrator
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../config/models.toml" class="md-tabs__link">
+          
+  
+  
+  Configuration
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="WAN22 Documentation" class="md-nav__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    WAN22 Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    System Overview
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            System Overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../WAN22_System_Capabilities_Report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Capabilities Report
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Model Orchestrator
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Model Orchestrator
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Requirements
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/tasks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tasks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Configuration
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Configuration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Models Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models_simple.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simple Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#task-add-system-monitoring-and-optimization-endpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task: Add system monitoring and optimization endpoints
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Task: Add system monitoring and optimization endpoints">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#requirements-implemented" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements Implemented
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirements Implemented">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#requirement-71-real-time-system-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirement 7.1: Real-time system monitoring
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement-72-websocket-ready-monitoring-infrastructure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirement 7.2: WebSocket-ready monitoring infrastructure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement-41-optimization-settings-with-quantization-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirement 4.1: Optimization settings with quantization options
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement-44-vram-limit-handling-with-actionable-suggestions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirement 4.4: VRAM limit handling with actionable suggestions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-features-implemented" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional Features Implemented
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Additional Features Implemented">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#resource-constraint-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resource Constraint Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graceful-degradation-behavior" class="md-nav__link">
+    <span class="md-ellipsis">
+      Graceful Degradation Behavior
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-endpoints-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      API Endpoints Summary
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Features
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#real-time-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Real-time Monitoring
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimization-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optimization Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resource-constraint-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resource Constraint Handling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#actionable-recommendations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Actionable Recommendations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing Coverage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing Coverage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comprehensive-test-suite" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comprehensive Test Suite
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-scenarios-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Scenarios Covered
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integration-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration Points
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration Points">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#existing-system-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Existing System Integration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frontend-ready" class="md-nav__link">
+    <span class="md-ellipsis">
+      Frontend Ready
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Considerations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Considerations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#efficient-resource-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Efficient Resource Monitoring
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scalable-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scalable Architecture
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security &amp; Validation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Security &amp; Validation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#input-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Input Validation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resource-protection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resource Protection
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verification-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verification Results
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="task-24-implementation-summary">Task 2.4 Implementation Summary<a class="headerlink" href="#task-24-implementation-summary" title="Permanent link">&para;</a></h1>
+<h2 id="task-add-system-monitoring-and-optimization-endpoints">Task: Add system monitoring and optimization endpoints<a class="headerlink" href="#task-add-system-monitoring-and-optimization-endpoints" title="Permanent link">&para;</a></h2>
+<p><strong>Status: ✅ COMPLETED</strong></p>
+<h3 id="requirements-implemented">Requirements Implemented<a class="headerlink" href="#requirements-implemented" title="Permanent link">&para;</a></h3>
+<h4 id="requirement-71-real-time-system-monitoring">Requirement 7.1: Real-time system monitoring<a class="headerlink" href="#requirement-71-real-time-system-monitoring" title="Permanent link">&para;</a></h4>
+<ul>
+<li>✅ <strong>GET /api/v1/system/stats</strong> - Real-time CPU, RAM, GPU, and VRAM usage</li>
+<li>✅ <strong>GET /api/v1/system/stats/history</strong> - Historical data for chart animations</li>
+<li>✅ <strong>POST /api/v1/system/stats/save</strong> - Save current stats for historical tracking</li>
+</ul>
+<h4 id="requirement-72-websocket-ready-monitoring-infrastructure">Requirement 7.2: WebSocket-ready monitoring infrastructure<a class="headerlink" href="#requirement-72-websocket-ready-monitoring-infrastructure" title="Permanent link">&para;</a></h4>
+<ul>
+<li>✅ Historical stats endpoint with time range selection</li>
+<li>✅ Structured data format ready for WebSocket streaming</li>
+<li>✅ Smooth chart animation support through consistent data format</li>
+</ul>
+<h4 id="requirement-41-optimization-settings-with-quantization-options">Requirement 4.1: Optimization settings with quantization options<a class="headerlink" href="#requirement-41-optimization-settings-with-quantization-options" title="Permanent link">&para;</a></h4>
+<ul>
+<li>✅ <strong>GET /api/v1/system/optimization</strong> - Get current optimization settings</li>
+<li>✅ <strong>POST /api/v1/system/optimization</strong> - Update optimization settings</li>
+<li>✅ Support for fp16, bf16, int8 quantization levels</li>
+<li>✅ VAE tile size adjustment (128-512)</li>
+<li>✅ Model offloading controls</li>
+<li>✅ Max VRAM usage configuration</li>
+</ul>
+<h4 id="requirement-44-vram-limit-handling-with-actionable-suggestions">Requirement 4.4: VRAM limit handling with actionable suggestions<a class="headerlink" href="#requirement-44-vram-limit-handling-with-actionable-suggestions" title="Permanent link">&para;</a></h4>
+<ul>
+<li>✅ <strong>GET /api/v1/system/health</strong> - System health with VRAM warnings</li>
+<li>✅ <strong>GET /api/v1/system/resource-check</strong> - Resource availability checking</li>
+<li>✅ Prominent warnings when VRAM usage approaches 90%</li>
+<li>✅ Actionable suggestions for optimization</li>
+<li>✅ Professional error handling with recovery recommendations</li>
+</ul>
+<h3 id="additional-features-implemented">Additional Features Implemented<a class="headerlink" href="#additional-features-implemented" title="Permanent link">&para;</a></h3>
+<h4 id="resource-constraint-management">Resource Constraint Management<a class="headerlink" href="#resource-constraint-management" title="Permanent link">&para;</a></h4>
+<ul>
+<li>✅ <strong>GET /api/v1/system/constraints</strong> - Get resource constraint settings</li>
+<li>✅ <strong>POST /api/v1/system/constraints</strong> - Update resource constraints</li>
+<li>✅ Configurable VRAM warning/critical thresholds</li>
+<li>✅ Maximum concurrent generation limits</li>
+<li>✅ CPU and RAM usage thresholds</li>
+</ul>
+<h4 id="graceful-degradation-behavior">Graceful Degradation Behavior<a class="headerlink" href="#graceful-degradation-behavior" title="Permanent link">&para;</a></h4>
+<ul>
+<li>✅ Resource availability checking before generation</li>
+<li>✅ Automatic prevention of new generations when resources exhausted</li>
+<li>✅ Clear blocking issue identification</li>
+<li>✅ Context-aware optimization recommendations</li>
+<li>✅ VRAM savings estimation</li>
+</ul>
+<h3 id="api-endpoints-summary">API Endpoints Summary<a class="headerlink" href="#api-endpoints-summary" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Method</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/api/v1/system/stats</code></td>
+<td>GET</td>
+<td>Real-time system resource statistics</td>
+</tr>
+<tr>
+<td><code>/api/v1/system/stats/history</code></td>
+<td>GET</td>
+<td>Historical stats for charts (with time range)</td>
+</tr>
+<tr>
+<td><code>/api/v1/system/stats/save</code></td>
+<td>POST</td>
+<td>Save current stats to database</td>
+</tr>
+<tr>
+<td><code>/api/v1/system/optimization</code></td>
+<td>GET</td>
+<td>Get current optimization settings</td>
+</tr>
+<tr>
+<td><code>/api/v1/system/optimization</code></td>
+<td>POST</td>
+<td>Update optimization settings with recommendations</td>
+</tr>
+<tr>
+<td><code>/api/v1/system/health</code></td>
+<td>GET</td>
+<td>System health status with warnings</td>
+</tr>
+<tr>
+<td><code>/api/v1/system/constraints</code></td>
+<td>GET</td>
+<td>Get resource constraint settings</td>
+</tr>
+<tr>
+<td><code>/api/v1/system/constraints</code></td>
+<td>POST</td>
+<td>Update resource constraints</td>
+</tr>
+<tr>
+<td><code>/api/v1/system/resource-check</code></td>
+<td>GET</td>
+<td>Check resource availability for generation</td>
+</tr>
+</tbody>
+</table>
+<h3 id="key-features">Key Features<a class="headerlink" href="#key-features" title="Permanent link">&para;</a></h3>
+<h4 id="real-time-monitoring">Real-time Monitoring<a class="headerlink" href="#real-time-monitoring" title="Permanent link">&para;</a></h4>
+<ul>
+<li>CPU, RAM, GPU, and VRAM usage tracking</li>
+<li>RTX 4080 specific optimizations</li>
+<li>Enhanced stats integration with existing system</li>
+<li>Fallback to basic stats if enhanced monitoring unavailable</li>
+</ul>
+<h4 id="optimization-management">Optimization Management<a class="headerlink" href="#optimization-management" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Quantization level selection (fp16, bf16, int8)</li>
+<li>Model offloading controls</li>
+<li>VAE tile size adjustment</li>
+<li>VRAM usage limits</li>
+<li>Real-time VRAM savings estimation</li>
+</ul>
+<h4 id="resource-constraint-handling">Resource Constraint Handling<a class="headerlink" href="#resource-constraint-handling" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Configurable warning thresholds (default: 85% VRAM, 90% CPU/RAM)</li>
+<li>Critical thresholds (default: 95% VRAM)</li>
+<li>Maximum concurrent generation limits (default: 2)</li>
+<li>Graceful degradation when limits exceeded</li>
+</ul>
+<h4 id="actionable-recommendations">Actionable Recommendations<a class="headerlink" href="#actionable-recommendations" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Context-aware optimization suggestions</li>
+<li>VRAM efficiency recommendations</li>
+<li>Performance trade-off explanations</li>
+<li>Resource constraint guidance</li>
+</ul>
+<h3 id="testing-coverage">Testing Coverage<a class="headerlink" href="#testing-coverage" title="Permanent link">&para;</a></h3>
+<h4 id="comprehensive-test-suite">Comprehensive Test Suite<a class="headerlink" href="#comprehensive-test-suite" title="Permanent link">&para;</a></h4>
+<ul>
+<li>✅ <strong>test_system_monitoring.py</strong> - Basic endpoint functionality</li>
+<li>✅ <strong>test_resource_limits.py</strong> - Resource constraint scenarios</li>
+<li>✅ <strong>test_task_2_4_validation.py</strong> - Requirements validation</li>
+</ul>
+<h4 id="test-scenarios-covered">Test Scenarios Covered<a class="headerlink" href="#test-scenarios-covered" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Real-time stats collection and validation</li>
+<li>Historical data tracking</li>
+<li>Optimization settings CRUD operations</li>
+<li>VRAM exhaustion prevention</li>
+<li>Concurrent generation limits</li>
+<li>Graceful degradation warnings</li>
+<li>Resource constraint validation</li>
+<li>Optimization recommendations</li>
+<li>Error handling and validation</li>
+</ul>
+<h3 id="integration-points">Integration Points<a class="headerlink" href="#integration-points" title="Permanent link">&para;</a></h3>
+<h4 id="existing-system-integration">Existing System Integration<a class="headerlink" href="#existing-system-integration" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Seamless integration with existing <code>utils.py</code> system stats</li>
+<li>RTX 4080 hardware detection and optimization</li>
+<li>Configuration loading from <code>config.json</code></li>
+<li>Database persistence for historical tracking</li>
+</ul>
+<h4 id="frontend-ready">Frontend Ready<a class="headerlink" href="#frontend-ready" title="Permanent link">&para;</a></h4>
+<ul>
+<li>RESTful API design for React frontend consumption</li>
+<li>Structured JSON responses</li>
+<li>Consistent error handling</li>
+<li>WebSocket-ready data format</li>
+</ul>
+<h3 id="performance-considerations">Performance Considerations<a class="headerlink" href="#performance-considerations" title="Permanent link">&para;</a></h3>
+<h4 id="efficient-resource-monitoring">Efficient Resource Monitoring<a class="headerlink" href="#efficient-resource-monitoring" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Cached system stats (1-minute cache for expensive operations)</li>
+<li>Optimized GPU stats collection</li>
+<li>Fallback mechanisms for unavailable hardware info</li>
+<li>Minimal overhead monitoring</li>
+</ul>
+<h4 id="scalable-architecture">Scalable Architecture<a class="headerlink" href="#scalable-architecture" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Database-backed historical tracking</li>
+<li>Configurable constraint thresholds</li>
+<li>Modular optimization settings</li>
+<li>Extensible recommendation system</li>
+</ul>
+<h3 id="security-validation">Security &amp; Validation<a class="headerlink" href="#security-validation" title="Permanent link">&para;</a></h3>
+<h4 id="input-validation">Input Validation<a class="headerlink" href="#input-validation" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Pydantic model validation for all inputs</li>
+<li>Range validation for optimization settings</li>
+<li>Constraint value validation</li>
+<li>Error handling with appropriate HTTP status codes</li>
+</ul>
+<h4 id="resource-protection">Resource Protection<a class="headerlink" href="#resource-protection" title="Permanent link">&para;</a></h4>
+<ul>
+<li>VRAM exhaustion prevention</li>
+<li>CPU/RAM usage monitoring</li>
+<li>Concurrent generation limits</li>
+<li>Graceful degradation to prevent system overload</li>
+</ul>
+<h2 id="verification-results">Verification Results<a class="headerlink" href="#verification-results" title="Permanent link">&para;</a></h2>
+<p>All requirements have been successfully implemented and tested:</p>
+<ul>
+<li>✅ <strong>Requirement 7.1</strong>: Real-time system monitoring endpoints</li>
+<li>✅ <strong>Requirement 7.2</strong>: Historical data for smooth chart updates</li>
+<li>✅ <strong>Requirement 4.1</strong>: Quantization options and VRAM management</li>
+<li>✅ <strong>Requirement 4.4</strong>: VRAM limit handling with actionable suggestions</li>
+<li>✅ <strong>Resource limit scenarios</strong>: VRAM exhaustion, multiple generations</li>
+<li>✅ <strong>Graceful degradation</strong>: Defined and implemented</li>
+</ul>
+<p><strong>Task 2.4 is fully complete and ready for integration with the React frontend.</strong></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

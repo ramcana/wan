@@ -1,0 +1,2155 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="WAN2.2 Video Generation System Documentation">
+      
+      
+      
+        <link rel="canonical" href="https://ramcana.github.io/wan/user/performance_validation_testing/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>Performance Validation Testing Guide - WAN22 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e53b48f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#performance-validation-testing-guide" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="WAN22 Documentation" class="md-header__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            WAN22 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Performance Validation Testing Guide
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../WAN22_System_Capabilities_Report/" class="md-tabs__link">
+          
+  
+  
+  System Overview
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../model-orchestrator/requirements/" class="md-tabs__link">
+          
+  
+  
+  Model Orchestrator
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../config/models.toml" class="md-tabs__link">
+          
+  
+  
+  Configuration
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="WAN22 Documentation" class="md-nav__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    WAN22 Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    System Overview
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            System Overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../WAN22_System_Capabilities_Report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Capabilities Report
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Model Orchestrator
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Model Orchestrator
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Requirements
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/tasks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tasks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Configuration
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Configuration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Models Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models_simple.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simple Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-testing-categories" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Testing Categories
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Testing Categories">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-installation-performance-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Installation Performance Testing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-hardware-optimization-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Hardware Optimization Validation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-runtime-performance-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Runtime Performance Testing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-resource-utilization-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Resource Utilization Testing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-scalability-and-stress-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Scalability and Stress Testing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-installation-performance-testing_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Installation Performance Testing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Installation Performance Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-installation-time-benchmarks" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 Installation Time Benchmarks
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.1 Installation Time Benchmarks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-procedure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Procedure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-baselines" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Baselines
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#measurement-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      Measurement Script
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manual-verification-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manual Verification Checklist
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-download-performance-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2 Download Performance Testing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.2 Download Performance Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-procedure_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Procedure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Metrics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Script
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-hardware-optimization-validation_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Hardware Optimization Validation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Hardware Optimization Validation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-cpu-optimization-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 CPU Optimization Testing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.1 CPU Optimization Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-procedure_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Procedure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cpu-configuration-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      CPU Configuration Validation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cpu-performance-test-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      CPU Performance Test Script
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-memory-optimization-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 Memory Optimization Testing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.2 Memory Optimization Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-procedure_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Procedure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-configuration-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Configuration Validation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-performance-test-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Performance Test Script
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-gpu-optimization-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 GPU Optimization Testing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.3 GPU Optimization Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-procedure_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Procedure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gpu-configuration-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      GPU Configuration Validation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gpu-performance-test-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      GPU Performance Test Script
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-runtime-performance-testing_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Runtime Performance Testing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Runtime Performance Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-model-loading-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 Model Loading Performance
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1 Model Loading Performance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#performance-baselines_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Baselines
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-loading-test-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model Loading Test Script
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-generation-performance-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 Generation Performance Testing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 Generation Performance Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#performance-baselines_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Baselines
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-resource-utilization-testing_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Resource Utilization Testing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Resource Utilization Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-system-resource-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 System Resource Monitoring
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1 System Resource Monitoring">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#resource-utilization-targets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resource Utilization Targets
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-thermal-and-power-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 Thermal and Power Testing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.2 Thermal and Power Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#thermal-targets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Thermal Targets
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-scalability-and-stress-testing_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Scalability and Stress Testing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Scalability and Stress Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-concurrent-operation-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1 Concurrent Operation Testing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.1 Concurrent Operation Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-scenarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Scenarios
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-edge-case-performance-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2 Edge Case Performance Testing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.2 Edge Case Performance Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#edge-case-scenarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Edge Case Scenarios
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-testing-automation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Testing Automation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Testing Automation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#automated-performance-test-suite" class="md-nav__link">
+    <span class="md-ellipsis">
+      Automated Performance Test Suite
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-regression-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Regression Testing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Regression Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#baseline-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Baseline Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#continuous-performance-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Continuous Performance Monitoring
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="performance-validation-testing-guide">Performance Validation Testing Guide<a class="headerlink" href="#performance-validation-testing-guide" title="Permanent link">&para;</a></h1>
+<p>This guide provides comprehensive procedures for validating the performance of the WAN2.2 local installation system across different hardware configurations. It includes benchmarking methodologies, performance baselines, and optimization verification procedures.</p>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>Performance validation ensures that:</p>
+<ul>
+<li>Installation completes within acceptable timeframes</li>
+<li>Hardware-specific optimizations are effective</li>
+<li>System resources are used efficiently</li>
+<li>Generated configurations provide optimal performance</li>
+<li>Performance meets user expectations across hardware tiers</li>
+</ul>
+<h2 id="performance-testing-categories">Performance Testing Categories<a class="headerlink" href="#performance-testing-categories" title="Permanent link">&para;</a></h2>
+<h3 id="1-installation-performance-testing">1. Installation Performance Testing<a class="headerlink" href="#1-installation-performance-testing" title="Permanent link">&para;</a></h3>
+<h3 id="2-hardware-optimization-validation">2. Hardware Optimization Validation<a class="headerlink" href="#2-hardware-optimization-validation" title="Permanent link">&para;</a></h3>
+<h3 id="3-runtime-performance-testing">3. Runtime Performance Testing<a class="headerlink" href="#3-runtime-performance-testing" title="Permanent link">&para;</a></h3>
+<h3 id="4-resource-utilization-testing">4. Resource Utilization Testing<a class="headerlink" href="#4-resource-utilization-testing" title="Permanent link">&para;</a></h3>
+<h3 id="5-scalability-and-stress-testing">5. Scalability and Stress Testing<a class="headerlink" href="#5-scalability-and-stress-testing" title="Permanent link">&para;</a></h3>
+<hr />
+<h2 id="1-installation-performance-testing_1">1. Installation Performance Testing<a class="headerlink" href="#1-installation-performance-testing_1" title="Permanent link">&para;</a></h2>
+<h3 id="11-installation-time-benchmarks">1.1 Installation Time Benchmarks<a class="headerlink" href="#11-installation-time-benchmarks" title="Permanent link">&para;</a></h3>
+<p><strong>Objective</strong>: Measure and validate installation completion times across hardware configurations.</p>
+<h4 id="test-procedure">Test Procedure<a class="headerlink" href="#test-procedure" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Start with clean system (no existing Python/WAN2.2)</li>
+<li>Record start time when <code>install.bat</code> is executed</li>
+<li>Record completion time when installation finishes</li>
+<li>Measure individual phase durations</li>
+</ol>
+<h4 id="performance-baselines">Performance Baselines<a class="headerlink" href="#performance-baselines" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Hardware Tier</th>
+<th>Total Time</th>
+<th>Detection</th>
+<th>Dependencies</th>
+<th>Models</th>
+<th>Config</th>
+<th>Validation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>High-End</td>
+<td>10-15 min</td>
+<td>&lt; 30s</td>
+<td>2-3 min</td>
+<td>5-8 min</td>
+<td>&lt; 30s</td>
+<td>1-2 min</td>
+</tr>
+<tr>
+<td>Mid-Range</td>
+<td>15-25 min</td>
+<td>&lt; 45s</td>
+<td>3-5 min</td>
+<td>8-12 min</td>
+<td>&lt; 45s</td>
+<td>2-3 min</td>
+</tr>
+<tr>
+<td>Budget</td>
+<td>20-35 min</td>
+<td>&lt; 60s</td>
+<td>5-8 min</td>
+<td>10-15 min</td>
+<td>&lt; 60s</td>
+<td>3-5 min</td>
+</tr>
+<tr>
+<td>Minimum</td>
+<td>30-50 min</td>
+<td>&lt; 90s</td>
+<td>8-12 min</td>
+<td>15-25 min</td>
+<td>&lt; 90s</td>
+<td>5-8 min</td>
+</tr>
+</tbody>
+</table>
+<h4 id="measurement-script">Measurement Script<a class="headerlink" href="#measurement-script" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="k">class</span> <span class="nc">InstallationPerformanceTracker</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_time</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">phase_times</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current_phase</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">start_installation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log_event</span><span class="p">(</span><span class="s2">&quot;installation_started&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">start_phase</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phase_name</span><span class="p">):</span>
+        <span class="n">current_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_phase</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">end_phase</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">current_phase</span> <span class="o">=</span> <span class="n">phase_name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">phase_times</span><span class="p">[</span><span class="n">phase_name</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;start&quot;</span><span class="p">:</span> <span class="n">current_time</span><span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log_event</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;phase_started_</span><span class="si">{</span><span class="n">phase_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">end_phase</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_phase</span><span class="p">:</span>
+            <span class="n">current_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+            <span class="n">phase_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">phase_times</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">current_phase</span><span class="p">]</span>
+            <span class="n">phase_data</span><span class="p">[</span><span class="s2">&quot;end&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">current_time</span>
+            <span class="n">phase_data</span><span class="p">[</span><span class="s2">&quot;duration&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">current_time</span> <span class="o">-</span> <span class="n">phase_data</span><span class="p">[</span><span class="s2">&quot;start&quot;</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">log_event</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;phase_completed_</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">current_phase</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">current_phase</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">end_installation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_phase</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">end_phase</span><span class="p">()</span>
+        <span class="n">end_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="n">total_duration</span> <span class="o">=</span> <span class="n">end_time</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_time</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log_event</span><span class="p">(</span><span class="s2">&quot;installation_completed&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;total_duration&quot;</span><span class="p">:</span> <span class="n">total_duration</span><span class="p">})</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">generate_report</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">generate_report</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">isoformat</span><span class="p">(),</span>
+            <span class="s2">&quot;total_duration&quot;</span><span class="p">:</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_time</span><span class="p">,</span>
+            <span class="s2">&quot;phase_durations&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="n">phase</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;duration&quot;</span><span class="p">]</span>
+                <span class="k">for</span> <span class="n">phase</span><span class="p">,</span> <span class="n">data</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">phase_times</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+                <span class="k">if</span> <span class="s2">&quot;duration&quot;</span> <span class="ow">in</span> <span class="n">data</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+</code></pre></div>
+<h4 id="manual-verification-checklist">Manual Verification Checklist<a class="headerlink" href="#manual-verification-checklist" title="Permanent link">&para;</a></h4>
+<ul>
+<li>[ ] Installation starts immediately when executed</li>
+<li>[ ] No unnecessary delays between phases</li>
+<li>[ ] Progress indicators update smoothly</li>
+<li>[ ] System remains responsive during installation</li>
+<li>[ ] Installation completes within baseline timeframe</li>
+<li>[ ] No performance regressions compared to previous versions</li>
+</ul>
+<h3 id="12-download-performance-testing">1.2 Download Performance Testing<a class="headerlink" href="#12-download-performance-testing" title="Permanent link">&para;</a></h3>
+<p><strong>Objective</strong>: Validate model download performance and efficiency.</p>
+<h4 id="test-procedure_1">Test Procedure<a class="headerlink" href="#test-procedure_1" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Clear any existing model cache</li>
+<li>Monitor download speeds and progress</li>
+<li>Test parallel download efficiency</li>
+<li>Validate resume functionality</li>
+</ol>
+<h4 id="performance-metrics">Performance Metrics<a class="headerlink" href="#performance-metrics" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Download Speed</strong>: Should utilize 80%+ of available bandwidth</li>
+<li><strong>Parallel Efficiency</strong>: Multiple models download simultaneously</li>
+<li><strong>Resume Reliability</strong>: Downloads resume correctly after interruption</li>
+<li><strong>Progress Accuracy</strong>: Progress indicators reflect actual download status</li>
+</ul>
+<h4 id="test-script">Test Script<a class="headerlink" href="#test-script" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">concurrent.futures</span> <span class="kn">import</span> <span class="n">ThreadPoolExecutor</span>
+
+<span class="k">class</span> <span class="nc">DownloadPerformanceTester</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">download_stats</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">def</span> <span class="nf">test_download_speed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">expected_size</span><span class="p">):</span>
+        <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="n">downloaded</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">iter_content</span><span class="p">(</span><span class="n">chunk_size</span><span class="o">=</span><span class="mi">8192</span><span class="p">):</span>
+            <span class="n">downloaded</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
+
+        <span class="n">end_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="n">duration</span> <span class="o">=</span> <span class="n">end_time</span> <span class="o">-</span> <span class="n">start_time</span>
+        <span class="n">speed_mbps</span> <span class="o">=</span> <span class="p">(</span><span class="n">downloaded</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">))</span> <span class="o">/</span> <span class="n">duration</span>
+
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="n">url</span><span class="p">,</span>
+            <span class="s2">&quot;size_mb&quot;</span><span class="p">:</span> <span class="n">downloaded</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">),</span>
+            <span class="s2">&quot;duration&quot;</span><span class="p">:</span> <span class="n">duration</span><span class="p">,</span>
+            <span class="s2">&quot;speed_mbps&quot;</span><span class="p">:</span> <span class="n">speed_mbps</span>
+        <span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">test_parallel_downloads</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">urls</span><span class="p">):</span>
+        <span class="k">with</span> <span class="n">ThreadPoolExecutor</span><span class="p">(</span><span class="n">max_workers</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span> <span class="k">as</span> <span class="n">executor</span><span class="p">:</span>
+            <span class="n">futures</span> <span class="o">=</span> <span class="p">[</span><span class="n">executor</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">test_download_speed</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="n">urls</span><span class="p">]</span>
+            <span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">future</span><span class="o">.</span><span class="n">result</span><span class="p">()</span> <span class="k">for</span> <span class="n">future</span> <span class="ow">in</span> <span class="n">futures</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">results</span>
+</code></pre></div>
+<hr />
+<h2 id="2-hardware-optimization-validation_1">2. Hardware Optimization Validation<a class="headerlink" href="#2-hardware-optimization-validation_1" title="Permanent link">&para;</a></h2>
+<h3 id="21-cpu-optimization-testing">2.1 CPU Optimization Testing<a class="headerlink" href="#21-cpu-optimization-testing" title="Permanent link">&para;</a></h3>
+<p><strong>Objective</strong>: Validate CPU thread allocation and utilization optimization.</p>
+<h4 id="test-procedure_2">Test Procedure<a class="headerlink" href="#test-procedure_2" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Install on systems with different CPU configurations</li>
+<li>Review generated CPU thread settings</li>
+<li>Measure CPU utilization during model operations</li>
+<li>Validate thread scaling efficiency</li>
+</ol>
+<h4 id="cpu-configuration-validation">CPU Configuration Validation<a class="headerlink" href="#cpu-configuration-validation" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>CPU Type</th>
+<th>Cores/Threads</th>
+<th>Expected Thread Allocation</th>
+<th>Max CPU Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Threadripper PRO 5995WX</td>
+<td>64C/128T</td>
+<td>64-96 threads</td>
+<td>70-85%</td>
+</tr>
+<tr>
+<td>Ryzen 9 5950X</td>
+<td>16C/32T</td>
+<td>16-24 threads</td>
+<td>75-90%</td>
+</tr>
+<tr>
+<td>Ryzen 7 5800X</td>
+<td>8C/16T</td>
+<td>8-12 threads</td>
+<td>80-95%</td>
+</tr>
+<tr>
+<td>Intel i7-12700K</td>
+<td>12C/20T</td>
+<td>12-16 threads</td>
+<td>80-95%</td>
+</tr>
+<tr>
+<td>Ryzen 5 3600</td>
+<td>6C/12T</td>
+<td>6-8 threads</td>
+<td>85-95%</td>
+</tr>
+<tr>
+<td>Intel i5-8400</td>
+<td>6C/6T</td>
+<td>4-6 threads</td>
+<td>90-100%</td>
+</tr>
+</tbody>
+</table>
+<h4 id="cpu-performance-test-script">CPU Performance Test Script<a class="headerlink" href="#cpu-performance-test-script" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">psutil</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">threading</span>
+<span class="kn">from</span> <span class="nn">concurrent.futures</span> <span class="kn">import</span> <span class="n">ThreadPoolExecutor</span>
+
+<span class="k">class</span> <span class="nc">CPUOptimizationTester</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cpu_count</span> <span class="o">=</span> <span class="n">psutil</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cpu_count_logical</span> <span class="o">=</span> <span class="n">psutil</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">(</span><span class="n">logical</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">test_thread_allocation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config_threads</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Test if thread allocation is appropriate for CPU.&quot;&quot;&quot;</span>
+        <span class="n">optimal_min</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cpu_count</span>
+        <span class="n">optimal_max</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cpu_count_logical</span>
+
+        <span class="k">if</span> <span class="n">config_threads</span> <span class="o">&lt;</span> <span class="n">optimal_min</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;under_allocated&quot;</span>
+        <span class="k">elif</span> <span class="n">config_threads</span> <span class="o">&gt;</span> <span class="n">optimal_max</span> <span class="o">*</span> <span class="mf">1.2</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;over_allocated&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;optimal&quot;</span>
+
+    <span class="k">def</span> <span class="nf">measure_cpu_utilization</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mi">60</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Measure CPU utilization during load test.&quot;&quot;&quot;</span>
+        <span class="n">cpu_percentages</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">def</span> <span class="nf">cpu_monitor</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">duration</span><span class="p">):</span>
+                <span class="n">cpu_percentages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">psutil</span><span class="o">.</span><span class="n">cpu_percent</span><span class="p">(</span><span class="n">interval</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+
+        <span class="n">monitor_thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">cpu_monitor</span><span class="p">)</span>
+        <span class="n">monitor_thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+        <span class="c1"># Simulate CPU load</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">simulate_cpu_load</span><span class="p">(</span><span class="n">duration</span><span class="p">)</span>
+
+        <span class="n">monitor_thread</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;average_cpu&quot;</span><span class="p">:</span> <span class="nb">sum</span><span class="p">(</span><span class="n">cpu_percentages</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">cpu_percentages</span><span class="p">),</span>
+            <span class="s2">&quot;max_cpu&quot;</span><span class="p">:</span> <span class="nb">max</span><span class="p">(</span><span class="n">cpu_percentages</span><span class="p">),</span>
+            <span class="s2">&quot;min_cpu&quot;</span><span class="p">:</span> <span class="nb">min</span><span class="p">(</span><span class="n">cpu_percentages</span><span class="p">)</span>
+        <span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">simulate_cpu_load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">duration</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Simulate CPU-intensive workload.&quot;&quot;&quot;</span>
+        <span class="k">def</span> <span class="nf">cpu_task</span><span class="p">():</span>
+            <span class="n">end_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">+</span> <span class="n">duration</span>
+            <span class="k">while</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">end_time</span><span class="p">:</span>
+                <span class="c1"># CPU-intensive calculation</span>
+                <span class="nb">sum</span><span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">))</span>
+
+        <span class="k">with</span> <span class="n">ThreadPoolExecutor</span><span class="p">(</span><span class="n">max_workers</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">)</span> <span class="k">as</span> <span class="n">executor</span><span class="p">:</span>
+            <span class="n">futures</span> <span class="o">=</span> <span class="p">[</span><span class="n">executor</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">cpu_task</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">)]</span>
+            <span class="k">for</span> <span class="n">future</span> <span class="ow">in</span> <span class="n">futures</span><span class="p">:</span>
+                <span class="n">future</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="22-memory-optimization-testing">2.2 Memory Optimization Testing<a class="headerlink" href="#22-memory-optimization-testing" title="Permanent link">&para;</a></h3>
+<p><strong>Objective</strong>: Validate memory allocation and usage optimization.</p>
+<h4 id="test-procedure_3">Test Procedure<a class="headerlink" href="#test-procedure_3" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Review generated memory allocation settings</li>
+<li>Monitor memory usage during model loading</li>
+<li>Test memory efficiency under different loads</li>
+<li>Validate memory leak prevention</li>
+</ol>
+<h4 id="memory-configuration-validation">Memory Configuration Validation<a class="headerlink" href="#memory-configuration-validation" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>System RAM</th>
+<th>Expected Allocation</th>
+<th>Max Usage</th>
+<th>Swap Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>128GB</td>
+<td>32-64GB</td>
+<td>&lt; 80%</td>
+<td>None</td>
+</tr>
+<tr>
+<td>64GB</td>
+<td>16-32GB</td>
+<td>&lt; 85%</td>
+<td>Minimal</td>
+</tr>
+<tr>
+<td>32GB</td>
+<td>8-16GB</td>
+<td>&lt; 90%</td>
+<td>&lt; 2GB</td>
+</tr>
+<tr>
+<td>16GB</td>
+<td>4-8GB</td>
+<td>&lt; 95%</td>
+<td>&lt; 4GB</td>
+</tr>
+<tr>
+<td>8GB</td>
+<td>2-4GB</td>
+<td>&lt; 98%</td>
+<td>&lt; 2GB</td>
+</tr>
+</tbody>
+</table>
+<h4 id="memory-performance-test-script">Memory Performance Test Script<a class="headerlink" href="#memory-performance-test-script" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">psutil</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">gc</span>
+
+<span class="k">class</span> <span class="nc">MemoryOptimizationTester</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">memory_info</span> <span class="o">=</span> <span class="n">psutil</span><span class="o">.</span><span class="n">virtual_memory</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">initial_memory</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">memory_info</span><span class="o">.</span><span class="n">used</span>
+
+    <span class="k">def</span> <span class="nf">test_memory_allocation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config_memory_gb</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Test if memory allocation is appropriate.&quot;&quot;&quot;</span>
+        <span class="n">total_gb</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">memory_info</span><span class="o">.</span><span class="n">total</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1024</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>
+        <span class="n">available_gb</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">memory_info</span><span class="o">.</span><span class="n">available</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1024</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">config_memory_gb</span> <span class="o">&gt;</span> <span class="n">available_gb</span> <span class="o">*</span> <span class="mf">0.9</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;over_allocated&quot;</span>
+        <span class="k">elif</span> <span class="n">config_memory_gb</span> <span class="o">&lt;</span> <span class="n">available_gb</span> <span class="o">*</span> <span class="mf">0.1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;under_allocated&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;optimal&quot;</span>
+
+    <span class="k">def</span> <span class="nf">monitor_memory_usage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mi">300</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Monitor memory usage over time.&quot;&quot;&quot;</span>
+        <span class="n">memory_samples</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">duration</span><span class="p">):</span>
+            <span class="n">memory</span> <span class="o">=</span> <span class="n">psutil</span><span class="o">.</span><span class="n">virtual_memory</span><span class="p">()</span>
+            <span class="n">memory_samples</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+                <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">(),</span>
+                <span class="s2">&quot;used_gb&quot;</span><span class="p">:</span> <span class="n">memory</span><span class="o">.</span><span class="n">used</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1024</span><span class="o">**</span><span class="mi">3</span><span class="p">),</span>
+                <span class="s2">&quot;available_gb&quot;</span><span class="p">:</span> <span class="n">memory</span><span class="o">.</span><span class="n">available</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1024</span><span class="o">**</span><span class="mi">3</span><span class="p">),</span>
+                <span class="s2">&quot;percent&quot;</span><span class="p">:</span> <span class="n">memory</span><span class="o">.</span><span class="n">percent</span>
+            <span class="p">})</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;samples&quot;</span><span class="p">:</span> <span class="n">memory_samples</span><span class="p">,</span>
+            <span class="s2">&quot;peak_usage&quot;</span><span class="p">:</span> <span class="nb">max</span><span class="p">(</span><span class="n">sample</span><span class="p">[</span><span class="s2">&quot;used_gb&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">memory_samples</span><span class="p">),</span>
+            <span class="s2">&quot;average_usage&quot;</span><span class="p">:</span> <span class="nb">sum</span><span class="p">(</span><span class="n">sample</span><span class="p">[</span><span class="s2">&quot;used_gb&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">memory_samples</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">memory_samples</span><span class="p">),</span>
+            <span class="s2">&quot;memory_growth&quot;</span><span class="p">:</span> <span class="n">memory_samples</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;used_gb&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">memory_samples</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;used_gb&quot;</span><span class="p">]</span>
+        <span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">test_memory_leak</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Test for memory leaks during repeated operations.&quot;&quot;&quot;</span>
+        <span class="n">initial_memory</span> <span class="o">=</span> <span class="n">psutil</span><span class="o">.</span><span class="n">virtual_memory</span><span class="p">()</span><span class="o">.</span><span class="n">used</span>
+        <span class="n">memory_readings</span> <span class="o">=</span> <span class="p">[</span><span class="n">initial_memory</span><span class="p">]</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">iterations</span><span class="p">):</span>
+            <span class="c1"># Simulate memory-intensive operation</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">simulate_memory_operation</span><span class="p">()</span>
+            <span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>  <span class="c1"># Force garbage collection</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># Allow cleanup</span>
+
+            <span class="n">current_memory</span> <span class="o">=</span> <span class="n">psutil</span><span class="o">.</span><span class="n">virtual_memory</span><span class="p">()</span><span class="o">.</span><span class="n">used</span>
+            <span class="n">memory_readings</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current_memory</span><span class="p">)</span>
+
+        <span class="c1"># Check for consistent memory growth (potential leak)</span>
+        <span class="n">memory_growth</span> <span class="o">=</span> <span class="p">[(</span><span class="n">memory_readings</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">memory_readings</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1024</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+                        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">memory_readings</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
+
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;memory_readings_mb&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">m</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1024</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">memory_readings</span><span class="p">],</span>
+            <span class="s2">&quot;memory_growth_mb&quot;</span><span class="p">:</span> <span class="n">memory_growth</span><span class="p">,</span>
+            <span class="s2">&quot;total_growth_mb&quot;</span><span class="p">:</span> <span class="p">(</span><span class="n">memory_readings</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">memory_readings</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1024</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span>
+            <span class="s2">&quot;leak_detected&quot;</span><span class="p">:</span> <span class="nb">sum</span><span class="p">(</span><span class="n">memory_growth</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">100</span>  <span class="c1"># More than 100MB growth</span>
+        <span class="p">}</span>
+</code></pre></div>
+<h3 id="23-gpu-optimization-testing">2.3 GPU Optimization Testing<a class="headerlink" href="#23-gpu-optimization-testing" title="Permanent link">&para;</a></h3>
+<p><strong>Objective</strong>: Validate GPU utilization and VRAM optimization.</p>
+<h4 id="test-procedure_4">Test Procedure<a class="headerlink" href="#test-procedure_4" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Review GPU-specific configuration settings</li>
+<li>Monitor GPU utilization during operations</li>
+<li>Test VRAM allocation and usage</li>
+<li>Validate GPU acceleration effectiveness</li>
+</ol>
+<h4 id="gpu-configuration-validation">GPU Configuration Validation<a class="headerlink" href="#gpu-configuration-validation" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>GPU Model</th>
+<th>VRAM</th>
+<th>Expected Allocation</th>
+<th>Target Utilization</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RTX 4080</td>
+<td>16GB</td>
+<td>14-15GB</td>
+<td>85-95%</td>
+</tr>
+<tr>
+<td>RTX 4070</td>
+<td>12GB</td>
+<td>10-11GB</td>
+<td>85-95%</td>
+</tr>
+<tr>
+<td>RTX 3070</td>
+<td>8GB</td>
+<td>6-7GB</td>
+<td>80-90%</td>
+</tr>
+<tr>
+<td>RTX 3060</td>
+<td>12GB</td>
+<td>10-11GB</td>
+<td>80-90%</td>
+</tr>
+<tr>
+<td>GTX 1660 Ti</td>
+<td>6GB</td>
+<td>4-5GB</td>
+<td>75-85%</td>
+</tr>
+<tr>
+<td>GTX 1060</td>
+<td>6GB</td>
+<td>4-5GB</td>
+<td>75-85%</td>
+</tr>
+</tbody>
+</table>
+<h4 id="gpu-performance-test-script">GPU Performance Test Script<a class="headerlink" href="#gpu-performance-test-script" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">subprocess</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="k">class</span> <span class="nc">GPUOptimizationTester</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gpu_info</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_gpu_info</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">get_gpu_info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get GPU information using nvidia-smi.&quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span>
+                <span class="s2">&quot;nvidia-smi&quot;</span><span class="p">,</span> <span class="s2">&quot;--query-gpu=name,memory.total,memory.used,utilization.gpu&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;--format=csv,noheader,nounits&quot;</span>
+            <span class="p">],</span> <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">result</span><span class="o">.</span><span class="n">returncode</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">lines</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+                <span class="n">gpus</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+                    <span class="n">parts</span> <span class="o">=</span> <span class="p">[</span><span class="n">part</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)]</span>
+                    <span class="n">gpus</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+                        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                        <span class="s2">&quot;memory_total&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
+                        <span class="s2">&quot;memory_used&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span>
+                        <span class="s2">&quot;utilization&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+                    <span class="p">})</span>
+                <span class="k">return</span> <span class="n">gpus</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="p">[]</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="nf">test_vram_allocation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config_vram_gb</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Test if VRAM allocation is appropriate.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">gpu_info</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;no_gpu&quot;</span>
+
+        <span class="n">gpu</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gpu_info</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># Primary GPU</span>
+        <span class="n">total_vram_gb</span> <span class="o">=</span> <span class="n">gpu</span><span class="p">[</span><span class="s2">&quot;memory_total&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">1024</span>
+
+        <span class="k">if</span> <span class="n">config_vram_gb</span> <span class="o">&gt;</span> <span class="n">total_vram_gb</span> <span class="o">*</span> <span class="mf">0.95</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;over_allocated&quot;</span>
+        <span class="k">elif</span> <span class="n">config_vram_gb</span> <span class="o">&lt;</span> <span class="n">total_vram_gb</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;under_allocated&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;optimal&quot;</span>
+
+    <span class="k">def</span> <span class="nf">monitor_gpu_utilization</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mi">300</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Monitor GPU utilization over time.&quot;&quot;&quot;</span>
+        <span class="n">utilization_samples</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">duration</span><span class="p">):</span>
+            <span class="n">gpu_info</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_gpu_info</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">gpu_info</span><span class="p">:</span>
+                <span class="n">utilization_samples</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+                    <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">(),</span>
+                    <span class="s2">&quot;gpu_utilization&quot;</span><span class="p">:</span> <span class="n">gpu_info</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;utilization&quot;</span><span class="p">],</span>
+                    <span class="s2">&quot;memory_used_gb&quot;</span><span class="p">:</span> <span class="n">gpu_info</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;memory_used&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">1024</span><span class="p">,</span>
+                    <span class="s2">&quot;memory_total_gb&quot;</span><span class="p">:</span> <span class="n">gpu_info</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;memory_total&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">1024</span>
+                <span class="p">})</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">utilization_samples</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">{</span>
+                <span class="s2">&quot;samples&quot;</span><span class="p">:</span> <span class="n">utilization_samples</span><span class="p">,</span>
+                <span class="s2">&quot;average_utilization&quot;</span><span class="p">:</span> <span class="nb">sum</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="s2">&quot;gpu_utilization&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">utilization_samples</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">utilization_samples</span><span class="p">),</span>
+                <span class="s2">&quot;peak_utilization&quot;</span><span class="p">:</span> <span class="nb">max</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="s2">&quot;gpu_utilization&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">utilization_samples</span><span class="p">),</span>
+                <span class="s2">&quot;average_vram_usage&quot;</span><span class="p">:</span> <span class="nb">sum</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="s2">&quot;memory_used_gb&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">utilization_samples</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">utilization_samples</span><span class="p">),</span>
+                <span class="s2">&quot;peak_vram_usage&quot;</span><span class="p">:</span> <span class="nb">max</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="s2">&quot;memory_used_gb&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">utilization_samples</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;error&quot;</span><span class="p">:</span> <span class="s2">&quot;No GPU data collected&quot;</span><span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="3-runtime-performance-testing_1">3. Runtime Performance Testing<a class="headerlink" href="#3-runtime-performance-testing_1" title="Permanent link">&para;</a></h2>
+<h3 id="31-model-loading-performance">3.1 Model Loading Performance<a class="headerlink" href="#31-model-loading-performance" title="Permanent link">&para;</a></h3>
+<p><strong>Objective</strong>: Validate model loading times and efficiency.</p>
+<h4 id="performance-baselines_1">Performance Baselines<a class="headerlink" href="#performance-baselines_1" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Hardware Tier</th>
+<th>Model Loading Time</th>
+<th>Memory Usage</th>
+<th>VRAM Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>High-End</td>
+<td>15-30 seconds</td>
+<td>&lt; 16GB</td>
+<td>&lt; 12GB</td>
+</tr>
+<tr>
+<td>Mid-Range</td>
+<td>30-60 seconds</td>
+<td>&lt; 12GB</td>
+<td>&lt; 8GB</td>
+</tr>
+<tr>
+<td>Budget</td>
+<td>60-120 seconds</td>
+<td>&lt; 8GB</td>
+<td>&lt; 6GB</td>
+</tr>
+<tr>
+<td>Minimum</td>
+<td>120-180 seconds</td>
+<td>&lt; 6GB</td>
+<td>&lt; 4GB</td>
+</tr>
+<tr>
+<td>CPU-Only</td>
+<td>180-300 seconds</td>
+<td>&lt; 8GB</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+<h4 id="model-loading-test-script">Model Loading Test Script<a class="headerlink" href="#model-loading-test-script" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">psutil</span>
+<span class="kn">from</span> <span class="nn">contextlib</span> <span class="kn">import</span> <span class="n">contextmanager</span>
+
+<span class="k">class</span> <span class="nc">ModelLoadingTester</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gpu_tester</span> <span class="o">=</span> <span class="n">GPUOptimizationTester</span><span class="p">()</span>
+
+    <span class="nd">@contextmanager</span>
+    <span class="k">def</span> <span class="nf">performance_monitor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Context manager to monitor performance during model loading.&quot;&quot;&quot;</span>
+        <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="n">start_memory</span> <span class="o">=</span> <span class="n">psutil</span><span class="o">.</span><span class="n">virtual_memory</span><span class="p">()</span><span class="o">.</span><span class="n">used</span>
+        <span class="n">start_gpu</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gpu_tester</span><span class="o">.</span><span class="n">get_gpu_info</span><span class="p">()</span>
+
+        <span class="k">yield</span>
+
+        <span class="n">end_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="n">end_memory</span> <span class="o">=</span> <span class="n">psutil</span><span class="o">.</span><span class="n">virtual_memory</span><span class="p">()</span><span class="o">.</span><span class="n">used</span>
+        <span class="n">end_gpu</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gpu_tester</span><span class="o">.</span><span class="n">get_gpu_info</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">last_performance</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;duration&quot;</span><span class="p">:</span> <span class="n">end_time</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">,</span>
+            <span class="s2">&quot;memory_increase_gb&quot;</span><span class="p">:</span> <span class="p">(</span><span class="n">end_memory</span> <span class="o">-</span> <span class="n">start_memory</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1024</span><span class="o">**</span><span class="mi">3</span><span class="p">),</span>
+            <span class="s2">&quot;gpu_memory_increase_gb&quot;</span><span class="p">:</span> <span class="p">(</span>
+                <span class="p">(</span><span class="n">end_gpu</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;memory_used&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">start_gpu</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;memory_used&quot;</span><span class="p">])</span> <span class="o">/</span> <span class="mi">1024</span>
+                <span class="k">if</span> <span class="n">start_gpu</span> <span class="ow">and</span> <span class="n">end_gpu</span> <span class="k">else</span> <span class="mi">0</span>
+            <span class="p">)</span>
+        <span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">test_model_loading</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_path</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Test model loading performance.&quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">performance_monitor</span><span class="p">():</span>
+            <span class="c1"># Simulate model loading</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">simulate_model_loading</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">last_performance</span>
+
+    <span class="k">def</span> <span class="nf">simulate_model_loading</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_path</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Simulate model loading process.&quot;&quot;&quot;</span>
+        <span class="c1"># This would be replaced with actual model loading code</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># Simulate loading time</span>
+</code></pre></div>
+<h3 id="32-generation-performance-testing">3.2 Generation Performance Testing<a class="headerlink" href="#32-generation-performance-testing" title="Permanent link">&para;</a></h3>
+<p><strong>Objective</strong>: Validate generation speed and quality across hardware configurations.</p>
+<h4 id="performance-baselines_2">Performance Baselines<a class="headerlink" href="#performance-baselines_2" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Hardware Tier</th>
+<th>720p 5s Video</th>
+<th>1080p 5s Video</th>
+<th>Frames per Second</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>High-End</td>
+<td>30-60 seconds</td>
+<td>60-120 seconds</td>
+<td>2-4 fps</td>
+</tr>
+<tr>
+<td>Mid-Range</td>
+<td>60-120 seconds</td>
+<td>120-240 seconds</td>
+<td>1-2 fps</td>
+</tr>
+<tr>
+<td>Budget</td>
+<td>120-300 seconds</td>
+<td>240-600 seconds</td>
+<td>0.5-1 fps</td>
+</tr>
+<tr>
+<td>Minimum</td>
+<td>300-600 seconds</td>
+<td>600-1200 seconds</td>
+<td>0.2-0.5 fps</td>
+</tr>
+<tr>
+<td>CPU-Only</td>
+<td>600-1800 seconds</td>
+<td>1200-3600 seconds</td>
+<td>0.1-0.2 fps</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4-resource-utilization-testing_1">4. Resource Utilization Testing<a class="headerlink" href="#4-resource-utilization-testing_1" title="Permanent link">&para;</a></h2>
+<h3 id="41-system-resource-monitoring">4.1 System Resource Monitoring<a class="headerlink" href="#41-system-resource-monitoring" title="Permanent link">&para;</a></h3>
+<p><strong>Objective</strong>: Ensure optimal resource utilization without system overload.</p>
+<h4 id="resource-utilization-targets">Resource Utilization Targets<a class="headerlink" href="#resource-utilization-targets" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Resource</th>
+<th>High-End</th>
+<th>Mid-Range</th>
+<th>Budget</th>
+<th>Minimum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CPU</td>
+<td>70-85%</td>
+<td>75-90%</td>
+<td>80-95%</td>
+<td>85-100%</td>
+</tr>
+<tr>
+<td>Memory</td>
+<td>&lt; 80%</td>
+<td>&lt; 85%</td>
+<td>&lt; 90%</td>
+<td>&lt; 95%</td>
+</tr>
+<tr>
+<td>GPU</td>
+<td>85-95%</td>
+<td>80-90%</td>
+<td>75-85%</td>
+<td>70-80%</td>
+</tr>
+<tr>
+<td>VRAM</td>
+<td>85-95%</td>
+<td>80-90%</td>
+<td>75-85%</td>
+<td>70-80%</td>
+</tr>
+<tr>
+<td>Disk I/O</td>
+<td>&lt; 80%</td>
+<td>&lt; 85%</td>
+<td>&lt; 90%</td>
+<td>&lt; 95%</td>
+</tr>
+</tbody>
+</table>
+<h3 id="42-thermal-and-power-testing">4.2 Thermal and Power Testing<a class="headerlink" href="#42-thermal-and-power-testing" title="Permanent link">&para;</a></h3>
+<p><strong>Objective</strong>: Validate thermal management and power consumption.</p>
+<h4 id="thermal-targets">Thermal Targets<a class="headerlink" href="#thermal-targets" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>CPU Temperature</strong>: &lt; 85°C under sustained load</li>
+<li><strong>GPU Temperature</strong>: &lt; 83°C under sustained load</li>
+<li><strong>System Stability</strong>: No thermal throttling during normal operation</li>
+</ul>
+<hr />
+<h2 id="5-scalability-and-stress-testing_1">5. Scalability and Stress Testing<a class="headerlink" href="#5-scalability-and-stress-testing_1" title="Permanent link">&para;</a></h2>
+<h3 id="51-concurrent-operation-testing">5.1 Concurrent Operation Testing<a class="headerlink" href="#51-concurrent-operation-testing" title="Permanent link">&para;</a></h3>
+<p><strong>Objective</strong>: Test system behavior under multiple concurrent operations.</p>
+<h4 id="test-scenarios">Test Scenarios<a class="headerlink" href="#test-scenarios" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>Multiple Generation Queue</strong>: Test handling of multiple generation requests</li>
+<li><strong>Background Processing</strong>: Test performance with other applications running</li>
+<li><strong>Extended Operation</strong>: Test stability during hours-long operations</li>
+<li><strong>Resource Contention</strong>: Test behavior when system resources are contested</li>
+</ol>
+<h3 id="52-edge-case-performance-testing">5.2 Edge Case Performance Testing<a class="headerlink" href="#52-edge-case-performance-testing" title="Permanent link">&para;</a></h3>
+<p><strong>Objective</strong>: Validate performance under edge conditions.</p>
+<h4 id="edge-case-scenarios">Edge Case Scenarios<a class="headerlink" href="#edge-case-scenarios" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>Low Disk Space</strong>: Performance when disk space is limited</li>
+<li><strong>High Memory Pressure</strong>: Performance when system memory is constrained</li>
+<li><strong>Thermal Throttling</strong>: Performance when CPU/GPU throttle due to heat</li>
+<li><strong>Network Limitations</strong>: Performance with limited network bandwidth</li>
+<li><strong>Power Limitations</strong>: Performance on battery power or limited PSU</li>
+</ol>
+<hr />
+<h2 id="performance-testing-automation">Performance Testing Automation<a class="headerlink" href="#performance-testing-automation" title="Permanent link">&para;</a></h2>
+<h3 id="automated-performance-test-suite">Automated Performance Test Suite<a class="headerlink" href="#automated-performance-test-suite" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">PerformanceTestSuite</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">installation_path</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">installation_path</span> <span class="o">=</span> <span class="n">installation_path</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cpu_tester</span> <span class="o">=</span> <span class="n">CPUOptimizationTester</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">memory_tester</span> <span class="o">=</span> <span class="n">MemoryOptimizationTester</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gpu_tester</span> <span class="o">=</span> <span class="n">GPUOptimizationTester</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model_tester</span> <span class="o">=</span> <span class="n">ModelLoadingTester</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">run_full_performance_suite</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Run complete performance test suite.&quot;&quot;&quot;</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">(),</span>
+            <span class="s2">&quot;system_info&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_system_info</span><span class="p">(),</span>
+            <span class="s2">&quot;tests&quot;</span><span class="p">:</span> <span class="p">{}</span>
+        <span class="p">}</span>
+
+        <span class="c1"># CPU Performance Tests</span>
+        <span class="n">results</span><span class="p">[</span><span class="s2">&quot;tests&quot;</span><span class="p">][</span><span class="s2">&quot;cpu&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">run_cpu_tests</span><span class="p">()</span>
+
+        <span class="c1"># Memory Performance Tests</span>
+        <span class="n">results</span><span class="p">[</span><span class="s2">&quot;tests&quot;</span><span class="p">][</span><span class="s2">&quot;memory&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">run_memory_tests</span><span class="p">()</span>
+
+        <span class="c1"># GPU Performance Tests</span>
+        <span class="n">results</span><span class="p">[</span><span class="s2">&quot;tests&quot;</span><span class="p">][</span><span class="s2">&quot;gpu&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">run_gpu_tests</span><span class="p">()</span>
+
+        <span class="c1"># Model Loading Tests</span>
+        <span class="n">results</span><span class="p">[</span><span class="s2">&quot;tests&quot;</span><span class="p">][</span><span class="s2">&quot;model_loading&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">run_model_loading_tests</span><span class="p">()</span>
+
+        <span class="c1"># Generate performance report</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">generate_performance_report</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">results</span>
+
+    <span class="k">def</span> <span class="nf">generate_performance_report</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">results</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generate comprehensive performance report.&quot;&quot;&quot;</span>
+        <span class="c1"># Implementation for report generation</span>
+        <span class="k">pass</span>
+</code></pre></div>
+<h2 id="performance-regression-testing">Performance Regression Testing<a class="headerlink" href="#performance-regression-testing" title="Permanent link">&para;</a></h2>
+<h3 id="baseline-management">Baseline Management<a class="headerlink" href="#baseline-management" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Maintain performance baselines for each hardware tier</li>
+<li>Track performance changes across versions</li>
+<li>Alert on significant performance regressions</li>
+<li>Validate performance improvements</li>
+</ul>
+<h3 id="continuous-performance-monitoring">Continuous Performance Monitoring<a class="headerlink" href="#continuous-performance-monitoring" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Automated performance tests in CI/CD pipeline</li>
+<li>Regular performance benchmarking</li>
+<li>Performance trend analysis</li>
+<li>Early detection of performance issues</li>
+</ul>
+<p>This comprehensive performance validation framework ensures that the WAN2.2 local installation system delivers optimal performance across all supported hardware configurations and usage scenarios.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1836 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="WAN2.2 Video Generation System Documentation">
+      
+      
+      
+        <link rel="canonical" href="https://ramcana.github.io/wan/api/tools-health-checker-health_checker/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>tools.health-checker.health_checker - WAN22 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e53b48f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#toolshealth-checkerhealth_checker" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="WAN22 Documentation" class="md-header__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            WAN22 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              tools.health-checker.health_checker
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../WAN22_System_Capabilities_Report/" class="md-tabs__link">
+          
+  
+  
+  System Overview
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../model-orchestrator/requirements/" class="md-tabs__link">
+          
+  
+  
+  Model Orchestrator
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../config/models.toml" class="md-tabs__link">
+          
+  
+  
+  Configuration
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="WAN22 Documentation" class="md-nav__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    WAN22 Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    System Overview
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            System Overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../WAN22_System_Capabilities_Report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Capabilities Report
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Model Orchestrator
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Model Orchestrator
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Requirements
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/tasks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tasks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Configuration
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Configuration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Models Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models_simple.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simple Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Classes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#projecthealthchecker" class="md-nav__link">
+    <span class="md-ellipsis">
+      ProjectHealthChecker
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ProjectHealthChecker">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initself-any-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      init(self: Any, config: )
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_run_single_checkself-any-category-healthcategory-componenthealth" class="md-nav__link">
+    <span class="md-ellipsis">
+      _run_single_check(self: Any, category: HealthCategory) -&gt; ComponentHealth
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_create_error_componentself-any-category-healthcategory-error_msg-str-componenthealth" class="md-nav__link">
+    <span class="md-ellipsis">
+      _create_error_component(self: Any, category: HealthCategory, error_msg: str) -&gt; ComponentHealth
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_calculate_overall_scoreself-any-components-float" class="md-nav__link">
+    <span class="md-ellipsis">
+      _calculate_overall_score(self: Any, components: ) -&gt; float
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_health_scoreself-any-float" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_health_score(self: Any) -&gt; float
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_load_health_trendsself-any-healthtrends" class="md-nav__link">
+    <span class="md-ellipsis">
+      _load_health_trends(self: Any) -&gt; HealthTrends
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_save_health_historyself-any-report-healthreport-none" class="md-nav__link">
+    <span class="md-ellipsis">
+      _save_health_history(self: Any, report: HealthReport) -&gt; None
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#schedule_health_checksself-any-none" class="md-nav__link">
+    <span class="md-ellipsis">
+      schedule_health_checks(self: Any) -&gt; None
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_run_cached_checkself-any-checker-any-category-healthcategory" class="md-nav__link">
+    <span class="md-ellipsis">
+      _run_cached_check(self: Any, checker: Any, category: HealthCategory)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_get_cache_inputs_for_categoryself-any-category-healthcategory-dict" class="md-nav__link">
+    <span class="md-ellipsis">
+      _get_cache_inputs_for_category(self: Any, category: HealthCategory) -&gt; Dict
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_get_files_hashself-any-files-str" class="md-nav__link">
+    <span class="md-ellipsis">
+      _get_files_hash(self: Any, files: ) -&gt; str
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_get_check_priorityself-any-category-healthcategory-int" class="md-nav__link">
+    <span class="md-ellipsis">
+      _get_check_priority(self: Any, category: HealthCategory) -&gt; int
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_get_check_timeoutself-any-category-healthcategory-int" class="md-nav__link">
+    <span class="md-ellipsis">
+      _get_check_timeout(self: Any, category: HealthCategory) -&gt; int
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_convert_lightweight_resultsself-any-lightweight_results-dict-healthreport" class="md-nav__link">
+    <span class="md-ellipsis">
+      _convert_lightweight_results(self: Any, lightweight_results: Dict) -&gt; HealthReport
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clear_cacheself-any" class="md-nav__link">
+    <span class="md-ellipsis">
+      clear_cache(self: Any)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_performance_summaryself-any-dict" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_performance_summary(self: Any) -&gt; Dict
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_optimization_recommendationsself-any-" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_optimization_recommendations(self: Any) -&gt;
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#severity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Severity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#healthcategory" class="md-nav__link">
+    <span class="md-ellipsis">
+      HealthCategory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#healthconfig" class="md-nav__link">
+    <span class="md-ellipsis">
+      HealthConfig
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HealthConfig">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#methods_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initself-any" class="md-nav__link">
+    <span class="md-ellipsis">
+      init(self: Any)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#healthissue" class="md-nav__link">
+    <span class="md-ellipsis">
+      HealthIssue
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HealthIssue">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#methods_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initself-any-severity-any-category-any-title-any-description-any-affected_components-any-remediation_steps-any" class="md-nav__link">
+    <span class="md-ellipsis">
+      init(self: Any, severity: Any, category: Any, title: Any, description: Any, affected_components: Any, remediation_steps: Any)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#componenthealth" class="md-nav__link">
+    <span class="md-ellipsis">
+      ComponentHealth
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ComponentHealth">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#methods_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initself-any-component_name-any-category-any-score-any-status-any-issues-any-metrics-any" class="md-nav__link">
+    <span class="md-ellipsis">
+      init(self: Any, component_name: Any, category: Any, score: Any, status: Any, issues: Any, metrics: Any)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#healthtrends" class="md-nav__link">
+    <span class="md-ellipsis">
+      HealthTrends
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HealthTrends">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#methods_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initself-any-score_history-any-issue_trends-any-improvement_rate-any-degradation_alerts-any" class="md-nav__link">
+    <span class="md-ellipsis">
+      init(self: Any, score_history: Any, issue_trends: Any, improvement_rate: Any, degradation_alerts: Any)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#healthreport" class="md-nav__link">
+    <span class="md-ellipsis">
+      HealthReport
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HealthReport">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#methods_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initself-any-timestamp-any-overall_score-any-component_scores-any-issues-any-recommendations-any-trends-any-metadata-any" class="md-nav__link">
+    <span class="md-ellipsis">
+      init(self: Any, timestamp: Any, overall_score: Any, component_scores: Any, issues: Any, recommendations: Any, trends: Any, metadata: Any)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_issues_by_categoryself-any-category-any" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_issues_by_category(self: Any, category: Any)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_critical_issuesself-any" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_critical_issues(self: Any)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_issues_by_severityself-any-severity-any" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_issues_by_severity(self: Any, severity: Any)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testhealthchecker" class="md-nav__link">
+    <span class="md-ellipsis">
+      TestHealthChecker
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TestHealthChecker">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#methods_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initself-any-config-any" class="md-nav__link">
+    <span class="md-ellipsis">
+      init(self: Any, config: Any)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check_healthself-any" class="md-nav__link">
+    <span class="md-ellipsis">
+      check_health(self: Any)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentationhealthchecker" class="md-nav__link">
+    <span class="md-ellipsis">
+      DocumentationHealthChecker
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DocumentationHealthChecker">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#methods_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initself-any-config-any_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      init(self: Any, config: Any)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check_healthself-any_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      check_health(self: Any)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configurationhealthchecker" class="md-nav__link">
+    <span class="md-ellipsis">
+      ConfigurationHealthChecker
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ConfigurationHealthChecker">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#methods_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initself-any-config-any_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      init(self: Any, config: Any)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check_healthself-any_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      check_health(self: Any)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#codequalitychecker" class="md-nav__link">
+    <span class="md-ellipsis">
+      CodeQualityChecker
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CodeQualityChecker">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#methods_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initself-any-config-any_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      init(self: Any, config: Any)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check_healthself-any_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      check_health(self: Any)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#healthcheckcache" class="md-nav__link">
+    <span class="md-ellipsis">
+      HealthCheckCache
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HealthCheckCache">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#methods_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getself-any-key-any-inputs-any-ttl-any" class="md-nav__link">
+    <span class="md-ellipsis">
+      get(self: Any, key: Any, inputs: Any, ttl: Any)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setself-any-key-any-inputs-any-result-any" class="md-nav__link">
+    <span class="md-ellipsis">
+      set(self: Any, key: Any, inputs: Any, result: Any)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#invalidateself-any" class="md-nav__link">
+    <span class="md-ellipsis">
+      invalidate(self: Any)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performanceprofiler" class="md-nav__link">
+    <span class="md-ellipsis">
+      PerformanceProfiler
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PerformanceProfiler">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#methods_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get_performance_summaryself-any" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_performance_summary(self: Any)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generate_optimization_recommendationsself-any" class="md-nav__link">
+    <span class="md-ellipsis">
+      generate_optimization_recommendations(self: Any)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lightweighthealthchecker" class="md-nav__link">
+    <span class="md-ellipsis">
+      LightweightHealthChecker
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LightweightHealthChecker">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#methods_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initself-any-cache-any-profiler-any" class="md-nav__link">
+    <span class="md-ellipsis">
+      init(self: Any, cache: Any, profiler: Any)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run_lightweight_health_checkself-any" class="md-nav__link">
+    <span class="md-ellipsis">
+      run_lightweight_health_check(self: Any)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#healthchecktask" class="md-nav__link">
+    <span class="md-ellipsis">
+      HealthCheckTask
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HealthCheckTask">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#methods_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initself-any-name-any-function-any-args-any-kwargs-any-priority-any-timeout-any-category-any" class="md-nav__link">
+    <span class="md-ellipsis">
+      init(self: Any, name: Any, function: Any, args: Any, kwargs: Any, priority: Any, timeout: Any, category: Any)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parallelhealthexecutor" class="md-nav__link">
+    <span class="md-ellipsis">
+      ParallelHealthExecutor
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ParallelHealthExecutor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#methods_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#execute_tasksself-any-tasks-any" class="md-nav__link">
+    <span class="md-ellipsis">
+      execute_tasks(self: Any, tasks: Any)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#constants" class="md-nav__link">
+    <span class="md-ellipsis">
+      Constants
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Constants">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#low" class="md-nav__link">
+    <span class="md-ellipsis">
+      LOW
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#medium" class="md-nav__link">
+    <span class="md-ellipsis">
+      MEDIUM
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#high" class="md-nav__link">
+    <span class="md-ellipsis">
+      HIGH
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#critical" class="md-nav__link">
+    <span class="md-ellipsis">
+      CRITICAL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      TESTS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      DOCUMENTATION
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      CONFIGURATION
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code_quality" class="md-nav__link">
+    <span class="md-ellipsis">
+      CODE_QUALITY
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      PERFORMANCE
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security" class="md-nav__link">
+    <span class="md-ellipsis">
+      SECURITY
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="toolshealth-checkerhealth_checker">tools.health-checker.health_checker<a class="headerlink" href="#toolshealth-checkerhealth_checker" title="Permanent link">&para;</a></h1>
+<p>Main project health checker implementation</p>
+<h2 id="classes">Classes<a class="headerlink" href="#classes" title="Permanent link">&para;</a></h2>
+<h3 id="projecthealthchecker">ProjectHealthChecker<a class="headerlink" href="#projecthealthchecker" title="Permanent link">&para;</a></h3>
+<p>Main health checker that orchestrates all health checks and generates reports</p>
+<h4 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h4>
+<h5 id="initself-any-config"><strong>init</strong>(self: Any, config: <ast.Subscript object at 0x0000019431B340A0>)<a class="headerlink" href="#initself-any-config" title="Permanent link">&para;</a></h5>
+<h5 id="_run_single_checkself-any-category-healthcategory-componenthealth">_run_single_check(self: Any, category: HealthCategory) -&gt; ComponentHealth<a class="headerlink" href="#_run_single_checkself-any-category-healthcategory-componenthealth" title="Permanent link">&para;</a></h5>
+<p>Run a single health check</p>
+<h5 id="_create_error_componentself-any-category-healthcategory-error_msg-str-componenthealth">_create_error_component(self: Any, category: HealthCategory, error_msg: str) -&gt; ComponentHealth<a class="headerlink" href="#_create_error_componentself-any-category-healthcategory-error_msg-str-componenthealth" title="Permanent link">&para;</a></h5>
+<p>Create a component health result for errors</p>
+<h5 id="_calculate_overall_scoreself-any-components-float">_calculate_overall_score(self: Any, components: <ast.Subscript object at 0x0000019431B8D510>) -&gt; float<a class="headerlink" href="#_calculate_overall_scoreself-any-components-float" title="Permanent link">&para;</a></h5>
+<p>Calculate weighted overall health score</p>
+<h5 id="get_health_scoreself-any-float">get_health_score(self: Any) -&gt; float<a class="headerlink" href="#get_health_scoreself-any-float" title="Permanent link">&para;</a></h5>
+<p>Get current health score (synchronous version)</p>
+<h5 id="_load_health_trendsself-any-healthtrends">_load_health_trends(self: Any) -&gt; HealthTrends<a class="headerlink" href="#_load_health_trendsself-any-healthtrends" title="Permanent link">&para;</a></h5>
+<p>Load historical health trends</p>
+<h5 id="_save_health_historyself-any-report-healthreport-none">_save_health_history(self: Any, report: HealthReport) -&gt; None<a class="headerlink" href="#_save_health_historyself-any-report-healthreport-none" title="Permanent link">&para;</a></h5>
+<p>Save health report to history</p>
+<h5 id="schedule_health_checksself-any-none">schedule_health_checks(self: Any) -&gt; None<a class="headerlink" href="#schedule_health_checksself-any-none" title="Permanent link">&para;</a></h5>
+<p>Schedule automated health checks</p>
+<h5 id="_run_cached_checkself-any-checker-any-category-healthcategory">_run_cached_check(self: Any, checker: Any, category: HealthCategory)<a class="headerlink" href="#_run_cached_checkself-any-checker-any-category-healthcategory" title="Permanent link">&para;</a></h5>
+<p>Run health check with caching support.</p>
+<h5 id="_get_cache_inputs_for_categoryself-any-category-healthcategory-dict">_get_cache_inputs_for_category(self: Any, category: HealthCategory) -&gt; Dict<a class="headerlink" href="#_get_cache_inputs_for_categoryself-any-category-healthcategory-dict" title="Permanent link">&para;</a></h5>
+<p>Get cache inputs for a specific health check category.</p>
+<h5 id="_get_files_hashself-any-files-str">_get_files_hash(self: Any, files: <ast.Subscript object at 0x000001942FBAF280>) -&gt; str<a class="headerlink" href="#_get_files_hashself-any-files-str" title="Permanent link">&para;</a></h5>
+<p>Get hash of file modification times for cache invalidation.</p>
+<h5 id="_get_check_priorityself-any-category-healthcategory-int">_get_check_priority(self: Any, category: HealthCategory) -&gt; int<a class="headerlink" href="#_get_check_priorityself-any-category-healthcategory-int" title="Permanent link">&para;</a></h5>
+<p>Get priority for health check category.</p>
+<h5 id="_get_check_timeoutself-any-category-healthcategory-int">_get_check_timeout(self: Any, category: HealthCategory) -&gt; int<a class="headerlink" href="#_get_check_timeoutself-any-category-healthcategory-int" title="Permanent link">&para;</a></h5>
+<p>Get timeout for health check category.</p>
+<h5 id="_convert_lightweight_resultsself-any-lightweight_results-dict-healthreport">_convert_lightweight_results(self: Any, lightweight_results: Dict) -&gt; HealthReport<a class="headerlink" href="#_convert_lightweight_resultsself-any-lightweight_results-dict-healthreport" title="Permanent link">&para;</a></h5>
+<p>Convert lightweight check results to HealthReport format.</p>
+<h5 id="clear_cacheself-any">clear_cache(self: Any)<a class="headerlink" href="#clear_cacheself-any" title="Permanent link">&para;</a></h5>
+<p>Clear health check cache.</p>
+<h5 id="get_performance_summaryself-any-dict">get_performance_summary(self: Any) -&gt; Dict<a class="headerlink" href="#get_performance_summaryself-any-dict" title="Permanent link">&para;</a></h5>
+<p>Get performance summary from profiler.</p>
+<h5 id="get_optimization_recommendationsself-any-">get_optimization_recommendations(self: Any) -&gt; <ast.Subscript object at 0x0000019431A9EE00><a class="headerlink" href="#get_optimization_recommendationsself-any-" title="Permanent link">&para;</a></h5>
+<p>Get performance optimization recommendations.</p>
+<h3 id="severity">Severity<a class="headerlink" href="#severity" title="Permanent link">&para;</a></h3>
+<h3 id="healthcategory">HealthCategory<a class="headerlink" href="#healthcategory" title="Permanent link">&para;</a></h3>
+<h3 id="healthconfig">HealthConfig<a class="headerlink" href="#healthconfig" title="Permanent link">&para;</a></h3>
+<h4 id="methods_1">Methods<a class="headerlink" href="#methods_1" title="Permanent link">&para;</a></h4>
+<h5 id="initself-any"><strong>init</strong>(self: Any)<a class="headerlink" href="#initself-any" title="Permanent link">&para;</a></h5>
+<h3 id="healthissue">HealthIssue<a class="headerlink" href="#healthissue" title="Permanent link">&para;</a></h3>
+<h4 id="methods_2">Methods<a class="headerlink" href="#methods_2" title="Permanent link">&para;</a></h4>
+<h5 id="initself-any-severity-any-category-any-title-any-description-any-affected_components-any-remediation_steps-any"><strong>init</strong>(self: Any, severity: Any, category: Any, title: Any, description: Any, affected_components: Any, remediation_steps: Any)<a class="headerlink" href="#initself-any-severity-any-category-any-title-any-description-any-affected_components-any-remediation_steps-any" title="Permanent link">&para;</a></h5>
+<h3 id="componenthealth">ComponentHealth<a class="headerlink" href="#componenthealth" title="Permanent link">&para;</a></h3>
+<h4 id="methods_3">Methods<a class="headerlink" href="#methods_3" title="Permanent link">&para;</a></h4>
+<h5 id="initself-any-component_name-any-category-any-score-any-status-any-issues-any-metrics-any"><strong>init</strong>(self: Any, component_name: Any, category: Any, score: Any, status: Any, issues: Any, metrics: Any)<a class="headerlink" href="#initself-any-component_name-any-category-any-score-any-status-any-issues-any-metrics-any" title="Permanent link">&para;</a></h5>
+<h3 id="healthtrends">HealthTrends<a class="headerlink" href="#healthtrends" title="Permanent link">&para;</a></h3>
+<h4 id="methods_4">Methods<a class="headerlink" href="#methods_4" title="Permanent link">&para;</a></h4>
+<h5 id="initself-any-score_history-any-issue_trends-any-improvement_rate-any-degradation_alerts-any"><strong>init</strong>(self: Any, score_history: Any, issue_trends: Any, improvement_rate: Any, degradation_alerts: Any)<a class="headerlink" href="#initself-any-score_history-any-issue_trends-any-improvement_rate-any-degradation_alerts-any" title="Permanent link">&para;</a></h5>
+<h3 id="healthreport">HealthReport<a class="headerlink" href="#healthreport" title="Permanent link">&para;</a></h3>
+<h4 id="methods_5">Methods<a class="headerlink" href="#methods_5" title="Permanent link">&para;</a></h4>
+<h5 id="initself-any-timestamp-any-overall_score-any-component_scores-any-issues-any-recommendations-any-trends-any-metadata-any"><strong>init</strong>(self: Any, timestamp: Any, overall_score: Any, component_scores: Any, issues: Any, recommendations: Any, trends: Any, metadata: Any)<a class="headerlink" href="#initself-any-timestamp-any-overall_score-any-component_scores-any-issues-any-recommendations-any-trends-any-metadata-any" title="Permanent link">&para;</a></h5>
+<h5 id="get_issues_by_categoryself-any-category-any">get_issues_by_category(self: Any, category: Any)<a class="headerlink" href="#get_issues_by_categoryself-any-category-any" title="Permanent link">&para;</a></h5>
+<h5 id="get_critical_issuesself-any">get_critical_issues(self: Any)<a class="headerlink" href="#get_critical_issuesself-any" title="Permanent link">&para;</a></h5>
+<h5 id="get_issues_by_severityself-any-severity-any">get_issues_by_severity(self: Any, severity: Any)<a class="headerlink" href="#get_issues_by_severityself-any-severity-any" title="Permanent link">&para;</a></h5>
+<h3 id="testhealthchecker">TestHealthChecker<a class="headerlink" href="#testhealthchecker" title="Permanent link">&para;</a></h3>
+<h4 id="methods_6">Methods<a class="headerlink" href="#methods_6" title="Permanent link">&para;</a></h4>
+<h5 id="initself-any-config-any"><strong>init</strong>(self: Any, config: Any)<a class="headerlink" href="#initself-any-config-any" title="Permanent link">&para;</a></h5>
+<h5 id="check_healthself-any">check_health(self: Any)<a class="headerlink" href="#check_healthself-any" title="Permanent link">&para;</a></h5>
+<h3 id="documentationhealthchecker">DocumentationHealthChecker<a class="headerlink" href="#documentationhealthchecker" title="Permanent link">&para;</a></h3>
+<h4 id="methods_7">Methods<a class="headerlink" href="#methods_7" title="Permanent link">&para;</a></h4>
+<h5 id="initself-any-config-any_1"><strong>init</strong>(self: Any, config: Any)<a class="headerlink" href="#initself-any-config-any_1" title="Permanent link">&para;</a></h5>
+<h5 id="check_healthself-any_1">check_health(self: Any)<a class="headerlink" href="#check_healthself-any_1" title="Permanent link">&para;</a></h5>
+<h3 id="configurationhealthchecker">ConfigurationHealthChecker<a class="headerlink" href="#configurationhealthchecker" title="Permanent link">&para;</a></h3>
+<h4 id="methods_8">Methods<a class="headerlink" href="#methods_8" title="Permanent link">&para;</a></h4>
+<h5 id="initself-any-config-any_2"><strong>init</strong>(self: Any, config: Any)<a class="headerlink" href="#initself-any-config-any_2" title="Permanent link">&para;</a></h5>
+<h5 id="check_healthself-any_2">check_health(self: Any)<a class="headerlink" href="#check_healthself-any_2" title="Permanent link">&para;</a></h5>
+<h3 id="codequalitychecker">CodeQualityChecker<a class="headerlink" href="#codequalitychecker" title="Permanent link">&para;</a></h3>
+<h4 id="methods_9">Methods<a class="headerlink" href="#methods_9" title="Permanent link">&para;</a></h4>
+<h5 id="initself-any-config-any_3"><strong>init</strong>(self: Any, config: Any)<a class="headerlink" href="#initself-any-config-any_3" title="Permanent link">&para;</a></h5>
+<h5 id="check_healthself-any_3">check_health(self: Any)<a class="headerlink" href="#check_healthself-any_3" title="Permanent link">&para;</a></h5>
+<h3 id="healthcheckcache">HealthCheckCache<a class="headerlink" href="#healthcheckcache" title="Permanent link">&para;</a></h3>
+<h4 id="methods_10">Methods<a class="headerlink" href="#methods_10" title="Permanent link">&para;</a></h4>
+<h5 id="getself-any-key-any-inputs-any-ttl-any">get(self: Any, key: Any, inputs: Any, ttl: Any)<a class="headerlink" href="#getself-any-key-any-inputs-any-ttl-any" title="Permanent link">&para;</a></h5>
+<h5 id="setself-any-key-any-inputs-any-result-any">set(self: Any, key: Any, inputs: Any, result: Any)<a class="headerlink" href="#setself-any-key-any-inputs-any-result-any" title="Permanent link">&para;</a></h5>
+<h5 id="invalidateself-any">invalidate(self: Any)<a class="headerlink" href="#invalidateself-any" title="Permanent link">&para;</a></h5>
+<h3 id="performanceprofiler">PerformanceProfiler<a class="headerlink" href="#performanceprofiler" title="Permanent link">&para;</a></h3>
+<h4 id="methods_11">Methods<a class="headerlink" href="#methods_11" title="Permanent link">&para;</a></h4>
+<h5 id="get_performance_summaryself-any">get_performance_summary(self: Any)<a class="headerlink" href="#get_performance_summaryself-any" title="Permanent link">&para;</a></h5>
+<h5 id="generate_optimization_recommendationsself-any">generate_optimization_recommendations(self: Any)<a class="headerlink" href="#generate_optimization_recommendationsself-any" title="Permanent link">&para;</a></h5>
+<h3 id="lightweighthealthchecker">LightweightHealthChecker<a class="headerlink" href="#lightweighthealthchecker" title="Permanent link">&para;</a></h3>
+<h4 id="methods_12">Methods<a class="headerlink" href="#methods_12" title="Permanent link">&para;</a></h4>
+<h5 id="initself-any-cache-any-profiler-any"><strong>init</strong>(self: Any, cache: Any, profiler: Any)<a class="headerlink" href="#initself-any-cache-any-profiler-any" title="Permanent link">&para;</a></h5>
+<h5 id="run_lightweight_health_checkself-any">run_lightweight_health_check(self: Any)<a class="headerlink" href="#run_lightweight_health_checkself-any" title="Permanent link">&para;</a></h5>
+<h3 id="healthchecktask">HealthCheckTask<a class="headerlink" href="#healthchecktask" title="Permanent link">&para;</a></h3>
+<h4 id="methods_13">Methods<a class="headerlink" href="#methods_13" title="Permanent link">&para;</a></h4>
+<h5 id="initself-any-name-any-function-any-args-any-kwargs-any-priority-any-timeout-any-category-any"><strong>init</strong>(self: Any, name: Any, function: Any, args: Any, kwargs: Any, priority: Any, timeout: Any, category: Any)<a class="headerlink" href="#initself-any-name-any-function-any-args-any-kwargs-any-priority-any-timeout-any-category-any" title="Permanent link">&para;</a></h5>
+<h3 id="parallelhealthexecutor">ParallelHealthExecutor<a class="headerlink" href="#parallelhealthexecutor" title="Permanent link">&para;</a></h3>
+<h4 id="methods_14">Methods<a class="headerlink" href="#methods_14" title="Permanent link">&para;</a></h4>
+<h5 id="execute_tasksself-any-tasks-any">execute_tasks(self: Any, tasks: Any)<a class="headerlink" href="#execute_tasksself-any-tasks-any" title="Permanent link">&para;</a></h5>
+<h2 id="constants">Constants<a class="headerlink" href="#constants" title="Permanent link">&para;</a></h2>
+<h3 id="low">LOW<a class="headerlink" href="#low" title="Permanent link">&para;</a></h3>
+<p>Type: <code>str</code></p>
+<p>Value: <code>low</code></p>
+<h3 id="medium">MEDIUM<a class="headerlink" href="#medium" title="Permanent link">&para;</a></h3>
+<p>Type: <code>str</code></p>
+<p>Value: <code>medium</code></p>
+<h3 id="high">HIGH<a class="headerlink" href="#high" title="Permanent link">&para;</a></h3>
+<p>Type: <code>str</code></p>
+<p>Value: <code>high</code></p>
+<h3 id="critical">CRITICAL<a class="headerlink" href="#critical" title="Permanent link">&para;</a></h3>
+<p>Type: <code>str</code></p>
+<p>Value: <code>critical</code></p>
+<h3 id="tests">TESTS<a class="headerlink" href="#tests" title="Permanent link">&para;</a></h3>
+<p>Type: <code>str</code></p>
+<p>Value: <code>tests</code></p>
+<h3 id="documentation">DOCUMENTATION<a class="headerlink" href="#documentation" title="Permanent link">&para;</a></h3>
+<p>Type: <code>str</code></p>
+<p>Value: <code>documentation</code></p>
+<h3 id="configuration">CONFIGURATION<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h3>
+<p>Type: <code>str</code></p>
+<p>Value: <code>configuration</code></p>
+<h3 id="code_quality">CODE_QUALITY<a class="headerlink" href="#code_quality" title="Permanent link">&para;</a></h3>
+<p>Type: <code>str</code></p>
+<p>Value: <code>code_quality</code></p>
+<h3 id="performance">PERFORMANCE<a class="headerlink" href="#performance" title="Permanent link">&para;</a></h3>
+<p>Type: <code>str</code></p>
+<p>Value: <code>performance</code></p>
+<h3 id="security">SECURITY<a class="headerlink" href="#security" title="Permanent link">&para;</a></h3>
+<p>Type: <code>str</code></p>
+<p>Value: <code>security</code></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1212 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="WAN2.2 Video Generation System Documentation">
+      
+      
+      
+        <link rel="canonical" href="https://ramcana.github.io/wan/api/tools-health-checker-performance_optimizer/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>tools.health-checker.performance_optimizer - WAN22 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e53b48f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#toolshealth-checkerperformance_optimizer" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="WAN22 Documentation" class="md-header__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            WAN22 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              tools.health-checker.performance_optimizer
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../WAN22_System_Capabilities_Report/" class="md-tabs__link">
+          
+  
+  
+  System Overview
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../model-orchestrator/requirements/" class="md-tabs__link">
+          
+  
+  
+  Model Orchestrator
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../config/models.toml" class="md-tabs__link">
+          
+  
+  
+  Configuration
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="WAN22 Documentation" class="md-nav__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    WAN22 Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    System Overview
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            System Overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../WAN22_System_Capabilities_Report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Capabilities Report
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Model Orchestrator
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Model Orchestrator
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Requirements
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/tasks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tasks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Configuration
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Configuration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Models Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models_simple.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simple Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Classes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#healthcheckcache" class="md-nav__link">
+    <span class="md-ellipsis">
+      HealthCheckCache
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HealthCheckCache">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initself-any-cache_dir-path-default_ttl-int" class="md-nav__link">
+    <span class="md-ellipsis">
+      init(self: Any, cache_dir: Path, default_ttl: int)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_get_cache_keyself-any-check_name-str-inputs-dict-str" class="md-nav__link">
+    <span class="md-ellipsis">
+      _get_cache_key(self: Any, check_name: str, inputs: Dict) -&gt; str
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_get_cache_fileself-any-cache_key-str-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      _get_cache_file(self: Any, cache_key: str) -&gt; Path
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_is_cache_validself-any-cache_file-path-ttl-int-bool" class="md-nav__link">
+    <span class="md-ellipsis">
+      _is_cache_valid(self: Any, cache_file: Path, ttl: int) -&gt; bool
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getself-any-check_name-str-inputs-dict-ttl-int-" class="md-nav__link">
+    <span class="md-ellipsis">
+      get(self: Any, check_name: str, inputs: Dict, ttl: int) -&gt;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setself-any-check_name-str-inputs-dict-result-any" class="md-nav__link">
+    <span class="md-ellipsis">
+      set(self: Any, check_name: str, inputs: Dict, result: Any)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_add_to_memory_cacheself-any-cache_key-str-result-any" class="md-nav__link">
+    <span class="md-ellipsis">
+      _add_to_memory_cache(self: Any, cache_key: str, result: Any)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#invalidateself-any-check_name-str" class="md-nav__link">
+    <span class="md-ellipsis">
+      invalidate(self: Any, check_name: str)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cleanup_expiredself-any-ttl-int" class="md-nav__link">
+    <span class="md-ellipsis">
+      cleanup_expired(self: Any, ttl: int)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performanceprofiler" class="md-nav__link">
+    <span class="md-ellipsis">
+      PerformanceProfiler
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PerformanceProfiler">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#methods_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initself-any-output_dir-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      init(self: Any, output_dir: Path)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#profile_functionself-any-func_name-str" class="md-nav__link">
+    <span class="md-ellipsis">
+      profile_function(self: Any, func_name: str)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_performance_summaryself-any-dict" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_performance_summary(self: Any) -&gt; Dict
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generate_optimization_recommendationsself-any-" class="md-nav__link">
+    <span class="md-ellipsis">
+      generate_optimization_recommendations(self: Any) -&gt;
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#incrementalanalyzer" class="md-nav__link">
+    <span class="md-ellipsis">
+      IncrementalAnalyzer
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="IncrementalAnalyzer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#methods_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initself-any-state_file-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      init(self: Any, state_file: Path)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_load_stateself-any-dict" class="md-nav__link">
+    <span class="md-ellipsis">
+      _load_state(self: Any) -&gt; Dict
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_save_stateself-any" class="md-nav__link">
+    <span class="md-ellipsis">
+      _save_state(self: Any)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_file_hashself-any-file_path-path-str" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_file_hash(self: Any, file_path: Path) -&gt; str
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_changed_filesself-any-file_patterns-" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_changed_files(self: Any, file_patterns: ) -&gt;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#should_run_checkself-any-check_name-str-dependencies-bool" class="md-nav__link">
+    <span class="md-ellipsis">
+      should_run_check(self: Any, check_name: str, dependencies: ) -&gt; bool
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#finalize_analysisself-any" class="md-nav__link">
+    <span class="md-ellipsis">
+      finalize_analysis(self: Any)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lightweighthealthchecker" class="md-nav__link">
+    <span class="md-ellipsis">
+      LightweightHealthChecker
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LightweightHealthChecker">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#methods_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initself-any-cache-healthcheckcache-profiler-performanceprofiler" class="md-nav__link">
+    <span class="md-ellipsis">
+      init(self: Any, cache: HealthCheckCache, profiler: PerformanceProfiler)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lightweight_checksself-any-" class="md-nav__link">
+    <span class="md-ellipsis">
+      lightweight_checks(self: Any) -&gt;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run_lightweight_health_checkself-any-dict" class="md-nav__link">
+    <span class="md-ellipsis">
+      run_lightweight_health_check(self: Any) -&gt; Dict
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_run_single_lightweight_checkself-any-check_name-str-dict" class="md-nav__link">
+    <span class="md-ellipsis">
+      _run_single_lightweight_check(self: Any, check_name: str) -&gt; Dict
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_check_python_syntaxself-any-dict" class="md-nav__link">
+    <span class="md-ellipsis">
+      _check_python_syntax(self: Any) -&gt; Dict
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_check_importsself-any-dict" class="md-nav__link">
+    <span class="md-ellipsis">
+      _check_imports(self: Any) -&gt; Dict
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_check_config_filesself-any-dict" class="md-nav__link">
+    <span class="md-ellipsis">
+      _check_config_files(self: Any) -&gt; Dict
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_check_basic_test_healthself-any-dict" class="md-nav__link">
+    <span class="md-ellipsis">
+      _check_basic_test_health(self: Any) -&gt; Dict
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_check_critical_filesself-any-dict" class="md-nav__link">
+    <span class="md-ellipsis">
+      _check_critical_files(self: Any) -&gt; Dict
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="toolshealth-checkerperformance_optimizer">tools.health-checker.performance_optimizer<a class="headerlink" href="#toolshealth-checkerperformance_optimizer" title="Permanent link">&para;</a></h1>
+<p>Performance optimizer for health monitoring system.</p>
+<p>This module provides performance profiling, caching, and optimization
+capabilities for health checks to ensure fast execution in CI/CD environments.</p>
+<h2 id="classes">Classes<a class="headerlink" href="#classes" title="Permanent link">&para;</a></h2>
+<h3 id="healthcheckcache">HealthCheckCache<a class="headerlink" href="#healthcheckcache" title="Permanent link">&para;</a></h3>
+<p>Caching system for health check results.</p>
+<h4 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h4>
+<h5 id="initself-any-cache_dir-path-default_ttl-int"><strong>init</strong>(self: Any, cache_dir: Path, default_ttl: int)<a class="headerlink" href="#initself-any-cache_dir-path-default_ttl-int" title="Permanent link">&para;</a></h5>
+<h5 id="_get_cache_keyself-any-check_name-str-inputs-dict-str">_get_cache_key(self: Any, check_name: str, inputs: Dict) -&gt; str<a class="headerlink" href="#_get_cache_keyself-any-check_name-str-inputs-dict-str" title="Permanent link">&para;</a></h5>
+<p>Generate cache key from check name and inputs.</p>
+<h5 id="_get_cache_fileself-any-cache_key-str-path">_get_cache_file(self: Any, cache_key: str) -&gt; Path<a class="headerlink" href="#_get_cache_fileself-any-cache_key-str-path" title="Permanent link">&para;</a></h5>
+<p>Get cache file path for given key.</p>
+<h5 id="_is_cache_validself-any-cache_file-path-ttl-int-bool">_is_cache_valid(self: Any, cache_file: Path, ttl: int) -&gt; bool<a class="headerlink" href="#_is_cache_validself-any-cache_file-path-ttl-int-bool" title="Permanent link">&para;</a></h5>
+<p>Check if cache file is still valid.</p>
+<h5 id="getself-any-check_name-str-inputs-dict-ttl-int-">get(self: Any, check_name: str, inputs: Dict, ttl: int) -&gt; <ast.Subscript object at 0x000001942F93A740><a class="headerlink" href="#getself-any-check_name-str-inputs-dict-ttl-int-" title="Permanent link">&para;</a></h5>
+<p>Get cached result for health check.</p>
+<h5 id="setself-any-check_name-str-inputs-dict-result-any">set(self: Any, check_name: str, inputs: Dict, result: Any)<a class="headerlink" href="#setself-any-check_name-str-inputs-dict-result-any" title="Permanent link">&para;</a></h5>
+<p>Cache result for health check.</p>
+<h5 id="_add_to_memory_cacheself-any-cache_key-str-result-any">_add_to_memory_cache(self: Any, cache_key: str, result: Any)<a class="headerlink" href="#_add_to_memory_cacheself-any-cache_key-str-result-any" title="Permanent link">&para;</a></h5>
+<p>Add result to memory cache with LRU eviction.</p>
+<h5 id="invalidateself-any-check_name-str">invalidate(self: Any, check_name: str)<a class="headerlink" href="#invalidateself-any-check_name-str" title="Permanent link">&para;</a></h5>
+<p>Invalidate cache entries.</p>
+<h5 id="cleanup_expiredself-any-ttl-int">cleanup_expired(self: Any, ttl: int)<a class="headerlink" href="#cleanup_expiredself-any-ttl-int" title="Permanent link">&para;</a></h5>
+<p>Clean up expired cache entries.</p>
+<h3 id="performanceprofiler">PerformanceProfiler<a class="headerlink" href="#performanceprofiler" title="Permanent link">&para;</a></h3>
+<p>Performance profiler for health checks.</p>
+<h4 id="methods_1">Methods<a class="headerlink" href="#methods_1" title="Permanent link">&para;</a></h4>
+<h5 id="initself-any-output_dir-path"><strong>init</strong>(self: Any, output_dir: Path)<a class="headerlink" href="#initself-any-output_dir-path" title="Permanent link">&para;</a></h5>
+<h5 id="profile_functionself-any-func_name-str">profile_function(self: Any, func_name: str)<a class="headerlink" href="#profile_functionself-any-func_name-str" title="Permanent link">&para;</a></h5>
+<p>Decorator to profile function execution.</p>
+<h5 id="get_performance_summaryself-any-dict">get_performance_summary(self: Any) -&gt; Dict<a class="headerlink" href="#get_performance_summaryself-any-dict" title="Permanent link">&para;</a></h5>
+<p>Get performance summary for all profiled functions.</p>
+<h5 id="generate_optimization_recommendationsself-any-">generate_optimization_recommendations(self: Any) -&gt; <ast.Subscript object at 0x0000019434253670><a class="headerlink" href="#generate_optimization_recommendationsself-any-" title="Permanent link">&para;</a></h5>
+<p>Generate optimization recommendations based on profiling data.</p>
+<h3 id="incrementalanalyzer">IncrementalAnalyzer<a class="headerlink" href="#incrementalanalyzer" title="Permanent link">&para;</a></h3>
+<p>Incremental analysis system for large codebases.</p>
+<h4 id="methods_2">Methods<a class="headerlink" href="#methods_2" title="Permanent link">&para;</a></h4>
+<h5 id="initself-any-state_file-path"><strong>init</strong>(self: Any, state_file: Path)<a class="headerlink" href="#initself-any-state_file-path" title="Permanent link">&para;</a></h5>
+<h5 id="_load_stateself-any-dict">_load_state(self: Any) -&gt; Dict<a class="headerlink" href="#_load_stateself-any-dict" title="Permanent link">&para;</a></h5>
+<p>Load previous analysis state.</p>
+<h5 id="_save_stateself-any">_save_state(self: Any)<a class="headerlink" href="#_save_stateself-any" title="Permanent link">&para;</a></h5>
+<p>Save current analysis state.</p>
+<h5 id="get_file_hashself-any-file_path-path-str">get_file_hash(self: Any, file_path: Path) -&gt; str<a class="headerlink" href="#get_file_hashself-any-file_path-path-str" title="Permanent link">&para;</a></h5>
+<p>Get hash of file content.</p>
+<h5 id="get_changed_filesself-any-file_patterns-">get_changed_files(self: Any, file_patterns: <ast.Subscript object at 0x0000019434213D60>) -&gt; <ast.Subscript object at 0x0000019434213340><a class="headerlink" href="#get_changed_filesself-any-file_patterns-" title="Permanent link">&para;</a></h5>
+<p>Get list of files that have changed since last analysis.</p>
+<h5 id="should_run_checkself-any-check_name-str-dependencies-bool">should_run_check(self: Any, check_name: str, dependencies: <ast.Subscript object at 0x0000019434211570>) -&gt; bool<a class="headerlink" href="#should_run_checkself-any-check_name-str-dependencies-bool" title="Permanent link">&para;</a></h5>
+<p>Determine if a check should run based on changes.</p>
+<h5 id="finalize_analysisself-any">finalize_analysis(self: Any)<a class="headerlink" href="#finalize_analysisself-any" title="Permanent link">&para;</a></h5>
+<p>Finalize analysis and save state.</p>
+<h3 id="lightweighthealthchecker">LightweightHealthChecker<a class="headerlink" href="#lightweighthealthchecker" title="Permanent link">&para;</a></h3>
+<p>Lightweight health checker for frequent execution.</p>
+<h4 id="methods_3">Methods<a class="headerlink" href="#methods_3" title="Permanent link">&para;</a></h4>
+<h5 id="initself-any-cache-healthcheckcache-profiler-performanceprofiler"><strong>init</strong>(self: Any, cache: HealthCheckCache, profiler: PerformanceProfiler)<a class="headerlink" href="#initself-any-cache-healthcheckcache-profiler-performanceprofiler" title="Permanent link">&para;</a></h5>
+<h5 id="lightweight_checksself-any-">lightweight_checks(self: Any) -&gt; <ast.Subscript object at 0x0000019434210EE0><a class="headerlink" href="#lightweight_checksself-any-" title="Permanent link">&para;</a></h5>
+<p>List of checks suitable for lightweight mode.</p>
+<h5 id="run_lightweight_health_checkself-any-dict">run_lightweight_health_check(self: Any) -&gt; Dict<a class="headerlink" href="#run_lightweight_health_checkself-any-dict" title="Permanent link">&para;</a></h5>
+<p>Run lightweight health check with minimal overhead.</p>
+<h5 id="_run_single_lightweight_checkself-any-check_name-str-dict">_run_single_lightweight_check(self: Any, check_name: str) -&gt; Dict<a class="headerlink" href="#_run_single_lightweight_checkself-any-check_name-str-dict" title="Permanent link">&para;</a></h5>
+<p>Run a single lightweight health check.</p>
+<h5 id="_check_python_syntaxself-any-dict">_check_python_syntax(self: Any) -&gt; Dict<a class="headerlink" href="#_check_python_syntaxself-any-dict" title="Permanent link">&para;</a></h5>
+<p>Quick syntax check for Python files.</p>
+<h5 id="_check_importsself-any-dict">_check_imports(self: Any) -&gt; Dict<a class="headerlink" href="#_check_importsself-any-dict" title="Permanent link">&para;</a></h5>
+<p>Quick import validation.</p>
+<h5 id="_check_config_filesself-any-dict">_check_config_files(self: Any) -&gt; Dict<a class="headerlink" href="#_check_config_filesself-any-dict" title="Permanent link">&para;</a></h5>
+<p>Quick configuration file validation.</p>
+<h5 id="_check_basic_test_healthself-any-dict">_check_basic_test_health(self: Any) -&gt; Dict<a class="headerlink" href="#_check_basic_test_healthself-any-dict" title="Permanent link">&para;</a></h5>
+<p>Quick test health check.</p>
+<h5 id="_check_critical_filesself-any-dict">_check_critical_files(self: Any) -&gt; Dict<a class="headerlink" href="#_check_critical_filesself-any-dict" title="Permanent link">&para;</a></h5>
+<p>Check for presence of critical files.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

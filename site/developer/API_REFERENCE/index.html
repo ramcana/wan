@@ -1,0 +1,2104 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="WAN2.2 Video Generation System Documentation">
+      
+      
+      
+        <link rel="canonical" href="https://ramcana.github.io/wan/developer/API_REFERENCE/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>Model Orchestrator API Reference - WAN22 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e53b48f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#model-orchestrator-api-reference" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="WAN22 Documentation" class="md-header__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            WAN22 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Model Orchestrator API Reference
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../WAN22_System_Capabilities_Report/" class="md-tabs__link">
+          
+  
+  
+  System Overview
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../model-orchestrator/requirements/" class="md-tabs__link">
+          
+  
+  
+  Model Orchestrator
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../config/models.toml" class="md-tabs__link">
+          
+  
+  
+  Configuration
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="WAN22 Documentation" class="md-nav__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    WAN22 Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    System Overview
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            System Overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../WAN22_System_Capabilities_Report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Capabilities Report
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Model Orchestrator
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Model Orchestrator
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Requirements
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/tasks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tasks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Configuration
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Configuration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Models Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models_simple.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simple Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Classes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modelensurer" class="md-nav__link">
+    <span class="md-ellipsis">
+      ModelEnsurer
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ModelEnsurer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#constructor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Constructor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#class-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Class Methods
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instance-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instance Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Instance Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ensure" class="md-nav__link">
+    <span class="md-ellipsis">
+      ensure()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#status" class="md-nav__link">
+    <span class="md-ellipsis">
+      status()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verify_integrity" class="md-nav__link">
+    <span class="md-ellipsis">
+      verify_integrity()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estimate_download_size" class="md-nav__link">
+    <span class="md-ellipsis">
+      estimate_download_size()
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modelregistry" class="md-nav__link">
+    <span class="md-ellipsis">
+      ModelRegistry
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ModelRegistry">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#constructor_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Constructor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#spec" class="md-nav__link">
+    <span class="md-ellipsis">
+      spec()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list_models" class="md-nav__link">
+    <span class="md-ellipsis">
+      list_models()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validate_manifest" class="md-nav__link">
+    <span class="md-ellipsis">
+      validate_manifest()
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modelresolver" class="md-nav__link">
+    <span class="md-ellipsis">
+      ModelResolver
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ModelResolver">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#constructor_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Constructor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#methods_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#local_dir" class="md-nav__link">
+    <span class="md-ellipsis">
+      local_dir()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#temp_dir" class="md-nav__link">
+    <span class="md-ellipsis">
+      temp_dir()
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lockmanager" class="md-nav__link">
+    <span class="md-ellipsis">
+      LockManager
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LockManager">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#constructor_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Constructor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#methods_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acquire_model_lock" class="md-nav__link">
+    <span class="md-ellipsis">
+      acquire_model_lock()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is_locked" class="md-nav__link">
+    <span class="md-ellipsis">
+      is_locked()
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#garbagecollector" class="md-nav__link">
+    <span class="md-ellipsis">
+      GarbageCollector
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GarbageCollector">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#constructor_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Constructor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#methods_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#collect" class="md-nav__link">
+    <span class="md-ellipsis">
+      collect()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pin_model" class="md-nav__link">
+    <span class="md-ellipsis">
+      pin_model()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unpin_model" class="md-nav__link">
+    <span class="md-ellipsis">
+      unpin_model()
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Classes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modelspec" class="md-nav__link">
+    <span class="md-ellipsis">
+      ModelSpec
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filespec" class="md-nav__link">
+    <span class="md-ellipsis">
+      FileSpec
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modelstatus" class="md-nav__link">
+    <span class="md-ellipsis">
+      ModelStatus
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verificationresult" class="md-nav__link">
+    <span class="md-ellipsis">
+      VerificationResult
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gcresult" class="md-nav__link">
+    <span class="md-ellipsis">
+      GCResult
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#orchestratorconfig" class="md-nav__link">
+    <span class="md-ellipsis">
+      OrchestratorConfig
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#storage-backends" class="md-nav__link">
+    <span class="md-ellipsis">
+      Storage Backends
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Storage Backends">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#storagebackend-abstract-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      StorageBackend (Abstract Base)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hfstore" class="md-nav__link">
+    <span class="md-ellipsis">
+      HFStore
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#s3store" class="md-nav__link">
+    <span class="md-ellipsis">
+      S3Store
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#localstore" class="md-nav__link">
+    <span class="md-ellipsis">
+      LocalStore
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exceptions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exceptions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modelorchestratorerror" class="md-nav__link">
+    <span class="md-ellipsis">
+      ModelOrchestratorError
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modelnotfounderror" class="md-nav__link">
+    <span class="md-ellipsis">
+      ModelNotFoundError
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#insufficientspaceerror" class="md-nav__link">
+    <span class="md-ellipsis">
+      InsufficientSpaceError
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checksumverificationerror" class="md-nav__link">
+    <span class="md-ellipsis">
+      ChecksumVerificationError
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#locktimeouterror" class="md-nav__link">
+    <span class="md-ellipsis">
+      LockTimeoutError
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cli-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      CLI Interface
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CLI Interface">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Commands
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#status_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      status
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ensure_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ensure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gc" class="md-nav__link">
+    <span class="md-ellipsis">
+      gc
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verify" class="md-nav__link">
+    <span class="md-ellipsis">
+      verify
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration Examples
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Usage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-usage-with-custom-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Usage with Custom Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#error-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Handling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#progress-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Progress Monitoring
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="model-orchestrator-api-reference">Model Orchestrator API Reference<a class="headerlink" href="#model-orchestrator-api-reference" title="Permanent link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>This document provides comprehensive API reference for the WAN2.2 Model Orchestrator. The API is designed to be simple, consistent, and production-ready.</p>
+<h2 id="core-classes">Core Classes<a class="headerlink" href="#core-classes" title="Permanent link">&para;</a></h2>
+<h3 id="modelensurer">ModelEnsurer<a class="headerlink" href="#modelensurer" title="Permanent link">&para;</a></h3>
+<p>The main interface for model management operations.</p>
+<h4 id="constructor">Constructor<a class="headerlink" href="#constructor" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="n">ModelEnsurer</span><span class="p">(</span>
+    <span class="n">registry</span><span class="p">:</span> <span class="n">ModelRegistry</span><span class="p">,</span>
+    <span class="n">resolver</span><span class="p">:</span> <span class="n">ModelResolver</span><span class="p">,</span>
+    <span class="n">lock_manager</span><span class="p">:</span> <span class="n">LockManager</span><span class="p">,</span>
+    <span class="n">storage_backends</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">StorageBackend</span><span class="p">],</span>
+    <span class="n">config</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">OrchestratorConfig</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span>
+</code></pre></div>
+<h4 id="class-methods">Class Methods<a class="headerlink" href="#class-methods" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="k">def</span> <span class="nf">from_config</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">config_path</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;ModelEnsurer&#39;</span>
+</code></pre></div>
+<p>Creates a ModelEnsurer instance from configuration file or environment variables.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>config_path</code> (optional): Path to configuration file</li>
+</ul>
+<p><strong>Returns:</strong> Configured ModelEnsurer instance</p>
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">ensurer</span> <span class="o">=</span> <span class="n">ModelEnsurer</span><span class="o">.</span><span class="n">from_config</span><span class="p">()</span>
+</code></pre></div>
+<h4 id="instance-methods">Instance Methods<a class="headerlink" href="#instance-methods" title="Permanent link">&para;</a></h4>
+<h5 id="ensure">ensure()<a class="headerlink" href="#ensure" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">ensure</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">model_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">variant</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">force_redownload</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">progress_callback</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Callable</span><span class="p">[[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span> <span class="kc">None</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span>
+</code></pre></div>
+<p>Ensures a model is available locally, downloading if necessary.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>model_id</code>: Canonical model identifier (e.g., "t2v-A14B@2.2.0")</li>
+<li><code>variant</code> (optional): Model variant ("fp16", "bf16", "int8")</li>
+<li><code>force_redownload</code>: Force re-download even if model exists</li>
+<li><code>progress_callback</code>: Callback for download progress (bytes_downloaded, total_bytes)</li>
+</ul>
+<p><strong>Returns:</strong> Absolute path to model directory</p>
+<p><strong>Raises:</strong></p>
+<ul>
+<li><code>ModelNotFoundError</code>: Model not found in manifest</li>
+<li><code>InsufficientSpaceError</code>: Not enough disk space</li>
+<li><code>ChecksumVerificationError</code>: File integrity check failed</li>
+<li><code>LockTimeoutError</code>: Could not acquire model lock</li>
+</ul>
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Basic usage</span>
+<span class="n">model_path</span> <span class="o">=</span> <span class="n">ensurer</span><span class="o">.</span><span class="n">ensure</span><span class="p">(</span><span class="s2">&quot;t2v-A14B@2.2.0&quot;</span><span class="p">)</span>
+
+<span class="c1"># With specific variant</span>
+<span class="n">model_path</span> <span class="o">=</span> <span class="n">ensurer</span><span class="o">.</span><span class="n">ensure</span><span class="p">(</span><span class="s2">&quot;t2v-A14B@2.2.0&quot;</span><span class="p">,</span> <span class="n">variant</span><span class="o">=</span><span class="s2">&quot;bf16&quot;</span><span class="p">)</span>
+
+<span class="c1"># With progress callback</span>
+<span class="k">def</span> <span class="nf">progress</span><span class="p">(</span><span class="n">downloaded</span><span class="p">,</span> <span class="n">total</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Progress: </span><span class="si">{</span><span class="n">downloaded</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">total</span><span class="si">}</span><span class="s2"> bytes&quot;</span><span class="p">)</span>
+
+<span class="n">model_path</span> <span class="o">=</span> <span class="n">ensurer</span><span class="o">.</span><span class="n">ensure</span><span class="p">(</span><span class="s2">&quot;t2v-A14B@2.2.0&quot;</span><span class="p">,</span> <span class="n">progress_callback</span><span class="o">=</span><span class="n">progress</span><span class="p">)</span>
+</code></pre></div>
+<h5 id="status">status()<a class="headerlink" href="#status" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">status</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">model_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">variant</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ModelStatus</span>
+</code></pre></div>
+<p>Gets the current status of a model without triggering downloads.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>model_id</code>: Canonical model identifier</li>
+<li><code>variant</code> (optional): Model variant</li>
+</ul>
+<p><strong>Returns:</strong> ModelStatus object with current state</p>
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">status</span> <span class="o">=</span> <span class="n">ensurer</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="s2">&quot;t2v-A14B@2.2.0&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;State: </span><span class="si">{</span><span class="n">status</span><span class="o">.</span><span class="n">state</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Missing bytes: </span><span class="si">{</span><span class="n">status</span><span class="o">.</span><span class="n">bytes_needed</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h5 id="verify_integrity">verify_integrity()<a class="headerlink" href="#verify_integrity" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">verify_integrity</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">model_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">variant</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">VerificationResult</span>
+</code></pre></div>
+<p>Verifies the integrity of a downloaded model.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>model_id</code>: Canonical model identifier</li>
+<li><code>variant</code> (optional): Model variant</li>
+</ul>
+<p><strong>Returns:</strong> VerificationResult with verification details</p>
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">result</span> <span class="o">=</span> <span class="n">ensurer</span><span class="o">.</span><span class="n">verify_integrity</span><span class="p">(</span><span class="s2">&quot;t2v-A14B@2.2.0&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">result</span><span class="o">.</span><span class="n">verified</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Model integrity verified&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Verification failed: </span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">errors</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h5 id="estimate_download_size">estimate_download_size()<a class="headerlink" href="#estimate_download_size" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">estimate_download_size</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">model_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">variant</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span>
+</code></pre></div>
+<p>Estimates the download size for a model.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>model_id</code>: Canonical model identifier</li>
+<li><code>variant</code> (optional): Model variant</li>
+</ul>
+<p><strong>Returns:</strong> Estimated download size in bytes</p>
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">size</span> <span class="o">=</span> <span class="n">ensurer</span><span class="o">.</span><span class="n">estimate_download_size</span><span class="p">(</span><span class="s2">&quot;t2v-A14B@2.2.0&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Download size: </span><span class="si">{</span><span class="n">size</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="mi">1024</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> GB&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="modelregistry">ModelRegistry<a class="headerlink" href="#modelregistry" title="Permanent link">&para;</a></h3>
+<p>Manages model manifest and specifications.</p>
+<h4 id="constructor_1">Constructor<a class="headerlink" href="#constructor_1" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="n">ModelRegistry</span><span class="p">(</span><span class="n">manifest_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>manifest_path</code>: Path to models.toml manifest file</li>
+</ul>
+<h4 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h4>
+<h5 id="spec">spec()<a class="headerlink" href="#spec" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">spec</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">model_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">variant</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ModelSpec</span>
+</code></pre></div>
+<p>Gets the specification for a model.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>model_id</code>: Canonical model identifier</li>
+<li><code>variant</code> (optional): Model variant</li>
+</ul>
+<p><strong>Returns:</strong> ModelSpec object</p>
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">registry</span> <span class="o">=</span> <span class="n">ModelRegistry</span><span class="p">(</span><span class="s2">&quot;config/models.toml&quot;</span><span class="p">)</span>
+<span class="n">spec</span> <span class="o">=</span> <span class="n">registry</span><span class="o">.</span><span class="n">spec</span><span class="p">(</span><span class="s2">&quot;t2v-A14B@2.2.0&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Model version: </span><span class="si">{</span><span class="n">spec</span><span class="o">.</span><span class="n">version</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Available variants: </span><span class="si">{</span><span class="n">spec</span><span class="o">.</span><span class="n">variants</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h5 id="list_models">list_models()<a class="headerlink" href="#list_models" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">list_models</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</code></pre></div>
+<p>Lists all available models in the manifest.</p>
+<p><strong>Returns:</strong> List of model identifiers</p>
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">models</span> <span class="o">=</span> <span class="n">registry</span><span class="o">.</span><span class="n">list_models</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Available: </span><span class="si">{</span><span class="n">model</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h5 id="validate_manifest">validate_manifest()<a class="headerlink" href="#validate_manifest" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">validate_manifest</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">ValidationError</span><span class="p">]</span>
+</code></pre></div>
+<p>Validates the manifest file for errors.</p>
+<p><strong>Returns:</strong> List of validation errors (empty if valid)</p>
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">errors</span> <span class="o">=</span> <span class="n">registry</span><span class="o">.</span><span class="n">validate_manifest</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">errors</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">error</span> <span class="ow">in</span> <span class="n">errors</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Validation error: </span><span class="si">{</span><span class="n">error</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="modelresolver">ModelResolver<a class="headerlink" href="#modelresolver" title="Permanent link">&para;</a></h3>
+<p>Handles deterministic path resolution.</p>
+<h4 id="constructor_2">Constructor<a class="headerlink" href="#constructor_2" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="n">ModelResolver</span><span class="p">(</span><span class="n">models_root</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>models_root</code>: Base directory for model storage</li>
+</ul>
+<h4 id="methods_1">Methods<a class="headerlink" href="#methods_1" title="Permanent link">&para;</a></h4>
+<h5 id="local_dir">local_dir()<a class="headerlink" href="#local_dir" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">local_dir</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">model_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">variant</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span>
+</code></pre></div>
+<p>Gets the local directory path for a model.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>model_id</code>: Canonical model identifier</li>
+<li><code>variant</code> (optional): Model variant</li>
+</ul>
+<p><strong>Returns:</strong> Absolute path to model directory</p>
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">resolver</span> <span class="o">=</span> <span class="n">ModelResolver</span><span class="p">(</span><span class="s2">&quot;/data/models&quot;</span><span class="p">)</span>
+<span class="n">path</span> <span class="o">=</span> <span class="n">resolver</span><span class="o">.</span><span class="n">local_dir</span><span class="p">(</span><span class="s2">&quot;t2v-A14B@2.2.0&quot;</span><span class="p">,</span> <span class="n">variant</span><span class="o">=</span><span class="s2">&quot;fp16&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Model path: </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h5 id="temp_dir">temp_dir()<a class="headerlink" href="#temp_dir" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">temp_dir</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span>
+</code></pre></div>
+<p>Gets a temporary directory path for downloading.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>model_id</code>: Canonical model identifier</li>
+</ul>
+<p><strong>Returns:</strong> Absolute path to temporary directory</p>
+<h3 id="lockmanager">LockManager<a class="headerlink" href="#lockmanager" title="Permanent link">&para;</a></h3>
+<p>Manages cross-process synchronization.</p>
+<h4 id="constructor_3">Constructor<a class="headerlink" href="#constructor_3" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="n">LockManager</span><span class="p">(</span><span class="n">lock_dir</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>lock_dir</code>: Directory for lock files</li>
+</ul>
+<h4 id="methods_2">Methods<a class="headerlink" href="#methods_2" title="Permanent link">&para;</a></h4>
+<h5 id="acquire_model_lock">acquire_model_lock()<a class="headerlink" href="#acquire_model_lock" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">acquire_model_lock</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">model_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">timeout</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">300.0</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ContextManager</span>
+</code></pre></div>
+<p>Acquires an exclusive lock for a model.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>model_id</code>: Canonical model identifier</li>
+<li><code>timeout</code>: Lock acquisition timeout in seconds</li>
+</ul>
+<p><strong>Returns:</strong> Context manager for lock</p>
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">lock_manager</span> <span class="o">=</span> <span class="n">LockManager</span><span class="p">(</span><span class="s2">&quot;/data/models/.locks&quot;</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">lock_manager</span><span class="o">.</span><span class="n">acquire_model_lock</span><span class="p">(</span><span class="s2">&quot;t2v-A14B@2.2.0&quot;</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mf">60.0</span><span class="p">):</span>
+    <span class="c1"># Perform exclusive operations on the model</span>
+    <span class="k">pass</span>
+</code></pre></div>
+<h5 id="is_locked">is_locked()<a class="headerlink" href="#is_locked" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">is_locked</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span>
+</code></pre></div>
+<p>Checks if a model is currently locked.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>model_id</code>: Canonical model identifier</li>
+</ul>
+<p><strong>Returns:</strong> True if model is locked</p>
+<h3 id="garbagecollector">GarbageCollector<a class="headerlink" href="#garbagecollector" title="Permanent link">&para;</a></h3>
+<p>Manages disk space and model cleanup.</p>
+<h4 id="constructor_4">Constructor<a class="headerlink" href="#constructor_4" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="n">GarbageCollector</span><span class="p">(</span>
+    <span class="n">resolver</span><span class="p">:</span> <span class="n">ModelResolver</span><span class="p">,</span>
+    <span class="n">max_total_size</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">max_model_age</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">timedelta</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span>
+</code></pre></div>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>resolver</code>: ModelResolver instance</li>
+<li><code>max_total_size</code>: Maximum total storage size in bytes</li>
+<li><code>max_model_age</code>: Maximum age for models before cleanup</li>
+</ul>
+<h4 id="methods_3">Methods<a class="headerlink" href="#methods_3" title="Permanent link">&para;</a></h4>
+<h5 id="collect">collect()<a class="headerlink" href="#collect" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">collect</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">dry_run</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">aggressive</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">GCResult</span>
+</code></pre></div>
+<p>Runs garbage collection to free disk space.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>dry_run</code>: Only report what would be cleaned, don't actually delete</li>
+<li><code>aggressive</code>: More aggressive cleanup (ignore access times)</li>
+</ul>
+<p><strong>Returns:</strong> GCResult with cleanup statistics</p>
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">gc</span> <span class="o">=</span> <span class="n">GarbageCollector</span><span class="p">(</span><span class="n">resolver</span><span class="p">,</span> <span class="n">max_total_size</span><span class="o">=</span><span class="mi">100</span> <span class="o">*</span> <span class="mi">1024</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># 100GB</span>
+
+<span class="c1"># Dry run to see what would be cleaned</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">(</span><span class="n">dry_run</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Would reclaim: </span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">bytes_reclaimable</span><span class="si">}</span><span class="s2"> bytes&quot;</span><span class="p">)</span>
+
+<span class="c1"># Actually perform cleanup</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">(</span><span class="n">dry_run</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Reclaimed: </span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">bytes_reclaimed</span><span class="si">}</span><span class="s2"> bytes&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h5 id="pin_model">pin_model()<a class="headerlink" href="#pin_model" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">pin_model</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">model_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">variant</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</code></pre></div>
+<p>Pins a model to protect it from garbage collection.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>model_id</code>: Canonical model identifier</li>
+<li><code>variant</code> (optional): Model variant</li>
+</ul>
+<h5 id="unpin_model">unpin_model()<a class="headerlink" href="#unpin_model" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">unpin_model</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">model_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">variant</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</code></pre></div>
+<p>Unpins a model, allowing it to be garbage collected.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>model_id</code>: Canonical model identifier</li>
+<li><code>variant</code> (optional): Model variant</li>
+</ul>
+<h2 id="data-classes">Data Classes<a class="headerlink" href="#data-classes" title="Permanent link">&para;</a></h2>
+<h3 id="modelspec">ModelSpec<a class="headerlink" href="#modelspec" title="Permanent link">&para;</a></h3>
+<p>Represents a model specification from the manifest.</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">ModelSpec</span><span class="p">:</span>
+    <span class="n">model_id</span><span class="p">:</span> <span class="nb">str</span>                     <span class="c1"># Canonical model ID</span>
+    <span class="n">version</span><span class="p">:</span> <span class="nb">str</span>                      <span class="c1"># Model version</span>
+    <span class="n">variants</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>               <span class="c1"># Available variants</span>
+    <span class="n">default_variant</span><span class="p">:</span> <span class="nb">str</span>              <span class="c1"># Default variant</span>
+    <span class="n">files</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">FileSpec</span><span class="p">]</span>             <span class="c1"># Required files</span>
+    <span class="n">sources</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>                <span class="c1"># Source URLs in priority order</span>
+    <span class="n">allow_patterns</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>         <span class="c1"># File patterns for selective download</span>
+    <span class="n">resolution_caps</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>        <span class="c1"># Supported resolutions</span>
+    <span class="n">optional_components</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>    <span class="c1"># Optional components</span>
+    <span class="n">lora_required</span><span class="p">:</span> <span class="nb">bool</span>               <span class="c1"># Whether LoRA is required</span>
+</code></pre></div>
+<h3 id="filespec">FileSpec<a class="headerlink" href="#filespec" title="Permanent link">&para;</a></h3>
+<p>Represents a file specification within a model.</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">FileSpec</span><span class="p">:</span>
+    <span class="n">path</span><span class="p">:</span> <span class="nb">str</span>                         <span class="c1"># Relative path within model</span>
+    <span class="n">size</span><span class="p">:</span> <span class="nb">int</span>                         <span class="c1"># Expected file size in bytes</span>
+    <span class="n">sha256</span><span class="p">:</span> <span class="nb">str</span>                       <span class="c1"># SHA256 checksum</span>
+    <span class="n">optional</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>            <span class="c1"># Whether file is optional</span>
+</code></pre></div>
+<h3 id="modelstatus">ModelStatus<a class="headerlink" href="#modelstatus" title="Permanent link">&para;</a></h3>
+<p>Represents the current status of a model.</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">ModelStatus</span><span class="p">:</span>
+    <span class="n">model_id</span><span class="p">:</span> <span class="nb">str</span>                     <span class="c1"># Model identifier</span>
+    <span class="n">variant</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>            <span class="c1"># Model variant</span>
+    <span class="n">state</span><span class="p">:</span> <span class="nb">str</span>                        <span class="c1"># Current state</span>
+    <span class="n">bytes_needed</span><span class="p">:</span> <span class="nb">int</span>                 <span class="c1"># Bytes needed to complete</span>
+    <span class="n">missing_files</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>          <span class="c1"># List of missing files</span>
+    <span class="n">last_verified</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">datetime</span><span class="p">]</span> <span class="c1"># Last verification time</span>
+</code></pre></div>
+<p><strong>State Values:</strong></p>
+<ul>
+<li><code>NOT_PRESENT</code>: Model not downloaded</li>
+<li><code>PARTIAL</code>: Partially downloaded</li>
+<li><code>VERIFYING</code>: Currently being verified</li>
+<li><code>COMPLETE</code>: Fully downloaded and verified</li>
+<li><code>CORRUPT</code>: Downloaded but failed verification</li>
+</ul>
+<h3 id="verificationresult">VerificationResult<a class="headerlink" href="#verificationresult" title="Permanent link">&para;</a></h3>
+<p>Represents the result of integrity verification.</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">VerificationResult</span><span class="p">:</span>
+    <span class="n">verified</span><span class="p">:</span> <span class="nb">bool</span>                    <span class="c1"># Overall verification status</span>
+    <span class="n">partial_verification</span><span class="p">:</span> <span class="nb">bool</span>        <span class="c1"># Whether partial verification was used</span>
+    <span class="n">verified_files</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>         <span class="c1"># Successfully verified files</span>
+    <span class="n">failed_files</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>           <span class="c1"># Files that failed verification</span>
+    <span class="n">errors</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>                 <span class="c1"># Verification errors</span>
+</code></pre></div>
+<h3 id="gcresult">GCResult<a class="headerlink" href="#gcresult" title="Permanent link">&para;</a></h3>
+<p>Represents the result of garbage collection.</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">GCResult</span><span class="p">:</span>
+    <span class="n">bytes_reclaimed</span><span class="p">:</span> <span class="nb">int</span>              <span class="c1"># Bytes actually reclaimed</span>
+    <span class="n">bytes_reclaimable</span><span class="p">:</span> <span class="nb">int</span>            <span class="c1"># Bytes that could be reclaimed</span>
+    <span class="n">models_removed</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>         <span class="c1"># Models that were removed</span>
+    <span class="n">models_preserved</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>       <span class="c1"># Models that were preserved</span>
+    <span class="n">errors</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>                 <span class="c1"># Any errors during cleanup</span>
+</code></pre></div>
+<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
+<h3 id="orchestratorconfig">OrchestratorConfig<a class="headerlink" href="#orchestratorconfig" title="Permanent link">&para;</a></h3>
+<p>Configuration class for the orchestrator.</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">OrchestratorConfig</span><span class="p">:</span>
+    <span class="n">models_root</span><span class="p">:</span> <span class="nb">str</span>                          <span class="c1"># Base directory for models</span>
+    <span class="n">manifest_path</span><span class="p">:</span> <span class="nb">str</span>                        <span class="c1"># Path to manifest file</span>
+    <span class="n">max_concurrent_downloads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span>         <span class="c1"># Concurrent download limit</span>
+    <span class="n">download_timeout</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">3600.0</span>          <span class="c1"># Download timeout in seconds</span>
+    <span class="n">retry_attempts</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span>                   <span class="c1"># Number of retry attempts</span>
+    <span class="n">retry_backoff_factor</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">2.0</span>         <span class="c1"># Exponential backoff factor</span>
+    <span class="n">enable_garbage_collection</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>    <span class="c1"># Enable automatic GC</span>
+    <span class="n">max_total_size</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>      <span class="c1"># Maximum total storage size</span>
+    <span class="n">max_model_age</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">timedelta</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span> <span class="c1"># Maximum model age</span>
+    <span class="n">hf_cache_dir</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>        <span class="c1"># HuggingFace cache directory</span>
+    <span class="n">s3_endpoint_url</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>     <span class="c1"># S3 endpoint URL</span>
+    <span class="n">enable_metrics</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>               <span class="c1"># Enable metrics collection</span>
+    <span class="n">log_level</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;INFO&quot;</span>                   <span class="c1"># Logging level</span>
+</code></pre></div>
+<h2 id="storage-backends">Storage Backends<a class="headerlink" href="#storage-backends" title="Permanent link">&para;</a></h2>
+<h3 id="storagebackend-abstract-base">StorageBackend (Abstract Base)<a class="headerlink" href="#storagebackend-abstract-base" title="Permanent link">&para;</a></h3>
+<p>Base class for storage backends.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">StorageBackend</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">can_handle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source_url</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check if this backend can handle the given URL.&quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+
+    <span class="k">def</span> <span class="nf">download</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">source_url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">local_dir</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">file_specs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">FileSpec</span><span class="p">],</span>
+        <span class="n">progress_callback</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Callable</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DownloadResult</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Download files from the source to local directory.&quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+
+    <span class="k">def</span> <span class="nf">verify_availability</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source_url</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Verify that the source is available.&quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+
+    <span class="k">def</span> <span class="nf">estimate_download_size</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">source_url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">file_specs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">FileSpec</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Estimate the total download size.&quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+</code></pre></div>
+<h3 id="hfstore">HFStore<a class="headerlink" href="#hfstore" title="Permanent link">&para;</a></h3>
+<p>HuggingFace Hub storage backend.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">HFStore</span><span class="p">(</span><span class="n">StorageBackend</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">token</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">cache_dir</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">enable_hf_transfer</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize HuggingFace store.&quot;&quot;&quot;</span>
+</code></pre></div>
+<p><strong>URL Format:</strong> <code>hf://organization/model-name</code></p>
+<h3 id="s3store">S3Store<a class="headerlink" href="#s3store" title="Permanent link">&para;</a></h3>
+<p>S3/MinIO storage backend.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">S3Store</span><span class="p">(</span><span class="n">StorageBackend</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">access_key_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">secret_access_key</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">endpoint_url</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">region</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;us-east-1&quot;</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize S3 store.&quot;&quot;&quot;</span>
+</code></pre></div>
+<p><strong>URL Format:</strong> <code>s3://bucket-name/path/to/model</code></p>
+<h3 id="localstore">LocalStore<a class="headerlink" href="#localstore" title="Permanent link">&para;</a></h3>
+<p>Local filesystem storage backend.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">LocalStore</span><span class="p">(</span><span class="n">StorageBackend</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">base_path</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize local store.&quot;&quot;&quot;</span>
+</code></pre></div>
+<p><strong>URL Format:</strong> <code>local://path/to/model</code></p>
+<h2 id="exceptions">Exceptions<a class="headerlink" href="#exceptions" title="Permanent link">&para;</a></h2>
+<h3 id="modelorchestratorerror">ModelOrchestratorError<a class="headerlink" href="#modelorchestratorerror" title="Permanent link">&para;</a></h3>
+<p>Base exception for all orchestrator errors.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">ModelOrchestratorError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">error_code</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">error_code</span> <span class="o">=</span> <span class="n">error_code</span>
+</code></pre></div>
+<h3 id="modelnotfounderror">ModelNotFoundError<a class="headerlink" href="#modelnotfounderror" title="Permanent link">&para;</a></h3>
+<p>Raised when a requested model is not found.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">ModelNotFoundError</span><span class="p">(</span><span class="n">ModelOrchestratorError</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">available_models</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="n">message</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Model not found: </span><span class="si">{</span><span class="n">model_id</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">if</span> <span class="n">available_models</span><span class="p">:</span>
+            <span class="n">message</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;. Available models: </span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">available_models</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="s2">&quot;MODEL_NOT_FOUND&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model_id</span> <span class="o">=</span> <span class="n">model_id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">available_models</span> <span class="o">=</span> <span class="n">available_models</span>
+</code></pre></div>
+<h3 id="insufficientspaceerror">InsufficientSpaceError<a class="headerlink" href="#insufficientspaceerror" title="Permanent link">&para;</a></h3>
+<p>Raised when there's not enough disk space for an operation.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">InsufficientSpaceError</span><span class="p">(</span><span class="n">ModelOrchestratorError</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">required_bytes</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">available_bytes</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="n">message</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Insufficient disk space: need </span><span class="si">{</span><span class="n">required_bytes</span><span class="si">}</span><span class="s2"> bytes, have </span><span class="si">{</span><span class="n">available_bytes</span><span class="si">}</span><span class="s2"> bytes&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="s2">&quot;NO_SPACE&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">required_bytes</span> <span class="o">=</span> <span class="n">required_bytes</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">available_bytes</span> <span class="o">=</span> <span class="n">available_bytes</span>
+</code></pre></div>
+<h3 id="checksumverificationerror">ChecksumVerificationError<a class="headerlink" href="#checksumverificationerror" title="Permanent link">&para;</a></h3>
+<p>Raised when file integrity verification fails.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">ChecksumVerificationError</span><span class="p">(</span><span class="n">ModelOrchestratorError</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">expected</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">actual</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">message</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Checksum verification failed for </span><span class="si">{</span><span class="n">file_path</span><span class="si">}</span><span class="s2">: expected </span><span class="si">{</span><span class="n">expected</span><span class="si">}</span><span class="s2">, got </span><span class="si">{</span><span class="n">actual</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="s2">&quot;CHECKSUM_FAIL&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">file_path</span> <span class="o">=</span> <span class="n">file_path</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">expected_checksum</span> <span class="o">=</span> <span class="n">expected</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">actual_checksum</span> <span class="o">=</span> <span class="n">actual</span>
+</code></pre></div>
+<h3 id="locktimeouterror">LockTimeoutError<a class="headerlink" href="#locktimeouterror" title="Permanent link">&para;</a></h3>
+<p>Raised when a lock cannot be acquired within the timeout period.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">LockTimeoutError</span><span class="p">(</span><span class="n">ModelOrchestratorError</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="n">message</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Lock timeout for model </span><span class="si">{</span><span class="n">model_id</span><span class="si">}</span><span class="s2"> after </span><span class="si">{</span><span class="n">timeout</span><span class="si">}</span><span class="s2"> seconds&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="s2">&quot;LOCK_TIMEOUT&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model_id</span> <span class="o">=</span> <span class="n">model_id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span> <span class="o">=</span> <span class="n">timeout</span>
+</code></pre></div>
+<h2 id="cli-interface">CLI Interface<a class="headerlink" href="#cli-interface" title="Permanent link">&para;</a></h2>
+<p>The Model Orchestrator provides a command-line interface through the <code>wan models</code> command.</p>
+<h3 id="commands">Commands<a class="headerlink" href="#commands" title="Permanent link">&para;</a></h3>
+<h4 id="status_1">status<a class="headerlink" href="#status_1" title="Permanent link">&para;</a></h4>
+<p>Show the status of models.</p>
+<div class="highlight"><pre><span></span><code>wan<span class="w"> </span>models<span class="w"> </span>status<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span>
+</code></pre></div>
+<p><strong>Options:</strong></p>
+<ul>
+<li><code>--model MODEL_ID</code>: Show status for specific model</li>
+<li><code>--json</code>: Output in JSON format</li>
+<li><code>--verbose</code>: Show detailed information</li>
+</ul>
+<p><strong>Examples:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Show all models</span>
+wan<span class="w"> </span>models<span class="w"> </span>status
+
+<span class="c1"># Show specific model</span>
+wan<span class="w"> </span>models<span class="w"> </span>status<span class="w"> </span>--model<span class="w"> </span>t2v-A14B@2.2.0
+
+<span class="c1"># JSON output for automation</span>
+wan<span class="w"> </span>models<span class="w"> </span>status<span class="w"> </span>--json
+</code></pre></div>
+<h4 id="ensure_1">ensure<a class="headerlink" href="#ensure_1" title="Permanent link">&para;</a></h4>
+<p>Ensure models are downloaded and available.</p>
+<div class="highlight"><pre><span></span><code>wan<span class="w"> </span>models<span class="w"> </span>ensure<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span>
+</code></pre></div>
+<p><strong>Options:</strong></p>
+<ul>
+<li><code>--all</code>: Ensure all models in manifest</li>
+<li><code>--only MODEL_ID</code>: Ensure only specific model</li>
+<li><code>--variant VARIANT</code>: Specify model variant</li>
+<li><code>--force</code>: Force re-download even if model exists</li>
+<li><code>--json</code>: Output in JSON format</li>
+</ul>
+<p><strong>Examples:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Download all models</span>
+wan<span class="w"> </span>models<span class="w"> </span>ensure<span class="w"> </span>--all
+
+<span class="c1"># Download specific model</span>
+wan<span class="w"> </span>models<span class="w"> </span>ensure<span class="w"> </span>--only<span class="w"> </span>t2v-A14B@2.2.0
+
+<span class="c1"># Download with specific variant</span>
+wan<span class="w"> </span>models<span class="w"> </span>ensure<span class="w"> </span>--only<span class="w"> </span>t2v-A14B@2.2.0<span class="w"> </span>--variant<span class="w"> </span>bf16
+</code></pre></div>
+<h4 id="gc">gc<a class="headerlink" href="#gc" title="Permanent link">&para;</a></h4>
+<p>Run garbage collection to free disk space.</p>
+<div class="highlight"><pre><span></span><code>wan<span class="w"> </span>models<span class="w"> </span>gc<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span>
+</code></pre></div>
+<p><strong>Options:</strong></p>
+<ul>
+<li><code>--dry-run</code>: Show what would be cleaned without actually deleting</li>
+<li><code>--aggressive</code>: More aggressive cleanup</li>
+<li><code>--max-age DAYS</code>: Maximum age for models in days</li>
+<li><code>--max-size SIZE</code>: Maximum total size (e.g., "100GB")</li>
+</ul>
+<p><strong>Examples:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Dry run to see what would be cleaned</span>
+wan<span class="w"> </span>models<span class="w"> </span>gc<span class="w"> </span>--dry-run
+
+<span class="c1"># Clean models older than 30 days</span>
+wan<span class="w"> </span>models<span class="w"> </span>gc<span class="w"> </span>--max-age<span class="w"> </span><span class="m">30</span>
+
+<span class="c1"># Aggressive cleanup</span>
+wan<span class="w"> </span>models<span class="w"> </span>gc<span class="w"> </span>--aggressive
+</code></pre></div>
+<h4 id="verify">verify<a class="headerlink" href="#verify" title="Permanent link">&para;</a></h4>
+<p>Verify model integrity.</p>
+<div class="highlight"><pre><span></span><code>wan<span class="w"> </span>models<span class="w"> </span>verify<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span>
+</code></pre></div>
+<p><strong>Options:</strong></p>
+<ul>
+<li><code>--all</code>: Verify all models</li>
+<li><code>--model MODEL_ID</code>: Verify specific model</li>
+<li><code>--fix</code>: Attempt to fix corrupted models by re-downloading</li>
+</ul>
+<p><strong>Examples:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Verify all models</span>
+wan<span class="w"> </span>models<span class="w"> </span>verify<span class="w"> </span>--all
+
+<span class="c1"># Verify and fix specific model</span>
+wan<span class="w"> </span>models<span class="w"> </span>verify<span class="w"> </span>--model<span class="w"> </span>t2v-A14B@2.2.0<span class="w"> </span>--fix
+</code></pre></div>
+<h2 id="integration-examples">Integration Examples<a class="headerlink" href="#integration-examples" title="Permanent link">&para;</a></h2>
+<h3 id="basic-usage">Basic Usage<a class="headerlink" href="#basic-usage" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">backend.core.model_orchestrator</span> <span class="kn">import</span> <span class="n">ModelEnsurer</span>
+
+<span class="c1"># Initialize from configuration</span>
+<span class="n">ensurer</span> <span class="o">=</span> <span class="n">ModelEnsurer</span><span class="o">.</span><span class="n">from_config</span><span class="p">()</span>
+
+<span class="c1"># Ensure model is available</span>
+<span class="n">model_path</span> <span class="o">=</span> <span class="n">ensurer</span><span class="o">.</span><span class="n">ensure</span><span class="p">(</span><span class="s2">&quot;t2v-A14B@2.2.0&quot;</span><span class="p">,</span> <span class="n">variant</span><span class="o">=</span><span class="s2">&quot;fp16&quot;</span><span class="p">)</span>
+
+<span class="c1"># Use model path with your pipeline</span>
+<span class="kn">from</span> <span class="nn">your_pipeline</span> <span class="kn">import</span> <span class="n">WanT2VPipeline</span>
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">WanT2VPipeline</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="advanced-usage-with-custom-configuration">Advanced Usage with Custom Configuration<a class="headerlink" href="#advanced-usage-with-custom-configuration" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">backend.core.model_orchestrator</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">ModelEnsurer</span><span class="p">,</span> <span class="n">ModelRegistry</span><span class="p">,</span> <span class="n">ModelResolver</span><span class="p">,</span>
+    <span class="n">LockManager</span><span class="p">,</span> <span class="n">GarbageCollector</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">backend.core.model_orchestrator.storage_backends</span> <span class="kn">import</span> <span class="n">HFStore</span><span class="p">,</span> <span class="n">S3Store</span>
+
+<span class="c1"># Custom configuration</span>
+<span class="n">registry</span> <span class="o">=</span> <span class="n">ModelRegistry</span><span class="p">(</span><span class="s2">&quot;config/models.toml&quot;</span><span class="p">)</span>
+<span class="n">resolver</span> <span class="o">=</span> <span class="n">ModelResolver</span><span class="p">(</span><span class="s2">&quot;/data/models&quot;</span><span class="p">)</span>
+<span class="n">lock_manager</span> <span class="o">=</span> <span class="n">LockManager</span><span class="p">(</span><span class="s2">&quot;/data/models/.locks&quot;</span><span class="p">)</span>
+
+<span class="c1"># Configure storage backends</span>
+<span class="n">hf_store</span> <span class="o">=</span> <span class="n">HFStore</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="s2">&quot;your_hf_token&quot;</span><span class="p">)</span>
+<span class="n">s3_store</span> <span class="o">=</span> <span class="n">S3Store</span><span class="p">(</span>
+    <span class="n">access_key_id</span><span class="o">=</span><span class="s2">&quot;your_key&quot;</span><span class="p">,</span>
+    <span class="n">secret_access_key</span><span class="o">=</span><span class="s2">&quot;your_secret&quot;</span><span class="p">,</span>
+    <span class="n">endpoint_url</span><span class="o">=</span><span class="s2">&quot;https://your-minio.com&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># Create ensurer</span>
+<span class="n">ensurer</span> <span class="o">=</span> <span class="n">ModelEnsurer</span><span class="p">(</span>
+    <span class="n">registry</span><span class="o">=</span><span class="n">registry</span><span class="p">,</span>
+    <span class="n">resolver</span><span class="o">=</span><span class="n">resolver</span><span class="p">,</span>
+    <span class="n">lock_manager</span><span class="o">=</span><span class="n">lock_manager</span><span class="p">,</span>
+    <span class="n">storage_backends</span><span class="o">=</span><span class="p">[</span><span class="n">s3_store</span><span class="p">,</span> <span class="n">hf_store</span><span class="p">]</span>  <span class="c1"># Priority order</span>
+<span class="p">)</span>
+
+<span class="c1"># Set up garbage collection</span>
+<span class="n">gc</span> <span class="o">=</span> <span class="n">GarbageCollector</span><span class="p">(</span>
+    <span class="n">resolver</span><span class="o">=</span><span class="n">resolver</span><span class="p">,</span>
+    <span class="n">max_total_size</span><span class="o">=</span><span class="mi">500</span> <span class="o">*</span> <span class="mi">1024</span><span class="o">**</span><span class="mi">3</span><span class="p">,</span>  <span class="c1"># 500GB</span>
+    <span class="n">max_model_age</span><span class="o">=</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="c1"># Use the system</span>
+<span class="n">model_path</span> <span class="o">=</span> <span class="n">ensurer</span><span class="o">.</span><span class="n">ensure</span><span class="p">(</span><span class="s2">&quot;t2v-A14B@2.2.0&quot;</span><span class="p">)</span>
+
+<span class="c1"># Clean up old models</span>
+<span class="n">gc_result</span> <span class="o">=</span> <span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Reclaimed </span><span class="si">{</span><span class="n">gc_result</span><span class="o">.</span><span class="n">bytes_reclaimed</span><span class="si">}</span><span class="s2"> bytes&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="error-handling">Error Handling<a class="headerlink" href="#error-handling" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">backend.core.model_orchestrator</span> <span class="kn">import</span> <span class="n">ModelEnsurer</span>
+<span class="kn">from</span> <span class="nn">backend.core.model_orchestrator.exceptions</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">ModelNotFoundError</span><span class="p">,</span> <span class="n">InsufficientSpaceError</span><span class="p">,</span> <span class="n">ChecksumVerificationError</span>
+<span class="p">)</span>
+
+<span class="n">ensurer</span> <span class="o">=</span> <span class="n">ModelEnsurer</span><span class="o">.</span><span class="n">from_config</span><span class="p">()</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">model_path</span> <span class="o">=</span> <span class="n">ensurer</span><span class="o">.</span><span class="n">ensure</span><span class="p">(</span><span class="s2">&quot;t2v-A14B@2.2.0&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Model ready at: </span><span class="si">{</span><span class="n">model_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">except</span> <span class="n">ModelNotFoundError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Model not found: </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">model_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Available models: </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">available_models</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">except</span> <span class="n">InsufficientSpaceError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Need </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">required_bytes</span><span class="si">}</span><span class="s2"> bytes, have </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">available_bytes</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="c1"># Trigger cleanup or alert administrators</span>
+
+<span class="k">except</span> <span class="n">ChecksumVerificationError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Integrity check failed for </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">file_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="c1"># Model will be re-downloaded automatically on retry</span>
+
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unexpected error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="progress-monitoring">Progress Monitoring<a class="headerlink" href="#progress-monitoring" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">backend.core.model_orchestrator</span> <span class="kn">import</span> <span class="n">ModelEnsurer</span>
+
+<span class="k">def</span> <span class="nf">progress_callback</span><span class="p">(</span><span class="n">downloaded_bytes</span><span class="p">,</span> <span class="n">total_bytes</span><span class="p">):</span>
+    <span class="n">percent</span> <span class="o">=</span> <span class="p">(</span><span class="n">downloaded_bytes</span> <span class="o">/</span> <span class="n">total_bytes</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Download progress: </span><span class="si">{</span><span class="n">percent</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">% (</span><span class="si">{</span><span class="n">downloaded_bytes</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">total_bytes</span><span class="si">}</span><span class="s2"> bytes)&quot;</span><span class="p">)</span>
+
+<span class="n">ensurer</span> <span class="o">=</span> <span class="n">ModelEnsurer</span><span class="o">.</span><span class="n">from_config</span><span class="p">()</span>
+<span class="n">model_path</span> <span class="o">=</span> <span class="n">ensurer</span><span class="o">.</span><span class="n">ensure</span><span class="p">(</span>
+    <span class="s2">&quot;t2v-A14B@2.2.0&quot;</span><span class="p">,</span>
+    <span class="n">progress_callback</span><span class="o">=</span><span class="n">progress_callback</span>
+<span class="p">)</span>
+</code></pre></div>
+<p>This API reference provides comprehensive documentation for all public interfaces of the Model Orchestrator system.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

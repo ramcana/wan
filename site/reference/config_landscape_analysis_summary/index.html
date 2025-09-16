@@ -1,0 +1,1421 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="WAN2.2 Video Generation System Documentation">
+      
+      
+      
+        <link rel="canonical" href="https://ramcana.github.io/wan/reference/config_landscape_analysis_summary/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>Configuration Landscape Analysis Summary - WAN22 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e53b48f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#configuration-landscape-analysis-summary" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="WAN22 Documentation" class="md-header__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            WAN22 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Configuration Landscape Analysis Summary
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../WAN22_System_Capabilities_Report/" class="md-tabs__link">
+          
+  
+  
+  System Overview
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../model-orchestrator/requirements/" class="md-tabs__link">
+          
+  
+  
+  Model Orchestrator
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../config/models.toml" class="md-tabs__link">
+          
+  
+  
+  Configuration
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="WAN22 Documentation" class="md-nav__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    WAN22 Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    System Overview
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            System Overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../WAN22_System_Capabilities_Report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Capabilities Report
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Model Orchestrator
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Model Orchestrator
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Requirements
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/tasks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tasks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Configuration
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Configuration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Models Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models_simple.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simple Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#executive-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Executive Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-findings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Findings
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Findings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration-distribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration Distribution
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#critical-issues-identified" class="md-nav__link">
+    <span class="md-ellipsis">
+      Critical Issues Identified
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#high-priority-configuration-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      High-Priority Configuration Files
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-components-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration Components Analysis
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration Components Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#system-configuration-6-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Configuration (6 files)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backend-configuration-3-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backend Configuration (3 files)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frontend-configuration-3-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Frontend Configuration (3 files)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing-configuration-3-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing Configuration (3 files)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hardware-configuration-3-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hardware Configuration (3 files)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#consolidation-recommendations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Consolidation Recommendations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Consolidation Recommendations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-unified-configuration-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Unified Configuration Structure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-migration-phases" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Migration Phases
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Migration Phases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#phase-1-critical-configurations-high-priority" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 1: Critical Configurations (High Priority)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-2-component-configurations-medium-priority" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 2: Component Configurations (Medium Priority)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-3-optional-configurations-low-priority" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 3: Optional Configurations (Low Priority)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-configuration-schema-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Configuration Schema Design
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation Plan
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementation Plan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-backup-and-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Backup and Analysis
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-schema-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Schema Design
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-unified-configuration-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Unified Configuration Implementation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-application-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Application Integration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-migration-and-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 5: Migration and Validation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#risk-mitigation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Risk Mitigation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Risk Mitigation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#high-risk-areas" class="md-nav__link">
+    <span class="md-ellipsis">
+      High-Risk Areas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mitigation-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mitigation Strategies
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#success-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Success Metrics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Success Metrics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#quantitative-goals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quantitative Goals
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#qualitative-goals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Qualitative Goals
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tools-and-automation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tools and Automation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tools and Automation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration-analysis-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration Analysis Tools
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#migration-tools-to-be-implemented" class="md-nav__link">
+    <span class="md-ellipsis">
+      Migration Tools (To Be Implemented)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next Steps
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="configuration-landscape-analysis-summary">Configuration Landscape Analysis Summary<a class="headerlink" href="#configuration-landscape-analysis-summary" title="Permanent link">&para;</a></h1>
+<h2 id="executive-summary">Executive Summary<a class="headerlink" href="#executive-summary" title="Permanent link">&para;</a></h2>
+<p>The WAN22 project currently has <strong>259 configuration files</strong> scattered across <strong>78 directories</strong>, creating a complex and fragmented configuration landscape. This analysis identifies critical consolidation opportunities and provides a structured migration plan to implement a unified configuration system.</p>
+<h2 id="key-findings">Key Findings<a class="headerlink" href="#key-findings" title="Permanent link">&para;</a></h2>
+<h3 id="configuration-distribution">Configuration Distribution<a class="headerlink" href="#configuration-distribution" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Total Files</strong>: 259 configuration files</li>
+<li><strong>File Types</strong>:</li>
+<li>JSON: 229 files (88%)</li>
+<li>YAML: 22 files (9%)</li>
+<li>ENV: 5 files (2%)</li>
+<li>INI: 3 files (1%)</li>
+<li><strong>Components</strong>: 8 distinct components (system, backend, frontend, testing, monitoring, hardware, deployment, CI)</li>
+<li><strong>Priority Levels</strong>: 10 high-priority, 13 medium-priority configurations</li>
+</ul>
+<h3 id="critical-issues-identified">Critical Issues Identified<a class="headerlink" href="#critical-issues-identified" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Configuration Conflicts</strong>: 183 conflicts detected across files</li>
+<li><strong>Duplicate Settings</strong>: 55,349 duplicate configuration settings</li>
+<li><strong>Scattered Organization</strong>: Files spread across 78 directories</li>
+<li><strong>Format Inconsistency</strong>: Mix of JSON and YAML formats</li>
+<li><strong>Dependency Complexity</strong>: 504 inter-file dependencies</li>
+</ol>
+<h3 id="high-priority-configuration-files">High-Priority Configuration Files<a class="headerlink" href="#high-priority-configuration-files" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Component</th>
+<th>Purpose</th>
+<th>Settings</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>backend/config.json</code></td>
+<td>Backend</td>
+<td>Main backend configuration</td>
+<td>76</td>
+<td>5 components</td>
+</tr>
+<tr>
+<td><code>config.json</code></td>
+<td>System</td>
+<td>Root application config</td>
+<td>53</td>
+<td>5 components</td>
+</tr>
+<tr>
+<td><code>startup_config.json</code></td>
+<td>System</td>
+<td>Startup configuration</td>
+<td>44</td>
+<td>System startup</td>
+</tr>
+<tr>
+<td><code>config/unified-config.yaml</code></td>
+<td>System</td>
+<td>Unified config system</td>
+<td>237</td>
+<td>New system</td>
+</tr>
+<tr>
+<td><code>.env</code></td>
+<td>System</td>
+<td>Environment variables</td>
+<td>1</td>
+<td>5 components</td>
+</tr>
+<tr>
+<td><code>frontend/.env</code></td>
+<td>Frontend</td>
+<td>Frontend environment</td>
+<td>2</td>
+<td>5 components</td>
+</tr>
+<tr>
+<td><code>tests/config/test-config.yaml</code></td>
+<td>Testing</td>
+<td>Test suite config</td>
+<td>46</td>
+<td>Testing framework</td>
+</tr>
+<tr>
+<td><code>frontend/package.json</code></td>
+<td>Frontend</td>
+<td>Package configuration</td>
+<td>72</td>
+<td>Build system</td>
+</tr>
+</tbody>
+</table>
+<h2 id="configuration-components-analysis">Configuration Components Analysis<a class="headerlink" href="#configuration-components-analysis" title="Permanent link">&para;</a></h2>
+<h3 id="system-configuration-6-files">System Configuration (6 files)<a class="headerlink" href="#system-configuration-6-files" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Purpose</strong>: Core system settings, startup, environment</li>
+<li><strong>Key Files</strong>: <code>config.json</code>, <code>startup_config.json</code>, <code>unified-config.yaml</code></li>
+<li><strong>Priority</strong>: High - Critical for system operation</li>
+<li><strong>Issues</strong>: Multiple overlapping system configs</li>
+</ul>
+<h3 id="backend-configuration-3-files">Backend Configuration (3 files)<a class="headerlink" href="#backend-configuration-3-files" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Purpose</strong>: API configuration, dependencies, environment</li>
+<li><strong>Key Files</strong>: <code>backend/config.json</code>, <code>backend/requirements.txt</code></li>
+<li><strong>Priority</strong>: High - Essential for backend services</li>
+<li><strong>Issues</strong>: Scattered backend settings</li>
+</ul>
+<h3 id="frontend-configuration-3-files">Frontend Configuration (3 files)<a class="headerlink" href="#frontend-configuration-3-files" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Purpose</strong>: Build configuration, environment variables</li>
+<li><strong>Key Files</strong>: <code>frontend/package.json</code>, <code>frontend/.env</code></li>
+<li><strong>Priority</strong>: High - Required for frontend build</li>
+<li><strong>Issues</strong>: Environment variable duplication</li>
+</ul>
+<h3 id="testing-configuration-3-files">Testing Configuration (3 files)<a class="headerlink" href="#testing-configuration-3-files" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Purpose</strong>: Test execution, coverage, reporting</li>
+<li><strong>Key Files</strong>: <code>tests/config/test-config.yaml</code>, <code>pytest.ini</code></li>
+<li><strong>Priority</strong>: High - Critical for CI/CD</li>
+<li><strong>Issues</strong>: Multiple test configuration formats</li>
+</ul>
+<h3 id="hardware-configuration-3-files">Hardware Configuration (3 files)<a class="headerlink" href="#hardware-configuration-3-files" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Purpose</strong>: GPU optimization, memory management</li>
+<li><strong>Key Files</strong>: <code>rtx4080_memory_config.json</code>, <code>hardware_profile_final.json</code></li>
+<li><strong>Priority</strong>: Medium - Performance optimization</li>
+<li><strong>Issues</strong>: Hardware-specific scattered configs</li>
+</ul>
+<h2 id="consolidation-recommendations">Consolidation Recommendations<a class="headerlink" href="#consolidation-recommendations" title="Permanent link">&para;</a></h2>
+<h3 id="1-unified-configuration-structure">1. Unified Configuration Structure<a class="headerlink" href="#1-unified-configuration-structure" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>config/
+├── unified-config.yaml          # Master configuration
+├── environments/
+│   ├── development.yaml         # Dev overrides
+│   ├── staging.yaml            # Staging overrides
+│   ├── production.yaml         # Production overrides
+│   └── testing.yaml            # Test overrides
+├── schemas/
+│   ├── unified-config-schema.yaml  # Validation schema
+│   └── migration-rules.yaml       # Migration rules
+└── legacy/                     # Backed up original configs
+    └── [archived configs]
+</code></pre></div>
+<h3 id="2-migration-phases">2. Migration Phases<a class="headerlink" href="#2-migration-phases" title="Permanent link">&para;</a></h3>
+<h4 id="phase-1-critical-configurations-high-priority">Phase 1: Critical Configurations (High Priority)<a class="headerlink" href="#phase-1-critical-configurations-high-priority" title="Permanent link">&para;</a></h4>
+<p><strong>Target</strong>: Core system functionality</p>
+<ul>
+<li><code>backend/config.json</code> → <code>config/unified-config.yaml:backend</code></li>
+<li><code>config.json</code> → <code>config/unified-config.yaml:system</code></li>
+<li><code>startup_config.json</code> → <code>config/unified-config.yaml:system.startup</code></li>
+<li><code>.env</code> → <code>config/environments/[env].yaml</code></li>
+<li><code>frontend/.env</code> → <code>config/environments/[env].yaml:frontend</code></li>
+</ul>
+<h4 id="phase-2-component-configurations-medium-priority">Phase 2: Component Configurations (Medium Priority)<a class="headerlink" href="#phase-2-component-configurations-medium-priority" title="Permanent link">&para;</a></h4>
+<p><strong>Target</strong>: Component-specific settings</p>
+<ul>
+<li>Hardware configs → <code>config/unified-config.yaml:hardware</code></li>
+<li>Monitoring configs → <code>config/unified-config.yaml:monitoring</code></li>
+<li>Test configs → <code>config/unified-config.yaml:testing</code></li>
+</ul>
+<h4 id="phase-3-optional-configurations-low-priority">Phase 3: Optional Configurations (Low Priority)<a class="headerlink" href="#phase-3-optional-configurations-low-priority" title="Permanent link">&para;</a></h4>
+<p><strong>Target</strong>: Development and deployment configs</p>
+<ul>
+<li>Docker configurations</li>
+<li>CI/CD configurations</li>
+<li>Example/template files</li>
+</ul>
+<h3 id="3-configuration-schema-design">3. Configuration Schema Design<a class="headerlink" href="#3-configuration-schema-design" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># config/unified-config.yaml structure</span>
+<span class="nt">system</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">debug</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">boolean</span>
+<span class="w">  </span><span class="nt">environment</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">  </span><span class="nt">startup</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">number</span>
+<span class="w">    </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+
+<span class="nt">backend</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">api</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">number</span>
+<span class="w">    </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">  </span><span class="nt">database</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">    </span><span class="nt">pool_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">number</span>
+
+<span class="nt">frontend</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">build</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">output_dir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">  </span><span class="nt">api</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">base_url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+
+<span class="nt">hardware</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">gpu</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">    </span><span class="nt">memory_gb</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">number</span>
+<span class="w">  </span><span class="nt">optimization</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">batch_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">number</span>
+
+<span class="nt">testing</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">coverage</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">number</span>
+<span class="w">  </span><span class="nt">execution</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">number</span>
+<span class="w">    </span><span class="nt">parallel</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">boolean</span>
+
+<span class="nt">monitoring</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">health_checks</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">boolean</span>
+<span class="w">    </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">number</span>
+<span class="w">  </span><span class="nt">alerting</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">email</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">    </span><span class="nt">slack_webhook</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+</code></pre></div>
+<h2 id="implementation-plan">Implementation Plan<a class="headerlink" href="#implementation-plan" title="Permanent link">&para;</a></h2>
+<h3 id="step-1-backup-and-analysis">Step 1: Backup and Analysis<a class="headerlink" href="#step-1-backup-and-analysis" title="Permanent link">&para;</a></h3>
+<ul>
+<li>[ ] Create <code>config/legacy/</code> directory</li>
+<li>[ ] Backup all existing configuration files</li>
+<li>[ ] Document current configuration usage patterns</li>
+<li>[ ] Identify critical vs non-critical settings</li>
+</ul>
+<h3 id="step-2-schema-design">Step 2: Schema Design<a class="headerlink" href="#step-2-schema-design" title="Permanent link">&para;</a></h3>
+<ul>
+<li>[ ] Create <code>config/schemas/unified-config-schema.yaml</code></li>
+<li>[ ] Define validation rules for all configuration sections</li>
+<li>[ ] Create environment override structure</li>
+<li>[ ] Design migration mapping rules</li>
+</ul>
+<h3 id="step-3-unified-configuration-implementation">Step 3: Unified Configuration Implementation<a class="headerlink" href="#step-3-unified-configuration-implementation" title="Permanent link">&para;</a></h3>
+<ul>
+<li>[ ] Create <code>config/unified-config.yaml</code> with consolidated settings</li>
+<li>[ ] Implement configuration loader with validation</li>
+<li>[ ] Create environment-specific override files</li>
+<li>[ ] Build configuration migration tools</li>
+</ul>
+<h3 id="step-4-application-integration">Step 4: Application Integration<a class="headerlink" href="#step-4-application-integration" title="Permanent link">&para;</a></h3>
+<ul>
+<li>[ ] Update backend code to use unified configuration</li>
+<li>[ ] Update frontend build process</li>
+<li>[ ] Update test suite configuration</li>
+<li>[ ] Update startup scripts and deployment</li>
+</ul>
+<h3 id="step-5-migration-and-validation">Step 5: Migration and Validation<a class="headerlink" href="#step-5-migration-and-validation" title="Permanent link">&para;</a></h3>
+<ul>
+<li>[ ] Run migration tools on backed-up configurations</li>
+<li>[ ] Test all components with unified configuration</li>
+<li>[ ] Validate configuration consistency</li>
+<li>[ ] Remove legacy configuration files</li>
+</ul>
+<h2 id="risk-mitigation">Risk Mitigation<a class="headerlink" href="#risk-mitigation" title="Permanent link">&para;</a></h2>
+<h3 id="high-risk-areas">High-Risk Areas<a class="headerlink" href="#high-risk-areas" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Database Configuration</strong>: Critical for data persistence</li>
+<li><strong>API Endpoints</strong>: Essential for service communication</li>
+<li><strong>Environment Variables</strong>: Required for deployment</li>
+<li><strong>Hardware Settings</strong>: Critical for performance</li>
+</ol>
+<h3 id="mitigation-strategies">Mitigation Strategies<a class="headerlink" href="#mitigation-strategies" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Comprehensive Backup</strong>: All configs backed up before changes</li>
+<li><strong>Gradual Migration</strong>: Phase-by-phase implementation</li>
+<li><strong>Validation Testing</strong>: Extensive testing at each phase</li>
+<li><strong>Rollback Procedures</strong>: Quick rollback to previous state</li>
+<li><strong>Configuration Validation</strong>: Schema-based validation</li>
+</ol>
+<h2 id="success-metrics">Success Metrics<a class="headerlink" href="#success-metrics" title="Permanent link">&para;</a></h2>
+<h3 id="quantitative-goals">Quantitative Goals<a class="headerlink" href="#quantitative-goals" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Reduce configuration files from 259 to &lt;10</li>
+<li>Eliminate 100% of configuration conflicts</li>
+<li>Reduce duplicate settings by 95%</li>
+<li>Centralize 100% of high-priority configurations</li>
+</ul>
+<h3 id="qualitative-goals">Qualitative Goals<a class="headerlink" href="#qualitative-goals" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Simplified deployment process</li>
+<li>Improved configuration maintainability</li>
+<li>Enhanced environment consistency</li>
+<li>Reduced configuration-related errors</li>
+</ul>
+<h2 id="tools-and-automation">Tools and Automation<a class="headerlink" href="#tools-and-automation" title="Permanent link">&para;</a></h2>
+<h3 id="configuration-analysis-tools">Configuration Analysis Tools<a class="headerlink" href="#configuration-analysis-tools" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>tools/config-analyzer/config_landscape_analyzer.py</code> - Full landscape analysis</li>
+<li><code>tools/config-analyzer/config_dependency_mapper.py</code> - Dependency mapping</li>
+<li><code>tools/config-analyzer/cli.py</code> - Command-line interface</li>
+</ul>
+<h3 id="migration-tools-to-be-implemented">Migration Tools (To Be Implemented)<a class="headerlink" href="#migration-tools-to-be-implemented" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Configuration merger and validator</li>
+<li>Environment-specific configuration generator</li>
+<li>Legacy configuration backup system</li>
+<li>Configuration consistency checker</li>
+</ul>
+<h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Review and Approve Plan</strong>: Stakeholder review of consolidation plan</li>
+<li><strong>Create Migration Tools</strong>: Build automated migration utilities</li>
+<li><strong>Implement Schema</strong>: Design and validate configuration schema</li>
+<li><strong>Execute Phase 1</strong>: Migrate critical configurations first</li>
+<li><strong>Test and Validate</strong>: Comprehensive testing of unified system</li>
+<li><strong>Complete Migration</strong>: Full migration and legacy cleanup</li>
+</ol>
+<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
+<p>The current configuration landscape presents significant maintainability and reliability challenges. The proposed unified configuration system will:</p>
+<ul>
+<li><strong>Reduce Complexity</strong>: From 259 files to a single unified system</li>
+<li><strong>Eliminate Conflicts</strong>: Remove all 183 configuration conflicts</li>
+<li><strong>Improve Maintainability</strong>: Centralized configuration management</li>
+<li><strong>Enhance Reliability</strong>: Schema validation and consistency checks</li>
+<li><strong>Simplify Deployment</strong>: Environment-specific overrides</li>
+</ul>
+<p>This consolidation is essential for the long-term maintainability and scalability of the WAN22 project.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

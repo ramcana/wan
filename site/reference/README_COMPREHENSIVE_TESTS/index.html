@@ -1,0 +1,1371 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="WAN2.2 Video Generation System Documentation">
+      
+      
+      
+        <link rel="canonical" href="https://ramcana.github.io/wan/reference/README_COMPREHENSIVE_TESTS/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>Comprehensive Testing Suite for Real AI Model Integration - WAN22 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e53b48f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#comprehensive-testing-suite-for-real-ai-model-integration" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="WAN22 Documentation" class="md-header__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            WAN22 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Comprehensive Testing Suite for Real AI Model Integration
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../WAN22_System_Capabilities_Report/" class="md-tabs__link">
+          
+  
+  
+  System Overview
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../model-orchestrator/requirements/" class="md-tabs__link">
+          
+  
+  
+  Model Orchestrator
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../config/models.toml" class="md-tabs__link">
+          
+  
+  
+  Configuration
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="WAN22 Documentation" class="md-nav__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    WAN22 Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    System Overview
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            System Overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../WAN22_System_Capabilities_Report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Capabilities Report
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Model Orchestrator
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Model Orchestrator
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Requirements
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/tasks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tasks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Configuration
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Configuration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Models Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models_simple.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simple Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#test-files-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Files Overview
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Test Files Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-test_comprehensive_integration_suitepy" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. test_comprehensive_integration_suite.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-test_model_integration_comprehensivepy" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. test_model_integration_comprehensive.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-test_end_to_end_comprehensivepy" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. test_end_to_end_comprehensive.py
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-test_performance_benchmarkspy" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. test_performance_benchmarks.py
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requirements-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements Coverage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirements Coverage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#requirement-14-model-integration-bridge-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Requirement 1.4: Model Integration Bridge Tests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement-24-real-generation-pipeline-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Requirement 2.4: Real Generation Pipeline Tests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement-34-end-to-end-integration-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Requirement 3.4: End-to-End Integration Tests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement-64-performance-benchmarking-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Requirement 6.4: Performance Benchmarking Tests
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-execution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Execution
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Test Execution">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#running-individual-test-suites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running Individual Test Suites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-all-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running All Tests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-the-test-runner" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using the Test Runner
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Validation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Test Validation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#validate-test-suite-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validate Test Suite Structure
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Features
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Test Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comprehensive-metrics-collection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comprehensive Metrics Collection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#error-handling-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Handling Testing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-benchmarking" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Benchmarking
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mock-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mock Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-reports" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Reports
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Test Reports">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#automatic-report-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Automatic Report Generation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#report-locations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Report Locations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dependencies
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dependencies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#required-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Required Packages
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optional-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optional Packages
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#environment-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environment Variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-customization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Customization
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Issues
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Debug Mode
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-statistics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Statistics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#future-enhancements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Future Enhancements
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Future Enhancements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#potential-additions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Potential Additions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maintenance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Maintenance
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="comprehensive-testing-suite-for-real-ai-model-integration">Comprehensive Testing Suite for Real AI Model Integration<a class="headerlink" href="#comprehensive-testing-suite-for-real-ai-model-integration" title="Permanent link">&para;</a></h1>
+<p>This directory contains a comprehensive testing suite for the Real AI Model Integration feature (Task 14). The test suite covers all aspects of the integration including ModelIntegrationBridge functionality, RealGenerationPipeline testing, end-to-end workflows, and performance benchmarks.</p>
+<h2 id="test-files-overview">Test Files Overview<a class="headerlink" href="#test-files-overview" title="Permanent link">&para;</a></h2>
+<h3 id="1-test_comprehensive_integration_suitepy">1. <code>test_comprehensive_integration_suite.py</code><a class="headerlink" href="#1-test_comprehensive_integration_suitepy" title="Permanent link">&para;</a></h3>
+<p><strong>Main comprehensive integration test suite</strong></p>
+<ul>
+<li><strong>Purpose</strong>: Central test suite that covers all major integration aspects</li>
+<li><strong>Test Classes</strong>: 4 classes with 4 test methods</li>
+<li><strong>Coverage</strong>:</li>
+<li>ModelIntegrationBridge comprehensive testing</li>
+<li>RealGenerationPipeline with all model types</li>
+<li>End-to-end integration workflows</li>
+<li>Performance benchmarking</li>
+<li><strong>Features</strong>: Comprehensive metrics collection and reporting</li>
+</ul>
+<h3 id="2-test_model_integration_comprehensivepy">2. <code>test_model_integration_comprehensive.py</code><a class="headerlink" href="#2-test_model_integration_comprehensivepy" title="Permanent link">&para;</a></h3>
+<p><strong>Detailed ModelIntegrationBridge testing</strong></p>
+<ul>
+<li><strong>Purpose</strong>: Focused testing for ModelIntegrationBridge functionality</li>
+<li><strong>Test Classes</strong>: 1 class with 10 test methods</li>
+<li><strong>Coverage</strong>:</li>
+<li>Model type enum conversion</li>
+<li>VRAM usage estimation</li>
+<li>Model path resolution</li>
+<li>Initialization with missing dependencies</li>
+<li>Model availability checking with different states</li>
+<li>Optimization configuration generation</li>
+<li>Concurrent model operations</li>
+<li>Error recovery suggestions</li>
+<li>Global instance management</li>
+<li>Model status caching</li>
+</ul>
+<h3 id="3-test_end_to_end_comprehensivepy">3. <code>test_end_to_end_comprehensive.py</code><a class="headerlink" href="#3-test_end_to_end_comprehensivepy" title="Permanent link">&para;</a></h3>
+<p><strong>End-to-end integration testing</strong></p>
+<ul>
+<li><strong>Purpose</strong>: Complete workflow testing from FastAPI to real model generation</li>
+<li><strong>Test Classes</strong>: 4 classes with 14 test methods</li>
+<li><strong>Coverage</strong>:</li>
+<li>Complete T2V, I2V, TI2V workflows</li>
+<li>Multiple concurrent generations</li>
+<li>System stats during generation</li>
+<li>Error handling workflows</li>
+<li>API compatibility maintenance</li>
+<li>WebSocket integration</li>
+<li>Outputs endpoint integration</li>
+</ul>
+<h3 id="4-test_performance_benchmarkspy">4. <code>test_performance_benchmarks.py</code><a class="headerlink" href="#4-test_performance_benchmarkspy" title="Permanent link">&para;</a></h3>
+<p><strong>Performance benchmarking and resource monitoring</strong></p>
+<ul>
+<li><strong>Purpose</strong>: Performance testing for generation speed and resource usage</li>
+<li><strong>Test Classes</strong>: 3 classes with 9 test methods</li>
+<li><strong>Coverage</strong>:</li>
+<li>Generation performance benchmarks (T2V, I2V, TI2V)</li>
+<li>API response time benchmarks</li>
+<li>Concurrent API performance</li>
+<li>Memory usage monitoring</li>
+<li>CPU usage monitoring</li>
+<li>GPU memory monitoring</li>
+</ul>
+<h2 id="requirements-coverage">Requirements Coverage<a class="headerlink" href="#requirements-coverage" title="Permanent link">&para;</a></h2>
+<p>The test suite addresses all requirements from Task 14:</p>
+<h3 id="requirement-14-model-integration-bridge-tests">✅ Requirement 1.4: Model Integration Bridge Tests<a class="headerlink" href="#requirement-14-model-integration-bridge-tests" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Covered by</strong>: <code>test_model_integration_comprehensive.py</code> and <code>test_comprehensive_integration_suite.py</code></li>
+<li><strong>Tests</strong>: Model loading, availability checking, optimization configuration, error handling</li>
+</ul>
+<h3 id="requirement-24-real-generation-pipeline-tests">✅ Requirement 2.4: Real Generation Pipeline Tests<a class="headerlink" href="#requirement-24-real-generation-pipeline-tests" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Covered by</strong>: <code>test_comprehensive_integration_suite.py</code></li>
+<li><strong>Tests</strong>: T2V, I2V, TI2V generation with various configurations, error scenarios</li>
+</ul>
+<h3 id="requirement-34-end-to-end-integration-tests">✅ Requirement 3.4: End-to-End Integration Tests<a class="headerlink" href="#requirement-34-end-to-end-integration-tests" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Covered by</strong>: <code>test_end_to_end_comprehensive.py</code></li>
+<li><strong>Tests</strong>: Complete workflows from FastAPI to model generation, API compatibility</li>
+</ul>
+<h3 id="requirement-64-performance-benchmarking-tests">✅ Requirement 6.4: Performance Benchmarking Tests<a class="headerlink" href="#requirement-64-performance-benchmarking-tests" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Covered by</strong>: <code>test_performance_benchmarks.py</code></li>
+<li><strong>Tests</strong>: Generation speed, resource usage, API performance benchmarks</li>
+</ul>
+<h2 id="test-execution">Test Execution<a class="headerlink" href="#test-execution" title="Permanent link">&para;</a></h2>
+<h3 id="running-individual-test-suites">Running Individual Test Suites<a class="headerlink" href="#running-individual-test-suites" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Run comprehensive integration suite</span>
+python<span class="w"> </span>-m<span class="w"> </span>pytest<span class="w"> </span>backend/tests/test_comprehensive_integration_suite.py<span class="w"> </span>-v
+
+<span class="c1"># Run model integration tests</span>
+python<span class="w"> </span>-m<span class="w"> </span>pytest<span class="w"> </span>backend/tests/test_model_integration_comprehensive.py<span class="w"> </span>-v
+
+<span class="c1"># Run end-to-end tests</span>
+python<span class="w"> </span>-m<span class="w"> </span>pytest<span class="w"> </span>backend/tests/test_end_to_end_comprehensive.py<span class="w"> </span>-v
+
+<span class="c1"># Run performance benchmarks</span>
+python<span class="w"> </span>-m<span class="w"> </span>pytest<span class="w"> </span>backend/tests/test_performance_benchmarks.py<span class="w"> </span>-v
+</code></pre></div>
+<h3 id="running-all-tests">Running All Tests<a class="headerlink" href="#running-all-tests" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Run all comprehensive tests</span>
+python<span class="w"> </span>-m<span class="w"> </span>pytest<span class="w"> </span>backend/tests/test_*comprehensive*.py<span class="w"> </span>backend/tests/test_*benchmarks*.py<span class="w"> </span>-v
+
+<span class="c1"># Run with coverage</span>
+python<span class="w"> </span>-m<span class="w"> </span>pytest<span class="w"> </span>backend/tests/test_*comprehensive*.py<span class="w"> </span>backend/tests/test_*benchmarks*.py<span class="w"> </span>--cov<span class="o">=</span>backend<span class="w"> </span>--cov-report<span class="o">=</span>html
+</code></pre></div>
+<h3 id="using-the-test-runner">Using the Test Runner<a class="headerlink" href="#using-the-test-runner" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Run all comprehensive tests with detailed reporting</span>
+python<span class="w"> </span>backend/tests/run_comprehensive_tests.py
+
+<span class="c1"># Run specific test suite</span>
+python<span class="w"> </span>backend/tests/run_comprehensive_tests.py<span class="w"> </span>model
+python<span class="w"> </span>backend/tests/run_comprehensive_tests.py<span class="w"> </span>e2e
+python<span class="w"> </span>backend/tests/run_comprehensive_tests.py<span class="w"> </span>performance
+</code></pre></div>
+<h2 id="test-validation">Test Validation<a class="headerlink" href="#test-validation" title="Permanent link">&para;</a></h2>
+<h3 id="validate-test-suite-structure">Validate Test Suite Structure<a class="headerlink" href="#validate-test-suite-structure" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Validate all test files are properly structured</span>
+python<span class="w"> </span>backend/tests/validate_test_suite.py
+</code></pre></div>
+<p>This validation script checks:</p>
+<ul>
+<li>File existence and importability</li>
+<li>Test class and method detection</li>
+<li>Dependency availability</li>
+<li>Requirements coverage</li>
+</ul>
+<h2 id="test-features">Test Features<a class="headerlink" href="#test-features" title="Permanent link">&para;</a></h2>
+<h3 id="comprehensive-metrics-collection">Comprehensive Metrics Collection<a class="headerlink" href="#comprehensive-metrics-collection" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Model Loading Times</strong>: Performance tracking for all model types</li>
+<li><strong>Generation Performance</strong>: Duration, VRAM usage, success rates</li>
+<li><strong>API Response Times</strong>: Endpoint performance monitoring</li>
+<li><strong>Resource Usage</strong>: CPU, memory, GPU monitoring</li>
+<li><strong>Integration Health</strong>: Component status tracking</li>
+</ul>
+<h3 id="error-handling-testing">Error Handling Testing<a class="headerlink" href="#error-handling-testing" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Model Loading Failures</strong>: Missing models, corrupted files, VRAM issues</li>
+<li><strong>Generation Errors</strong>: Invalid parameters, pipeline failures</li>
+<li><strong>API Errors</strong>: Malformed requests, endpoint failures</li>
+<li><strong>Recovery Testing</strong>: Automatic fallback and retry mechanisms</li>
+</ul>
+<h3 id="performance-benchmarking">Performance Benchmarking<a class="headerlink" href="#performance-benchmarking" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Generation Speed</strong>: Target times for different resolutions and model types</li>
+<li><strong>Resource Constraints</strong>: Testing under memory and CPU pressure</li>
+<li><strong>Concurrent Load</strong>: Multiple simultaneous operations</li>
+<li><strong>API Performance</strong>: Response time budgets and concurrent request handling</li>
+</ul>
+<h3 id="mock-integration">Mock Integration<a class="headerlink" href="#mock-integration" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Fallback Classes</strong>: Tests work even without full backend integration</li>
+<li><strong>Configurable Mocking</strong>: Easy to adjust for different test environments</li>
+<li><strong>Realistic Simulation</strong>: Mock responses match expected real behavior</li>
+</ul>
+<h2 id="test-reports">Test Reports<a class="headerlink" href="#test-reports" title="Permanent link">&para;</a></h2>
+<h3 id="automatic-report-generation">Automatic Report Generation<a class="headerlink" href="#automatic-report-generation" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>JSON Reports</strong>: Detailed test results with metrics</li>
+<li><strong>Summary Reports</strong>: Human-readable test summaries</li>
+<li><strong>Performance Reports</strong>: Benchmark results and comparisons</li>
+<li><strong>Integration Health</strong>: Component status and availability</li>
+</ul>
+<h3 id="report-locations">Report Locations<a class="headerlink" href="#report-locations" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>comprehensive_test_report.json</code>: Detailed test results</li>
+<li><code>test_summary.txt</code>: Human-readable summary</li>
+<li><code>performance_benchmark_results.json</code>: Performance data</li>
+</ul>
+<h2 id="dependencies">Dependencies<a class="headerlink" href="#dependencies" title="Permanent link">&para;</a></h2>
+<h3 id="required-packages">Required Packages<a class="headerlink" href="#required-packages" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>pytest</code>: Test framework</li>
+<li><code>pytest-asyncio</code>: Async test support</li>
+<li><code>httpx</code>: HTTP client for API testing</li>
+<li><code>fastapi</code>: Web framework (for app testing)</li>
+<li><code>psutil</code>: System resource monitoring</li>
+<li><code>torch</code>: PyTorch (for model testing)</li>
+</ul>
+<h3 id="optional-packages">Optional Packages<a class="headerlink" href="#optional-packages" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>GPUtil</code>: GPU monitoring (if available)</li>
+<li><code>coverage</code>: Test coverage reporting</li>
+</ul>
+<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
+<h3 id="environment-variables">Environment Variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Tests adapt to available dependencies</li>
+<li>Graceful degradation when optional packages missing</li>
+<li>Configurable timeouts and performance targets</li>
+</ul>
+<h3 id="test-customization">Test Customization<a class="headerlink" href="#test-customization" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Modify performance targets in benchmark tests</li>
+<li>Adjust timeout values for different environments</li>
+<li>Configure mock behavior for specific scenarios</li>
+</ul>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<h3 id="common-issues">Common Issues<a class="headerlink" href="#common-issues" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Import Errors</strong>: Ensure backend path is correctly added to sys.path</li>
+<li><strong>Missing Dependencies</strong>: Install required packages or tests will use fallbacks</li>
+<li><strong>Timeout Issues</strong>: Adjust timeout values for slower systems</li>
+<li><strong>GPU Tests</strong>: GPU monitoring tests skip if GPUtil not available</li>
+</ol>
+<h3 id="debug-mode">Debug Mode<a class="headerlink" href="#debug-mode" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Run with verbose output</span>
+python<span class="w"> </span>-m<span class="w"> </span>pytest<span class="w"> </span>backend/tests/<span class="w"> </span>-v<span class="w"> </span>-s
+
+<span class="c1"># Run specific test with debugging</span>
+python<span class="w"> </span>-m<span class="w"> </span>pytest<span class="w"> </span>backend/tests/test_comprehensive_integration_suite.py::TestModelIntegrationBridgeComprehensive::test_bridge_initialization_comprehensive<span class="w"> </span>-v<span class="w"> </span>-s
+</code></pre></div>
+<h2 id="test-statistics">Test Statistics<a class="headerlink" href="#test-statistics" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Total Test Files</strong>: 4</li>
+<li><strong>Total Test Classes</strong>: 12</li>
+<li><strong>Total Test Methods</strong>: 37</li>
+<li><strong>Requirements Coverage</strong>: 100%</li>
+<li><strong>Validation Status</strong>: ✅ All tests valid and executable</li>
+</ul>
+<h2 id="future-enhancements">Future Enhancements<a class="headerlink" href="#future-enhancements" title="Permanent link">&para;</a></h2>
+<h3 id="potential-additions">Potential Additions<a class="headerlink" href="#potential-additions" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Load Testing</strong>: Extended stress testing capabilities</li>
+<li><strong>Integration with CI/CD</strong>: Automated test execution</li>
+<li><strong>Performance Regression</strong>: Baseline comparison testing</li>
+<li><strong>Real Model Testing</strong>: Integration with actual model files</li>
+<li><strong>Network Testing</strong>: Distributed system testing</li>
+</ul>
+<h3 id="maintenance">Maintenance<a class="headerlink" href="#maintenance" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Regular updates to match backend changes</li>
+<li>Performance target adjustments based on hardware improvements</li>
+<li>Additional error scenario coverage</li>
+<li>Enhanced reporting and visualization</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

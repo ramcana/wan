@@ -1,0 +1,1468 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="WAN2.2 Video Generation System Documentation">
+      
+      
+      
+        <link rel="canonical" href="https://ramcana.github.io/wan/developer/REPOSITORY_ARCHITECTURE/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>WAN2.2 Repository Architecture Guide - WAN22 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e53b48f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#wan22-repository-architecture-guide" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="WAN22 Documentation" class="md-header__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            WAN22 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              WAN2.2 Repository Architecture Guide
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../WAN22_System_Capabilities_Report/" class="md-tabs__link">
+          
+  
+  
+  System Overview
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../model-orchestrator/requirements/" class="md-tabs__link">
+          
+  
+  
+  Model Orchestrator
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../config/models.toml" class="md-tabs__link">
+          
+  
+  
+  Configuration
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="WAN22 Documentation" class="md-nav__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    WAN22 Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    System Overview
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            System Overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../WAN22_System_Capabilities_Report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Capabilities Report
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Model Orchestrator
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Model Orchestrator
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Requirements
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/tasks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tasks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Configuration
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Configuration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Models Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models_simple.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simple Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#high-level-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      🏗️ High-Level Architecture
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#directory-structure-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      📁 Directory Structure Overview
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📁 Directory Structure Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#core-application-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Application Components
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Application Components">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#backend-fastapi-backend-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      /backend/ - FastAPI Backend Service
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frontend-react-frontend-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      /frontend/ - React Frontend Application
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#core-domain-logic-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      /core/ - Domain Logic Layer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#infrastructure-infrastructure-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      /infrastructure/ - Infrastructure Layer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#support-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Support Systems
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Support Systems">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#local_testing_framework-comprehensive-testing-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      /local_testing_framework/ - Comprehensive Testing System
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tools-development-and-maintenance-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      /tools/ - Development and Maintenance Tools
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scripts-automation-and-deployment-scripts" class="md-nav__link">
+    <span class="md-ellipsis">
+      /scripts/ - Automation and Deployment Scripts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tests-global-test-suite" class="md-nav__link">
+    <span class="md-ellipsis">
+      /tests/ - Global Test Suite
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docs-documentation-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      /docs/ - Documentation System
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#component-relationships" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔄 Component Relationships
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔄 Component Relationships">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-flow-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Flow Architecture
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#startup-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Startup Flow
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing-relationship" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing Relationship
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entry-points-and-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚀 Entry Points and Usage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 Entry Points and Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for-end-users" class="md-nav__link">
+    <span class="md-ellipsis">
+      For End Users
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-developers" class="md-nav__link">
+    <span class="md-ellipsis">
+      For Developers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-system-administrators" class="md-nav__link">
+    <span class="md-ellipsis">
+      For System Administrators
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔧 Configuration Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔧 Configuration Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration-hierarchy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration Hierarchy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-configuration-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Configuration Files
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#monitoring-and-observability" class="md-nav__link">
+    <span class="md-ellipsis">
+      📊 Monitoring and Observability
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📊 Monitoring and Observability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#health-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Health Monitoring
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Monitoring
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#development-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔄 Development Workflow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔄 Development Workflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#local-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      Local Development
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#production-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Production Deployment
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-design-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 Key Design Principles
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 Key Design Principles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#separation-of-concerns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Separation of Concerns
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modularity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modularity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#developer-experience" class="md-nav__link">
+    <span class="md-ellipsis">
+      Developer Experience
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#production-readiness" class="md-nav__link">
+    <span class="md-ellipsis">
+      Production Readiness
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contributing" class="md-nav__link">
+    <span class="md-ellipsis">
+      🤝 Contributing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      📚 Additional Resources
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="wan22-repository-architecture-guide">WAN2.2 Repository Architecture Guide<a class="headerlink" href="#wan22-repository-architecture-guide" title="Permanent link">&para;</a></h1>
+<p>This document provides a comprehensive overview of the WAN2.2 repository structure and explains how all components relate to each other.</p>
+<h2 id="high-level-architecture">🏗️ High-Level Architecture<a class="headerlink" href="#high-level-architecture" title="Permanent link">&para;</a></h2>
+<p>WAN2.2 is a <strong>modern video generation system</strong> built with a <strong>microservices-inspired architecture</strong> that separates concerns into distinct layers:</p>
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────────┐
+│                    WAN2.2 System                           │
+├─────────────────────────────────────────────────────────────┤
+│  Frontend Layer    │  Backend Layer    │  Core Layer       │
+│  ┌─────────────┐   │  ┌─────────────┐  │  ┌─────────────┐  │
+│  │   React     │◄──┤  │   FastAPI   │◄─┤  │   Domain    │  │
+│  │   TypeScript│   │  │   REST API  │  │  │   Models    │  │
+│  │   Tailwind  │   │  │   WebSocket │  │  │   Services  │  │
+│  └─────────────┘   │  └─────────────┘  │  └─────────────┘  │
+├─────────────────────────────────────────────────────────────┤
+│                Infrastructure Layer                         │
+│  ┌─────────────┐   ┌─────────────┐   ┌─────────────┐      │
+│  │   Config    │   │   Storage   │   │  Hardware   │      │
+│  │ Management  │   │ Management  │   │ Monitoring  │      │
+│  └─────────────┘   └─────────────┘   └─────────────┘      │
+├─────────────────────────────────────────────────────────────┤
+│                   Support Systems                          │
+│  ┌─────────────┐   ┌─────────────┐   ┌─────────────┐      │
+│  │   Testing   │   │    Tools    │   │    Docs     │      │
+│  │ Framework   │   │   Scripts   │   │  Guides     │      │
+│  └─────────────┘   └─────────────┘   └─────────────┘      │
+└─────────────────────────────────────────────────────────────┘
+</code></pre></div>
+<h2 id="directory-structure-overview">📁 Directory Structure Overview<a class="headerlink" href="#directory-structure-overview" title="Permanent link">&para;</a></h2>
+<h3 id="core-application-components">Core Application Components<a class="headerlink" href="#core-application-components" title="Permanent link">&para;</a></h3>
+<h4 id="backend-fastapi-backend-service"><code>/backend/</code> - FastAPI Backend Service<a class="headerlink" href="#backend-fastapi-backend-service" title="Permanent link">&para;</a></h4>
+<p><strong>Purpose</strong>: REST API server handling video generation requests, model management, and business logic</p>
+<div class="highlight"><pre><span></span><code>backend/
+├── api/                    # API endpoints and routing
+│   ├── v1/endpoints/      # Versioned API endpoints
+│   ├── model_management.py # Model lifecycle management
+│   └── performance.py     # Performance monitoring endpoints
+├── core/                  # Core business logic
+│   ├── model_*.py         # Model management services
+│   ├── performance_*.py   # Performance monitoring
+│   └── enhanced_*.py      # Enhanced features
+├── services/              # Business services
+│   └── generation_service.py # Video generation pipeline
+├── websocket/             # Real-time communication
+│   ├── manager.py         # WebSocket connection management
+│   └── progress_integration.py # Progress updates
+├── tests/                 # Backend-specific tests
+└── app.py                 # FastAPI application entry point
+</code></pre></div>
+<p><strong>Key Features</strong>:</p>
+<ul>
+<li>Async FastAPI with automatic OpenAPI documentation</li>
+<li>WebSocket support for real-time progress updates</li>
+<li>Model management and health monitoring</li>
+<li>Performance analytics and optimization</li>
+<li>CORS configuration for frontend integration</li>
+</ul>
+<h4 id="frontend-react-frontend-application"><code>/frontend/</code> - React Frontend Application<a class="headerlink" href="#frontend-react-frontend-application" title="Permanent link">&para;</a></h4>
+<p><strong>Purpose</strong>: Modern web interface for video generation with real-time updates</p>
+<div class="highlight"><pre><span></span><code>frontend/
+├── src/
+│   ├── components/        # React components
+│   ├── lib/              # Utility libraries
+│   │   ├── api-client.ts # Backend API integration
+│   │   ├── stream-manager.ts # Real-time updates
+│   │   └── cache-manager.ts # Client-side caching
+│   └── tests/            # Frontend tests
+├── public/               # Static assets
+└── package.json          # Node.js dependencies
+</code></pre></div>
+<p><strong>Key Features</strong>:</p>
+<ul>
+<li>TypeScript for type safety</li>
+<li>Tailwind CSS for responsive design</li>
+<li>Real-time progress tracking via WebSocket</li>
+<li>Offline support and caching</li>
+<li>Accessibility compliance</li>
+</ul>
+<h4 id="core-domain-logic-layer"><code>/core/</code> - Domain Logic Layer<a class="headerlink" href="#core-domain-logic-layer" title="Permanent link">&para;</a></h4>
+<p><strong>Purpose</strong>: Pure business logic independent of frameworks</p>
+<div class="highlight"><pre><span></span><code>core/
+├── models/               # Domain models and entities
+├── services/            # Core business services
+└── interfaces/          # Abstract interfaces for dependency injection
+</code></pre></div>
+<p><strong>Key Features</strong>:</p>
+<ul>
+<li>Framework-agnostic business logic</li>
+<li>Domain-driven design principles</li>
+<li>Dependency injection interfaces</li>
+</ul>
+<h4 id="infrastructure-infrastructure-layer"><code>/infrastructure/</code> - Infrastructure Layer<a class="headerlink" href="#infrastructure-infrastructure-layer" title="Permanent link">&para;</a></h4>
+<p><strong>Purpose</strong>: External concerns like configuration, storage, and hardware management</p>
+<div class="highlight"><pre><span></span><code>infrastructure/
+├── config/              # Configuration management
+├── storage/            # File and model storage
+└── hardware/           # Hardware monitoring and optimization
+</code></pre></div>
+<h3 id="support-systems">Support Systems<a class="headerlink" href="#support-systems" title="Permanent link">&para;</a></h3>
+<h4 id="local_testing_framework-comprehensive-testing-system"><code>/local_testing_framework/</code> - Comprehensive Testing System<a class="headerlink" href="#local_testing_framework-comprehensive-testing-system" title="Permanent link">&para;</a></h4>
+<p><strong>Purpose</strong>: Automated testing, validation, and quality assurance system</p>
+<div class="highlight"><pre><span></span><code>local_testing_framework/
+├── cli/                 # Command-line interface
+├── tests/              # Test suites
+├── models/             # Test result models
+├── examples/           # Usage examples
+├── environment_validator.py # System validation
+├── performance_tester.py    # Performance benchmarks
+├── integration_tester.py    # Integration tests
+└── production_validator.py  # Production readiness checks
+</code></pre></div>
+<p><strong>Relationship to Main App</strong>:</p>
+<ul>
+<li><strong>Independent testing system</strong> that validates the main application</li>
+<li>Can be run standalone: <code>python -m local_testing_framework</code></li>
+<li>Provides comprehensive validation of system functionality</li>
+<li>Generates detailed reports on system health and performance</li>
+<li><strong>Not part of the runtime application</strong> - it's a development/QA tool</li>
+</ul>
+<h4 id="tools-development-and-maintenance-tools"><code>/tools/</code> - Development and Maintenance Tools<a class="headerlink" href="#tools-development-and-maintenance-tools" title="Permanent link">&para;</a></h4>
+<p><strong>Purpose</strong>: Automated tools for code quality, maintenance, and development workflow</p>
+<div class="highlight"><pre><span></span><code>tools/
+├── code-quality/        # Code analysis and formatting
+├── health-checker/      # System health monitoring
+├── test-runner/         # Test execution and reporting
+├── doc-generator/       # Documentation generation
+├── config-analyzer/     # Configuration analysis
+└── unified-cli/         # Unified command interface
+</code></pre></div>
+<p><strong>Key Tools</strong>:</p>
+<ul>
+<li><strong>Code Quality</strong>: Automated code analysis, formatting, and style enforcement</li>
+<li><strong>Health Checker</strong>: Continuous monitoring of system health and performance</li>
+<li><strong>Test Runner</strong>: Orchestrated test execution across the entire system</li>
+<li><strong>Documentation Generator</strong>: Automated documentation generation and validation</li>
+</ul>
+<h4 id="scripts-automation-and-deployment-scripts"><code>/scripts/</code> - Automation and Deployment Scripts<a class="headerlink" href="#scripts-automation-and-deployment-scripts" title="Permanent link">&para;</a></h4>
+<p><strong>Purpose</strong>: Startup management, deployment automation, and system administration</p>
+<div class="highlight"><pre><span></span><code>scripts/
+├── startup_manager/     # Intelligent startup system
+│   ├── startup_manager.py # Main startup orchestrator
+│   ├── port_manager.py    # Port conflict resolution
+│   ├── environment_validator.py # Environment checks
+│   └── recovery_engine.py # Error recovery
+├── setup/              # Installation and setup scripts
+└── deployment/         # Deployment automation
+</code></pre></div>
+<p><strong>Key Features</strong>:</p>
+<ul>
+<li><strong>Intelligent Startup Manager</strong>: Automatic port resolution, environment validation</li>
+<li><strong>Error Recovery</strong>: Automatic recovery from common startup issues</li>
+<li><strong>Cross-platform Support</strong>: Windows, macOS, and Linux compatibility</li>
+</ul>
+<h4 id="tests-global-test-suite"><code>/tests/</code> - Global Test Suite<a class="headerlink" href="#tests-global-test-suite" title="Permanent link">&para;</a></h4>
+<p><strong>Purpose</strong>: System-wide integration tests and test utilities</p>
+<div class="highlight"><pre><span></span><code>tests/
+├── integration/         # Cross-component integration tests
+├── performance/         # System performance tests
+├── acceptance/          # User acceptance tests
+├── utils/              # Test utilities and fixtures
+└── conftest.py         # Pytest configuration
+</code></pre></div>
+<h4 id="docs-documentation-system"><code>/docs/</code> - Documentation System<a class="headerlink" href="#docs-documentation-system" title="Permanent link">&para;</a></h4>
+<p><strong>Purpose</strong>: Comprehensive documentation for users, developers, and operators</p>
+<div class="highlight"><pre><span></span><code>docs/
+├── user-guides/         # End-user documentation
+├── developer-guides/    # Development documentation
+├── operations/          # Deployment and operations guides
+├── api/                # API documentation
+└── troubleshooting/     # Problem resolution guides
+</code></pre></div>
+<h2 id="component-relationships">🔄 Component Relationships<a class="headerlink" href="#component-relationships" title="Permanent link">&para;</a></h2>
+<h3 id="data-flow-architecture">Data Flow Architecture<a class="headerlink" href="#data-flow-architecture" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>┌─────────────┐    HTTP/WS     ┌─────────────┐    Function     ┌─────────────┐
+│   Frontend  │◄──────────────►│   Backend   │◄───────────────►│    Core     │
+│   (React)   │                │  (FastAPI)  │     Calls       │  (Domain)   │
+└─────────────┘                └─────────────┘                 └─────────────┘
+       │                              │                               │
+       │                              │                               │
+       ▼                              ▼                               ▼
+┌─────────────┐                ┌─────────────┐                 ┌─────────────┐
+│   Browser   │                │  Database   │                 │   Models    │
+│   Storage   │                │   Files     │                 │  Storage    │
+└─────────────┘                └─────────────┘                 └─────────────┘
+</code></pre></div>
+<h3 id="startup-flow">Startup Flow<a class="headerlink" href="#startup-flow" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>1. User runs: python start.py
+   ├── System validation (requirements, ports, dependencies)
+   ├── Backend startup (FastAPI on port 8000)
+   ├── Frontend startup (React dev server on port 3000)
+   └── Browser launch (http://localhost:3000)
+
+2. Alternative: start_both_servers.bat
+   ├── Intelligent startup manager
+   ├── Port conflict resolution
+   ├── Environment validation
+   └── Error recovery
+</code></pre></div>
+<h3 id="testing-relationship">Testing Relationship<a class="headerlink" href="#testing-relationship" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>Main Application                    Local Testing Framework
+┌─────────────────┐                ┌─────────────────────────┐
+│   WAN2.2 App    │                │   Testing System        │
+│                 │                │                         │
+│ ┌─────────────┐ │   validates    │ ┌─────────────────────┐ │
+│ │  Frontend   │ │◄───────────────┤ │  Integration Tests  │ │
+│ │  Backend    │ │                │ │  Performance Tests  │ │
+│ │  Core       │ │                │ │  Environment Tests  │ │
+│ └─────────────┘ │                │ └─────────────────────┘ │
+└─────────────────┘                └─────────────────────────┘
+</code></pre></div>
+<h2 id="entry-points-and-usage">🚀 Entry Points and Usage<a class="headerlink" href="#entry-points-and-usage" title="Permanent link">&para;</a></h2>
+<h3 id="for-end-users">For End Users<a class="headerlink" href="#for-end-users" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Simplest startup - just works</span>
+python<span class="w"> </span>start.py
+
+<span class="c1"># Windows batch file</span>
+start_both_servers.bat
+
+<span class="c1"># Advanced startup with options</span>
+python<span class="w"> </span>main.py<span class="w"> </span>--mode<span class="w"> </span>full
+</code></pre></div>
+<h3 id="for-developers">For Developers<a class="headerlink" href="#for-developers" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Run tests</span>
+python<span class="w"> </span>-m<span class="w"> </span>local_testing_framework
+
+<span class="c1"># Code quality checks</span>
+python<span class="w"> </span>-m<span class="w"> </span>tools.code-quality
+
+<span class="c1"># Health monitoring</span>
+python<span class="w"> </span>-m<span class="w"> </span>tools.health-checker
+
+<span class="c1"># Documentation generation</span>
+python<span class="w"> </span>-m<span class="w"> </span>tools.doc-generator
+</code></pre></div>
+<h3 id="for-system-administrators">For System Administrators<a class="headerlink" href="#for-system-administrators" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Production deployment</span>
+python<span class="w"> </span>scripts/deploy_production.py
+
+<span class="c1"># System diagnostics</span>
+python<span class="w"> </span>start.py<span class="w"> </span>--diagnostics
+
+<span class="c1"># Configuration management</span>
+python<span class="w"> </span>-m<span class="w"> </span>tools.config_manager
+</code></pre></div>
+<h2 id="configuration-management">🔧 Configuration Management<a class="headerlink" href="#configuration-management" title="Permanent link">&para;</a></h2>
+<h3 id="configuration-hierarchy">Configuration Hierarchy<a class="headerlink" href="#configuration-hierarchy" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>1. Environment Variables (.env)
+2. Configuration Files (config/*.yaml)
+3. Runtime Configuration (UI settings)
+4. Default Values (code defaults)
+</code></pre></div>
+<h3 id="key-configuration-files">Key Configuration Files<a class="headerlink" href="#key-configuration-files" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>.env</code> - Environment variables and secrets</li>
+<li><code>config/unified-config.yaml</code> - Main application configuration</li>
+<li><code>backend/config.json</code> - Backend-specific settings</li>
+<li><code>frontend/.env.local</code> - Frontend environment variables</li>
+</ul>
+<h2 id="monitoring-and-observability">📊 Monitoring and Observability<a class="headerlink" href="#monitoring-and-observability" title="Permanent link">&para;</a></h2>
+<h3 id="health-monitoring">Health Monitoring<a class="headerlink" href="#health-monitoring" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>System Health</strong>: CPU, memory, disk usage</li>
+<li><strong>Application Health</strong>: API response times, error rates</li>
+<li><strong>Model Health</strong>: Model loading status, inference performance</li>
+<li><strong>Infrastructure Health</strong>: Port availability, dependency status</li>
+</ul>
+<h3 id="performance-monitoring">Performance Monitoring<a class="headerlink" href="#performance-monitoring" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Startup Performance</strong>: Boot time analysis and optimization</li>
+<li><strong>Runtime Performance</strong>: Request/response metrics</li>
+<li><strong>Resource Usage</strong>: Memory and GPU utilization</li>
+<li><strong>User Experience</strong>: Frontend performance metrics</li>
+</ul>
+<h2 id="development-workflow">🔄 Development Workflow<a class="headerlink" href="#development-workflow" title="Permanent link">&para;</a></h2>
+<h3 id="local-development">Local Development<a class="headerlink" href="#local-development" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Setup</strong>: <code>python start.py</code> (handles all dependencies)</li>
+<li><strong>Development</strong>: Edit code with hot reload enabled</li>
+<li><strong>Testing</strong>: <code>python -m local_testing_framework</code></li>
+<li><strong>Quality</strong>: <code>python -m tools.code-quality</code></li>
+<li><strong>Documentation</strong>: Auto-generated from code</li>
+</ol>
+<h3 id="production-deployment">Production Deployment<a class="headerlink" href="#production-deployment" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Validation</strong>: System requirements and configuration</li>
+<li><strong>Build</strong>: Frontend build and backend packaging</li>
+<li><strong>Deploy</strong>: Automated deployment with health checks</li>
+<li><strong>Monitor</strong>: Continuous health and performance monitoring</li>
+</ol>
+<h2 id="key-design-principles">🎯 Key Design Principles<a class="headerlink" href="#key-design-principles" title="Permanent link">&para;</a></h2>
+<h3 id="separation-of-concerns">Separation of Concerns<a class="headerlink" href="#separation-of-concerns" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Frontend</strong>: User interface and experience</li>
+<li><strong>Backend</strong>: API and business logic coordination</li>
+<li><strong>Core</strong>: Pure business logic</li>
+<li><strong>Infrastructure</strong>: External system concerns</li>
+<li><strong>Tools</strong>: Development and maintenance automation</li>
+</ul>
+<h3 id="modularity">Modularity<a class="headerlink" href="#modularity" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Each component can be developed, tested, and deployed independently</li>
+<li>Clear interfaces between components</li>
+<li>Minimal coupling, maximum cohesion</li>
+</ul>
+<h3 id="developer-experience">Developer Experience<a class="headerlink" href="#developer-experience" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Single Command Startup</strong>: <code>python start.py</code> handles everything</li>
+<li><strong>Intelligent Error Recovery</strong>: Automatic problem resolution</li>
+<li><strong>Comprehensive Documentation</strong>: Generated and maintained automatically</li>
+<li><strong>Quality Automation</strong>: Code quality, testing, and health monitoring</li>
+</ul>
+<h3 id="production-readiness">Production Readiness<a class="headerlink" href="#production-readiness" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Health Monitoring</strong>: Continuous system health validation</li>
+<li><strong>Performance Optimization</strong>: Automated performance tuning</li>
+<li><strong>Error Recovery</strong>: Graceful handling of failures</li>
+<li><strong>Scalability</strong>: Designed for growth and expansion</li>
+</ul>
+<h2 id="contributing">🤝 Contributing<a class="headerlink" href="#contributing" title="Permanent link">&para;</a></h2>
+<p>When working with this repository:</p>
+<ol>
+<li><strong>Understand the Layer</strong>: Know which layer your changes affect</li>
+<li><strong>Follow the Architecture</strong>: Respect the separation of concerns</li>
+<li><strong>Use the Tools</strong>: Leverage the automated quality and testing tools</li>
+<li><strong>Update Documentation</strong>: Documentation is generated from code</li>
+<li><strong>Test Thoroughly</strong>: Use the comprehensive testing framework</li>
+</ol>
+<h2 id="additional-resources">📚 Additional Resources<a class="headerlink" href="#additional-resources" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>User Guide</strong>: <code>docs/user-guides/</code> - How to use the application</li>
+<li><strong>Developer Guide</strong>: <code>docs/developer-guides/</code> - How to develop and extend</li>
+<li><strong>API Documentation</strong>: <code>http://localhost:8000/docs</code> - Interactive API docs</li>
+<li><strong>Troubleshooting</strong>: <code>docs/troubleshooting/</code> - Common issues and solutions</li>
+<li><strong>Architecture Decisions</strong>: <code>.kiro/specs/</code> - Design decisions and specifications</li>
+</ul>
+<hr />
+<p>This architecture enables <strong>rapid development</strong>, <strong>reliable operation</strong>, and <strong>easy maintenance</strong> while providing a <strong>great user experience</strong> and <strong>comprehensive developer tools</strong>.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

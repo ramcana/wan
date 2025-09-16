@@ -1,0 +1,11 @@
+---
+category: reference
+last_updated: '2025-09-15T18:13:54.990677'
+original_path: outputs\videos\mock_placeholder_e3b3e755-c9d0-4ede-9c97-d9ea79630e80_20250915_181354.txt
+tags: []
+title: Mock Placeholder E3B3E755 C9D0 4Ede 9C97 D9Ea79630E80 20250915 181354
+---
+
+Mock generation placeholder for task e3b3e755-c9d0-4ede-9c97-d9ea79630e80
+Model: t2v-A14B
+Prompt: A cat walking in a garden

@@ -1,0 +1,1558 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="WAN2.2 Video Generation System Documentation">
+      
+      
+      
+        <link rel="canonical" href="https://ramcana.github.io/wan/archive/TASK_12_WAN_WEIGHT_MANAGEMENT_IMPLEMENTATION_SUMMARY/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>Task 12: WAN Model Weight Management Implementation Summary - WAN22 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e53b48f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#task-12-wan-model-weight-management-implementation-summary" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="WAN22 Documentation" class="md-header__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            WAN22 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Task 12: WAN Model Weight Management Implementation Summary
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../WAN22_System_Capabilities_Report/" class="md-tabs__link">
+          
+  
+  
+  System Overview
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../model-orchestrator/requirements/" class="md-tabs__link">
+          
+  
+  
+  Model Orchestrator
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../config/models.toml" class="md-tabs__link">
+          
+  
+  
+  Configuration
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="WAN22 Documentation" class="md-nav__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    WAN22 Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    System Overview
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            System Overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../WAN22_System_Capabilities_Report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Capabilities Report
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Model Orchestrator
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Model Orchestrator
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Requirements
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/tasks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tasks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Configuration
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Configuration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Models Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models_simple.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simple Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation Details
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementation Details">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-core-weight-management-system-wan_weight_managerpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Core Weight Management System (wan_weight_manager.py)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Core Weight Management System (wan_weight_manager.py)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Components:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features-implemented" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features Implemented:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Structure:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-model-update-and-migration-system-wan_model_updaterpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Model Update and Migration System (wan_model_updater.py)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Model Update and Migration System (wan_model_updater.py)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-components_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Components:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features-implemented_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features Implemented:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#migration-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Migration Strategies:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-integration-layer-wan_weight_integrationpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Integration Layer (wan_weight_integration.py)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Integration Layer (wan_weight_integration.py)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-components_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Components:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features-implemented_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features Implemented:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-command-line-interface-wan_weight_clipy" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Command Line Interface (wan_weight_cli.py)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Command Line Interface (wan_weight_cli.py)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#available-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Available Commands:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features-implemented_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features Implemented:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-comprehensive-test-suite-test_wan_weight_managementpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Comprehensive Test Suite (test_wan_weight_management.py)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Comprehensive Test Suite (test_wan_weight_management.py)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Coverage:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Classes:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requirements-compliance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements Compliance
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirements Compliance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#requirement-21-model-weight-download-infrastructure" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Requirement 2.1: Model Weight Download Infrastructure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement-22-weight-integrity-verification" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Requirement 2.2: Weight Integrity Verification
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement-23-model-caching-and-version-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Requirement 2.3: Model Caching and Version Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement-24-model-update-and-migration-utilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Requirement 2.4: Model Update and Migration Utilities
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration Points
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration Points">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-enhanced-model-downloader-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Enhanced Model Downloader Integration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-wan-model-configuration-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. WAN Model Configuration Integration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-model-availability-manager-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Model Availability Manager Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage Examples
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-weight-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Weight Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-updates-and-migration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model Updates and Migration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integration-layer-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration Layer Usage
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#file-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      File Structure
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-characteristics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Characteristics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Characteristics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#download-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Download Performance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cache-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cache Performance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Usage
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-handling-and-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Handling and Recovery
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Error Handling and Recovery">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#download-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Download Errors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update Errors
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Considerations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Security Considerations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#download-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      Download Security
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-system-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      File System Security
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#future-enhancements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Future Enhancements
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Future Enhancements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#planned-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Planned Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integration-opportunities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration Opportunities
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="task-12-wan-model-weight-management-implementation-summary">Task 12: WAN Model Weight Management Implementation Summary<a class="headerlink" href="#task-12-wan-model-weight-management-implementation-summary" title="Permanent link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>Successfully implemented a comprehensive WAN Model Weight Management system that provides:</p>
+<ul>
+<li><strong>WAN model checkpoint downloading</strong> using existing ModelDownloader infrastructure</li>
+<li><strong>Weight integrity verification and validation</strong> with checksum and format validation</li>
+<li><strong>Model caching and version management</strong> with intelligent cleanup policies</li>
+<li><strong>Model update and migration utilities</strong> with backup and rollback capabilities</li>
+</ul>
+<h2 id="implementation-details">Implementation Details<a class="headerlink" href="#implementation-details" title="Permanent link">&para;</a></h2>
+<h3 id="1-core-weight-management-system-wan_weight_managerpy">1. Core Weight Management System (<code>wan_weight_manager.py</code>)<a class="headerlink" href="#1-core-weight-management-system-wan_weight_managerpy" title="Permanent link">&para;</a></h3>
+<h4 id="key-components">Key Components:<a class="headerlink" href="#key-components" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>WANWeightManager</strong>: Main class for weight management operations</li>
+<li><strong>WeightInfo</strong>: Dataclass for tracking individual weight files</li>
+<li><strong>CacheEntry</strong>: Dataclass for cache management with access tracking</li>
+<li><strong>WeightStatus/WeightType</strong>: Enums for status and type classification</li>
+</ul>
+<h4 id="features-implemented">Features Implemented:<a class="headerlink" href="#features-implemented" title="Permanent link">&para;</a></h4>
+<ul>
+<li>✅ <strong>Checkpoint Downloading</strong>: Integrates with EnhancedModelDownloader</li>
+<li>✅ <strong>Integrity Verification</strong>: SHA256 checksums and format validation</li>
+<li>✅ <strong>Caching System</strong>: Intelligent cache with size limits and retention policies</li>
+<li>✅ <strong>Progress Tracking</strong>: Real-time download progress with callbacks</li>
+<li>✅ <strong>Resume Support</strong>: Partial download recovery and resumption</li>
+<li>✅ <strong>Concurrent Downloads</strong>: Multiple weight files downloaded in parallel</li>
+</ul>
+<h4 id="code-structure">Code Structure:<a class="headerlink" href="#code-structure" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">WANWeightManager</span><span class="p">:</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">download_model_weights</span><span class="p">(</span><span class="n">model_id</span><span class="p">,</span> <span class="n">force_redownload</span><span class="p">,</span> <span class="n">verify_integrity</span><span class="p">)</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">verify_model_integrity</span><span class="p">(</span><span class="n">model_id</span><span class="p">)</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">get_model_cache_info</span><span class="p">(</span><span class="n">model_id</span><span class="p">)</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">cleanup_cache</span><span class="p">(</span><span class="n">max_size_gb</span><span class="p">,</span> <span class="n">retention_days</span><span class="p">)</span>
+    <span class="c1"># ... additional methods</span>
+</code></pre></div>
+<h3 id="2-model-update-and-migration-system-wan_model_updaterpy">2. Model Update and Migration System (<code>wan_model_updater.py</code>)<a class="headerlink" href="#2-model-update-and-migration-system-wan_model_updaterpy" title="Permanent link">&para;</a></h3>
+<h4 id="key-components_1">Key Components:<a class="headerlink" href="#key-components_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>WANModelUpdater</strong>: Main class for model updates and migrations</li>
+<li><strong>ModelVersion</strong>: Dataclass for version information and metadata</li>
+<li><strong>UpdateInfo</strong>: Dataclass for update availability information</li>
+<li><strong>MigrationStrategy</strong>: Enum for different migration approaches</li>
+</ul>
+<h4 id="features-implemented_1">Features Implemented:<a class="headerlink" href="#features-implemented_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li>✅ <strong>Version Management</strong>: Track and compare model versions</li>
+<li>✅ <strong>Update Checking</strong>: Check for available updates from remote sources</li>
+<li>✅ <strong>Migration Strategies</strong>: Conservative, aggressive, and parallel migration</li>
+<li>✅ <strong>Backup System</strong>: Automatic backups before updates with rollback capability</li>
+<li>✅ <strong>Compatibility Checking</strong>: Detect breaking changes and compatibility issues</li>
+<li>✅ <strong>Rollback Support</strong>: Restore previous versions from backups</li>
+</ul>
+<h4 id="migration-strategies">Migration Strategies:<a class="headerlink" href="#migration-strategies" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Conservative</strong>: Create backup before update, restore on failure</li>
+<li><strong>Aggressive</strong>: Replace immediately without backup</li>
+<li><strong>Parallel</strong>: Keep both versions temporarily during migration</li>
+</ul>
+<h3 id="3-integration-layer-wan_weight_integrationpy">3. Integration Layer (<code>wan_weight_integration.py</code>)<a class="headerlink" href="#3-integration-layer-wan_weight_integrationpy" title="Permanent link">&para;</a></h3>
+<h4 id="key-components_2">Key Components:<a class="headerlink" href="#key-components_2" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>WANWeightIntegrationManager</strong>: Unified interface for weight management</li>
+<li><strong>Integration with existing systems</strong>: ModelAvailabilityManager, ModelHealthMonitor</li>
+<li><strong>Status tracking and callbacks</strong>: Real-time status updates and notifications</li>
+</ul>
+<h4 id="features-implemented_2">Features Implemented:<a class="headerlink" href="#features-implemented_2" title="Permanent link">&para;</a></h4>
+<ul>
+<li>✅ <strong>Unified Interface</strong>: Single entry point for all weight operations</li>
+<li>✅ <strong>Status Tracking</strong>: Comprehensive status monitoring for all models</li>
+<li>✅ <strong>Callback System</strong>: Extensible callback system for progress and status updates</li>
+<li>✅ <strong>Integration Ready</strong>: Compatible with existing model management infrastructure</li>
+<li>✅ <strong>Error Handling</strong>: Robust error handling with graceful degradation</li>
+</ul>
+<h3 id="4-command-line-interface-wan_weight_clipy">4. Command Line Interface (<code>wan_weight_cli.py</code>)<a class="headerlink" href="#4-command-line-interface-wan_weight_clipy" title="Permanent link">&para;</a></h3>
+<h4 id="available-commands">Available Commands:<a class="headerlink" href="#available-commands" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Download model weights</span>
+python<span class="w"> </span>wan_weight_cli.py<span class="w"> </span>download<span class="w"> </span>t2v-A14B<span class="w"> </span>--force<span class="w"> </span>--verify
+
+<span class="c1"># Verify model integrity</span>
+python<span class="w"> </span>wan_weight_cli.py<span class="w"> </span>verify<span class="w"> </span>i2v-A14B
+
+<span class="c1"># List available/cached models</span>
+python<span class="w"> </span>wan_weight_cli.py<span class="w"> </span>list<span class="w"> </span>--cached-only
+
+<span class="c1"># Show cache information</span>
+python<span class="w"> </span>wan_weight_cli.py<span class="w"> </span>cache-info<span class="w"> </span>t2v-A14B
+
+<span class="c1"># Clean up cache</span>
+python<span class="w"> </span>wan_weight_cli.py<span class="w"> </span>cleanup<span class="w"> </span>--max-size-gb<span class="w"> </span><span class="m">20</span><span class="w"> </span>--retention-days<span class="w"> </span><span class="m">14</span>
+
+<span class="c1"># Check for updates</span>
+python<span class="w"> </span>wan_weight_cli.py<span class="w"> </span>check-updates
+
+<span class="c1"># Update model</span>
+python<span class="w"> </span>wan_weight_cli.py<span class="w"> </span>update<span class="w"> </span>t2v-A14B<span class="w"> </span>--version<span class="w"> </span><span class="m">1</span>.1.0<span class="w"> </span>--strategy<span class="w"> </span>conservative
+
+<span class="c1"># Rollback model</span>
+python<span class="w"> </span>wan_weight_cli.py<span class="w"> </span>rollback<span class="w"> </span>t2v-A14B<span class="w"> </span><span class="m">1</span>.0.0
+</code></pre></div>
+<h4 id="features-implemented_3">Features Implemented:<a class="headerlink" href="#features-implemented_3" title="Permanent link">&para;</a></h4>
+<ul>
+<li>✅ <strong>Complete CLI Interface</strong>: All weight management operations available via CLI</li>
+<li>✅ <strong>Progress Display</strong>: Real-time progress indicators and status updates</li>
+<li>✅ <strong>Error Handling</strong>: User-friendly error messages and verbose logging</li>
+<li>✅ <strong>Flexible Configuration</strong>: Configurable models directory and options</li>
+</ul>
+<h3 id="5-comprehensive-test-suite-test_wan_weight_managementpy">5. Comprehensive Test Suite (<code>test_wan_weight_management.py</code>)<a class="headerlink" href="#5-comprehensive-test-suite-test_wan_weight_managementpy" title="Permanent link">&para;</a></h3>
+<h4 id="test-coverage">Test Coverage:<a class="headerlink" href="#test-coverage" title="Permanent link">&para;</a></h4>
+<ul>
+<li>✅ <strong>Weight Manager Tests</strong>: Download, verification, caching, cleanup</li>
+<li>✅ <strong>Model Updater Tests</strong>: Version management, updates, migrations, backups</li>
+<li>✅ <strong>Integration Tests</strong>: Status tracking, callbacks, error handling</li>
+<li>✅ <strong>Utility Function Tests</strong>: Convenience functions and factory methods</li>
+<li>✅ <strong>Mock Infrastructure</strong>: Comprehensive mocking for isolated testing</li>
+</ul>
+<h4 id="test-classes">Test Classes:<a class="headerlink" href="#test-classes" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>TestWANWeightManager</code>: Core weight management functionality</li>
+<li><code>TestWANModelUpdater</code>: Update and migration functionality</li>
+<li><code>TestUtilityFunctions</code>: Convenience functions and integration</li>
+</ul>
+<h2 id="requirements-compliance">Requirements Compliance<a class="headerlink" href="#requirements-compliance" title="Permanent link">&para;</a></h2>
+<h3 id="requirement-21-model-weight-download-infrastructure">✅ Requirement 2.1: Model Weight Download Infrastructure<a class="headerlink" href="#requirement-21-model-weight-download-infrastructure" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Implementation</strong>: <code>WANWeightManager.download_model_weights()</code></li>
+<li><strong>Features</strong>:</li>
+<li>Integration with existing EnhancedModelDownloader</li>
+<li>Parallel download of multiple weight files (model, VAE, tokenizer, scheduler, config)</li>
+<li>Resume support for interrupted downloads</li>
+<li>Progress tracking with real-time callbacks</li>
+<li>Bandwidth limiting and adaptive chunking</li>
+</ul>
+<h3 id="requirement-22-weight-integrity-verification">✅ Requirement 2.2: Weight Integrity Verification<a class="headerlink" href="#requirement-22-weight-integrity-verification" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Implementation</strong>: <code>WANWeightManager.verify_model_integrity()</code></li>
+<li><strong>Features</strong>:</li>
+<li>SHA256 checksum verification against expected values</li>
+<li>File format validation (JSON for configs, binary for weights)</li>
+<li>File size validation</li>
+<li>Corruption detection and reporting</li>
+<li>Automatic repair through re-download</li>
+</ul>
+<h3 id="requirement-23-model-caching-and-version-management">✅ Requirement 2.3: Model Caching and Version Management<a class="headerlink" href="#requirement-23-model-caching-and-version-management" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Implementation</strong>: <code>WANWeightManager</code> caching system + <code>WANModelUpdater</code></li>
+<li><strong>Features</strong>:</li>
+<li>Intelligent cache with configurable size limits (default 50GB)</li>
+<li>LRU-based cleanup with retention policies (default 30 days)</li>
+<li>Access tracking and usage statistics</li>
+<li>Version tracking with changelog and compatibility information</li>
+<li>Cache metadata persistence across restarts</li>
+</ul>
+<h3 id="requirement-24-model-update-and-migration-utilities">✅ Requirement 2.4: Model Update and Migration Utilities<a class="headerlink" href="#requirement-24-model-update-and-migration-utilities" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Implementation</strong>: <code>WANModelUpdater</code> with migration strategies</li>
+<li><strong>Features</strong>:</li>
+<li>Automatic update checking from remote sources</li>
+<li>Multiple migration strategies (conservative, aggressive, parallel)</li>
+<li>Backup creation before updates with automatic rollback on failure</li>
+<li>Version history tracking and rollback capabilities</li>
+<li>Compatibility checking with breaking change detection</li>
+</ul>
+<h2 id="integration-points">Integration Points<a class="headerlink" href="#integration-points" title="Permanent link">&para;</a></h2>
+<h3 id="1-enhanced-model-downloader-integration">1. Enhanced Model Downloader Integration<a class="headerlink" href="#1-enhanced-model-downloader-integration" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Uses existing EnhancedModelDownloader for actual downloads</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">_downloader</span> <span class="o">=</span> <span class="n">EnhancedModelDownloader</span><span class="p">(</span><span class="n">models_dir</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">models_dir</span><span class="p">))</span>
+<span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_downloader</span><span class="o">.</span><span class="n">download_with_retry</span><span class="p">(</span><span class="n">model_id</span><span class="p">,</span> <span class="n">download_url</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="2-wan-model-configuration-integration">2. WAN Model Configuration Integration<a class="headerlink" href="#2-wan-model-configuration-integration" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Leverages existing WAN model configurations</span>
+<span class="n">config</span> <span class="o">=</span> <span class="n">get_wan_model_config</span><span class="p">(</span><span class="n">model_id</span><span class="p">)</span>
+<span class="n">weight_infos</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_weight_infos</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="3-model-availability-manager-integration">3. Model Availability Manager Integration<a class="headerlink" href="#3-model-availability-manager-integration" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Ready for integration with existing model availability system</span>
+<span class="k">if</span> <span class="n">MODEL_AVAILABILITY_MANAGER_AVAILABLE</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_availability_manager</span><span class="p">:</span>
+    <span class="c1"># Register WAN models with availability manager</span>
+</code></pre></div>
+<h2 id="usage-examples">Usage Examples<a class="headerlink" href="#usage-examples" title="Permanent link">&para;</a></h2>
+<h3 id="basic-weight-management">Basic Weight Management<a class="headerlink" href="#basic-weight-management" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">core.models.wan_models.wan_weight_manager</span> <span class="kn">import</span> <span class="n">get_wan_weight_manager</span>
+
+<span class="c1"># Initialize weight manager</span>
+<span class="n">manager</span> <span class="o">=</span> <span class="k">await</span> <span class="n">get_wan_weight_manager</span><span class="p">(</span><span class="s2">&quot;./models&quot;</span><span class="p">)</span>
+
+<span class="c1"># Download model weights</span>
+<span class="n">success</span> <span class="o">=</span> <span class="k">await</span> <span class="n">manager</span><span class="o">.</span><span class="n">download_model_weights</span><span class="p">(</span><span class="s2">&quot;t2v-A14B&quot;</span><span class="p">,</span> <span class="n">verify_integrity</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Verify integrity</span>
+<span class="n">is_valid</span> <span class="o">=</span> <span class="k">await</span> <span class="n">manager</span><span class="o">.</span><span class="n">verify_model_integrity</span><span class="p">(</span><span class="s2">&quot;t2v-A14B&quot;</span><span class="p">)</span>
+
+<span class="c1"># Get cache info</span>
+<span class="n">cache_info</span> <span class="o">=</span> <span class="k">await</span> <span class="n">manager</span><span class="o">.</span><span class="n">get_model_cache_info</span><span class="p">(</span><span class="s2">&quot;t2v-A14B&quot;</span><span class="p">)</span>
+
+<span class="c1"># Cleanup cache</span>
+<span class="n">cleanup_stats</span> <span class="o">=</span> <span class="k">await</span> <span class="n">manager</span><span class="o">.</span><span class="n">cleanup_cache</span><span class="p">(</span><span class="n">max_size_gb</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">retention_days</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="model-updates-and-migration">Model Updates and Migration<a class="headerlink" href="#model-updates-and-migration" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">core.models.wan_models.wan_model_updater</span> <span class="kn">import</span> <span class="n">WANModelUpdater</span>
+
+<span class="c1"># Initialize updater</span>
+<span class="n">updater</span> <span class="o">=</span> <span class="n">WANModelUpdater</span><span class="p">(</span><span class="n">weight_manager</span><span class="p">)</span>
+
+<span class="c1"># Check for updates</span>
+<span class="n">update_infos</span> <span class="o">=</span> <span class="k">await</span> <span class="n">updater</span><span class="o">.</span><span class="n">check_for_updates</span><span class="p">(</span><span class="s2">&quot;t2v-A14B&quot;</span><span class="p">)</span>
+
+<span class="c1"># Update model</span>
+<span class="n">success</span> <span class="o">=</span> <span class="k">await</span> <span class="n">updater</span><span class="o">.</span><span class="n">update_model</span><span class="p">(</span><span class="s2">&quot;t2v-A14B&quot;</span><span class="p">,</span> <span class="n">strategy</span><span class="o">=</span><span class="n">MigrationStrategy</span><span class="o">.</span><span class="n">CONSERVATIVE</span><span class="p">)</span>
+
+<span class="c1"># Rollback if needed</span>
+<span class="n">success</span> <span class="o">=</span> <span class="k">await</span> <span class="n">updater</span><span class="o">.</span><span class="n">rollback_model</span><span class="p">(</span><span class="s2">&quot;t2v-A14B&quot;</span><span class="p">,</span> <span class="s2">&quot;1.0.0&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="integration-layer-usage">Integration Layer Usage<a class="headerlink" href="#integration-layer-usage" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">core.models.wan_models.wan_weight_integration</span> <span class="kn">import</span> <span class="n">ensure_wan_model_weights</span>
+
+<span class="c1"># Ensure weights are available (download if needed)</span>
+<span class="n">success</span> <span class="o">=</span> <span class="k">await</span> <span class="n">ensure_wan_model_weights</span><span class="p">(</span><span class="s2">&quot;t2v-A14B&quot;</span><span class="p">,</span> <span class="n">auto_download</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Get comprehensive status</span>
+<span class="n">status</span> <span class="o">=</span> <span class="k">await</span> <span class="n">get_wan_model_weight_status</span><span class="p">(</span><span class="s2">&quot;t2v-A14B&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="file-structure">File Structure<a class="headerlink" href="#file-structure" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>core/models/wan_models/
+├── wan_weight_manager.py          # Core weight management system
+├── wan_model_updater.py           # Update and migration utilities
+├── wan_weight_integration.py      # Integration with existing systems
+└── wan_model_config.py           # Existing model configurations
+
+cli/
+└── wan_weight_cli.py             # Command-line interface
+
+tests/
+└── test_wan_weight_management.py # Comprehensive test suite
+</code></pre></div>
+<h2 id="performance-characteristics">Performance Characteristics<a class="headerlink" href="#performance-characteristics" title="Permanent link">&para;</a></h2>
+<h3 id="download-performance">Download Performance<a class="headerlink" href="#download-performance" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Parallel Downloads</strong>: Multiple weight files downloaded concurrently</li>
+<li><strong>Resume Support</strong>: Interrupted downloads can be resumed from last position</li>
+<li><strong>Adaptive Chunking</strong>: Chunk size adapts to connection speed (8KB-64KB)</li>
+<li><strong>Bandwidth Limiting</strong>: Configurable bandwidth limits to prevent network saturation</li>
+</ul>
+<h3 id="cache-performance">Cache Performance<a class="headerlink" href="#cache-performance" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Efficient Storage</strong>: Only stores necessary weight files with deduplication</li>
+<li><strong>Fast Lookup</strong>: O(1) cache lookup with in-memory index</li>
+<li><strong>Intelligent Cleanup</strong>: LRU-based cleanup preserves frequently used models</li>
+<li><strong>Metadata Persistence</strong>: Cache metadata persisted to disk for restart resilience</li>
+</ul>
+<h3 id="memory-usage">Memory Usage<a class="headerlink" href="#memory-usage" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Streaming Operations</strong>: Large files processed in chunks to minimize memory usage</li>
+<li><strong>Async Operations</strong>: Non-blocking operations prevent UI freezing</li>
+<li><strong>Resource Cleanup</strong>: Proper resource cleanup prevents memory leaks</li>
+</ul>
+<h2 id="error-handling-and-recovery">Error Handling and Recovery<a class="headerlink" href="#error-handling-and-recovery" title="Permanent link">&para;</a></h2>
+<h3 id="download-errors">Download Errors<a class="headerlink" href="#download-errors" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Retry Logic</strong>: Exponential backoff with jitter for transient failures</li>
+<li><strong>Partial Recovery</strong>: Resume interrupted downloads from last successful chunk</li>
+<li><strong>Integrity Validation</strong>: Automatic re-download for corrupted files</li>
+<li><strong>Graceful Degradation</strong>: Continue with available weights if some downloads fail</li>
+</ul>
+<h3 id="update-errors">Update Errors<a class="headerlink" href="#update-errors" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Backup System</strong>: Automatic backups before updates with rollback on failure</li>
+<li><strong>Compatibility Checking</strong>: Pre-update compatibility validation</li>
+<li><strong>Transaction-like Updates</strong>: All-or-nothing update semantics</li>
+<li><strong>Recovery Procedures</strong>: Detailed recovery procedures for various failure modes</li>
+</ul>
+<h2 id="security-considerations">Security Considerations<a class="headerlink" href="#security-considerations" title="Permanent link">&para;</a></h2>
+<h3 id="download-security">Download Security<a class="headerlink" href="#download-security" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>HTTPS Only</strong>: All downloads use secure HTTPS connections</li>
+<li><strong>Checksum Verification</strong>: SHA256 checksums prevent tampering</li>
+<li><strong>URL Validation</strong>: Download URLs validated against trusted sources</li>
+<li><strong>Sandbox Isolation</strong>: Downloads isolated in temporary directories</li>
+</ul>
+<h3 id="file-system-security">File System Security<a class="headerlink" href="#file-system-security" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Permission Checking</strong>: Proper file system permissions enforced</li>
+<li><strong>Path Validation</strong>: All file paths validated to prevent directory traversal</li>
+<li><strong>Atomic Operations</strong>: File operations are atomic where possible</li>
+<li><strong>Backup Integrity</strong>: Backup files protected with appropriate permissions</li>
+</ul>
+<h2 id="future-enhancements">Future Enhancements<a class="headerlink" href="#future-enhancements" title="Permanent link">&para;</a></h2>
+<h3 id="planned-features">Planned Features<a class="headerlink" href="#planned-features" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Distributed Caching</strong>: Support for shared cache across multiple instances</li>
+<li><strong>Delta Updates</strong>: Incremental updates for large models</li>
+<li><strong>Compression</strong>: On-the-fly compression for storage efficiency</li>
+<li><strong>Mirror Support</strong>: Multiple download mirrors for reliability</li>
+<li><strong>Metrics Collection</strong>: Detailed metrics for monitoring and optimization</li>
+</ol>
+<h3 id="integration-opportunities">Integration Opportunities<a class="headerlink" href="#integration-opportunities" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>WebSocket Notifications</strong>: Real-time progress updates via WebSocket</li>
+<li><strong>Database Integration</strong>: Persistent storage of cache metadata in database</li>
+<li><strong>Cloud Storage</strong>: Support for cloud-based model storage (S3, GCS, etc.)</li>
+<li><strong>CDN Integration</strong>: Content delivery network support for faster downloads</li>
+</ol>
+<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
+<p>The WAN Model Weight Management system provides a comprehensive, production-ready solution for managing WAN model weights. It successfully integrates with existing infrastructure while providing advanced features like intelligent caching, version management, and migration utilities. The system is designed for scalability, reliability, and ease of use, with extensive error handling and recovery mechanisms.</p>
+<p><strong>Key Achievements:</strong></p>
+<ul>
+<li>✅ Complete integration with existing ModelDownloader infrastructure</li>
+<li>✅ Robust weight integrity verification and validation system</li>
+<li>✅ Intelligent caching with configurable policies and cleanup</li>
+<li>✅ Comprehensive update and migration utilities with backup/rollback</li>
+<li>✅ Full CLI interface for all operations</li>
+<li>✅ Extensive test coverage with mock infrastructure</li>
+<li>✅ Production-ready error handling and recovery</li>
+<li>✅ Security-conscious design with validation and sandboxing</li>
+</ul>
+<p>The implementation fully satisfies all requirements (2.1, 2.2, 2.3, 2.4) and provides a solid foundation for WAN model weight management in the broader system.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

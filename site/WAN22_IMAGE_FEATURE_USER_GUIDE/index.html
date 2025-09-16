@@ -1,0 +1,1775 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="WAN2.2 Video Generation System Documentation">
+      
+      
+      
+        <link rel="canonical" href="https://ramcana.github.io/wan/WAN22_IMAGE_FEATURE_USER_GUIDE/">
+      
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>WAN22 Image Feature User Guide - WAN22 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.e53b48f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#wan22-image-feature-user-guide" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="WAN22 Documentation" class="md-header__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            WAN22 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              WAN22 Image Feature User Guide
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../WAN22_System_Capabilities_Report/" class="md-tabs__link">
+          
+  
+  
+  System Overview
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../model-orchestrator/requirements/" class="md-tabs__link">
+          
+  
+  
+  Model Orchestrator
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../config/models.toml" class="md-tabs__link">
+          
+  
+  
+  Configuration
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="WAN22 Documentation" class="md-nav__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    WAN22 Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    System Overview
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            System Overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../WAN22_System_Capabilities_Report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Capabilities Report
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Model Orchestrator
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Model Orchestrator
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../model-orchestrator/requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Requirements
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../model-orchestrator/tasks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tasks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Configuration
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Configuration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../config/models.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Models Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../config/models_simple.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simple Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting Started
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Getting Started">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#model-types-and-image-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model Types and Image Support
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supported-image-formats" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supported Image Formats
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#image-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Image Requirements
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-image-upload-feature" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using the Image Upload Feature
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Using the Image Upload Feature">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#selecting-model-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      Selecting Model Type
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uploading-images" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uploading Images
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Uploading Images">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#start-image-required-for-i2v-and-ti2v" class="md-nav__link">
+    <span class="md-ellipsis">
+      Start Image (Required for I2V and TI2V)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#end-image-optional-for-ti2v" class="md-nav__link">
+    <span class="md-ellipsis">
+      End Image (Optional for TI2V)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#image-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Image Validation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Image Validation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#validation-checks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validation Checks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validation-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validation Messages
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#image-preview-and-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Image Preview and Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Image Preview and Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#thumbnail-previews" class="md-nav__link">
+    <span class="md-ellipsis">
+      Thumbnail Previews
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#image-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Image Management
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resolution-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resolution Settings
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Resolution Settings">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#available-resolutions-by-model-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      Available Resolutions by Model Type
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Available Resolutions by Model Type">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#t2v-and-i2v-models-t2v-a14b-i2v-a14b" class="md-nav__link">
+    <span class="md-ellipsis">
+      T2V and I2V Models (t2v-A14B, i2v-A14B)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ti2v-model-ti2v-5b" class="md-nav__link">
+    <span class="md-ellipsis">
+      TI2V Model (ti2v-5B)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resolution-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resolution Selection
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#progress-tracking" class="md-nav__link">
+    <span class="md-ellipsis">
+      Progress Tracking
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Progress Tracking">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generation-progress" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generation Progress
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Generation Progress">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#progress-bar" class="md-nav__link">
+    <span class="md-ellipsis">
+      Progress Bar
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generation-statistics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generation Statistics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Monitoring
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-image-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Image Issues
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Image Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#invalid-image-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      "Invalid Image Format"
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#image-too-small" class="md-nav__link">
+    <span class="md-ellipsis">
+      "Image Too Small"
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#image-too-large" class="md-nav__link">
+    <span class="md-ellipsis">
+      "Image Too Large"
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#incompatible-aspect-ratios" class="md-nav__link">
+    <span class="md-ellipsis">
+      "Incompatible Aspect Ratios"
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Issues
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#slow-image-uploadvalidation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Slow Image Upload/Validation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#high-memory-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      High Memory Usage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slow-progress-updates" class="md-nav__link">
+    <span class="md-ellipsis">
+      Slow Progress Updates
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#error-messages-and-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Messages and Solutions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Error Messages and Solutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#failed-to-load-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      "Failed to Load Image"
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validation-timeout" class="md-nav__link">
+    <span class="md-ellipsis">
+      "Validation Timeout"
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-allocation-error" class="md-nav__link">
+    <span class="md-ellipsis">
+      "Memory Allocation Error"
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Features
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#performance-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Optimization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Optimization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#automatic-caching" class="md-nav__link">
+    <span class="md-ellipsis">
+      Automatic Caching
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enhanced-memory-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enhanced Memory Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#progress-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Progress Optimization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-monitoring_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Monitoring
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#customization-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      Customization Options
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Customization Options">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cache-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cache Settings
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-thresholds" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Thresholds
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Management
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#image-preparation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Image Preparation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-optimization_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Optimization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generation-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generation Settings
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#faq" class="md-nav__link">
+    <span class="md-ellipsis">
+      FAQ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="FAQ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#q-can-i-use-the-same-image-for-start-and-end-frames" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q: Can I use the same image for start and end frames?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-what-happens-if-i-upload-incompatible-images" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q: What happens if I upload incompatible images?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-can-i-change-images-after-starting-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q: Can I change images after starting generation?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-why-are-my-images-taking-long-to-validate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q: Why are my images taking long to validate?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-can-i-use-images-with-different-aspect-ratios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q: Can I use images with different aspect ratios?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q-how-do-i-know-if-my-system-can-handle-large-images" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q: How do I know if my system can handle large images?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#support-and-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Support and Resources
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Support and Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getting-help" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting Help
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-monitoring_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Monitoring
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional Resources
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="wan22-image-feature-user-guide">WAN22 Image Feature User Guide<a class="headerlink" href="#wan22-image-feature-user-guide" title="Permanent link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>This guide covers the enhanced start and end image functionality in WAN22, including image upload, validation, progress tracking, and performance optimization features.</p>
+<h2 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
+<h3 id="model-types-and-image-support">Model Types and Image Support<a class="headerlink" href="#model-types-and-image-support" title="Permanent link">&para;</a></h3>
+<p>WAN22 supports three generation modes with different image requirements:</p>
+<ol>
+<li><strong>Text-to-Video (T2V)</strong>: Text prompts only, no image inputs</li>
+<li><strong>Image-to-Video (I2V)</strong>: Requires start image, text prompt optional</li>
+<li><strong>Text-Image-to-Video (TI2V)</strong>: Requires start image and text prompt, end image optional</li>
+</ol>
+<h3 id="supported-image-formats">Supported Image Formats<a class="headerlink" href="#supported-image-formats" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>PNG</strong>: Recommended for best quality</li>
+<li><strong>JPEG/JPG</strong>: Good for photographs</li>
+<li><strong>WebP</strong>: Efficient compression, smaller file sizes</li>
+</ul>
+<h3 id="image-requirements">Image Requirements<a class="headerlink" href="#image-requirements" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Minimum Size</strong>: 256x256 pixels</li>
+<li><strong>Maximum Size</strong>: 4096x4096 pixels (depending on available memory)</li>
+<li><strong>Aspect Ratios</strong>: Any ratio supported, but consistent ratios recommended for start/end images</li>
+<li><strong>File Size</strong>: Up to 50MB per image</li>
+</ul>
+<h2 id="using-the-image-upload-feature">Using the Image Upload Feature<a class="headerlink" href="#using-the-image-upload-feature" title="Permanent link">&para;</a></h2>
+<h3 id="selecting-model-type">Selecting Model Type<a class="headerlink" href="#selecting-model-type" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Choose your desired model type from the dropdown:</p>
+</li>
+<li>
+<p><strong>t2v-A14B</strong>: Text-to-video generation</p>
+</li>
+<li><strong>i2v-A14B</strong>: Image-to-video generation</li>
+<li>
+<p><strong>ti2v-5B</strong>: Text-image-to-video generation</p>
+</li>
+<li>
+<p>The interface will automatically show/hide image upload controls based on your selection</p>
+</li>
+</ol>
+<h3 id="uploading-images">Uploading Images<a class="headerlink" href="#uploading-images" title="Permanent link">&para;</a></h3>
+<h4 id="start-image-required-for-i2v-and-ti2v">Start Image (Required for I2V and TI2V)<a class="headerlink" href="#start-image-required-for-i2v-and-ti2v" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Click the "Start Frame Image" upload area</li>
+<li>Select your image file from the file browser</li>
+<li>Wait for validation to complete</li>
+<li>Review the thumbnail preview and validation status</li>
+</ol>
+<h4 id="end-image-optional-for-ti2v">End Image (Optional for TI2V)<a class="headerlink" href="#end-image-optional-for-ti2v" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Click the "End Frame Image" upload area</li>
+<li>Select your image file from the file browser</li>
+<li>The system will validate compatibility with the start image</li>
+<li>Review the thumbnail preview and validation status</li>
+</ol>
+<h3 id="image-validation">Image Validation<a class="headerlink" href="#image-validation" title="Permanent link">&para;</a></h3>
+<p>The system automatically validates uploaded images:</p>
+<h4 id="validation-checks">Validation Checks<a class="headerlink" href="#validation-checks" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Format Validation</strong>: Ensures supported file format</li>
+<li><strong>Size Validation</strong>: Checks minimum and maximum dimensions</li>
+<li><strong>Compatibility Check</strong>: Verifies start/end image compatibility</li>
+<li><strong>Memory Check</strong>: Ensures image can be processed with available memory</li>
+</ul>
+<h4 id="validation-messages">Validation Messages<a class="headerlink" href="#validation-messages" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>✅ Success</strong>: Green checkmark with image dimensions and file size</li>
+<li><strong>⚠️ Warning</strong>: Yellow warning with suggestions for optimization</li>
+<li><strong>❌ Error</strong>: Red error with specific requirements and solutions</li>
+</ul>
+<h3 id="image-preview-and-management">Image Preview and Management<a class="headerlink" href="#image-preview-and-management" title="Permanent link">&para;</a></h3>
+<h4 id="thumbnail-previews">Thumbnail Previews<a class="headerlink" href="#thumbnail-previews" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Automatically generated for uploaded images</li>
+<li>Maintains original aspect ratio</li>
+<li>Shows image dimensions and file size on hover</li>
+<li>Click thumbnail for larger preview</li>
+</ul>
+<h4 id="image-management">Image Management<a class="headerlink" href="#image-management" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Clear Image</strong>: Click the "×" button to remove an uploaded image</li>
+<li><strong>Replace Image</strong>: Upload a new image to automatically replace the current one</li>
+<li><strong>Image Persistence</strong>: Images are preserved when switching between compatible model types</li>
+</ul>
+<h2 id="resolution-settings">Resolution Settings<a class="headerlink" href="#resolution-settings" title="Permanent link">&para;</a></h2>
+<h3 id="available-resolutions-by-model-type">Available Resolutions by Model Type<a class="headerlink" href="#available-resolutions-by-model-type" title="Permanent link">&para;</a></h3>
+<h4 id="t2v-and-i2v-models-t2v-a14b-i2v-a14b">T2V and I2V Models (t2v-A14B, i2v-A14B)<a class="headerlink" href="#t2v-and-i2v-models-t2v-a14b-i2v-a14b" title="Permanent link">&para;</a></h4>
+<ul>
+<li>1280×720 (HD)</li>
+<li>1280×704 (HD Wide)</li>
+<li>1920×1080 (Full HD)</li>
+</ul>
+<h4 id="ti2v-model-ti2v-5b">TI2V Model (ti2v-5B)<a class="headerlink" href="#ti2v-model-ti2v-5b" title="Permanent link">&para;</a></h4>
+<ul>
+<li>1280×720 (HD)</li>
+<li>1280×704 (HD Wide)</li>
+<li>1920×1080 (Full HD)</li>
+<li>1024×1024 (Square)</li>
+</ul>
+<h3 id="resolution-selection">Resolution Selection<a class="headerlink" href="#resolution-selection" title="Permanent link">&para;</a></h3>
+<ol>
+<li>The resolution dropdown automatically updates when you change model types</li>
+<li>Select your desired output resolution</li>
+<li>The system will validate compatibility with your uploaded images</li>
+<li>If an incompatible resolution is selected, the system will suggest alternatives</li>
+</ol>
+<h2 id="progress-tracking">Progress Tracking<a class="headerlink" href="#progress-tracking" title="Permanent link">&para;</a></h2>
+<h3 id="generation-progress">Generation Progress<a class="headerlink" href="#generation-progress" title="Permanent link">&para;</a></h3>
+<p>When you start video generation, you'll see:</p>
+<h4 id="progress-bar">Progress Bar<a class="headerlink" href="#progress-bar" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Visual progress indicator (0-100%)</li>
+<li>Current step and total steps</li>
+<li>Estimated time remaining</li>
+</ul>
+<h4 id="generation-statistics">Generation Statistics<a class="headerlink" href="#generation-statistics" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Current Phase</strong>: Initialization, Processing, or Encoding</li>
+<li><strong>Frames Processed</strong>: Number of frames completed</li>
+<li><strong>Processing Speed</strong>: Frames per second</li>
+<li><strong>Memory Usage</strong>: Current memory consumption</li>
+<li><strong>GPU Utilization</strong>: Graphics card usage (if available)</li>
+</ul>
+<h4 id="performance-monitoring">Performance Monitoring<a class="headerlink" href="#performance-monitoring" title="Permanent link">&para;</a></h4>
+<p>The system continuously monitors performance and will:</p>
+<ul>
+<li>Adjust update frequency based on system load</li>
+<li>Display warnings for performance issues</li>
+<li>Provide optimization suggestions when needed</li>
+</ul>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<h3 id="common-image-issues">Common Image Issues<a class="headerlink" href="#common-image-issues" title="Permanent link">&para;</a></h3>
+<h4 id="invalid-image-format">"Invalid Image Format"<a class="headerlink" href="#invalid-image-format" title="Permanent link">&para;</a></h4>
+<p><strong>Problem</strong>: Uploaded file is not a supported image format
+<strong>Solution</strong>: Convert your image to PNG, JPEG, or WebP format</p>
+<h4 id="image-too-small">"Image Too Small"<a class="headerlink" href="#image-too-small" title="Permanent link">&para;</a></h4>
+<p><strong>Problem</strong>: Image dimensions are below 256×256 pixels
+<strong>Solution</strong>: Resize your image to at least 256×256 pixels</p>
+<h4 id="image-too-large">"Image Too Large"<a class="headerlink" href="#image-too-large" title="Permanent link">&para;</a></h4>
+<p><strong>Problem</strong>: Image file size or dimensions exceed limits
+<strong>Solution</strong>:</p>
+<ul>
+<li>Reduce image dimensions</li>
+<li>Compress the image file</li>
+<li>Use a more efficient format (WebP)</li>
+</ul>
+<h4 id="incompatible-aspect-ratios">"Incompatible Aspect Ratios"<a class="headerlink" href="#incompatible-aspect-ratios" title="Permanent link">&para;</a></h4>
+<p><strong>Problem</strong>: Start and end images have different aspect ratios
+<strong>Solution</strong>:</p>
+<ul>
+<li>Crop images to match aspect ratios</li>
+<li>Use image editing software to pad images to same ratio</li>
+<li>Upload only a start image (end image is optional)</li>
+</ul>
+<h3 id="performance-issues">Performance Issues<a class="headerlink" href="#performance-issues" title="Permanent link">&para;</a></h3>
+<h4 id="slow-image-uploadvalidation">Slow Image Upload/Validation<a class="headerlink" href="#slow-image-uploadvalidation" title="Permanent link">&para;</a></h4>
+<p><strong>Symptoms</strong>: Long delays when uploading images
+<strong>Solutions</strong>:</p>
+<ul>
+<li>Use smaller image files</li>
+<li>Ensure stable internet connection</li>
+<li>Close other resource-intensive applications</li>
+<li>Try uploading images one at a time</li>
+</ul>
+<h4 id="high-memory-usage">High Memory Usage<a class="headerlink" href="#high-memory-usage" title="Permanent link">&para;</a></h4>
+<p><strong>Symptoms</strong>: System becomes slow, memory warnings
+<strong>Solutions</strong>:</p>
+<ul>
+<li>Use smaller images</li>
+<li>Close other applications</li>
+<li>Restart the application</li>
+<li>Reduce cache size in settings</li>
+</ul>
+<h4 id="slow-progress-updates">Slow Progress Updates<a class="headerlink" href="#slow-progress-updates" title="Permanent link">&para;</a></h4>
+<p><strong>Symptoms</strong>: Progress bar updates infrequently or freezes
+<strong>Solutions</strong>:</p>
+<ul>
+<li>The system automatically adjusts update frequency</li>
+<li>Check system resources (CPU, memory, GPU)</li>
+<li>Ensure adequate cooling for hardware</li>
+<li>Consider reducing generation resolution</li>
+</ul>
+<h3 id="error-messages-and-solutions">Error Messages and Solutions<a class="headerlink" href="#error-messages-and-solutions" title="Permanent link">&para;</a></h3>
+<h4 id="failed-to-load-image">"Failed to Load Image"<a class="headerlink" href="#failed-to-load-image" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Check file permissions</li>
+<li>Ensure file is not corrupted</li>
+<li>Try a different image file</li>
+<li>Restart the application</li>
+</ul>
+<h4 id="validation-timeout">"Validation Timeout"<a class="headerlink" href="#validation-timeout" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Image file may be too large</li>
+<li>System may be under heavy load</li>
+<li>Try uploading a smaller image</li>
+<li>Wait and try again</li>
+</ul>
+<h4 id="memory-allocation-error">"Memory Allocation Error"<a class="headerlink" href="#memory-allocation-error" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Insufficient system memory</li>
+<li>Close other applications</li>
+<li>Use smaller images</li>
+<li>Restart the application</li>
+</ul>
+<h2 id="advanced-features">Advanced Features<a class="headerlink" href="#advanced-features" title="Permanent link">&para;</a></h2>
+<h3 id="performance-optimization">Performance Optimization<a class="headerlink" href="#performance-optimization" title="Permanent link">&para;</a></h3>
+<h4 id="automatic-caching">Automatic Caching<a class="headerlink" href="#automatic-caching" title="Permanent link">&para;</a></h4>
+<ul>
+<li>The system automatically caches validation results and thumbnails</li>
+<li>Repeated operations are significantly faster (up to 25x speedup)</li>
+<li>Cache is managed automatically with LRU eviction</li>
+<li>Memory-aware caching prevents system overload</li>
+</ul>
+<h4 id="enhanced-memory-management">Enhanced Memory Management<a class="headerlink" href="#enhanced-memory-management" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Real-time memory usage monitoring and optimization</li>
+<li>Automatic cleanup of unused data and cache entries</li>
+<li>Emergency optimizations for critical memory situations</li>
+<li>GPU memory tracking and optimization (when available)</li>
+<li>Adaptive cache sizing based on available system memory</li>
+</ul>
+<h4 id="progress-optimization">Progress Optimization<a class="headerlink" href="#progress-optimization" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Update frequency adjusts dynamically to system performance</li>
+<li>Reduced overhead during high system load</li>
+<li>Emergency optimizations for critical performance issues</li>
+<li>Real-time performance monitoring with alerts</li>
+<li>Automatic optimization recommendations</li>
+</ul>
+<h4 id="performance-monitoring_1">Performance Monitoring<a class="headerlink" href="#performance-monitoring_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Comprehensive performance profiling of image operations</li>
+<li>Bottleneck detection and optimization recommendations</li>
+<li>Real-time performance alerts and suggestions</li>
+<li>Detailed performance reports and metrics export</li>
+<li>Integration with system resource monitoring</li>
+</ul>
+<h3 id="customization-options">Customization Options<a class="headerlink" href="#customization-options" title="Permanent link">&para;</a></h3>
+<h4 id="cache-settings">Cache Settings<a class="headerlink" href="#cache-settings" title="Permanent link">&para;</a></h4>
+<p>Advanced users can adjust cache settings:</p>
+<ul>
+<li>Maximum cache memory usage (default: 256MB)</li>
+<li>Number of cached images (default: 50 entries)</li>
+<li>Cleanup intervals (default: 5 minutes)</li>
+<li>LRU eviction policy configuration</li>
+</ul>
+<h4 id="performance-thresholds">Performance Thresholds<a class="headerlink" href="#performance-thresholds" title="Permanent link">&para;</a></h4>
+<p>Customize performance monitoring:</p>
+<ul>
+<li>Memory usage alert thresholds (warning: 75%, critical: 85%, emergency: 95%)</li>
+<li>CPU usage limits and monitoring intervals</li>
+<li>Update frequency preferences and adaptive intervals</li>
+<li>Performance profiling granularity settings</li>
+</ul>
+<h4 id="memory-management">Memory Management<a class="headerlink" href="#memory-management" title="Permanent link">&para;</a></h4>
+<p>Configure memory optimization:</p>
+<ul>
+<li>Automatic memory threshold detection</li>
+<li>Emergency optimization triggers</li>
+<li>GPU memory monitoring (when available)</li>
+<li>Cache size optimization based on available memory</li>
+<li>Memory trend analysis and reporting</li>
+</ul>
+<h2 id="best-practices">Best Practices<a class="headerlink" href="#best-practices" title="Permanent link">&para;</a></h2>
+<h3 id="image-preparation">Image Preparation<a class="headerlink" href="#image-preparation" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Use High-Quality Images</strong>: Better input images produce better results</li>
+<li><strong>Consistent Aspect Ratios</strong>: Use matching ratios for start/end images</li>
+<li><strong>Appropriate Resolution</strong>: Higher resolution images may require more processing time</li>
+<li><strong>Optimize File Size</strong>: Use efficient formats and compression</li>
+</ol>
+<h3 id="performance-optimization_1">Performance Optimization<a class="headerlink" href="#performance-optimization_1" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Close Unnecessary Applications</strong>: Free up system resources</li>
+<li><strong>Use Adequate Hardware</strong>: Ensure sufficient RAM and GPU memory</li>
+<li><strong>Monitor System Performance</strong>: Watch for performance warnings</li>
+<li><strong>Regular Maintenance</strong>: Restart application periodically to clear cache</li>
+</ol>
+<h3 id="generation-settings">Generation Settings<a class="headerlink" href="#generation-settings" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Start with Lower Resolutions</strong>: Test with 720p before using 1080p</li>
+<li><strong>Use End Images Sparingly</strong>: Only when specific ending is required</li>
+<li><strong>Monitor Progress</strong>: Watch for performance issues during generation</li>
+<li><strong>Save Frequently</strong>: Save your work regularly</li>
+</ol>
+<h2 id="faq">FAQ<a class="headerlink" href="#faq" title="Permanent link">&para;</a></h2>
+<h3 id="q-can-i-use-the-same-image-for-start-and-end-frames">Q: Can I use the same image for start and end frames?<a class="headerlink" href="#q-can-i-use-the-same-image-for-start-and-end-frames" title="Permanent link">&para;</a></h3>
+<p>A: Yes, but this may result in a static video. Use different images for dynamic results.</p>
+<h3 id="q-what-happens-if-i-upload-incompatible-images">Q: What happens if I upload incompatible images?<a class="headerlink" href="#q-what-happens-if-i-upload-incompatible-images" title="Permanent link">&para;</a></h3>
+<p>A: The system will show validation errors and suggest solutions.</p>
+<h3 id="q-can-i-change-images-after-starting-generation">Q: Can I change images after starting generation?<a class="headerlink" href="#q-can-i-change-images-after-starting-generation" title="Permanent link">&para;</a></h3>
+<p>A: No, images are locked once generation begins. You can change them for the next generation.</p>
+<h3 id="q-why-are-my-images-taking-long-to-validate">Q: Why are my images taking long to validate?<a class="headerlink" href="#q-why-are-my-images-taking-long-to-validate" title="Permanent link">&para;</a></h3>
+<p>A: Large images require more processing time. The system may also be optimizing performance.</p>
+<h3 id="q-can-i-use-images-with-different-aspect-ratios">Q: Can I use images with different aspect ratios?<a class="headerlink" href="#q-can-i-use-images-with-different-aspect-ratios" title="Permanent link">&para;</a></h3>
+<p>A: Yes, but the system will warn you about potential issues and may suggest adjustments.</p>
+<h3 id="q-how-do-i-know-if-my-system-can-handle-large-images">Q: How do I know if my system can handle large images?<a class="headerlink" href="#q-how-do-i-know-if-my-system-can-handle-large-images" title="Permanent link">&para;</a></h3>
+<p>A: The system monitors performance and will warn you if resources are insufficient.</p>
+<h2 id="support-and-resources">Support and Resources<a class="headerlink" href="#support-and-resources" title="Permanent link">&para;</a></h2>
+<h3 id="getting-help">Getting Help<a class="headerlink" href="#getting-help" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Check Error Messages</strong>: Most issues include specific solutions</li>
+<li><strong>Review System Requirements</strong>: Ensure your hardware meets minimum requirements</li>
+<li><strong>Monitor Performance</strong>: Use built-in performance monitoring</li>
+<li><strong>Consult Logs</strong>: Check application logs for detailed error information</li>
+</ol>
+<h3 id="performance-monitoring_2">Performance Monitoring<a class="headerlink" href="#performance-monitoring_2" title="Permanent link">&para;</a></h3>
+<p>Access performance information through:</p>
+<ul>
+<li>Real-time progress statistics</li>
+<li>Performance alerts and warnings</li>
+<li>Detailed performance reports</li>
+<li>System resource monitoring</li>
+</ul>
+<h3 id="additional-resources">Additional Resources<a class="headerlink" href="#additional-resources" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>WAN22 Performance Optimization Guide</strong>: Detailed technical information</li>
+<li><strong>Troubleshooting Guide</strong>: Comprehensive problem-solving resource</li>
+<li><strong>System Requirements</strong>: Hardware and software requirements</li>
+<li><strong>Release Notes</strong>: Latest features and improvements</li>
+</ul>
+<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
+<p>The WAN22 image feature provides powerful tools for creating videos from images with comprehensive validation, progress tracking, and performance optimization. By following this guide and best practices, you can achieve optimal results while maintaining good system performance.</p>
+<p>For technical issues or advanced configuration, refer to the Performance Optimization Guide or consult the system documentation.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

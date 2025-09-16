@@ -51,11 +51,11 @@ nav:
   - System Overview:
       - Capabilities Report: WAN22_System_Capabilities_Report.md
   - Model Orchestrator:
-      - Requirements: .kiro/specs/model-orchestrator/requirements.md
-      - Tasks: .kiro/specs/model-orchestrator/tasks.md
+      - Requirements: model-orchestrator/requirements.md
+      - Tasks: model-orchestrator/tasks.md
   - Configuration:
       - Models Config: config/models.toml
       - Simple Config: config/models_simple.toml
 
-docs_dir: .
+docs_dir: docs
 site_dir: site

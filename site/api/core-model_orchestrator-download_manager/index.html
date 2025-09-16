@@ -1,0 +1,1475 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="WAN2.2 Video Generation System Documentation">
+      
+      
+      
+        <link rel="canonical" href="https://ramcana.github.io/wan/api/core-model_orchestrator-download_manager/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>core.model_orchestrator.download_manager - WAN22 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e53b48f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#coremodel_orchestratordownload_manager" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="WAN22 Documentation" class="md-header__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            WAN22 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              core.model_orchestrator.download_manager
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../WAN22_System_Capabilities_Report/" class="md-tabs__link">
+          
+  
+  
+  System Overview
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../model-orchestrator/requirements/" class="md-tabs__link">
+          
+  
+  
+  Model Orchestrator
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../config/models.toml" class="md-tabs__link">
+          
+  
+  
+  Configuration
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="WAN22 Documentation" class="md-nav__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    WAN22 Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    System Overview
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            System Overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../WAN22_System_Capabilities_Report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Capabilities Report
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Model Orchestrator
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Model Orchestrator
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Requirements
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/tasks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tasks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Configuration
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Configuration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Models Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models_simple.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simple Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Classes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#downloadpriority" class="md-nav__link">
+    <span class="md-ellipsis">
+      DownloadPriority
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#downloadtask" class="md-nav__link">
+    <span class="md-ellipsis">
+      DownloadTask
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DownloadTask">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ltself-any-other-any" class="md-nav__link">
+    <span class="md-ellipsis">
+      lt(self: Any, other: Any)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#downloadprogress" class="md-nav__link">
+    <span class="md-ellipsis">
+      DownloadProgress
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bandwidthlimiter" class="md-nav__link">
+    <span class="md-ellipsis">
+      BandwidthLimiter
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="BandwidthLimiter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#methods_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acquire_tokensself-any-bytes_requested-int-float" class="md-nav__link">
+    <span class="md-ellipsis">
+      acquire_tokens(self: Any, bytes_requested: int) -&gt; float
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connectionpool" class="md-nav__link">
+    <span class="md-ellipsis">
+      ConnectionPool
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ConnectionPool">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#methods_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initself-any-max_connections-int-max_connections_per_host-int" class="md-nav__link">
+    <span class="md-ellipsis">
+      init(self: Any, max_connections: int, max_connections_per_host: int)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_create_sessionself-any-any" class="md-nav__link">
+    <span class="md-ellipsis">
+      _create_session(self: Any) -&gt; Any
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_sessionself-any-any" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_session(self: Any) -&gt; Any
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update_statsself-any-thread_id-int-bytes_downloaded-int-error-bool" class="md-nav__link">
+    <span class="md-ellipsis">
+      update_stats(self: Any, thread_id: int, bytes_downloaded: int, error: bool)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_statsself-any-" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_stats(self: Any) -&gt;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cleanup_stale_sessionsself-any-max_age-float" class="md-nav__link">
+    <span class="md-ellipsis">
+      cleanup_stale_sessions(self: Any, max_age: float)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#closeself-any" class="md-nav__link">
+    <span class="md-ellipsis">
+      close(self: Any)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modeldownloadqueue" class="md-nav__link">
+    <span class="md-ellipsis">
+      ModelDownloadQueue
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ModelDownloadQueue">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#methods_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ltself-any-other-any_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      lt(self: Any, other: Any)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#downloadmetrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      DownloadMetrics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DownloadMetrics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#methods_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#durationself-any-float" class="md-nav__link">
+    <span class="md-ellipsis">
+      duration(self: Any) -&gt; float
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#completion_rateself-any-float" class="md-nav__link">
+    <span class="md-ellipsis">
+      completion_rate(self: Any) -&gt; float
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paralleldownloadmanager" class="md-nav__link">
+    <span class="md-ellipsis">
+      ParallelDownloadManager
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ParallelDownloadManager">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#methods_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initself-any-max_concurrent_downloads-int-max_concurrent_files_per_model-int-max_bandwidth_bps-connection_pool_size-int-chunk_size-int-enable_resume-bool-enable_adaptive_chunking-bool-enable_compression-bool-queue_timeout-float" class="md-nav__link">
+    <span class="md-ellipsis">
+      init(self: Any, max_concurrent_downloads: int, max_concurrent_files_per_model: int, max_bandwidth_bps: , connection_pool_size: int, chunk_size: int, enable_resume: bool, enable_adaptive_chunking: bool, enable_compression: bool, queue_timeout: float)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add_download_taskself-any-model_id-str-file_path-str-source_url-str-local_path-path-size-int-priority-downloadpriority-progress_callback-str" class="md-nav__link">
+    <span class="md-ellipsis">
+      add_download_task(self: Any, model_id: str, file_path: str, source_url: str, local_path: Path, size: int, priority: DownloadPriority, progress_callback: ) -&gt; str
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#queue_model_downloadself-any-model_id-str-file_specs-source_url-str-local_dir-path-priority-downloadpriority-progress_callback-str" class="md-nav__link">
+    <span class="md-ellipsis">
+      queue_model_download(self: Any, model_id: str, file_specs: , source_url: str, local_dir: Path, priority: DownloadPriority, progress_callback: ) -&gt; str
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#download_model_parallelself-any-model_id-str-file_specs-source_url-str-local_dir-path-progress_callback-" class="md-nav__link">
+    <span class="md-ellipsis">
+      download_model_parallel(self: Any, model_id: str, file_specs: , source_url: str, local_dir: Path, progress_callback: ) -&gt;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wait_for_model_completionself-any-queue_id-str-timeout-" class="md-nav__link">
+    <span class="md-ellipsis">
+      wait_for_model_completion(self: Any, queue_id: str, timeout: ) -&gt;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_determine_file_priorityself-any-file_spec-any-downloadpriority" class="md-nav__link">
+    <span class="md-ellipsis">
+      _determine_file_priority(self: Any, file_spec: Any) -&gt; DownloadPriority
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_collect_download_resultsself-any-queue_id-str-" class="md-nav__link">
+    <span class="md-ellipsis">
+      _collect_download_results(self: Any, queue_id: str) -&gt;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_queue_workerself-any" class="md-nav__link">
+    <span class="md-ellipsis">
+      _queue_worker(self: Any)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_process_model_queueself-any-model_queue-modeldownloadqueue" class="md-nav__link">
+    <span class="md-ellipsis">
+      _process_model_queue(self: Any, model_queue: ModelDownloadQueue)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_handle_task_completionself-any-task-downloadtask-queue_id-str-success-bool-error" class="md-nav__link">
+    <span class="md-ellipsis">
+      _handle_task_completion(self: Any, task: DownloadTask, queue_id: str, success: bool, error: )
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_apply_adaptive_chunkingself-any-task-downloadtask" class="md-nav__link">
+    <span class="md-ellipsis">
+      _apply_adaptive_chunking(self: Any, task: DownloadTask)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_is_io_intensiveself-any-task-downloadtask-bool" class="md-nav__link">
+    <span class="md-ellipsis">
+      _is_io_intensive(self: Any, task: DownloadTask) -&gt; bool
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_get_source_keyself-any-source_url-str-str" class="md-nav__link">
+    <span class="md-ellipsis">
+      _get_source_key(self: Any, source_url: str) -&gt; str
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_metrics_workerself-any" class="md-nav__link">
+    <span class="md-ellipsis">
+      _metrics_worker(self: Any)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_download_file_optimizedself-any-task-downloadtask-queue_id-str-bool" class="md-nav__link">
+    <span class="md-ellipsis">
+      _download_file_optimized(self: Any, task: DownloadTask, queue_id: str) -&gt; bool
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_prepare_headersself-any-task-downloadtask-resume_pos-int-" class="md-nav__link">
+    <span class="md-ellipsis">
+      _prepare_headers(self: Any, task: DownloadTask, resume_pos: int) -&gt;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_download_file_freshself-any-task-downloadtask-progress-downloadprogress-bool" class="md-nav__link">
+    <span class="md-ellipsis">
+      _download_file_fresh(self: Any, task: DownloadTask, progress: DownloadProgress) -&gt; bool
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_update_performance_metricsself-any-task-downloadtask-progress-downloadprogress-queue_id-str" class="md-nav__link">
+    <span class="md-ellipsis">
+      _update_performance_metrics(self: Any, task: DownloadTask, progress: DownloadProgress, queue_id: str)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_download_file_basicself-any-task-downloadtask-progress-downloadprogress-resume_pos-int-bool" class="md-nav__link">
+    <span class="md-ellipsis">
+      _download_file_basic(self: Any, task: DownloadTask, progress: DownloadProgress, resume_pos: int) -&gt; bool
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_notify_progressself-any-progress-downloadprogress" class="md-nav__link">
+    <span class="md-ellipsis">
+      _notify_progress(self: Any, progress: DownloadProgress)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_download_statsself-any-" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_download_stats(self: Any) -&gt;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_model_queue_statusself-any-queue_id-str-" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_model_queue_status(self: Any, queue_id: str) -&gt;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cancel_model_downloadself-any-queue_id-str-bool" class="md-nav__link">
+    <span class="md-ellipsis">
+      cancel_model_download(self: Any, queue_id: str) -&gt; bool
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pause_downloadsself-any" class="md-nav__link">
+    <span class="md-ellipsis">
+      pause_downloads(self: Any)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resume_downloadsself-any" class="md-nav__link">
+    <span class="md-ellipsis">
+      resume_downloads(self: Any)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimize_performanceself-any" class="md-nav__link">
+    <span class="md-ellipsis">
+      optimize_performance(self: Any)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shutdownself-any" class="md-nav__link">
+    <span class="md-ellipsis">
+      shutdown(self: Any)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#constants" class="md-nav__link">
+    <span class="md-ellipsis">
+      Constants
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Constants">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#high" class="md-nav__link">
+    <span class="md-ellipsis">
+      HIGH
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#normal" class="md-nav__link">
+    <span class="md-ellipsis">
+      NORMAL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#low" class="md-nav__link">
+    <span class="md-ellipsis">
+      LOW
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="coremodel_orchestratordownload_manager">core.model_orchestrator.download_manager<a class="headerlink" href="#coremodel_orchestratordownload_manager" title="Permanent link">&para;</a></h1>
+<p>Advanced download manager with parallel downloads, bandwidth limiting, and queue management.</p>
+<h2 id="classes">Classes<a class="headerlink" href="#classes" title="Permanent link">&para;</a></h2>
+<h3 id="downloadpriority">DownloadPriority<a class="headerlink" href="#downloadpriority" title="Permanent link">&para;</a></h3>
+<p>Priority levels for download queue.</p>
+<h3 id="downloadtask">DownloadTask<a class="headerlink" href="#downloadtask" title="Permanent link">&para;</a></h3>
+<p>Individual download task.</p>
+<h4 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h4>
+<h5 id="ltself-any-other-any"><strong>lt</strong>(self: Any, other: Any)<a class="headerlink" href="#ltself-any-other-any" title="Permanent link">&para;</a></h5>
+<p>For priority queue ordering.</p>
+<h3 id="downloadprogress">DownloadProgress<a class="headerlink" href="#downloadprogress" title="Permanent link">&para;</a></h3>
+<p>Progress information for a download.</p>
+<h3 id="bandwidthlimiter">BandwidthLimiter<a class="headerlink" href="#bandwidthlimiter" title="Permanent link">&para;</a></h3>
+<p>Token bucket bandwidth limiter.</p>
+<h4 id="methods_1">Methods<a class="headerlink" href="#methods_1" title="Permanent link">&para;</a></h4>
+<h5 id="acquire_tokensself-any-bytes_requested-int-float">acquire_tokens(self: Any, bytes_requested: int) -&gt; float<a class="headerlink" href="#acquire_tokensself-any-bytes_requested-int-float" title="Permanent link">&para;</a></h5>
+<p>Acquire tokens for bandwidth limiting.</p>
+<p>Returns:
+    Time to wait before proceeding (0 if no wait needed)</p>
+<h3 id="connectionpool">ConnectionPool<a class="headerlink" href="#connectionpool" title="Permanent link">&para;</a></h3>
+<p>Enhanced HTTP connection pool with adaptive connection management.</p>
+<h4 id="methods_2">Methods<a class="headerlink" href="#methods_2" title="Permanent link">&para;</a></h4>
+<h5 id="initself-any-max_connections-int-max_connections_per_host-int"><strong>init</strong>(self: Any, max_connections: int, max_connections_per_host: int)<a class="headerlink" href="#initself-any-max_connections-int-max_connections_per_host-int" title="Permanent link">&para;</a></h5>
+<h5 id="_create_sessionself-any-any">_create_session(self: Any) -&gt; Any<a class="headerlink" href="#_create_sessionself-any-any" title="Permanent link">&para;</a></h5>
+<p>Create an optimized HTTP session.</p>
+<h5 id="get_sessionself-any-any">get_session(self: Any) -&gt; Any<a class="headerlink" href="#get_sessionself-any-any" title="Permanent link">&para;</a></h5>
+<p>Get HTTP session for the current thread.</p>
+<h5 id="update_statsself-any-thread_id-int-bytes_downloaded-int-error-bool">update_stats(self: Any, thread_id: int, bytes_downloaded: int, error: bool)<a class="headerlink" href="#update_statsself-any-thread_id-int-bytes_downloaded-int-error-bool" title="Permanent link">&para;</a></h5>
+<p>Update session statistics.</p>
+<h5 id="get_statsself-any-">get_stats(self: Any) -&gt; <ast.Subscript object at 0x000001942FB6DC00><a class="headerlink" href="#get_statsself-any-" title="Permanent link">&para;</a></h5>
+<p>Get connection pool statistics.</p>
+<h5 id="cleanup_stale_sessionsself-any-max_age-float">cleanup_stale_sessions(self: Any, max_age: float)<a class="headerlink" href="#cleanup_stale_sessionsself-any-max_age-float" title="Permanent link">&para;</a></h5>
+<p>Clean up stale sessions that haven't been used recently.</p>
+<h5 id="closeself-any">close(self: Any)<a class="headerlink" href="#closeself-any" title="Permanent link">&para;</a></h5>
+<p>Close all connections in the pool.</p>
+<h3 id="modeldownloadqueue">ModelDownloadQueue<a class="headerlink" href="#modeldownloadqueue" title="Permanent link">&para;</a></h3>
+<p>Queue for managing downloads of a specific model.</p>
+<h4 id="methods_3">Methods<a class="headerlink" href="#methods_3" title="Permanent link">&para;</a></h4>
+<h5 id="ltself-any-other-any_1"><strong>lt</strong>(self: Any, other: Any)<a class="headerlink" href="#ltself-any-other-any_1" title="Permanent link">&para;</a></h5>
+<p>For priority queue ordering.</p>
+<h3 id="downloadmetrics">DownloadMetrics<a class="headerlink" href="#downloadmetrics" title="Permanent link">&para;</a></h3>
+<p>Metrics for download performance analysis.</p>
+<h4 id="methods_4">Methods<a class="headerlink" href="#methods_4" title="Permanent link">&para;</a></h4>
+<h5 id="durationself-any-float">duration(self: Any) -&gt; float<a class="headerlink" href="#durationself-any-float" title="Permanent link">&para;</a></h5>
+<p>Get download duration.</p>
+<h5 id="completion_rateself-any-float">completion_rate(self: Any) -&gt; float<a class="headerlink" href="#completion_rateself-any-float" title="Permanent link">&para;</a></h5>
+<p>Get completion rate as percentage.</p>
+<h3 id="paralleldownloadmanager">ParallelDownloadManager<a class="headerlink" href="#paralleldownloadmanager" title="Permanent link">&para;</a></h3>
+<p>Advanced download manager with parallel downloads, bandwidth limiting,
+queue management, and comprehensive performance optimization.</p>
+<h4 id="methods_5">Methods<a class="headerlink" href="#methods_5" title="Permanent link">&para;</a></h4>
+<h5 id="initself-any-max_concurrent_downloads-int-max_concurrent_files_per_model-int-max_bandwidth_bps-connection_pool_size-int-chunk_size-int-enable_resume-bool-enable_adaptive_chunking-bool-enable_compression-bool-queue_timeout-float"><strong>init</strong>(self: Any, max_concurrent_downloads: int, max_concurrent_files_per_model: int, max_bandwidth_bps: <ast.Subscript object at 0x000001942FC20D60>, connection_pool_size: int, chunk_size: int, enable_resume: bool, enable_adaptive_chunking: bool, enable_compression: bool, queue_timeout: float)<a class="headerlink" href="#initself-any-max_concurrent_downloads-int-max_concurrent_files_per_model-int-max_bandwidth_bps-connection_pool_size-int-chunk_size-int-enable_resume-bool-enable_adaptive_chunking-bool-enable_compression-bool-queue_timeout-float" title="Permanent link">&para;</a></h5>
+<h5 id="add_download_taskself-any-model_id-str-file_path-str-source_url-str-local_path-path-size-int-priority-downloadpriority-progress_callback-str">add_download_task(self: Any, model_id: str, file_path: str, source_url: str, local_path: Path, size: int, priority: DownloadPriority, progress_callback: <ast.Subscript object at 0x000001942F8153F0>) -&gt; str<a class="headerlink" href="#add_download_taskself-any-model_id-str-file_path-str-source_url-str-local_path-path-size-int-priority-downloadpriority-progress_callback-str" title="Permanent link">&para;</a></h5>
+<p>Add a download task to the queue.</p>
+<p>Returns:
+    Task ID for tracking the download</p>
+<h5 id="queue_model_downloadself-any-model_id-str-file_specs-source_url-str-local_dir-path-priority-downloadpriority-progress_callback-str">queue_model_download(self: Any, model_id: str, file_specs: <ast.Subscript object at 0x000001942F8140D0>, source_url: str, local_dir: Path, priority: DownloadPriority, progress_callback: <ast.Subscript object at 0x000001942F767EB0>) -&gt; str<a class="headerlink" href="#queue_model_downloadself-any-model_id-str-file_specs-source_url-str-local_dir-path-priority-downloadpriority-progress_callback-str" title="Permanent link">&para;</a></h5>
+<p>Queue a complete model download with optimized parallel file handling.</p>
+<p>Returns:
+    Queue ID for tracking the model download</p>
+<h5 id="download_model_parallelself-any-model_id-str-file_specs-source_url-str-local_dir-path-progress_callback-">download_model_parallel(self: Any, model_id: str, file_specs: <ast.Subscript object at 0x000001942F7A13F0>, source_url: str, local_dir: Path, progress_callback: <ast.Subscript object at 0x000001942F7A1270>) -&gt; <ast.Subscript object at 0x000001942F7A0BB0><a class="headerlink" href="#download_model_parallelself-any-model_id-str-file_specs-source_url-str-local_dir-path-progress_callback-" title="Permanent link">&para;</a></h5>
+<p>Download all files for a model in parallel with enhanced performance optimization.</p>
+<p>Returns:
+    Dictionary with download results and comprehensive statistics</p>
+<h5 id="wait_for_model_completionself-any-queue_id-str-timeout-">wait_for_model_completion(self: Any, queue_id: str, timeout: <ast.Subscript object at 0x000001942F8035E0>) -&gt; <ast.Subscript object at 0x000001942F802620><a class="headerlink" href="#wait_for_model_completionself-any-queue_id-str-timeout-" title="Permanent link">&para;</a></h5>
+<p>Wait for a queued model download to complete.</p>
+<p>Returns:
+    Dictionary with download results and statistics</p>
+<h5 id="_determine_file_priorityself-any-file_spec-any-downloadpriority">_determine_file_priority(self: Any, file_spec: Any) -&gt; DownloadPriority<a class="headerlink" href="#_determine_file_priorityself-any-file_spec-any-downloadpriority" title="Permanent link">&para;</a></h5>
+<p>Determine download priority for a file based on type and size.</p>
+<h5 id="_collect_download_resultsself-any-queue_id-str-">_collect_download_results(self: Any, queue_id: str) -&gt; <ast.Subscript object at 0x000001942F827070><a class="headerlink" href="#_collect_download_resultsself-any-queue_id-str-" title="Permanent link">&para;</a></h5>
+<p>Collect comprehensive download results for a model.</p>
+<h5 id="_queue_workerself-any">_queue_worker(self: Any)<a class="headerlink" href="#_queue_workerself-any" title="Permanent link">&para;</a></h5>
+<p>Enhanced background worker that processes model download queues.</p>
+<h5 id="_process_model_queueself-any-model_queue-modeldownloadqueue">_process_model_queue(self: Any, model_queue: ModelDownloadQueue)<a class="headerlink" href="#_process_model_queueself-any-model_queue-modeldownloadqueue" title="Permanent link">&para;</a></h5>
+<p>Process downloads for a specific model with optimized concurrency.</p>
+<h5 id="_handle_task_completionself-any-task-downloadtask-queue_id-str-success-bool-error">_handle_task_completion(self: Any, task: DownloadTask, queue_id: str, success: bool, error: <ast.Subscript object at 0x0000019434319120>)<a class="headerlink" href="#_handle_task_completionself-any-task-downloadtask-queue_id-str-success-bool-error" title="Permanent link">&para;</a></h5>
+<p>Handle completion of a download task.</p>
+<h5 id="_apply_adaptive_chunkingself-any-task-downloadtask">_apply_adaptive_chunking(self: Any, task: DownloadTask)<a class="headerlink" href="#_apply_adaptive_chunkingself-any-task-downloadtask" title="Permanent link">&para;</a></h5>
+<p>Apply adaptive chunk sizing based on file size and network conditions.</p>
+<h5 id="_is_io_intensiveself-any-task-downloadtask-bool">_is_io_intensive(self: Any, task: DownloadTask) -&gt; bool<a class="headerlink" href="#_is_io_intensiveself-any-task-downloadtask-bool" title="Permanent link">&para;</a></h5>
+<p>Determine if a task is I/O intensive and should use the I/O executor.</p>
+<h5 id="_get_source_keyself-any-source_url-str-str">_get_source_key(self: Any, source_url: str) -&gt; str<a class="headerlink" href="#_get_source_keyself-any-source_url-str-str" title="Permanent link">&para;</a></h5>
+<p>Get a key for tracking performance by source.</p>
+<h5 id="_metrics_workerself-any">_metrics_worker(self: Any)<a class="headerlink" href="#_metrics_workerself-any" title="Permanent link">&para;</a></h5>
+<p>Background worker for collecting and updating performance metrics.</p>
+<h5 id="_download_file_optimizedself-any-task-downloadtask-queue_id-str-bool">_download_file_optimized(self: Any, task: DownloadTask, queue_id: str) -&gt; bool<a class="headerlink" href="#_download_file_optimizedself-any-task-downloadtask-queue_id-str-bool" title="Permanent link">&para;</a></h5>
+<p>Optimized download method with advanced performance features.</p>
+<p>Returns:
+    True if download succeeded, False otherwise</p>
+<h5 id="_prepare_headersself-any-task-downloadtask-resume_pos-int-">_prepare_headers(self: Any, task: DownloadTask, resume_pos: int) -&gt; <ast.Subscript object at 0x000001942F3A1E10><a class="headerlink" href="#_prepare_headersself-any-task-downloadtask-resume_pos-int-" title="Permanent link">&para;</a></h5>
+<p>Prepare optimized HTTP headers for download.</p>
+<h5 id="_download_file_freshself-any-task-downloadtask-progress-downloadprogress-bool">_download_file_fresh(self: Any, task: DownloadTask, progress: DownloadProgress) -&gt; bool<a class="headerlink" href="#_download_file_freshself-any-task-downloadtask-progress-downloadprogress-bool" title="Permanent link">&para;</a></h5>
+<p>Download file from the beginning (used when resume fails).</p>
+<h5 id="_update_performance_metricsself-any-task-downloadtask-progress-downloadprogress-queue_id-str">_update_performance_metrics(self: Any, task: DownloadTask, progress: DownloadProgress, queue_id: str)<a class="headerlink" href="#_update_performance_metricsself-any-task-downloadtask-progress-downloadprogress-queue_id-str" title="Permanent link">&para;</a></h5>
+<p>Update performance metrics during download.</p>
+<h5 id="_download_file_basicself-any-task-downloadtask-progress-downloadprogress-resume_pos-int-bool">_download_file_basic(self: Any, task: DownloadTask, progress: DownloadProgress, resume_pos: int) -&gt; bool<a class="headerlink" href="#_download_file_basicself-any-task-downloadtask-progress-downloadprogress-resume_pos-int-bool" title="Permanent link">&para;</a></h5>
+<p>Fallback download method without connection pooling.</p>
+<h5 id="_notify_progressself-any-progress-downloadprogress">_notify_progress(self: Any, progress: DownloadProgress)<a class="headerlink" href="#_notify_progressself-any-progress-downloadprogress" title="Permanent link">&para;</a></h5>
+<p>Notify progress callbacks for a model.</p>
+<h5 id="get_download_statsself-any-">get_download_stats(self: Any) -&gt; <ast.Subscript object at 0x00000194340BB910><a class="headerlink" href="#get_download_statsself-any-" title="Permanent link">&para;</a></h5>
+<p>Get comprehensive download statistics.</p>
+<h5 id="get_model_queue_statusself-any-queue_id-str-">get_model_queue_status(self: Any, queue_id: str) -&gt; <ast.Subscript object at 0x00000194340A1390><a class="headerlink" href="#get_model_queue_statusself-any-queue_id-str-" title="Permanent link">&para;</a></h5>
+<p>Get status of a specific model download queue.</p>
+<h5 id="cancel_model_downloadself-any-queue_id-str-bool">cancel_model_download(self: Any, queue_id: str) -&gt; bool<a class="headerlink" href="#cancel_model_downloadself-any-queue_id-str-bool" title="Permanent link">&para;</a></h5>
+<p>Cancel a model download queue.</p>
+<h5 id="pause_downloadsself-any">pause_downloads(self: Any)<a class="headerlink" href="#pause_downloadsself-any" title="Permanent link">&para;</a></h5>
+<p>Pause all downloads (for maintenance or resource management).</p>
+<h5 id="resume_downloadsself-any">resume_downloads(self: Any)<a class="headerlink" href="#resume_downloadsself-any" title="Permanent link">&para;</a></h5>
+<p>Resume paused downloads.</p>
+<h5 id="optimize_performanceself-any">optimize_performance(self: Any)<a class="headerlink" href="#optimize_performanceself-any" title="Permanent link">&para;</a></h5>
+<p>Trigger performance optimization based on current conditions.</p>
+<h5 id="shutdownself-any">shutdown(self: Any)<a class="headerlink" href="#shutdownself-any" title="Permanent link">&para;</a></h5>
+<p>Shutdown the download manager gracefully.</p>
+<h2 id="constants">Constants<a class="headerlink" href="#constants" title="Permanent link">&para;</a></h2>
+<h3 id="high">HIGH<a class="headerlink" href="#high" title="Permanent link">&para;</a></h3>
+<p>Type: <code>int</code></p>
+<p>Value: <code>1</code></p>
+<h3 id="normal">NORMAL<a class="headerlink" href="#normal" title="Permanent link">&para;</a></h3>
+<p>Type: <code>int</code></p>
+<p>Value: <code>2</code></p>
+<h3 id="low">LOW<a class="headerlink" href="#low" title="Permanent link">&para;</a></h3>
+<p>Type: <code>int</code></p>
+<p>Value: <code>3</code></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

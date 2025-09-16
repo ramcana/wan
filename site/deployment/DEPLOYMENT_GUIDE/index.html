@@ -1,0 +1,2830 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="WAN2.2 Video Generation System Documentation">
+      
+      
+      
+        <link rel="canonical" href="https://ramcana.github.io/wan/deployment/DEPLOYMENT_GUIDE/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>Model Orchestrator Deployment Guide - WAN22 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e53b48f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#model-orchestrator-deployment-guide" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="WAN22 Documentation" class="md-header__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            WAN22 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Model Orchestrator Deployment Guide
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../WAN22_System_Capabilities_Report/" class="md-tabs__link">
+          
+  
+  
+  System Overview
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../model-orchestrator/requirements/" class="md-tabs__link">
+          
+  
+  
+  Model Orchestrator
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../config/models.toml" class="md-tabs__link">
+          
+  
+  
+  Configuration
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="WAN22 Documentation" class="md-nav__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    WAN22 Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    System Overview
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            System Overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../WAN22_System_Capabilities_Report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Capabilities Report
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Model Orchestrator
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Model Orchestrator
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Requirements
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/tasks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tasks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Configuration
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Configuration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Models Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models_simple.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simple Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deployment-architectures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deployment Architectures
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deployment Architectures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#single-node-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Single Node Deployment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi-node-with-shared-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multi-Node with Shared Storage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cloud-native-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cloud-Native Deployment
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#environment-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environment Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Environment Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#development-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Development Environment
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Development Environment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#production-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Production Environment
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Production Environment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#system-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Requirements
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operating-system-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operating System Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#application-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Application Deployment
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#environment-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environment Variables
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Environment Variables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#required-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Required Variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optional-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optional Variables
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration Files
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration Files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#production-configuration-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      Production Configuration Template
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#storage-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Storage Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Storage Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#local-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Local Storage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Local Storage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#directory-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Directory Structure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Permissions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backup-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backup Strategy
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#s3minio-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      S3/MinIO Storage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="S3/MinIO Storage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#s3-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      S3 Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minio-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      MinIO Setup
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#network-file-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network File Systems
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Network File Systems">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nfs-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      NFS Setup
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Security Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#authentication-and-authorization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authentication and Authorization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Authentication and Authorization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jwt-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      JWT Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-key-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      API Key Management
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#network-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Security
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Network Security">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#firewall-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Firewall Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tlsssl-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      TLS/SSL Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#credential-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Credential Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Credential Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#environment-based-secrets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environment-based Secrets
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hashicorp-vault-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      HashiCorp Vault Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#monitoring-and-observability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monitoring and Observability
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Monitoring and Observability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prometheus-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prometheus Metrics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Prometheus Metrics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#metrics-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metrics Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-metrics-to-monitor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Metrics to Monitor
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grafana-dashboards" class="md-nav__link">
+    <span class="md-ellipsis">
+      Grafana Dashboards
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Grafana Dashboards">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dashboard-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dashboard Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logging-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logging Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Logging Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#structured-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Structured Logging
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log-aggregation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Log Aggregation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#high-availability-and-scaling" class="md-nav__link">
+    <span class="md-ellipsis">
+      High Availability and Scaling
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="High Availability and Scaling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#load-balancing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Load Balancing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Load Balancing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nginx-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nginx Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#haproxy-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      HAProxy Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#database-clustering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Database Clustering
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Database Clustering">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#postgresql-high-availability" class="md-nav__link">
+    <span class="md-ellipsis">
+      PostgreSQL High Availability
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#container-orchestration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Container Orchestration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Container Orchestration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#docker-compose" class="md-nav__link">
+    <span class="md-ellipsis">
+      Docker Compose
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kubernetes-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kubernetes Deployment
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#backup-and-disaster-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backup and Disaster Recovery
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Backup and Disaster Recovery">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#backup-strategy_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backup Strategy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Backup Strategy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#model-data-backup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model Data Backup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#database-backup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Database Backup
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#disaster-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      Disaster Recovery
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Disaster Recovery">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recovery-procedures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recovery Procedures
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#automated-recovery-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Automated Recovery Testing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Tuning
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Tuning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#system-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Optimization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="System Optimization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kernel-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kernel Parameters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-system-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      File System Tuning
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#application-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Application Optimization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Application Optimization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#connection-pooling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connection Pooling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#caching-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Caching Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Issues
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#high-memory-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      High Memory Usage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slow-downloads" class="md-nav__link">
+    <span class="md-ellipsis">
+      Slow Downloads
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lock-contention" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lock Contention
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagnostic-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagnostic Tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Diagnostic Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#health-check-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      Health Check Script
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Monitoring
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="model-orchestrator-deployment-guide">Model Orchestrator Deployment Guide<a class="headerlink" href="#model-orchestrator-deployment-guide" title="Permanent link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>This guide covers deploying the Model Orchestrator in various environments, from development setups to production clusters. It includes configuration, security, monitoring, and operational considerations.</p>
+<h2 id="deployment-architectures">Deployment Architectures<a class="headerlink" href="#deployment-architectures" title="Permanent link">&para;</a></h2>
+<h3 id="single-node-deployment">Single Node Deployment<a class="headerlink" href="#single-node-deployment" title="Permanent link">&para;</a></h3>
+<p>Simplest deployment for development or small-scale production:</p>
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────┐
+│           Single Node               │
+│  ┌─────────────┐  ┌─────────────┐   │
+│  │ WAN2.2 App  │  │ Model Orch. │   │
+│  └─────────────┘  └─────────────┘   │
+│  ┌─────────────────────────────────┐ │
+│  │      Local Storage              │ │
+│  └─────────────────────────────────┘ │
+└─────────────────────────────────────┘
+</code></pre></div>
+<h3 id="multi-node-with-shared-storage">Multi-Node with Shared Storage<a class="headerlink" href="#multi-node-with-shared-storage" title="Permanent link">&para;</a></h3>
+<p>Scalable deployment with shared model storage:</p>
+<div class="highlight"><pre><span></span><code>┌─────────────┐    ┌─────────────┐    ┌─────────────┐
+│   Node 1    │    │   Node 2    │    │   Node 3    │
+│ WAN2.2 App  │    │ WAN2.2 App  │    │ WAN2.2 App  │
+│ Model Orch. │    │ Model Orch. │    │ Model Orch. │
+└─────────────┘    └─────────────┘    └─────────────┘
+       │                   │                   │
+       └───────────────────┼───────────────────┘
+                           │
+              ┌─────────────────────────┐
+              │    Shared Storage       │
+              │  (NFS/S3/Distributed)   │
+              └─────────────────────────┘
+</code></pre></div>
+<h3 id="cloud-native-deployment">Cloud-Native Deployment<a class="headerlink" href="#cloud-native-deployment" title="Permanent link">&para;</a></h3>
+<p>Kubernetes-based deployment with cloud storage:</p>
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────┐
+│                 Kubernetes Cluster                  │
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐  │
+│  │    Pod 1    │  │    Pod 2    │  │    Pod 3    │  │
+│  │ WAN2.2 App  │  │ WAN2.2 App  │  │ WAN2.2 App  │  │
+│  │ Model Orch. │  │ Model Orch. │  │ Model Orch. │  │
+│  └─────────────┘  └─────────────┘  └─────────────┘  │
+└─────────────────────────────────────────────────────┘
+                           │
+              ┌─────────────────────────┐
+              │    Cloud Storage        │
+              │   (S3/GCS/Azure)        │
+              └─────────────────────────┘
+</code></pre></div>
+<h2 id="environment-setup">Environment Setup<a class="headerlink" href="#environment-setup" title="Permanent link">&para;</a></h2>
+<h3 id="development-environment">Development Environment<a class="headerlink" href="#development-environment" title="Permanent link">&para;</a></h3>
+<h4 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Python 3.8+</li>
+<li>Git</li>
+<li>Docker (optional, for testing with MinIO)</li>
+</ul>
+<h4 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Clone repository</span>
+git<span class="w"> </span>clone<span class="w"> </span>&lt;repository-url&gt;
+<span class="nb">cd</span><span class="w"> </span>wan22
+
+<span class="c1"># Create virtual environment</span>
+python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
+<span class="nb">source</span><span class="w"> </span>venv/bin/activate<span class="w">  </span><span class="c1"># Linux/Mac</span>
+<span class="c1"># or</span>
+venv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate<span class="w">     </span><span class="c1"># Windows</span>
+
+<span class="c1"># Install dependencies</span>
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements-dev.txt
+
+<span class="c1"># Set up environment variables</span>
+cp<span class="w"> </span>.env.example<span class="w"> </span>.env
+<span class="c1"># Edit .env with your configuration</span>
+</code></pre></div>
+<h4 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h4>
+<p>Create <code>.env</code> file:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Basic configuration</span>
+<span class="nv">MODELS_ROOT</span><span class="o">=</span>/data/models
+<span class="nv">WAN_MODELS_MANIFEST</span><span class="o">=</span>config/models.toml
+
+<span class="c1"># Development settings</span>
+<span class="nv">LOG_LEVEL</span><span class="o">=</span>DEBUG
+<span class="nv">MAX_CONCURRENT_DOWNLOADS</span><span class="o">=</span><span class="m">2</span>
+<span class="nv">ENABLE_METRICS</span><span class="o">=</span><span class="nb">true</span>
+
+<span class="c1"># Optional: HuggingFace token</span>
+<span class="nv">HF_TOKEN</span><span class="o">=</span>your_token_here
+
+<span class="c1"># Optional: Local MinIO for testing</span>
+<span class="nv">AWS_ACCESS_KEY_ID</span><span class="o">=</span>minioadmin
+<span class="nv">AWS_SECRET_ACCESS_KEY</span><span class="o">=</span>minioadmin
+<span class="nv">AWS_ENDPOINT_URL</span><span class="o">=</span>http://localhost:9000
+</code></pre></div>
+<h4 id="running">Running<a class="headerlink" href="#running" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Start the application</span>
+python<span class="w"> </span>-m<span class="w"> </span>backend.main
+
+<span class="c1"># Or with development server</span>
+python<span class="w"> </span>-m<span class="w"> </span>backend.main<span class="w"> </span>--reload<span class="w"> </span>--debug
+</code></pre></div>
+<h3 id="production-environment">Production Environment<a class="headerlink" href="#production-environment" title="Permanent link">&para;</a></h3>
+<h4 id="system-requirements">System Requirements<a class="headerlink" href="#system-requirements" title="Permanent link">&para;</a></h4>
+<p><strong>Minimum Requirements:</strong></p>
+<ul>
+<li>CPU: 4 cores</li>
+<li>RAM: 8GB</li>
+<li>Storage: 500GB SSD (for model cache)</li>
+<li>Network: 1Gbps</li>
+</ul>
+<p><strong>Recommended Requirements:</strong></p>
+<ul>
+<li>CPU: 8+ cores</li>
+<li>RAM: 32GB+</li>
+<li>Storage: 2TB+ NVMe SSD</li>
+<li>Network: 10Gbps</li>
+</ul>
+<h4 id="operating-system-setup">Operating System Setup<a class="headerlink" href="#operating-system-setup" title="Permanent link">&para;</a></h4>
+<p><strong>Ubuntu/Debian:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Update system</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>upgrade<span class="w"> </span>-y
+
+<span class="c1"># Install dependencies</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>python3.8<span class="w"> </span>python3.8-venv<span class="w"> </span>python3.8-dev
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>build-essential<span class="w"> </span>curl<span class="w"> </span>wget<span class="w"> </span>git
+
+<span class="c1"># Create application user</span>
+sudo<span class="w"> </span>useradd<span class="w"> </span>-m<span class="w"> </span>-s<span class="w"> </span>/bin/bash<span class="w"> </span>wan22
+sudo<span class="w"> </span>usermod<span class="w"> </span>-aG<span class="w"> </span>sudo<span class="w"> </span>wan22
+
+<span class="c1"># Create directories</span>
+sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/opt/wan22<span class="w"> </span>/data/models
+sudo<span class="w"> </span>chown<span class="w"> </span>-R<span class="w"> </span>wan22:wan22<span class="w"> </span>/opt/wan22<span class="w"> </span>/data/models
+</code></pre></div>
+<p><strong>CentOS/RHEL:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Update system</span>
+sudo<span class="w"> </span>yum<span class="w"> </span>update<span class="w"> </span>-y
+
+<span class="c1"># Install dependencies</span>
+sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>python38<span class="w"> </span>python38-devel<span class="w"> </span>python38-pip
+sudo<span class="w"> </span>yum<span class="w"> </span>groupinstall<span class="w"> </span>-y<span class="w"> </span><span class="s2">&quot;Development Tools&quot;</span>
+
+<span class="c1"># Create application user</span>
+sudo<span class="w"> </span>useradd<span class="w"> </span>-m<span class="w"> </span>wan22
+sudo<span class="w"> </span>usermod<span class="w"> </span>-aG<span class="w"> </span>wheel<span class="w"> </span>wan22
+
+<span class="c1"># Create directories</span>
+sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/opt/wan22<span class="w"> </span>/data/models
+sudo<span class="w"> </span>chown<span class="w"> </span>-R<span class="w"> </span>wan22:wan22<span class="w"> </span>/opt/wan22<span class="w"> </span>/data/models
+</code></pre></div>
+<h4 id="application-deployment">Application Deployment<a class="headerlink" href="#application-deployment" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Switch to application user</span>
+sudo<span class="w"> </span>su<span class="w"> </span>-<span class="w"> </span>wan22
+
+<span class="c1"># Deploy application</span>
+<span class="nb">cd</span><span class="w"> </span>/opt/wan22
+git<span class="w"> </span>clone<span class="w"> </span>&lt;repository-url&gt;<span class="w"> </span>.
+python3.8<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
+<span class="nb">source</span><span class="w"> </span>venv/bin/activate
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+
+<span class="c1"># Create configuration</span>
+cp<span class="w"> </span>config/production.env.example<span class="w"> </span>.env
+<span class="c1"># Edit .env with production settings</span>
+
+<span class="c1"># Create systemd service</span>
+sudo<span class="w"> </span>tee<span class="w"> </span>/etc/systemd/system/wan22.service<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="s">&lt;&lt;EOF</span>
+<span class="s">[Unit]</span>
+<span class="s">Description=WAN2.2 Model Orchestrator</span>
+<span class="s">After=network.target</span>
+
+<span class="s">[Service]</span>
+<span class="s">Type=simple</span>
+<span class="s">User=wan22</span>
+<span class="s">Group=wan22</span>
+<span class="s">WorkingDirectory=/opt/wan22</span>
+<span class="s">Environment=PATH=/opt/wan22/venv/bin</span>
+<span class="s">ExecStart=/opt/wan22/venv/bin/python -m backend.main</span>
+<span class="s">Restart=always</span>
+<span class="s">RestartSec=10</span>
+
+<span class="s">[Install]</span>
+<span class="s">WantedBy=multi-user.target</span>
+<span class="s">EOF</span>
+
+<span class="c1"># Enable and start service</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>daemon-reload
+sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>wan22
+sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>wan22
+</code></pre></div>
+<h2 id="configuration-management">Configuration Management<a class="headerlink" href="#configuration-management" title="Permanent link">&para;</a></h2>
+<h3 id="environment-variables">Environment Variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h3>
+<h4 id="required-variables">Required Variables<a class="headerlink" href="#required-variables" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Core configuration</span>
+<span class="nv">MODELS_ROOT</span><span class="o">=</span>/data/models<span class="w">                    </span><span class="c1"># Model storage directory</span>
+<span class="nv">WAN_MODELS_MANIFEST</span><span class="o">=</span>/opt/wan22/config/models.toml<span class="w">  </span><span class="c1"># Manifest file path</span>
+
+<span class="c1"># Application settings</span>
+<span class="nv">HOST</span><span class="o">=</span><span class="m">0</span>.0.0.0<span class="w">                               </span><span class="c1"># Bind address</span>
+<span class="nv">PORT</span><span class="o">=</span><span class="m">8000</span><span class="w">                                  </span><span class="c1"># Port number</span>
+<span class="nv">WORKERS</span><span class="o">=</span><span class="m">4</span><span class="w">                                  </span><span class="c1"># Number of worker processes</span>
+</code></pre></div>
+<h4 id="optional-variables">Optional Variables<a class="headerlink" href="#optional-variables" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Performance tuning</span>
+<span class="nv">MAX_CONCURRENT_DOWNLOADS</span><span class="o">=</span><span class="m">8</span><span class="w">                 </span><span class="c1"># Concurrent download limit</span>
+<span class="nv">DOWNLOAD_TIMEOUT</span><span class="o">=</span><span class="m">3600</span><span class="w">                      </span><span class="c1"># Download timeout (seconds)</span>
+<span class="nv">RETRY_ATTEMPTS</span><span class="o">=</span><span class="m">3</span><span class="w">                           </span><span class="c1"># Number of retry attempts</span>
+<span class="nv">RETRY_BACKOFF_FACTOR</span><span class="o">=</span><span class="m">2</span>.0<span class="w">                   </span><span class="c1"># Exponential backoff factor</span>
+
+<span class="c1"># Storage configuration</span>
+<span class="nv">MAX_TOTAL_SIZE</span><span class="o">=</span><span class="m">1099511627776</span><span class="w">               </span><span class="c1"># 1TB storage limit</span>
+<span class="nv">MAX_MODEL_AGE</span><span class="o">=</span><span class="m">2592000</span><span class="w">                      </span><span class="c1"># 30 days in seconds</span>
+<span class="nv">ENABLE_GARBAGE_COLLECTION</span><span class="o">=</span><span class="nb">true</span><span class="w">             </span><span class="c1"># Auto cleanup</span>
+
+<span class="c1"># Logging and monitoring</span>
+<span class="nv">LOG_LEVEL</span><span class="o">=</span>INFO<span class="w">                             </span><span class="c1"># Logging level</span>
+<span class="nv">LOG_FORMAT</span><span class="o">=</span>json<span class="w">                            </span><span class="c1"># Log format (json/text)</span>
+<span class="nv">ENABLE_METRICS</span><span class="o">=</span><span class="nb">true</span><span class="w">                        </span><span class="c1"># Prometheus metrics</span>
+<span class="nv">METRICS_PORT</span><span class="o">=</span><span class="m">9090</span><span class="w">                          </span><span class="c1"># Metrics port</span>
+
+<span class="c1"># Security</span>
+<span class="nv">ENABLE_AUTH</span><span class="o">=</span><span class="nb">true</span><span class="w">                           </span><span class="c1"># Enable authentication</span>
+<span class="nv">JWT_SECRET</span><span class="o">=</span>your-secret-key<span class="w">                 </span><span class="c1"># JWT signing key</span>
+<span class="nv">CORS_ORIGINS</span><span class="o">=</span>https://your-domain.com<span class="w">       </span><span class="c1"># CORS allowed origins</span>
+
+<span class="c1"># External services</span>
+<span class="nv">HF_TOKEN</span><span class="o">=</span>your_hf_token<span class="w">                     </span><span class="c1"># HuggingFace token</span>
+<span class="nv">AWS_ACCESS_KEY_ID</span><span class="o">=</span>your_access_key<span class="w">          </span><span class="c1"># S3 access key</span>
+<span class="nv">AWS_SECRET_ACCESS_KEY</span><span class="o">=</span>your_secret_key<span class="w">      </span><span class="c1"># S3 secret key</span>
+<span class="nv">AWS_ENDPOINT_URL</span><span class="o">=</span>https://s3.amazonaws.com<span class="w">  </span><span class="c1"># S3 endpoint</span>
+<span class="nv">AWS_REGION</span><span class="o">=</span>us-east-1<span class="w">                       </span><span class="c1"># S3 region</span>
+</code></pre></div>
+<h3 id="configuration-files">Configuration Files<a class="headerlink" href="#configuration-files" title="Permanent link">&para;</a></h3>
+<h4 id="production-configuration-template">Production Configuration Template<a class="headerlink" href="#production-configuration-template" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># /opt/wan22/.env</span>
+<span class="c1"># WAN2.2 Model Orchestrator Production Configuration</span>
+
+<span class="c1"># Core Settings</span>
+<span class="nv">MODELS_ROOT</span><span class="o">=</span>/data/models
+<span class="nv">WAN_MODELS_MANIFEST</span><span class="o">=</span>/opt/wan22/config/models.toml
+<span class="nv">HOST</span><span class="o">=</span><span class="m">0</span>.0.0.0
+<span class="nv">PORT</span><span class="o">=</span><span class="m">8000</span>
+<span class="nv">WORKERS</span><span class="o">=</span><span class="m">8</span>
+
+<span class="c1"># Performance</span>
+<span class="nv">MAX_CONCURRENT_DOWNLOADS</span><span class="o">=</span><span class="m">16</span>
+<span class="nv">DOWNLOAD_TIMEOUT</span><span class="o">=</span><span class="m">7200</span>
+<span class="nv">RETRY_ATTEMPTS</span><span class="o">=</span><span class="m">5</span>
+<span class="nv">RETRY_BACKOFF_FACTOR</span><span class="o">=</span><span class="m">1</span>.5
+
+<span class="c1"># Storage Management</span>
+<span class="nv">MAX_TOTAL_SIZE</span><span class="o">=</span><span class="m">2199023255552</span><span class="w">  </span><span class="c1"># 2TB</span>
+<span class="nv">MAX_MODEL_AGE</span><span class="o">=</span><span class="m">7776000</span><span class="w">         </span><span class="c1"># 90 days</span>
+<span class="nv">ENABLE_GARBAGE_COLLECTION</span><span class="o">=</span><span class="nb">true</span>
+<span class="nv">GC_CHECK_INTERVAL</span><span class="o">=</span><span class="m">3600</span><span class="w">        </span><span class="c1"># 1 hour</span>
+
+<span class="c1"># Logging</span>
+<span class="nv">LOG_LEVEL</span><span class="o">=</span>INFO
+<span class="nv">LOG_FORMAT</span><span class="o">=</span>json
+<span class="nv">LOG_FILE</span><span class="o">=</span>/var/log/wan22/orchestrator.log
+
+<span class="c1"># Monitoring</span>
+<span class="nv">ENABLE_METRICS</span><span class="o">=</span><span class="nb">true</span>
+<span class="nv">METRICS_PORT</span><span class="o">=</span><span class="m">9090</span>
+<span class="nv">HEALTH_CHECK_INTERVAL</span><span class="o">=</span><span class="m">60</span>
+
+<span class="c1"># Security</span>
+<span class="nv">ENABLE_AUTH</span><span class="o">=</span><span class="nb">true</span>
+<span class="nv">JWT_SECRET</span><span class="o">=</span>your-production-secret-key
+<span class="nv">CORS_ORIGINS</span><span class="o">=</span>https://your-production-domain.com
+<span class="nv">ENABLE_RATE_LIMITING</span><span class="o">=</span><span class="nb">true</span>
+<span class="nv">RATE_LIMIT_REQUESTS</span><span class="o">=</span><span class="m">1000</span>
+<span class="nv">RATE_LIMIT_WINDOW</span><span class="o">=</span><span class="m">3600</span>
+
+<span class="c1"># External Services</span>
+<span class="nv">HF_TOKEN</span><span class="o">=</span>your_production_hf_token
+<span class="nv">AWS_ACCESS_KEY_ID</span><span class="o">=</span>your_production_access_key
+<span class="nv">AWS_SECRET_ACCESS_KEY</span><span class="o">=</span>your_production_secret_key
+<span class="nv">AWS_ENDPOINT_URL</span><span class="o">=</span>https://s3.amazonaws.com
+<span class="nv">AWS_REGION</span><span class="o">=</span>us-east-1
+<span class="nv">HF_HUB_ENABLE_HF_TRANSFER</span><span class="o">=</span><span class="m">1</span>
+</code></pre></div>
+<h2 id="storage-configuration">Storage Configuration<a class="headerlink" href="#storage-configuration" title="Permanent link">&para;</a></h2>
+<h3 id="local-storage">Local Storage<a class="headerlink" href="#local-storage" title="Permanent link">&para;</a></h3>
+<h4 id="directory-structure">Directory Structure<a class="headerlink" href="#directory-structure" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>/data/models/
+├──<span class="w"> </span>.tmp/<span class="w">                    </span><span class="c1"># Temporary downloads</span>
+├──<span class="w"> </span>.locks/<span class="w">                  </span><span class="c1"># Lock files</span>
+├──<span class="w"> </span>.state/<span class="w">                  </span><span class="c1"># State information</span>
+├──<span class="w"> </span>.cache/<span class="w">                  </span><span class="c1"># Metadata cache</span>
+├──<span class="w"> </span>components/<span class="w">              </span><span class="c1"># Shared components</span>
+│<span class="w">   </span>├──<span class="w"> </span>tokenizer@v1.0/
+│<span class="w">   </span>└──<span class="w"> </span>vae@v2.1/
+└──<span class="w"> </span>wan22/<span class="w">                   </span><span class="c1"># Model directories</span>
+<span class="w">    </span>├──<span class="w"> </span>t2v-A14B@2.2.0/
+<span class="w">    </span>├──<span class="w"> </span>i2v-A14B@2.2.0/
+<span class="w">    </span>└──<span class="w"> </span>ti2v-5b@2.2.0/
+</code></pre></div>
+<h4 id="permissions">Permissions<a class="headerlink" href="#permissions" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Set appropriate permissions</span>
+sudo<span class="w"> </span>chown<span class="w"> </span>-R<span class="w"> </span>wan22:wan22<span class="w"> </span>/data/models
+sudo<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span><span class="m">755</span><span class="w"> </span>/data/models
+sudo<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span><span class="m">700</span><span class="w"> </span>/data/models/.locks
+sudo<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span><span class="m">700</span><span class="w"> </span>/data/models/.state
+</code></pre></div>
+<h4 id="backup-strategy">Backup Strategy<a class="headerlink" href="#backup-strategy" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Daily backup script</span>
+<span class="c1">#!/bin/bash</span>
+<span class="nv">BACKUP_DIR</span><span class="o">=</span><span class="s2">&quot;/backup/models&quot;</span>
+<span class="nv">SOURCE_DIR</span><span class="o">=</span><span class="s2">&quot;/data/models&quot;</span>
+<span class="nv">DATE</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span>+%Y%m%d<span class="k">)</span>
+
+<span class="c1"># Create backup</span>
+rsync<span class="w"> </span>-av<span class="w"> </span>--exclude<span class="o">=</span><span class="s1">&#39;.tmp&#39;</span><span class="w"> </span>--exclude<span class="o">=</span><span class="s1">&#39;.locks&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="s2">&quot;</span><span class="nv">$SOURCE_DIR</span><span class="s2">/&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$BACKUP_DIR</span><span class="s2">/models-</span><span class="nv">$DATE</span><span class="s2">/&quot;</span>
+
+<span class="c1"># Keep only last 7 days</span>
+find<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$BACKUP_DIR</span><span class="s2">&quot;</span><span class="w"> </span>-name<span class="w"> </span><span class="s2">&quot;models-*&quot;</span><span class="w"> </span>-mtime<span class="w"> </span>+7<span class="w"> </span>-exec<span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span>
+</code></pre></div>
+<h3 id="s3minio-storage">S3/MinIO Storage<a class="headerlink" href="#s3minio-storage" title="Permanent link">&para;</a></h3>
+<h4 id="s3-configuration">S3 Configuration<a class="headerlink" href="#s3-configuration" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># AWS S3</span>
+<span class="nv">AWS_ACCESS_KEY_ID</span><span class="o">=</span>AKIAIOSFODNN7EXAMPLE
+<span class="nv">AWS_SECRET_ACCESS_KEY</span><span class="o">=</span>wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+<span class="nv">AWS_REGION</span><span class="o">=</span>us-east-1
+<span class="nv">AWS_ENDPOINT_URL</span><span class="o">=</span>https://s3.amazonaws.com
+
+<span class="c1"># Bucket policy for model storage</span>
+<span class="o">{</span>
+<span class="w">    </span><span class="s2">&quot;Version&quot;</span>:<span class="w"> </span><span class="s2">&quot;2012-10-17&quot;</span>,
+<span class="w">    </span><span class="s2">&quot;Statement&quot;</span>:<span class="w"> </span><span class="o">[</span>
+<span class="w">        </span><span class="o">{</span>
+<span class="w">            </span><span class="s2">&quot;Effect&quot;</span>:<span class="w"> </span><span class="s2">&quot;Allow&quot;</span>,
+<span class="w">            </span><span class="s2">&quot;Principal&quot;</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">                </span><span class="s2">&quot;AWS&quot;</span>:<span class="w"> </span><span class="s2">&quot;arn:aws:iam::ACCOUNT:user/wan22-service&quot;</span>
+<span class="w">            </span><span class="o">}</span>,
+<span class="w">            </span><span class="s2">&quot;Action&quot;</span>:<span class="w"> </span><span class="o">[</span>
+<span class="w">                </span><span class="s2">&quot;s3:GetObject&quot;</span>,
+<span class="w">                </span><span class="s2">&quot;s3:PutObject&quot;</span>,
+<span class="w">                </span><span class="s2">&quot;s3:DeleteObject&quot;</span>,
+<span class="w">                </span><span class="s2">&quot;s3:ListBucket&quot;</span>
+<span class="w">            </span><span class="o">]</span>,
+<span class="w">            </span><span class="s2">&quot;Resource&quot;</span>:<span class="w"> </span><span class="o">[</span>
+<span class="w">                </span><span class="s2">&quot;arn:aws:s3:::wan22-models&quot;</span>,
+<span class="w">                </span><span class="s2">&quot;arn:aws:s3:::wan22-models/*&quot;</span>
+<span class="w">            </span><span class="o">]</span>
+<span class="w">        </span><span class="o">}</span>
+<span class="w">    </span><span class="o">]</span>
+<span class="o">}</span>
+</code></pre></div>
+<h4 id="minio-setup">MinIO Setup<a class="headerlink" href="#minio-setup" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Install MinIO server</span>
+wget<span class="w"> </span>https://dl.min.io/server/minio/release/linux-amd64/minio
+chmod<span class="w"> </span>+x<span class="w"> </span>minio
+sudo<span class="w"> </span>mv<span class="w"> </span>minio<span class="w"> </span>/usr/local/bin/
+
+<span class="c1"># Create MinIO user and directories</span>
+sudo<span class="w"> </span>useradd<span class="w"> </span>-r<span class="w"> </span>-s<span class="w"> </span>/sbin/nologin<span class="w"> </span>minio
+sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/data/minio
+sudo<span class="w"> </span>chown<span class="w"> </span>minio:minio<span class="w"> </span>/data/minio
+
+<span class="c1"># Create systemd service</span>
+sudo<span class="w"> </span>tee<span class="w"> </span>/etc/systemd/system/minio.service<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="s">&lt;&lt;EOF</span>
+<span class="s">[Unit]</span>
+<span class="s">Description=MinIO Object Storage</span>
+<span class="s">After=network.target</span>
+
+<span class="s">[Service]</span>
+<span class="s">Type=simple</span>
+<span class="s">User=minio</span>
+<span class="s">Group=minio</span>
+<span class="s">ExecStart=/usr/local/bin/minio server /data/minio --console-address &quot;:9001&quot;</span>
+<span class="s">Restart=always</span>
+<span class="s">RestartSec=10</span>
+
+<span class="s">[Install]</span>
+<span class="s">WantedBy=multi-user.target</span>
+<span class="s">EOF</span>
+
+<span class="c1"># Start MinIO</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>daemon-reload
+sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>minio
+sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>minio
+
+<span class="c1"># Configure client</span>
+mc<span class="w"> </span><span class="nb">alias</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span><span class="nb">local</span><span class="w"> </span>http://localhost:9000<span class="w"> </span>minioadmin<span class="w"> </span>minioadmin
+mc<span class="w"> </span>mb<span class="w"> </span>local/wan22-models
+</code></pre></div>
+<h3 id="network-file-systems">Network File Systems<a class="headerlink" href="#network-file-systems" title="Permanent link">&para;</a></h3>
+<h4 id="nfs-setup">NFS Setup<a class="headerlink" href="#nfs-setup" title="Permanent link">&para;</a></h4>
+<p><strong>Server Configuration:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Install NFS server</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>nfs-kernel-server
+
+<span class="c1"># Create export directory</span>
+sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/export/models
+sudo<span class="w"> </span>chown<span class="w"> </span>nobody:nogroup<span class="w"> </span>/export/models
+sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">755</span><span class="w"> </span>/export/models
+
+<span class="c1"># Configure exports</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;/export/models *(rw,sync,no_subtree_check,no_root_squash)&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>/etc/exports
+
+<span class="c1"># Start NFS server</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>nfs-kernel-server
+sudo<span class="w"> </span>exportfs<span class="w"> </span>-a
+</code></pre></div>
+<p><strong>Client Configuration:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Install NFS client</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>nfs-common
+
+<span class="c1"># Mount NFS share</span>
+sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/data/models
+sudo<span class="w"> </span>mount<span class="w"> </span>-t<span class="w"> </span>nfs<span class="w"> </span>server-ip:/export/models<span class="w"> </span>/data/models
+
+<span class="c1"># Add to fstab for persistent mount</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;server-ip:/export/models /data/models nfs defaults 0 0&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>/etc/fstab
+</code></pre></div>
+<h2 id="security-configuration">Security Configuration<a class="headerlink" href="#security-configuration" title="Permanent link">&para;</a></h2>
+<h3 id="authentication-and-authorization">Authentication and Authorization<a class="headerlink" href="#authentication-and-authorization" title="Permanent link">&para;</a></h3>
+<h4 id="jwt-configuration">JWT Configuration<a class="headerlink" href="#jwt-configuration" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Generate secure JWT secret</span>
+<span class="nv">JWT_SECRET</span><span class="o">=</span><span class="k">$(</span>openssl<span class="w"> </span>rand<span class="w"> </span>-base64<span class="w"> </span><span class="m">32</span><span class="k">)</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;JWT_SECRET=</span><span class="nv">$JWT_SECRET</span><span class="s2">&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>.env
+
+<span class="c1"># Configure token expiration</span>
+<span class="nv">JWT_EXPIRATION</span><span class="o">=</span><span class="m">3600</span><span class="w">  </span><span class="c1"># 1 hour</span>
+<span class="nv">JWT_REFRESH_EXPIRATION</span><span class="o">=</span><span class="m">86400</span><span class="w">  </span><span class="c1"># 24 hours</span>
+</code></pre></div>
+<h4 id="api-key-management">API Key Management<a class="headerlink" href="#api-key-management" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Create API keys for service accounts</span>
+<span class="kn">from</span> <span class="nn">backend.core.model_orchestrator.auth</span> <span class="kn">import</span> <span class="n">create_api_key</span>
+
+<span class="c1"># Create service account key</span>
+<span class="n">service_key</span> <span class="o">=</span> <span class="n">create_api_key</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;model-service&quot;</span><span class="p">,</span>
+    <span class="n">permissions</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;models:read&quot;</span><span class="p">,</span> <span class="s2">&quot;models:download&quot;</span><span class="p">],</span>
+    <span class="n">expires_in</span><span class="o">=</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">365</span><span class="p">)</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="network-security">Network Security<a class="headerlink" href="#network-security" title="Permanent link">&para;</a></h3>
+<h4 id="firewall-configuration">Firewall Configuration<a class="headerlink" href="#firewall-configuration" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># UFW (Ubuntu)</span>
+sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">22</span>/tcp<span class="w">      </span><span class="c1"># SSH</span>
+sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">8000</span>/tcp<span class="w">    </span><span class="c1"># Application</span>
+sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">9090</span>/tcp<span class="w">    </span><span class="c1"># Metrics (internal only)</span>
+sudo<span class="w"> </span>ufw<span class="w"> </span>--force<span class="w"> </span><span class="nb">enable</span>
+
+<span class="c1"># iptables</span>
+sudo<span class="w"> </span>iptables<span class="w"> </span>-A<span class="w"> </span>INPUT<span class="w"> </span>-p<span class="w"> </span>tcp<span class="w"> </span>--dport<span class="w"> </span><span class="m">22</span><span class="w"> </span>-j<span class="w"> </span>ACCEPT
+sudo<span class="w"> </span>iptables<span class="w"> </span>-A<span class="w"> </span>INPUT<span class="w"> </span>-p<span class="w"> </span>tcp<span class="w"> </span>--dport<span class="w"> </span><span class="m">8000</span><span class="w"> </span>-j<span class="w"> </span>ACCEPT
+sudo<span class="w"> </span>iptables<span class="w"> </span>-A<span class="w"> </span>INPUT<span class="w"> </span>-p<span class="w"> </span>tcp<span class="w"> </span>--dport<span class="w"> </span><span class="m">9090</span><span class="w"> </span>-s<span class="w"> </span><span class="m">10</span>.0.0.0/8<span class="w"> </span>-j<span class="w"> </span>ACCEPT
+sudo<span class="w"> </span>iptables<span class="w"> </span>-A<span class="w"> </span>INPUT<span class="w"> </span>-j<span class="w"> </span>DROP
+</code></pre></div>
+<h4 id="tlsssl-configuration">TLS/SSL Configuration<a class="headerlink" href="#tlsssl-configuration" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Generate self-signed certificate (development)</span>
+openssl<span class="w"> </span>req<span class="w"> </span>-x509<span class="w"> </span>-newkey<span class="w"> </span>rsa:4096<span class="w"> </span>-keyout<span class="w"> </span>key.pem<span class="w"> </span>-out<span class="w"> </span>cert.pem<span class="w"> </span>-days<span class="w"> </span><span class="m">365</span><span class="w"> </span>-nodes
+
+<span class="c1"># Use Let&#39;s Encrypt (production)</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>certbot
+sudo<span class="w"> </span>certbot<span class="w"> </span>certonly<span class="w"> </span>--standalone<span class="w"> </span>-d<span class="w"> </span>your-domain.com
+
+<span class="c1"># Configure application</span>
+<span class="nv">SSL_CERT_PATH</span><span class="o">=</span>/etc/letsencrypt/live/your-domain.com/fullchain.pem
+<span class="nv">SSL_KEY_PATH</span><span class="o">=</span>/etc/letsencrypt/live/your-domain.com/privkey.pem
+</code></pre></div>
+<h3 id="credential-management">Credential Management<a class="headerlink" href="#credential-management" title="Permanent link">&para;</a></h3>
+<h4 id="environment-based-secrets">Environment-based Secrets<a class="headerlink" href="#environment-based-secrets" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Use systemd environment files</span>
+sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/etc/wan22
+sudo<span class="w"> </span>tee<span class="w"> </span>/etc/wan22/secrets.env<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="s">&lt;&lt;EOF</span>
+<span class="s">HF_TOKEN=your_secret_token</span>
+<span class="s">AWS_SECRET_ACCESS_KEY=your_secret_key</span>
+<span class="s">JWT_SECRET=your_jwt_secret</span>
+<span class="s">EOF</span>
+
+sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>/etc/wan22/secrets.env
+sudo<span class="w"> </span>chown<span class="w"> </span>root:root<span class="w"> </span>/etc/wan22/secrets.env
+
+<span class="c1"># Update systemd service</span>
+<span class="o">[</span>Service<span class="o">]</span>
+<span class="nv">EnvironmentFile</span><span class="o">=</span>/etc/wan22/secrets.env
+</code></pre></div>
+<h4 id="hashicorp-vault-integration">HashiCorp Vault Integration<a class="headerlink" href="#hashicorp-vault-integration" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Vault configuration</span>
+<span class="n">VAULT_URL</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">vault</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span>
+<span class="n">VAULT_TOKEN</span><span class="o">=</span><span class="n">your_vault_token</span>
+<span class="n">VAULT_MOUNT_POINT</span><span class="o">=</span><span class="n">wan22</span>
+
+<span class="c1"># Retrieve secrets from Vault</span>
+<span class="kn">from</span> <span class="nn">backend.core.model_orchestrator.vault_client</span> <span class="kn">import</span> <span class="n">VaultClient</span>
+
+<span class="n">vault</span> <span class="o">=</span> <span class="n">VaultClient</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">VAULT_URL</span><span class="p">,</span> <span class="n">token</span><span class="o">=</span><span class="n">VAULT_TOKEN</span><span class="p">)</span>
+<span class="n">secrets</span> <span class="o">=</span> <span class="n">vault</span><span class="o">.</span><span class="n">get_secrets</span><span class="p">(</span><span class="s2">&quot;wan22/model-orchestrator&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="monitoring-and-observability">Monitoring and Observability<a class="headerlink" href="#monitoring-and-observability" title="Permanent link">&para;</a></h2>
+<h3 id="prometheus-metrics">Prometheus Metrics<a class="headerlink" href="#prometheus-metrics" title="Permanent link">&para;</a></h3>
+<h4 id="metrics-configuration">Metrics Configuration<a class="headerlink" href="#metrics-configuration" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># prometheus.yml</span>
+<span class="nt">global</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">scrape_interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15s</span>
+
+<span class="nt">scrape_configs</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">job_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;wan22-orchestrator&quot;</span>
+<span class="w">    </span><span class="nt">static_configs</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">targets</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;localhost:9090&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">scrape_interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5s</span>
+<span class="w">    </span><span class="nt">metrics_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/metrics</span>
+</code></pre></div>
+<h4 id="key-metrics-to-monitor">Key Metrics to Monitor<a class="headerlink" href="#key-metrics-to-monitor" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Download success rate</span>
+<span class="kr">rate</span><span class="o">(</span><span class="nv">model_downloads_total</span><span class="p">{</span><span class="nl">status</span><span class="o">=</span><span class="p">&quot;</span><span class="s">success</span><span class="p">&quot;}[</span><span class="s">5m</span><span class="p">]</span><span class="o">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="kr">rate</span><span class="o">(</span><span class="nv">model_downloads_total</span><span class="p">[</span><span class="s">5m</span><span class="p">]</span><span class="o">)</span>
+
+<span class="c1"># Average download duration</span>
+<span class="kr">rate</span><span class="o">(</span><span class="nv">model_download_duration_seconds_sum</span><span class="p">[</span><span class="s">5m</span><span class="p">]</span><span class="o">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="kr">rate</span><span class="o">(</span><span class="nv">model_download_duration_seconds_count</span><span class="p">[</span><span class="s">5m</span><span class="p">]</span><span class="o">)</span>
+
+<span class="c1"># Storage usage</span>
+<span class="nv">model_storage_bytes_used</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nv">model_storage_bytes_total</span>
+
+<span class="c1"># Error rate</span>
+<span class="kr">rate</span><span class="o">(</span><span class="nv">model_errors_total</span><span class="p">[</span><span class="s">5m</span><span class="p">]</span><span class="o">)</span>
+
+<span class="c1"># Lock contention</span>
+<span class="kr">rate</span><span class="o">(</span><span class="nv">lock_timeouts_total</span><span class="p">[</span><span class="s">5m</span><span class="p">]</span><span class="o">)</span>
+</code></pre></div>
+<h3 id="grafana-dashboards">Grafana Dashboards<a class="headerlink" href="#grafana-dashboards" title="Permanent link">&para;</a></h3>
+<h4 id="dashboard-configuration">Dashboard Configuration<a class="headerlink" href="#dashboard-configuration" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;dashboard&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;WAN2.2 Model Orchestrator&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;panels&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Download Success Rate&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;stat&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;targets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;expr&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rate(model_downloads_total{status=\&quot;success\&quot;}[5m]) / rate(model_downloads_total[5m])&quot;</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Storage Usage&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gauge&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;targets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;expr&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;model_storage_bytes_used / model_storage_bytes_total * 100&quot;</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="logging-configuration">Logging Configuration<a class="headerlink" href="#logging-configuration" title="Permanent link">&para;</a></h3>
+<h4 id="structured-logging">Structured Logging<a class="headerlink" href="#structured-logging" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># logging_config.py</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="k">class</span> <span class="nc">JSONFormatter</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">Formatter</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">format</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">record</span><span class="p">):</span>
+        <span class="n">log_entry</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;timestamp&quot;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span><span class="o">.</span><span class="n">isoformat</span><span class="p">(),</span>
+            <span class="s2">&quot;level&quot;</span><span class="p">:</span> <span class="n">record</span><span class="o">.</span><span class="n">levelname</span><span class="p">,</span>
+            <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="n">record</span><span class="o">.</span><span class="n">getMessage</span><span class="p">(),</span>
+            <span class="s2">&quot;module&quot;</span><span class="p">:</span> <span class="n">record</span><span class="o">.</span><span class="n">module</span><span class="p">,</span>
+            <span class="s2">&quot;function&quot;</span><span class="p">:</span> <span class="n">record</span><span class="o">.</span><span class="n">funcName</span><span class="p">,</span>
+            <span class="s2">&quot;line&quot;</span><span class="p">:</span> <span class="n">record</span><span class="o">.</span><span class="n">lineno</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">record</span><span class="p">,</span> <span class="s1">&#39;correlation_id&#39;</span><span class="p">):</span>
+            <span class="n">log_entry</span><span class="p">[</span><span class="s1">&#39;correlation_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">correlation_id</span>
+
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">record</span><span class="p">,</span> <span class="s1">&#39;model_id&#39;</span><span class="p">):</span>
+            <span class="n">log_entry</span><span class="p">[</span><span class="s1">&#39;model_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">model_id</span>
+
+        <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">log_entry</span><span class="p">)</span>
+
+<span class="c1"># Configure logging</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span>
+    <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">,</span>
+    <span class="n">handlers</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">StreamHandler</span><span class="p">(),</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">FileHandler</span><span class="p">(</span><span class="s1">&#39;/var/log/wan22/orchestrator.log&#39;</span><span class="p">)</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+
+<span class="k">for</span> <span class="n">handler</span> <span class="ow">in</span> <span class="n">logging</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">handlers</span><span class="p">:</span>
+    <span class="n">handler</span><span class="o">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">JSONFormatter</span><span class="p">())</span>
+</code></pre></div>
+<h4 id="log-aggregation">Log Aggregation<a class="headerlink" href="#log-aggregation" title="Permanent link">&para;</a></h4>
+<p><strong>ELK Stack Configuration:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># filebeat.yml</span>
+<span class="nt">filebeat.inputs</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">log</span>
+<span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">paths</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/var/log/wan22/*.log</span>
+<span class="w">  </span><span class="nt">json.keys_under_root</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">json.add_error_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+
+<span class="nt">output.elasticsearch</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;elasticsearch:9200&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">index</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;wan22-orchestrator-%{+yyyy.MM.dd}&quot;</span>
+
+<span class="c1"># logstash.conf</span>
+<span class="l l-Scalar l-Scalar-Plain">input {</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">beats {</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">port =&gt; 5044</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">}</span>
+<span class="err">}</span>
+
+<span class="l l-Scalar l-Scalar-Plain">filter {</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">if [fields][service] == &quot;wan22-orchestrator&quot; {</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">json {</span>
+<span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">source =&gt; &quot;message&quot;</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">}</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">}</span>
+<span class="err">}</span>
+
+<span class="l l-Scalar l-Scalar-Plain">output {</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">elasticsearch {</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">hosts =&gt; [&quot;elasticsearch:9200&quot;]</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">index =&gt; &quot;wan22-orchestrator-%{+YYYY.MM.dd}&quot;</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">}</span>
+<span class="err">}</span>
+</code></pre></div>
+<h2 id="high-availability-and-scaling">High Availability and Scaling<a class="headerlink" href="#high-availability-and-scaling" title="Permanent link">&para;</a></h2>
+<h3 id="load-balancing">Load Balancing<a class="headerlink" href="#load-balancing" title="Permanent link">&para;</a></h3>
+<h4 id="nginx-configuration">Nginx Configuration<a class="headerlink" href="#nginx-configuration" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># /etc/nginx/sites-available/wan22</span>
+<span class="k">upstream</span><span class="w"> </span><span class="s">wan22_backend</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kn">server</span><span class="w"> </span><span class="n">127.0.0.1</span><span class="p">:</span><span class="mi">8000</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">server</span><span class="w"> </span><span class="n">127.0.0.1</span><span class="p">:</span><span class="mi">8001</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">server</span><span class="w"> </span><span class="n">127.0.0.1</span><span class="p">:</span><span class="mi">8002</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">server</span><span class="w"> </span><span class="n">127.0.0.1</span><span class="p">:</span><span class="mi">8003</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">server</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">your-domain.com</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">http://wan22_backend</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">Host</span><span class="w"> </span><span class="nv">$host</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Real-IP</span><span class="w"> </span><span class="nv">$remote_addr</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Forwarded-For</span><span class="w"> </span><span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Forwarded-Proto</span><span class="w"> </span><span class="nv">$scheme</span><span class="p">;</span>
+
+<span class="w">        </span><span class="c1"># Increase timeouts for large downloads</span>
+<span class="w">        </span><span class="kn">proxy_connect_timeout</span><span class="w"> </span><span class="s">300s</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_send_timeout</span><span class="w"> </span><span class="s">300s</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_read_timeout</span><span class="w"> </span><span class="s">300s</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/health</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">http://wan22_backend</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">access_log</span><span class="w"> </span><span class="no">off</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/metrics</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">http://wan22_backend</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">allow</span><span class="w"> </span><span class="mi">10</span><span class="s">.0.0.0/8</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">deny</span><span class="w"> </span><span class="s">all</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="haproxy-configuration">HAProxy Configuration<a class="headerlink" href="#haproxy-configuration" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code># /etc/haproxy/haproxy.cfg
+global
+    daemon
+    maxconn 4096
+
+defaults
+    mode http
+    timeout connect 5000ms
+    timeout client 50000ms
+    timeout server 50000ms
+
+frontend wan22_frontend
+    bind *:80
+    default_backend wan22_servers
+
+backend wan22_servers
+    balance roundrobin
+    option httpchk GET /health
+    server web1 10.0.1.10:8000 check
+    server web2 10.0.1.11:8000 check
+    server web3 10.0.1.12:8000 check
+</code></pre></div>
+<h3 id="database-clustering">Database Clustering<a class="headerlink" href="#database-clustering" title="Permanent link">&para;</a></h3>
+<h4 id="postgresql-high-availability">PostgreSQL High Availability<a class="headerlink" href="#postgresql-high-availability" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Primary server setup</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>postgresql-12<span class="w"> </span>postgresql-contrib-12
+
+<span class="c1"># Configure primary</span>
+sudo<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>psql<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;CREATE USER replicator WITH REPLICATION ENCRYPTED PASSWORD &#39;password&#39;;&quot;</span>
+
+<span class="c1"># postgresql.conf</span>
+<span class="nv">wal_level</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>replica
+<span class="nv">max_wal_senders</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span>
+<span class="nv">wal_keep_segments</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">64</span>
+<span class="nv">archive_mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>on
+<span class="nv">archive_command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;cp %p /var/lib/postgresql/12/main/archive/%f&#39;</span>
+
+<span class="c1"># pg_hba.conf</span>
+host<span class="w"> </span>replication<span class="w"> </span>replicator<span class="w"> </span><span class="m">10</span>.0.1.0/24<span class="w"> </span>md5
+
+<span class="c1"># Standby server setup</span>
+sudo<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>pg_basebackup<span class="w"> </span>-h<span class="w"> </span>primary-ip<span class="w"> </span>-D<span class="w"> </span>/var/lib/postgresql/12/main<span class="w"> </span>-U<span class="w"> </span>replicator<span class="w"> </span>-P<span class="w"> </span>-v<span class="w"> </span>-R<span class="w"> </span>-W
+
+<span class="c1"># recovery.conf</span>
+<span class="nv">standby_mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;on&#39;</span>
+<span class="nv">primary_conninfo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;host=primary-ip port=5432 user=replicator password=password&#39;</span>
+</code></pre></div>
+<h3 id="container-orchestration">Container Orchestration<a class="headerlink" href="#container-orchestration" title="Permanent link">&para;</a></h3>
+<h4 id="docker-compose">Docker Compose<a class="headerlink" href="#docker-compose" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># docker-compose.yml</span>
+<span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.8&quot;</span>
+
+<span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">wan22-orchestrator</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">build</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;8000:8000&quot;</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODELS_ROOT=/data/models</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DATABASE_URL=postgresql://user:pass@db:5432/wan22</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">models_data:/data/models</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./config:/app/config</span>
+<span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">db</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis</span>
+<span class="w">    </span><span class="nt">deploy</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">      </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">limits</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">cpus</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2&quot;</span>
+<span class="w">          </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4G</span>
+<span class="w">        </span><span class="nt">reservations</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">cpus</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
+<span class="w">          </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2G</span>
+
+<span class="w">  </span><span class="nt">db</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres:13</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">POSTGRES_DB=wan22</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">POSTGRES_USER=wan22</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">POSTGRES_PASSWORD=secure_password</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres_data:/var/lib/postgresql/data</span>
+
+<span class="w">  </span><span class="nt">redis</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis:6-alpine</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis_data:/data</span>
+
+<span class="w">  </span><span class="nt">nginx</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx:alpine</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;80:80&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;443:443&quot;</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./nginx.conf:/etc/nginx/nginx.conf</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./ssl:/etc/ssl/certs</span>
+<span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wan22-orchestrator</span>
+
+<span class="nt">volumes</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">models_data</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">postgres_data</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">redis_data</span><span class="p">:</span>
+</code></pre></div>
+<h4 id="kubernetes-deployment">Kubernetes Deployment<a class="headerlink" href="#kubernetes-deployment" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># k8s-deployment.yaml</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wan22-orchestrator</span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wan22-orchestrator</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wan22-orchestrator</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wan22-orchestrator</span>
+<span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">orchestrator</span>
+<span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wan22/orchestrator:latest</span>
+<span class="w">          </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
+<span class="w">          </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODELS_ROOT</span>
+<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/data/models&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DATABASE_URL</span>
+<span class="w">              </span><span class="nt">valueFrom</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">secretKeyRef</span><span class="p">:</span>
+<span class="w">                  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wan22-secrets</span>
+<span class="w">                  </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">database-url</span>
+<span class="w">          </span><span class="nt">volumeMounts</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">models-storage</span>
+<span class="w">              </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/data/models</span>
+<span class="w">          </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">requests</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2Gi&quot;</span>
+<span class="w">              </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
+<span class="w">            </span><span class="nt">limits</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;4Gi&quot;</span>
+<span class="w">              </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2&quot;</span>
+<span class="w">          </span><span class="nt">livenessProbe</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">httpGet</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/health</span>
+<span class="w">              </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
+<span class="w">            </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span>
+<span class="w">            </span><span class="nt">periodSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+<span class="w">          </span><span class="nt">readinessProbe</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">httpGet</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/health/ready</span>
+<span class="w">              </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
+<span class="w">            </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
+<span class="w">            </span><span class="nt">periodSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
+<span class="w">      </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">models-storage</span>
+<span class="w">          </span><span class="nt">persistentVolumeClaim</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">claimName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">models-pvc</span>
+
+<span class="nn">---</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wan22-orchestrator-service</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wan22-orchestrator</span>
+<span class="w">  </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TCP</span>
+<span class="w">      </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
+<span class="w">      </span><span class="nt">targetPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LoadBalancer</span>
+
+<span class="nn">---</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PersistentVolumeClaim</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">models-pvc</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">accessModes</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ReadWriteMany</span>
+<span class="w">  </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">requests</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">storage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2Ti</span>
+<span class="w">  </span><span class="nt">storageClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fast-ssd</span>
+</code></pre></div>
+<h2 id="backup-and-disaster-recovery">Backup and Disaster Recovery<a class="headerlink" href="#backup-and-disaster-recovery" title="Permanent link">&para;</a></h2>
+<h3 id="backup-strategy_1">Backup Strategy<a class="headerlink" href="#backup-strategy_1" title="Permanent link">&para;</a></h3>
+<h4 id="model-data-backup">Model Data Backup<a class="headerlink" href="#model-data-backup" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1"># backup-models.sh</span>
+
+<span class="nv">BACKUP_ROOT</span><span class="o">=</span><span class="s2">&quot;/backup/wan22&quot;</span>
+<span class="nv">MODELS_ROOT</span><span class="o">=</span><span class="s2">&quot;/data/models&quot;</span>
+<span class="nv">DATE</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span>+%Y%m%d_%H%M%S<span class="k">)</span>
+<span class="nv">BACKUP_DIR</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$BACKUP_ROOT</span><span class="s2">/models_</span><span class="nv">$DATE</span><span class="s2">&quot;</span>
+
+<span class="c1"># Create backup directory</span>
+mkdir<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$BACKUP_DIR</span><span class="s2">&quot;</span>
+
+<span class="c1"># Backup model files (exclude temporary and lock files)</span>
+rsync<span class="w"> </span>-av<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--exclude<span class="o">=</span><span class="s1">&#39;.tmp&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--exclude<span class="o">=</span><span class="s1">&#39;.locks&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--exclude<span class="o">=</span><span class="s1">&#39;*.partial&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="s2">&quot;</span><span class="nv">$MODELS_ROOT</span><span class="s2">/&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$BACKUP_DIR</span><span class="s2">/&quot;</span>
+
+<span class="c1"># Create manifest</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Backup created: </span><span class="nv">$DATE</span><span class="s2">&quot;</span><span class="w"> </span>&gt;<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$BACKUP_DIR</span><span class="s2">/backup_info.txt&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Source: </span><span class="nv">$MODELS_ROOT</span><span class="s2">&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$BACKUP_DIR</span><span class="s2">/backup_info.txt&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Size: </span><span class="k">$(</span>du<span class="w"> </span>-sh<span class="w"> </span><span class="nv">$BACKUP_DIR</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-f1<span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$BACKUP_DIR</span><span class="s2">/backup_info.txt&quot;</span>
+
+<span class="c1"># Compress backup</span>
+tar<span class="w"> </span>-czf<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$BACKUP_ROOT</span><span class="s2">/models_</span><span class="nv">$DATE</span><span class="s2">.tar.gz&quot;</span><span class="w"> </span>-C<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$BACKUP_ROOT</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;models_</span><span class="nv">$DATE</span><span class="s2">&quot;</span>
+rm<span class="w"> </span>-rf<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$BACKUP_DIR</span><span class="s2">&quot;</span>
+
+<span class="c1"># Cleanup old backups (keep last 7 days)</span>
+find<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$BACKUP_ROOT</span><span class="s2">&quot;</span><span class="w"> </span>-name<span class="w"> </span><span class="s2">&quot;models_*.tar.gz&quot;</span><span class="w"> </span>-mtime<span class="w"> </span>+7<span class="w"> </span>-delete
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Backup completed: </span><span class="nv">$BACKUP_ROOT</span><span class="s2">/models_</span><span class="nv">$DATE</span><span class="s2">.tar.gz&quot;</span>
+</code></pre></div>
+<h4 id="database-backup">Database Backup<a class="headerlink" href="#database-backup" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1"># backup-database.sh</span>
+
+<span class="nv">DB_NAME</span><span class="o">=</span><span class="s2">&quot;wan22&quot;</span>
+<span class="nv">DB_USER</span><span class="o">=</span><span class="s2">&quot;wan22&quot;</span>
+<span class="nv">BACKUP_DIR</span><span class="o">=</span><span class="s2">&quot;/backup/wan22/database&quot;</span>
+<span class="nv">DATE</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span>+%Y%m%d_%H%M%S<span class="k">)</span>
+
+mkdir<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$BACKUP_DIR</span><span class="s2">&quot;</span>
+
+<span class="c1"># Create database dump</span>
+pg_dump<span class="w"> </span>-h<span class="w"> </span>localhost<span class="w"> </span>-U<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$DB_USER</span><span class="s2">&quot;</span><span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$DB_NAME</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--no-password<span class="w"> </span>--clean<span class="w"> </span>--create<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>&gt;<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$BACKUP_DIR</span><span class="s2">/wan22_</span><span class="nv">$DATE</span><span class="s2">.sql&quot;</span>
+
+<span class="c1"># Compress backup</span>
+gzip<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$BACKUP_DIR</span><span class="s2">/wan22_</span><span class="nv">$DATE</span><span class="s2">.sql&quot;</span>
+
+<span class="c1"># Cleanup old backups</span>
+find<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$BACKUP_DIR</span><span class="s2">&quot;</span><span class="w"> </span>-name<span class="w"> </span><span class="s2">&quot;wan22_*.sql.gz&quot;</span><span class="w"> </span>-mtime<span class="w"> </span>+30<span class="w"> </span>-delete
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Database backup completed: </span><span class="nv">$BACKUP_DIR</span><span class="s2">/wan22_</span><span class="nv">$DATE</span><span class="s2">.sql.gz&quot;</span>
+</code></pre></div>
+<h3 id="disaster-recovery">Disaster Recovery<a class="headerlink" href="#disaster-recovery" title="Permanent link">&para;</a></h3>
+<h4 id="recovery-procedures">Recovery Procedures<a class="headerlink" href="#recovery-procedures" title="Permanent link">&para;</a></h4>
+<p><strong>Complete System Recovery:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1"># disaster-recovery.sh</span>
+
+<span class="nv">BACKUP_ROOT</span><span class="o">=</span><span class="s2">&quot;/backup/wan22&quot;</span>
+<span class="nv">MODELS_ROOT</span><span class="o">=</span><span class="s2">&quot;/data/models&quot;</span>
+
+<span class="c1"># 1. Stop services</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>wan22
+sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>postgresql
+
+<span class="c1"># 2. Restore model data</span>
+<span class="nv">LATEST_BACKUP</span><span class="o">=</span><span class="k">$(</span>ls<span class="w"> </span>-t<span class="w"> </span><span class="nv">$BACKUP_ROOT</span>/models_*.tar.gz<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-1<span class="k">)</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Restoring from: </span><span class="nv">$LATEST_BACKUP</span><span class="s2">&quot;</span>
+
+<span class="c1"># Clear existing data</span>
+sudo<span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$MODELS_ROOT</span><span class="s2">&quot;</span>/*
+
+<span class="c1"># Extract backup</span>
+tar<span class="w"> </span>-xzf<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$LATEST_BACKUP</span><span class="s2">&quot;</span><span class="w"> </span>-C<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$BACKUP_ROOT</span><span class="s2">&quot;</span>
+<span class="nv">BACKUP_DIR</span><span class="o">=</span><span class="k">$(</span>basename<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$LATEST_BACKUP</span><span class="s2">&quot;</span><span class="w"> </span>.tar.gz<span class="k">)</span>
+sudo<span class="w"> </span>cp<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$BACKUP_ROOT</span><span class="s2">/</span><span class="nv">$BACKUP_DIR</span><span class="s2">&quot;</span>/*<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$MODELS_ROOT</span><span class="s2">/&quot;</span>
+sudo<span class="w"> </span>chown<span class="w"> </span>-R<span class="w"> </span>wan22:wan22<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$MODELS_ROOT</span><span class="s2">&quot;</span>
+
+<span class="c1"># 3. Restore database</span>
+<span class="nv">LATEST_DB_BACKUP</span><span class="o">=</span><span class="k">$(</span>ls<span class="w"> </span>-t<span class="w"> </span><span class="nv">$BACKUP_ROOT</span>/database/wan22_*.sql.gz<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-1<span class="k">)</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Restoring database from: </span><span class="nv">$LATEST_DB_BACKUP</span><span class="s2">&quot;</span>
+
+sudo<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>dropdb<span class="w"> </span>wan22
+sudo<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>createdb<span class="w"> </span>wan22
+gunzip<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$LATEST_DB_BACKUP</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>psql<span class="w"> </span>wan22
+
+<span class="c1"># 4. Start services</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>postgresql
+sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>wan22
+
+<span class="c1"># 5. Verify recovery</span>
+sleep<span class="w"> </span><span class="m">10</span>
+curl<span class="w"> </span>-f<span class="w"> </span>http://localhost:8000/health<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Health check failed&quot;</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Disaster recovery completed&quot;</span>
+</code></pre></div>
+<h4 id="automated-recovery-testing">Automated Recovery Testing<a class="headerlink" href="#automated-recovery-testing" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1"># test-recovery.sh</span>
+
+<span class="c1"># Create test environment</span>
+docker-compose<span class="w"> </span>-f<span class="w"> </span>docker-compose.test.yml<span class="w"> </span>up<span class="w"> </span>-d
+
+<span class="c1"># Wait for services to start</span>
+sleep<span class="w"> </span><span class="m">30</span>
+
+<span class="c1"># Run recovery test</span>
+./disaster-recovery.sh
+
+<span class="c1"># Verify functionality</span>
+python<span class="w"> </span>-m<span class="w"> </span>pytest<span class="w"> </span>tests/test_disaster_recovery.py
+
+<span class="c1"># Cleanup</span>
+docker-compose<span class="w"> </span>-f<span class="w"> </span>docker-compose.test.yml<span class="w"> </span>down<span class="w"> </span>-v
+</code></pre></div>
+<h2 id="performance-tuning">Performance Tuning<a class="headerlink" href="#performance-tuning" title="Permanent link">&para;</a></h2>
+<h3 id="system-optimization">System Optimization<a class="headerlink" href="#system-optimization" title="Permanent link">&para;</a></h3>
+<h4 id="kernel-parameters">Kernel Parameters<a class="headerlink" href="#kernel-parameters" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># /etc/sysctl.conf</span>
+<span class="c1"># Network optimization</span>
+net.core.rmem_max<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">134217728</span>
+net.core.wmem_max<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">134217728</span>
+net.ipv4.tcp_rmem<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4096</span><span class="w"> </span><span class="m">65536</span><span class="w"> </span><span class="m">134217728</span>
+net.ipv4.tcp_wmem<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4096</span><span class="w"> </span><span class="m">65536</span><span class="w"> </span><span class="m">134217728</span>
+net.core.netdev_max_backlog<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5000</span>
+
+<span class="c1"># File system optimization</span>
+fs.file-max<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2097152</span>
+vm.swappiness<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span>
+vm.dirty_ratio<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">15</span>
+vm.dirty_background_ratio<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5</span>
+
+<span class="c1"># Apply changes</span>
+sudo<span class="w"> </span>sysctl<span class="w"> </span>-p
+</code></pre></div>
+<h4 id="file-system-tuning">File System Tuning<a class="headerlink" href="#file-system-tuning" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Mount options for model storage</span>
+/dev/sdb1<span class="w"> </span>/data/models<span class="w"> </span>ext4<span class="w"> </span>defaults,noatime,nodiratime<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">2</span>
+
+<span class="c1"># For high-performance storage</span>
+/dev/nvme0n1<span class="w"> </span>/data/models<span class="w"> </span>xfs<span class="w"> </span>defaults,noatime,largeio,inode64<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">2</span>
+</code></pre></div>
+<h3 id="application-optimization">Application Optimization<a class="headerlink" href="#application-optimization" title="Permanent link">&para;</a></h3>
+<h4 id="connection-pooling">Connection Pooling<a class="headerlink" href="#connection-pooling" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># database.py</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy.pool</span> <span class="kn">import</span> <span class="n">QueuePool</span>
+
+<span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span>
+    <span class="n">DATABASE_URL</span><span class="p">,</span>
+    <span class="n">poolclass</span><span class="o">=</span><span class="n">QueuePool</span><span class="p">,</span>
+    <span class="n">pool_size</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+    <span class="n">max_overflow</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+    <span class="n">pool_pre_ping</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">pool_recycle</span><span class="o">=</span><span class="mi">3600</span>
+<span class="p">)</span>
+</code></pre></div>
+<h4 id="caching-configuration">Caching Configuration<a class="headerlink" href="#caching-configuration" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># cache.py</span>
+<span class="kn">import</span> <span class="nn">redis</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">wraps</span>
+
+<span class="n">redis_client</span> <span class="o">=</span> <span class="n">redis</span><span class="o">.</span><span class="n">Redis</span><span class="p">(</span>
+    <span class="n">host</span><span class="o">=</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
+    <span class="n">port</span><span class="o">=</span><span class="mi">6379</span><span class="p">,</span>
+    <span class="n">db</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">decode_responses</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">max_connections</span><span class="o">=</span><span class="mi">100</span>
+<span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">cache_result</span><span class="p">(</span><span class="n">expiration</span><span class="o">=</span><span class="mi">3600</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">decorator</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+        <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+        <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+            <span class="n">cache_key</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="nb">hash</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">str</span><span class="p">(</span><span class="n">kwargs</span><span class="p">))</span><span class="si">}</span><span class="s2">&quot;</span>
+
+            <span class="c1"># Try to get from cache</span>
+            <span class="n">cached</span> <span class="o">=</span> <span class="n">redis_client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cache_key</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">cached</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">cached</span><span class="p">)</span>
+
+            <span class="c1"># Execute function and cache result</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+            <span class="n">redis_client</span><span class="o">.</span><span class="n">setex</span><span class="p">(</span><span class="n">cache_key</span><span class="p">,</span> <span class="n">expiration</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">result</span><span class="p">))</span>
+            <span class="k">return</span> <span class="n">result</span>
+        <span class="k">return</span> <span class="n">wrapper</span>
+    <span class="k">return</span> <span class="n">decorator</span>
+</code></pre></div>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<h3 id="common-issues">Common Issues<a class="headerlink" href="#common-issues" title="Permanent link">&para;</a></h3>
+<h4 id="high-memory-usage">High Memory Usage<a class="headerlink" href="#high-memory-usage" title="Permanent link">&para;</a></h4>
+<p><strong>Symptoms:</strong></p>
+<ul>
+<li>OOM kills</li>
+<li>Slow performance</li>
+<li>Swap usage</li>
+</ul>
+<p><strong>Solutions:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check memory usage</span>
+free<span class="w"> </span>-h
+ps<span class="w"> </span>aux<span class="w"> </span>--sort<span class="o">=</span>-%mem<span class="w"> </span><span class="p">|</span><span class="w"> </span>head
+
+<span class="c1"># Tune garbage collection</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">GC_CHECK_INTERVAL</span><span class="o">=</span><span class="m">1800</span><span class="w">  </span><span class="c1"># 30 minutes</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">MAX_TOTAL_SIZE</span><span class="o">=</span><span class="k">$((</span><span class="m">500</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">1024</span><span class="o">**</span><span class="m">3</span><span class="k">))</span><span class="w">  </span><span class="c1"># 500GB</span>
+
+<span class="c1"># Optimize download concurrency</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">MAX_CONCURRENT_DOWNLOADS</span><span class="o">=</span><span class="m">4</span>
+</code></pre></div>
+<h4 id="slow-downloads">Slow Downloads<a class="headerlink" href="#slow-downloads" title="Permanent link">&para;</a></h4>
+<p><strong>Symptoms:</strong></p>
+<ul>
+<li>Long download times</li>
+<li>Timeouts</li>
+<li>Network errors</li>
+</ul>
+<p><strong>Solutions:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Enable HF transfer acceleration</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">HF_HUB_ENABLE_HF_TRANSFER</span><span class="o">=</span><span class="m">1</span>
+
+<span class="c1"># Tune network settings</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;net.core.rmem_max = 134217728&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/etc/sysctl.conf
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;net.core.wmem_max = 134217728&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/etc/sysctl.conf
+sysctl<span class="w"> </span>-p
+
+<span class="c1"># Check bandwidth</span>
+iperf3<span class="w"> </span>-c<span class="w"> </span>speedtest.example.com
+</code></pre></div>
+<h4 id="lock-contention">Lock Contention<a class="headerlink" href="#lock-contention" title="Permanent link">&para;</a></h4>
+<p><strong>Symptoms:</strong></p>
+<ul>
+<li>Lock timeout errors</li>
+<li>Slow model access</li>
+<li>High CPU usage</li>
+</ul>
+<p><strong>Solutions:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Increase lock timeout</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">LOCK_TIMEOUT</span><span class="o">=</span><span class="m">600</span><span class="w">  </span><span class="c1"># 10 minutes</span>
+
+<span class="c1"># Check for stale locks</span>
+wan<span class="w"> </span>models<span class="w"> </span>cleanup-locks
+
+<span class="c1"># Monitor lock usage</span>
+curl<span class="w"> </span>http://localhost:9090/metrics<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>lock
+</code></pre></div>
+<h3 id="diagnostic-tools">Diagnostic Tools<a class="headerlink" href="#diagnostic-tools" title="Permanent link">&para;</a></h3>
+<h4 id="health-check-script">Health Check Script<a class="headerlink" href="#health-check-script" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1"># health-check.sh</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;=== WAN2.2 Model Orchestrator Health Check ===&quot;</span>
+
+<span class="c1"># Check service status</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Service Status:&quot;</span>
+systemctl<span class="w"> </span>is-active<span class="w"> </span>wan22<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Service not running&quot;</span>
+
+<span class="c1"># Check disk space</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Disk Usage:&quot;</span>
+df<span class="w"> </span>-h<span class="w"> </span>/data/models
+
+<span class="c1"># Check memory usage</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Memory Usage:&quot;</span>
+free<span class="w"> </span>-h
+
+<span class="c1"># Check network connectivity</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Network Connectivity:&quot;</span>
+curl<span class="w"> </span>-s<span class="w"> </span>-o<span class="w"> </span>/dev/null<span class="w"> </span>-w<span class="w"> </span><span class="s2">&quot;%{http_code}&quot;</span><span class="w"> </span>http://localhost:8000/health
+
+<span class="c1"># Check model status</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Model Status:&quot;</span>
+wan<span class="w"> </span>models<span class="w"> </span>status<span class="w"> </span>--json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">&#39;.models[] | select(.state != &quot;COMPLETE&quot;) | {id: .model_id, state: .state}&#39;</span>
+
+<span class="c1"># Check recent errors</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Recent Errors:&quot;</span>
+journalctl<span class="w"> </span>-u<span class="w"> </span>wan22<span class="w"> </span>--since<span class="w"> </span><span class="s2">&quot;1 hour ago&quot;</span><span class="w"> </span>--grep<span class="w"> </span>ERROR
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;=== Health Check Complete ===&quot;</span>
+</code></pre></div>
+<h4 id="performance-monitoring">Performance Monitoring<a class="headerlink" href="#performance-monitoring" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1"># monitor-performance.sh</span>
+
+<span class="c1"># Monitor system resources</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;=== System Resources ===&quot;</span>
+top<span class="w"> </span>-bn1<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-20
+
+<span class="c1"># Monitor network usage</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;=== Network Usage ===&quot;</span>
+iftop<span class="w"> </span>-t<span class="w"> </span>-s<span class="w"> </span><span class="m">10</span>
+
+<span class="c1"># Monitor disk I/O</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;=== Disk I/O ===&quot;</span>
+iostat<span class="w"> </span>-x<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">5</span>
+
+<span class="c1"># Monitor application metrics</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;=== Application Metrics ===&quot;</span>
+curl<span class="w"> </span>-s<span class="w"> </span>http://localhost:9090/metrics<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s2">&quot;(download|storage|error)_&quot;</span>
+</code></pre></div>
+<p>This deployment guide provides comprehensive coverage of production deployment scenarios, from single-node setups to cloud-native Kubernetes deployments. It includes security best practices, monitoring configuration, and troubleshooting procedures to ensure reliable operation in production environments.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1306 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="WAN2.2 Video Generation System Documentation">
+      
+      
+      
+        <link rel="canonical" href="https://ramcana.github.io/wan/reference/component_relationships/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>Component Relationships - WAN22 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e53b48f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#component-relationships" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="WAN22 Documentation" class="md-header__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            WAN22 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Component Relationships
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../WAN22_System_Capabilities_Report/" class="md-tabs__link">
+          
+  
+  
+  System Overview
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../model-orchestrator/requirements/" class="md-tabs__link">
+          
+  
+  
+  Model Orchestrator
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../config/models.toml" class="md-tabs__link">
+          
+  
+  
+  Configuration
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="WAN22 Documentation" class="md-nav__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    WAN22 Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    System Overview
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            System Overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../WAN22_System_Capabilities_Report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Capabilities Report
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Model Orchestrator
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Model Orchestrator
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Requirements
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/tasks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tasks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Configuration
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Configuration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Models Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models_simple.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simple Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Architecture Overview
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Architecture Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#entry-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      Entry Points
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#critical-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Critical Components
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dependency-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dependency Types
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#circular-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚠️ Circular Dependencies
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="⚠️ Circular Dependencies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cycle-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cycle 1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cycle-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cycle 2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cycle-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cycle 3
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#component-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Component Details
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Component Details">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#utils_new" class="md-nav__link">
+    <span class="md-ellipsis">
+      utils_new
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#local_installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      local_installation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backend" class="md-nav__link">
+    <span class="md-ellipsis">
+      backend
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scripts" class="md-nav__link">
+    <span class="md-ellipsis">
+      scripts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#local_installationscripts" class="md-nav__link">
+    <span class="md-ellipsis">
+      local_installation.scripts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      tests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#toolshealth-checker" class="md-nav__link">
+    <span class="md-ellipsis">
+      tools.health-checker
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#coreservices" class="md-nav__link">
+    <span class="md-ellipsis">
+      core.services
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frontend" class="md-nav__link">
+    <span class="md-ellipsis">
+      frontend
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#infrastructurehardware" class="md-nav__link">
+    <span class="md-ellipsis">
+      infrastructure.hardware
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backendtests" class="md-nav__link">
+    <span class="md-ellipsis">
+      backend.tests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scriptsstartup_manager" class="md-nav__link">
+    <span class="md-ellipsis">
+      scripts.startup_manager
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#local_installationwan22-installation-packagescripts" class="md-nav__link">
+    <span class="md-ellipsis">
+      local_installation.WAN22-Installation-Package.scripts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testsunit" class="md-nav__link">
+    <span class="md-ellipsis">
+      tests.unit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testsperformance" class="md-nav__link">
+    <span class="md-ellipsis">
+      tests.performance
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="component-relationships">Component Relationships<a class="headerlink" href="#component-relationships" title="Permanent link">&para;</a></h1>
+<p>This document explains how different components in the project interact with each other.</p>
+<h2 id="architecture-overview">Architecture Overview<a class="headerlink" href="#architecture-overview" title="Permanent link">&para;</a></h2>
+<p>The project consists of 73 main components with 883 dependencies between them.</p>
+<h3 id="entry-points">Entry Points<a class="headerlink" href="#entry-points" title="Permanent link">&para;</a></h3>
+<p>These components serve as application entry points:</p>
+<ul>
+<li><strong>tools.test-auditor</strong></li>
+<li><strong>local_installation.scripts</strong>: Automation scripts</li>
+<li><strong>tests.examples</strong>: Example code</li>
+<li><strong>tools.dev-feedback</strong></li>
+<li><strong>tools.health-checker</strong></li>
+<li><strong>backend.api.routes</strong></li>
+<li><strong>tools.test-runner</strong></li>
+<li><strong>backend.services</strong>: Business services</li>
+<li><strong>backend.tests</strong>: Test suite</li>
+<li><strong>backend</strong>: Backend application</li>
+</ul>
+<h3 id="critical-components">Critical Components<a class="headerlink" href="#critical-components" title="Permanent link">&para;</a></h3>
+<p>These components are heavily used by others:</p>
+<ul>
+<li><strong>backend</strong>: Used by 59 components</li>
+<li>Backend application</li>
+<li><strong>scripts</strong>: Used by 32 components</li>
+<li>Automation scripts</li>
+<li><strong>core</strong>: Used by 12 components</li>
+<li>Core business logic</li>
+<li><strong>tests</strong>: Used by 43 components</li>
+<li>Test suite</li>
+<li><strong>infrastructure</strong>: Used by 7 components</li>
+<li><strong>local_testing_framework</strong>: Used by 3 components</li>
+<li><strong>tools</strong>: Used by 16 components</li>
+<li>Development tools</li>
+<li><strong>frontend</strong>: Used by 15 components</li>
+<li>Frontend application</li>
+<li><strong>backend.api</strong>: Used by 5 components</li>
+<li>API endpoints and handlers</li>
+</ul>
+<h2 id="dependency-types">Dependency Types<a class="headerlink" href="#dependency-types" title="Permanent link">&para;</a></h2>
+<p>The project uses several types of dependencies:</p>
+<ul>
+<li><strong>Config</strong>: 689 dependencies</li>
+<li>Configuration file references</li>
+<li><strong>File Reference</strong>: 135 dependencies</li>
+<li>Direct file path references in code</li>
+<li><strong>Import</strong>: 54 dependencies</li>
+<li>Python import statements between modules</li>
+<li><strong>Api Call</strong>: 5 dependencies</li>
+<li>HTTP API calls between services</li>
+</ul>
+<h2 id="circular-dependencies">⚠️ Circular Dependencies<a class="headerlink" href="#circular-dependencies" title="Permanent link">&para;</a></h2>
+<p>The following circular dependencies were detected and should be resolved:</p>
+<h3 id="cycle-1">Cycle 1<a class="headerlink" href="#cycle-1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>backend → frontend → utils_new → backend
+</code></pre></div>
+<p><strong>Suggested resolution:</strong>
+- Extract common functionality into a shared module
+- Use dependency injection or event-driven patterns
+- Refactor to create a clear hierarchy</p>
+<h3 id="cycle-2">Cycle 2<a class="headerlink" href="#cycle-2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>frontend → utils_new → scripts → frontend
+</code></pre></div>
+<p><strong>Suggested resolution:</strong>
+- Extract common functionality into a shared module
+- Use dependency injection or event-driven patterns
+- Refactor to create a clear hierarchy</p>
+<h3 id="cycle-3">Cycle 3<a class="headerlink" href="#cycle-3" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>backend → frontend → utils_new → scripts → backend
+</code></pre></div>
+<p><strong>Suggested resolution:</strong>
+- Extract common functionality into a shared module
+- Use dependency injection or event-driven patterns
+- Refactor to create a clear hierarchy</p>
+<h2 id="component-details">Component Details<a class="headerlink" href="#component-details" title="Permanent link">&para;</a></h2>
+<p>Detailed information about each component and its relationships:</p>
+<h3 id="utils_new">utils_new<a class="headerlink" href="#utils_new" title="Permanent link">&para;</a></h3>
+<p><strong>Type:</strong> package
+<strong>Files:</strong> 305
+<strong>Dependencies:</strong> 199 out, 2 in</p>
+<p><strong>Depends on:</strong>
+- local_testing_framework (import)
+  - Imports EnvironmentValidator
+- core (import)
+  - Imports ModelManager
+- backend (import)
+  - Imports EnvironmentConfig
+- config (config)
+  - References config.json
+- config (config)
+  - References config</p>
+<p><strong>Used by:</strong>
+- frontend (import)
+- infrastructure.hardware (import)</p>
+<h3 id="local_installation">local_installation<a class="headerlink" href="#local_installation" title="Permanent link">&para;</a></h3>
+<p><strong>Type:</strong> module
+<strong>Files:</strong> 68
+<strong>Dependencies:</strong> 70 out, 0 in</p>
+<p><strong>Depends on:</strong>
+- scripts (import)
+  - Imports DiagnosticMonitor
+- tests (import)
+  - Imports AutomatedTestFramework
+- config (config)
+  - References config.json
+- config (config)
+  - References config
+- config (config)
+  - References config</p>
+<h3 id="backend">backend<a class="headerlink" href="#backend" title="Permanent link">&para;</a></h3>
+<p><strong>Purpose:</strong> Backend application
+<strong>Type:</strong> module
+<strong>Files:</strong> 15
+<strong>Dependencies:</strong> 10 out, 59 in</p>
+<p><strong>Depends on:</strong>
+- core (import)
+  - Imports get_fallback_recovery_system
+- infrastructure (import)
+  - Imports GenerationErrorHandler
+- config (config)
+  - References config
+- config (config)
+  - References config
+- config (config)
+  - References config.json</p>
+<p><strong>Used by:</strong>
+- backend.api (import)
+- backend.api.routes (import)
+- backend.api.v1.endpoints (import)
+- backend.core (import)
+- backend.examples (import)</p>
+<h3 id="scripts">scripts<a class="headerlink" href="#scripts" title="Permanent link">&para;</a></h3>
+<p><strong>Purpose:</strong> Automation scripts
+<strong>Type:</strong> package
+<strong>Files:</strong> 9
+<strong>Dependencies:</strong> 15 out, 32 in</p>
+<p><strong>Depends on:</strong>
+- config (config)
+  - References config
+- config (config)
+  - References config
+- config (config)
+  - References ALERTING_SETUP_SUMMARY.md
+- config (config)
+  - References config
+- config (config)
+  - References package.json</p>
+<p><strong>Used by:</strong>
+- backend.core (import)
+- backend.tests (import)
+- local_installation (import)
+- local_installation.backups.reliability_deployment_20250805_183848.scripts (import)
+- local_installation.backups.reliability_deployment_20250805_183919.scripts (import)</p>
+<h3 id="local_installationscripts">local_installation.scripts<a class="headerlink" href="#local_installationscripts" title="Permanent link">&para;</a></h3>
+<p><strong>Purpose:</strong> Automation scripts
+<strong>Type:</strong> package
+<strong>Files:</strong> 50
+<strong>Dependencies:</strong> 45 out, 0 in</p>
+<p><strong>Depends on:</strong>
+- config (config)
+  - References config
+- config (config)
+  - References config.json
+- config (config)
+  - References config
+- config (config)
+  - References config
+- config (config)
+  - References config</p>
+<h3 id="tests">tests<a class="headerlink" href="#tests" title="Permanent link">&para;</a></h3>
+<p><strong>Purpose:</strong> Test suite
+<strong>Type:</strong> package
+<strong>Files:</strong> 2
+<strong>Dependencies:</strong> 1 out, 43 in</p>
+<p><strong>Depends on:</strong>
+- config (config)
+  - References config</p>
+<p><strong>Used by:</strong>
+- backend.tests (import)
+- local_installation (import)
+- tests.config (import)
+- tests.examples (import)
+- tests.fixtures (import)</p>
+<h3 id="toolshealth-checker">tools.health-checker<a class="headerlink" href="#toolshealth-checker" title="Permanent link">&para;</a></h3>
+<p><strong>Type:</strong> package
+<strong>Files:</strong> 28
+<strong>Dependencies:</strong> 41 out, 0 in</p>
+<p><strong>Depends on:</strong>
+- config (config)
+  - References config
+- config (config)
+  - References config
+- config (config)
+  - References config.json
+- config (config)
+  - References config
+- config (config)
+  - References config.json</p>
+<h3 id="coreservices">core.services<a class="headerlink" href="#coreservices" title="Permanent link">&para;</a></h3>
+<p><strong>Purpose:</strong> Business services
+<strong>Type:</strong> package
+<strong>Files:</strong> 48
+<strong>Dependencies:</strong> 40 out, 0 in</p>
+<p><strong>Depends on:</strong>
+- core (import)
+  - Imports OptimizationManager
+- infrastructure (import)
+  - Imports ArchitectureDetector
+- config (config)
+  - References config
+- config (config)
+  - References config
+- config (config)
+  - References config</p>
+<h3 id="frontend">frontend<a class="headerlink" href="#frontend" title="Permanent link">&para;</a></h3>
+<p><strong>Purpose:</strong> Frontend application
+<strong>Type:</strong> module
+<strong>Files:</strong> 19
+<strong>Dependencies:</strong> 20 out, 15 in</p>
+<p><strong>Depends on:</strong>
+- infrastructure (import)
+  - Imports SafeEventHandler
+- utils_new (import)
+  - Imports ComponentValidator
+- core (import)
+  - Imports LoRAManager
+- config (config)
+  - References config
+- config (config)
+  - References config</p>
+<p><strong>Used by:</strong>
+- backend (file_reference)
+- backend (file_reference)
+- scripts (file_reference)
+- scripts.startup_manager (file_reference)
+- scripts.startup_manager (file_reference)</p>
+<h3 id="infrastructurehardware">infrastructure.hardware<a class="headerlink" href="#infrastructurehardware" title="Permanent link">&para;</a></h3>
+<p><strong>Type:</strong> package
+<strong>Files:</strong> 41
+<strong>Dependencies:</strong> 33 out, 0 in</p>
+<p><strong>Depends on:</strong>
+- core (import)
+  - Imports OptimizationManager
+- infrastructure (import)
+  - Imports UserFriendlyError
+- utils_new (import)
+  - Imports ComponentValidator
+- config (config)
+  - References config.json
+- config (config)
+  - References config.json</p>
+<h3 id="backendtests">backend.tests<a class="headerlink" href="#backendtests" title="Permanent link">&para;</a></h3>
+<p><strong>Purpose:</strong> Test suite
+<strong>Type:</strong> module
+<strong>Files:</strong> 68
+<strong>Dependencies:</strong> 30 out, 0 in</p>
+<p><strong>Depends on:</strong>
+- tests (import)
+  - Imports TestEnhancedModelAvailabilityIntegration
+- backend (import)
+  - Imports EnhancedModelDownloader
+- core (import)
+  - Imports CORSValidator
+- scripts (import)
+  - Imports EnhancedModelAvailabilityValidator
+- infrastructure (import)
+  - Imports ErrorCategory</p>
+<h3 id="scriptsstartup_manager">scripts.startup_manager<a class="headerlink" href="#scriptsstartup_manager" title="Permanent link">&para;</a></h3>
+<p><strong>Type:</strong> package
+<strong>Files:</strong> 17
+<strong>Dependencies:</strong> 28 out, 0 in</p>
+<p><strong>Depends on:</strong>
+- config (config)
+  - References config
+- config (config)
+  - References config
+- config (config)
+  - References config.json
+- config (config)
+  - References config
+- config (config)
+  - References config.json</p>
+<h3 id="local_installationwan22-installation-packagescripts">local_installation.WAN22-Installation-Package.scripts<a class="headerlink" href="#local_installationwan22-installation-packagescripts" title="Permanent link">&para;</a></h3>
+<p><strong>Purpose:</strong> Automation scripts
+<strong>Type:</strong> package
+<strong>Files:</strong> 32
+<strong>Dependencies:</strong> 25 out, 0 in</p>
+<p><strong>Depends on:</strong>
+- config (config)
+  - References config
+- config (config)
+  - References config.json
+- config (config)
+  - References config
+- config (config)
+  - References config
+- config (config)
+  - References config</p>
+<h3 id="testsunit">tests.unit<a class="headerlink" href="#testsunit" title="Permanent link">&para;</a></h3>
+<p><strong>Type:</strong> package
+<strong>Files:</strong> 9
+<strong>Dependencies:</strong> 24 out, 0 in</p>
+<p><strong>Depends on:</strong>
+- tests (import)
+  - Imports TestConfig
+- scripts (import)
+  - Imports SystemDetector
+- tools (import)
+  - Imports UnifiedConfig
+- config (config)
+  - References config
+- config (config)
+  - References config</p>
+<h3 id="testsperformance">tests.performance<a class="headerlink" href="#testsperformance" title="Permanent link">&para;</a></h3>
+<p><strong>Type:</strong> package
+<strong>Files:</strong> 15
+<strong>Dependencies:</strong> 22 out, 0 in</p>
+<p><strong>Depends on:</strong>
+- scripts (import)
+  - Imports InteractiveCLI
+- config (config)
+  - References config
+- config (config)
+  - References config
+- config (config)
+  - References config.json
+- config (config)
+  - References config.json</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1336 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="WAN2.2 Video Generation System Documentation">
+      
+      
+      
+        <link rel="canonical" href="https://ramcana.github.io/wan/archive/ENHANCED_TEST_CLI_SUMMARY/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>Enhanced Test CLI Implementation Summary - WAN22 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e53b48f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#enhanced-test-cli-implementation-summary" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="WAN22 Documentation" class="md-header__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            WAN22 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Enhanced Test CLI Implementation Summary
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../WAN22_System_Capabilities_Report/" class="md-tabs__link">
+          
+  
+  
+  System Overview
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../model-orchestrator/requirements/" class="md-tabs__link">
+          
+  
+  
+  Model Orchestrator
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../config/models.toml" class="md-tabs__link">
+          
+  
+  
+  Configuration
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="WAN22 Documentation" class="md-nav__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    WAN22 Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    System Overview
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            System Overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../WAN22_System_Capabilities_Report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Capabilities Report
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Model Orchestrator
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Model Orchestrator
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Requirements
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/tasks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tasks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Configuration
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Configuration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Models Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models_simple.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simple Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mission-accomplished-specialized-test-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 Mission Accomplished: Specialized Test Commands
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#new-specialized-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚀 New Specialized Commands
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 New Specialized Commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-wan-cli-test-audit-test-suite-health-report" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. wan-cli test audit - Test Suite Health Report
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-wan-cli-test-fix-automated-test-repair" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. wan-cli test fix - Automated Test Repair
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-wan-cli-test-flaky-statistical-flaky-test-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. wan-cli test flaky - Statistical Flaky Test Detection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-wan-cli-test-coverage-advanced-coverage-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. wan-cli test coverage - Advanced Coverage Analysis
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-with-existing-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔧 Integration with Existing Tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔧 Integration with Existing Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#connected-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connected Tools:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#smart-context-awareness" class="md-nav__link">
+    <span class="md-ellipsis">
+      Smart Context Awareness:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#real-world-impact" class="md-nav__link">
+    <span class="md-ellipsis">
+      📊 Real-World Impact
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📊 Real-World Impact">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#before-scattered-test-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Before: Scattered Test Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#after-unified-test-toolkit" class="md-nav__link">
+    <span class="md-ellipsis">
+      After: Unified Test Toolkit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#developer-experience-improvements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Developer Experience Improvements:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 Usage Patterns
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 Usage Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#daily-development-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Daily Development Workflow:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problem-solving-workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problem-Solving Workflows:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cicd-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      CI/CD Integration:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚀 Advanced Features
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 Advanced Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#statistical-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Statistical Analysis:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#intelligent-automation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Intelligent Automation:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comprehensive-reporting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comprehensive Reporting:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#success-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎉 Success Metrics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎉 Success Metrics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#quantitative-improvements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quantitative Improvements:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#qualitative-benefits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Qualitative Benefits:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#future-enhancements" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔮 Future Enhancements
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔮 Future Enhancements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#planned-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Planned Features:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extensibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      Extensibility:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      🏆 Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="enhanced-test-cli-implementation-summary">Enhanced Test CLI Implementation Summary<a class="headerlink" href="#enhanced-test-cli-implementation-summary" title="Permanent link">&para;</a></h1>
+<h2 id="mission-accomplished-specialized-test-commands">🎯 Mission Accomplished: Specialized Test Commands<a class="headerlink" href="#mission-accomplished-specialized-test-commands" title="Permanent link">&para;</a></h2>
+<p>We've successfully enhanced the <code>wan-cli test</code> command group by connecting it to the powerful testing tools already built in the project. The CLI now provides specialized buttons around the main "run" command, transforming it from a simple test runner into a complete testing toolkit.</p>
+<h2 id="new-specialized-commands">🚀 New Specialized Commands<a class="headerlink" href="#new-specialized-commands" title="Permanent link">&para;</a></h2>
+<h3 id="1-wan-cli-test-audit-test-suite-health-report">1. <code>wan-cli test audit</code> - Test Suite Health Report<a class="headerlink" href="#1-wan-cli-test-audit-test-suite-health-report" title="Permanent link">&para;</a></h3>
+<p><strong>What it does</strong>: Runs comprehensive test suite analysis and provides a detailed health report.</p>
+<p><strong>Example Output</strong>:</p>
+<div class="highlight"><pre><span></span><code>Test Suite Health Report:
+========================================
+✓ 15 tests passed import checks
+⚠️ 2 tests have missing fixtures
+❌ 1 test is broken
+⏱️ 5 tests are slower than 500ms
+
+Total test files: 45
+Total tests: 127
+Passing tests: 98 (77.2%)
+Failing tests: 15
+Skipped tests: 14
+
+Critical issues: 3
+- Missing import: app (test_backend.py)
+- Syntax error: invalid syntax (test_component_interaction.py)
+- Missing fixture: mock_startup_manager (test_performance_benchmarks.py)
+
+Recommendations:
+1. Fix 35 missing import issues by installing required packages
+2. Fix 12 syntax errors in test files
+3. Generate 8 missing fixtures
+</code></pre></div>
+<p><strong>Key Features</strong>:</p>
+<ul>
+<li>Discovers all test files automatically</li>
+<li>Analyzes imports, fixtures, and dependencies</li>
+<li>Identifies broken, slow, and flaky tests</li>
+<li>Provides actionable recommendations</li>
+<li>Saves detailed JSON report for further analysis</li>
+</ul>
+<h3 id="2-wan-cli-test-fix-automated-test-repair">2. <code>wan-cli test fix</code> - Automated Test Repair<a class="headerlink" href="#2-wan-cli-test-fix-automated-test-repair" title="Permanent link">&para;</a></h3>
+<p><strong>What it does</strong>: Automatically fixes common test infrastructure issues.</p>
+<p><strong>Example Usage</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># See what would be fixed (safe)</span>
+wan-cli<span class="w"> </span><span class="nb">test</span><span class="w"> </span>fix<span class="w"> </span>--dry-run
+
+<span class="c1"># Fix import issues only</span>
+wan-cli<span class="w"> </span><span class="nb">test</span><span class="w"> </span>fix<span class="w"> </span>--no-fixtures
+
+<span class="c1"># Fix everything</span>
+wan-cli<span class="w"> </span><span class="nb">test</span><span class="w"> </span>fix
+</code></pre></div>
+<p><strong>Repair Capabilities</strong>:</p>
+<ul>
+<li><strong>Import Fixes</strong>: Automatically corrects broken import statements</li>
+<li><strong>Missing Fixtures</strong>: Generates missing test fixtures</li>
+<li><strong>Syntax Issues</strong>: Attempts basic syntax repairs (experimental)</li>
+<li><strong>Mock Generation</strong>: Creates mock objects for missing dependencies</li>
+</ul>
+<p><strong>Example Output</strong>:</p>
+<div class="highlight"><pre><span></span><code>Running test infrastructure repair...
+
+1. Fixing import issues...
+  Fixed imports in 12 files (35 total fixes)
+    test_backend.py: 2 fixes
+    test_code_review_tools.py: 6 fixes
+    test_enforcement_demo.py: 1 fix
+
+2. Generating missing fixtures...
+  Generated 8 missing fixtures
+    - mock_startup_manager.py
+    - test_database_fixture.py
+    - mock_api_client.py
+
+Repair Summary:
+- Import fixes: 12 files
+- Generated fixtures: 8
+Test infrastructure repair completed!
+</code></pre></div>
+<h3 id="3-wan-cli-test-flaky-statistical-flaky-test-detection">3. <code>wan-cli test flaky</code> - Statistical Flaky Test Detection<a class="headerlink" href="#3-wan-cli-test-flaky-statistical-flaky-test-detection" title="Permanent link">&para;</a></h3>
+<p><strong>What it does</strong>: Runs tests multiple times and uses statistical analysis to identify intermittently failing tests.</p>
+<p><strong>Example Usage</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Basic flaky test detection (5 runs)</span>
+wan-cli<span class="w"> </span><span class="nb">test</span><span class="w"> </span>flaky
+
+<span class="c1"># More thorough analysis (10 runs)</span>
+wan-cli<span class="w"> </span><span class="nb">test</span><span class="w"> </span>flaky<span class="w"> </span>--runs<span class="w"> </span><span class="m">10</span>
+
+<span class="c1"># Get fix recommendations</span>
+wan-cli<span class="w"> </span><span class="nb">test</span><span class="w"> </span>flaky<span class="w"> </span>--fix
+
+<span class="c1"># Quarantine problematic tests</span>
+wan-cli<span class="w"> </span><span class="nb">test</span><span class="w"> </span>flaky<span class="w"> </span>--quarantine
+</code></pre></div>
+<p><strong>Advanced Features</strong>:</p>
+<ul>
+<li><strong>Statistical Analysis</strong>: Uses flakiness scoring algorithm</li>
+<li><strong>Pattern Recognition</strong>: Identifies time-based, environment-based failure patterns</li>
+<li><strong>Fix Recommendations</strong>: Suggests specific solutions based on error patterns</li>
+<li><strong>Test Quarantine</strong>: Automatically isolates consistently flaky tests</li>
+<li><strong>Historical Tracking</strong>: Maintains database of test execution history</li>
+</ul>
+<p><strong>Example Output</strong>:</p>
+<div class="highlight"><pre><span></span><code>Running flaky test detection (5 runs, threshold: 0.1)...
+  Run 1/5...
+  Run 2/5...
+  Run 3/5...
+  Run 4/5...
+  Run 5/5...
+
+Flaky Test Detection Results:
+========================================
+Found 3 flaky tests:
+
+1. test_api_connection
+   Flakiness Score: 0.65
+   Failure Rate: 40.0%
+   Runs: 5 (P:3 F:2)
+   Common Errors: ConnectionError(2)
+
+2. test_file_processing
+   Flakiness Score: 0.45
+   Failure Rate: 20.0%
+   Runs: 5 (P:4 F:1)
+   Common Errors: FileNotFoundError(1)
+
+Fix Recommendations:
+--------------------
+test_api_connection:
+  Issue: mocking
+  Fix: Mock external service connections (seen 2 times)
+  Effort: medium
+  Priority: high
+  Example:
+    @patch(&quot;requests.get&quot;)
+    def test_api_call(mock_get):
+        mock_get.return_value.status_code = 200
+</code></pre></div>
+<h3 id="4-wan-cli-test-coverage-advanced-coverage-analysis">4. <code>wan-cli test coverage</code> - Advanced Coverage Analysis<a class="headerlink" href="#4-wan-cli-test-coverage-advanced-coverage-analysis" title="Permanent link">&para;</a></h3>
+<p><strong>What it does</strong>: Provides detailed coverage analysis with smart reporting.</p>
+<p><strong>Example Usage</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Basic coverage</span>
+wan-cli<span class="w"> </span><span class="nb">test</span><span class="w"> </span>coverage
+
+<span class="c1"># Generate HTML report</span>
+wan-cli<span class="w"> </span><span class="nb">test</span><span class="w"> </span>coverage<span class="w"> </span>--html
+
+<span class="c1"># Set minimum threshold</span>
+wan-cli<span class="w"> </span><span class="nb">test</span><span class="w"> </span>coverage<span class="w"> </span>--min<span class="w"> </span><span class="m">85</span>
+
+<span class="c1"># Exclude patterns</span>
+wan-cli<span class="w"> </span><span class="nb">test</span><span class="w"> </span>coverage<span class="w"> </span>--exclude<span class="w"> </span><span class="s2">&quot;*/migrations/*&quot;</span><span class="w"> </span>--exclude<span class="w"> </span><span class="s2">&quot;*/tests/*&quot;</span>
+</code></pre></div>
+<p><strong>Features</strong>:</p>
+<ul>
+<li><strong>Smart Thresholds</strong>: Configurable minimum coverage requirements</li>
+<li><strong>HTML Reports</strong>: Beautiful visual coverage reports</li>
+<li><strong>File-level Analysis</strong>: Shows coverage for individual files</li>
+<li><strong>Exclusion Patterns</strong>: Skip irrelevant files from coverage</li>
+<li><strong>CI Integration</strong>: Returns appropriate exit codes for CI/CD</li>
+</ul>
+<h2 id="integration-with-existing-tools">🔧 Integration with Existing Tools<a class="headerlink" href="#integration-with-existing-tools" title="Permanent link">&para;</a></h2>
+<p>The enhanced CLI seamlessly integrates with the powerful tools already built:</p>
+<h3 id="connected-tools">Connected Tools:<a class="headerlink" href="#connected-tools" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>TestAuditor</strong> (<code>tools/test-auditor/</code>) - Comprehensive test analysis</li>
+<li><strong>FlakyTestDetector</strong> (<code>tools/test-quality/</code>) - Statistical flaky test detection</li>
+<li><strong>ImportFixer</strong> (<code>tests/utils/</code>) - Automatic import repair</li>
+<li><strong>FixtureManager</strong> (<code>tests/fixtures/</code>) - Test fixture management</li>
+<li><strong>CoverageAnalyzer</strong> (<code>tools/test-quality/</code>) - Advanced coverage analysis</li>
+<li><strong>TestExecutionEngine</strong> (<code>tests/utils/</code>) - Smart test execution</li>
+</ul>
+<h3 id="smart-context-awareness">Smart Context Awareness:<a class="headerlink" href="#smart-context-awareness" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Project Structure Detection</strong>: Automatically finds test directories</li>
+<li><strong>Configuration Integration</strong>: Uses existing test configurations</li>
+<li><strong>Environment Adaptation</strong>: Behaves differently in CI vs local development</li>
+<li><strong>Historical Learning</strong>: Tracks patterns over time</li>
+</ul>
+<h2 id="real-world-impact">📊 Real-World Impact<a class="headerlink" href="#real-world-impact" title="Permanent link">&para;</a></h2>
+<h3 id="before-scattered-test-management">Before: Scattered Test Management<a class="headerlink" href="#before-scattered-test-management" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Developers had to remember many different commands:</span>
+python<span class="w"> </span>-m<span class="w"> </span>pytest<span class="w"> </span>tests/
+python<span class="w"> </span>-m<span class="w"> </span>coverage<span class="w"> </span>run<span class="w"> </span>--source<span class="o">=</span>.<span class="w"> </span>-m<span class="w"> </span>pytest
+python<span class="w"> </span>scripts/fix_imports.py
+python<span class="w"> </span>tools/test-auditor/test_auditor.py
+python<span class="w"> </span>tools/test-quality/flaky_test_detector.py
+<span class="c1"># ... and many more</span>
+</code></pre></div>
+<h3 id="after-unified-test-toolkit">After: Unified Test Toolkit<a class="headerlink" href="#after-unified-test-toolkit" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Now everything is unified under wan-cli test:</span>
+wan-cli<span class="w"> </span><span class="nb">test</span><span class="w"> </span>run<span class="w">              </span><span class="c1"># Smart test execution</span>
+wan-cli<span class="w"> </span><span class="nb">test</span><span class="w"> </span>audit<span class="w">            </span><span class="c1"># Health report</span>
+wan-cli<span class="w"> </span><span class="nb">test</span><span class="w"> </span>fix<span class="w">              </span><span class="c1"># Automatic repairs</span>
+wan-cli<span class="w"> </span><span class="nb">test</span><span class="w"> </span>flaky<span class="w">            </span><span class="c1"># Flaky test detection</span>
+wan-cli<span class="w"> </span><span class="nb">test</span><span class="w"> </span>coverage<span class="w">         </span><span class="c1"># Coverage analysis</span>
+</code></pre></div>
+<h3 id="developer-experience-improvements">Developer Experience Improvements:<a class="headerlink" href="#developer-experience-improvements" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Cognitive Load</strong>: Reduced from 10+ commands to 5 intuitive commands</li>
+<li><strong>Discovery</strong>: Built-in help system guides developers to the right tool</li>
+<li><strong>Automation</strong>: Automatic fixes reduce manual maintenance work</li>
+<li><strong>Feedback Speed</strong>: Quick health checks provide immediate feedback</li>
+<li><strong>Problem Solving</strong>: Clear recommendations for fixing issues</li>
+</ul>
+<h2 id="usage-patterns">🎯 Usage Patterns<a class="headerlink" href="#usage-patterns" title="Permanent link">&para;</a></h2>
+<h3 id="daily-development-workflow">Daily Development Workflow:<a class="headerlink" href="#daily-development-workflow" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Morning health check</span>
+wan-cli<span class="w"> </span><span class="nb">test</span><span class="w"> </span>audit
+
+<span class="c1"># Before committing</span>
+wan-cli<span class="w"> </span><span class="nb">test</span><span class="w"> </span>run<span class="w"> </span>--fast
+wan-cli<span class="w"> </span><span class="nb">test</span><span class="w"> </span>fix<span class="w"> </span>--dry-run
+
+<span class="c1"># Weekly maintenance</span>
+wan-cli<span class="w"> </span><span class="nb">test</span><span class="w"> </span>flaky
+wan-cli<span class="w"> </span><span class="nb">test</span><span class="w"> </span>coverage<span class="w"> </span>--html
+</code></pre></div>
+<h3 id="problem-solving-workflows">Problem-Solving Workflows:<a class="headerlink" href="#problem-solving-workflows" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># &quot;My tests are broken&quot;</span>
+wan-cli<span class="w"> </span><span class="nb">test</span><span class="w"> </span>audit<span class="w"> </span>--detailed
+wan-cli<span class="w"> </span><span class="nb">test</span><span class="w"> </span>fix
+
+<span class="c1"># &quot;I have flaky tests&quot;</span>
+wan-cli<span class="w"> </span><span class="nb">test</span><span class="w"> </span>flaky<span class="w"> </span>--fix<span class="w"> </span>--quarantine
+
+<span class="c1"># &quot;My coverage is low&quot;</span>
+wan-cli<span class="w"> </span><span class="nb">test</span><span class="w"> </span>coverage<span class="w"> </span>--html<span class="w"> </span>--min<span class="w"> </span><span class="m">80</span>
+</code></pre></div>
+<h3 id="cicd-integration">CI/CD Integration:<a class="headerlink" href="#cicd-integration" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Fast feedback pipeline</span>
+wan-cli<span class="w"> </span><span class="nb">test</span><span class="w"> </span>run<span class="w"> </span>--fast<span class="w"> </span>--coverage
+
+<span class="c1"># Quality gate pipeline</span>
+wan-cli<span class="w"> </span><span class="nb">test</span><span class="w"> </span>audit
+wan-cli<span class="w"> </span><span class="nb">test</span><span class="w"> </span>coverage<span class="w"> </span>--min<span class="w"> </span><span class="m">85</span>
+wan-cli<span class="w"> </span><span class="nb">test</span><span class="w"> </span>flaky<span class="w"> </span>--runs<span class="w"> </span><span class="m">3</span>
+</code></pre></div>
+<h2 id="advanced-features">🚀 Advanced Features<a class="headerlink" href="#advanced-features" title="Permanent link">&para;</a></h2>
+<h3 id="statistical-analysis">Statistical Analysis:<a class="headerlink" href="#statistical-analysis" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Flakiness Scoring</strong>: Mathematical algorithm to quantify test reliability</li>
+<li><strong>Pattern Recognition</strong>: Identifies time-based, environment-based failure patterns</li>
+<li><strong>Confidence Intervals</strong>: Statistical confidence in flakiness assessments</li>
+<li><strong>Historical Trends</strong>: Tracks test health over time</li>
+</ul>
+<h3 id="intelligent-automation">Intelligent Automation:<a class="headerlink" href="#intelligent-automation" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Smart Import Mapping</strong>: Knows how to fix common import patterns</li>
+<li><strong>Fixture Generation</strong>: Creates appropriate mock objects automatically</li>
+<li><strong>Error Pattern Matching</strong>: Suggests fixes based on error types</li>
+<li><strong>Quarantine Logic</strong>: Automatically isolates problematic tests</li>
+</ul>
+<h3 id="comprehensive-reporting">Comprehensive Reporting:<a class="headerlink" href="#comprehensive-reporting" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>JSON Reports</strong>: Machine-readable detailed analysis</li>
+<li><strong>HTML Dashboards</strong>: Visual coverage and health reports</li>
+<li><strong>Recommendation Engine</strong>: Actionable suggestions for improvements</li>
+<li><strong>Progress Tracking</strong>: Shows improvement over time</li>
+</ul>
+<h2 id="success-metrics">🎉 Success Metrics<a class="headerlink" href="#success-metrics" title="Permanent link">&para;</a></h2>
+<h3 id="quantitative-improvements">Quantitative Improvements:<a class="headerlink" href="#quantitative-improvements" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Command Reduction</strong>: From 10+ scattered commands to 5 unified commands</li>
+<li><strong>Setup Time</strong>: From hours to minutes for new developers</li>
+<li><strong>Issue Detection</strong>: Automatically finds 35+ import issues across test suite</li>
+<li><strong>Fix Automation</strong>: Repairs common issues without manual intervention</li>
+</ul>
+<h3 id="qualitative-benefits">Qualitative Benefits:<a class="headerlink" href="#qualitative-benefits" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Developer Confidence</strong>: Clear health reports build confidence in test suite</li>
+<li><strong>Maintenance Reduction</strong>: Automated fixes reduce manual maintenance work</li>
+<li><strong>Problem Visibility</strong>: Issues are surfaced proactively rather than reactively</li>
+<li><strong>Knowledge Sharing</strong>: Built-in recommendations teach best practices</li>
+</ul>
+<h2 id="future-enhancements">🔮 Future Enhancements<a class="headerlink" href="#future-enhancements" title="Permanent link">&para;</a></h2>
+<h3 id="planned-features">Planned Features:<a class="headerlink" href="#planned-features" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>AI-Powered Suggestions</strong>: Machine learning for better fix recommendations</li>
+<li><strong>Integration Testing</strong>: Cross-service test coordination</li>
+<li><strong>Performance Regression Detection</strong>: Automatic detection of performance issues</li>
+<li><strong>Test Generation</strong>: AI-assisted test case generation</li>
+</ul>
+<h3 id="extensibility">Extensibility:<a class="headerlink" href="#extensibility" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Plugin System</strong>: Easy addition of new test analysis tools</li>
+<li><strong>Custom Rules</strong>: Project-specific test quality rules</li>
+<li><strong>Integration APIs</strong>: Connect with external testing tools</li>
+<li><strong>Webhook Support</strong>: Notifications for test health changes</li>
+</ul>
+<h2 id="conclusion">🏆 Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
+<p>The enhanced <code>wan-cli test</code> command group successfully transforms test management from a collection of scattered tools into a unified, intelligent testing toolkit. By connecting existing powerful tools through a consistent interface, we've created a system that:</p>
+<ol>
+<li><strong>Reduces Cognitive Load</strong>: One command group instead of many scattered tools</li>
+<li><strong>Provides Immediate Value</strong>: Finds and fixes real issues automatically</li>
+<li><strong>Teaches Best Practices</strong>: Built-in recommendations guide developers</li>
+<li><strong>Scales with Complexity</strong>: Handles everything from simple fixes to statistical analysis</li>
+<li><strong>Integrates Seamlessly</strong>: Works with existing project structure and tools</li>
+</ol>
+<p><strong>The result</strong>: A testing toolkit that doesn't just run tests, but actively maintains and improves test suite health, making developers more productive and confident in their code quality.</p>
+<hr />
+<p><em>"From scattered tools to unified testing intelligence - the WAN CLI test commands represent the evolution from manual test management to automated test health maintenance."</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

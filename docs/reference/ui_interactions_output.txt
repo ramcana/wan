@@ -1,0 +1,15 @@
+---
+category: reference
+last_updated: '2025-09-15T22:50:00.255887'
+original_path: integration_test_results\ui_interactions_output.txt
+tags: []
+title: Ui Interactions Output
+---
+
+test_run_all_ui_integration_tests (test_ui_integration.TestUIIntegrationSuite.test_run_all_ui_integration_tests)
+Run all UI integration tests ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.007s
+
+OK

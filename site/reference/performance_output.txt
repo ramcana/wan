@@ -1,0 +1,16 @@
+---
+category: reference
+last_updated: '2025-09-15T22:50:00.254883'
+original_path: integration_test_results\performance_output.txt
+tags:
+- performance
+title: ''
+---
+
+test_run_all_performance_benchmarks (test_performance_benchmarks.TestPerformanceBenchmarkSuite.test_run_all_performance_benchmarks)
+Run all performance benchmarks and generate comprehensive report ... FAIL
+
+======================================================================
+FAIL: test_run_all_performance_benchmarks (test_performance_benchmarks.TestPerformanceBenchmarkSuite.test_run_all_performance_benchmarks)
+Run all performance benchmarks and generate comprehensive report
+----------------------------------------------------------------------

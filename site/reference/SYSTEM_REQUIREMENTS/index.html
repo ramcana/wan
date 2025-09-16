@@ -1,0 +1,1609 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="WAN2.2 Video Generation System Documentation">
+      
+      
+      
+        <link rel="canonical" href="https://ramcana.github.io/wan/reference/SYSTEM_REQUIREMENTS/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>🖥️ WAN22 System Requirements - WAN22 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e53b48f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#wan22-system-requirements" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="WAN22 Documentation" class="md-header__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            WAN22 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              🖥️ WAN22 System Requirements
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../WAN22_System_Capabilities_Report/" class="md-tabs__link">
+          
+  
+  
+  System Overview
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../model-orchestrator/requirements/" class="md-tabs__link">
+          
+  
+  
+  Model Orchestrator
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../config/models.toml" class="md-tabs__link">
+          
+  
+  
+  Configuration
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="WAN22 Documentation" class="md-nav__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    WAN22 Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    System Overview
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            System Overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../WAN22_System_Capabilities_Report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Capabilities Report
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Model Orchestrator
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Model Orchestrator
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Requirements
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/tasks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tasks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Configuration
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Configuration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Models Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models_simple.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simple Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#minimum-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Minimum Requirements
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Minimum Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#operating-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operating System
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hardware-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hardware Requirements
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hardware Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      CPU
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-ram" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory (RAM)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Storage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graphics-card-gpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      Graphics Card (GPU)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Graphics Card (GPU)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nvidia-gpus-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      NVIDIA GPUs (Recommended)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#amd-gpus-limited-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      AMD GPUs (Limited Support)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#intel-gpus-experimental" class="md-nav__link">
+    <span class="md-ellipsis">
+      Intel GPUs (Experimental)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cpu-only-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      CPU-Only Mode
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#software-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Software Requirements
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Software Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Python Environment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodejs-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Node.js Environment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#additional-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional Dependencies
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-tiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Tiers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Tiers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tier-1-basic-usage-minimum-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tier 1: Basic Usage (Minimum Requirements)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tier-2-standard-usage-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tier 2: Standard Usage (Recommended)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tier-3-professional-usage-optimal" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tier 3: Professional Usage (Optimal)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tier-4-enterpriseresearch-maximum" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tier 4: Enterprise/Research (Maximum)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Requirements
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Network Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#internet-connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internet Connection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#firewallsecurity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Firewall/Security
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#browser-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Browser Requirements
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Browser Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#supported-browsers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supported Browsers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#browser-features-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      Browser Features Required
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#development-requirements-additional" class="md-nav__link">
+    <span class="md-ellipsis">
+      Development Requirements (Additional)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Development Requirements (Additional)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#code-editor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Editor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#development-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Development Tools
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#platform-specific-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Platform-Specific Notes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Platform-Specific Notes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      Windows
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linux
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#macos" class="md-nav__link">
+    <span class="md-ellipsis">
+      macOS
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compatibility-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      Compatibility Matrix
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-benchmarks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Benchmarks
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Benchmarks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#video-generation-times-1024x576-16-frames" class="md-nav__link">
+    <span class="md-ellipsis">
+      Video Generation Times (1024x576, 16 frames)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-usage-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Usage Patterns
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optimization-recommendations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optimization Recommendations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Optimization Recommendations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for-rtx-4080-users" class="md-nav__link">
+    <span class="md-ellipsis">
+      For RTX 4080 Users
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-limited-vram-8gb" class="md-nav__link">
+    <span class="md-ellipsis">
+      For Limited VRAM (&lt; 8GB)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-cpu-only-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      For CPU-Only Systems
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      For Development
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting-hardware-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting Hardware Issues
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting Hardware Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gpu-not-detected" class="md-nav__link">
+    <span class="md-ellipsis">
+      GPU Not Detected
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#out-of-memory-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Out of Memory Errors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slow-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Slow Performance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installation-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation Issues
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="wan22-system-requirements">🖥️ WAN22 System Requirements<a class="headerlink" href="#wan22-system-requirements" title="Permanent link">&para;</a></h1>
+<h2 id="minimum-requirements">Minimum Requirements<a class="headerlink" href="#minimum-requirements" title="Permanent link">&para;</a></h2>
+<h3 id="operating-system">Operating System<a class="headerlink" href="#operating-system" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Windows 10</strong> (64-bit) or newer</li>
+<li><strong>Windows 11</strong> (recommended)</li>
+<li><strong>Linux</strong> (Ubuntu 20.04+ or equivalent)</li>
+<li><strong>macOS</strong> (10.15+ with Intel or Apple Silicon)</li>
+</ul>
+<h3 id="hardware-requirements">Hardware Requirements<a class="headerlink" href="#hardware-requirements" title="Permanent link">&para;</a></h3>
+<h4 id="cpu">CPU<a class="headerlink" href="#cpu" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Minimum:</strong> Intel i5-8400 / AMD Ryzen 5 2600 or equivalent</li>
+<li><strong>Recommended:</strong> Intel i7-10700K / AMD Ryzen 7 3700X or better</li>
+<li><strong>Cores:</strong> 4+ cores (8+ recommended)</li>
+<li><strong>Architecture:</strong> x64 (64-bit)</li>
+</ul>
+<h4 id="memory-ram">Memory (RAM)<a class="headerlink" href="#memory-ram" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Minimum:</strong> 8 GB RAM</li>
+<li><strong>Recommended:</strong> 16 GB RAM</li>
+<li><strong>Optimal:</strong> 32 GB RAM (for large model processing)</li>
+</ul>
+<h4 id="storage">Storage<a class="headerlink" href="#storage" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Minimum:</strong> 50 GB free space</li>
+<li><strong>Recommended:</strong> 100 GB+ free space (SSD preferred)</li>
+<li><strong>Model Storage:</strong> Additional 20-50 GB per AI model</li>
+<li><strong>Type:</strong> SSD strongly recommended for performance</li>
+</ul>
+<h4 id="graphics-card-gpu">Graphics Card (GPU)<a class="headerlink" href="#graphics-card-gpu" title="Permanent link">&para;</a></h4>
+<h5 id="nvidia-gpus-recommended">NVIDIA GPUs (Recommended)<a class="headerlink" href="#nvidia-gpus-recommended" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>Minimum:</strong> GTX 1060 6GB / RTX 2060</li>
+<li><strong>Recommended:</strong> RTX 3070 / RTX 4070 or better</li>
+<li><strong>Optimal:</strong> RTX 4080 / RTX 4090</li>
+<li><strong>VRAM:</strong> 6 GB minimum, 12+ GB recommended</li>
+<li><strong>CUDA:</strong> Version 11.8+ required</li>
+</ul>
+<h5 id="amd-gpus-limited-support">AMD GPUs (Limited Support)<a class="headerlink" href="#amd-gpus-limited-support" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>Minimum:</strong> RX 6600 XT</li>
+<li><strong>Recommended:</strong> RX 7800 XT or better</li>
+<li><strong>Note:</strong> Some features may be limited compared to NVIDIA</li>
+</ul>
+<h5 id="intel-gpus-experimental">Intel GPUs (Experimental)<a class="headerlink" href="#intel-gpus-experimental" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>Arc A770</strong> or better</li>
+<li><strong>Note:</strong> Limited compatibility, use at your own risk</li>
+</ul>
+<h5 id="cpu-only-mode">CPU-Only Mode<a class="headerlink" href="#cpu-only-mode" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>Supported:</strong> Yes, but significantly slower</li>
+<li><strong>RAM:</strong> 32 GB+ recommended for CPU inference</li>
+<li><strong>Performance:</strong> 10-50x slower than GPU acceleration</li>
+</ul>
+<h3 id="software-requirements">Software Requirements<a class="headerlink" href="#software-requirements" title="Permanent link">&para;</a></h3>
+<h4 id="python-environment">Python Environment<a class="headerlink" href="#python-environment" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Version:</strong> Python 3.8, 3.9, 3.10, or 3.11</li>
+<li><strong>Not Supported:</strong> Python 3.12+ (dependency compatibility issues)</li>
+<li><strong>Package Manager:</strong> pip (included with Python)</li>
+<li><strong>Virtual Environment:</strong> Recommended but not required</li>
+</ul>
+<h4 id="nodejs-environment">Node.js Environment<a class="headerlink" href="#nodejs-environment" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Version:</strong> Node.js 16.x, 18.x, or 20.x LTS</li>
+<li><strong>Package Manager:</strong> npm (included) or yarn</li>
+<li><strong>Not Supported:</strong> Node.js 14.x or older</li>
+</ul>
+<h4 id="additional-dependencies">Additional Dependencies<a class="headerlink" href="#additional-dependencies" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Git:</strong> For cloning repository and version control</li>
+<li><strong>Visual C++ Redistributable:</strong> (Windows only, usually pre-installed)</li>
+<li><strong>CUDA Toolkit:</strong> 11.8+ (for NVIDIA GPU acceleration)</li>
+</ul>
+<h2 id="performance-tiers">Performance Tiers<a class="headerlink" href="#performance-tiers" title="Permanent link">&para;</a></h2>
+<h3 id="tier-1-basic-usage-minimum-requirements">Tier 1: Basic Usage (Minimum Requirements)<a class="headerlink" href="#tier-1-basic-usage-minimum-requirements" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>CPU:</strong> Intel i5-8400 / AMD Ryzen 5 2600</li>
+<li><strong>RAM:</strong> 8 GB</li>
+<li><strong>GPU:</strong> GTX 1060 6GB / CPU-only</li>
+<li><strong>Storage:</strong> 50 GB HDD</li>
+<li><strong>Performance:</strong> Basic video generation, longer processing times</li>
+</ul>
+<h3 id="tier-2-standard-usage-recommended">Tier 2: Standard Usage (Recommended)<a class="headerlink" href="#tier-2-standard-usage-recommended" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>CPU:</strong> Intel i7-10700K / AMD Ryzen 7 3700X</li>
+<li><strong>RAM:</strong> 16 GB</li>
+<li><strong>GPU:</strong> RTX 3070 / RTX 4070</li>
+<li><strong>Storage:</strong> 100 GB SSD</li>
+<li><strong>Performance:</strong> Good video generation speed, multiple concurrent tasks</li>
+</ul>
+<h3 id="tier-3-professional-usage-optimal">Tier 3: Professional Usage (Optimal)<a class="headerlink" href="#tier-3-professional-usage-optimal" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>CPU:</strong> Intel i9-12900K / AMD Ryzen 9 5900X</li>
+<li><strong>RAM:</strong> 32 GB</li>
+<li><strong>GPU:</strong> RTX 4080 / RTX 4090</li>
+<li><strong>Storage:</strong> 500 GB NVMe SSD</li>
+<li><strong>Performance:</strong> Fast video generation, batch processing, development work</li>
+</ul>
+<h3 id="tier-4-enterpriseresearch-maximum">Tier 4: Enterprise/Research (Maximum)<a class="headerlink" href="#tier-4-enterpriseresearch-maximum" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>CPU:</strong> Intel i9-13900K / AMD Ryzen 9 7950X</li>
+<li><strong>RAM:</strong> 64 GB+</li>
+<li><strong>GPU:</strong> Multiple RTX 4090s or A100/H100</li>
+<li><strong>Storage:</strong> 1 TB+ NVMe SSD</li>
+<li><strong>Performance:</strong> Maximum throughput, large-scale processing</li>
+</ul>
+<h2 id="network-requirements">Network Requirements<a class="headerlink" href="#network-requirements" title="Permanent link">&para;</a></h2>
+<h3 id="internet-connection">Internet Connection<a class="headerlink" href="#internet-connection" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Required for:</strong> Initial setup, model downloads, updates</li>
+<li><strong>Speed:</strong> 10 Mbps+ recommended for model downloads</li>
+<li><strong>Data Usage:</strong> 5-20 GB for initial model downloads</li>
+<li><strong>Offline Usage:</strong> Supported after initial setup</li>
+</ul>
+<h3 id="firewallsecurity">Firewall/Security<a class="headerlink" href="#firewallsecurity" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Ports:</strong> 3000 (frontend), 8000 (backend), 7860 (Gradio UI)</li>
+<li><strong>Firewall:</strong> Allow Python and Node.js through Windows Firewall</li>
+<li><strong>Antivirus:</strong> May need to whitelist project directory</li>
+</ul>
+<h2 id="browser-requirements">Browser Requirements<a class="headerlink" href="#browser-requirements" title="Permanent link">&para;</a></h2>
+<h3 id="supported-browsers">Supported Browsers<a class="headerlink" href="#supported-browsers" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Chrome:</strong> Version 90+ (recommended)</li>
+<li><strong>Firefox:</strong> Version 88+</li>
+<li><strong>Edge:</strong> Version 90+</li>
+<li><strong>Safari:</strong> Version 14+ (macOS only)</li>
+</ul>
+<h3 id="browser-features-required">Browser Features Required<a class="headerlink" href="#browser-features-required" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>JavaScript:</strong> ES2020+ support</li>
+<li><strong>WebSockets:</strong> For real-time updates</li>
+<li><strong>Local Storage:</strong> For settings and cache</li>
+<li><strong>WebGL:</strong> For advanced UI features (optional)</li>
+</ul>
+<h2 id="development-requirements-additional">Development Requirements (Additional)<a class="headerlink" href="#development-requirements-additional" title="Permanent link">&para;</a></h2>
+<h3 id="code-editor">Code Editor<a class="headerlink" href="#code-editor" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>VS Code:</strong> Recommended with Python and TypeScript extensions</li>
+<li><strong>PyCharm:</strong> Professional or Community edition</li>
+<li><strong>Any editor:</strong> With Python and JavaScript/TypeScript support</li>
+</ul>
+<h3 id="development-tools">Development Tools<a class="headerlink" href="#development-tools" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Git:</strong> Version control</li>
+<li><strong>Docker:</strong> For containerized development (optional)</li>
+<li><strong>Postman/Insomnia:</strong> API testing (optional)</li>
+</ul>
+<h2 id="platform-specific-notes">Platform-Specific Notes<a class="headerlink" href="#platform-specific-notes" title="Permanent link">&para;</a></h2>
+<h3 id="windows">Windows<a class="headerlink" href="#windows" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Windows Defender:</strong> May slow down file operations, consider exclusions</li>
+<li><strong>PowerShell:</strong> Version 5.1+ or PowerShell Core 7+</li>
+<li><strong>WSL2:</strong> Supported for Linux-like development environment</li>
+<li><strong>Long Path Support:</strong> Enable for deep directory structures</li>
+</ul>
+<h3 id="linux">Linux<a class="headerlink" href="#linux" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Distribution:</strong> Ubuntu 20.04+, Debian 11+, CentOS 8+, or equivalent</li>
+<li><strong>Packages:</strong> <code>python3-dev</code>, <code>nodejs</code>, <code>npm</code>, <code>git</code>, <code>build-essential</code></li>
+<li><strong>CUDA:</strong> Install NVIDIA drivers and CUDA toolkit separately</li>
+<li><strong>Permissions:</strong> User should be in <code>docker</code> group if using Docker</li>
+</ul>
+<h3 id="macos">macOS<a class="headerlink" href="#macos" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Xcode Command Line Tools:</strong> Required for compilation</li>
+<li><strong>Homebrew:</strong> Recommended package manager</li>
+<li><strong>Rosetta 2:</strong> Required for Intel-based software on Apple Silicon</li>
+<li><strong>Metal:</strong> Used for GPU acceleration on Apple Silicon</li>
+</ul>
+<h2 id="compatibility-matrix">Compatibility Matrix<a class="headerlink" href="#compatibility-matrix" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Windows 10</th>
+<th>Windows 11</th>
+<th>Ubuntu 20.04+</th>
+<th>macOS 10.15+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Python 3.8-3.11</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Node.js 16-20</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>NVIDIA GPU</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>AMD GPU</td>
+<td>⚠️</td>
+<td>⚠️</td>
+<td>⚠️</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Intel GPU</td>
+<td>⚠️</td>
+<td>⚠️</td>
+<td>⚠️</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Apple Silicon</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+<td>⚠️</td>
+</tr>
+<tr>
+<td>CPU-only</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Legend:</strong></p>
+<ul>
+<li>✅ Fully supported</li>
+<li>⚠️ Limited support or experimental</li>
+<li>❌ Not supported</li>
+</ul>
+<h2 id="performance-benchmarks">Performance Benchmarks<a class="headerlink" href="#performance-benchmarks" title="Permanent link">&para;</a></h2>
+<h3 id="video-generation-times-1024x576-16-frames">Video Generation Times (1024x576, 16 frames)<a class="headerlink" href="#video-generation-times-1024x576-16-frames" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Hardware Configuration</th>
+<th>Generation Time</th>
+<th>Relative Performance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RTX 4090 + i9-13900K</td>
+<td>15-30 seconds</td>
+<td>100% (baseline)</td>
+</tr>
+<tr>
+<td>RTX 4080 + i7-12700K</td>
+<td>20-40 seconds</td>
+<td>75%</td>
+</tr>
+<tr>
+<td>RTX 3080 + i7-10700K</td>
+<td>30-60 seconds</td>
+<td>50%</td>
+</tr>
+<tr>
+<td>RTX 3070 + i5-11400F</td>
+<td>45-90 seconds</td>
+<td>35%</td>
+</tr>
+<tr>
+<td>CPU-only (32GB RAM)</td>
+<td>10-30 minutes</td>
+<td>5%</td>
+</tr>
+</tbody>
+</table>
+<h3 id="memory-usage-patterns">Memory Usage Patterns<a class="headerlink" href="#memory-usage-patterns" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Model Type</th>
+<th>VRAM Usage</th>
+<th>System RAM</th>
+<th>Storage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T2V-A14B</td>
+<td>8-12 GB</td>
+<td>4-8 GB</td>
+<td>15 GB</td>
+</tr>
+<tr>
+<td>I2V-A14B</td>
+<td>6-10 GB</td>
+<td>3-6 GB</td>
+<td>12 GB</td>
+</tr>
+<tr>
+<td>TI2V-5B</td>
+<td>4-8 GB</td>
+<td>2-4 GB</td>
+<td>8 GB</td>
+</tr>
+</tbody>
+</table>
+<h2 id="optimization-recommendations">Optimization Recommendations<a class="headerlink" href="#optimization-recommendations" title="Permanent link">&para;</a></h2>
+<h3 id="for-rtx-4080-users">For RTX 4080 Users<a class="headerlink" href="#for-rtx-4080-users" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Enable memory optimization in settings</li>
+<li>Use batch size 1 for large models</li>
+<li>Monitor VRAM usage during generation</li>
+</ul>
+<h3 id="for-limited-vram-8gb">For Limited VRAM (&lt; 8GB)<a class="headerlink" href="#for-limited-vram-8gb" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Use smaller models (TI2V-5B)</li>
+<li>Enable CPU offloading</li>
+<li>Reduce batch sizes</li>
+<li>Close other GPU-intensive applications</li>
+</ul>
+<h3 id="for-cpu-only-systems">For CPU-Only Systems<a class="headerlink" href="#for-cpu-only-systems" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Increase system RAM to 32GB+</li>
+<li>Use fast NVMe SSD for swap</li>
+<li>Enable all CPU cores</li>
+<li>Consider cloud GPU services for heavy workloads</li>
+</ul>
+<h3 id="for-development">For Development<a class="headerlink" href="#for-development" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Use SSD for project directory</li>
+<li>Enable Windows long path support</li>
+<li>Configure antivirus exclusions</li>
+<li>Use virtual environments for Python</li>
+</ul>
+<h2 id="troubleshooting-hardware-issues">Troubleshooting Hardware Issues<a class="headerlink" href="#troubleshooting-hardware-issues" title="Permanent link">&para;</a></h2>
+<h3 id="gpu-not-detected">GPU Not Detected<a class="headerlink" href="#gpu-not-detected" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Check NVIDIA drivers are installed and up to date</li>
+<li>Verify CUDA toolkit installation</li>
+<li>Run <code>nvidia-smi</code> to check GPU status</li>
+<li>Restart system after driver installation</li>
+</ol>
+<h3 id="out-of-memory-errors">Out of Memory Errors<a class="headerlink" href="#out-of-memory-errors" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Close other applications using GPU/RAM</li>
+<li>Reduce model batch size</li>
+<li>Enable memory optimization settings</li>
+<li>Consider upgrading hardware</li>
+</ol>
+<h3 id="slow-performance">Slow Performance<a class="headerlink" href="#slow-performance" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Check if using integrated graphics instead of dedicated GPU</li>
+<li>Verify SSD vs HDD usage</li>
+<li>Monitor CPU/GPU temperatures for thermal throttling</li>
+<li>Check for background processes consuming resources</li>
+</ol>
+<h3 id="installation-issues">Installation Issues<a class="headerlink" href="#installation-issues" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Verify system meets minimum requirements</li>
+<li>Check Python and Node.js versions</li>
+<li>Run as administrator if permission errors</li>
+<li>Disable antivirus temporarily during installation</li>
+</ol>
+<p>For more detailed troubleshooting, see <a href="COMPREHENSIVE_TROUBLESHOOTING.md">COMPREHENSIVE_TROUBLESHOOTING.md</a>.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

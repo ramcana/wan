@@ -1,0 +1,2327 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="WAN2.2 Video Generation System Documentation">
+      
+      
+      
+        <link rel="canonical" href="https://ramcana.github.io/wan/reference/ENHANCED_MODEL_AVAILABILITY_PERFORMANCE_GUIDE/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>Enhanced Model Availability - Performance Tuning Guide - WAN22 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e53b48f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#enhanced-model-availability-performance-tuning-guide" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="WAN22 Documentation" class="md-header__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            WAN22 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Enhanced Model Availability - Performance Tuning Guide
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../WAN22_System_Capabilities_Report/" class="md-tabs__link">
+          
+  
+  
+  System Overview
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../model-orchestrator/requirements/" class="md-tabs__link">
+          
+  
+  
+  Model Orchestrator
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../config/models.toml" class="md-tabs__link">
+          
+  
+  
+  Configuration
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="WAN22 Documentation" class="md-nav__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    WAN22 Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    System Overview
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            System Overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../WAN22_System_Capabilities_Report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Capabilities Report
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Model Orchestrator
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Model Orchestrator
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Requirements
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/tasks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tasks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Configuration
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Configuration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Models Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models_simple.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simple Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-baseline-assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Baseline Assessment
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Baseline Assessment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initial-performance-audit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Initial Performance Audit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-performance-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Performance Metrics
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#download-performance-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Download Performance Optimization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Download Performance Optimization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#network-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Optimization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Network Optimization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bandwidth-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bandwidth Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connection-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connection Optimization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dns-and-routing-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      DNS and Routing Optimization
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#download-strategy-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Download Strategy Optimization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Download Strategy Optimization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#concurrent-downloads" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concurrent Downloads
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retry-strategy-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Retry Strategy Optimization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chunk-size-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chunk Size Optimization
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#storage-performance-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Storage Performance Optimization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Storage Performance Optimization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#storage-tiering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Storage Tiering
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-system-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      File System Optimization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="File System Optimization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mount-options-for-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mount Options for Performance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-system-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      File System Selection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#io-scheduler-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      I/O Scheduler Optimization
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cache-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cache Optimization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cache Optimization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#model-cache-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model Cache Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#system-level-caching" class="md-nav__link">
+    <span class="md-ellipsis">
+      System-Level Caching
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-resource-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Resource Optimization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="System Resource Optimization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#memory-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Memory Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#memory-allocation-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Allocation Optimization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python-memory-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Python Memory Optimization
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cpu-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      CPU Optimization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CPU Optimization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#process-and-thread-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Process and Thread Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cpu-governor-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      CPU Governor Settings
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#network-stack-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Stack Optimization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Network Stack Optimization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tcpip-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      TCP/IP Tuning
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#application-level-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Application-Level Optimization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Application-Level Optimization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#database-optimization-analytics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Database Optimization (Analytics)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Database Optimization (Analytics)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#database-indexing-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Database Indexing Strategy
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      API Optimization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="API Optimization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fastapi-performance-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      FastAPI Performance Settings
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response-caching" class="md-nav__link">
+    <span class="md-ellipsis">
+      Response Caching
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#websocket-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      WebSocket Optimization
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#monitoring-and-profiling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monitoring and Profiling
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Monitoring and Profiling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#performance-monitoring-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Monitoring Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Monitoring Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prometheus-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prometheus Metrics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-performance-dashboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom Performance Dashboard
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#profiling-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Profiling Tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Profiling Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python-profiling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Python Profiling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-profiling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Profiling
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Testing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#load-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Load Testing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Load Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#download-performance-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Download Performance Testing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-load-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      API Load Testing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#benchmark-scripts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Benchmark Scripts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Benchmark Scripts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comprehensive-benchmark" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comprehensive Benchmark
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optimization-recommendations-by-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optimization Recommendations by Use Case
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Optimization Recommendations by Use Case">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#high-throughput-scenario" class="md-nav__link">
+    <span class="md-ellipsis">
+      High-Throughput Scenario
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#low-latency-scenario" class="md-nav__link">
+    <span class="md-ellipsis">
+      Low-Latency Scenario
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resource-constrained-scenario" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resource-Constrained Scenario
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#continuous-performance-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Continuous Performance Optimization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Continuous Performance Optimization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#automated-performance-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Automated Performance Monitoring
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-regression-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Regression Detection
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="enhanced-model-availability-performance-tuning-guide">Enhanced Model Availability - Performance Tuning Guide<a class="headerlink" href="#enhanced-model-availability-performance-tuning-guide" title="Permanent link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>This guide provides comprehensive performance optimization strategies for the Enhanced Model Availability system, covering download optimization, storage management, system resource utilization, and monitoring best practices.</p>
+<h2 id="performance-baseline-assessment">Performance Baseline Assessment<a class="headerlink" href="#performance-baseline-assessment" title="Permanent link">&para;</a></h2>
+<h3 id="initial-performance-audit">Initial Performance Audit<a class="headerlink" href="#initial-performance-audit" title="Permanent link">&para;</a></h3>
+<p>Before optimization, establish baseline performance metrics:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Run comprehensive performance assessment</span>
+python<span class="w"> </span>-m<span class="w"> </span>enhanced_model_availability<span class="w"> </span>benchmark<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--full-assessment<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--generate-baseline<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--output-report<span class="w"> </span>baseline_performance.json
+
+<span class="c1"># Check current system resources</span>
+curl<span class="w"> </span>http://localhost:8000/api/v1/admin/performance/current
+
+<span class="c1"># Analyze bottlenecks</span>
+python<span class="w"> </span>-m<span class="w"> </span>enhanced_model_availability<span class="w"> </span>analyze-bottlenecks<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--check-all-components<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--generate-recommendations
+</code></pre></div>
+<h3 id="key-performance-metrics">Key Performance Metrics<a class="headerlink" href="#key-performance-metrics" title="Permanent link">&para;</a></h3>
+<p>Monitor these critical performance indicators:</p>
+<ol>
+<li>
+<p><strong>Download Performance</strong>:</p>
+</li>
+<li>
+<p>Average download speed (MB/s)</p>
+</li>
+<li>Download success rate (%)</li>
+<li>Retry frequency</li>
+<li>
+<p>Queue processing time</p>
+</li>
+<li>
+<p><strong>Storage Performance</strong>:</p>
+</li>
+<li>
+<p>Disk I/O throughput</p>
+</li>
+<li>Storage access latency</li>
+<li>Cache hit rate</li>
+<li>
+<p>Cleanup efficiency</p>
+</li>
+<li>
+<p><strong>API Performance</strong>:</p>
+</li>
+<li>
+<p>Response time (ms)</p>
+</li>
+<li>Throughput (requests/second)</li>
+<li>Error rate (%)</li>
+<li>
+<p>WebSocket connection stability</p>
+</li>
+<li>
+<p><strong>System Resources</strong>:</p>
+</li>
+<li>CPU utilization (%)</li>
+<li>Memory usage (GB)</li>
+<li>Network bandwidth utilization</li>
+<li>GPU memory usage (if applicable)</li>
+</ol>
+<h2 id="download-performance-optimization">Download Performance Optimization<a class="headerlink" href="#download-performance-optimization" title="Permanent link">&para;</a></h2>
+<h3 id="network-optimization">Network Optimization<a class="headerlink" href="#network-optimization" title="Permanent link">&para;</a></h3>
+<h4 id="bandwidth-management">Bandwidth Management<a class="headerlink" href="#bandwidth-management" title="Permanent link">&para;</a></h4>
+<p>Configure optimal bandwidth settings:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;bandwidth_management&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;global_limit_mbps&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;per_download_limit_mbps&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;adaptive_limiting&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;monitor_system_load&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;reduce_on_high_load&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;load_threshold&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.8</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;time_based_limits&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;business_hours&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;09:00&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;end&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;17:00&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;limit_mbps&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;off_hours&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;limit_mbps&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="connection-optimization">Connection Optimization<a class="headerlink" href="#connection-optimization" title="Permanent link">&para;</a></h4>
+<p>Optimize HTTP connections for better performance:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;connection_settings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;max_connections_per_host&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;connection_pool_size&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;connection_timeout_seconds&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;read_timeout_seconds&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;keep_alive_enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;keep_alive_timeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;compression_enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;http2_enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;tcp_nodelay&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;socket_buffer_size&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">65536</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="dns-and-routing-optimization">DNS and Routing Optimization<a class="headerlink" href="#dns-and-routing-optimization" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;network_optimization&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;dns_cache_enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;dns_cache_ttl_seconds&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;prefer_ipv4&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;use_system_resolver&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;custom_dns_servers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;8.8.8.8&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;1.1.1.1&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;connection_reuse&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;persistent_connections&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="download-strategy-optimization">Download Strategy Optimization<a class="headerlink" href="#download-strategy-optimization" title="Permanent link">&para;</a></h3>
+<h4 id="concurrent-downloads">Concurrent Downloads<a class="headerlink" href="#concurrent-downloads" title="Permanent link">&para;</a></h4>
+<p>Optimize concurrent download settings based on system capacity:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Calculate optimal concurrent downloads</span>
+<span class="kn">import</span> <span class="nn">psutil</span>
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="k">def</span> <span class="nf">calculate_optimal_concurrent_downloads</span><span class="p">():</span>
+    <span class="c1"># Get system specs</span>
+    <span class="n">cpu_count</span> <span class="o">=</span> <span class="n">psutil</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">()</span>
+    <span class="n">memory_gb</span> <span class="o">=</span> <span class="n">psutil</span><span class="o">.</span><span class="n">virtual_memory</span><span class="p">()</span><span class="o">.</span><span class="n">total</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1024</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>
+
+    <span class="c1"># Calculate based on resources</span>
+    <span class="n">cpu_based</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">cpu_count</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">memory_based</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">memory_gb</span> <span class="o">//</span> <span class="mi">4</span><span class="p">))</span>
+
+    <span class="c1"># Conservative approach</span>
+    <span class="n">optimal</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">cpu_based</span><span class="p">,</span> <span class="n">memory_based</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;max_concurrent_downloads&quot;</span><span class="p">:</span> <span class="n">optimal</span><span class="p">,</span>
+        <span class="s2">&quot;max_concurrent_per_model&quot;</span><span class="p">:</span> <span class="nb">min</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">optimal</span><span class="p">),</span>
+        <span class="s2">&quot;queue_size&quot;</span><span class="p">:</span> <span class="n">optimal</span> <span class="o">*</span> <span class="mi">3</span>
+    <span class="p">}</span>
+
+<span class="c1"># Apply calculated settings</span>
+<span class="n">settings</span> <span class="o">=</span> <span class="n">calculate_optimal_concurrent_downloads</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Recommended concurrent downloads: </span><span class="si">{</span><span class="n">settings</span><span class="p">[</span><span class="s1">&#39;max_concurrent_downloads&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="retry-strategy-optimization">Retry Strategy Optimization<a class="headerlink" href="#retry-strategy-optimization" title="Permanent link">&para;</a></h4>
+<p>Configure intelligent retry strategies:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;retry_optimization&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;max_retries&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;base_delay_seconds&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;max_delay_seconds&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;backoff_factor&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">2.0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;jitter_enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;adaptive_retries&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;success_rate_threshold&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.8</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;increase_retries_on_low_success&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;decrease_retries_on_high_success&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;error_specific_delays&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;network_timeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;server_error&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;rate_limit&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="chunk-size-optimization">Chunk Size Optimization<a class="headerlink" href="#chunk-size-optimization" title="Permanent link">&para;</a></h4>
+<p>Optimize download chunk sizes for different scenarios:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;chunk_optimization&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;default_chunk_size_mb&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;adaptive_chunking&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;small_file_threshold_mb&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;large_file_threshold_mb&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;small_file_chunk_mb&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;large_file_chunk_mb&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;network_based_chunking&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;slow_network_threshold_mbps&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;fast_network_threshold_mbps&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;slow_network_chunk_mb&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;fast_network_chunk_mb&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="storage-performance-optimization">Storage Performance Optimization<a class="headerlink" href="#storage-performance-optimization" title="Permanent link">&para;</a></h2>
+<h3 id="storage-tiering">Storage Tiering<a class="headerlink" href="#storage-tiering" title="Permanent link">&para;</a></h3>
+<p>Implement intelligent storage tiering for optimal performance:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;storage_tiers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;hot&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/fast-nvme/models&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;criteria&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;usage_frequency_threshold&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;last_used_days&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;performance_priority&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;max_size_gb&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;io_priority&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;high&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;warm&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/ssd/models&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;criteria&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;usage_frequency_threshold&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;last_used_days&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;balanced_priority&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;max_size_gb&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;io_priority&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;normal&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;cold&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/hdd/models&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;criteria&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;usage_frequency_threshold&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;last_used_days&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">90</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;storage_priority&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;max_size_gb&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5000</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;io_priority&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;low&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;tier_management&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;auto_tiering_enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;promotion_threshold&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.8</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;demotion_threshold&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.3</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;check_interval_hours&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="file-system-optimization">File System Optimization<a class="headerlink" href="#file-system-optimization" title="Permanent link">&para;</a></h3>
+<h4 id="mount-options-for-performance">Mount Options for Performance<a class="headerlink" href="#mount-options-for-performance" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Optimal mount options for model storage</span>
+<span class="c1"># For SSD/NVMe storage</span>
+mount<span class="w"> </span>-o<span class="w"> </span>noatime,discard,defaults<span class="w"> </span>/dev/nvme0n1p1<span class="w"> </span>/fast-nvme/models
+
+<span class="c1"># For traditional HDD storage</span>
+mount<span class="w"> </span>-o<span class="w"> </span>noatime,defaults,data<span class="o">=</span>writeback<span class="w"> </span>/dev/sda1<span class="w"> </span>/hdd/models
+
+<span class="c1"># Update /etc/fstab for persistence</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;/dev/nvme0n1p1 /fast-nvme/models ext4 noatime,discard,defaults 0 2&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/etc/fstab
+</code></pre></div>
+<h4 id="file-system-selection">File System Selection<a class="headerlink" href="#file-system-selection" title="Permanent link">&para;</a></h4>
+<p>Choose optimal file systems for different storage tiers:</p>
+<ul>
+<li><strong>Hot Tier (NVMe/SSD)</strong>: ext4 with noatime, or XFS for large files</li>
+<li><strong>Warm Tier (SSD)</strong>: ext4 or XFS</li>
+<li><strong>Cold Tier (HDD)</strong>: ext4 or XFS with larger block sizes</li>
+</ul>
+<h4 id="io-scheduler-optimization">I/O Scheduler Optimization<a class="headerlink" href="#io-scheduler-optimization" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Set optimal I/O schedulers</span>
+<span class="c1"># For SSDs/NVMe</span>
+<span class="nb">echo</span><span class="w"> </span>noop<span class="w"> </span>&gt;<span class="w"> </span>/sys/block/nvme0n1/queue/scheduler
+
+<span class="c1"># For HDDs</span>
+<span class="nb">echo</span><span class="w"> </span>deadline<span class="w"> </span>&gt;<span class="w"> </span>/sys/block/sda/queue/scheduler
+
+<span class="c1"># Make persistent</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;ACTION==&quot;add|change&quot;, KERNEL==&quot;nvme[0-9]*&quot;, ATTR{queue/scheduler}=&quot;noop&quot;&#39;</span><span class="w"> </span>&gt;<span class="w"> </span>/etc/udev/rules.d/60-ioschedulers.rules
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;ACTION==&quot;add|change&quot;, KERNEL==&quot;sd[a-z]&quot;, ATTR{queue/scheduler}=&quot;deadline&quot;&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/etc/udev/rules.d/60-ioschedulers.rules
+</code></pre></div>
+<h3 id="cache-optimization">Cache Optimization<a class="headerlink" href="#cache-optimization" title="Permanent link">&para;</a></h3>
+<h4 id="model-cache-configuration">Model Cache Configuration<a class="headerlink" href="#model-cache-configuration" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;cache_optimization&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;model_cache&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;max_size_gb&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;cache_strategy&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;lru_with_frequency&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;preload_frequently_used&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;cache_metadata_only&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;download_cache&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;max_size_gb&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;temp_file_cleanup_hours&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">24</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;partial_download_cache&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;metadata_cache&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;max_entries&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;ttl_seconds&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3600</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;persistent_cache&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="system-level-caching">System-Level Caching<a class="headerlink" href="#system-level-caching" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Optimize system cache settings</span>
+<span class="c1"># Increase file cache</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;vm.vfs_cache_pressure=50&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/etc/sysctl.conf
+
+<span class="c1"># Optimize dirty page handling</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;vm.dirty_ratio=15&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/etc/sysctl.conf
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;vm.dirty_background_ratio=5&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/etc/sysctl.conf
+
+<span class="c1"># Apply settings</span>
+sysctl<span class="w"> </span>-p
+</code></pre></div>
+<h2 id="system-resource-optimization">System Resource Optimization<a class="headerlink" href="#system-resource-optimization" title="Permanent link">&para;</a></h2>
+<h3 id="memory-management">Memory Management<a class="headerlink" href="#memory-management" title="Permanent link">&para;</a></h3>
+<h4 id="memory-allocation-optimization">Memory Allocation Optimization<a class="headerlink" href="#memory-allocation-optimization" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;memory_management&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;heap_size_gb&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;model_cache_size_gb&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;download_buffer_size_mb&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">128</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;metadata_cache_size_mb&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">256</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;gc_optimization&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;gc_threshold&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.8</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;aggressive_gc_on_low_memory&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;gc_interval_seconds&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;memory_mapping&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;use_mmap_for_large_files&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;mmap_threshold_mb&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;mmap_populate&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="python-memory-optimization">Python Memory Optimization<a class="headerlink" href="#python-memory-optimization" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Memory optimization settings</span>
+<span class="kn">import</span> <span class="nn">gc</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="c1"># Configure garbage collection</span>
+<span class="n">gc</span><span class="o">.</span><span class="n">set_threshold</span><span class="p">(</span><span class="mi">700</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># Set memory allocator</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;PYTHONMALLOC&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;pymalloc&#39;</span>
+
+<span class="c1"># Enable memory debugging (development only)</span>
+<span class="c1"># os.environ[&#39;PYTHONMALLOC&#39;] = &#39;debug&#39;</span>
+
+<span class="c1"># Optimize for memory usage</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">dont_write_bytecode</span> <span class="o">=</span> <span class="kc">True</span>
+</code></pre></div>
+<h3 id="cpu-optimization">CPU Optimization<a class="headerlink" href="#cpu-optimization" title="Permanent link">&para;</a></h3>
+<h4 id="process-and-thread-management">Process and Thread Management<a class="headerlink" href="#process-and-thread-management" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;cpu_optimization&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;worker_processes&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;worker_threads_per_process&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;io_threads&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;background_task_threads&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;cpu_affinity&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;worker_cores&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;io_cores&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;background_cores&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;process_priority&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;main_process&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;normal&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;download_processes&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;below_normal&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;background_processes&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;idle&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="cpu-governor-settings">CPU Governor Settings<a class="headerlink" href="#cpu-governor-settings" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Set CPU governor for performance</span>
+<span class="nb">echo</span><span class="w"> </span>performance<span class="w"> </span>&gt;<span class="w"> </span>/sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+
+<span class="c1"># Or use ondemand for balanced performance/power</span>
+<span class="nb">echo</span><span class="w"> </span>ondemand<span class="w"> </span>&gt;<span class="w"> </span>/sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+
+<span class="c1"># Make persistent</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;GOVERNOR=&quot;performance&quot;&#39;</span><span class="w"> </span>&gt;<span class="w"> </span>/etc/default/cpufrequtils
+</code></pre></div>
+<h3 id="network-stack-optimization">Network Stack Optimization<a class="headerlink" href="#network-stack-optimization" title="Permanent link">&para;</a></h3>
+<h4 id="tcpip-tuning">TCP/IP Tuning<a class="headerlink" href="#tcpip-tuning" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Optimize TCP settings for large file transfers</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;net.core.rmem_max = 134217728&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/etc/sysctl.conf
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;net.core.wmem_max = 134217728&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/etc/sysctl.conf
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;net.ipv4.tcp_rmem = 4096 87380 134217728&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/etc/sysctl.conf
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;net.ipv4.tcp_wmem = 4096 65536 134217728&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/etc/sysctl.conf
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;net.core.netdev_max_backlog = 5000&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/etc/sysctl.conf
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;net.ipv4.tcp_congestion_control = bbr&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/etc/sysctl.conf
+
+<span class="c1"># Apply settings</span>
+sysctl<span class="w"> </span>-p
+</code></pre></div>
+<h2 id="application-level-optimization">Application-Level Optimization<a class="headerlink" href="#application-level-optimization" title="Permanent link">&para;</a></h2>
+<h3 id="database-optimization-analytics">Database Optimization (Analytics)<a class="headerlink" href="#database-optimization-analytics" title="Permanent link">&para;</a></h3>
+<p>If using analytics database, optimize for performance:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- PostgreSQL optimization</span>
+<span class="c1">-- Increase shared buffers</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">SYSTEM</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">shared_buffers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;2GB&#39;</span><span class="p">;</span>
+
+<span class="c1">-- Optimize work memory</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">SYSTEM</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">work_mem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;256MB&#39;</span><span class="p">;</span>
+
+<span class="c1">-- Increase maintenance work memory</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">SYSTEM</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">maintenance_work_mem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;1GB&#39;</span><span class="p">;</span>
+
+<span class="c1">-- Optimize checkpoint settings</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">SYSTEM</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">checkpoint_completion_target</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">.</span><span class="mi">9</span><span class="p">;</span>
+<span class="k">ALTER</span><span class="w"> </span><span class="k">SYSTEM</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">wal_buffers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;64MB&#39;</span><span class="p">;</span>
+
+<span class="c1">-- Apply settings</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">pg_reload_conf</span><span class="p">();</span>
+</code></pre></div>
+<h4 id="database-indexing-strategy">Database Indexing Strategy<a class="headerlink" href="#database-indexing-strategy" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1">-- Create performance indexes</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">CONCURRENTLY</span><span class="w"> </span><span class="n">idx_model_usage_timestamp</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">model_usage</span><span class="w"> </span><span class="p">(</span><span class="k">timestamp</span><span class="p">);</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">CONCURRENTLY</span><span class="w"> </span><span class="n">idx_model_usage_model_id</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">model_usage</span><span class="w"> </span><span class="p">(</span><span class="n">model_id</span><span class="p">);</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">CONCURRENTLY</span><span class="w"> </span><span class="n">idx_model_health_last_check</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">model_health</span><span class="w"> </span><span class="p">(</span><span class="n">last_check</span><span class="p">);</span>
+
+<span class="c1">-- Composite indexes for common queries</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">CONCURRENTLY</span><span class="w"> </span><span class="n">idx_model_usage_composite</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">model_usage</span><span class="w"> </span><span class="p">(</span><span class="n">model_id</span><span class="p">,</span><span class="w"> </span><span class="k">timestamp</span><span class="p">);</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="n">CONCURRENTLY</span><span class="w"> </span><span class="n">idx_model_health_composite</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">model_health</span><span class="w"> </span><span class="p">(</span><span class="n">model_id</span><span class="p">,</span><span class="w"> </span><span class="n">health_score</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="api-optimization">API Optimization<a class="headerlink" href="#api-optimization" title="Permanent link">&para;</a></h3>
+<h4 id="fastapi-performance-settings">FastAPI Performance Settings<a class="headerlink" href="#fastapi-performance-settings" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Optimize FastAPI application</span>
+<span class="kn">from</span> <span class="nn">fastapi</span> <span class="kn">import</span> <span class="n">FastAPI</span>
+<span class="kn">import</span> <span class="nn">uvicorn</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">(</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Enhanced Model Availability&quot;</span><span class="p">,</span>
+    <span class="n">docs_url</span><span class="o">=</span><span class="s2">&quot;/docs&quot;</span><span class="p">,</span>
+    <span class="n">redoc_url</span><span class="o">=</span><span class="s2">&quot;/redoc&quot;</span><span class="p">,</span>
+    <span class="c1"># Disable automatic validation for better performance</span>
+    <span class="c1"># validate_responses=False,  # Use carefully</span>
+<span class="p">)</span>
+
+<span class="c1"># Optimize uvicorn settings</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">uvicorn</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+        <span class="s2">&quot;app:app&quot;</span><span class="p">,</span>
+        <span class="n">host</span><span class="o">=</span><span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span>
+        <span class="n">port</span><span class="o">=</span><span class="mi">8000</span><span class="p">,</span>
+        <span class="n">workers</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>  <span class="c1"># Number of worker processes</span>
+        <span class="n">loop</span><span class="o">=</span><span class="s2">&quot;uvloop&quot;</span><span class="p">,</span>  <span class="c1"># Use uvloop for better performance</span>
+        <span class="n">http</span><span class="o">=</span><span class="s2">&quot;httptools&quot;</span><span class="p">,</span>  <span class="c1"># Use httptools for better HTTP parsing</span>
+        <span class="n">access_log</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>  <span class="c1"># Disable access logs for better performance</span>
+        <span class="n">server_header</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>  <span class="c1"># Disable server header</span>
+        <span class="n">date_header</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>  <span class="c1"># Disable date header</span>
+    <span class="p">)</span>
+</code></pre></div>
+<h4 id="response-caching">Response Caching<a class="headerlink" href="#response-caching" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">lru_cache</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="c1"># Cache expensive operations</span>
+<span class="nd">@lru_cache</span><span class="p">(</span><span class="n">maxsize</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">get_model_status_cached</span><span class="p">(</span><span class="n">model_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">cache_key</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+    <span class="c1"># Expensive model status calculation</span>
+    <span class="k">return</span> <span class="n">calculate_model_status</span><span class="p">(</span><span class="n">model_id</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">get_model_status</span><span class="p">(</span><span class="n">model_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="c1"># Use time-based cache key (5-minute cache)</span>
+    <span class="n">cache_key</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">//</span> <span class="mi">300</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">get_model_status_cached</span><span class="p">(</span><span class="n">model_id</span><span class="p">,</span> <span class="n">cache_key</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="websocket-optimization">WebSocket Optimization<a class="headerlink" href="#websocket-optimization" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Optimize WebSocket connections</span>
+<span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="kn">from</span> <span class="nn">fastapi</span> <span class="kn">import</span> <span class="n">WebSocket</span>
+
+<span class="k">class</span> <span class="nc">OptimizedWebSocketManager</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">active_connections</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">WebSocket</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">message_queue</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">Queue</span><span class="p">(</span><span class="n">maxsize</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">100</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">batch_timeout</span> <span class="o">=</span> <span class="mf">0.1</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">broadcast_batch</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Batch messages for better performance&quot;&quot;&quot;</span>
+        <span class="n">messages</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># Collect messages with timeout</span>
+            <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">messages</span><span class="p">)</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span><span class="p">:</span>
+                <span class="n">message</span> <span class="o">=</span> <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">wait_for</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">message_queue</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
+                    <span class="n">timeout</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">batch_timeout</span>
+                <span class="p">)</span>
+                <span class="n">messages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">TimeoutError</span><span class="p">:</span>
+            <span class="k">pass</span>
+
+        <span class="k">if</span> <span class="n">messages</span><span class="p">:</span>
+            <span class="c1"># Send batched messages</span>
+            <span class="n">batch_message</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;batch&quot;</span><span class="p">,</span> <span class="s2">&quot;messages&quot;</span><span class="p">:</span> <span class="n">messages</span><span class="p">}</span>
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">broadcast</span><span class="p">(</span><span class="n">batch_message</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="monitoring-and-profiling">Monitoring and Profiling<a class="headerlink" href="#monitoring-and-profiling" title="Permanent link">&para;</a></h2>
+<h3 id="performance-monitoring-setup">Performance Monitoring Setup<a class="headerlink" href="#performance-monitoring-setup" title="Permanent link">&para;</a></h3>
+<h4 id="prometheus-metrics">Prometheus Metrics<a class="headerlink" href="#prometheus-metrics" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">prometheus_client</span> <span class="kn">import</span> <span class="n">Counter</span><span class="p">,</span> <span class="n">Histogram</span><span class="p">,</span> <span class="n">Gauge</span><span class="p">,</span> <span class="n">start_http_server</span>
+
+<span class="c1"># Define performance metrics</span>
+<span class="n">download_duration</span> <span class="o">=</span> <span class="n">Histogram</span><span class="p">(</span><span class="s1">&#39;model_download_duration_seconds&#39;</span><span class="p">,</span> <span class="s1">&#39;Time spent downloading models&#39;</span><span class="p">)</span>
+<span class="n">download_success</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="s1">&#39;model_download_success_total&#39;</span><span class="p">,</span> <span class="s1">&#39;Successful model downloads&#39;</span><span class="p">)</span>
+<span class="n">download_failures</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="s1">&#39;model_download_failures_total&#39;</span><span class="p">,</span> <span class="s1">&#39;Failed model downloads&#39;</span><span class="p">)</span>
+<span class="n">active_downloads</span> <span class="o">=</span> <span class="n">Gauge</span><span class="p">(</span><span class="s1">&#39;model_active_downloads&#39;</span><span class="p">,</span> <span class="s1">&#39;Number of active downloads&#39;</span><span class="p">)</span>
+<span class="n">storage_usage</span> <span class="o">=</span> <span class="n">Gauge</span><span class="p">(</span><span class="s1">&#39;model_storage_usage_bytes&#39;</span><span class="p">,</span> <span class="s1">&#39;Storage usage in bytes&#39;</span><span class="p">)</span>
+<span class="n">api_response_time</span> <span class="o">=</span> <span class="n">Histogram</span><span class="p">(</span><span class="s1">&#39;api_response_time_seconds&#39;</span><span class="p">,</span> <span class="s1">&#39;API response time&#39;</span><span class="p">)</span>
+
+<span class="c1"># Start metrics server</span>
+<span class="n">start_http_server</span><span class="p">(</span><span class="mi">9090</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="custom-performance-dashboard">Custom Performance Dashboard<a class="headerlink" href="#custom-performance-dashboard" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Performance monitoring endpoint</span>
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/api/v1/admin/performance/dashboard&quot;</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">get_performance_dashboard</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;downloads&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;active_count&quot;</span><span class="p">:</span> <span class="k">await</span> <span class="n">get_active_downloads_count</span><span class="p">(),</span>
+            <span class="s2">&quot;average_speed_mbps&quot;</span><span class="p">:</span> <span class="k">await</span> <span class="n">get_average_download_speed</span><span class="p">(),</span>
+            <span class="s2">&quot;success_rate&quot;</span><span class="p">:</span> <span class="k">await</span> <span class="n">get_download_success_rate</span><span class="p">(),</span>
+            <span class="s2">&quot;queue_length&quot;</span><span class="p">:</span> <span class="k">await</span> <span class="n">get_download_queue_length</span><span class="p">()</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;storage&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;total_usage_gb&quot;</span><span class="p">:</span> <span class="k">await</span> <span class="n">get_total_storage_usage</span><span class="p">(),</span>
+            <span class="s2">&quot;cache_hit_rate&quot;</span><span class="p">:</span> <span class="k">await</span> <span class="n">get_cache_hit_rate</span><span class="p">(),</span>
+            <span class="s2">&quot;io_throughput_mbps&quot;</span><span class="p">:</span> <span class="k">await</span> <span class="n">get_io_throughput</span><span class="p">()</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;api&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;requests_per_second&quot;</span><span class="p">:</span> <span class="k">await</span> <span class="n">get_api_rps</span><span class="p">(),</span>
+            <span class="s2">&quot;average_response_time_ms&quot;</span><span class="p">:</span> <span class="k">await</span> <span class="n">get_average_response_time</span><span class="p">(),</span>
+            <span class="s2">&quot;error_rate&quot;</span><span class="p">:</span> <span class="k">await</span> <span class="n">get_api_error_rate</span><span class="p">()</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;system&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;cpu_usage_percent&quot;</span><span class="p">:</span> <span class="k">await</span> <span class="n">get_cpu_usage</span><span class="p">(),</span>
+            <span class="s2">&quot;memory_usage_percent&quot;</span><span class="p">:</span> <span class="k">await</span> <span class="n">get_memory_usage</span><span class="p">(),</span>
+            <span class="s2">&quot;network_usage_mbps&quot;</span><span class="p">:</span> <span class="k">await</span> <span class="n">get_network_usage</span><span class="p">()</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</code></pre></div>
+<h3 id="profiling-tools">Profiling Tools<a class="headerlink" href="#profiling-tools" title="Permanent link">&para;</a></h3>
+<h4 id="python-profiling">Python Profiling<a class="headerlink" href="#python-profiling" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">cProfile</span>
+<span class="kn">import</span> <span class="nn">pstats</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">wraps</span>
+
+<span class="k">def</span> <span class="nf">profile_performance</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">profiler</span> <span class="o">=</span> <span class="n">cProfile</span><span class="o">.</span><span class="n">Profile</span><span class="p">()</span>
+        <span class="n">profiler</span><span class="o">.</span><span class="n">enable</span><span class="p">()</span>
+
+        <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="n">profiler</span><span class="o">.</span><span class="n">disable</span><span class="p">()</span>
+        <span class="n">stats</span> <span class="o">=</span> <span class="n">pstats</span><span class="o">.</span><span class="n">Stats</span><span class="p">(</span><span class="n">profiler</span><span class="p">)</span>
+        <span class="n">stats</span><span class="o">.</span><span class="n">sort_stats</span><span class="p">(</span><span class="s1">&#39;cumulative&#39;</span><span class="p">)</span>
+        <span class="n">stats</span><span class="o">.</span><span class="n">print_stats</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>  <span class="c1"># Top 20 functions</span>
+
+        <span class="k">return</span> <span class="n">result</span>
+    <span class="k">return</span> <span class="n">wrapper</span>
+
+<span class="c1"># Use on critical functions</span>
+<span class="nd">@profile_performance</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">download_model</span><span class="p">(</span><span class="n">model_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="c1"># Download implementation</span>
+    <span class="k">pass</span>
+</code></pre></div>
+<h4 id="memory-profiling">Memory Profiling<a class="headerlink" href="#memory-profiling" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">memory_profiler</span> <span class="kn">import</span> <span class="n">profile</span>
+<span class="kn">import</span> <span class="nn">tracemalloc</span>
+
+<span class="c1"># Memory profiling decorator</span>
+<span class="nd">@profile</span>
+<span class="k">def</span> <span class="nf">memory_intensive_function</span><span class="p">():</span>
+    <span class="c1"># Function implementation</span>
+    <span class="k">pass</span>
+
+<span class="c1"># Tracemalloc for memory tracking</span>
+<span class="k">def</span> <span class="nf">start_memory_tracking</span><span class="p">():</span>
+    <span class="n">tracemalloc</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">get_memory_usage</span><span class="p">():</span>
+    <span class="n">current</span><span class="p">,</span> <span class="n">peak</span> <span class="o">=</span> <span class="n">tracemalloc</span><span class="o">.</span><span class="n">get_traced_memory</span><span class="p">()</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;current_mb&quot;</span><span class="p">:</span> <span class="n">current</span> <span class="o">/</span> <span class="mi">1024</span> <span class="o">/</span> <span class="mi">1024</span><span class="p">,</span>
+        <span class="s2">&quot;peak_mb&quot;</span><span class="p">:</span> <span class="n">peak</span> <span class="o">/</span> <span class="mi">1024</span> <span class="o">/</span> <span class="mi">1024</span>
+    <span class="p">}</span>
+</code></pre></div>
+<h2 id="performance-testing">Performance Testing<a class="headerlink" href="#performance-testing" title="Permanent link">&para;</a></h2>
+<h3 id="load-testing">Load Testing<a class="headerlink" href="#load-testing" title="Permanent link">&para;</a></h3>
+<h4 id="download-performance-testing">Download Performance Testing<a class="headerlink" href="#download-performance-testing" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="kn">import</span> <span class="nn">aiohttp</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">test_concurrent_downloads</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Test concurrent download performance&quot;&quot;&quot;</span>
+    <span class="n">model_ids</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;test-model-</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+
+    <span class="k">async</span> <span class="k">with</span> <span class="n">aiohttp</span><span class="o">.</span><span class="n">ClientSession</span><span class="p">()</span> <span class="k">as</span> <span class="n">session</span><span class="p">:</span>
+        <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+        <span class="n">tasks</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">model_id</span> <span class="ow">in</span> <span class="n">model_ids</span><span class="p">:</span>
+            <span class="n">task</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span>
+                <span class="n">start_download</span><span class="p">(</span><span class="n">session</span><span class="p">,</span> <span class="n">model_id</span><span class="p">)</span>
+            <span class="p">)</span>
+            <span class="n">tasks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
+
+        <span class="n">results</span> <span class="o">=</span> <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="o">*</span><span class="n">tasks</span><span class="p">)</span>
+
+        <span class="n">end_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="n">total_time</span> <span class="o">=</span> <span class="n">end_time</span> <span class="o">-</span> <span class="n">start_time</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Downloaded </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">model_ids</span><span class="p">)</span><span class="si">}</span><span class="s2"> models in </span><span class="si">{</span><span class="n">total_time</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> seconds&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Average time per model: </span><span class="si">{</span><span class="n">total_time</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">model_ids</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> seconds&quot;</span><span class="p">)</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">start_download</span><span class="p">(</span><span class="n">session</span><span class="p">,</span> <span class="n">model_id</span><span class="p">):</span>
+    <span class="k">async</span> <span class="k">with</span> <span class="n">session</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+        <span class="s1">&#39;http://localhost:8000/api/v1/models/download/manage&#39;</span><span class="p">,</span>
+        <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;model_id&#39;</span><span class="p">:</span> <span class="n">model_id</span><span class="p">,</span> <span class="s1">&#39;action&#39;</span><span class="p">:</span> <span class="s1">&#39;start&#39;</span><span class="p">}</span>
+    <span class="p">)</span> <span class="k">as</span> <span class="n">response</span><span class="p">:</span>
+        <span class="k">return</span> <span class="k">await</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+</code></pre></div>
+<h4 id="api-load-testing">API Load Testing<a class="headerlink" href="#api-load-testing" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Use Apache Bench for API load testing</span>
+ab<span class="w"> </span>-n<span class="w"> </span><span class="m">1000</span><span class="w"> </span>-c<span class="w"> </span><span class="m">10</span><span class="w"> </span>http://localhost:8000/api/v1/models/status/detailed
+
+<span class="c1"># Use wrk for more advanced testing</span>
+wrk<span class="w"> </span>-t12<span class="w"> </span>-c400<span class="w"> </span>-d30s<span class="w"> </span>http://localhost:8000/api/v1/models/status/detailed
+
+<span class="c1"># Use locust for complex scenarios</span>
+pip<span class="w"> </span>install<span class="w"> </span>locust
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># locustfile.py</span>
+<span class="kn">from</span> <span class="nn">locust</span> <span class="kn">import</span> <span class="n">HttpUser</span><span class="p">,</span> <span class="n">task</span><span class="p">,</span> <span class="n">between</span>
+
+<span class="k">class</span> <span class="nc">ModelAvailabilityUser</span><span class="p">(</span><span class="n">HttpUser</span><span class="p">):</span>
+    <span class="n">wait_time</span> <span class="o">=</span> <span class="n">between</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+    <span class="nd">@task</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">get_model_status</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/api/v1/models/status/detailed&quot;</span><span class="p">)</span>
+
+    <span class="nd">@task</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">start_download</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/api/v1/models/download/manage&quot;</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="p">{</span>
+            <span class="s2">&quot;model_id&quot;</span><span class="p">:</span> <span class="s2">&quot;test-model&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;start&quot;</span>
+        <span class="p">})</span>
+
+    <span class="nd">@task</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">get_analytics</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/api/v1/models/analytics&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="benchmark-scripts">Benchmark Scripts<a class="headerlink" href="#benchmark-scripts" title="Permanent link">&para;</a></h3>
+<h4 id="comprehensive-benchmark">Comprehensive Benchmark<a class="headerlink" href="#comprehensive-benchmark" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/usr/bin/env python3</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Comprehensive performance benchmark for Enhanced Model Availability</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">statistics</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Dict</span>
+
+<span class="k">class</span> <span class="nc">PerformanceBenchmark</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">results</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">run_all_benchmarks</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Run all performance benchmarks&quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Starting comprehensive performance benchmark...&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Download performance</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;downloads&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">benchmark_downloads</span><span class="p">()</span>
+
+        <span class="c1"># API performance</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;api&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">benchmark_api</span><span class="p">()</span>
+
+        <span class="c1"># Storage performance</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;storage&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">benchmark_storage</span><span class="p">()</span>
+
+        <span class="c1"># System performance</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;system&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">benchmark_system</span><span class="p">()</span>
+
+        <span class="c1"># Generate report</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">generate_report</span><span class="p">()</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">benchmark_downloads</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Benchmark download performance&quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Benchmarking download performance...&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Test single download</span>
+        <span class="n">single_download_time</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">time_single_download</span><span class="p">()</span>
+
+        <span class="c1"># Test concurrent downloads</span>
+        <span class="n">concurrent_times</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">time_concurrent_downloads</span><span class="p">()</span>
+
+        <span class="c1"># Test retry mechanism</span>
+        <span class="n">retry_performance</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">test_retry_performance</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s1">&#39;single_download_time&#39;</span><span class="p">:</span> <span class="n">single_download_time</span><span class="p">,</span>
+            <span class="s1">&#39;concurrent_download_times&#39;</span><span class="p">:</span> <span class="n">concurrent_times</span><span class="p">,</span>
+            <span class="s1">&#39;retry_performance&#39;</span><span class="p">:</span> <span class="n">retry_performance</span>
+        <span class="p">}</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">benchmark_api</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Benchmark API performance&quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Benchmarking API performance...&quot;</span><span class="p">)</span>
+
+        <span class="n">endpoints</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s1">&#39;/api/v1/models/status/detailed&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;/api/v1/models/health&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;/api/v1/models/analytics&#39;</span>
+        <span class="p">]</span>
+
+        <span class="n">results</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">endpoint</span> <span class="ow">in</span> <span class="n">endpoints</span><span class="p">:</span>
+            <span class="n">times</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">time_api_endpoint</span><span class="p">(</span><span class="n">endpoint</span><span class="p">,</span> <span class="n">requests</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+            <span class="n">results</span><span class="p">[</span><span class="n">endpoint</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s1">&#39;average_ms&#39;</span><span class="p">:</span> <span class="n">statistics</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">times</span><span class="p">),</span>
+                <span class="s1">&#39;median_ms&#39;</span><span class="p">:</span> <span class="n">statistics</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">times</span><span class="p">),</span>
+                <span class="s1">&#39;p95_ms&#39;</span><span class="p">:</span> <span class="n">statistics</span><span class="o">.</span><span class="n">quantiles</span><span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">20</span><span class="p">)[</span><span class="mi">18</span><span class="p">],</span>  <span class="c1"># 95th percentile</span>
+                <span class="s1">&#39;min_ms&#39;</span><span class="p">:</span> <span class="nb">min</span><span class="p">(</span><span class="n">times</span><span class="p">),</span>
+                <span class="s1">&#39;max_ms&#39;</span><span class="p">:</span> <span class="nb">max</span><span class="p">(</span><span class="n">times</span><span class="p">)</span>
+            <span class="p">}</span>
+
+        <span class="k">return</span> <span class="n">results</span>
+
+    <span class="k">def</span> <span class="nf">generate_report</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generate performance report&quot;&quot;&quot;</span>
+        <span class="n">report</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;timestamp&#39;</span><span class="p">:</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">(),</span>
+            <span class="s1">&#39;results&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">results</span><span class="p">,</span>
+            <span class="s1">&#39;recommendations&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">generate_recommendations</span><span class="p">()</span>
+        <span class="p">}</span>
+
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;performance_report.json&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">report</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Performance report generated: performance_report.json&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">generate_recommendations</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generate performance recommendations&quot;&quot;&quot;</span>
+        <span class="n">recommendations</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c1"># Analyze results and generate recommendations</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;api&#39;</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;/api/v1/models/status/detailed&#39;</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;average_ms&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">:</span>
+            <span class="n">recommendations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Consider enabling response caching for model status endpoint&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;downloads&#39;</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;concurrent_download_times&#39;</span><span class="p">,</span> <span class="p">[]):</span>
+            <span class="n">avg_concurrent</span> <span class="o">=</span> <span class="n">statistics</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;downloads&#39;</span><span class="p">][</span><span class="s1">&#39;concurrent_download_times&#39;</span><span class="p">])</span>
+            <span class="k">if</span> <span class="n">avg_concurrent</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="s1">&#39;downloads&#39;</span><span class="p">][</span><span class="s1">&#39;single_download_time&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="n">recommendations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Consider reducing concurrent downloads or increasing bandwidth&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">recommendations</span>
+
+<span class="c1"># Run benchmark</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">benchmark</span> <span class="o">=</span> <span class="n">PerformanceBenchmark</span><span class="p">()</span>
+    <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">benchmark</span><span class="o">.</span><span class="n">run_all_benchmarks</span><span class="p">())</span>
+</code></pre></div>
+<h2 id="optimization-recommendations-by-use-case">Optimization Recommendations by Use Case<a class="headerlink" href="#optimization-recommendations-by-use-case" title="Permanent link">&para;</a></h2>
+<h3 id="high-throughput-scenario">High-Throughput Scenario<a class="headerlink" href="#high-throughput-scenario" title="Permanent link">&para;</a></h3>
+<p>For systems with high download volume:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;optimization_profile&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;high_throughput&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;settings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;downloads&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;max_concurrent_downloads&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;chunk_size_mb&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;connection_pool_size&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;keep_alive_enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;storage&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;use_ssd_for_hot_tier&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;cache_size_gb&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;async_writes&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;worker_processes&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;io_threads&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;memory_allocation_gb&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="low-latency-scenario">Low-Latency Scenario<a class="headerlink" href="#low-latency-scenario" title="Permanent link">&para;</a></h3>
+<p>For systems requiring fast response times:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;optimization_profile&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;low_latency&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;settings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;api&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;response_caching&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;cache_ttl_seconds&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;preload_frequently_used&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;storage&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;nvme_storage&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;memory_mapped_files&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;preload_metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;cpu_affinity&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;high_priority_processes&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;disable_swap&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="resource-constrained-scenario">Resource-Constrained Scenario<a class="headerlink" href="#resource-constrained-scenario" title="Permanent link">&para;</a></h3>
+<p>For systems with limited resources:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;optimization_profile&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;resource_constrained&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;settings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;downloads&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;max_concurrent_downloads&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;chunk_size_mb&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;bandwidth_limit_mbps&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;storage&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;aggressive_cleanup&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;compress_cache&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;minimal_metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;system&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;worker_processes&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;memory_allocation_gb&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;gc_aggressive&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="continuous-performance-optimization">Continuous Performance Optimization<a class="headerlink" href="#continuous-performance-optimization" title="Permanent link">&para;</a></h2>
+<h3 id="automated-performance-monitoring">Automated Performance Monitoring<a class="headerlink" href="#automated-performance-monitoring" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">ContinuousPerformanceMonitor</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">metrics_history</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">optimization_rules</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_optimization_rules</span><span class="p">()</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">monitor_and_optimize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Continuously monitor and optimize performance&quot;&quot;&quot;</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="c1"># Collect current metrics</span>
+            <span class="n">metrics</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">collect_metrics</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">metrics_history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">metrics</span><span class="p">)</span>
+
+            <span class="c1"># Analyze trends</span>
+            <span class="n">trends</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">analyze_trends</span><span class="p">()</span>
+
+            <span class="c1"># Apply optimizations if needed</span>
+            <span class="n">optimizations</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">suggest_optimizations</span><span class="p">(</span><span class="n">trends</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">optimizations</span><span class="p">:</span>
+                <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">apply_optimizations</span><span class="p">(</span><span class="n">optimizations</span><span class="p">)</span>
+
+            <span class="c1"># Wait before next check</span>
+            <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">300</span><span class="p">)</span>  <span class="c1"># 5 minutes</span>
+
+    <span class="k">def</span> <span class="nf">analyze_trends</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Analyze performance trends&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">metrics_history</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">{}</span>
+
+        <span class="n">recent_metrics</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">metrics_history</span><span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">:]</span>
+        <span class="n">trends</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="c1"># Analyze download speed trend</span>
+        <span class="n">download_speeds</span> <span class="o">=</span> <span class="p">[</span><span class="n">m</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;download_speed&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">recent_metrics</span><span class="p">]</span>
+        <span class="n">trends</span><span class="p">[</span><span class="s1">&#39;download_speed_declining&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_declining_trend</span><span class="p">(</span><span class="n">download_speeds</span><span class="p">)</span>
+
+        <span class="c1"># Analyze API response time trend</span>
+        <span class="n">api_times</span> <span class="o">=</span> <span class="p">[</span><span class="n">m</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;api_response_time&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">recent_metrics</span><span class="p">]</span>
+        <span class="n">trends</span><span class="p">[</span><span class="s1">&#39;api_response_time_increasing&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_increasing_trend</span><span class="p">(</span><span class="n">api_times</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">trends</span>
+
+    <span class="k">def</span> <span class="nf">suggest_optimizations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">trends</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Suggest optimizations based on trends&quot;&quot;&quot;</span>
+        <span class="n">optimizations</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">if</span> <span class="n">trends</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;download_speed_declining&#39;</span><span class="p">):</span>
+            <span class="n">optimizations</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+                <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;reduce_concurrent_downloads&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;reason&#39;</span><span class="p">:</span> <span class="s1">&#39;Download speed declining&#39;</span>
+            <span class="p">})</span>
+
+        <span class="k">if</span> <span class="n">trends</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;api_response_time_increasing&#39;</span><span class="p">):</span>
+            <span class="n">optimizations</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+                <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;enable_response_caching&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;reason&#39;</span><span class="p">:</span> <span class="s1">&#39;API response time increasing&#39;</span>
+            <span class="p">})</span>
+
+        <span class="k">return</span> <span class="n">optimizations</span>
+</code></pre></div>
+<h3 id="performance-regression-detection">Performance Regression Detection<a class="headerlink" href="#performance-regression-detection" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">detect_performance_regression</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Detect performance regressions&quot;&quot;&quot;</span>
+    <span class="n">current_metrics</span> <span class="o">=</span> <span class="n">get_current_performance_metrics</span><span class="p">()</span>
+    <span class="n">baseline_metrics</span> <span class="o">=</span> <span class="n">load_baseline_metrics</span><span class="p">()</span>
+
+    <span class="n">regressions</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">metric</span><span class="p">,</span> <span class="n">current_value</span> <span class="ow">in</span> <span class="n">current_metrics</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">baseline_value</span> <span class="o">=</span> <span class="n">baseline_metrics</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">metric</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">baseline_value</span><span class="p">:</span>
+            <span class="c1"># Check for significant degradation (&gt;20%)</span>
+            <span class="n">degradation</span> <span class="o">=</span> <span class="p">(</span><span class="n">current_value</span> <span class="o">-</span> <span class="n">baseline_value</span><span class="p">)</span> <span class="o">/</span> <span class="n">baseline_value</span>
+            <span class="k">if</span> <span class="n">degradation</span> <span class="o">&gt;</span> <span class="mf">0.2</span><span class="p">:</span>
+                <span class="n">regressions</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+                    <span class="s1">&#39;metric&#39;</span><span class="p">:</span> <span class="n">metric</span><span class="p">,</span>
+                    <span class="s1">&#39;current&#39;</span><span class="p">:</span> <span class="n">current_value</span><span class="p">,</span>
+                    <span class="s1">&#39;baseline&#39;</span><span class="p">:</span> <span class="n">baseline_value</span><span class="p">,</span>
+                    <span class="s1">&#39;degradation_percent&#39;</span><span class="p">:</span> <span class="n">degradation</span> <span class="o">*</span> <span class="mi">100</span>
+                <span class="p">})</span>
+
+    <span class="k">if</span> <span class="n">regressions</span><span class="p">:</span>
+        <span class="n">send_performance_alert</span><span class="p">(</span><span class="n">regressions</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">regressions</span>
+</code></pre></div>
+<p>This comprehensive performance tuning guide provides detailed strategies for optimizing every aspect of the Enhanced Model Availability system, from network and storage optimization to application-level tuning and continuous monitoring.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

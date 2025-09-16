@@ -1,0 +1,1429 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="WAN2.2 Video Generation System Documentation">
+      
+      
+      
+        <link rel="canonical" href="https://ramcana.github.io/wan/reference/documentation_validation_report/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>Documentation Validation Report - WAN22 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e53b48f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#documentation-validation-report" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="WAN22 Documentation" class="md-header__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            WAN22 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Documentation Validation Report
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../WAN22_System_Capabilities_Report/" class="md-tabs__link">
+          
+  
+  
+  System Overview
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../model-orchestrator/requirements/" class="md-tabs__link">
+          
+  
+  
+  Model Orchestrator
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../config/models.toml" class="md-tabs__link">
+          
+  
+  
+  Configuration
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="WAN22 Documentation" class="md-nav__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    WAN22 Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    System Overview
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            System Overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../WAN22_System_Capabilities_Report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Capabilities Report
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Model Orchestrator
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Model Orchestrator
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Requirements
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/tasks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tasks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Configuration
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Configuration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Models Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models_simple.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simple Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#metrics-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metrics Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#issues-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Issues Summary
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Issues Summary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#outdated-issues-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Outdated Issues (6)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#missing-issues-24" class="md-nav__link">
+    <span class="md-ellipsis">
+      Missing Issues (24)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accessibility-issues-647" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accessibility Issues (647)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#broken-links" class="md-nav__link">
+    <span class="md-ellipsis">
+      Broken Links
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Broken Links">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#docschangelogmd" class="md-nav__link">
+    <span class="md-ellipsis">
+      docs\CHANGELOG.md
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docstask_15_ui_integration_summarymd" class="md-nav__link">
+    <span class="md-ellipsis">
+      docs\TASK_15_UI_INTEGRATION_SUMMARY.md
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docstemplatestroubleshooting-templatemd" class="md-nav__link">
+    <span class="md-ellipsis">
+      docs\templates\troubleshooting-template.md
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#toolsdoc-generatorreadmemd" class="md-nav__link">
+    <span class="md-ellipsis">
+      tools\doc-generator\README.md
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="documentation-validation-report">Documentation Validation Report<a class="headerlink" href="#documentation-validation-report" title="Permanent link">&para;</a></h1>
+<p><strong>Validation Date:</strong> 2025-09-02 11:42:25
+<strong>Project:</strong> E:\wan</p>
+<h2 id="metrics-overview">Metrics Overview<a class="headerlink" href="#metrics-overview" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Total Documentation Files:</strong> 155</li>
+<li><strong>Total Links Checked:</strong> 4925</li>
+<li><strong>Broken Links:</strong> 4731</li>
+<li><strong>Outdated Files:</strong> 6</li>
+<li><strong>Missing Components:</strong> 24</li>
+<li><strong>Accessibility Issues:</strong> 647</li>
+<li><strong>Coverage:</strong> -20.0%</li>
+<li><strong>Freshness Score:</strong> 96.1%</li>
+</ul>
+<h2 id="issues-summary">Issues Summary<a class="headerlink" href="#issues-summary" title="Permanent link">&para;</a></h2>
+<h3 id="outdated-issues-6">Outdated Issues (6)<a class="headerlink" href="#outdated-issues-6" title="Permanent link">&para;</a></h3>
+<ul>
+<li>🔴 <strong>local_testing_framework\examples\README.md</strong>: File is 33 days old (threshold: 30 days)</li>
+<li><em>Suggestion: Review and update this critical documentation</em></li>
+<li>🔴 <strong>local_installation\scripts\README_DEPENDENCY_MANAGEMENT.md</strong>: File is 31 days old (threshold: 30 days)</li>
+<li><em>Suggestion: Review and update this critical documentation</em></li>
+<li>🔴 <strong>local_installation\README.md</strong>: File is 31 days old (threshold: 30 days)</li>
+<li><em>Suggestion: Review and update this critical documentation</em></li>
+<li>🔴 <strong>local_installation\tests\README.md</strong>: File is 31 days old (threshold: 30 days)</li>
+<li><em>Suggestion: Review and update this critical documentation</em></li>
+<li>🔴 <strong>local_installation\WAN22-Installation-Package\scripts\README_DEPENDENCY_MANAGEMENT.md</strong>: File is 31 days old (threshold: 30 days)</li>
+<li><em>Suggestion: Review and update this critical documentation</em></li>
+<li>🔴 <strong>local_installation\WAN22-Installation-Package\README.md</strong>: File is 31 days old (threshold: 30 days)</li>
+<li><em>Suggestion: Review and update this critical documentation</em></li>
+</ul>
+<h3 id="missing-issues-24">Missing Issues (24)<a class="headerlink" href="#missing-issues-24" title="Permanent link">&para;</a></h3>
+<ul>
+<li>🟡 <strong>backend\scripts\deployment</strong>: Component 'backend.scripts.deployment' lacks documentation</li>
+<li><em>Suggestion: Create documentation for this module</em></li>
+<li>🟡 <strong>backend\tests</strong>: Component 'backend.tests' lacks documentation</li>
+<li><em>Suggestion: Create documentation for this module</em></li>
+<li>🟡 <strong>core\interfaces</strong>: Component 'core.interfaces' lacks documentation</li>
+<li><em>Suggestion: Create documentation for this package</em></li>
+<li>🟡 <strong>core\models</strong>: Component 'core.models' lacks documentation</li>
+<li><em>Suggestion: Create documentation for this package</em></li>
+<li>🟡 <strong>core\services</strong>: Component 'core.services' lacks documentation</li>
+<li><em>Suggestion: Create documentation for this package</em></li>
+<li>🟡 <strong>infrastructure\config</strong>: Component 'infrastructure.config' lacks documentation</li>
+<li><em>Suggestion: Create documentation for this package</em></li>
+<li>🟡 <strong>infrastructure\hardware</strong>: Component 'infrastructure.hardware' lacks documentation</li>
+<li><em>Suggestion: Create documentation for this package</em></li>
+<li>🟡 <strong>local_installation\scripts</strong>: Component 'local_installation.scripts' lacks documentation</li>
+<li><em>Suggestion: Create documentation for this package</em></li>
+<li>🟡 <strong>local_installation\tests</strong>: Component 'local_installation.tests' lacks documentation</li>
+<li><em>Suggestion: Create documentation for this package</em></li>
+<li>🟡 <strong>local_installation\WAN22-Installation-Package\scripts</strong>: Component 'local_installation.WAN22-Installation-Package.scripts' lacks documentation</li>
+<li><em>Suggestion: Create documentation for this package</em></li>
+<li>... and 14 more issues</li>
+</ul>
+<h3 id="accessibility-issues-647">Accessibility Issues (647)<a class="headerlink" href="#accessibility-issues-647" title="Permanent link">&para;</a></h3>
+<ul>
+<li>🟢 <strong>docs\CHANGELOG.md</strong>: Long document missing table of contents</li>
+<li><em>Suggestion: Improve document structure and accessibility</em></li>
+<li>🟢 <strong>docs\TASK_15_UI_INTEGRATION_SUMMARY.md</strong>: Long document missing table of contents</li>
+<li><em>Suggestion: Improve document structure and accessibility</em></li>
+<li>🟢 <strong>docs\TASK_15_UI_INTEGRATION_SUMMARY.md</strong>: 3 code blocks missing language specification</li>
+<li><em>Suggestion: Improve document structure and accessibility</em></li>
+<li>🟢 <strong>docs\templates\troubleshooting-template.md</strong>: Skipped heading levels (affects navigation)</li>
+<li><em>Suggestion: Improve document structure and accessibility</em></li>
+<li>🟢 <strong>docs\templates\troubleshooting-template.md</strong>: Skipped heading levels (affects navigation)</li>
+<li><em>Suggestion: Improve document structure and accessibility</em></li>
+<li>🟢 <strong>docs\templates\troubleshooting-template.md</strong>: Long document missing table of contents</li>
+<li><em>Suggestion: Improve document structure and accessibility</em></li>
+<li>🟢 <strong>docs\templates\troubleshooting-template.md</strong>: 10 code blocks missing language specification</li>
+<li><em>Suggestion: Improve document structure and accessibility</em></li>
+<li>🟢 <strong>tools\doc-generator\README.md</strong>: Skipped heading levels (affects navigation)</li>
+<li><em>Suggestion: Improve document structure and accessibility</em></li>
+<li>🟢 <strong>tools\doc-generator\README.md</strong>: Long document missing table of contents</li>
+<li><em>Suggestion: Improve document structure and accessibility</em></li>
+<li>🟢 <strong>tools\doc-generator\README.md</strong>: 23 code blocks missing language specification</li>
+<li><em>Suggestion: Improve document structure and accessibility</em></li>
+<li>... and 637 more issues</li>
+</ul>
+<h2 id="broken-links">Broken Links<a class="headerlink" href="#broken-links" title="Permanent link">&para;</a></h2>
+<h3 id="docschangelogmd">docs\CHANGELOG.md<a class="headerlink" href="#docschangelogmd" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>docs/USER_GUIDE.md</code> (internal)</li>
+<li>Error: File not found: E:\wan\docs\docs\USER_GUIDE.md</li>
+<li><code>docs/DEVELOPER_GUIDE.md</code> (internal)</li>
+<li>Error: File not found: E:\wan\docs\docs\DEVELOPER_GUIDE.md</li>
+<li><code>docs/TROUBLESHOOTING.md</code> (internal)</li>
+<li>Error: File not found: E:\wan\docs\docs\TROUBLESHOOTING.md</li>
+<li><code>validate-env</code> (internal)</li>
+<li>Error: File not found: E:\wan\docs\validate-env</li>
+<li><code>test-performance</code> (internal)</li>
+<li>Error: File not found: E:\wan\docs\test-performance</li>
+<li>... and 8 more broken links</li>
+</ul>
+<h3 id="docstask_15_ui_integration_summarymd">docs\TASK_15_UI_INTEGRATION_SUMMARY.md<a class="headerlink" href="#docstask_15_ui_integration_summarymd" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>get_compatibility_status_for_ui()</code> (internal)</li>
+<li>Error: File not found: E:\wan\docs\get_compatibility_status_for_ui()</li>
+<li><code>get_optimization_status_for_ui()</code> (internal)</li>
+<li>Error: File not found: E:\wan\docs\get_optimization_status_for_ui()</li>
+<li><code>apply_optimization_recommendations()</code> (internal)</li>
+<li>Error: File not found: E:\wan\docs\apply_optimization_recommendations()</li>
+<li><code>check_model_compatibility_for_ui()</code> (internal)</li>
+<li>Error: File not found: E:\wan\docs\check_model_compatibility_for_ui()</li>
+<li><code>get_model_loading_progress_info()</code> (internal)</li>
+<li>Error: File not found: E:\wan\docs\get_model_loading_progress_info()</li>
+<li>... and 29 more broken links</li>
+</ul>
+<h3 id="docstemplatestroubleshooting-templatemd">docs\templates\troubleshooting-template.md<a class="headerlink" href="#docstemplatestroubleshooting-templatemd" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>../user-guide/installation.md</code> (internal)</li>
+<li>Error: File not found: E:\wan\docs\user-guide\installation.md</li>
+<li><code>../user-guide/configuration.md</code> (internal)</li>
+<li>Error: File not found: E:\wan\docs\user-guide\configuration.md</li>
+<li><code>../reference/system-requirements.md</code> (internal)</li>
+<li>Error: File not found: E:\wan\docs\reference\system-requirements.md</li>
+<li><code>bash
+   # Command to check system status
+   python scripts/health_check.py</code> (internal)</li>
+<li>Error: File not found: E:\wan\docs\templates\bash
+   # Command to check system status
+   python scripts\health_check.py</li>
+<li><code>2. **Verify Configuration**</code> (internal)</li>
+<li>Error: File not found: E:\wan\docs\templates\2. <strong>Verify Configuration</strong></li>
+<li>... and 20 more broken links</li>
+</ul>
+<h3 id="toolsdoc-generatorreadmemd">tools\doc-generator\README.md<a class="headerlink" href="#toolsdoc-generatorreadmemd" title="Permanent link">&para;</a></h3>
+<ul>
+<li>`bash</li>
+</ul>
+<h1 id="install-dependencies-and-set-up-everything">Install dependencies and set up everything<a class="headerlink" href="#install-dependencies-and-set-up-everything" title="Permanent link">&para;</a></h1>
+<p>python tools/doc-generator/cli.py all</p>
+<h1 id="start-development-server">Start development server<a class="headerlink" href="#start-development-server" title="Permanent link">&para;</a></h1>
+<p>python tools/doc-generator/cli.py serve` (internal)
+  - Error: File not found: E:\wan\tools\doc-generator\bash</p>
+<h1 id="install-dependencies-and-set-up-everything_1">Install dependencies and set up everything<a class="headerlink" href="#install-dependencies-and-set-up-everything_1" title="Permanent link">&para;</a></h1>
+<p>python tools\doc-generator\cli.py all</p>
+<h1 id="start-development-server_1">Start development server<a class="headerlink" href="#start-development-server_1" title="Permanent link">&para;</a></h1>
+<p>python tools\doc-generator\cli.py serve
+- <code>Visit</code> (internal)
+  - Error: File not found: E:\wan\tools\doc-generator\Visit
+- `to view your documentation.</p>
+<h3 id="individual-commands-internal">Individual Commands` (internal)<a class="headerlink" href="#individual-commands-internal" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Error: File not found: E:\wan\tools\doc-generator\to view your documentation.</li>
+</ul>
+<h3 id="individual-commands">Individual Commands<a class="headerlink" href="#individual-commands" title="Permanent link">&para;</a></h3>
+<ul>
+<li>`bash</li>
+</ul>
+<h1 id="generate-consolidated-documentation">Generate consolidated documentation<a class="headerlink" href="#generate-consolidated-documentation" title="Permanent link">&para;</a></h1>
+<p>python tools/doc-generator/cli.py generate --generate-api</p>
+<h1 id="validate-documentation">Validate documentation<a class="headerlink" href="#validate-documentation" title="Permanent link">&para;</a></h1>
+<p>python tools/doc-generator/cli.py validate --output report.html --format html</p>
+<h1 id="start-documentation-server">Start documentation server<a class="headerlink" href="#start-documentation-server" title="Permanent link">&para;</a></h1>
+<p>python tools/doc-generator/cli.py serve --setup</p>
+<h1 id="search-documentation">Search documentation<a class="headerlink" href="#search-documentation" title="Permanent link">&para;</a></h1>
+<p>python tools/doc-generator/cli.py search index
+python tools/doc-generator/cli.py search search --query "installation"` (internal)
+  - Error: File not found: E:\wan\tools\doc-generator\bash</p>
+<h1 id="generate-consolidated-documentation_1">Generate consolidated documentation<a class="headerlink" href="#generate-consolidated-documentation_1" title="Permanent link">&para;</a></h1>
+<p>python tools\doc-generator\cli.py generate --generate-api</p>
+<h1 id="validate-documentation_1">Validate documentation<a class="headerlink" href="#validate-documentation_1" title="Permanent link">&para;</a></h1>
+<p>python tools\doc-generator\cli.py validate --output report.html --format html</p>
+<h1 id="start-documentation-server_1">Start documentation server<a class="headerlink" href="#start-documentation-server_1" title="Permanent link">&para;</a></h1>
+<p>python tools\doc-generator\cli.py serve --setup</p>
+<h1 id="search-documentation_1">Search documentation<a class="headerlink" href="#search-documentation_1" title="Permanent link">&para;</a></h1>
+<p>python tools\doc-generator\cli.py search index
+python tools\doc-generator\cli.py search search --query "installation"
+- `## Tools Overview</p>
+<h3 id="1-documentation-generator-anchor">1. Documentation Generator (` (anchor)<a class="headerlink" href="#1-documentation-generator-anchor" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Error: Anchor '## Tools Overview</li>
+</ul>
+<h3 id="1-documentation-generator-not-found-in-file">1. Documentation Generator (' not found in file<a class="headerlink" href="#1-documentation-generator-not-found-in-file" title="Permanent link">&para;</a></h3>
+<ul>
+<li>... and 55 more broken links</li>
+</ul>
+<h3 id="docsdeploymentproduction-deployment-guidemd">docs\deployment\production-deployment-guide.md<a class="headerlink" href="#docsdeploymentproduction-deployment-guidemd" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>../reference/configuration-schema.md</code> (internal)</li>
+<li>Error: File not found: E:\wan\docs\reference\configuration-schema.md</li>
+<li><code>../api/health-api.md</code> (internal)</li>
+<li>Error: File not found: E:\wan\docs\api\health-api.md</li>
+<li><code>performance-guide.md</code> (internal)</li>
+<li>Error: File not found: E:\wan\docs\deployment\performance-guide.md</li>
+<li>`bash</li>
+</ul>
+<h1 id="core-dependencies">Core dependencies<a class="headerlink" href="#core-dependencies" title="Permanent link">&para;</a></h1>
+<p>pip install pytest&gt;=7.0.0
+pip install pyyaml&gt;=6.0
+pip install psutil&gt;=5.8.0
+pip install asyncio
+pip install pathlib</p>
+<h1 id="documentation-dependencies">Documentation dependencies<a class="headerlink" href="#documentation-dependencies" title="Permanent link">&para;</a></h1>
+<p>pip install mkdocs&gt;=1.4.0
+pip install mkdocs-material&gt;=8.0.0</p>
+<h1 id="optional-performance-dependencies">Optional performance dependencies<a class="headerlink" href="#optional-performance-dependencies" title="Permanent link">&para;</a></h1>
+<p>pip install uvloop  # For improved async performance on Linux/macOS` (internal)
+  - Error: File not found: E:\wan\docs\deployment\bash</p>
+<h1 id="core-dependencies_1">Core dependencies<a class="headerlink" href="#core-dependencies_1" title="Permanent link">&para;</a></h1>
+<p>pip install pytest&gt;=7.0.0
+pip install pyyaml&gt;=6.0
+pip install psutil&gt;=5.8.0
+pip install asyncio
+pip install pathlib</p>
+<h1 id="documentation-dependencies_1">Documentation dependencies<a class="headerlink" href="#documentation-dependencies_1" title="Permanent link">&para;</a></h1>
+<p>pip install mkdocs&gt;=1.4.0
+pip install mkdocs-material&gt;=8.0.0</p>
+<h1 id="optional-performance-dependencies_1">Optional performance dependencies<a class="headerlink" href="#optional-performance-dependencies_1" title="Permanent link">&para;</a></h1>
+<p>pip install uvloop  # For improved async performance on Linux\macOS
+- `## Installation</p>
+<h3 id="1-clone-and-setup-anchor">1. Clone and Setup` (anchor)<a class="headerlink" href="#1-clone-and-setup-anchor" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Error: Anchor '## Installation</li>
+</ul>
+<h3 id="1-clone-and-setup-not-found-in-file">1. Clone and Setup' not found in file<a class="headerlink" href="#1-clone-and-setup-not-found-in-file" title="Permanent link">&para;</a></h3>
+<ul>
+<li>... and 64 more broken links</li>
+</ul>
+<h3 id="docsgeneration_pipeline_improvementsmd">docs\GENERATION_PIPELINE_IMPROVEMENTS.md<a class="headerlink" href="#docsgeneration_pipeline_improvementsmd" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>print(f"Video generated: {result['output_path']}")</code> (internal)</li>
+<li>Error: File not found: E:\wan\docs\print(f"Video generated: {result['output_path']}")</li>
+<li><code>.1f}s")</code> (internal)</li>
+<li>Error: File not found: E:\wan\docs.1f}s")</li>
+<li>`python</li>
+</ul>
+<h1 id="pre-flight-checks-include">Pre-flight checks include:<a class="headerlink" href="#pre-flight-checks-include" title="Permanent link">&para;</a></h1>
+<ul>
+<li>Model availability validation</li>
+<li>VRAM and system resource checks</li>
+<li>Input parameter validation</li>
+<li>Hardware compatibility verification</li>
+<li>Resource requirement estimation` (internal)</li>
+<li>Error: File not found: E:\wan\docs\python</li>
+</ul>
+<h1 id="pre-flight-checks-include_1">Pre-flight checks include:<a class="headerlink" href="#pre-flight-checks-include_1" title="Permanent link">&para;</a></h1>
+<ul>
+<li>Model availability validation</li>
+<li>VRAM and system resource checks</li>
+<li>Input parameter validation</li>
+<li>Hardware compatibility verification</li>
+<li>Resource requirement estimation</li>
+<li>
+<p>`<strong>Benefits:</strong></p>
+</li>
+<li>
+<p>Early detection of issues before expensive generation attempts</p>
+</li>
+<li>Proactive optimization recommendations</li>
+<li>Better resource management</li>
+<li>Reduced failed generation attempts</li>
+</ul>
+<h3 id="3-generation-mode-routing-t2v-i2v-ti2v">3. Generation Mode Routing (T2V, I2V, TI2V)<a class="headerlink" href="#3-generation-mode-routing-t2v-i2v-ti2v" title="Permanent link">&para;</a></h3>
+<p>The system now automatically detects and routes requests to the appropriate generation mode:</p>
+<h4 id="text-to-video-t2v">Text-to-Video (T2V)<a class="headerlink" href="#text-to-video-t2v" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Requirements</strong>: Text prompt only</li>
+<li><strong>Model</strong>: t2v-A14B</li>
+<li><strong>Optimizations</strong>: Minimum 30 steps for quality, enhanced prompt adherence</li>
+<li><strong>Supported Resolutions</strong>: 480p, 720p, 1080p</li>
+<li><strong>LoRA Support</strong>: Yes</li>
+</ul>
+<h4 id="image-to-video-i2v">Image-to-Video (I2V)<a class="headerlink" href="#image-to-video-i2v" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Requirements</strong>: Input image (text prompt optional)</li>
+<li><strong>Model</strong>: i2v-A14B</li>
+<li><strong>Optimizations</strong>: Reduced steps (max 60), strength adjustment for conditioning</li>
+<li><strong>Supported Resolutions</strong>: 480p, 720p, 1080p</li>
+<li><strong>LoRA Support</strong>: Yes</li>
+</ul>
+<h4 id="textimage-to-video-ti2v">Text+Image-to-Video (TI2V)<a class="headerlink" href="#textimage-to-video-ti2v" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Requirements</strong>: Both text prompt and input image</li>
+<li><strong>Model</strong>: ti2v-5B</li>
+<li><strong>Optimizations</strong>: Efficient processing (max 40 steps), dual conditioning balance</li>
+<li><strong>Supported Resolutions</strong>: 480p, 720p (limited)</li>
+<li><strong>LoRA Support</strong>: No</li>
+</ul>
+<h3 id="4-automatic-retry-mechanisms">4. Automatic Retry Mechanisms<a class="headerlink" href="#4-automatic-retry-mechanisms" title="Permanent link">&para;</a></h3>
+<p>The pipeline implements intelligent retry logic with parameter optimization:</p>
+<h4 id="retry-strategies-by-error-type">Retry Strategies by Error Type<a class="headerlink" href="#retry-strategies-by-error-type" title="Permanent link">&para;</a></h4>
+<p><strong>VRAM Memory Errors:</strong></p>
+<ul>
+<li>Attempt 1: Reduce steps by 10, downgrade 1080p to 720p</li>
+<li>Attempt 2: Reduce steps by 20, force 720p, remove LoRAs</li>
+<li>Exponential backoff between attempts</li>
+</ul>
+<p><strong>Generation Pipeline Errors:</strong></p>
+<ul>
+<li>Attempt 1: Adjust guidance scale</li>
+<li>Attempt 2: Reduce steps, reset guidance scale to default</li>
+<li>Fallback to simpler configurations</li>
+</ul>
+<p><strong>Non-Retryable Errors:</strong></p>
+<ul>
+<li>Input validation errors (immediate failure)</li>
+<li>File system errors</li>
+<li>Configuration errors</li>
+</ul>
+<h4 id="retry-decision-logic-internal">Retry Decision Logic` (internal)<a class="headerlink" href="#retry-decision-logic-internal" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p>Error: File not found: E:\wan\docs*<em>Benefits:</em>*</p>
+</li>
+<li>
+<p>Early detection of issues before expensive generation attempts</p>
+</li>
+<li>Proactive optimization recommendations</li>
+<li>Better resource management</li>
+<li>Reduced failed generation attempts</li>
+</ul>
+<h3 id="3-generation-mode-routing-t2v-i2v-ti2v_1">3. Generation Mode Routing (T2V, I2V, TI2V)<a class="headerlink" href="#3-generation-mode-routing-t2v-i2v-ti2v_1" title="Permanent link">&para;</a></h3>
+<p>The system now automatically detects and routes requests to the appropriate generation mode:</p>
+<h4 id="text-to-video-t2v_1">Text-to-Video (T2V)<a class="headerlink" href="#text-to-video-t2v_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Requirements</strong>: Text prompt only</li>
+<li><strong>Model</strong>: t2v-A14B</li>
+<li><strong>Optimizations</strong>: Minimum 30 steps for quality, enhanced prompt adherence</li>
+<li><strong>Supported Resolutions</strong>: 480p, 720p, 1080p</li>
+<li><strong>LoRA Support</strong>: Yes</li>
+</ul>
+<h4 id="image-to-video-i2v_1">Image-to-Video (I2V)<a class="headerlink" href="#image-to-video-i2v_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Requirements</strong>: Input image (text prompt optional)</li>
+<li><strong>Model</strong>: i2v-A14B</li>
+<li><strong>Optimizations</strong>: Reduced steps (max 60), strength adjustment for conditioning</li>
+<li><strong>Supported Resolutions</strong>: 480p, 720p, 1080p</li>
+<li><strong>LoRA Support</strong>: Yes</li>
+</ul>
+<h4 id="textimage-to-video-ti2v_1">Text+Image-to-Video (TI2V)<a class="headerlink" href="#textimage-to-video-ti2v_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Requirements</strong>: Both text prompt and input image</li>
+<li><strong>Model</strong>: ti2v-5B</li>
+<li><strong>Optimizations</strong>: Efficient processing (max 40 steps), dual conditioning balance</li>
+<li><strong>Supported Resolutions</strong>: 480p, 720p (limited)</li>
+<li><strong>LoRA Support</strong>: No</li>
+</ul>
+<h3 id="4-automatic-retry-mechanisms_1">4. Automatic Retry Mechanisms<a class="headerlink" href="#4-automatic-retry-mechanisms_1" title="Permanent link">&para;</a></h3>
+<p>The pipeline implements intelligent retry logic with parameter optimization:</p>
+<h4 id="retry-strategies-by-error-type_1">Retry Strategies by Error Type<a class="headerlink" href="#retry-strategies-by-error-type_1" title="Permanent link">&para;</a></h4>
+<p><strong>VRAM Memory Errors:</strong></p>
+<ul>
+<li>Attempt 1: Reduce steps by 10, downgrade 1080p to 720p</li>
+<li>Attempt 2: Reduce steps by 20, force 720p, remove LoRAs</li>
+<li>Exponential backoff between attempts</li>
+</ul>
+<p><strong>Generation Pipeline Errors:</strong></p>
+<ul>
+<li>Attempt 1: Adjust guidance scale</li>
+<li>Attempt 2: Reduce steps, reset guidance scale to default</li>
+<li>Fallback to simpler configurations</li>
+</ul>
+<p><strong>Non-Retryable Errors:</strong></p>
+<ul>
+<li>Input validation errors (immediate failure)</li>
+<li>File system errors</li>
+<li>Configuration errors</li>
+</ul>
+<h4 id="retry-decision-logic">Retry Decision Logic<a class="headerlink" href="#retry-decision-logic" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p>`python
+def should_retry(error_category, attempt, max_attempts):
+    if attempt &gt;= max_attempts:
+        return False</p>
+<h1 id="retry-these-error-types">Retry these error types<a class="headerlink" href="#retry-these-error-types" title="Permanent link">&para;</a></h1>
+<p>retryable_errors = [
+    "VRAM_MEMORY",
+    "SYSTEM_RESOURCE",
+    "GENERATION_PIPELINE"
+]</p>
+<p>return error_category in retryable_errors` (internal)
+  - Error: File not found: E:\wan\docs\python
+def should_retry(error_category, attempt, max_attempts):
+if attempt &gt;= max_attempts:
+    return False</p>
+<h1 id="retry-these-error-types_1">Retry these error types<a class="headerlink" href="#retry-these-error-types_1" title="Permanent link">&para;</a></h1>
+<p>retryable_errors = [
+    "VRAM_MEMORY",
+    "SYSTEM_RESOURCE",
+    "GENERATION_PIPELINE"
+]</p>
+<p>return error_category in retryable_errors
+- ... and 24 more broken links</p>
+</li>
+</ul>
+<h3 id="backendscriptsreadme_deploymentmd">backend\scripts\README_DEPLOYMENT.md<a class="headerlink" href="#backendscriptsreadme_deploymentmd" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>bash
+cd backend
+python scripts/migrate_to_real_generation.py</code> (internal)</li>
+<li>Error: File not found: E:\wan\backend\scripts\bash
+cd backend
+python scripts\migrate_to_real_generation.py</li>
+<li><code>### 2.</code> (anchor)</li>
+<li>Error: Anchor '### 2.' not found in file</li>
+<li>`Validates that all components are working correctly after deployment.</li>
+</ul>
+<p><strong>Features:</strong></p>
+<ul>
+<li>Validates system configuration</li>
+<li>Checks database connectivity and schema</li>
+<li>Tests system integration components</li>
+<li>Validates model management functionality</li>
+<li>Checks API endpoints accessibility</li>
+<li>Verifies performance requirements</li>
+</ul>
+<p><strong>Usage:</strong>` (internal)
+  - Error: File not found: E:\wan\backend\scripts\Validates that all components are working correctly after deployment.</p>
+<p><strong>Features:</strong></p>
+<ul>
+<li>Validates system configuration</li>
+<li>Checks database connectivity and schema</li>
+<li>Tests system integration components</li>
+<li>Validates model management functionality</li>
+<li>Checks API endpoints accessibility</li>
+<li>Verifies performance requirements</li>
+</ul>
+<p><strong>Usage:</strong>
+- <code>bash
+cd backend
+python scripts/deployment_validator.py</code> (internal)
+  - Error: File not found: E:\wan\backend\scripts\bash
+cd backend
+python scripts\deployment_validator.py
+- <code>### 3.</code> (anchor)
+  - Error: Anchor '### 3.' not found in file
+- ... and 35 more broken links</p>
+<h3 id="docstask_9_model_loading_optimization_summarymd">docs\TASK_9_MODEL_LOADING_OPTIMIZATION_SUMMARY.md<a class="headerlink" href="#docstask_9_model_loading_optimization_summarymd" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>model_loading_manager.py</code> (internal)</li>
+<li>Error: File not found: E:\wan\docs\model_loading_manager.py</li>
+<li>`python
+class ModelLoadingManager:<ul>
+<li>load_model() -&gt; ModelLoadingResult</li>
+<li>add_progress_callback()</li>
+<li>get_loading_statistics()</li>
+<li>clear_cache()` (internal)</li>
+</ul>
+</li>
+<li>Error: File not found: E:\wan\docs\python
+class ModelLoadingManager:<ul>
+<li>load_model() -&gt; ModelLoadingResult</li>
+<li>add_progress_callback()</li>
+<li>get_loading_statistics()</li>
+<li>clear_cache()</li>
+</ul>
+</li>
+<li>
+<p>`<strong>Progress Phases:</strong></p>
+</li>
+<li>
+<p>Initialization</p>
+</li>
+<li>Validation</li>
+<li>Cache Check</li>
+<li>Download (if needed)</li>
+<li>Loading</li>
+<li>Optimization</li>
+<li>Finalization</li>
+</ul>
+<p><strong>Error Categories Handled:</strong></p>
+<p>-` (internal)
+  - Error: File not found: E:\wan\docs*<em>Progress Phases:</em>*</p>
+<ol>
+<li>Initialization</li>
+<li>Validation</li>
+<li>Cache Check</li>
+<li>Download (if needed)</li>
+<li>Loading</li>
+<li>Optimization</li>
+<li>Finalization</li>
+</ol>
+<p><strong>Error Categories Handled:</strong></p>
+<p>-
+- <code>- VRAM optimization suggestions
+-</code> (internal)
+  - Error: File not found: E:\wan\docs- VRAM optimization suggestions
+-
+- <code>- Path and repository validation
+-</code> (internal)
+  - Error: File not found: E:\wan\docs- Path and repository validation
+-
+- ... and 11 more broken links</p>
+<h3 id="docsdeploymenttroubleshooting-guidemd">docs\deployment\troubleshooting-guide.md<a class="headerlink" href="#docsdeploymenttroubleshooting-guidemd" title="Permanent link">&para;</a></h3>
+<ul>
+<li>`bash</li>
+</ul>
+<h1 id="check-service-status">Check service status<a class="headerlink" href="#check-service-status" title="Permanent link">&para;</a></h1>
+<p>systemctl status project-health</p>
+<h1 id="view-recent-logs">View recent logs<a class="headerlink" href="#view-recent-logs" title="Permanent link">&para;</a></h1>
+<p>journalctl -u project-health -f</p>
+<h1 id="run-health-check">Run health check<a class="headerlink" href="#run-health-check" title="Permanent link">&para;</a></h1>
+<p>python -m tools.health_checker.cli --quick-check</p>
+<h1 id="emergency-restart">Emergency restart<a class="headerlink" href="#emergency-restart" title="Permanent link">&para;</a></h1>
+<p>systemctl restart project-health` (internal)
+  - Error: File not found: E:\wan\docs\deployment\bash</p>
+<h1 id="check-service-status_1">Check service status<a class="headerlink" href="#check-service-status_1" title="Permanent link">&para;</a></h1>
+<p>systemctl status project-health</p>
+<h1 id="view-recent-logs_1">View recent logs<a class="headerlink" href="#view-recent-logs_1" title="Permanent link">&para;</a></h1>
+<p>journalctl -u project-health -f</p>
+<h1 id="run-health-check_1">Run health check<a class="headerlink" href="#run-health-check_1" title="Permanent link">&para;</a></h1>
+<p>python -m tools.health_checker.cli --quick-check</p>
+<h1 id="emergency-restart_1">Emergency restart<a class="headerlink" href="#emergency-restart_1" title="Permanent link">&para;</a></h1>
+<p>systemctl restart project-health
+- `## Common Issues and Solutions</p>
+<h3 id="1-service-wont-start">1. Service Won't Start<a class="headerlink" href="#1-service-wont-start" title="Permanent link">&para;</a></h3>
+<h4 id="symptoms">Symptoms<a class="headerlink" href="#symptoms" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Service fails to start
+-` (anchor)</li>
+<li>Error: Anchor '## Common Issues and Solutions</li>
+</ul>
+<h3 id="1-service-wont-start_1">1. Service Won't Start<a class="headerlink" href="#1-service-wont-start_1" title="Permanent link">&para;</a></h3>
+<h4 id="symptoms_1">Symptoms<a class="headerlink" href="#symptoms_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Service fails to start
+-' not found in file</li>
+<li>`shows "failed" or "inactive"</li>
+<li>Error messages in system logs</li>
+</ul>
+<h4 id="diagnostic-steps-internal">Diagnostic Steps` (internal)<a class="headerlink" href="#diagnostic-steps-internal" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Error: File not found: E:\wan\docs\deployment\shows "failed" or "inactive"</li>
+<li>Error messages in system logs</li>
+</ul>
+<h4 id="diagnostic-steps">Diagnostic Steps<a class="headerlink" href="#diagnostic-steps" title="Permanent link">&para;</a></h4>
+<ul>
+<li>`bash</li>
+</ul>
+<h1 id="check-service-status_2">Check service status<a class="headerlink" href="#check-service-status_2" title="Permanent link">&para;</a></h1>
+<p>systemctl status project-health</p>
+<h1 id="check-detailed-logs">Check detailed logs<a class="headerlink" href="#check-detailed-logs" title="Permanent link">&para;</a></h1>
+<p>journalctl -u project-health --no-pager</p>
+<h1 id="check-configuration-syntax">Check configuration syntax<a class="headerlink" href="#check-configuration-syntax" title="Permanent link">&para;</a></h1>
+<p>python -m tools.config_manager.config_cli validate</p>
+<h1 id="check-file-permissions">Check file permissions<a class="headerlink" href="#check-file-permissions" title="Permanent link">&para;</a></h1>
+<p>ls -la /opt/project-health/
+ls -la /etc/project-health/</p>
+<h1 id="check-dependencies">Check dependencies<a class="headerlink" href="#check-dependencies" title="Permanent link">&para;</a></h1>
+<p>pip check` (internal)
+  - Error: File not found: E:\wan\docs\deployment\bash</p>
+<h1 id="check-service-status_3">Check service status<a class="headerlink" href="#check-service-status_3" title="Permanent link">&para;</a></h1>
+<p>systemctl status project-health</p>
+<h1 id="check-detailed-logs_1">Check detailed logs<a class="headerlink" href="#check-detailed-logs_1" title="Permanent link">&para;</a></h1>
+<p>journalctl -u project-health --no-pager</p>
+<h1 id="check-configuration-syntax_1">Check configuration syntax<a class="headerlink" href="#check-configuration-syntax_1" title="Permanent link">&para;</a></h1>
+<p>python -m tools.config_manager.config_cli validate</p>
+<h1 id="check-file-permissions_1">Check file permissions<a class="headerlink" href="#check-file-permissions_1" title="Permanent link">&para;</a></h1>
+<p>ls -la \opt\project-health\
+ls -la \etc\project-health\</p>
+<h1 id="check-dependencies_1">Check dependencies<a class="headerlink" href="#check-dependencies_1" title="Permanent link">&para;</a></h1>
+<p>pip check
+- `#### Common Causes and Solutions</p>
+<p><strong>Configuration Syntax Error</strong>` (anchor)
+  - Error: Anchor '#### Common Causes and Solutions</p>
+<p><strong>Configuration Syntax Error</strong>' not found in file
+- ... and 96 more broken links</p>
+<h3 id="docsinput_validation_implementation_summarymd">docs\INPUT_VALIDATION_IMPLEMENTATION_SUMMARY.md<a class="headerlink" href="#docsinput_validation_implementation_summarymd" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>input_validation.py</code> (internal)</li>
+<li>Error: File not found: E:\wan\docs\input_validation.py</li>
+<li><code>input_validation.py</code> (internal)</li>
+<li>Error: File not found: E:\wan\docs\input_validation.py</li>
+<li><code>input_validation.py</code> (internal)</li>
+<li>Error: File not found: E:\wan\docs\input_validation.py</li>
+<li><code>input_validation.py</code> (internal)</li>
+<li>Error: File not found: E:\wan\docs\input_validation.py</li>
+<li><code>input_validation.py</code> (internal)</li>
+<li>Error: File not found: E:\wan\docs\input_validation.py</li>
+<li>... and 4 more broken links</li>
+</ul>
+<h2 id="recommendations">Recommendations<a class="headerlink" href="#recommendations" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Fix 4731 broken links to improve navigation</li>
+<li>Increase documentation coverage for better developer onboarding</li>
+<li>Document missing components, especially critical ones</li>
+<li>Improve documentation accessibility and structure</li>
+<li>Address high-severity documentation issues first</li>
+<li>Implement automated link checking in CI/CD pipeline</li>
+</ol>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

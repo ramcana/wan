@@ -1,0 +1,1925 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="WAN2.2 Video Generation System Documentation">
+      
+      
+      
+        <link rel="canonical" href="https://ramcana.github.io/wan/user/manual_testing_procedures/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>WAN2.2 Local Installation Manual Testing Procedures - WAN22 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e53b48f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#wan22-local-installation-manual-testing-procedures" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="WAN22 Documentation" class="md-header__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            WAN22 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              WAN2.2 Local Installation Manual Testing Procedures
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../WAN22_System_Capabilities_Report/" class="md-tabs__link">
+          
+  
+  
+  System Overview
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../model-orchestrator/requirements/" class="md-tabs__link">
+          
+  
+  
+  Model Orchestrator
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../config/models.toml" class="md-tabs__link">
+          
+  
+  
+  Configuration
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="WAN22 Documentation" class="md-nav__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    WAN22 Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    System Overview
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            System Overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../WAN22_System_Capabilities_Report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Capabilities Report
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Model Orchestrator
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Model Orchestrator
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Requirements
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/tasks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tasks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Configuration
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Configuration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Models Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models_simple.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simple Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pre-testing-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pre-Testing Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pre-Testing Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-environment-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Environment Requirements
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Test Environment Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#minimum-test-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      Minimum Test System
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recommended-test-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recommended Test Systems
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-data-preparation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Data Preparation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manual-testing-procedures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manual Testing Procedures
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Manual Testing Procedures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-fresh-installation-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Fresh Installation Testing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Fresh Installation Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-clean-system-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 Clean System Installation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-installation-with-existing-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2 Installation with Existing Python
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-installation-with-incompatible-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3 Installation with Incompatible Python
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-hardware-configuration-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Hardware Configuration Testing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Hardware Configuration Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-high-end-hardware-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 High-End Hardware Testing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-budget-hardware-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 Budget Hardware Testing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-no-gpu-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 No GPU Testing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-network-and-download-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Network and Download Testing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Network and Download Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-slow-network-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 Slow Network Testing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-network-interruption-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 Network Interruption Testing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-firewallproxy-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 Firewall/Proxy Testing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-error-scenario-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Error Scenario Testing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Error Scenario Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-insufficient-disk-space" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 Insufficient Disk Space
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-permission-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 Permission Errors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-antivirus-interference" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3 Antivirus Interference
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-user-experience-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. User Experience Testing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. User Experience Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-installation-progress-and-feedback" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1 Installation Progress and Feedback
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-post-installation-experience" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2 Post-Installation Experience
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-error-recovery-experience" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3 Error Recovery Experience
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-performance-validation-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Performance Validation Testing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Performance Validation Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-model-loading-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1 Model Loading Performance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-generation-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.2 Generation Performance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-system-stability-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.3 System Stability Testing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-configuration-validation-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Configuration Validation Testing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Configuration Validation Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-hardware-specific-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.1 Hardware-Specific Optimization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-configuration-modification" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.2 Configuration Modification
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-update-and-maintenance-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Update and Maintenance Testing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Update and Maintenance Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-update-process-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.1 Update Process Testing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-rollback-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.2 Rollback Testing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-documentation-and-reporting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Documentation and Reporting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Test Documentation and Reporting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-execution-log" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Execution Log
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Metrics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#issue-severity-classification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Issue Severity Classification
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-sign-off-criteria" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Sign-off Criteria
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#continuous-manual-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Continuous Manual Testing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Continuous Manual Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#regular-testing-schedule" class="md-nav__link">
+    <span class="md-ellipsis">
+      Regular Testing Schedule
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-environment-maintenance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Environment Maintenance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#feedback-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feedback Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="wan22-local-installation-manual-testing-procedures">WAN2.2 Local Installation Manual Testing Procedures<a class="headerlink" href="#wan22-local-installation-manual-testing-procedures" title="Permanent link">&para;</a></h1>
+<p>This document provides comprehensive manual testing procedures for the WAN2.2 local installation system. These procedures complement the automated test suite and focus on user experience, edge cases, and real-world scenarios that require human validation.</p>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>Manual testing is essential for:</p>
+<ul>
+<li><strong>User Experience Validation</strong>: Testing the actual user journey and interface</li>
+<li><strong>Hardware Compatibility</strong>: Testing on real hardware configurations</li>
+<li><strong>Edge Case Scenarios</strong>: Testing unusual or complex installation scenarios</li>
+<li><strong>Performance Validation</strong>: Real-world performance testing and optimization verification</li>
+<li><strong>Error Recovery</strong>: Testing error scenarios and recovery procedures</li>
+</ul>
+<h2 id="pre-testing-setup">Pre-Testing Setup<a class="headerlink" href="#pre-testing-setup" title="Permanent link">&para;</a></h2>
+<h3 id="test-environment-requirements">Test Environment Requirements<a class="headerlink" href="#test-environment-requirements" title="Permanent link">&para;</a></h3>
+<h4 id="minimum-test-system">Minimum Test System<a class="headerlink" href="#minimum-test-system" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Windows 10/11 (64-bit)</li>
+<li>8GB RAM minimum</li>
+<li>100GB free disk space</li>
+<li>Internet connection for model downloads</li>
+<li>Administrator privileges</li>
+</ul>
+<h4 id="recommended-test-systems">Recommended Test Systems<a class="headerlink" href="#recommended-test-systems" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>High-End System</strong>: Threadripper/Ryzen 9 + RTX 4070/4080</li>
+<li><strong>Mid-Range System</strong>: Ryzen 7/Intel i7 + RTX 3060/3070</li>
+<li><strong>Budget System</strong>: Ryzen 5/Intel i5 + GTX 1660/RTX 3050</li>
+<li><strong>Minimum System</strong>: Intel i5-8400 + GTX 1060 (6GB)</li>
+<li><strong>APU System</strong>: Ryzen 7 5700G (no dedicated GPU)</li>
+</ol>
+<h4 id="test-data-preparation">Test Data Preparation<a class="headerlink" href="#test-data-preparation" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Clean Windows installation (preferred)</li>
+<li>No existing Python installations (for clean install testing)</li>
+<li>Various Python versions installed (for compatibility testing)</li>
+<li>Limited disk space scenarios</li>
+<li>Network connectivity variations</li>
+</ul>
+<h2 id="manual-testing-procedures">Manual Testing Procedures<a class="headerlink" href="#manual-testing-procedures" title="Permanent link">&para;</a></h2>
+<h3 id="1-fresh-installation-testing">1. Fresh Installation Testing<a class="headerlink" href="#1-fresh-installation-testing" title="Permanent link">&para;</a></h3>
+<h4 id="11-clean-system-installation">1.1 Clean System Installation<a class="headerlink" href="#11-clean-system-installation" title="Permanent link">&para;</a></h4>
+<p><strong>Objective</strong>: Test installation on a completely clean system.</p>
+<p><strong>Prerequisites</strong>:</p>
+<ul>
+<li>Fresh Windows installation</li>
+<li>No Python installed</li>
+<li>No existing WAN2.2 installation</li>
+<li>Administrator privileges</li>
+</ul>
+<p><strong>Procedure</strong>:</p>
+<ol>
+<li>Download the WAN2.2 installation package</li>
+<li>Extract to a clean directory (e.g., <code>C:\WAN22</code>)</li>
+<li>Right-click <code>install.bat</code> and select "Run as administrator"</li>
+<li>Observe the installation process</li>
+</ol>
+<p><strong>Expected Results</strong>:</p>
+<ul>
+<li>Installation starts without errors</li>
+<li>System detection completes successfully</li>
+<li>Python is downloaded and installed automatically</li>
+<li>Virtual environment is created</li>
+<li>Dependencies are installed without conflicts</li>
+<li>Models are downloaded successfully</li>
+<li>Configuration is generated appropriately for the hardware</li>
+<li>Validation tests pass</li>
+<li>Desktop shortcuts are created</li>
+<li>Installation completes with success message</li>
+</ul>
+<p><strong>Manual Verification</strong>:</p>
+<ul>
+<li>[ ] Installation progress is clearly displayed</li>
+<li>[ ] No error messages appear during installation</li>
+<li>[ ] Hardware detection results are accurate</li>
+<li>[ ] Python version is appropriate (3.9+)</li>
+<li>[ ] All required packages are installed</li>
+<li>[ ] Models are present in <code>models/</code> directory</li>
+<li>[ ] Configuration file reflects hardware capabilities</li>
+<li>[ ] Desktop shortcut launches the application</li>
+<li>[ ] Application starts without errors</li>
+</ul>
+<p><strong>Time Estimate</strong>: 30-60 minutes (depending on download speeds)</p>
+<h4 id="12-installation-with-existing-python">1.2 Installation with Existing Python<a class="headerlink" href="#12-installation-with-existing-python" title="Permanent link">&para;</a></h4>
+<p><strong>Objective</strong>: Test installation when Python is already installed.</p>
+<p><strong>Prerequisites</strong>:</p>
+<ul>
+<li>System with Python 3.9+ already installed</li>
+<li>Python in system PATH</li>
+</ul>
+<p><strong>Procedure</strong>:</p>
+<ol>
+<li>Run <code>install.bat</code></li>
+<li>Observe how the installer handles existing Python</li>
+</ol>
+<p><strong>Expected Results</strong>:</p>
+<ul>
+<li>Installer detects existing Python</li>
+<li>Uses existing Python if compatible</li>
+<li>Creates virtual environment successfully</li>
+<li>Installation proceeds normally</li>
+</ul>
+<p><strong>Manual Verification</strong>:</p>
+<ul>
+<li>[ ] Existing Python is detected and version displayed</li>
+<li>[ ] Virtual environment uses appropriate Python version</li>
+<li>[ ] No conflicts with system Python packages</li>
+<li>[ ] Installation completes successfully</li>
+</ul>
+<h4 id="13-installation-with-incompatible-python">1.3 Installation with Incompatible Python<a class="headerlink" href="#13-installation-with-incompatible-python" title="Permanent link">&para;</a></h4>
+<p><strong>Objective</strong>: Test installation with old or incompatible Python versions.</p>
+<p><strong>Prerequisites</strong>:</p>
+<ul>
+<li>System with Python 3.7 or 3.8 installed</li>
+</ul>
+<p><strong>Procedure</strong>:</p>
+<ol>
+<li>Run <code>install.bat</code></li>
+<li>Observe installer behavior with incompatible Python</li>
+</ol>
+<p><strong>Expected Results</strong>:</p>
+<ul>
+<li>Installer detects incompatible Python version</li>
+<li>Downloads and installs compatible Python version</li>
+<li>Installation proceeds with new Python</li>
+</ul>
+<p><strong>Manual Verification</strong>:</p>
+<ul>
+<li>[ ] Incompatible Python is detected</li>
+<li>[ ] Warning message is displayed</li>
+<li>[ ] New Python is downloaded and installed</li>
+<li>[ ] Installation uses new Python version</li>
+</ul>
+<h3 id="2-hardware-configuration-testing">2. Hardware Configuration Testing<a class="headerlink" href="#2-hardware-configuration-testing" title="Permanent link">&para;</a></h3>
+<h4 id="21-high-end-hardware-testing">2.1 High-End Hardware Testing<a class="headerlink" href="#21-high-end-hardware-testing" title="Permanent link">&para;</a></h4>
+<p><strong>Objective</strong>: Test installation and optimization on high-end hardware.</p>
+<p><strong>Prerequisites</strong>:</p>
+<ul>
+<li>High-end system (32+ GB RAM, RTX 4070+, 16+ CPU cores)</li>
+</ul>
+<p><strong>Procedure</strong>:</p>
+<ol>
+<li>Run installation on high-end system</li>
+<li>Review generated configuration</li>
+<li>Test performance optimizations</li>
+</ol>
+<p><strong>Expected Results</strong>:</p>
+<ul>
+<li>Hardware is detected accurately</li>
+<li>High-end optimizations are applied</li>
+<li>Configuration uses maximum hardware capabilities</li>
+<li>Performance is optimized for the hardware</li>
+</ul>
+<p><strong>Manual Verification</strong>:</p>
+<ul>
+<li>[ ] CPU cores and threads detected correctly</li>
+<li>[ ] RAM amount detected accurately</li>
+<li>[ ] GPU model and VRAM detected correctly</li>
+<li>[ ] Configuration uses high thread counts</li>
+<li>[ ] GPU acceleration is enabled</li>
+<li>[ ] bf16 quantization is selected</li>
+<li>[ ] Model offloading is disabled (sufficient VRAM)</li>
+<li>[ ] High queue sizes are configured</li>
+</ul>
+<p><strong>Performance Tests</strong>:</p>
+<ul>
+<li>[ ] Model loading time is reasonable (&lt; 60 seconds)</li>
+<li>[ ] Generation speed meets expectations</li>
+<li>[ ] Memory usage is within limits</li>
+<li>[ ] GPU utilization is high during generation</li>
+</ul>
+<h4 id="22-budget-hardware-testing">2.2 Budget Hardware Testing<a class="headerlink" href="#22-budget-hardware-testing" title="Permanent link">&para;</a></h4>
+<p><strong>Objective</strong>: Test installation on budget/minimum hardware.</p>
+<p><strong>Prerequisites</strong>:</p>
+<ul>
+<li>Budget system (8-16 GB RAM, GTX 1060/1660, 4-6 CPU cores)</li>
+</ul>
+<p><strong>Procedure</strong>:</p>
+<ol>
+<li>Run installation on budget system</li>
+<li>Review generated configuration</li>
+<li>Test conservative optimizations</li>
+</ol>
+<p><strong>Expected Results</strong>:</p>
+<ul>
+<li>Hardware limitations are detected</li>
+<li>Conservative optimizations are applied</li>
+<li>System remains stable under load</li>
+</ul>
+<p><strong>Manual Verification</strong>:</p>
+<ul>
+<li>[ ] Hardware limitations are identified</li>
+<li>[ ] Conservative thread counts are used</li>
+<li>[ ] Model offloading is enabled</li>
+<li>[ ] fp16 quantization is selected</li>
+<li>[ ] Memory allocation is conservative</li>
+<li>[ ] Warnings about performance are displayed</li>
+</ul>
+<p><strong>Performance Tests</strong>:</p>
+<ul>
+<li>[ ] System remains stable during generation</li>
+<li>[ ] Memory usage doesn't exceed available RAM</li>
+<li>[ ] Generation completes without errors</li>
+<li>[ ] Performance warnings are appropriate</li>
+</ul>
+<h4 id="23-no-gpu-testing">2.3 No GPU Testing<a class="headerlink" href="#23-no-gpu-testing" title="Permanent link">&para;</a></h4>
+<p><strong>Objective</strong>: Test installation on systems without dedicated GPU.</p>
+<p><strong>Prerequisites</strong>:</p>
+<ul>
+<li>System with integrated graphics only (APU or Intel integrated)</li>
+</ul>
+<p><strong>Procedure</strong>:</p>
+<ol>
+<li>Run installation on system without dedicated GPU</li>
+<li>Review CPU-only configuration</li>
+<li>Test CPU-only generation</li>
+</ol>
+<p><strong>Expected Results</strong>:</p>
+<ul>
+<li>No GPU is detected correctly</li>
+<li>CPU-only configuration is generated</li>
+<li>System works with CPU-only processing</li>
+</ul>
+<p><strong>Manual Verification</strong>:</p>
+<ul>
+<li>[ ] GPU detection reports no dedicated GPU</li>
+<li>[ ] GPU acceleration is disabled in configuration</li>
+<li>[ ] CPU optimization is maximized</li>
+<li>[ ] Appropriate warnings are displayed</li>
+<li>[ ] Installation completes successfully</li>
+</ul>
+<p><strong>Performance Tests</strong>:</p>
+<ul>
+<li>[ ] CPU-only generation works</li>
+<li>[ ] Performance is reasonable for CPU-only</li>
+<li>[ ] Memory usage is appropriate</li>
+<li>[ ] System remains stable</li>
+</ul>
+<h3 id="3-network-and-download-testing">3. Network and Download Testing<a class="headerlink" href="#3-network-and-download-testing" title="Permanent link">&para;</a></h3>
+<h4 id="31-slow-network-testing">3.1 Slow Network Testing<a class="headerlink" href="#31-slow-network-testing" title="Permanent link">&para;</a></h4>
+<p><strong>Objective</strong>: Test installation behavior with slow internet connection.</p>
+<p><strong>Prerequisites</strong>:</p>
+<ul>
+<li>Slow or limited internet connection</li>
+<li>Network throttling tools (optional)</li>
+</ul>
+<p><strong>Procedure</strong>:</p>
+<ol>
+<li>Limit network bandwidth (if possible)</li>
+<li>Run installation</li>
+<li>Observe download behavior and progress</li>
+</ol>
+<p><strong>Expected Results</strong>:</p>
+<ul>
+<li>Downloads proceed despite slow connection</li>
+<li>Progress is displayed accurately</li>
+<li>Timeouts are handled appropriately</li>
+<li>Installation completes successfully</li>
+</ul>
+<p><strong>Manual Verification</strong>:</p>
+<ul>
+<li>[ ] Download progress is displayed</li>
+<li>[ ] ETA calculations are reasonable</li>
+<li>[ ] No premature timeouts occur</li>
+<li>[ ] Downloads resume if interrupted</li>
+<li>[ ] Installation completes successfully</li>
+</ul>
+<h4 id="32-network-interruption-testing">3.2 Network Interruption Testing<a class="headerlink" href="#32-network-interruption-testing" title="Permanent link">&para;</a></h4>
+<p><strong>Objective</strong>: Test installation behavior when network is interrupted.</p>
+<p><strong>Prerequisites</strong>:</p>
+<ul>
+<li>Ability to disconnect/reconnect network during installation</li>
+</ul>
+<p><strong>Procedure</strong>:</p>
+<ol>
+<li>Start installation</li>
+<li>Disconnect network during model download</li>
+<li>Reconnect network</li>
+<li>Observe recovery behavior</li>
+</ol>
+<p><strong>Expected Results</strong>:</p>
+<ul>
+<li>Network interruption is detected</li>
+<li>Downloads resume when connection is restored</li>
+<li>Installation completes successfully</li>
+</ul>
+<p><strong>Manual Verification</strong>:</p>
+<ul>
+<li>[ ] Network interruption is detected</li>
+<li>[ ] Appropriate error message is displayed</li>
+<li>[ ] Downloads resume automatically</li>
+<li>[ ] No data corruption occurs</li>
+<li>[ ] Installation completes successfully</li>
+</ul>
+<h4 id="33-firewallproxy-testing">3.3 Firewall/Proxy Testing<a class="headerlink" href="#33-firewallproxy-testing" title="Permanent link">&para;</a></h4>
+<p><strong>Objective</strong>: Test installation through corporate firewalls or proxies.</p>
+<p><strong>Prerequisites</strong>:</p>
+<ul>
+<li>System behind corporate firewall or proxy</li>
+</ul>
+<p><strong>Procedure</strong>:</p>
+<ol>
+<li>Run installation through firewall/proxy</li>
+<li>Observe download behavior</li>
+<li>Test proxy configuration if needed</li>
+</ol>
+<p><strong>Expected Results</strong>:</p>
+<ul>
+<li>Downloads work through firewall/proxy</li>
+<li>Proxy settings are respected</li>
+<li>Installation completes successfully</li>
+</ul>
+<p><strong>Manual Verification</strong>:</p>
+<ul>
+<li>[ ] Downloads work through network restrictions</li>
+<li>[ ] Proxy settings are detected/configured</li>
+<li>[ ] No security warnings are triggered</li>
+<li>[ ] Installation completes successfully</li>
+</ul>
+<h3 id="4-error-scenario-testing">4. Error Scenario Testing<a class="headerlink" href="#4-error-scenario-testing" title="Permanent link">&para;</a></h3>
+<h4 id="41-insufficient-disk-space">4.1 Insufficient Disk Space<a class="headerlink" href="#41-insufficient-disk-space" title="Permanent link">&para;</a></h4>
+<p><strong>Objective</strong>: Test installation behavior with limited disk space.</p>
+<p><strong>Prerequisites</strong>:</p>
+<ul>
+<li>System with limited free disk space (&lt; 50GB)</li>
+</ul>
+<p><strong>Procedure</strong>:</p>
+<ol>
+<li>Run installation on system with limited space</li>
+<li>Observe space checking and warnings</li>
+<li>Test behavior when space runs out</li>
+</ol>
+<p><strong>Expected Results</strong>:</p>
+<ul>
+<li>Disk space is checked before installation</li>
+<li>Appropriate warnings are displayed</li>
+<li>Installation fails gracefully if insufficient space</li>
+</ul>
+<p><strong>Manual Verification</strong>:</p>
+<ul>
+<li>[ ] Disk space is checked and reported</li>
+<li>[ ] Warnings are displayed for low space</li>
+<li>[ ] Installation stops if space is insufficient</li>
+<li>[ ] Clear error messages are provided</li>
+<li>[ ] Cleanup occurs if installation fails</li>
+</ul>
+<h4 id="42-permission-errors">4.2 Permission Errors<a class="headerlink" href="#42-permission-errors" title="Permanent link">&para;</a></h4>
+<p><strong>Objective</strong>: Test installation behavior with insufficient permissions.</p>
+<p><strong>Prerequisites</strong>:</p>
+<ul>
+<li>Run installation without administrator privileges</li>
+</ul>
+<p><strong>Procedure</strong>:</p>
+<ol>
+<li>Run <code>install.bat</code> as regular user (not administrator)</li>
+<li>Observe permission-related errors</li>
+<li>Test elevation prompts</li>
+</ol>
+<p><strong>Expected Results</strong>:</p>
+<ul>
+<li>Permission requirements are detected</li>
+<li>User is prompted to run as administrator</li>
+<li>Clear instructions are provided</li>
+</ul>
+<p><strong>Manual Verification</strong>:</p>
+<ul>
+<li>[ ] Permission errors are detected</li>
+<li>[ ] Clear error messages are displayed</li>
+<li>[ ] Instructions for running as administrator are provided</li>
+<li>[ ] No system damage occurs from permission errors</li>
+</ul>
+<h4 id="43-antivirus-interference">4.3 Antivirus Interference<a class="headerlink" href="#43-antivirus-interference" title="Permanent link">&para;</a></h4>
+<p><strong>Objective</strong>: Test installation with active antivirus software.</p>
+<p><strong>Prerequisites</strong>:</p>
+<ul>
+<li>System with active antivirus/security software</li>
+</ul>
+<p><strong>Procedure</strong>:</p>
+<ol>
+<li>Run installation with antivirus active</li>
+<li>Observe any interference or false positives</li>
+<li>Test antivirus exclusions if needed</li>
+</ol>
+<p><strong>Expected Results</strong>:</p>
+<ul>
+<li>Installation works despite antivirus</li>
+<li>No false positives are triggered</li>
+<li>Performance is acceptable</li>
+</ul>
+<p><strong>Manual Verification</strong>:</p>
+<ul>
+<li>[ ] Antivirus doesn't block installation</li>
+<li>[ ] No false positive warnings</li>
+<li>[ ] Download speeds are reasonable</li>
+<li>[ ] Installation completes successfully</li>
+</ul>
+<h3 id="5-user-experience-testing">5. User Experience Testing<a class="headerlink" href="#5-user-experience-testing" title="Permanent link">&para;</a></h3>
+<h4 id="51-installation-progress-and-feedback">5.1 Installation Progress and Feedback<a class="headerlink" href="#51-installation-progress-and-feedback" title="Permanent link">&para;</a></h4>
+<p><strong>Objective</strong>: Evaluate the user experience during installation.</p>
+<p><strong>Procedure</strong>:</p>
+<ol>
+<li>Run installation while focusing on user interface</li>
+<li>Evaluate progress indicators and messages</li>
+<li>Assess clarity of information provided</li>
+</ol>
+<p><strong>Manual Verification</strong>:</p>
+<ul>
+<li>[ ] Progress indicators are clear and accurate</li>
+<li>[ ] Status messages are informative</li>
+<li>[ ] Hardware detection results are understandable</li>
+<li>[ ] Download progress is clearly displayed</li>
+<li>[ ] Error messages are user-friendly</li>
+<li>[ ] Success messages are clear</li>
+<li>[ ] Next steps are provided</li>
+</ul>
+<h4 id="52-post-installation-experience">5.2 Post-Installation Experience<a class="headerlink" href="#52-post-installation-experience" title="Permanent link">&para;</a></h4>
+<p><strong>Objective</strong>: Test the user experience after installation completes.</p>
+<p><strong>Procedure</strong>:</p>
+<ol>
+<li>Complete installation</li>
+<li>Test desktop shortcuts and start menu entries</li>
+<li>Launch application and test basic functionality</li>
+<li>Review documentation and help resources</li>
+</ol>
+<p><strong>Manual Verification</strong>:</p>
+<ul>
+<li>[ ] Desktop shortcuts are created and work</li>
+<li>[ ] Start menu entries are present</li>
+<li>[ ] Application launches successfully</li>
+<li>[ ] Basic functionality works</li>
+<li>[ ] Help documentation is accessible</li>
+<li>[ ] Uninstall process is clear</li>
+</ul>
+<h4 id="53-error-recovery-experience">5.3 Error Recovery Experience<a class="headerlink" href="#53-error-recovery-experience" title="Permanent link">&para;</a></h4>
+<p><strong>Objective</strong>: Test user experience when errors occur.</p>
+<p><strong>Procedure</strong>:</p>
+<ol>
+<li>Simulate various error conditions</li>
+<li>Evaluate error messages and recovery guidance</li>
+<li>Test recovery procedures</li>
+</ol>
+<p><strong>Manual Verification</strong>:</p>
+<ul>
+<li>[ ] Error messages are clear and actionable</li>
+<li>[ ] Recovery suggestions are provided</li>
+<li>[ ] Recovery procedures work as described</li>
+<li>[ ] User can successfully resolve issues</li>
+<li>[ ] Support information is available</li>
+</ul>
+<h3 id="6-performance-validation-testing">6. Performance Validation Testing<a class="headerlink" href="#6-performance-validation-testing" title="Permanent link">&para;</a></h3>
+<h4 id="61-model-loading-performance">6.1 Model Loading Performance<a class="headerlink" href="#61-model-loading-performance" title="Permanent link">&para;</a></h4>
+<p><strong>Objective</strong>: Validate model loading performance across hardware configurations.</p>
+<p><strong>Procedure</strong>:</p>
+<ol>
+<li>Complete installation on test system</li>
+<li>Launch application</li>
+<li>Measure model loading times</li>
+<li>Compare against expected baselines</li>
+</ol>
+<p><strong>Performance Baselines</strong>:</p>
+<ul>
+<li><strong>High-End (RTX 4080)</strong>: &lt; 30 seconds</li>
+<li><strong>Mid-Range (RTX 3070)</strong>: &lt; 60 seconds</li>
+<li><strong>Budget (GTX 1660)</strong>: &lt; 120 seconds</li>
+<li><strong>Minimum (GTX 1060)</strong>: &lt; 180 seconds</li>
+<li><strong>CPU-Only</strong>: &lt; 300 seconds</li>
+</ul>
+<p><strong>Manual Verification</strong>:</p>
+<ul>
+<li>[ ] Model loading completes successfully</li>
+<li>[ ] Loading time meets baseline expectations</li>
+<li>[ ] Memory usage is within limits</li>
+<li>[ ] No errors during model loading</li>
+</ul>
+<h4 id="62-generation-performance">6.2 Generation Performance<a class="headerlink" href="#62-generation-performance" title="Permanent link">&para;</a></h4>
+<p><strong>Objective</strong>: Validate generation performance and quality.</p>
+<p><strong>Procedure</strong>:</p>
+<ol>
+<li>Run standard test generations</li>
+<li>Measure generation speed and quality</li>
+<li>Compare against hardware-appropriate baselines</li>
+</ol>
+<p><strong>Test Cases</strong>:</p>
+<ul>
+<li>Text-to-video generation (720p, 5 seconds)</li>
+<li>Image-to-video generation (720p, 5 seconds)</li>
+<li>Various prompt complexities</li>
+</ul>
+<p><strong>Manual Verification</strong>:</p>
+<ul>
+<li>[ ] Generation completes successfully</li>
+<li>[ ] Generation speed meets expectations</li>
+<li>[ ] Output quality is acceptable</li>
+<li>[ ] Memory usage remains stable</li>
+<li>[ ] No artifacts or errors in output</li>
+</ul>
+<h4 id="63-system-stability-testing">6.3 System Stability Testing<a class="headerlink" href="#63-system-stability-testing" title="Permanent link">&para;</a></h4>
+<p><strong>Objective</strong>: Test system stability under sustained load.</p>
+<p><strong>Procedure</strong>:</p>
+<ol>
+<li>Run multiple consecutive generations</li>
+<li>Monitor system resources</li>
+<li>Test for memory leaks or stability issues</li>
+</ol>
+<p><strong>Manual Verification</strong>:</p>
+<ul>
+<li>[ ] System remains stable during extended use</li>
+<li>[ ] Memory usage doesn't continuously increase</li>
+<li>[ ] CPU/GPU temperatures remain reasonable</li>
+<li>[ ] No crashes or errors occur</li>
+<li>[ ] Performance remains consistent</li>
+</ul>
+<h3 id="7-configuration-validation-testing">7. Configuration Validation Testing<a class="headerlink" href="#7-configuration-validation-testing" title="Permanent link">&para;</a></h3>
+<h4 id="71-hardware-specific-optimization">7.1 Hardware-Specific Optimization<a class="headerlink" href="#71-hardware-specific-optimization" title="Permanent link">&para;</a></h4>
+<p><strong>Objective</strong>: Validate that configurations are optimized for specific hardware.</p>
+<p><strong>Procedure</strong>:</p>
+<ol>
+<li>Install on different hardware configurations</li>
+<li>Review generated configurations</li>
+<li>Validate optimization appropriateness</li>
+</ol>
+<p><strong>Manual Verification</strong>:</p>
+<ul>
+<li>[ ] CPU thread allocation is appropriate</li>
+<li>[ ] Memory allocation matches available RAM</li>
+<li>[ ] GPU settings match hardware capabilities</li>
+<li>[ ] Quantization method is optimal</li>
+<li>[ ] Model offloading settings are correct</li>
+</ul>
+<h4 id="72-configuration-modification">7.2 Configuration Modification<a class="headerlink" href="#72-configuration-modification" title="Permanent link">&para;</a></h4>
+<p><strong>Objective</strong>: Test manual configuration modification and validation.</p>
+<p><strong>Procedure</strong>:</p>
+<ol>
+<li>Complete installation</li>
+<li>Modify configuration file manually</li>
+<li>Test configuration validation</li>
+<li>Verify changes take effect</li>
+</ol>
+<p><strong>Manual Verification</strong>:</p>
+<ul>
+<li>[ ] Configuration file is accessible and readable</li>
+<li>[ ] Manual modifications are preserved</li>
+<li>[ ] Invalid configurations are detected</li>
+<li>[ ] Configuration validation provides helpful feedback</li>
+<li>[ ] Changes take effect after restart</li>
+</ul>
+<h3 id="8-update-and-maintenance-testing">8. Update and Maintenance Testing<a class="headerlink" href="#8-update-and-maintenance-testing" title="Permanent link">&para;</a></h3>
+<h4 id="81-update-process-testing">8.1 Update Process Testing<a class="headerlink" href="#81-update-process-testing" title="Permanent link">&para;</a></h4>
+<p><strong>Objective</strong>: Test the update process for existing installations.</p>
+<p><strong>Prerequisites</strong>:</p>
+<ul>
+<li>Existing WAN2.2 installation</li>
+<li>Newer version available for testing</li>
+</ul>
+<p><strong>Procedure</strong>:</p>
+<ol>
+<li>Run update process on existing installation</li>
+<li>Verify configuration preservation</li>
+<li>Test backward compatibility</li>
+</ol>
+<p><strong>Manual Verification</strong>:</p>
+<ul>
+<li>[ ] Update process detects existing installation</li>
+<li>[ ] User configurations are preserved</li>
+<li>[ ] Models are updated if needed</li>
+<li>[ ] Backward compatibility is maintained</li>
+<li>[ ] Update completes successfully</li>
+</ul>
+<h4 id="82-rollback-testing">8.2 Rollback Testing<a class="headerlink" href="#82-rollback-testing" title="Permanent link">&para;</a></h4>
+<p><strong>Objective</strong>: Test rollback functionality when issues occur.</p>
+<p><strong>Procedure</strong>:</p>
+<ol>
+<li>Create installation snapshot</li>
+<li>Simulate installation failure</li>
+<li>Test rollback process</li>
+</ol>
+<p><strong>Manual Verification</strong>:</p>
+<ul>
+<li>[ ] Snapshots are created automatically</li>
+<li>[ ] Rollback process is accessible</li>
+<li>[ ] System is restored to previous state</li>
+<li>[ ] No data loss occurs</li>
+<li>[ ] Rollback completes successfully</li>
+</ul>
+<h2 id="test-documentation-and-reporting">Test Documentation and Reporting<a class="headerlink" href="#test-documentation-and-reporting" title="Permanent link">&para;</a></h2>
+<h3 id="test-execution-log">Test Execution Log<a class="headerlink" href="#test-execution-log" title="Permanent link">&para;</a></h3>
+<p>For each test procedure, document:</p>
+<div class="highlight"><pre><span></span><code>Test: [Test Name]
+Date: [Date]
+Tester: [Name]
+System: [Hardware Configuration]
+Duration: [Time]
+Result: [PASS/FAIL/PARTIAL]
+
+Observations:
+- [Key observations]
+- [Performance notes]
+- [User experience feedback]
+
+Issues Found:
+- [Issue 1: Description, Severity, Steps to Reproduce]
+- [Issue 2: Description, Severity, Steps to Reproduce]
+
+Recommendations:
+- [Improvement suggestions]
+- [Configuration adjustments]
+</code></pre></div>
+<h3 id="performance-metrics">Performance Metrics<a class="headerlink" href="#performance-metrics" title="Permanent link">&para;</a></h3>
+<p>Track key performance metrics:</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>High-End</th>
+<th>Mid-Range</th>
+<th>Budget</th>
+<th>Minimum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Installation Time</td>
+<td>&lt; 15 min</td>
+<td>&lt; 20 min</td>
+<td>&lt; 30 min</td>
+<td>&lt; 45 min</td>
+</tr>
+<tr>
+<td>Model Loading</td>
+<td>&lt; 30 sec</td>
+<td>&lt; 60 sec</td>
+<td>&lt; 120 sec</td>
+<td>&lt; 180 sec</td>
+</tr>
+<tr>
+<td>Generation Speed</td>
+<td>&gt; 2 fps</td>
+<td>&gt; 1 fps</td>
+<td>&gt; 0.5 fps</td>
+<td>&gt; 0.2 fps</td>
+</tr>
+<tr>
+<td>Memory Usage</td>
+<td>&lt; 80%</td>
+<td>&lt; 85%</td>
+<td>&lt; 90%</td>
+<td>&lt; 95%</td>
+</tr>
+</tbody>
+</table>
+<h3 id="issue-severity-classification">Issue Severity Classification<a class="headerlink" href="#issue-severity-classification" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Critical</strong>: Installation fails, system becomes unusable</li>
+<li><strong>High</strong>: Major functionality broken, poor user experience</li>
+<li><strong>Medium</strong>: Minor functionality issues, workarounds available</li>
+<li><strong>Low</strong>: Cosmetic issues, minor inconveniences</li>
+</ul>
+<h3 id="test-sign-off-criteria">Test Sign-off Criteria<a class="headerlink" href="#test-sign-off-criteria" title="Permanent link">&para;</a></h3>
+<p>Installation is ready for release when:</p>
+<ul>
+<li>[ ] All critical and high severity issues are resolved</li>
+<li>[ ] Installation succeeds on all target hardware configurations</li>
+<li>[ ] Performance meets baseline requirements</li>
+<li>[ ] User experience is acceptable</li>
+<li>[ ] Error handling and recovery work correctly</li>
+<li>[ ] Documentation is complete and accurate</li>
+</ul>
+<h2 id="continuous-manual-testing">Continuous Manual Testing<a class="headerlink" href="#continuous-manual-testing" title="Permanent link">&para;</a></h2>
+<h3 id="regular-testing-schedule">Regular Testing Schedule<a class="headerlink" href="#regular-testing-schedule" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Pre-release</strong>: Complete manual testing suite</li>
+<li><strong>Weekly</strong>: Smoke testing on primary configurations</li>
+<li><strong>Monthly</strong>: Full regression testing</li>
+<li><strong>Ad-hoc</strong>: Testing for specific issues or changes</li>
+</ul>
+<h3 id="test-environment-maintenance">Test Environment Maintenance<a class="headerlink" href="#test-environment-maintenance" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Keep test systems updated with latest Windows updates</li>
+<li>Maintain variety of hardware configurations</li>
+<li>Regularly clean test environments</li>
+<li>Update test procedures as system evolves</li>
+</ul>
+<h3 id="feedback-integration">Feedback Integration<a class="headerlink" href="#feedback-integration" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Collect user feedback from beta testers</li>
+<li>Integrate feedback into test procedures</li>
+<li>Update test cases based on real-world usage</li>
+<li>Maintain communication with development team</li>
+</ul>
+<p>This comprehensive manual testing framework ensures that the WAN2.2 local installation system provides an excellent user experience across all supported hardware configurations and usage scenarios.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

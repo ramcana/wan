@@ -1,0 +1,1258 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="WAN2.2 Video Generation System Documentation">
+      
+      
+      
+        <link rel="canonical" href="https://ramcana.github.io/wan/api/scripts-startup_manager-diagnostics/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>scripts.startup_manager.diagnostics - WAN22 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e53b48f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#scriptsstartup_managerdiagnostics" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="WAN22 Documentation" class="md-header__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            WAN22 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              scripts.startup_manager.diagnostics
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../WAN22_System_Capabilities_Report/" class="md-tabs__link">
+          
+  
+  
+  System Overview
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../model-orchestrator/requirements/" class="md-tabs__link">
+          
+  
+  
+  Model Orchestrator
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../config/models.toml" class="md-tabs__link">
+          
+  
+  
+  Configuration
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="WAN22 Documentation" class="md-nav__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    WAN22 Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    System Overview
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            System Overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../WAN22_System_Capabilities_Report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Capabilities Report
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Model Orchestrator
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Model Orchestrator
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Requirements
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/tasks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tasks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Configuration
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Configuration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Models Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models_simple.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simple Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Classes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#systeminfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      SystemInfo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagnosticresult" class="md-nav__link">
+    <span class="md-ellipsis">
+      DiagnosticResult
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loganalysisresult" class="md-nav__link">
+    <span class="md-ellipsis">
+      LogAnalysisResult
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#systemdiagnostics" class="md-nav__link">
+    <span class="md-ellipsis">
+      SystemDiagnostics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SystemDiagnostics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initself-any" class="md-nav__link">
+    <span class="md-ellipsis">
+      init(self: Any)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#collect_system_infoself-any-systeminfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      collect_system_info(self: Any) -&gt; SystemInfo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_get_os_infoself-any-" class="md-nav__link">
+    <span class="md-ellipsis">
+      _get_os_info(self: Any) -&gt;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_get_python_infoself-any-" class="md-nav__link">
+    <span class="md-ellipsis">
+      _get_python_info(self: Any) -&gt;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_get_hardware_infoself-any-" class="md-nav__link">
+    <span class="md-ellipsis">
+      _get_hardware_info(self: Any) -&gt;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_get_network_infoself-any-" class="md-nav__link">
+    <span class="md-ellipsis">
+      _get_network_info(self: Any) -&gt;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_get_environment_infoself-any-" class="md-nav__link">
+    <span class="md-ellipsis">
+      _get_environment_info(self: Any) -&gt;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_get_package_infoself-any-" class="md-nav__link">
+    <span class="md-ellipsis">
+      _get_package_info(self: Any) -&gt;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run_diagnostic_checksself-any-" class="md-nav__link">
+    <span class="md-ellipsis">
+      run_diagnostic_checks(self: Any) -&gt;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_check_python_versionself-any-diagnosticresult" class="md-nav__link">
+    <span class="md-ellipsis">
+      _check_python_version(self: Any) -&gt; DiagnosticResult
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_check_virtual_environmentself-any-diagnosticresult" class="md-nav__link">
+    <span class="md-ellipsis">
+      _check_virtual_environment(self: Any) -&gt; DiagnosticResult
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_check_required_packagesself-any-diagnosticresult" class="md-nav__link">
+    <span class="md-ellipsis">
+      _check_required_packages(self: Any) -&gt; DiagnosticResult
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_check_port_availabilityself-any-diagnosticresult" class="md-nav__link">
+    <span class="md-ellipsis">
+      _check_port_availability(self: Any) -&gt; DiagnosticResult
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_check_disk_spaceself-any-diagnosticresult" class="md-nav__link">
+    <span class="md-ellipsis">
+      _check_disk_space(self: Any) -&gt; DiagnosticResult
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_check_memory_usageself-any-diagnosticresult" class="md-nav__link">
+    <span class="md-ellipsis">
+      _check_memory_usage(self: Any) -&gt; DiagnosticResult
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_check_network_connectivityself-any-diagnosticresult" class="md-nav__link">
+    <span class="md-ellipsis">
+      _check_network_connectivity(self: Any) -&gt; DiagnosticResult
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_check_file_permissionsself-any-diagnosticresult" class="md-nav__link">
+    <span class="md-ellipsis">
+      _check_file_permissions(self: Any) -&gt; DiagnosticResult
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_check_node_environmentself-any-diagnosticresult" class="md-nav__link">
+    <span class="md-ellipsis">
+      _check_node_environment(self: Any) -&gt; DiagnosticResult
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loganalyzer" class="md-nav__link">
+    <span class="md-ellipsis">
+      LogAnalyzer
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LogAnalyzer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#methods_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initself-any_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      init(self: Any)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analyze_logsself-any-log_dir-loganalysisresult" class="md-nav__link">
+    <span class="md-ellipsis">
+      analyze_logs(self: Any, log_dir: ) -&gt; LogAnalysisResult
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_categorize_errorself-any-message-str-error_patterns_found" class="md-nav__link">
+    <span class="md-ellipsis">
+      _categorize_error(self: Any, message: str, error_patterns_found: )
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_process_error_patternsself-any-error_patterns_found-" class="md-nav__link">
+    <span class="md-ellipsis">
+      _process_error_patterns(self: Any, error_patterns_found: ) -&gt;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_get_error_descriptionself-any-category-str-str" class="md-nav__link">
+    <span class="md-ellipsis">
+      _get_error_description(self: Any, category: str) -&gt; str
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_get_error_solutionsself-any-category-str-" class="md-nav__link">
+    <span class="md-ellipsis">
+      _get_error_solutions(self: Any, category: str) -&gt;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_process_performance_dataself-any-performance_data-" class="md-nav__link">
+    <span class="md-ellipsis">
+      _process_performance_data(self: Any, performance_data: ) -&gt;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_generate_suggestionsself-any-common_errors-error_count-int-warning_count-int-" class="md-nav__link">
+    <span class="md-ellipsis">
+      _generate_suggestions(self: Any, common_errors: , error_count: int, warning_count: int) -&gt;
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagnosticmode" class="md-nav__link">
+    <span class="md-ellipsis">
+      DiagnosticMode
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DiagnosticMode">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#methods_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initself-any_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      init(self: Any)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run_full_diagnosticsself-any-log_dir-" class="md-nav__link">
+    <span class="md-ellipsis">
+      run_full_diagnostics(self: Any, log_dir: ) -&gt;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_generate_summaryself-any-diagnostic_results-log_analysis-loganalysisresult-" class="md-nav__link">
+    <span class="md-ellipsis">
+      _generate_summary(self: Any, diagnostic_results: , log_analysis: LogAnalysisResult) -&gt;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_get_top_recommendationsself-any-diagnostic_results-log_analysis-loganalysisresult-" class="md-nav__link">
+    <span class="md-ellipsis">
+      _get_top_recommendations(self: Any, diagnostic_results: , log_analysis: LogAnalysisResult) -&gt;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#save_diagnostic_reportself-any-diagnostic_data-output_file-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      save_diagnostic_report(self: Any, diagnostic_data: , output_file: ) -&gt; Path
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="scriptsstartup_managerdiagnostics">scripts.startup_manager.diagnostics<a class="headerlink" href="#scriptsstartup_managerdiagnostics" title="Permanent link">&para;</a></h1>
+<p>System diagnostics and troubleshooting features for the startup manager.</p>
+<p>This module provides comprehensive system information collection, diagnostic mode,
+and log analysis tools to help identify and resolve common startup issues.</p>
+<h2 id="classes">Classes<a class="headerlink" href="#classes" title="Permanent link">&para;</a></h2>
+<h3 id="systeminfo">SystemInfo<a class="headerlink" href="#systeminfo" title="Permanent link">&para;</a></h3>
+<p>System information data structure.</p>
+<h3 id="diagnosticresult">DiagnosticResult<a class="headerlink" href="#diagnosticresult" title="Permanent link">&para;</a></h3>
+<p>Diagnostic check result.</p>
+<h3 id="loganalysisresult">LogAnalysisResult<a class="headerlink" href="#loganalysisresult" title="Permanent link">&para;</a></h3>
+<p>Log analysis result.</p>
+<h3 id="systemdiagnostics">SystemDiagnostics<a class="headerlink" href="#systemdiagnostics" title="Permanent link">&para;</a></h3>
+<p>System diagnostics and information collection.</p>
+<p>Provides comprehensive system information gathering for troubleshooting
+and diagnostic purposes.</p>
+<h4 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h4>
+<h5 id="initself-any"><strong>init</strong>(self: Any)<a class="headerlink" href="#initself-any" title="Permanent link">&para;</a></h5>
+<h5 id="collect_system_infoself-any-systeminfo">collect_system_info(self: Any) -&gt; SystemInfo<a class="headerlink" href="#collect_system_infoself-any-systeminfo" title="Permanent link">&para;</a></h5>
+<p>Collect comprehensive system information.</p>
+<p>Returns:
+    SystemInfo object with all collected information</p>
+<h5 id="_get_os_infoself-any-">_get_os_info(self: Any) -&gt; <ast.Subscript object at 0x0000019432D99C00><a class="headerlink" href="#_get_os_infoself-any-" title="Permanent link">&para;</a></h5>
+<p>Get operating system information.</p>
+<h5 id="_get_python_infoself-any-">_get_python_info(self: Any) -&gt; <ast.Subscript object at 0x0000019432D99540><a class="headerlink" href="#_get_python_infoself-any-" title="Permanent link">&para;</a></h5>
+<p>Get Python environment information.</p>
+<h5 id="_get_hardware_infoself-any-">_get_hardware_info(self: Any) -&gt; <ast.Subscript object at 0x0000019432D99F60><a class="headerlink" href="#_get_hardware_infoself-any-" title="Permanent link">&para;</a></h5>
+<p>Get hardware information.</p>
+<h5 id="_get_network_infoself-any-">_get_network_info(self: Any) -&gt; <ast.Subscript object at 0x0000019432D9ACB0><a class="headerlink" href="#_get_network_infoself-any-" title="Permanent link">&para;</a></h5>
+<p>Get network interface information.</p>
+<h5 id="_get_environment_infoself-any-">_get_environment_info(self: Any) -&gt; <ast.Subscript object at 0x0000019434631F00><a class="headerlink" href="#_get_environment_infoself-any-" title="Permanent link">&para;</a></h5>
+<p>Get relevant environment variables.</p>
+<h5 id="_get_package_infoself-any-">_get_package_info(self: Any) -&gt; <ast.Subscript object at 0x0000019434632B60><a class="headerlink" href="#_get_package_infoself-any-" title="Permanent link">&para;</a></h5>
+<p>Get list of installed Python packages.</p>
+<h5 id="run_diagnostic_checksself-any-">run_diagnostic_checks(self: Any) -&gt; <ast.Subscript object at 0x00000194343D8280><a class="headerlink" href="#run_diagnostic_checksself-any-" title="Permanent link">&para;</a></h5>
+<p>Run comprehensive diagnostic checks.</p>
+<p>Returns:
+    List of diagnostic results</p>
+<h5 id="_check_python_versionself-any-diagnosticresult">_check_python_version(self: Any) -&gt; DiagnosticResult<a class="headerlink" href="#_check_python_versionself-any-diagnosticresult" title="Permanent link">&para;</a></h5>
+<p>Check Python version compatibility.</p>
+<h5 id="_check_virtual_environmentself-any-diagnosticresult">_check_virtual_environment(self: Any) -&gt; DiagnosticResult<a class="headerlink" href="#_check_virtual_environmentself-any-diagnosticresult" title="Permanent link">&para;</a></h5>
+<p>Check if virtual environment is active.</p>
+<h5 id="_check_required_packagesself-any-diagnosticresult">_check_required_packages(self: Any) -&gt; DiagnosticResult<a class="headerlink" href="#_check_required_packagesself-any-diagnosticresult" title="Permanent link">&para;</a></h5>
+<p>Check if required packages are installed.</p>
+<h5 id="_check_port_availabilityself-any-diagnosticresult">_check_port_availability(self: Any) -&gt; DiagnosticResult<a class="headerlink" href="#_check_port_availabilityself-any-diagnosticresult" title="Permanent link">&para;</a></h5>
+<p>Check if default ports are available.</p>
+<h5 id="_check_disk_spaceself-any-diagnosticresult">_check_disk_space(self: Any) -&gt; DiagnosticResult<a class="headerlink" href="#_check_disk_spaceself-any-diagnosticresult" title="Permanent link">&para;</a></h5>
+<p>Check available disk space.</p>
+<h5 id="_check_memory_usageself-any-diagnosticresult">_check_memory_usage(self: Any) -&gt; DiagnosticResult<a class="headerlink" href="#_check_memory_usageself-any-diagnosticresult" title="Permanent link">&para;</a></h5>
+<p>Check system memory usage.</p>
+<h5 id="_check_network_connectivityself-any-diagnosticresult">_check_network_connectivity(self: Any) -&gt; DiagnosticResult<a class="headerlink" href="#_check_network_connectivityself-any-diagnosticresult" title="Permanent link">&para;</a></h5>
+<p>Check basic network connectivity.</p>
+<h5 id="_check_file_permissionsself-any-diagnosticresult">_check_file_permissions(self: Any) -&gt; DiagnosticResult<a class="headerlink" href="#_check_file_permissionsself-any-diagnosticresult" title="Permanent link">&para;</a></h5>
+<p>Check file system permissions.</p>
+<h5 id="_check_node_environmentself-any-diagnosticresult">_check_node_environment(self: Any) -&gt; DiagnosticResult<a class="headerlink" href="#_check_node_environmentself-any-diagnosticresult" title="Permanent link">&para;</a></h5>
+<p>Check Node.js environment.</p>
+<h3 id="loganalyzer">LogAnalyzer<a class="headerlink" href="#loganalyzer" title="Permanent link">&para;</a></h3>
+<p>Log analysis tools for identifying common issues and patterns.</p>
+<p>Analyzes startup logs to identify common problems and provide
+suggestions for resolution.</p>
+<h4 id="methods_1">Methods<a class="headerlink" href="#methods_1" title="Permanent link">&para;</a></h4>
+<h5 id="initself-any_1"><strong>init</strong>(self: Any)<a class="headerlink" href="#initself-any_1" title="Permanent link">&para;</a></h5>
+<h5 id="analyze_logsself-any-log_dir-loganalysisresult">analyze_logs(self: Any, log_dir: <ast.Subscript object at 0x0000019434040970>) -&gt; LogAnalysisResult<a class="headerlink" href="#analyze_logsself-any-log_dir-loganalysisresult" title="Permanent link">&para;</a></h5>
+<p>Analyze log files for common issues and patterns.</p>
+<p>Args:
+    log_dir: Directory containing log files</p>
+<p>Returns:
+    LogAnalysisResult with analysis findings</p>
+<h5 id="_categorize_errorself-any-message-str-error_patterns_found">_categorize_error(self: Any, message: str, error_patterns_found: <ast.Subscript object at 0x000001942F02AF80>)<a class="headerlink" href="#_categorize_errorself-any-message-str-error_patterns_found" title="Permanent link">&para;</a></h5>
+<p>Categorize error message by pattern.</p>
+<h5 id="_process_error_patternsself-any-error_patterns_found-">_process_error_patterns(self: Any, error_patterns_found: <ast.Subscript object at 0x0000019434671630>) -&gt; <ast.Subscript object at 0x0000019434671BA0><a class="headerlink" href="#_process_error_patternsself-any-error_patterns_found-" title="Permanent link">&para;</a></h5>
+<p>Process error patterns into common errors list.</p>
+<h5 id="_get_error_descriptionself-any-category-str-str">_get_error_description(self: Any, category: str) -&gt; str<a class="headerlink" href="#_get_error_descriptionself-any-category-str-str" title="Permanent link">&para;</a></h5>
+<p>Get description for error category.</p>
+<h5 id="_get_error_solutionsself-any-category-str-">_get_error_solutions(self: Any, category: str) -&gt; <ast.Subscript object at 0x00000194346722C0><a class="headerlink" href="#_get_error_solutionsself-any-category-str-" title="Permanent link">&para;</a></h5>
+<p>Get solutions for error category.</p>
+<h5 id="_process_performance_dataself-any-performance_data-">_process_performance_data(self: Any, performance_data: <ast.Subscript object at 0x0000019434672B00>) -&gt; <ast.Subscript object at 0x0000019434671D50><a class="headerlink" href="#_process_performance_dataself-any-performance_data-" title="Permanent link">&para;</a></h5>
+<p>Process performance metrics.</p>
+<h5 id="_generate_suggestionsself-any-common_errors-error_count-int-warning_count-int-">_generate_suggestions(self: Any, common_errors: <ast.Subscript object at 0x0000019434673940>, error_count: int, warning_count: int) -&gt; <ast.Subscript object at 0x000001943448C670><a class="headerlink" href="#_generate_suggestionsself-any-common_errors-error_count-int-warning_count-int-" title="Permanent link">&para;</a></h5>
+<p>Generate suggestions based on analysis.</p>
+<h3 id="diagnosticmode">DiagnosticMode<a class="headerlink" href="#diagnosticmode" title="Permanent link">&para;</a></h3>
+<p>Diagnostic mode that captures detailed startup process information.</p>
+<p>Provides comprehensive diagnostic information collection during
+startup process for troubleshooting purposes.</p>
+<h4 id="methods_2">Methods<a class="headerlink" href="#methods_2" title="Permanent link">&para;</a></h4>
+<h5 id="initself-any_2"><strong>init</strong>(self: Any)<a class="headerlink" href="#initself-any_2" title="Permanent link">&para;</a></h5>
+<h5 id="run_full_diagnosticsself-any-log_dir-">run_full_diagnostics(self: Any, log_dir: <ast.Subscript object at 0x000001943448D510>) -&gt; <ast.Subscript object at 0x000001943448CB80><a class="headerlink" href="#run_full_diagnosticsself-any-log_dir-" title="Permanent link">&para;</a></h5>
+<p>Run comprehensive diagnostics including system info, checks, and log analysis.</p>
+<p>Args:
+    log_dir: Directory containing log files to analyze</p>
+<p>Returns:
+    Dictionary containing all diagnostic information</p>
+<h5 id="_generate_summaryself-any-diagnostic_results-log_analysis-loganalysisresult-">_generate_summary(self: Any, diagnostic_results: <ast.Subscript object at 0x000001943448E8C0>, log_analysis: LogAnalysisResult) -&gt; <ast.Subscript object at 0x000001943448D1B0><a class="headerlink" href="#_generate_summaryself-any-diagnostic_results-log_analysis-loganalysisresult-" title="Permanent link">&para;</a></h5>
+<p>Generate diagnostic summary.</p>
+<h5 id="_get_top_recommendationsself-any-diagnostic_results-log_analysis-loganalysisresult-">_get_top_recommendations(self: Any, diagnostic_results: <ast.Subscript object at 0x000001943448EF20>, log_analysis: LogAnalysisResult) -&gt; <ast.Subscript object at 0x000001942F8FFBB0><a class="headerlink" href="#_get_top_recommendationsself-any-diagnostic_results-log_analysis-loganalysisresult-" title="Permanent link">&para;</a></h5>
+<p>Get top recommendations based on diagnostics.</p>
+<h5 id="save_diagnostic_reportself-any-diagnostic_data-output_file-path">save_diagnostic_report(self: Any, diagnostic_data: <ast.Subscript object at 0x000001942F8FEAA0>, output_file: <ast.Subscript object at 0x000001942F8FFA30>) -&gt; Path<a class="headerlink" href="#save_diagnostic_reportself-any-diagnostic_data-output_file-path" title="Permanent link">&para;</a></h5>
+<p>Save diagnostic report to file.</p>
+<p>Args:
+    diagnostic_data: Diagnostic data to save
+    output_file: Output file path (optional)</p>
+<p>Returns:
+    Path to saved report file</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1679 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="WAN2.2 Video Generation System Documentation">
+      
+      
+      
+        <link rel="canonical" href="https://ramcana.github.io/wan/model-orchestrator/requirements/">
+      
+      
+        <link rel="prev" href="../../WAN22_System_Capabilities_Report/">
+      
+      
+        <link rel="next" href="../tasks/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>Requirements - WAN22 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e53b48f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#requirements-document" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="WAN22 Documentation" class="md-header__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            WAN22 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Requirements
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../WAN22_System_Capabilities_Report/" class="md-tabs__link">
+          
+  
+  
+  System Overview
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+  Model Orchestrator
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../config/models.toml" class="md-tabs__link">
+          
+  
+  
+  Configuration
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="WAN22 Documentation" class="md-nav__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    WAN22 Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    System Overview
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            System Overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../WAN22_System_Capabilities_Report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Capabilities Report
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Model Orchestrator
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Model Orchestrator
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Requirements
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Requirements
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#requirement-1-unified-model-manifest-system-with-versioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirement 1: Unified Model Manifest System with Versioning
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirement 1: Unified Model Manifest System with Versioning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acceptance-criteria" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acceptance Criteria
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement-2-multi-source-storage-backend-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirement 2: Multi-Source Storage Backend System
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirement 2: Multi-Source Storage Backend System">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acceptance-criteria_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acceptance Criteria
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement-3-deterministic-path-resolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirement 3: Deterministic Path Resolution
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirement 3: Deterministic Path Resolution">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acceptance-criteria_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acceptance Criteria
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement-4-atomic-downloads-with-concurrency-safety" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirement 4: Atomic Downloads with Concurrency Safety
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirement 4: Atomic Downloads with Concurrency Safety">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acceptance-criteria_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acceptance Criteria
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement-5-comprehensive-integrity-and-trust-chain" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirement 5: Comprehensive Integrity and Trust Chain
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirement 5: Comprehensive Integrity and Trust Chain">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acceptance-criteria_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acceptance Criteria
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement-6-pipeline-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirement 6: Pipeline Integration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirement 6: Pipeline Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acceptance-criteria_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acceptance Criteria
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement-7-cli-management-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirement 7: CLI Management Interface
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirement 7: CLI Management Interface">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acceptance-criteria_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acceptance Criteria
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement-8-secure-configuration-and-credential-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirement 8: Secure Configuration and Credential Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirement 8: Secure Configuration and Credential Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acceptance-criteria_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acceptance Criteria
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement-9-performance-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirement 9: Performance Optimization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirement 9: Performance Optimization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acceptance-criteria_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acceptance Criteria
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement-10-disk-space-management-and-garbage-collection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirement 10: Disk Space Management and Garbage Collection
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirement 10: Disk Space Management and Garbage Collection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acceptance-criteria_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acceptance Criteria
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement-11-cross-platform-file-system-compatibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirement 11: Cross-Platform File System Compatibility
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirement 11: Cross-Platform File System Compatibility">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acceptance-criteria_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acceptance Criteria
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement-12-comprehensive-observability-and-error-classification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirement 12: Comprehensive Observability and Error Classification
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirement 12: Comprehensive Observability and Error Classification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acceptance-criteria_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acceptance Criteria
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement-13-production-api-surface-and-cli-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirement 13: Production API Surface and CLI Tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirement 13: Production API Surface and CLI Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acceptance-criteria_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acceptance Criteria
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement-14-wan22-pipeline-integration-specifics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirement 14: WAN2.2 Pipeline Integration Specifics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirement 14: WAN2.2 Pipeline Integration Specifics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acceptance-criteria_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acceptance Criteria
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tasks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tasks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Configuration
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Configuration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Models Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models_simple.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simple Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#requirement-1-unified-model-manifest-system-with-versioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirement 1: Unified Model Manifest System with Versioning
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirement 1: Unified Model Manifest System with Versioning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acceptance-criteria" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acceptance Criteria
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement-2-multi-source-storage-backend-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirement 2: Multi-Source Storage Backend System
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirement 2: Multi-Source Storage Backend System">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acceptance-criteria_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acceptance Criteria
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement-3-deterministic-path-resolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirement 3: Deterministic Path Resolution
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirement 3: Deterministic Path Resolution">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acceptance-criteria_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acceptance Criteria
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement-4-atomic-downloads-with-concurrency-safety" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirement 4: Atomic Downloads with Concurrency Safety
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirement 4: Atomic Downloads with Concurrency Safety">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acceptance-criteria_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acceptance Criteria
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement-5-comprehensive-integrity-and-trust-chain" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirement 5: Comprehensive Integrity and Trust Chain
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirement 5: Comprehensive Integrity and Trust Chain">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acceptance-criteria_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acceptance Criteria
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement-6-pipeline-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirement 6: Pipeline Integration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirement 6: Pipeline Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acceptance-criteria_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acceptance Criteria
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement-7-cli-management-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirement 7: CLI Management Interface
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirement 7: CLI Management Interface">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acceptance-criteria_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acceptance Criteria
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement-8-secure-configuration-and-credential-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirement 8: Secure Configuration and Credential Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirement 8: Secure Configuration and Credential Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acceptance-criteria_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acceptance Criteria
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement-9-performance-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirement 9: Performance Optimization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirement 9: Performance Optimization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acceptance-criteria_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acceptance Criteria
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement-10-disk-space-management-and-garbage-collection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirement 10: Disk Space Management and Garbage Collection
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirement 10: Disk Space Management and Garbage Collection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acceptance-criteria_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acceptance Criteria
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement-11-cross-platform-file-system-compatibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirement 11: Cross-Platform File System Compatibility
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirement 11: Cross-Platform File System Compatibility">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acceptance-criteria_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acceptance Criteria
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement-12-comprehensive-observability-and-error-classification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirement 12: Comprehensive Observability and Error Classification
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirement 12: Comprehensive Observability and Error Classification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acceptance-criteria_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acceptance Criteria
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement-13-production-api-surface-and-cli-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirement 13: Production API Surface and CLI Tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirement 13: Production API Surface and CLI Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acceptance-criteria_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acceptance Criteria
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement-14-wan22-pipeline-integration-specifics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirement 14: WAN2.2 Pipeline Integration Specifics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirement 14: WAN2.2 Pipeline Integration Specifics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acceptance-criteria_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acceptance Criteria
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="requirements-document">Requirements Document<a class="headerlink" href="#requirements-document" title="Permanent link">&para;</a></h1>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>The Model Orchestrator is a comprehensive model management system that eliminates the "where are the models / how do we download them" problem in WAN2.2. It provides a unified approach to model discovery, downloading, and path resolution through a manifest-driven architecture with multiple storage backends (local, S3/MinIO, HuggingFace Hub) and deterministic path policies. The system integrates directly into the WAN2.2 pipeline loading process and provides both programmatic APIs and CLI tools for model management.</p>
+<h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">&para;</a></h2>
+<h3 id="requirement-1-unified-model-manifest-system-with-versioning">Requirement 1: Unified Model Manifest System with Versioning<a class="headerlink" href="#requirement-1-unified-model-manifest-system-with-versioning" title="Permanent link">&para;</a></h3>
+<p><strong>User Story:</strong> As a developer, I want a single source of truth for all WAN2.2 model definitions with proper versioning and variant support, so that I can consistently reference specific model versions and precisions across environments.</p>
+<h4 id="acceptance-criteria">Acceptance Criteria<a class="headerlink" href="#acceptance-criteria" title="Permanent link">&para;</a></h4>
+<ol>
+<li>WHEN the system initializes THEN it SHALL load model definitions from a single <code>models.toml</code> manifest file with schema versioning</li>
+<li>WHEN a model is referenced by ID THEN the system SHALL resolve it using canonical model_id format (e.g., "t2v-A14B@2.2.0")</li>
+<li>WHEN the manifest defines model variants (fp16/bf16/int8) THEN the system SHALL support variant-specific resolution</li>
+<li>WHEN the manifest includes per-file metadata (size, sha256) THEN the system SHALL validate all required fields are present</li>
+<li>WHEN multiple environments access the same manifest THEN they SHALL resolve identical model IDs to the same file structure</li>
+<li>WHEN the manifest schema version is incompatible THEN the system SHALL fail gracefully with migration guidance</li>
+<li>WHEN sharded models use index.json files THEN the system SHALL download only referenced shards</li>
+<li>IF a model ID or variant is not found THEN the system SHALL raise a clear error with available options</li>
+</ol>
+<h3 id="requirement-2-multi-source-storage-backend-system">Requirement 2: Multi-Source Storage Backend System<a class="headerlink" href="#requirement-2-multi-source-storage-backend-system" title="Permanent link">&para;</a></h3>
+<p><strong>User Story:</strong> As a system administrator, I want models to be automatically sourced from the fastest available location (local → S3 → HuggingFace), so that development is fast and production is reliable.</p>
+<h4 id="acceptance-criteria_1">Acceptance Criteria<a class="headerlink" href="#acceptance-criteria_1" title="Permanent link">&para;</a></h4>
+<ol>
+<li>WHEN a model is requested THEN the system SHALL attempt to source it from storage backends in priority order</li>
+<li>WHEN local storage contains all required files THEN the system SHALL use the local copy without network access</li>
+<li>WHEN local storage is incomplete THEN the system SHALL attempt the next configured source in priority order</li>
+<li>WHEN S3/MinIO backend is configured THEN the system SHALL support resumable downloads with size verification</li>
+<li>WHEN HuggingFace Hub is used THEN the system SHALL leverage allow_patterns to download only required file types</li>
+<li>WHEN all sources fail THEN the system SHALL raise a comprehensive error indicating which sources were attempted</li>
+</ol>
+<h3 id="requirement-3-deterministic-path-resolution">Requirement 3: Deterministic Path Resolution<a class="headerlink" href="#requirement-3-deterministic-path-resolution" title="Permanent link">&para;</a></h3>
+<p><strong>User Story:</strong> As a developer, I want all model paths to be resolved deterministically from a single MODELS_ROOT, so that there's no path drift between different parts of the system.</p>
+<h4 id="acceptance-criteria_2">Acceptance Criteria<a class="headerlink" href="#acceptance-criteria_2" title="Permanent link">&para;</a></h4>
+<ol>
+<li>WHEN the system resolves a model path THEN it SHALL use only the configured MODELS_ROOT and model ID</li>
+<li>WHEN multiple services request the same model THEN they SHALL receive identical absolute paths</li>
+<li>WHEN the MODELS_ROOT changes THEN all model paths SHALL resolve relative to the new root</li>
+<li>WHEN a model directory is created THEN it SHALL follow the pattern <code>{MODELS_ROOT}/wan22/{model_id}</code></li>
+<li>IF MODELS_ROOT is not configured THEN the system SHALL raise a configuration error</li>
+</ol>
+<h3 id="requirement-4-atomic-downloads-with-concurrency-safety">Requirement 4: Atomic Downloads with Concurrency Safety<a class="headerlink" href="#requirement-4-atomic-downloads-with-concurrency-safety" title="Permanent link">&para;</a></h3>
+<p><strong>User Story:</strong> As a user, I want models to be downloaded atomically and safely handle concurrent access, so that partial downloads never appear complete and multiple processes don't conflict.</p>
+<h4 id="acceptance-criteria_3">Acceptance Criteria<a class="headerlink" href="#acceptance-criteria_3" title="Permanent link">&para;</a></h4>
+<ol>
+<li>WHEN a model is requested for the first time THEN the system SHALL download only the required files to a temporary directory</li>
+<li>WHEN a download completes successfully THEN the system SHALL atomically rename from temporary to final location</li>
+<li>WHEN multiple processes request the same model THEN only one SHALL download while others wait for completion</li>
+<li>WHEN a download is interrupted THEN the system SHALL resume from the last completed chunk without corruption</li>
+<li>WHEN partial files exist locally THEN the system SHALL verify integrity before considering them complete</li>
+<li>WHEN cross-process file locks are required THEN the system SHALL use OS-appropriate locking mechanisms</li>
+<li>WHEN downloads are concurrent THEN the system SHALL respect max_concurrent_downloads configuration</li>
+<li>WHEN retry attempts are made THEN the system SHALL use exponential backoff with jitter per source</li>
+</ol>
+<h3 id="requirement-5-comprehensive-integrity-and-trust-chain">Requirement 5: Comprehensive Integrity and Trust Chain<a class="headerlink" href="#requirement-5-comprehensive-integrity-and-trust-chain" title="Permanent link">&para;</a></h3>
+<p><strong>User Story:</strong> As a system administrator, I want robust integrity verification with fallback mechanisms, so that corrupted models are detected and handled appropriately.</p>
+<h4 id="acceptance-criteria_4">Acceptance Criteria<a class="headerlink" href="#acceptance-criteria_4" title="Permanent link">&para;</a></h4>
+<ol>
+<li>WHEN per-file checksums (sha256) and sizes are provided in manifest THEN the system SHALL verify both after download</li>
+<li>WHEN checksum verification fails THEN the system SHALL re-download the affected files up to retry limit</li>
+<li>WHEN HuggingFace ETag/size data is available and checksums are missing THEN the system SHALL use HF metadata for verification</li>
+<li>WHEN repeated checksum failures occur THEN the system SHALL fail with detailed error listing exact files and sources attempted</li>
+<li>WHEN manifest signatures are present THEN the system SHALL verify manifest authenticity before processing</li>
+<li>WHEN all required files are present and verified THEN the system SHALL mark the model as complete</li>
+<li>IF verification data is completely missing THEN the system SHALL perform basic completeness checks using file existence and sizes</li>
+</ol>
+<h3 id="requirement-6-pipeline-integration">Requirement 6: Pipeline Integration<a class="headerlink" href="#requirement-6-pipeline-integration" title="Permanent link">&para;</a></h3>
+<p><strong>User Story:</strong> As a developer, I want the Model Orchestrator to integrate seamlessly with existing WAN2.2 pipeline loading, so that I can replace hardcoded paths with orchestrated model resolution.</p>
+<h4 id="acceptance-criteria_5">Acceptance Criteria<a class="headerlink" href="#acceptance-criteria_5" title="Permanent link">&para;</a></h4>
+<ol>
+<li>WHEN the pipeline loader requests a model THEN it SHALL receive an absolute path to the complete model directory</li>
+<li>WHEN the model is not locally available THEN the system SHALL automatically ensure it's downloaded before returning the path</li>
+<li>WHEN the pipeline loader calls <code>get_wan_paths(model_id)</code> THEN it SHALL return a ready-to-use model directory path</li>
+<li>WHEN model loading fails THEN the system SHALL provide clear error messages indicating the failure reason</li>
+<li>IF the model ID is invalid THEN the system SHALL raise an error before attempting any downloads</li>
+</ol>
+<h3 id="requirement-7-cli-management-interface">Requirement 7: CLI Management Interface<a class="headerlink" href="#requirement-7-cli-management-interface" title="Permanent link">&para;</a></h3>
+<p><strong>User Story:</strong> As a system administrator, I want command-line tools to pre-download, verify, and manage models, so that I can prepare systems and troubleshoot model issues.</p>
+<h4 id="acceptance-criteria_6">Acceptance Criteria<a class="headerlink" href="#acceptance-criteria_6" title="Permanent link">&para;</a></h4>
+<ol>
+<li>WHEN I run <code>wan models ensure --all</code> THEN the system SHALL download all models defined in the manifest</li>
+<li>WHEN I run <code>wan models ensure --only {model_id}</code> THEN the system SHALL download only the specified model</li>
+<li>WHEN I run <code>wan models check</code> THEN the system SHALL report the status of all configured models</li>
+<li>WHEN downloads complete successfully THEN the CLI SHALL display the local path for each model</li>
+<li>WHEN downloads fail THEN the CLI SHALL display clear error messages with troubleshooting guidance</li>
+</ol>
+<h3 id="requirement-8-secure-configuration-and-credential-management">Requirement 8: Secure Configuration and Credential Management<a class="headerlink" href="#requirement-8-secure-configuration-and-credential-management" title="Permanent link">&para;</a></h3>
+<p><strong>User Story:</strong> As a developer, I want secure credential handling and comprehensive configuration options, so that I can deploy safely across different environments with proper secret management.</p>
+<h4 id="acceptance-criteria_7">Acceptance Criteria<a class="headerlink" href="#acceptance-criteria_7" title="Permanent link">&para;</a></h4>
+<ol>
+<li>WHEN MODELS_ROOT is set THEN the system SHALL use it as the base directory for all model storage</li>
+<li>WHEN WAN_MODELS_MANIFEST is set THEN the system SHALL load the manifest from the specified path</li>
+<li>WHEN HF_TOKEN is configured THEN the system SHALL read it from keyring/secret store if available, environment otherwise</li>
+<li>WHEN S3 credentials (AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_ENDPOINT_URL) are set THEN the system SHALL use them for S3/MinIO access</li>
+<li>WHEN credentials or URLs are logged THEN the system SHALL mask sensitive values in all log output</li>
+<li>WHEN presigned URLs are provided THEN the system SHALL support them for temporary access</li>
+<li>WHEN at-rest encryption is configured THEN the system SHALL support encrypted model storage</li>
+<li>IF required environment variables are missing THEN the system SHALL provide clear configuration guidance with examples</li>
+</ol>
+<h3 id="requirement-9-performance-optimization">Requirement 9: Performance Optimization<a class="headerlink" href="#requirement-9-performance-optimization" title="Permanent link">&para;</a></h3>
+<p><strong>User Story:</strong> As a user, I want model downloads to be as fast as possible, so that I can start working with models quickly.</p>
+<h4 id="acceptance-criteria_8">Acceptance Criteria<a class="headerlink" href="#acceptance-criteria_8" title="Permanent link">&para;</a></h4>
+<ol>
+<li>WHEN HF_HUB_ENABLE_HF_TRANSFER is enabled THEN the system SHALL use multi-connection downloads from HuggingFace</li>
+<li>WHEN downloading from S3/MinIO THEN the system SHALL use parallel transfers for multiple files</li>
+<li>WHEN allow_patterns are configured THEN the system SHALL skip unnecessary files to reduce download size</li>
+<li>WHEN using shared HF cache THEN the system SHALL avoid duplicate downloads across different virtual environments</li>
+<li>WHEN local or S3 sources are available THEN the system SHALL prefer them over HuggingFace for speed</li>
+</ol>
+<h3 id="requirement-10-disk-space-management-and-garbage-collection">Requirement 10: Disk Space Management and Garbage Collection<a class="headerlink" href="#requirement-10-disk-space-management-and-garbage-collection" title="Permanent link">&para;</a></h3>
+<p><strong>User Story:</strong> As a system administrator, I want automatic disk space management with configurable quotas and garbage collection, so that the system doesn't consume unlimited storage.</p>
+<h4 id="acceptance-criteria_9">Acceptance Criteria<a class="headerlink" href="#acceptance-criteria_9" title="Permanent link">&para;</a></h4>
+<ol>
+<li>WHEN a download is requested THEN the system SHALL perform preflight free-space checks before starting</li>
+<li>WHEN disk quota limits are configured THEN the system SHALL enforce global or per-family storage limits</li>
+<li>WHEN storage quota is exceeded THEN the system SHALL trigger LRU/TTL-based garbage collection</li>
+<li>WHEN models are marked as "pinned" THEN garbage collection SHALL preserve them regardless of age</li>
+<li>WHEN garbage collection runs THEN it SHALL report reclaimed bytes and preserved models</li>
+<li>WHEN insufficient disk space exists THEN the system SHALL provide actionable error messages before starting downloads</li>
+<li>IF disk space cannot be reclaimed THEN the system SHALL fail with clear guidance on manual cleanup options</li>
+</ol>
+<h3 id="requirement-11-cross-platform-file-system-compatibility">Requirement 11: Cross-Platform File System Compatibility<a class="headerlink" href="#requirement-11-cross-platform-file-system-compatibility" title="Permanent link">&para;</a></h3>
+<p><strong>User Story:</strong> As a developer, I want the system to handle Windows, WSL, and Unix file system quirks correctly, so that it works reliably across all deployment platforms.</p>
+<h4 id="acceptance-criteria_10">Acceptance Criteria<a class="headerlink" href="#acceptance-criteria_10" title="Permanent link">&para;</a></h4>
+<ol>
+<li>WHEN running on Windows THEN the system SHALL support long paths (&gt;260 characters) with appropriate OS configuration guidance</li>
+<li>WHEN path length limits are exceeded THEN the system SHALL provide clear error messages with workaround suggestions</li>
+<li>WHEN running on WSL THEN path mapping between Windows and Linux SHALL be stable and reversible</li>
+<li>WHEN case-insensitive file systems are used THEN the system SHALL handle filename collisions appropriately</li>
+<li>WHEN Windows reserved names are encountered THEN the system SHALL handle them without corruption</li>
+<li>WHEN UNC paths are used THEN the system SHALL support them for network storage scenarios</li>
+<li>IF file system limitations prevent operation THEN the system SHALL provide platform-specific guidance</li>
+</ol>
+<h3 id="requirement-12-comprehensive-observability-and-error-classification">Requirement 12: Comprehensive Observability and Error Classification<a class="headerlink" href="#requirement-12-comprehensive-observability-and-error-classification" title="Permanent link">&para;</a></h3>
+<p><strong>User Story:</strong> As a system administrator, I want detailed metrics, structured logging, and categorized errors, so that I can monitor system health and troubleshoot issues effectively.</p>
+<h4 id="acceptance-criteria_11">Acceptance Criteria<a class="headerlink" href="#acceptance-criteria_11" title="Permanent link">&para;</a></h4>
+<ol>
+<li>WHEN download operations occur THEN the system SHALL emit metrics for started/completed/failed downloads with duration and bytes</li>
+<li>WHEN errors occur THEN the system SHALL classify them with specific error codes (NO_SPACE, AUTH_FAIL, CHECKSUM_FAIL, LOCK_TIMEOUT, RATE_LIMIT)</li>
+<li>WHEN rate limiting is encountered THEN the system SHALL implement exponential backoff and reflect retry attempts in logs</li>
+<li>WHEN health endpoints are queried THEN they SHALL return per-model status without triggering side effects</li>
+<li>WHEN metrics endpoints are available THEN they SHALL provide Prometheus-compatible format</li>
+<li>WHEN structured logging is enabled THEN all log entries SHALL include correlation IDs and contextual metadata</li>
+<li>IF monitoring systems are configured THEN the system SHALL integrate with standard observability tools</li>
+</ol>
+<h3 id="requirement-13-production-api-surface-and-cli-tools">Requirement 13: Production API Surface and CLI Tools<a class="headerlink" href="#requirement-13-production-api-surface-and-cli-tools" title="Permanent link">&para;</a></h3>
+<p><strong>User Story:</strong> As a developer and administrator, I want comprehensive Python APIs and CLI tools with both human and machine-readable output, so that I can integrate and automate model management.</p>
+<h4 id="acceptance-criteria_12">Acceptance Criteria<a class="headerlink" href="#acceptance-criteria_12" title="Permanent link">&para;</a></h4>
+<ol>
+<li>WHEN using Python API THEN <code>ensure(model_id, variant=None)</code> SHALL return Path to ready model directory</li>
+<li>WHEN querying model status THEN <code>status(model_id)</code> SHALL return structured data with state, missing files, and bytes needed</li>
+<li>WHEN using CLI tools THEN they SHALL support both human-readable and <code>--json</code> output for automation</li>
+<li>WHEN CLI operations fail THEN they SHALL return non-zero exit codes with clear error messages</li>
+<li>WHEN garbage collection is invoked THEN <code>gc()</code> API and <code>wan models gc</code> CLI SHALL support dry-run and size limits</li>
+<li>WHEN JSON output is requested THEN the schema SHALL be stable and documented</li>
+<li>IF backward compatibility is required THEN the system SHALL provide migration adapters for existing configurations</li>
+</ol>
+<h3 id="requirement-14-wan22-pipeline-integration-specifics">Requirement 14: WAN2.2 Pipeline Integration Specifics<a class="headerlink" href="#requirement-14-wan22-pipeline-integration-specifics" title="Permanent link">&para;</a></h3>
+<p><strong>User Story:</strong> As a WAN2.2 developer, I want the orchestrator to handle WAN2.2-specific model requirements like sharded weights, optional components, and development variants, so that it integrates seamlessly with the existing pipeline.</p>
+<h4 id="acceptance-criteria_13">Acceptance Criteria<a class="headerlink" href="#acceptance-criteria_13" title="Permanent link">&para;</a></h4>
+<ol>
+<li>WHEN sharded models use index.json files THEN the system SHALL download only referenced weight shards</li>
+<li>WHEN optional components (text encoder, VAE) are configured THEN the system SHALL support selective downloading</li>
+<li>WHEN LoRA overlays are specified THEN the system SHALL handle overlay model management</li>
+<li>WHEN development mode is enabled THEN the system SHALL support lightweight model variants for faster iteration</li>
+<li>WHEN precision downcasting is configured THEN the system SHALL support dev-mode precision variants</li>
+<li>WHEN production deployment occurs THEN the system SHALL default to full-precision variants</li>
+<li>IF model components are missing THEN the system SHALL provide clear guidance on which components are required for specific operations</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

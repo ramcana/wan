@@ -1,0 +1,2211 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="WAN2.2 Video Generation System Documentation">
+      
+      
+      
+        <link rel="canonical" href="https://ramcana.github.io/wan/reference/OPERATIONAL_RUNBOOK/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>Model Orchestrator Operational Runbook - WAN22 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e53b48f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#model-orchestrator-operational-runbook" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="WAN22 Documentation" class="md-header__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            WAN22 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Model Orchestrator Operational Runbook
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../WAN22_System_Capabilities_Report/" class="md-tabs__link">
+          
+  
+  
+  System Overview
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../model-orchestrator/requirements/" class="md-tabs__link">
+          
+  
+  
+  Model Orchestrator
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../config/models.toml" class="md-tabs__link">
+          
+  
+  
+  Configuration
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="WAN22 Documentation" class="md-nav__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    WAN22 Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    System Overview
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            System Overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../WAN22_System_Capabilities_Report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Capabilities Report
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Model Orchestrator
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Model Orchestrator
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Requirements
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/tasks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tasks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Configuration
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Configuration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Models Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models_simple.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simple Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      Table of Contents
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#daily-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Daily Operations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Daily Operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#morning-health-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      Morning Health Check
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Morning Health Check">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#procedure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Procedure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#escalation-criteria" class="md-nav__link">
+    <span class="md-ellipsis">
+      Escalation Criteria
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evening-cleanup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Evening Cleanup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Evening Cleanup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#procedure_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Procedure
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#weekly-maintenance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Weekly Maintenance
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Weekly Maintenance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#system-maintenance-window" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Maintenance Window
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="System Maintenance Window">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pre-maintenance-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pre-Maintenance Checklist
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maintenance-procedures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Maintenance Procedures
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-maintenance-verification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Post-Maintenance Verification
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#monthly-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monthly Tasks
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Monthly Tasks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#capacity-planning-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      Capacity Planning Review
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Capacity Planning Review">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-collection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Collection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#capacity-recommendations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Capacity Recommendations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Review
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Security Review">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#security-audit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Audit
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#emergency-procedures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Emergency Procedures
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Emergency Procedures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#service-outage-response" class="md-nav__link">
+    <span class="md-ellipsis">
+      Service Outage Response
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Service Outage Response">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#immediate-response-0-5-minutes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Immediate Response (0-5 minutes)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-investigation-5-15-minutes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed Investigation (5-15 minutes)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-corruption-response" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Corruption Response
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Corruption Response">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#assessment-phase" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assessment Phase
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recovery-phase" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recovery Phase
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-incident-response" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Incident Response
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Security Incident Response">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#immediate-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Immediate Actions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deployment-procedures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deployment Procedures
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deployment Procedures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#application-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Application Deployment
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Application Deployment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pre-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pre-Deployment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#production-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Production Deployment
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-updates" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration Updates
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration Updates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration-change-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration Change Process
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#backup-and-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backup and Recovery
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Backup and Recovery">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#backup-procedures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backup Procedures
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Backup Procedures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#daily-automated-backup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Daily Automated Backup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#weekly-full-backup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Weekly Full Backup
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recovery-procedures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recovery Procedures
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Recovery Procedures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#point-in-time-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      Point-in-Time Recovery
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#monitoring-and-alerting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monitoring and Alerting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Monitoring and Alerting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#alert-response-procedures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alert Response Procedures
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Alert Response Procedures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#critical-alerts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Critical Alerts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#warning-alerts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Warning Alerts
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monitoring-dashboard-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monitoring Dashboard Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Monitoring Dashboard Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#grafana-dashboard-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Grafana Dashboard Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#capacity-planning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Capacity Planning
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Capacity Planning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#growth-projections" class="md-nav__link">
+    <span class="md-ellipsis">
+      Growth Projections
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Growth Projections">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#monthly-capacity-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monthly Capacity Review
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scaling-recommendations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scaling Recommendations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Scaling Recommendations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#horizontal-scaling-triggers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Horizontal Scaling Triggers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vertical-scaling-triggers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vertical Scaling Triggers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="model-orchestrator-operational-runbook">Model Orchestrator Operational Runbook<a class="headerlink" href="#model-orchestrator-operational-runbook" title="Permanent link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>This runbook provides step-by-step procedures for common operational tasks with the WAN2.2 Model Orchestrator. It serves as a reference for system administrators, DevOps engineers, and on-call personnel.</p>
+<h2 id="table-of-contents">Table of Contents<a class="headerlink" href="#table-of-contents" title="Permanent link">&para;</a></h2>
+<ol>
+<li><a href="#daily-operations">Daily Operations</a></li>
+<li><a href="#weekly-maintenance">Weekly Maintenance</a></li>
+<li><a href="#monthly-tasks">Monthly Tasks</a></li>
+<li><a href="#emergency-procedures">Emergency Procedures</a></li>
+<li><a href="#deployment-procedures">Deployment Procedures</a></li>
+<li><a href="#backup-and-recovery">Backup and Recovery</a></li>
+<li><a href="#monitoring-and-alerting">Monitoring and Alerting</a></li>
+<li><a href="#capacity-planning">Capacity Planning</a></li>
+</ol>
+<h2 id="daily-operations">Daily Operations<a class="headerlink" href="#daily-operations" title="Permanent link">&para;</a></h2>
+<h3 id="morning-health-check">Morning Health Check<a class="headerlink" href="#morning-health-check" title="Permanent link">&para;</a></h3>
+<p><strong>Frequency:</strong> Daily at 9:00 AM<br />
+<strong>Duration:</strong> 5-10 minutes<br />
+<strong>Owner:</strong> Operations Team</p>
+<h4 id="procedure">Procedure<a class="headerlink" href="#procedure" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>Check Service Status</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Verify all services are running</span>
+systemctl<span class="w"> </span>status<span class="w"> </span>wan22
+systemctl<span class="w"> </span>status<span class="w"> </span>postgresql
+systemctl<span class="w"> </span>status<span class="w"> </span>nginx<span class="w">  </span><span class="c1"># If using reverse proxy</span>
+
+<span class="c1"># Expected: All services should be &quot;active (running)&quot;</span>
+</code></pre></div>
+<ol>
+<li><strong>Verify Health Endpoints</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check main health endpoint</span>
+curl<span class="w"> </span>-f<span class="w"> </span>http://localhost:8000/health
+
+<span class="c1"># Check detailed health</span>
+curl<span class="w"> </span>-s<span class="w"> </span>http://localhost:8000/health/models<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">&#39;.summary&#39;</span>
+
+<span class="c1"># Expected: HTTP 200, all components healthy</span>
+</code></pre></div>
+<ol>
+<li><strong>Review Overnight Activity</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check for errors in the last 24 hours</span>
+journalctl<span class="w"> </span>-u<span class="w"> </span>wan22<span class="w"> </span>--since<span class="w"> </span><span class="s2">&quot;24 hours ago&quot;</span><span class="w"> </span>--grep<span class="w"> </span>ERROR<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l
+
+<span class="c1"># Review download activity</span>
+grep<span class="w"> </span><span class="s2">&quot;download.*completed&quot;</span><span class="w"> </span>/var/log/wan22/orchestrator.log<span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-10
+
+<span class="c1"># Expected: &lt;10 errors, successful downloads</span>
+</code></pre></div>
+<ol>
+<li><strong>Check Resource Usage</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Disk usage</span>
+df<span class="w"> </span>-h<span class="w"> </span>/data/models
+
+<span class="c1"># Memory usage</span>
+free<span class="w"> </span>-h
+
+<span class="c1"># CPU load</span>
+uptime
+
+<span class="c1"># Expected: &lt;80% disk, &lt;70% memory, load &lt;2.0</span>
+</code></pre></div>
+<ol>
+<li><strong>Verify Model Availability</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check critical models</span>
+wan<span class="w"> </span>models<span class="w"> </span>status<span class="w"> </span>--only<span class="w"> </span>t2v-A14B@2.2.0,i2v-A14B@2.2.0,ti2v-5b@2.2.0
+
+<span class="c1"># Expected: All critical models in COMPLETE state</span>
+</code></pre></div>
+<h4 id="escalation-criteria">Escalation Criteria<a class="headerlink" href="#escalation-criteria" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Any service not running → Immediate escalation</li>
+<li>Health endpoint returning 5xx → Immediate escalation</li>
+<li>
+<blockquote>
+<p>50 errors in 24 hours → Escalate to engineering</p>
+</blockquote>
+</li>
+<li>
+<blockquote>
+<p>90% disk usage → Immediate action required</p>
+</blockquote>
+</li>
+<li>Critical models not available → Escalate to engineering</li>
+</ul>
+<h3 id="evening-cleanup">Evening Cleanup<a class="headerlink" href="#evening-cleanup" title="Permanent link">&para;</a></h3>
+<p><strong>Frequency:</strong> Daily at 11:00 PM<br />
+<strong>Duration:</strong> 2-3 minutes<br />
+<strong>Owner:</strong> Automated (cron job)</p>
+<h4 id="procedure_1">Procedure<a class="headerlink" href="#procedure_1" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>Automated Cleanup Script</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1"># /opt/wan22/scripts/daily-cleanup.sh</span>
+
+<span class="c1"># Clean temporary files older than 1 day</span>
+find<span class="w"> </span>/data/models/.tmp<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-mtime<span class="w"> </span>+1<span class="w"> </span>-delete
+
+<span class="c1"># Clean old lock files</span>
+find<span class="w"> </span>/data/models/.locks<span class="w"> </span>-name<span class="w"> </span><span class="s2">&quot;*.lock&quot;</span><span class="w"> </span>-mtime<span class="w"> </span>+0.04<span class="w"> </span>-delete
+
+<span class="c1"># Rotate logs</span>
+logrotate<span class="w"> </span>/etc/logrotate.d/wan22
+
+<span class="c1"># Run garbage collection if needed</span>
+wan<span class="w"> </span>models<span class="w"> </span>gc<span class="w"> </span>--auto
+
+<span class="c1"># Send daily report</span>
+wan<span class="w"> </span>models<span class="w"> </span>report<span class="w"> </span>--daily<span class="w"> </span><span class="p">|</span><span class="w"> </span>mail<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;WAN22 Daily Report&quot;</span><span class="w"> </span>ops@company.com
+</code></pre></div>
+<ol>
+<li><strong>Cron Configuration</strong>
+   <div class="highlight"><pre><span></span><code><span class="c1"># Add to /etc/crontab</span>
+<span class="m">0</span><span class="w"> </span><span class="m">23</span><span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>wan22<span class="w"> </span>/opt/wan22/scripts/daily-cleanup.sh
+</code></pre></div></li>
+</ol>
+<h2 id="weekly-maintenance">Weekly Maintenance<a class="headerlink" href="#weekly-maintenance" title="Permanent link">&para;</a></h2>
+<h3 id="system-maintenance-window">System Maintenance Window<a class="headerlink" href="#system-maintenance-window" title="Permanent link">&para;</a></h3>
+<p><strong>Frequency:</strong> Weekly, Sunday 2:00 AM - 4:00 AM<br />
+<strong>Duration:</strong> 2 hours<br />
+<strong>Owner:</strong> Operations Team</p>
+<h4 id="pre-maintenance-checklist">Pre-Maintenance Checklist<a class="headerlink" href="#pre-maintenance-checklist" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>Notify Stakeholders</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Send maintenance notification</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Maintenance window starting at 2:00 AM&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+mail<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;WAN22 Maintenance Window&quot;</span><span class="w"> </span>users@company.com
+</code></pre></div>
+<ol>
+<li><strong>Create Backup</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Full system backup</span>
+/opt/wan22/scripts/backup-system.sh
+
+<span class="c1"># Verify backup integrity</span>
+/opt/wan22/scripts/verify-backup.sh
+</code></pre></div>
+<ol>
+<li><strong>Check System Health</strong>
+   <div class="highlight"><pre><span></span><code><span class="c1"># Pre-maintenance health check</span>
+/opt/wan22/scripts/health-check-comprehensive.sh<span class="w"> </span>&gt;<span class="w"> </span>/tmp/pre-maintenance-health.log
+</code></pre></div></li>
+</ol>
+<h4 id="maintenance-procedures">Maintenance Procedures<a class="headerlink" href="#maintenance-procedures" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>Update System Packages</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Update OS packages</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>upgrade<span class="w"> </span>-y
+
+<span class="c1"># Update Python packages</span>
+<span class="nb">cd</span><span class="w"> </span>/opt/wan22
+<span class="nb">source</span><span class="w"> </span>venv/bin/activate
+pip<span class="w"> </span>list<span class="w"> </span>--outdated
+<span class="c1"># Review and update as needed</span>
+</code></pre></div>
+<ol>
+<li><strong>Database Maintenance</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Stop application</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>wan22
+
+<span class="c1"># Database maintenance</span>
+sudo<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>psql<span class="w"> </span>wan22<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;VACUUM ANALYZE;&quot;</span>
+sudo<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>psql<span class="w"> </span>wan22<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;REINDEX DATABASE wan22;&quot;</span>
+
+<span class="c1"># Update statistics</span>
+sudo<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>psql<span class="w"> </span>wan22<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;ANALYZE;&quot;</span>
+
+<span class="c1"># Start application</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>wan22
+</code></pre></div>
+<ol>
+<li><strong>Storage Optimization</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Run comprehensive garbage collection</span>
+wan<span class="w"> </span>models<span class="w"> </span>gc<span class="w"> </span>--deep-clean
+
+<span class="c1"># Defragment if needed (ext4)</span>
+e4defrag<span class="w"> </span>/data/models
+
+<span class="c1"># Check filesystem</span>
+fsck<span class="w"> </span>-n<span class="w"> </span>/dev/sdb1<span class="w">  </span><span class="c1"># Read-only check</span>
+</code></pre></div>
+<ol>
+<li><strong>Security Updates</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check for security updates</span>
+apt<span class="w"> </span>list<span class="w"> </span>--upgradable<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>security
+
+<span class="c1"># Update certificates if needed</span>
+certbot<span class="w"> </span>renew<span class="w"> </span>--dry-run
+
+<span class="c1"># Review access logs</span>
+grep<span class="w"> </span><span class="s2">&quot;401\|403\|404&quot;</span><span class="w"> </span>/var/log/nginx/access.log<span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-20
+</code></pre></div>
+<h4 id="post-maintenance-verification">Post-Maintenance Verification<a class="headerlink" href="#post-maintenance-verification" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>System Health Check</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Comprehensive health check</span>
+/opt/wan22/scripts/health-check-comprehensive.sh<span class="w"> </span>&gt;<span class="w"> </span>/tmp/post-maintenance-health.log
+
+<span class="c1"># Compare with pre-maintenance</span>
+diff<span class="w"> </span>/tmp/pre-maintenance-health.log<span class="w"> </span>/tmp/post-maintenance-health.log
+</code></pre></div>
+<ol>
+<li><strong>Performance Verification</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Test download performance</span>
+wan<span class="w"> </span>models<span class="w"> </span>ensure<span class="w"> </span>--only<span class="w"> </span>test-model@1.0.0<span class="w"> </span>--benchmark
+
+<span class="c1"># Check response times</span>
+curl<span class="w"> </span>-w<span class="w"> </span><span class="s2">&quot;@curl-format.txt&quot;</span><span class="w"> </span>-o<span class="w"> </span>/dev/null<span class="w"> </span>-s<span class="w"> </span>http://localhost:8000/health
+</code></pre></div>
+<ol>
+<li><strong>Notify Completion</strong>
+   <div class="highlight"><pre><span></span><code><span class="c1"># Send completion notification</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Maintenance window completed successfully&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+mail<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;WAN22 Maintenance Complete&quot;</span><span class="w"> </span>users@company.com
+</code></pre></div></li>
+</ol>
+<h2 id="monthly-tasks">Monthly Tasks<a class="headerlink" href="#monthly-tasks" title="Permanent link">&para;</a></h2>
+<h3 id="capacity-planning-review">Capacity Planning Review<a class="headerlink" href="#capacity-planning-review" title="Permanent link">&para;</a></h3>
+<p><strong>Frequency:</strong> First Monday of each month<br />
+<strong>Duration:</strong> 1-2 hours<br />
+<strong>Owner:</strong> Infrastructure Team</p>
+<h4 id="data-collection">Data Collection<a class="headerlink" href="#data-collection" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>Storage Growth Analysis</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Generate storage report</span>
+wan<span class="w"> </span>models<span class="w"> </span>report<span class="w"> </span>--storage<span class="w"> </span>--last-30-days<span class="w"> </span>&gt;<span class="w"> </span>/tmp/storage-report.txt
+
+<span class="c1"># Analyze growth trends</span>
+awk<span class="w"> </span><span class="s1">&#39;{print $1, $2}&#39;</span><span class="w"> </span>/var/log/wan22/storage-daily.log<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+gnuplot<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;set terminal png; set output &#39;storage-trend.png&#39;; plot &#39;-&#39; with lines&quot;</span>
+</code></pre></div>
+<ol>
+<li><strong>Performance Metrics</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Download performance trends</span>
+curl<span class="w"> </span>-s<span class="w"> </span>http://localhost:9090/api/v1/query_range?query<span class="o">=</span>rate<span class="o">(</span>model_download_duration_seconds_sum<span class="o">[</span>1h<span class="o">])</span><span class="p">&amp;</span><span class="nv">start</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span>-d<span class="w"> </span><span class="s1">&#39;30 days ago&#39;</span><span class="w"> </span>+%s<span class="k">)</span><span class="p">&amp;</span><span class="nv">end</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span>+%s<span class="k">)</span><span class="p">&amp;</span><span class="nv">step</span><span class="o">=</span><span class="m">3600</span>
+
+<span class="c1"># Error rate trends</span>
+curl<span class="w"> </span>-s<span class="w"> </span>http://localhost:9090/api/v1/query_range?query<span class="o">=</span>rate<span class="o">(</span>model_errors_total<span class="o">[</span>1h<span class="o">])</span><span class="p">&amp;</span><span class="nv">start</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span>-d<span class="w"> </span><span class="s1">&#39;30 days ago&#39;</span><span class="w"> </span>+%s<span class="k">)</span><span class="p">&amp;</span><span class="nv">end</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span>+%s<span class="k">)</span><span class="p">&amp;</span><span class="nv">step</span><span class="o">=</span><span class="m">3600</span>
+</code></pre></div>
+<ol>
+<li><strong>Usage Patterns</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Most requested models</span>
+grep<span class="w"> </span><span class="s2">&quot;ensure.*completed&quot;</span><span class="w"> </span>/var/log/wan22/orchestrator.log<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+awk<span class="w"> </span><span class="s1">&#39;{print $5}&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span><span class="p">|</span><span class="w"> </span>uniq<span class="w"> </span>-c<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-nr<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-10
+
+<span class="c1"># Peak usage times</span>
+grep<span class="w"> </span><span class="s2">&quot;ensure&quot;</span><span class="w"> </span>/var/log/wan22/orchestrator.log<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+awk<span class="w"> </span><span class="s1">&#39;{print $1, $2}&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-c1-13<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span><span class="p">|</span><span class="w"> </span>uniq<span class="w"> </span>-c
+</code></pre></div>
+<h4 id="capacity-recommendations">Capacity Recommendations<a class="headerlink" href="#capacity-recommendations" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>Storage Scaling</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Calculate projected storage needs</span>
+<span class="nv">CURRENT_USAGE</span><span class="o">=</span><span class="k">$(</span>du<span class="w"> </span>-sb<span class="w"> </span>/data/models<span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-f1<span class="k">)</span>
+<span class="nv">GROWTH_RATE</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;scale=2; </span><span class="nv">$CURRENT_USAGE</span><span class="s2"> / 30&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>bc<span class="k">)</span><span class="w">  </span><span class="c1"># Per day</span>
+<span class="nv">PROJECTED_90_DAYS</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;scale=0; </span><span class="nv">$CURRENT_USAGE</span><span class="s2"> + (</span><span class="nv">$GROWTH_RATE</span><span class="s2"> * 90)&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>bc<span class="k">)</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Current usage: </span><span class="k">$(</span>numfmt<span class="w"> </span>--to<span class="o">=</span>iec<span class="w"> </span><span class="nv">$CURRENT_USAGE</span><span class="k">)</span><span class="s2">&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Projected 90-day usage: </span><span class="k">$(</span>numfmt<span class="w"> </span>--to<span class="o">=</span>iec<span class="w"> </span><span class="nv">$PROJECTED_90_DAYS</span><span class="k">)</span><span class="s2">&quot;</span>
+</code></pre></div>
+<ol>
+<li><strong>Performance Scaling</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Analyze concurrent request patterns</span>
+grep<span class="w"> </span><span class="s2">&quot;concurrent_requests&quot;</span><span class="w"> </span>/var/log/wan22/metrics.log<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+awk<span class="w"> </span><span class="s1">&#39;{sum+=$3; count++} END {print &quot;Average concurrent requests:&quot;, sum/count}&#39;</span>
+
+<span class="c1"># Recommend scaling if average &gt; 80% of capacity</span>
+</code></pre></div>
+<h3 id="security-review">Security Review<a class="headerlink" href="#security-review" title="Permanent link">&para;</a></h3>
+<p><strong>Frequency:</strong> Monthly<br />
+<strong>Duration:</strong> 2-3 hours<br />
+<strong>Owner:</strong> Security Team</p>
+<h4 id="security-audit">Security Audit<a class="headerlink" href="#security-audit" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>Access Review</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Review user access</span>
+sudo<span class="w"> </span>lastlog<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>wan22
+
+<span class="c1"># Check SSH keys</span>
+sudo<span class="w"> </span>find<span class="w"> </span>/home<span class="w"> </span>-name<span class="w"> </span><span class="s2">&quot;authorized_keys&quot;</span><span class="w"> </span>-exec<span class="w"> </span>ls<span class="w"> </span>-la<span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span>
+
+<span class="c1"># Review sudo access</span>
+sudo<span class="w"> </span>grep<span class="w"> </span>wan22<span class="w"> </span>/etc/sudoers<span class="w"> </span>/etc/sudoers.d/*
+</code></pre></div>
+<ol>
+<li><strong>Certificate Management</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check certificate expiration</span>
+openssl<span class="w"> </span>x509<span class="w"> </span>-in<span class="w"> </span>/etc/ssl/certs/wan22.crt<span class="w"> </span>-noout<span class="w"> </span>-dates
+
+<span class="c1"># Verify certificate chain</span>
+openssl<span class="w"> </span>verify<span class="w"> </span>-CAfile<span class="w"> </span>/etc/ssl/certs/ca-certificates.crt<span class="w"> </span>/etc/ssl/certs/wan22.crt
+</code></pre></div>
+<ol>
+<li><strong>Vulnerability Scanning</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># System vulnerability scan</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>lynis
+sudo<span class="w"> </span>lynis<span class="w"> </span>audit<span class="w"> </span>system
+
+<span class="c1"># Application dependency scan</span>
+<span class="nb">cd</span><span class="w"> </span>/opt/wan22
+pip-audit
+</code></pre></div>
+<ol>
+<li><strong>Log Analysis</strong>
+   <div class="highlight"><pre><span></span><code><span class="c1"># Security-related log analysis</span>
+grep<span class="w"> </span>-E<span class="w"> </span><span class="s2">&quot;(failed|denied|unauthorized)&quot;</span><span class="w"> </span>/var/log/auth.log<span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-20
+grep<span class="w"> </span>-E<span class="w"> </span><span class="s2">&quot;(401|403)&quot;</span><span class="w"> </span>/var/log/nginx/access.log<span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-20
+</code></pre></div></li>
+</ol>
+<h2 id="emergency-procedures">Emergency Procedures<a class="headerlink" href="#emergency-procedures" title="Permanent link">&para;</a></h2>
+<h3 id="service-outage-response">Service Outage Response<a class="headerlink" href="#service-outage-response" title="Permanent link">&para;</a></h3>
+<p><strong>Trigger:</strong> Service health check fails or alerts fire<br />
+<strong>Response Time:</strong> 5 minutes<br />
+<strong>Owner:</strong> On-call Engineer</p>
+<h4 id="immediate-response-0-5-minutes">Immediate Response (0-5 minutes)<a class="headerlink" href="#immediate-response-0-5-minutes" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>Assess Situation</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check service status</span>
+systemctl<span class="w"> </span>status<span class="w"> </span>wan22
+
+<span class="c1"># Check system resources</span>
+top<span class="w"> </span>-bn1<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-20
+df<span class="w"> </span>-h
+free<span class="w"> </span>-h
+
+<span class="c1"># Check recent logs</span>
+journalctl<span class="w"> </span>-u<span class="w"> </span>wan22<span class="w"> </span>--since<span class="w"> </span><span class="s2">&quot;10 minutes ago&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-20
+</code></pre></div>
+<ol>
+<li><strong>Quick Recovery Attempts</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Try service restart</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>wan22
+sleep<span class="w"> </span><span class="m">30</span>
+
+<span class="c1"># Verify recovery</span>
+curl<span class="w"> </span>-f<span class="w"> </span>http://localhost:8000/health
+
+<span class="c1"># If successful, monitor for 10 minutes</span>
+</code></pre></div>
+<h4 id="detailed-investigation-5-15-minutes">Detailed Investigation (5-15 minutes)<a class="headerlink" href="#detailed-investigation-5-15-minutes" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>Root Cause Analysis</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check for obvious issues</span>
+dmesg<span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-20<span class="w">  </span><span class="c1"># System messages</span>
+journalctl<span class="w"> </span>--since<span class="w"> </span><span class="s2">&quot;1 hour ago&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>error
+
+<span class="c1"># Check disk space</span>
+df<span class="w"> </span>-h<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s2">&quot;(9[0-9]%|100%)&quot;</span>
+
+<span class="c1"># Check memory</span>
+free<span class="w"> </span>-h<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>Mem
+
+<span class="c1"># Check database</span>
+sudo<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>psql<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;SELECT 1;&quot;</span><span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</code></pre></div>
+<ol>
+<li><strong>Escalation Decision</strong>
+   <div class="highlight"><pre><span></span><code><span class="c1"># If issue not resolved in 15 minutes:</span>
+<span class="c1"># 1. Page senior engineer</span>
+<span class="c1"># 2. Notify incident channel</span>
+<span class="c1"># 3. Begin detailed troubleshooting</span>
+</code></pre></div></li>
+</ol>
+<h3 id="data-corruption-response">Data Corruption Response<a class="headerlink" href="#data-corruption-response" title="Permanent link">&para;</a></h3>
+<p><strong>Trigger:</strong> Integrity verification failures or corrupted model reports<br />
+<strong>Response Time:</strong> 10 minutes<br />
+<strong>Owner:</strong> Senior Engineer</p>
+<h4 id="assessment-phase">Assessment Phase<a class="headerlink" href="#assessment-phase" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>Scope Assessment</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check affected models</span>
+wan<span class="w"> </span>models<span class="w"> </span>verify<span class="w"> </span>--all<span class="w"> </span>--report-only
+
+<span class="c1"># Check filesystem integrity</span>
+sudo<span class="w"> </span>fsck<span class="w"> </span>-n<span class="w"> </span>/dev/sdb1
+
+<span class="c1"># Check recent backup status</span>
+ls<span class="w"> </span>-la<span class="w"> </span>/backup/wan22/<span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-10
+</code></pre></div>
+<ol>
+<li><strong>Immediate Containment</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Stop service to prevent further corruption</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>wan22
+
+<span class="c1"># Mark affected models as corrupted</span>
+wan<span class="w"> </span>models<span class="w"> </span>mark-corrupted<span class="w"> </span>--model-list<span class="w"> </span>/tmp/corrupted-models.txt
+
+<span class="c1"># Notify users</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Service temporarily unavailable due to data integrity issue&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+wall
+</code></pre></div>
+<h4 id="recovery-phase">Recovery Phase<a class="headerlink" href="#recovery-phase" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>Selective Recovery</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Restore from backup (specific models)</span>
+/opt/wan22/scripts/restore-models.sh<span class="w"> </span>--models<span class="w"> </span>t2v-A14B@2.2.0,i2v-A14B@2.2.0
+
+<span class="c1"># Re-download corrupted models</span>
+wan<span class="w"> </span>models<span class="w"> </span>ensure<span class="w"> </span>--force-redownload<span class="w"> </span>--model-list<span class="w"> </span>/tmp/corrupted-models.txt
+
+<span class="c1"># Verify integrity</span>
+wan<span class="w"> </span>models<span class="w"> </span>verify<span class="w"> </span>--model-list<span class="w"> </span>/tmp/corrupted-models.txt
+</code></pre></div>
+<ol>
+<li><strong>Service Recovery</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Start service</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>wan22
+
+<span class="c1"># Verify functionality</span>
+curl<span class="w"> </span>-f<span class="w"> </span>http://localhost:8000/health
+wan<span class="w"> </span>models<span class="w"> </span>status<span class="w"> </span>--critical-only
+
+<span class="c1"># Monitor for stability</span>
+watch<span class="w"> </span>-n<span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="s1">&#39;curl -s http://localhost:8000/health | jq .status&#39;</span>
+</code></pre></div>
+<h3 id="security-incident-response">Security Incident Response<a class="headerlink" href="#security-incident-response" title="Permanent link">&para;</a></h3>
+<p><strong>Trigger:</strong> Security alerts or suspicious activity<br />
+<strong>Response Time:</strong> Immediate<br />
+<strong>Owner:</strong> Security Team + On-call Engineer</p>
+<h4 id="immediate-actions">Immediate Actions<a class="headerlink" href="#immediate-actions" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>Containment</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Block suspicious IPs (if identified)</span>
+sudo<span class="w"> </span>iptables<span class="w"> </span>-A<span class="w"> </span>INPUT<span class="w"> </span>-s<span class="w"> </span>SUSPICIOUS_IP<span class="w"> </span>-j<span class="w"> </span>DROP
+
+<span class="c1"># Disable compromised accounts (if any)</span>
+sudo<span class="w"> </span>usermod<span class="w"> </span>-L<span class="w"> </span>compromised_user
+
+<span class="c1"># Change critical passwords</span>
+<span class="c1"># (Follow security team procedures)</span>
+</code></pre></div>
+<ol>
+<li><strong>Evidence Collection</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Preserve logs</span>
+cp<span class="w"> </span>/var/log/wan22/*<span class="w"> </span>/tmp/incident-logs/
+cp<span class="w"> </span>/var/log/auth.log<span class="w"> </span>/tmp/incident-logs/
+cp<span class="w"> </span>/var/log/nginx/access.log<span class="w"> </span>/tmp/incident-logs/
+
+<span class="c1"># Network connections</span>
+netstat<span class="w"> </span>-tulpn<span class="w"> </span>&gt;<span class="w"> </span>/tmp/incident-logs/netstat.txt
+
+<span class="c1"># Process list</span>
+ps<span class="w"> </span>auxf<span class="w"> </span>&gt;<span class="w"> </span>/tmp/incident-logs/processes.txt
+</code></pre></div>
+<h2 id="deployment-procedures">Deployment Procedures<a class="headerlink" href="#deployment-procedures" title="Permanent link">&para;</a></h2>
+<h3 id="application-deployment">Application Deployment<a class="headerlink" href="#application-deployment" title="Permanent link">&para;</a></h3>
+<p><strong>Frequency:</strong> As needed (typically bi-weekly)<br />
+<strong>Duration:</strong> 30-60 minutes<br />
+<strong>Owner:</strong> DevOps Team</p>
+<h4 id="pre-deployment">Pre-Deployment<a class="headerlink" href="#pre-deployment" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>Preparation</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Create deployment branch</span>
+git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>deploy-<span class="k">$(</span>date<span class="w"> </span>+%Y%m%d<span class="k">)</span>
+
+<span class="c1"># Run tests</span>
+python<span class="w"> </span>-m<span class="w"> </span>pytest<span class="w"> </span>tests/<span class="w"> </span>-v
+
+<span class="c1"># Build deployment package</span>
+/opt/wan22/scripts/build-deployment.sh
+</code></pre></div>
+<ol>
+<li><strong>Staging Deployment</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Deploy to staging</span>
+/opt/wan22/scripts/deploy-staging.sh
+
+<span class="c1"># Run integration tests</span>
+python<span class="w"> </span>-m<span class="w"> </span>pytest<span class="w"> </span>tests/integration/<span class="w"> </span>--staging
+
+<span class="c1"># Performance testing</span>
+/opt/wan22/scripts/performance-test.sh<span class="w"> </span>--staging
+</code></pre></div>
+<h4 id="production-deployment">Production Deployment<a class="headerlink" href="#production-deployment" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>Blue-Green Deployment</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Prepare green environment</span>
+/opt/wan22/scripts/prepare-green.sh
+
+<span class="c1"># Deploy to green</span>
+/opt/wan22/scripts/deploy-green.sh
+
+<span class="c1"># Health check green</span>
+curl<span class="w"> </span>-f<span class="w"> </span>http://green.internal:8000/health
+
+<span class="c1"># Switch traffic</span>
+/opt/wan22/scripts/switch-to-green.sh
+
+<span class="c1"># Monitor for 15 minutes</span>
+/opt/wan22/scripts/monitor-deployment.sh
+</code></pre></div>
+<ol>
+<li><strong>Rollback Procedure (if needed)</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Switch back to blue</span>
+/opt/wan22/scripts/switch-to-blue.sh
+
+<span class="c1"># Verify rollback</span>
+curl<span class="w"> </span>-f<span class="w"> </span>http://localhost:8000/health
+
+<span class="c1"># Investigate issues</span>
+/opt/wan22/scripts/deployment-postmortem.sh
+</code></pre></div>
+<h3 id="configuration-updates">Configuration Updates<a class="headerlink" href="#configuration-updates" title="Permanent link">&para;</a></h3>
+<p><strong>Frequency:</strong> As needed<br />
+<strong>Duration:</strong> 10-15 minutes<br />
+<strong>Owner:</strong> Operations Team</p>
+<h4 id="configuration-change-process">Configuration Change Process<a class="headerlink" href="#configuration-change-process" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>Preparation</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Backup current configuration</span>
+cp<span class="w"> </span>/opt/wan22/.env<span class="w"> </span>/opt/wan22/.env.backup.<span class="k">$(</span>date<span class="w"> </span>+%s<span class="k">)</span>
+
+<span class="c1"># Validate new configuration</span>
+/opt/wan22/scripts/validate-config.sh<span class="w"> </span>/path/to/new/config
+</code></pre></div>
+<ol>
+<li><strong>Deployment</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># Apply configuration</span>
+cp<span class="w"> </span>/path/to/new/config<span class="w"> </span>/opt/wan22/.env
+
+<span class="c1"># Reload service (if hot-reload supported)</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>wan22
+
+<span class="c1"># Or restart if needed</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>wan22
+
+<span class="c1"># Verify changes</span>
+curl<span class="w"> </span>-s<span class="w"> </span>http://localhost:8000/config<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>.
+</code></pre></div>
+<h2 id="backup-and-recovery">Backup and Recovery<a class="headerlink" href="#backup-and-recovery" title="Permanent link">&para;</a></h2>
+<h3 id="backup-procedures">Backup Procedures<a class="headerlink" href="#backup-procedures" title="Permanent link">&para;</a></h3>
+<h4 id="daily-automated-backup">Daily Automated Backup<a class="headerlink" href="#daily-automated-backup" title="Permanent link">&para;</a></h4>
+<p><strong>Schedule:</strong> 2:00 AM daily<br />
+<strong>Retention:</strong> 7 days local, 30 days remote<br />
+<strong>Owner:</strong> Automated system</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1"># /opt/wan22/scripts/daily-backup.sh</span>
+
+<span class="nv">BACKUP_DIR</span><span class="o">=</span><span class="s2">&quot;/backup/wan22&quot;</span>
+<span class="nv">DATE</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span>+%Y%m%d_%H%M%S<span class="k">)</span>
+<span class="nv">MODELS_ROOT</span><span class="o">=</span><span class="s2">&quot;/data/models&quot;</span>
+
+<span class="c1"># Create backup directory</span>
+mkdir<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$BACKUP_DIR</span><span class="s2">/daily&quot;</span>
+
+<span class="c1"># Backup model metadata and small files</span>
+rsync<span class="w"> </span>-av<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--include<span class="o">=</span><span class="s2">&quot;*.json&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--include<span class="o">=</span><span class="s2">&quot;*.yaml&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--include<span class="o">=</span><span class="s2">&quot;*.toml&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--exclude<span class="o">=</span><span class="s2">&quot;*.safetensors&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--exclude<span class="o">=</span><span class="s2">&quot;*.bin&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="s2">&quot;</span><span class="nv">$MODELS_ROOT</span><span class="s2">/&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$BACKUP_DIR</span><span class="s2">/daily/metadata_</span><span class="nv">$DATE</span><span class="s2">/&quot;</span>
+
+<span class="c1"># Backup database</span>
+pg_dump<span class="w"> </span>wan22<span class="w"> </span><span class="p">|</span><span class="w"> </span>gzip<span class="w"> </span>&gt;<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$BACKUP_DIR</span><span class="s2">/daily/database_</span><span class="nv">$DATE</span><span class="s2">.sql.gz&quot;</span>
+
+<span class="c1"># Backup configuration</span>
+tar<span class="w"> </span>-czf<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$BACKUP_DIR</span><span class="s2">/daily/config_</span><span class="nv">$DATE</span><span class="s2">.tar.gz&quot;</span><span class="w"> </span>/opt/wan22/.env<span class="w"> </span>/opt/wan22/config/
+
+<span class="c1"># Upload to remote storage</span>
+aws<span class="w"> </span>s3<span class="w"> </span>sync<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$BACKUP_DIR</span><span class="s2">/daily/&quot;</span><span class="w"> </span>s3://wan22-backups/daily/
+
+<span class="c1"># Cleanup old local backups</span>
+find<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$BACKUP_DIR</span><span class="s2">/daily&quot;</span><span class="w"> </span>-name<span class="w"> </span><span class="s2">&quot;*_*&quot;</span><span class="w"> </span>-mtime<span class="w"> </span>+7<span class="w"> </span>-delete
+
+<span class="c1"># Send backup report</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Daily backup completed: </span><span class="nv">$DATE</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+mail<span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;WAN22 Backup Report&quot;</span><span class="w"> </span>ops@company.com
+</code></pre></div>
+<h4 id="weekly-full-backup">Weekly Full Backup<a class="headerlink" href="#weekly-full-backup" title="Permanent link">&para;</a></h4>
+<p><strong>Schedule:</strong> Sunday 1:00 AM<br />
+<strong>Retention:</strong> 4 weeks local, 12 weeks remote<br />
+<strong>Owner:</strong> Automated system</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1"># /opt/wan22/scripts/weekly-backup.sh</span>
+
+<span class="nv">BACKUP_DIR</span><span class="o">=</span><span class="s2">&quot;/backup/wan22&quot;</span>
+<span class="nv">DATE</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span>+%Y%m%d<span class="k">)</span>
+<span class="nv">MODELS_ROOT</span><span class="o">=</span><span class="s2">&quot;/data/models&quot;</span>
+
+<span class="c1"># Create full backup</span>
+mkdir<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$BACKUP_DIR</span><span class="s2">/weekly&quot;</span>
+
+<span class="c1"># Backup all model data</span>
+tar<span class="w"> </span>-czf<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$BACKUP_DIR</span><span class="s2">/weekly/models_full_</span><span class="nv">$DATE</span><span class="s2">.tar.gz&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--exclude<span class="o">=</span><span class="s2">&quot;.tmp&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--exclude<span class="o">=</span><span class="s2">&quot;.locks&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="s2">&quot;</span><span class="nv">$MODELS_ROOT</span><span class="s2">&quot;</span>
+
+<span class="c1"># Backup system configuration</span>
+tar<span class="w"> </span>-czf<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$BACKUP_DIR</span><span class="s2">/weekly/system_</span><span class="nv">$DATE</span><span class="s2">.tar.gz&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>/opt/wan22<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>/etc/systemd/system/wan22.service<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>/etc/nginx/sites-available/wan22
+
+<span class="c1"># Upload to remote storage</span>
+aws<span class="w"> </span>s3<span class="w"> </span>sync<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$BACKUP_DIR</span><span class="s2">/weekly/&quot;</span><span class="w"> </span>s3://wan22-backups/weekly/
+
+<span class="c1"># Cleanup old backups</span>
+find<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$BACKUP_DIR</span><span class="s2">/weekly&quot;</span><span class="w"> </span>-name<span class="w"> </span><span class="s2">&quot;*_*&quot;</span><span class="w"> </span>-mtime<span class="w"> </span>+28<span class="w"> </span>-delete
+</code></pre></div>
+<h3 id="recovery-procedures">Recovery Procedures<a class="headerlink" href="#recovery-procedures" title="Permanent link">&para;</a></h3>
+<h4 id="point-in-time-recovery">Point-in-Time Recovery<a class="headerlink" href="#point-in-time-recovery" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1"># /opt/wan22/scripts/point-in-time-recovery.sh</span>
+
+<span class="nv">RECOVERY_DATE</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="w">  </span><span class="c1"># Format: YYYYMMDD_HHMMSS</span>
+<span class="nv">BACKUP_DIR</span><span class="o">=</span><span class="s2">&quot;/backup/wan22&quot;</span>
+
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$RECOVERY_DATE</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Usage: </span><span class="nv">$0</span><span class="s2"> YYYYMMDD_HHMMSS&quot;</span>
+<span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="k">fi</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Starting point-in-time recovery to </span><span class="nv">$RECOVERY_DATE</span><span class="s2">&quot;</span>
+
+<span class="c1"># Stop services</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>wan22
+sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>nginx
+
+<span class="c1"># Backup current state</span>
+mv<span class="w"> </span>/data/models<span class="w"> </span>/data/models.pre-recovery.<span class="k">$(</span>date<span class="w"> </span>+%s<span class="k">)</span>
+mv<span class="w"> </span>/opt/wan22<span class="w"> </span>/opt/wan22.pre-recovery.<span class="k">$(</span>date<span class="w"> </span>+%s<span class="k">)</span>
+
+<span class="c1"># Restore from backup</span>
+tar<span class="w"> </span>-xzf<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$BACKUP_DIR</span><span class="s2">/weekly/models_full_</span><span class="nv">$RECOVERY_DATE</span><span class="s2">.tar.gz&quot;</span><span class="w"> </span>-C<span class="w"> </span>/data/
+tar<span class="w"> </span>-xzf<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$BACKUP_DIR</span><span class="s2">/weekly/system_</span><span class="nv">$RECOVERY_DATE</span><span class="s2">.tar.gz&quot;</span><span class="w"> </span>-C<span class="w"> </span>/
+
+<span class="c1"># Restore database</span>
+sudo<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>dropdb<span class="w"> </span>wan22
+sudo<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>createdb<span class="w"> </span>wan22
+gunzip<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$BACKUP_DIR</span><span class="s2">/daily/database_</span><span class="nv">$RECOVERY_DATE</span><span class="s2">.sql.gz&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+sudo<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>psql<span class="w"> </span>wan22
+
+<span class="c1"># Fix permissions</span>
+sudo<span class="w"> </span>chown<span class="w"> </span>-R<span class="w"> </span>wan22:wan22<span class="w"> </span>/data/models<span class="w"> </span>/opt/wan22
+
+<span class="c1"># Start services</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>wan22
+sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>nginx
+
+<span class="c1"># Verify recovery</span>
+sleep<span class="w"> </span><span class="m">30</span>
+curl<span class="w"> </span>-f<span class="w"> </span>http://localhost:8000/health
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Point-in-time recovery completed&quot;</span>
+</code></pre></div>
+<h2 id="monitoring-and-alerting">Monitoring and Alerting<a class="headerlink" href="#monitoring-and-alerting" title="Permanent link">&para;</a></h2>
+<h3 id="alert-response-procedures">Alert Response Procedures<a class="headerlink" href="#alert-response-procedures" title="Permanent link">&para;</a></h3>
+<h4 id="critical-alerts">Critical Alerts<a class="headerlink" href="#critical-alerts" title="Permanent link">&para;</a></h4>
+<p><strong>Service Down Alert</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Response time: 2 minutes</span>
+<span class="c1"># 1. Check service status</span>
+systemctl<span class="w"> </span>status<span class="w"> </span>wan22
+
+<span class="c1"># 2. Check system resources</span>
+df<span class="w"> </span>-h<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>free<span class="w"> </span>-h<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>uptime
+
+<span class="c1"># 3. Attempt restart</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>wan22
+
+<span class="c1"># 4. Verify recovery</span>
+curl<span class="w"> </span>-f<span class="w"> </span>http://localhost:8000/health
+
+<span class="c1"># 5. If not recovered, escalate immediately</span>
+</code></pre></div>
+<p><strong>High Error Rate Alert</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Response time: 5 minutes</span>
+<span class="c1"># 1. Check recent errors</span>
+journalctl<span class="w"> </span>-u<span class="w"> </span>wan22<span class="w"> </span>--since<span class="w"> </span><span class="s2">&quot;15 minutes ago&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>ERROR
+
+<span class="c1"># 2. Identify error patterns</span>
+grep<span class="w"> </span>ERROR<span class="w"> </span>/var/log/wan22/orchestrator.log<span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-20<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+awk<span class="w"> </span><span class="s1">&#39;{print $NF}&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span><span class="p">|</span><span class="w"> </span>uniq<span class="w"> </span>-c
+
+<span class="c1"># 3. Check affected models</span>
+wan<span class="w"> </span>models<span class="w"> </span>status<span class="w"> </span>--failed-only
+
+<span class="c1"># 4. Take corrective action based on error type</span>
+</code></pre></div>
+<p><strong>Disk Space Alert</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Response time: 10 minutes</span>
+<span class="c1"># 1. Check current usage</span>
+df<span class="w"> </span>-h<span class="w"> </span>/data/models
+
+<span class="c1"># 2. Run garbage collection</span>
+wan<span class="w"> </span>models<span class="w"> </span>gc<span class="w"> </span>--aggressive
+
+<span class="c1"># 3. Check for large temporary files</span>
+find<span class="w"> </span>/data/models/.tmp<span class="w"> </span>-size<span class="w"> </span>+1G<span class="w"> </span>-ls
+
+<span class="c1"># 4. Clean up if safe</span>
+rm<span class="w"> </span>-rf<span class="w"> </span>/data/models/.tmp/*
+
+<span class="c1"># 5. If still critical, escalate for storage expansion</span>
+</code></pre></div>
+<h4 id="warning-alerts">Warning Alerts<a class="headerlink" href="#warning-alerts" title="Permanent link">&para;</a></h4>
+<p><strong>High Memory Usage</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Response time: 15 minutes</span>
+<span class="c1"># 1. Check memory usage</span>
+free<span class="w"> </span>-h<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>ps<span class="w"> </span>aux<span class="w"> </span>--sort<span class="o">=</span>-%mem<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-10
+
+<span class="c1"># 2. Check for memory leaks</span>
+pmap<span class="w"> </span><span class="k">$(</span>pgrep<span class="w"> </span>-f<span class="w"> </span>wan22<span class="k">)</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-1
+
+<span class="c1"># 3. Restart service if memory usage &gt; 90%</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="k">$(</span>free<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>Mem<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print $3/$2 * 100.0}&#39;</span><span class="k">)</span><span class="w"> </span>-gt<span class="w"> </span><span class="m">90</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>wan22
+<span class="k">fi</span>
+</code></pre></div>
+<h3 id="monitoring-dashboard-setup">Monitoring Dashboard Setup<a class="headerlink" href="#monitoring-dashboard-setup" title="Permanent link">&para;</a></h3>
+<h4 id="grafana-dashboard-configuration">Grafana Dashboard Configuration<a class="headerlink" href="#grafana-dashboard-configuration" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;dashboard&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;WAN2.2 Model Orchestrator Operations&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;panels&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Service Health&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;stat&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;targets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nt">&quot;expr&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;up{job=\&quot;wan22-orchestrator\&quot;}&quot;</span><span class="w"> </span><span class="p">}]</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Download Success Rate&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;stat&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;targets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;expr&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rate(model_downloads_total{status=\&quot;success\&quot;}[5m]) / rate(model_downloads_total[5m]) * 100&quot;</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Storage Usage&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gauge&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;targets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;expr&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;model_storage_bytes_used / model_storage_bytes_total * 100&quot;</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Active Downloads&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;graph&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;targets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nt">&quot;expr&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;model_downloads_active&quot;</span><span class="w"> </span><span class="p">}]</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="capacity-planning">Capacity Planning<a class="headerlink" href="#capacity-planning" title="Permanent link">&para;</a></h2>
+<h3 id="growth-projections">Growth Projections<a class="headerlink" href="#growth-projections" title="Permanent link">&para;</a></h3>
+<h4 id="monthly-capacity-review">Monthly Capacity Review<a class="headerlink" href="#monthly-capacity-review" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1"># /opt/wan22/scripts/capacity-review.sh</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;=== Monthly Capacity Review ===&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Date: </span><span class="k">$(</span>date<span class="k">)</span><span class="s2">&quot;</span>
+
+<span class="c1"># Storage growth analysis</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Storage Growth:&quot;</span>
+<span class="nv">CURRENT_SIZE</span><span class="o">=</span><span class="k">$(</span>du<span class="w"> </span>-sb<span class="w"> </span>/data/models<span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-f1<span class="k">)</span>
+<span class="nv">LAST_MONTH_SIZE</span><span class="o">=</span><span class="k">$(</span>cat<span class="w"> </span>/var/log/wan22/capacity-<span class="k">$(</span>date<span class="w"> </span>-d<span class="w"> </span><span class="s1">&#39;1 month ago&#39;</span><span class="w"> </span>+%Y%m<span class="k">)</span>.log<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;0&quot;</span><span class="k">)</span>
+<span class="nv">GROWTH</span><span class="o">=</span><span class="k">$((</span><span class="nv">CURRENT_SIZE</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nv">LAST_MONTH_SIZE</span><span class="k">))</span>
+<span class="nv">GROWTH_PERCENT</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;scale=2; </span><span class="nv">$GROWTH</span><span class="s2"> / </span><span class="nv">$LAST_MONTH_SIZE</span><span class="s2"> * 100&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>bc<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;N/A&quot;</span><span class="k">)</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Current size: </span><span class="k">$(</span>numfmt<span class="w"> </span>--to<span class="o">=</span>iec<span class="w"> </span><span class="nv">$CURRENT_SIZE</span><span class="k">)</span><span class="s2">&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Growth this month: </span><span class="k">$(</span>numfmt<span class="w"> </span>--to<span class="o">=</span>iec<span class="w"> </span><span class="nv">$GROWTH</span><span class="k">)</span><span class="s2"> (</span><span class="nv">$GROWTH_PERCENT</span><span class="s2">%)&quot;</span>
+
+<span class="c1"># Save current size for next month</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$CURRENT_SIZE</span><span class="s2">&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>/var/log/wan22/capacity-<span class="k">$(</span>date<span class="w"> </span>+%Y%m<span class="k">)</span>.log
+
+<span class="c1"># Performance trends</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Performance Trends:&quot;</span>
+<span class="nv">AVG_DOWNLOAD_TIME</span><span class="o">=</span><span class="k">$(</span>grep<span class="w"> </span><span class="s2">&quot;download.*completed&quot;</span><span class="w"> </span>/var/log/wan22/orchestrator.log<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+awk<span class="w"> </span><span class="s1">&#39;{print $NF}&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{sum+=$1; count++} END {print sum/count}&#39;</span><span class="k">)</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Average download time: </span><span class="si">${</span><span class="nv">AVG_DOWNLOAD_TIME</span><span class="si">}</span><span class="s2">s&quot;</span>
+
+<span class="c1"># Usage patterns</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Usage Patterns:&quot;</span>
+<span class="nv">DAILY_REQUESTS</span><span class="o">=</span><span class="k">$(</span>grep<span class="w"> </span><span class="s2">&quot;ensure&quot;</span><span class="w"> </span>/var/log/wan22/orchestrator.log<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+grep<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>date<span class="w"> </span>+%Y-%m-%d<span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l<span class="k">)</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Requests today: </span><span class="nv">$DAILY_REQUESTS</span><span class="s2">&quot;</span>
+
+<span class="c1"># Recommendations</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Recommendations:&quot;</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$GROWTH_PERCENT</span><span class="w"> </span>-gt<span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;- Consider storage expansion (&gt;20% growth)&quot;</span>
+<span class="k">fi</span>
+
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$AVG_DOWNLOAD_TIME</span><span class="s2"> &gt; 300&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>bc<span class="k">)</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;- Investigate download performance (&gt;5min average)&quot;</span>
+<span class="k">fi</span>
+</code></pre></div>
+<h3 id="scaling-recommendations">Scaling Recommendations<a class="headerlink" href="#scaling-recommendations" title="Permanent link">&para;</a></h3>
+<h4 id="horizontal-scaling-triggers">Horizontal Scaling Triggers<a class="headerlink" href="#horizontal-scaling-triggers" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># CPU utilization &gt; 70% for 1 hour</span>
+<span class="c1"># Memory utilization &gt; 80% for 30 minutes</span>
+<span class="c1"># Concurrent requests &gt; 80% of capacity</span>
+<span class="c1"># Download queue length &gt; 50</span>
+
+<span class="c1"># Scaling actions:</span>
+<span class="c1"># 1. Add additional application instances</span>
+<span class="c1"># 2. Implement load balancing</span>
+<span class="c1"># 3. Scale storage backend</span>
+<span class="c1"># 4. Optimize database connections</span>
+</code></pre></div>
+<h4 id="vertical-scaling-triggers">Vertical Scaling Triggers<a class="headerlink" href="#vertical-scaling-triggers" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Single instance CPU &gt; 90% for 15 minutes</span>
+<span class="c1"># Memory usage approaching limits</span>
+<span class="c1"># I/O wait time &gt; 20%</span>
+<span class="c1"># Network bandwidth utilization &gt; 80%</span>
+
+<span class="c1"># Scaling actions:</span>
+<span class="c1"># 1. Increase CPU cores</span>
+<span class="c1"># 2. Add more RAM</span>
+<span class="c1"># 3. Upgrade to faster storage</span>
+<span class="c1"># 4. Increase network bandwidth</span>
+</code></pre></div>
+<p>This operational runbook provides comprehensive procedures for managing the Model Orchestrator in production environments. It should be regularly updated based on operational experience and system changes.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

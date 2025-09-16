@@ -1,0 +1,2253 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="WAN2.2 Video Generation System Documentation">
+      
+      
+      
+        <link rel="canonical" href="https://ramcana.github.io/wan/user/TROUBLESHOOTING_GUIDE/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>Model Orchestrator Troubleshooting Guide - WAN22 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e53b48f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#model-orchestrator-troubleshooting-guide" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="WAN22 Documentation" class="md-header__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            WAN22 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Model Orchestrator Troubleshooting Guide
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../WAN22_System_Capabilities_Report/" class="md-tabs__link">
+          
+  
+  
+  System Overview
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../model-orchestrator/requirements/" class="md-tabs__link">
+          
+  
+  
+  Model Orchestrator
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../config/models.toml" class="md-tabs__link">
+          
+  
+  
+  Configuration
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="WAN22 Documentation" class="md-nav__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    WAN22 Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    System Overview
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            System Overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../WAN22_System_Capabilities_Report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Capabilities Report
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Model Orchestrator
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Model Orchestrator
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Requirements
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/tasks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tasks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Configuration
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Configuration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Models Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models_simple.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simple Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-diagnostic-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick Diagnostic Commands
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick Diagnostic Commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#system-health-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Health Check
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Log Analysis
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-issues-and-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Issues and Solutions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Issues and Solutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-model-download-failures" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Model Download Failures
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Model Download Failures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#symptoms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Symptoms
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagnostic-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagnostic Steps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solutions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-disk-space-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Disk Space Issues
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Disk Space Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#symptoms_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Symptoms
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagnostic-steps_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagnostic Steps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solutions_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solutions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-lock-contention-and-deadlocks" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Lock Contention and Deadlocks
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Lock Contention and Deadlocks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#symptoms_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Symptoms
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagnostic-steps_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagnostic Steps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solutions_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solutions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-memory-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Memory Issues
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Memory Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#symptoms_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Symptoms
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagnostic-steps_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagnostic Steps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solutions_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solutions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-performance-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Performance Issues
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Performance Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#symptoms_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Symptoms
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagnostic-steps_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagnostic Steps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solutions_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solutions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-configuration-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Configuration Issues
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Configuration Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#symptoms_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Symptoms
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagnostic-steps_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagnostic Steps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solutions_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solutions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-database-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Database Issues
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Database Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#symptoms_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Symptoms
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagnostic-steps_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagnostic Steps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solutions_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solutions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#platform-specific-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Platform-Specific Issues
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Platform-Specific Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#windows-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Windows Issues
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Windows Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#long-path-problems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Long Path Problems
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#permission-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Permission Issues
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#antivirus-interference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Antivirus Interference
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linux-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linux Issues
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Linux Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#selinux-problems" class="md-nav__link">
+    <span class="md-ellipsis">
+      SELinux Problems
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#systemd-service-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Systemd Service Issues
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#macos-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      macOS Issues
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="macOS Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gatekeeper-problems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gatekeeper Problems
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-system-case-sensitivity" class="md-nav__link">
+    <span class="md-ellipsis">
+      File System Case Sensitivity
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#emergency-procedures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Emergency Procedures
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Emergency Procedures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#service-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      Service Recovery
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Service Recovery">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#complete-service-restart" class="md-nav__link">
+    <span class="md-ellipsis">
+      Complete Service Restart
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#database-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      Database Recovery
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Recovery
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Recovery">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#model-data-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model Data Recovery
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#monitoring-and-alerting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monitoring and Alerting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Monitoring and Alerting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#health-check-scripts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Health Check Scripts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Health Check Scripts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comprehensive-health-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comprehensive Health Check
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alerting-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alerting Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Alerting Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prometheus-alerts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prometheus Alerts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nagios-checks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nagios Checks
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Optimization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Optimization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#profiling-and-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Profiling and Analysis
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Profiling and Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cpu-profiling" class="md-nav__link">
+    <span class="md-ellipsis">
+      CPU Profiling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-profiling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Profiling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#io-profiling" class="md-nav__link">
+    <span class="md-ellipsis">
+      I/O Profiling
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimization-recommendations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optimization Recommendations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Optimization Recommendations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#system-level" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Level
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#application-level" class="md-nav__link">
+    <span class="md-ellipsis">
+      Application Level
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="model-orchestrator-troubleshooting-guide">Model Orchestrator Troubleshooting Guide<a class="headerlink" href="#model-orchestrator-troubleshooting-guide" title="Permanent link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>This guide provides comprehensive troubleshooting procedures for common issues with the WAN2.2 Model Orchestrator. It includes diagnostic steps, solutions, and preventive measures for operational problems.</p>
+<h2 id="quick-diagnostic-commands">Quick Diagnostic Commands<a class="headerlink" href="#quick-diagnostic-commands" title="Permanent link">&para;</a></h2>
+<h3 id="system-health-check">System Health Check<a class="headerlink" href="#system-health-check" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Overall system status</span>
+wan<span class="w"> </span>models<span class="w"> </span>diagnose
+
+<span class="c1"># Service status</span>
+systemctl<span class="w"> </span>status<span class="w"> </span>wan22
+
+<span class="c1"># Health endpoint check</span>
+curl<span class="w"> </span>-f<span class="w"> </span>http://localhost:8000/health
+
+<span class="c1"># Model status overview</span>
+wan<span class="w"> </span>models<span class="w"> </span>status<span class="w"> </span>--json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">&#39;.summary&#39;</span>
+</code></pre></div>
+<h3 id="log-analysis">Log Analysis<a class="headerlink" href="#log-analysis" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Recent errors</span>
+journalctl<span class="w"> </span>-u<span class="w"> </span>wan22<span class="w"> </span>--since<span class="w"> </span><span class="s2">&quot;1 hour ago&quot;</span><span class="w"> </span>--grep<span class="w"> </span>ERROR
+
+<span class="c1"># Download failures</span>
+grep<span class="w"> </span><span class="s2">&quot;download.*failed&quot;</span><span class="w"> </span>/var/log/wan22/orchestrator.log<span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-10
+
+<span class="c1"># Lock timeouts</span>
+grep<span class="w"> </span><span class="s2">&quot;lock.*timeout&quot;</span><span class="w"> </span>/var/log/wan22/orchestrator.log<span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-10
+</code></pre></div>
+<h2 id="common-issues-and-solutions">Common Issues and Solutions<a class="headerlink" href="#common-issues-and-solutions" title="Permanent link">&para;</a></h2>
+<h3 id="1-model-download-failures">1. Model Download Failures<a class="headerlink" href="#1-model-download-failures" title="Permanent link">&para;</a></h3>
+<h4 id="symptoms">Symptoms<a class="headerlink" href="#symptoms" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Models stuck in "DOWNLOADING" state</li>
+<li>Repeated download timeout errors</li>
+<li>Network connection errors</li>
+<li>Authentication failures</li>
+</ul>
+<h4 id="diagnostic-steps">Diagnostic Steps<a class="headerlink" href="#diagnostic-steps" title="Permanent link">&para;</a></h4>
+<p><strong>Check Network Connectivity:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Test HuggingFace connectivity</span>
+curl<span class="w"> </span>-I<span class="w"> </span>https://huggingface.co
+
+<span class="c1"># Test S3 connectivity (if using S3)</span>
+aws<span class="w"> </span>s3<span class="w"> </span>ls<span class="w"> </span>s3://your-bucket<span class="w"> </span>--endpoint-url<span class="w"> </span><span class="nv">$AWS_ENDPOINT_URL</span>
+
+<span class="c1"># Check DNS resolution</span>
+nslookup<span class="w"> </span>huggingface.co
+</code></pre></div>
+<p><strong>Verify Credentials:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Test HuggingFace token</span>
+curl<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer </span><span class="nv">$HF_TOKEN</span><span class="s2">&quot;</span><span class="w"> </span>https://huggingface.co/api/whoami
+
+<span class="c1"># Test S3 credentials</span>
+aws<span class="w"> </span>sts<span class="w"> </span>get-caller-identity<span class="w"> </span>--endpoint-url<span class="w"> </span><span class="nv">$AWS_ENDPOINT_URL</span>
+</code></pre></div>
+<p><strong>Check Download Status:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Detailed model status</span>
+wan<span class="w"> </span>models<span class="w"> </span>status<span class="w"> </span>--model<span class="w"> </span>t2v-A14B@2.2.0<span class="w"> </span>--verbose
+
+<span class="c1"># Check for partial downloads</span>
+ls<span class="w"> </span>-la<span class="w"> </span><span class="nv">$MODELS_ROOT</span>/.tmp/
+
+<span class="c1"># Check lock status</span>
+wan<span class="w"> </span>models<span class="w"> </span>locks<span class="w"> </span>--list
+</code></pre></div>
+<h4 id="solutions">Solutions<a class="headerlink" href="#solutions" title="Permanent link">&para;</a></h4>
+<p><strong>Network Issues:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Increase timeout values</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">DOWNLOAD_TIMEOUT</span><span class="o">=</span><span class="m">7200</span><span class="w">  </span><span class="c1"># 2 hours</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">RETRY_ATTEMPTS</span><span class="o">=</span><span class="m">5</span>
+
+<span class="c1"># Enable connection pooling</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">MAX_CONNECTIONS_PER_HOST</span><span class="o">=</span><span class="m">10</span>
+
+<span class="c1"># Use proxy if needed</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">HTTP_PROXY</span><span class="o">=</span>http://proxy.company.com:8080
+<span class="nb">export</span><span class="w"> </span><span class="nv">HTTPS_PROXY</span><span class="o">=</span>http://proxy.company.com:8080
+</code></pre></div>
+<p><strong>Authentication Issues:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Refresh HuggingFace token</span>
+huggingface-cli<span class="w"> </span>login
+
+<span class="c1"># Update S3 credentials</span>
+aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_access_key_id<span class="w"> </span>YOUR_KEY
+aws<span class="w"> </span>configure<span class="w"> </span><span class="nb">set</span><span class="w"> </span>aws_secret_access_key<span class="w"> </span>YOUR_SECRET
+</code></pre></div>
+<p><strong>Cleanup Partial Downloads:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Remove stuck downloads</span>
+wan<span class="w"> </span>models<span class="w"> </span>cleanup<span class="w"> </span>--partial-downloads
+
+<span class="c1"># Force re-download</span>
+wan<span class="w"> </span>models<span class="w"> </span>ensure<span class="w"> </span>--only<span class="w"> </span>t2v-A14B@2.2.0<span class="w"> </span>--force-redownload
+</code></pre></div>
+<h3 id="2-disk-space-issues">2. Disk Space Issues<a class="headerlink" href="#2-disk-space-issues" title="Permanent link">&para;</a></h3>
+<h4 id="symptoms_1">Symptoms<a class="headerlink" href="#symptoms_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li>"Insufficient disk space" errors</li>
+<li>Downloads failing with NO_SPACE error</li>
+<li>System running out of storage</li>
+</ul>
+<h4 id="diagnostic-steps_1">Diagnostic Steps<a class="headerlink" href="#diagnostic-steps_1" title="Permanent link">&para;</a></h4>
+<p><strong>Check Disk Usage:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Overall disk usage</span>
+df<span class="w"> </span>-h
+
+<span class="c1"># Model directory usage</span>
+du<span class="w"> </span>-sh<span class="w"> </span><span class="nv">$MODELS_ROOT</span>/*
+
+<span class="c1"># Largest files</span>
+find<span class="w"> </span><span class="nv">$MODELS_ROOT</span><span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-exec<span class="w"> </span>du<span class="w"> </span>-h<span class="w"> </span><span class="o">{}</span><span class="w"> </span>+<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-rh<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-20
+
+<span class="c1"># Temporary files</span>
+du<span class="w"> </span>-sh<span class="w"> </span><span class="nv">$MODELS_ROOT</span>/.tmp/
+</code></pre></div>
+<p><strong>Check Garbage Collection Status:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># GC configuration</span>
+wan<span class="w"> </span>models<span class="w"> </span>gc<span class="w"> </span>--status
+
+<span class="c1"># Reclaimable space</span>
+wan<span class="w"> </span>models<span class="w"> </span>gc<span class="w"> </span>--dry-run<span class="w"> </span>--verbose
+</code></pre></div>
+<h4 id="solutions_1">Solutions<a class="headerlink" href="#solutions_1" title="Permanent link">&para;</a></h4>
+<p><strong>Immediate Space Recovery:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Run garbage collection</span>
+wan<span class="w"> </span>models<span class="w"> </span>gc<span class="w"> </span>--aggressive
+
+<span class="c1"># Clean temporary files</span>
+rm<span class="w"> </span>-rf<span class="w"> </span><span class="nv">$MODELS_ROOT</span>/.tmp/*
+rm<span class="w"> </span>-rf<span class="w"> </span><span class="nv">$MODELS_ROOT</span>/.locks/*
+
+<span class="c1"># Remove old log files</span>
+find<span class="w"> </span>/var/log/wan22<span class="w"> </span>-name<span class="w"> </span><span class="s2">&quot;*.log.*&quot;</span><span class="w"> </span>-mtime<span class="w"> </span>+7<span class="w"> </span>-delete
+</code></pre></div>
+<p><strong>Configure Automatic Cleanup:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Set storage limits</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">MAX_TOTAL_SIZE</span><span class="o">=</span><span class="k">$((</span><span class="m">1024</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">1024</span><span class="o">**</span><span class="m">3</span><span class="k">))</span><span class="w">  </span><span class="c1"># 1TB</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">MAX_MODEL_AGE</span><span class="o">=</span><span class="m">2592000</span><span class="w">  </span><span class="c1"># 30 days</span>
+
+<span class="c1"># Enable automatic GC</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">ENABLE_GARBAGE_COLLECTION</span><span class="o">=</span><span class="nb">true</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">GC_CHECK_INTERVAL</span><span class="o">=</span><span class="m">3600</span><span class="w">  </span><span class="c1"># 1 hour</span>
+</code></pre></div>
+<p><strong>Expand Storage:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Add new disk (example)</span>
+sudo<span class="w"> </span>fdisk<span class="w"> </span>/dev/sdb
+sudo<span class="w"> </span>mkfs.ext4<span class="w"> </span>/dev/sdb1
+sudo<span class="w"> </span>mount<span class="w"> </span>/dev/sdb1<span class="w"> </span>/data/models-new
+
+<span class="c1"># Migrate models</span>
+rsync<span class="w"> </span>-av<span class="w"> </span><span class="nv">$MODELS_ROOT</span>/<span class="w"> </span>/data/models-new/
+sudo<span class="w"> </span>umount<span class="w"> </span>/data/models
+sudo<span class="w"> </span>mount<span class="w"> </span>/dev/sdb1<span class="w"> </span>/data/models
+</code></pre></div>
+<h3 id="3-lock-contention-and-deadlocks">3. Lock Contention and Deadlocks<a class="headerlink" href="#3-lock-contention-and-deadlocks" title="Permanent link">&para;</a></h3>
+<h4 id="symptoms_2">Symptoms<a class="headerlink" href="#symptoms_2" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Lock timeout errors</li>
+<li>Multiple processes waiting indefinitely</li>
+<li>High CPU usage with no progress</li>
+</ul>
+<h4 id="diagnostic-steps_2">Diagnostic Steps<a class="headerlink" href="#diagnostic-steps_2" title="Permanent link">&para;</a></h4>
+<p><strong>Check Active Locks:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># List all locks</span>
+wan<span class="w"> </span>models<span class="w"> </span>locks<span class="w"> </span>--list<span class="w"> </span>--verbose
+
+<span class="c1"># Check lock ages</span>
+find<span class="w"> </span><span class="nv">$MODELS_ROOT</span>/.locks<span class="w"> </span>-name<span class="w"> </span><span class="s2">&quot;*.lock&quot;</span><span class="w"> </span>-exec<span class="w"> </span>stat<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;%Y %n&quot;</span><span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-n
+
+<span class="c1"># Check processes holding locks</span>
+lsof<span class="w"> </span>+D<span class="w"> </span><span class="nv">$MODELS_ROOT</span>/.locks
+</code></pre></div>
+<p><strong>Monitor Lock Contention:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Real-time lock monitoring</span>
+watch<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="s1">&#39;wan models locks --list&#39;</span>
+
+<span class="c1"># Check metrics</span>
+curl<span class="w"> </span>-s<span class="w"> </span>http://localhost:9090/metrics<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>lock_
+</code></pre></div>
+<h4 id="solutions_2">Solutions<a class="headerlink" href="#solutions_2" title="Permanent link">&para;</a></h4>
+<p><strong>Clean Stale Locks:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Remove old locks (older than 1 hour)</span>
+find<span class="w"> </span><span class="nv">$MODELS_ROOT</span>/.locks<span class="w"> </span>-name<span class="w"> </span><span class="s2">&quot;*.lock&quot;</span><span class="w"> </span>-mtime<span class="w"> </span>+0.04<span class="w"> </span>-delete
+
+<span class="c1"># Force cleanup all locks (use with caution)</span>
+wan<span class="w"> </span>models<span class="w"> </span>locks<span class="w"> </span>--cleanup<span class="w"> </span>--force
+</code></pre></div>
+<p><strong>Adjust Lock Settings:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Increase lock timeout</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">LOCK_TIMEOUT</span><span class="o">=</span><span class="m">1800</span><span class="w">  </span><span class="c1"># 30 minutes</span>
+
+<span class="c1"># Reduce lock granularity</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">LOCK_PER_VARIANT</span><span class="o">=</span><span class="nb">false</span><span class="w">  </span><span class="c1"># Lock per model, not per variant</span>
+</code></pre></div>
+<p><strong>Restart Services:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Graceful restart</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>reload<span class="w"> </span>wan22
+
+<span class="c1"># Force restart if needed</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>wan22
+</code></pre></div>
+<h3 id="4-memory-issues">4. Memory Issues<a class="headerlink" href="#4-memory-issues" title="Permanent link">&para;</a></h3>
+<h4 id="symptoms_3">Symptoms<a class="headerlink" href="#symptoms_3" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Out of memory (OOM) kills</li>
+<li>Slow performance</li>
+<li>High swap usage</li>
+<li>Memory leaks</li>
+</ul>
+<h4 id="diagnostic-steps_3">Diagnostic Steps<a class="headerlink" href="#diagnostic-steps_3" title="Permanent link">&para;</a></h4>
+<p><strong>Check Memory Usage:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Current memory usage</span>
+free<span class="w"> </span>-h
+ps<span class="w"> </span>aux<span class="w"> </span>--sort<span class="o">=</span>-%mem<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-10
+
+<span class="c1"># Memory usage over time</span>
+sar<span class="w"> </span>-r<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">10</span>
+
+<span class="c1"># Check for memory leaks</span>
+valgrind<span class="w"> </span>--tool<span class="o">=</span>memcheck<span class="w"> </span>--leak-check<span class="o">=</span>full<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>backend.main
+</code></pre></div>
+<p><strong>Monitor Application Memory:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Process memory details</span>
+cat<span class="w"> </span>/proc/<span class="k">$(</span>pgrep<span class="w"> </span>-f<span class="w"> </span>wan22<span class="k">)</span>/status<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s2">&quot;(VmSize|VmRSS|VmSwap)&quot;</span>
+
+<span class="c1"># Memory maps</span>
+pmap<span class="w"> </span><span class="k">$(</span>pgrep<span class="w"> </span>-f<span class="w"> </span>wan22<span class="k">)</span>
+</code></pre></div>
+<h4 id="solutions_3">Solutions<a class="headerlink" href="#solutions_3" title="Permanent link">&para;</a></h4>
+<p><strong>Immediate Memory Relief:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Clear system caches</span>
+sudo<span class="w"> </span>sync<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>sysctl<span class="w"> </span>vm.drop_caches<span class="o">=</span><span class="m">3</span>
+
+<span class="c1"># Restart application</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>wan22
+
+<span class="c1"># Reduce concurrent operations</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">MAX_CONCURRENT_DOWNLOADS</span><span class="o">=</span><span class="m">2</span>
+</code></pre></div>
+<p><strong>Optimize Memory Usage:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Tune garbage collection</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONHASHSEED</span><span class="o">=</span><span class="m">0</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">MALLOC_TRIM_THRESHOLD_</span><span class="o">=</span><span class="m">100000</span>
+
+<span class="c1"># Limit worker processes</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">WORKERS</span><span class="o">=</span><span class="m">2</span><span class="w">  </span><span class="c1"># Reduce from default</span>
+
+<span class="c1"># Enable memory profiling</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONMALLOC</span><span class="o">=</span>debug
+</code></pre></div>
+<p><strong>System-Level Tuning:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Adjust swappiness</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;vm.swappiness=10&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/etc/sysctl.conf
+
+<span class="c1"># Increase memory limits</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;wan22 soft memlock unlimited&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/etc/security/limits.conf
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;wan22 hard memlock unlimited&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/etc/security/limits.conf
+</code></pre></div>
+<h3 id="5-performance-issues">5. Performance Issues<a class="headerlink" href="#5-performance-issues" title="Permanent link">&para;</a></h3>
+<h4 id="symptoms_4">Symptoms<a class="headerlink" href="#symptoms_4" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Slow download speeds</li>
+<li>High response times</li>
+<li>CPU bottlenecks</li>
+<li>I/O wait times</li>
+</ul>
+<h4 id="diagnostic-steps_4">Diagnostic Steps<a class="headerlink" href="#diagnostic-steps_4" title="Permanent link">&para;</a></h4>
+<p><strong>System Performance:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># CPU usage</span>
+top<span class="w"> </span>-p<span class="w"> </span><span class="k">$(</span>pgrep<span class="w"> </span>-f<span class="w"> </span>wan22<span class="k">)</span>
+htop
+
+<span class="c1"># I/O performance</span>
+iostat<span class="w"> </span>-x<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">5</span>
+iotop
+
+<span class="c1"># Network performance</span>
+iftop<span class="w"> </span>-i<span class="w"> </span>eth0
+nethogs
+</code></pre></div>
+<p><strong>Application Performance:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Response time testing</span>
+curl<span class="w"> </span>-w<span class="w"> </span><span class="s2">&quot;@curl-format.txt&quot;</span><span class="w"> </span>-o<span class="w"> </span>/dev/null<span class="w"> </span>-s<span class="w"> </span>http://localhost:8000/health
+
+<span class="c1"># Download speed testing</span>
+wan<span class="w"> </span>models<span class="w"> </span>ensure<span class="w"> </span>--only<span class="w"> </span>small-test-model<span class="w"> </span>--benchmark
+
+<span class="c1"># Database performance</span>
+EXPLAIN<span class="w"> </span>ANALYZE<span class="w"> </span>SELECT<span class="w"> </span>*<span class="w"> </span>FROM<span class="w"> </span>model_status<span class="w"> </span>WHERE<span class="w"> </span><span class="nv">model_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;test&#39;</span><span class="p">;</span>
+</code></pre></div>
+<h4 id="solutions_4">Solutions<a class="headerlink" href="#solutions_4" title="Permanent link">&para;</a></h4>
+<p><strong>Network Optimization:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Enable HF transfer acceleration</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">HF_HUB_ENABLE_HF_TRANSFER</span><span class="o">=</span><span class="m">1</span>
+
+<span class="c1"># Tune network buffers</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;net.core.rmem_max = 134217728&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/etc/sysctl.conf
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;net.core.wmem_max = 134217728&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/etc/sysctl.conf
+sysctl<span class="w"> </span>-p
+
+<span class="c1"># Increase connection limits</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">MAX_CONNECTIONS_PER_HOST</span><span class="o">=</span><span class="m">20</span>
+</code></pre></div>
+<p><strong>I/O Optimization:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Use faster storage</span>
+<span class="c1"># Move MODELS_ROOT to SSD/NVMe</span>
+
+<span class="c1"># Optimize mount options</span>
+mount<span class="w"> </span>-o<span class="w"> </span>remount,noatime,nodiratime<span class="w"> </span>/data/models
+
+<span class="c1"># Tune I/O scheduler</span>
+<span class="nb">echo</span><span class="w"> </span>mq-deadline<span class="w"> </span>&gt;<span class="w"> </span>/sys/block/sda/queue/scheduler
+</code></pre></div>
+<p><strong>Application Tuning:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Increase worker processes</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">WORKERS</span><span class="o">=</span><span class="m">8</span>
+
+<span class="c1"># Optimize database connections</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">DB_POOL_SIZE</span><span class="o">=</span><span class="m">20</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">DB_MAX_OVERFLOW</span><span class="o">=</span><span class="m">30</span>
+
+<span class="c1"># Enable caching</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">ENABLE_REDIS_CACHE</span><span class="o">=</span><span class="nb">true</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">REDIS_URL</span><span class="o">=</span>redis://localhost:6379/0
+</code></pre></div>
+<h3 id="6-configuration-issues">6. Configuration Issues<a class="headerlink" href="#6-configuration-issues" title="Permanent link">&para;</a></h3>
+<h4 id="symptoms_5">Symptoms<a class="headerlink" href="#symptoms_5" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Service fails to start</li>
+<li>Invalid configuration errors</li>
+<li>Environment variable issues</li>
+<li>Manifest parsing errors</li>
+</ul>
+<h4 id="diagnostic-steps_5">Diagnostic Steps<a class="headerlink" href="#diagnostic-steps_5" title="Permanent link">&para;</a></h4>
+<p><strong>Validate Configuration:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check environment variables</span>
+env<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s2">&quot;(MODELS_ROOT|HF_TOKEN|AWS_)&quot;</span>
+
+<span class="c1"># Validate manifest</span>
+wan<span class="w"> </span>models<span class="w"> </span>validate-manifest
+
+<span class="c1"># Test configuration</span>
+wan<span class="w"> </span>models<span class="w"> </span>test-config
+</code></pre></div>
+<p><strong>Check File Permissions:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Models directory permissions</span>
+ls<span class="w"> </span>-la<span class="w"> </span><span class="nv">$MODELS_ROOT</span>
+stat<span class="w"> </span><span class="nv">$MODELS_ROOT</span>
+
+<span class="c1"># Configuration file permissions</span>
+ls<span class="w"> </span>-la<span class="w"> </span>/opt/wan22/.env
+ls<span class="w"> </span>-la<span class="w"> </span>/opt/wan22/config/
+</code></pre></div>
+<h4 id="solutions_5">Solutions<a class="headerlink" href="#solutions_5" title="Permanent link">&para;</a></h4>
+<p><strong>Fix Environment Variables:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Set required variables</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">MODELS_ROOT</span><span class="o">=</span>/data/models
+<span class="nb">export</span><span class="w"> </span><span class="nv">WAN_MODELS_MANIFEST</span><span class="o">=</span>/opt/wan22/config/models.toml
+
+<span class="c1"># Validate paths exist</span>
+mkdir<span class="w"> </span>-p<span class="w"> </span><span class="nv">$MODELS_ROOT</span>
+touch<span class="w"> </span><span class="nv">$WAN_MODELS_MANIFEST</span>
+</code></pre></div>
+<p><strong>Fix Permissions:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Fix ownership</span>
+sudo<span class="w"> </span>chown<span class="w"> </span>-R<span class="w"> </span>wan22:wan22<span class="w"> </span>/data/models
+sudo<span class="w"> </span>chown<span class="w"> </span>-R<span class="w"> </span>wan22:wan22<span class="w"> </span>/opt/wan22
+
+<span class="c1"># Fix permissions</span>
+sudo<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span><span class="m">755</span><span class="w"> </span>/data/models
+sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>/opt/wan22/.env
+</code></pre></div>
+<p><strong>Validate Manifest:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check TOML syntax</span>
+python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import toml; toml.load(&#39;</span><span class="nv">$WAN_MODELS_MANIFEST</span><span class="s2">&#39;)&quot;</span>
+
+<span class="c1"># Validate schema</span>
+wan<span class="w"> </span>models<span class="w"> </span>validate-manifest<span class="w"> </span>--strict
+</code></pre></div>
+<h3 id="7-database-issues">7. Database Issues<a class="headerlink" href="#7-database-issues" title="Permanent link">&para;</a></h3>
+<h4 id="symptoms_6">Symptoms<a class="headerlink" href="#symptoms_6" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Database connection errors</li>
+<li>Slow queries</li>
+<li>Lock timeouts</li>
+<li>Corruption errors</li>
+</ul>
+<h4 id="diagnostic-steps_6">Diagnostic Steps<a class="headerlink" href="#diagnostic-steps_6" title="Permanent link">&para;</a></h4>
+<p><strong>Check Database Status:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># PostgreSQL status</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>postgresql
+sudo<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>psql<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;\l&quot;</span>
+
+<span class="c1"># Connection testing</span>
+psql<span class="w"> </span><span class="nv">$DATABASE_URL</span><span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;SELECT 1;&quot;</span>
+
+<span class="c1"># Check connections</span>
+sudo<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>psql<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;SELECT * FROM pg_stat_activity;&quot;</span>
+</code></pre></div>
+<p><strong>Query Performance:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Slow queries</span>
+sudo<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>psql<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;SELECT query, mean_time, calls FROM pg_stat_statements ORDER BY mean_time DESC LIMIT 10;&quot;</span>
+
+<span class="c1"># Lock analysis</span>
+sudo<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>psql<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;SELECT * FROM pg_locks WHERE NOT granted;&quot;</span>
+</code></pre></div>
+<h4 id="solutions_6">Solutions<a class="headerlink" href="#solutions_6" title="Permanent link">&para;</a></h4>
+<p><strong>Connection Issues:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Restart PostgreSQL</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>postgresql
+
+<span class="c1"># Increase connection limits</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;max_connections = 200&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/etc/postgresql/13/main/postgresql.conf
+
+<span class="c1"># Tune connection pooling</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">DB_POOL_SIZE</span><span class="o">=</span><span class="m">20</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">DB_MAX_OVERFLOW</span><span class="o">=</span><span class="m">30</span>
+</code></pre></div>
+<p><strong>Performance Tuning:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Optimize PostgreSQL settings</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;shared_buffers = 256MB&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/etc/postgresql/13/main/postgresql.conf
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;effective_cache_size = 1GB&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/etc/postgresql/13/main/postgresql.conf
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;work_mem = 4MB&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/etc/postgresql/13/main/postgresql.conf
+
+<span class="c1"># Restart to apply changes</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>postgresql
+</code></pre></div>
+<p><strong>Maintenance:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Vacuum and analyze</span>
+sudo<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>psql<span class="w"> </span>wan22<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;VACUUM ANALYZE;&quot;</span>
+
+<span class="c1"># Reindex if needed</span>
+sudo<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>psql<span class="w"> </span>wan22<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;REINDEX DATABASE wan22;&quot;</span>
+</code></pre></div>
+<h2 id="platform-specific-issues">Platform-Specific Issues<a class="headerlink" href="#platform-specific-issues" title="Permanent link">&para;</a></h2>
+<h3 id="windows-issues">Windows Issues<a class="headerlink" href="#windows-issues" title="Permanent link">&para;</a></h3>
+<h4 id="long-path-problems">Long Path Problems<a class="headerlink" href="#long-path-problems" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>REM Enable long paths via registry
+reg add &quot;HKLM\SYSTEM\CurrentControlSet\Control\FileSystem&quot; /v LongPathsEnabled /t REG_DWORD /d 1
+
+REM Or via Group Policy
+gpedit.msc
+REM Navigate to: Computer Configuration &gt; Administrative Templates &gt; System &gt; Filesystem
+REM Enable &quot;Enable Win32 long paths&quot;
+</code></pre></div>
+<h4 id="permission-issues">Permission Issues<a class="headerlink" href="#permission-issues" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>REM Fix directory permissions
+icacls C:\data\models /grant wan22:(OI)(CI)F /T
+
+REM Run as administrator if needed
+runas /user:Administrator &quot;wan models ensure --all&quot;
+</code></pre></div>
+<h4 id="antivirus-interference">Antivirus Interference<a class="headerlink" href="#antivirus-interference" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>REM Add exclusions to Windows Defender
+powershell Add-MpPreference -ExclusionPath &quot;C:\data\models&quot;
+powershell Add-MpPreference -ExclusionProcess &quot;python.exe&quot;
+</code></pre></div>
+<h3 id="linux-issues">Linux Issues<a class="headerlink" href="#linux-issues" title="Permanent link">&para;</a></h3>
+<h4 id="selinux-problems">SELinux Problems<a class="headerlink" href="#selinux-problems" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check SELinux status</span>
+getenforce
+
+<span class="c1"># Set permissive mode temporarily</span>
+sudo<span class="w"> </span>setenforce<span class="w"> </span><span class="m">0</span>
+
+<span class="c1"># Create custom policy</span>
+sudo<span class="w"> </span>setsebool<span class="w"> </span>-P<span class="w"> </span>httpd_can_network_connect<span class="w"> </span><span class="m">1</span>
+sudo<span class="w"> </span>setsebool<span class="w"> </span>-P<span class="w"> </span>httpd_execmem<span class="w"> </span><span class="m">1</span>
+</code></pre></div>
+<h4 id="systemd-service-issues">Systemd Service Issues<a class="headerlink" href="#systemd-service-issues" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check service logs</span>
+journalctl<span class="w"> </span>-u<span class="w"> </span>wan22<span class="w"> </span>-f
+
+<span class="c1"># Reload systemd configuration</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>daemon-reload
+
+<span class="c1"># Check service file syntax</span>
+systemd-analyze<span class="w"> </span>verify<span class="w"> </span>/etc/systemd/system/wan22.service
+</code></pre></div>
+<h3 id="macos-issues">macOS Issues<a class="headerlink" href="#macos-issues" title="Permanent link">&para;</a></h3>
+<h4 id="gatekeeper-problems">Gatekeeper Problems<a class="headerlink" href="#gatekeeper-problems" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Allow unsigned binaries</span>
+sudo<span class="w"> </span>spctl<span class="w"> </span>--master-disable
+
+<span class="c1"># Add specific exceptions</span>
+sudo<span class="w"> </span>spctl<span class="w"> </span>--add<span class="w"> </span>/path/to/wan22
+</code></pre></div>
+<h4 id="file-system-case-sensitivity">File System Case Sensitivity<a class="headerlink" href="#file-system-case-sensitivity" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check case sensitivity</span>
+touch<span class="w"> </span><span class="nb">test</span><span class="w"> </span>TEST
+ls<span class="w"> </span>-la<span class="w"> </span>test*<span class="w">  </span><span class="c1"># Should show both files on case-sensitive FS</span>
+
+<span class="c1"># Create case-sensitive volume if needed</span>
+hdiutil<span class="w"> </span>create<span class="w"> </span>-size<span class="w"> </span>100g<span class="w"> </span>-fs<span class="w"> </span><span class="s2">&quot;Case-sensitive HFS+&quot;</span><span class="w"> </span>-volname<span class="w"> </span><span class="s2">&quot;Models&quot;</span><span class="w"> </span>models.dmg
+</code></pre></div>
+<h2 id="emergency-procedures">Emergency Procedures<a class="headerlink" href="#emergency-procedures" title="Permanent link">&para;</a></h2>
+<h3 id="service-recovery">Service Recovery<a class="headerlink" href="#service-recovery" title="Permanent link">&para;</a></h3>
+<h4 id="complete-service-restart">Complete Service Restart<a class="headerlink" href="#complete-service-restart" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1"># emergency-restart.sh</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Starting emergency service restart...&quot;</span>
+
+<span class="c1"># Stop all related services</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>wan22
+sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>nginx<span class="w">  </span><span class="c1"># If using reverse proxy</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>postgresql
+
+<span class="c1"># Clear temporary files</span>
+sudo<span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>/data/models/.tmp/*
+sudo<span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>/data/models/.locks/*
+
+<span class="c1"># Check and repair filesystem if needed</span>
+sudo<span class="w"> </span>fsck<span class="w"> </span>/dev/sdb1<span class="w">  </span><span class="c1"># Adjust device as needed</span>
+
+<span class="c1"># Start services in order</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>postgresql
+sleep<span class="w"> </span><span class="m">10</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>wan22
+sleep<span class="w"> </span><span class="m">5</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>nginx
+
+<span class="c1"># Verify services</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>is-active<span class="w"> </span>wan22<span class="w"> </span>postgresql<span class="w"> </span>nginx
+
+<span class="c1"># Test functionality</span>
+curl<span class="w"> </span>-f<span class="w"> </span>http://localhost:8000/health<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Health check failed&quot;</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Emergency restart completed&quot;</span>
+</code></pre></div>
+<h4 id="database-recovery">Database Recovery<a class="headerlink" href="#database-recovery" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1"># emergency-db-recovery.sh</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Starting database recovery...&quot;</span>
+
+<span class="c1"># Stop application</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>wan22
+
+<span class="c1"># Backup current database</span>
+sudo<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>pg_dump<span class="w"> </span>wan22<span class="w"> </span>&gt;<span class="w"> </span>/tmp/wan22_emergency_backup.sql
+
+<span class="c1"># Check database integrity</span>
+sudo<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>psql<span class="w"> </span>wan22<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;SELECT pg_database_size(&#39;wan22&#39;);&quot;</span>
+
+<span class="c1"># Repair if needed</span>
+sudo<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>vacuumdb<span class="w"> </span>--analyze<span class="w"> </span>--verbose<span class="w"> </span>wan22
+
+<span class="c1"># Restart services</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>wan22
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Database recovery completed&quot;</span>
+</code></pre></div>
+<h3 id="data-recovery">Data Recovery<a class="headerlink" href="#data-recovery" title="Permanent link">&para;</a></h3>
+<h4 id="model-data-recovery">Model Data Recovery<a class="headerlink" href="#model-data-recovery" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1"># recover-models.sh</span>
+
+<span class="nv">BACKUP_DIR</span><span class="o">=</span><span class="s2">&quot;/backup/wan22&quot;</span>
+<span class="nv">MODELS_ROOT</span><span class="o">=</span><span class="s2">&quot;/data/models&quot;</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Starting model data recovery...&quot;</span>
+
+<span class="c1"># Find latest backup</span>
+<span class="nv">LATEST_BACKUP</span><span class="o">=</span><span class="k">$(</span>ls<span class="w"> </span>-t<span class="w"> </span><span class="nv">$BACKUP_DIR</span>/models_*.tar.gz<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-1<span class="k">)</span>
+
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$LATEST_BACKUP</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;No backup found!&quot;</span>
+<span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="k">fi</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Restoring from: </span><span class="nv">$LATEST_BACKUP</span><span class="s2">&quot;</span>
+
+<span class="c1"># Stop service</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>wan22
+
+<span class="c1"># Backup current state</span>
+sudo<span class="w"> </span>mv<span class="w"> </span><span class="nv">$MODELS_ROOT</span><span class="w"> </span><span class="nv">$MODELS_ROOT</span>.corrupted.<span class="k">$(</span>date<span class="w"> </span>+%s<span class="k">)</span>
+
+<span class="c1"># Restore from backup</span>
+sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="nv">$MODELS_ROOT</span>
+sudo<span class="w"> </span>tar<span class="w"> </span>-xzf<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$LATEST_BACKUP</span><span class="s2">&quot;</span><span class="w"> </span>-C<span class="w"> </span><span class="k">$(</span>dirname<span class="w"> </span><span class="nv">$MODELS_ROOT</span><span class="k">)</span>
+
+<span class="c1"># Fix permissions</span>
+sudo<span class="w"> </span>chown<span class="w"> </span>-R<span class="w"> </span>wan22:wan22<span class="w"> </span><span class="nv">$MODELS_ROOT</span>
+sudo<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span><span class="m">755</span><span class="w"> </span><span class="nv">$MODELS_ROOT</span>
+
+<span class="c1"># Start service</span>
+sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>wan22
+
+<span class="c1"># Verify recovery</span>
+sleep<span class="w"> </span><span class="m">10</span>
+curl<span class="w"> </span>-f<span class="w"> </span>http://localhost:8000/health
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Model data recovery completed&quot;</span>
+</code></pre></div>
+<h2 id="monitoring-and-alerting">Monitoring and Alerting<a class="headerlink" href="#monitoring-and-alerting" title="Permanent link">&para;</a></h2>
+<h3 id="health-check-scripts">Health Check Scripts<a class="headerlink" href="#health-check-scripts" title="Permanent link">&para;</a></h3>
+<h4 id="comprehensive-health-check">Comprehensive Health Check<a class="headerlink" href="#comprehensive-health-check" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1"># health-check-comprehensive.sh</span>
+
+<span class="nv">EXIT_CODE</span><span class="o">=</span><span class="m">0</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;=== WAN2.2 Model Orchestrator Health Check ===&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Timestamp: </span><span class="k">$(</span>date<span class="k">)</span><span class="s2">&quot;</span>
+
+<span class="c1"># Check service status</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Checking service status...&quot;</span>
+<span class="k">if</span><span class="w"> </span>!<span class="w"> </span>systemctl<span class="w"> </span>is-active<span class="w"> </span>--quiet<span class="w"> </span>wan22<span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;ERROR: Service is not running&quot;</span>
+<span class="w">    </span><span class="nv">EXIT_CODE</span><span class="o">=</span><span class="m">1</span>
+<span class="k">else</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;OK: Service is running&quot;</span>
+<span class="k">fi</span>
+
+<span class="c1"># Check HTTP endpoint</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Checking HTTP endpoint...&quot;</span>
+<span class="k">if</span><span class="w"> </span>!<span class="w"> </span>curl<span class="w"> </span>-f<span class="w"> </span>-s<span class="w"> </span>http://localhost:8000/health<span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;ERROR: Health endpoint not responding&quot;</span>
+<span class="w">    </span><span class="nv">EXIT_CODE</span><span class="o">=</span><span class="m">1</span>
+<span class="k">else</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;OK: Health endpoint responding&quot;</span>
+<span class="k">fi</span>
+
+<span class="c1"># Check disk space</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Checking disk space...&quot;</span>
+<span class="nv">DISK_USAGE</span><span class="o">=</span><span class="k">$(</span>df<span class="w"> </span><span class="nv">$MODELS_ROOT</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-1<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print $5}&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;s/%//&#39;</span><span class="k">)</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$DISK_USAGE</span><span class="w"> </span>-gt<span class="w"> </span><span class="m">90</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;WARNING: Disk usage is </span><span class="si">${</span><span class="nv">DISK_USAGE</span><span class="si">}</span><span class="s2">%&quot;</span>
+<span class="w">    </span><span class="nv">EXIT_CODE</span><span class="o">=</span><span class="m">1</span>
+<span class="k">else</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;OK: Disk usage is </span><span class="si">${</span><span class="nv">DISK_USAGE</span><span class="si">}</span><span class="s2">%&quot;</span>
+<span class="k">fi</span>
+
+<span class="c1"># Check memory usage</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Checking memory usage...&quot;</span>
+<span class="nv">MEM_USAGE</span><span class="o">=</span><span class="k">$(</span>free<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>Mem<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{printf &quot;%.0f&quot;, $3/$2 * 100.0}&#39;</span><span class="k">)</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$MEM_USAGE</span><span class="w"> </span>-gt<span class="w"> </span><span class="m">90</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;WARNING: Memory usage is </span><span class="si">${</span><span class="nv">MEM_USAGE</span><span class="si">}</span><span class="s2">%&quot;</span>
+<span class="w">    </span><span class="nv">EXIT_CODE</span><span class="o">=</span><span class="m">1</span>
+<span class="k">else</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;OK: Memory usage is </span><span class="si">${</span><span class="nv">MEM_USAGE</span><span class="si">}</span><span class="s2">%&quot;</span>
+<span class="k">fi</span>
+
+<span class="c1"># Check database connectivity</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Checking database connectivity...&quot;</span>
+<span class="k">if</span><span class="w"> </span>!<span class="w"> </span>psql<span class="w"> </span><span class="nv">$DATABASE_URL</span><span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;SELECT 1;&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;ERROR: Cannot connect to database&quot;</span>
+<span class="w">    </span><span class="nv">EXIT_CODE</span><span class="o">=</span><span class="m">1</span>
+<span class="k">else</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;OK: Database connection successful&quot;</span>
+<span class="k">fi</span>
+
+<span class="c1"># Check model status</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Checking model status...&quot;</span>
+<span class="nv">FAILED_MODELS</span><span class="o">=</span><span class="k">$(</span>wan<span class="w"> </span>models<span class="w"> </span>status<span class="w"> </span>--json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.models[] | select(.state == &quot;FAILED&quot;) | .model_id&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l<span class="k">)</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$FAILED_MODELS</span><span class="w"> </span>-gt<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;WARNING: </span><span class="nv">$FAILED_MODELS</span><span class="s2"> models in failed state&quot;</span>
+<span class="w">    </span><span class="nv">EXIT_CODE</span><span class="o">=</span><span class="m">1</span>
+<span class="k">else</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;OK: No failed models&quot;</span>
+<span class="k">fi</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;=== Health Check Complete ===&quot;</span>
+<span class="nb">exit</span><span class="w"> </span><span class="nv">$EXIT_CODE</span>
+</code></pre></div>
+<h3 id="alerting-configuration">Alerting Configuration<a class="headerlink" href="#alerting-configuration" title="Permanent link">&para;</a></h3>
+<h4 id="prometheus-alerts">Prometheus Alerts<a class="headerlink" href="#prometheus-alerts" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># alerts.yml</span>
+<span class="nt">groups</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wan22-orchestrator</span>
+<span class="w">    </span><span class="nt">rules</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">alert</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceDown</span>
+<span class="w">        </span><span class="nt">expr</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">up{job=&quot;wan22-orchestrator&quot;} == 0</span>
+<span class="w">        </span><span class="nt">for</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1m</span>
+<span class="w">        </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">severity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">critical</span>
+<span class="w">        </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;WAN2.2</span><span class="nv"> </span><span class="s">Orchestrator</span><span class="nv"> </span><span class="s">service</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">down&quot;</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;The</span><span class="nv"> </span><span class="s">WAN2.2</span><span class="nv"> </span><span class="s">Model</span><span class="nv"> </span><span class="s">Orchestrator</span><span class="nv"> </span><span class="s">service</span><span class="nv"> </span><span class="s">has</span><span class="nv"> </span><span class="s">been</span><span class="nv"> </span><span class="s">down</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">more</span><span class="nv"> </span><span class="s">than</span><span class="nv"> </span><span class="s">1</span><span class="nv"> </span><span class="s">minute&quot;</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">alert</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HighErrorRate</span>
+<span class="w">        </span><span class="nt">expr</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rate(model_errors_total[5m]) &gt; 0.1</span>
+<span class="w">        </span><span class="nt">for</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2m</span>
+<span class="w">        </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">severity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">warning</span>
+<span class="w">        </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;High</span><span class="nv"> </span><span class="s">error</span><span class="nv"> </span><span class="s">rate</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">model</span><span class="nv"> </span><span class="s">operations&quot;</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Error</span><span class="nv"> </span><span class="s">rate</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">$value</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">errors</span><span class="nv"> </span><span class="s">per</span><span class="nv"> </span><span class="s">second&quot;</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">alert</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DiskSpaceHigh</span>
+<span class="w">        </span><span class="nt">expr</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(model_storage_bytes_used / model_storage_bytes_total) &gt; 0.9</span>
+<span class="w">        </span><span class="nt">for</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5m</span>
+<span class="w">        </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">severity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">warning</span>
+<span class="w">        </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Model</span><span class="nv"> </span><span class="s">storage</span><span class="nv"> </span><span class="s">disk</span><span class="nv"> </span><span class="s">space</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">running</span><span class="nv"> </span><span class="s">low&quot;</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Disk</span><span class="nv"> </span><span class="s">usage</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">$value</span><span class="nv"> </span><span class="s">|</span><span class="nv"> </span><span class="s">humanizePercentage</span><span class="nv"> </span><span class="s">}}&quot;</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">alert</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DownloadTimeout</span>
+<span class="w">        </span><span class="nt">expr</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">increase(model_download_timeouts_total[10m]) &gt; 5</span>
+<span class="w">        </span><span class="nt">for</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1m</span>
+<span class="w">        </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">severity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">warning</span>
+<span class="w">        </span><span class="nt">annotations</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Multiple</span><span class="nv"> </span><span class="s">download</span><span class="nv"> </span><span class="s">timeouts</span><span class="nv"> </span><span class="s">detected&quot;</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">$value</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">download</span><span class="nv"> </span><span class="s">timeouts</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">last</span><span class="nv"> </span><span class="s">10</span><span class="nv"> </span><span class="s">minutes&quot;</span>
+</code></pre></div>
+<h4 id="nagios-checks">Nagios Checks<a class="headerlink" href="#nagios-checks" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+<span class="c1"># check_wan22_orchestrator.sh</span>
+
+<span class="c1"># Nagios plugin for WAN2.2 Orchestrator</span>
+<span class="c1"># Usage: check_wan22_orchestrator.sh -H hostname -p port</span>
+
+<span class="k">while</span><span class="w"> </span><span class="nb">getopts</span><span class="w"> </span><span class="s2">&quot;H:p:&quot;</span><span class="w"> </span>opt<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nv">$opt</span><span class="w"> </span><span class="k">in</span>
+<span class="w">        </span>H<span class="o">)</span><span class="w"> </span><span class="nv">HOST</span><span class="o">=</span><span class="nv">$OPTARG</span><span class="w"> </span><span class="p">;;</span>
+<span class="w">        </span>p<span class="o">)</span><span class="w"> </span><span class="nv">PORT</span><span class="o">=</span><span class="nv">$OPTARG</span><span class="w"> </span><span class="p">;;</span>
+<span class="w">    </span><span class="k">esac</span>
+<span class="k">done</span>
+
+<span class="nv">HOST</span><span class="o">=</span><span class="si">${</span><span class="nv">HOST</span><span class="k">:-</span><span class="nv">localhost</span><span class="si">}</span>
+<span class="nv">PORT</span><span class="o">=</span><span class="si">${</span><span class="nv">PORT</span><span class="k">:-</span><span class="nv">8000</span><span class="si">}</span>
+
+<span class="c1"># Check health endpoint</span>
+<span class="nv">RESPONSE</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-s<span class="w"> </span>-w<span class="w"> </span><span class="s2">&quot;%{http_code}&quot;</span><span class="w"> </span>http://<span class="nv">$HOST</span>:<span class="nv">$PORT</span>/health<span class="k">)</span>
+<span class="nv">HTTP_CODE</span><span class="o">=</span><span class="si">${</span><span class="nv">RESPONSE</span><span class="p">: -3</span><span class="si">}</span>
+<span class="nv">BODY</span><span class="o">=</span><span class="si">${</span><span class="nv">RESPONSE</span><span class="p">%???</span><span class="si">}</span>
+
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$HTTP_CODE</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;200&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;OK - Service is healthy | response_time=0.123s&quot;</span>
+<span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">0</span>
+<span class="k">elif</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$HTTP_CODE</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;503&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;WARNING - Service degraded: </span><span class="nv">$BODY</span><span class="s2">&quot;</span>
+<span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
+<span class="k">else</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;CRITICAL - Service unavailable (HTTP </span><span class="nv">$HTTP_CODE</span><span class="s2">)&quot;</span>
+<span class="w">    </span><span class="nb">exit</span><span class="w"> </span><span class="m">2</span>
+<span class="k">fi</span>
+</code></pre></div>
+<h2 id="performance-optimization">Performance Optimization<a class="headerlink" href="#performance-optimization" title="Permanent link">&para;</a></h2>
+<h3 id="profiling-and-analysis">Profiling and Analysis<a class="headerlink" href="#profiling-and-analysis" title="Permanent link">&para;</a></h3>
+<h4 id="cpu-profiling">CPU Profiling<a class="headerlink" href="#cpu-profiling" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Profile CPU usage</span>
+py-spy<span class="w"> </span>top<span class="w"> </span>--pid<span class="w"> </span><span class="k">$(</span>pgrep<span class="w"> </span>-f<span class="w"> </span>wan22<span class="k">)</span>
+
+<span class="c1"># Generate flame graph</span>
+py-spy<span class="w"> </span>record<span class="w"> </span>-o<span class="w"> </span>profile.svg<span class="w"> </span>--pid<span class="w"> </span><span class="k">$(</span>pgrep<span class="w"> </span>-f<span class="w"> </span>wan22<span class="k">)</span><span class="w"> </span>--duration<span class="w"> </span><span class="m">60</span>
+
+<span class="c1"># Profile specific function</span>
+python<span class="w"> </span>-m<span class="w"> </span>cProfile<span class="w"> </span>-o<span class="w"> </span>profile.stats<span class="w"> </span>-m<span class="w"> </span>backend.main
+python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import pstats; pstats.Stats(&#39;profile.stats&#39;).sort_stats(&#39;cumulative&#39;).print_stats(20)&quot;</span>
+</code></pre></div>
+<h4 id="memory-profiling">Memory Profiling<a class="headerlink" href="#memory-profiling" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Memory usage over time</span>
+memory_profiler<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>backend.main
+
+<span class="c1"># Detailed memory analysis</span>
+valgrind<span class="w"> </span>--tool<span class="o">=</span>massif<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>backend.main
+ms_print<span class="w"> </span>massif.out.*<span class="w"> </span>&gt;<span class="w"> </span>memory_profile.txt
+</code></pre></div>
+<h4 id="io-profiling">I/O Profiling<a class="headerlink" href="#io-profiling" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Monitor file I/O</span>
+strace<span class="w"> </span>-e<span class="w"> </span><span class="nv">trace</span><span class="o">=</span>file<span class="w"> </span>-p<span class="w"> </span><span class="k">$(</span>pgrep<span class="w"> </span>-f<span class="w"> </span>wan22<span class="k">)</span>
+
+<span class="c1"># Monitor network I/O</span>
+tcpdump<span class="w"> </span>-i<span class="w"> </span>any<span class="w"> </span>-w<span class="w"> </span>network_trace.pcap<span class="w"> </span>host<span class="w"> </span>huggingface.co
+
+<span class="c1"># Analyze I/O patterns</span>
+iotop<span class="w"> </span>-a<span class="w"> </span>-o<span class="w"> </span>-d<span class="w"> </span><span class="m">1</span>
+</code></pre></div>
+<h3 id="optimization-recommendations">Optimization Recommendations<a class="headerlink" href="#optimization-recommendations" title="Permanent link">&para;</a></h3>
+<h4 id="system-level">System Level<a class="headerlink" href="#system-level" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># CPU governor</span>
+<span class="nb">echo</span><span class="w"> </span>performance<span class="w"> </span>&gt;<span class="w"> </span>/sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+
+<span class="c1"># I/O scheduler</span>
+<span class="nb">echo</span><span class="w"> </span>mq-deadline<span class="w"> </span>&gt;<span class="w"> </span>/sys/block/sda/queue/scheduler
+
+<span class="c1"># Network tuning</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;net.core.rmem_max = 134217728&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/etc/sysctl.conf
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;net.core.wmem_max = 134217728&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/etc/sysctl.conf
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;net.ipv4.tcp_congestion_control = bbr&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/etc/sysctl.conf
+sysctl<span class="w"> </span>-p
+</code></pre></div>
+<h4 id="application-level">Application Level<a class="headerlink" href="#application-level" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Optimize Python</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONOPTIMIZE</span><span class="o">=</span><span class="m">2</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONDONTWRITEBYTECODE</span><span class="o">=</span><span class="m">1</span>
+
+<span class="c1"># Tune garbage collection</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">PYTHONHASHSEED</span><span class="o">=</span><span class="m">0</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">MALLOC_TRIM_THRESHOLD_</span><span class="o">=</span><span class="m">100000</span>
+
+<span class="c1"># Database optimization</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">DB_POOL_SIZE</span><span class="o">=</span><span class="m">20</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">DB_POOL_RECYCLE</span><span class="o">=</span><span class="m">3600</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">DB_POOL_PRE_PING</span><span class="o">=</span><span class="nb">true</span>
+</code></pre></div>
+<p>This troubleshooting guide provides comprehensive coverage of common issues and their solutions, along with emergency procedures and monitoring recommendations. It should help operators quickly diagnose and resolve problems with the Model Orchestrator system.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

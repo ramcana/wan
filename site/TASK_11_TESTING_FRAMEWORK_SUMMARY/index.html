@@ -1,0 +1,1447 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="WAN2.2 Video Generation System Documentation">
+      
+      
+      
+        <link rel="canonical" href="https://ramcana.github.io/wan/TASK_11_TESTING_FRAMEWORK_SUMMARY/">
+      
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>Task 11: Testing and Validation Framework - Implementation Summary - WAN22 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.e53b48f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#task-11-testing-and-validation-framework-implementation-summary" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="WAN22 Documentation" class="md-header__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            WAN22 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Task 11: Testing and Validation Framework - Implementation Summary
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../WAN22_System_Capabilities_Report/" class="md-tabs__link">
+          
+  
+  
+  System Overview
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../model-orchestrator/requirements/" class="md-tabs__link">
+          
+  
+  
+  Model Orchestrator
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../config/models.toml" class="md-tabs__link">
+          
+  
+  
+  Configuration
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="WAN22 Documentation" class="md-nav__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    WAN22 Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    System Overview
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            System Overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../WAN22_System_Capabilities_Report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Capabilities Report
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Model Orchestrator
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Model Orchestrator
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../model-orchestrator/requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Requirements
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../model-orchestrator/tasks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tasks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Configuration
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Configuration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../config/models.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Models Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../config/models_simple.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simple Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#components-implemented" class="md-nav__link">
+    <span class="md-ellipsis">
+      Components Implemented
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Components Implemented">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-smoketestrunner-smoke_test_runnerpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. SmokeTestRunner (smoke_test_runner.py)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-integrationtestsuite-integration_test_suitepy" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. IntegrationTestSuite (integration_test_suite.py)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-performancebenchmarksuite-performance_benchmark_suitepy" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. PerformanceBenchmarkSuite (performance_benchmark_suite.py)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-testcoveragevalidator-test_coverage_validatorpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. TestCoverageValidator (test_coverage_validator.py)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-comprehensivetestrunner-comprehensive_test_runnerpy" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. ComprehensiveTestRunner (comprehensive_test_runner.py)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation Details
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementation Details">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Models
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing-scenarios-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing Scenarios Covered
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage Examples
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Usage Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-smoke-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Smoke Testing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integration-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration Testing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-benchmarking" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Benchmarking
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#coverage-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Coverage Analysis
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comprehensive-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comprehensive Testing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#command-line-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Command Line Usage
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#output-and-reporting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Output and Reporting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Output and Reporting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generated-artifacts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generated Artifacts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#report-locations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Report Locations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requirements-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements Validation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirements Validation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#requirement-81-built-in-smoke-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirement 8.1: Built-in Smoke Tests ✅
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement-82-output-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirement 8.2: Output Validation ✅
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement-83-integration-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirement 8.3: Integration Testing ✅
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement-84-diagnostic-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirement 8.4: Diagnostic Information ✅
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-characteristics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Characteristics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Characteristics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#execution-times-typical" class="md-nav__link">
+    <span class="md-ellipsis">
+      Execution Times (Typical)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resource-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resource Usage
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-handling-and-robustness" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Handling and Robustness
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Error Handling and Robustness">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#error-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Recovery
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mock-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mock Components
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#future-enhancements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Future Enhancements
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Future Enhancements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#potential-improvements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Potential Improvements
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extensibility" class="md-nav__link">
+    <span class="md-ellipsis">
+      Extensibility
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="task-11-testing-and-validation-framework-implementation-summary">Task 11: Testing and Validation Framework - Implementation Summary<a class="headerlink" href="#task-11-testing-and-validation-framework-implementation-summary" title="Permanent link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>Successfully implemented a comprehensive testing and validation framework for the Wan Model Compatibility System. The framework provides multiple layers of testing capabilities including smoke tests, integration tests, performance benchmarks, and coverage analysis.</p>
+<h2 id="components-implemented">Components Implemented<a class="headerlink" href="#components-implemented" title="Permanent link">&para;</a></h2>
+<h3 id="1-smoketestrunner-smoke_test_runnerpy">1. SmokeTestRunner (<code>smoke_test_runner.py</code>)<a class="headerlink" href="#1-smoketestrunner-smoke_test_runnerpy" title="Permanent link">&para;</a></h3>
+<p><strong>Purpose</strong>: Pipeline functionality validation with minimal test scenarios</p>
+<p><strong>Key Features</strong>:</p>
+<ul>
+<li><strong>Pipeline Smoke Testing</strong>: Validates basic pipeline functionality with minimal prompts</li>
+<li><strong>Output Format Validation</strong>: Ensures outputs match expected video tensor formats</li>
+<li><strong>Memory Usage Testing</strong>: Monitors memory consumption and detects leaks</li>
+<li><strong>Performance Benchmarking</strong>: Measures generation speed and identifies bottlenecks</li>
+<li><strong>Comprehensive Metrics</strong>: Tracks execution time, memory usage, FPS, and error rates</li>
+</ul>
+<p><strong>Key Methods</strong>:</p>
+<ul>
+<li><code>run_pipeline_smoke_test()</code>: Core smoke test execution</li>
+<li><code>validate_output_format()</code>: Output format validation</li>
+<li><code>test_memory_usage()</code>: Memory leak detection</li>
+<li><code>benchmark_generation_speed()</code>: Performance measurement</li>
+</ul>
+<h3 id="2-integrationtestsuite-integration_test_suitepy">2. IntegrationTestSuite (<code>integration_test_suite.py</code>)<a class="headerlink" href="#2-integrationtestsuite-integration_test_suitepy" title="Permanent link">&para;</a></h3>
+<p><strong>Purpose</strong>: End-to-end workflow testing and component interaction validation</p>
+<p><strong>Key Features</strong>:</p>
+<ul>
+<li><strong>Component Integration Testing</strong>: Tests interactions between system components</li>
+<li><strong>End-to-End Workflow Testing</strong>: Validates complete model-to-video workflows</li>
+<li><strong>Error Recovery Testing</strong>: Tests fallback scenarios and error handling</li>
+<li><strong>Resource Constraint Testing</strong>: Validates behavior under memory/GPU limitations</li>
+<li><strong>Concurrent Operations Testing</strong>: Tests thread safety and concurrent access</li>
+</ul>
+<p><strong>Key Test Categories</strong>:</p>
+<ul>
+<li>Architecture detection integration</li>
+<li>Pipeline management integration</li>
+<li>Dependency resolution integration</li>
+<li>Optimization integration</li>
+<li>Video processing integration</li>
+<li>Happy path workflows</li>
+<li>Fallback scenarios</li>
+<li>Error recovery workflows</li>
+</ul>
+<h3 id="3-performancebenchmarksuite-performance_benchmark_suitepy">3. PerformanceBenchmarkSuite (<code>performance_benchmark_suite.py</code>)<a class="headerlink" href="#3-performancebenchmarksuite-performance_benchmark_suitepy" title="Permanent link">&para;</a></h3>
+<p><strong>Purpose</strong>: Comprehensive performance testing and regression detection</p>
+<p><strong>Key Features</strong>:</p>
+<ul>
+<li><strong>Multi-Component Benchmarking</strong>: Tests all major system components</li>
+<li><strong>Resource Monitoring</strong>: Tracks CPU, memory, and GPU utilization</li>
+<li><strong>Regression Detection</strong>: Compares against baseline performance metrics</li>
+<li><strong>Concurrent Performance Testing</strong>: Measures performance under concurrent load</li>
+<li><strong>Optimization Strategy Benchmarking</strong>: Tests effectiveness of optimizations</li>
+</ul>
+<p><strong>Benchmark Categories</strong>:</p>
+<ul>
+<li>Model detection performance</li>
+<li>Pipeline loading performance</li>
+<li>Generation performance (various resolutions/frame counts)</li>
+<li>Video encoding performance</li>
+<li>Memory management performance</li>
+<li>Optimization strategy effectiveness</li>
+<li>Concurrent operations performance</li>
+</ul>
+<h3 id="4-testcoveragevalidator-test_coverage_validatorpy">4. TestCoverageValidator (<code>test_coverage_validator.py</code>)<a class="headerlink" href="#4-testcoveragevalidator-test_coverage_validatorpy" title="Permanent link">&para;</a></h3>
+<p><strong>Purpose</strong>: Test coverage analysis and gap identification</p>
+<p><strong>Key Features</strong>:</p>
+<ul>
+<li><strong>Code Coverage Analysis</strong>: Analyzes test coverage across all modules</li>
+<li><strong>Function-Level Coverage</strong>: Tracks coverage for individual functions</li>
+<li><strong>Test Scenario Validation</strong>: Ensures required test scenarios are covered</li>
+<li><strong>Coverage Gap Identification</strong>: Identifies untested critical functions</li>
+<li><strong>Recommendation Generation</strong>: Provides actionable coverage improvement suggestions</li>
+</ul>
+<p><strong>Analysis Capabilities</strong>:</p>
+<ul>
+<li>Module-level coverage statistics</li>
+<li>Function-level coverage tracking</li>
+<li>Missing test scenario identification</li>
+<li>Critical function coverage validation</li>
+<li>Integration test coverage analysis</li>
+</ul>
+<h3 id="5-comprehensivetestrunner-comprehensive_test_runnerpy">5. ComprehensiveTestRunner (<code>comprehensive_test_runner.py</code>)<a class="headerlink" href="#5-comprehensivetestrunner-comprehensive_test_runnerpy" title="Permanent link">&para;</a></h3>
+<p><strong>Purpose</strong>: Unified test orchestration and reporting</p>
+<p><strong>Key Features</strong>:</p>
+<ul>
+<li><strong>Unified Test Execution</strong>: Orchestrates all testing components</li>
+<li><strong>Configurable Test Selection</strong>: Allows selective test execution</li>
+<li><strong>Comprehensive Reporting</strong>: Generates detailed test reports</li>
+<li><strong>Fail-Fast Support</strong>: Stops execution on critical failures</li>
+<li><strong>Multi-Format Output</strong>: JSON, text, and summary reports</li>
+</ul>
+<p><strong>Execution Modes</strong>:</p>
+<ul>
+<li>Full comprehensive testing</li>
+<li>Individual test type execution (smoke, integration, benchmark, coverage)</li>
+<li>Configurable timeouts and failure handling</li>
+<li>Artifact collection and storage</li>
+</ul>
+<h2 id="implementation-details">Implementation Details<a class="headerlink" href="#implementation-details" title="Permanent link">&para;</a></h2>
+<h3 id="data-models">Data Models<a class="headerlink" href="#data-models" title="Permanent link">&para;</a></h3>
+<p><strong>SmokeTestResult</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">SmokeTestResult</span><span class="p">:</span>
+    <span class="n">success</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="n">generation_time</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">memory_peak</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">output_shape</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span>
+    <span class="n">errors</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+    <span class="n">warnings</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+    <span class="n">metadata</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span>
+</code></pre></div>
+<p><strong>BenchmarkMetrics</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">BenchmarkMetrics</span><span class="p">:</span>
+    <span class="n">test_name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">execution_time</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">memory_usage_mb</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">cpu_utilization</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">gpu_utilization</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">throughput</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">latency_p50</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">latency_p95</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">latency_p99</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">error_rate</span><span class="p">:</span> <span class="nb">float</span>
+</code></pre></div>
+<p><strong>CoverageReport</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">CoverageReport</span><span class="p">:</span>
+    <span class="n">total_modules</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">total_functions</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">tested_functions</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">overall_coverage_percentage</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">module_coverage</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">ModuleCoverage</span><span class="p">]</span>
+    <span class="n">coverage_gaps</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+    <span class="n">recommendations</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</code></pre></div>
+<h3 id="testing-scenarios-covered">Testing Scenarios Covered<a class="headerlink" href="#testing-scenarios-covered" title="Permanent link">&para;</a></h3>
+<p><strong>Smoke Tests</strong>:</p>
+<ul>
+<li>Basic pipeline functionality</li>
+<li>Memory usage patterns</li>
+<li>Output format validation</li>
+<li>Performance benchmarking</li>
+<li>Error handling</li>
+</ul>
+<p><strong>Integration Tests</strong>:</p>
+<ul>
+<li>Architecture detection workflows</li>
+<li>Pipeline loading workflows</li>
+<li>Dependency resolution workflows</li>
+<li>Video processing workflows</li>
+<li>Error recovery workflows</li>
+<li>Resource constraint scenarios</li>
+<li>Concurrent operation scenarios</li>
+</ul>
+<p><strong>Performance Benchmarks</strong>:</p>
+<ul>
+<li>Model detection speed (50 iterations per model type)</li>
+<li>Pipeline loading performance (with/without cache)</li>
+<li>Generation performance (multiple resolutions and frame counts)</li>
+<li>Video encoding performance (multiple formats and codecs)</li>
+<li>Memory management efficiency</li>
+<li>Optimization strategy effectiveness</li>
+<li>Concurrent operation scaling</li>
+</ul>
+<p><strong>Coverage Analysis</strong>:</p>
+<ul>
+<li>Function-level coverage tracking</li>
+<li>Test scenario completeness validation</li>
+<li>Critical function coverage verification</li>
+<li>Integration test coverage analysis</li>
+<li>Recommendation generation for coverage gaps</li>
+</ul>
+<h2 id="usage-examples">Usage Examples<a class="headerlink" href="#usage-examples" title="Permanent link">&para;</a></h2>
+<h3 id="basic-smoke-testing">Basic Smoke Testing<a class="headerlink" href="#basic-smoke-testing" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">smoke_test_runner</span> <span class="kn">import</span> <span class="n">SmokeTestRunner</span>
+
+<span class="n">runner</span> <span class="o">=</span> <span class="n">SmokeTestRunner</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">run_pipeline_smoke_test</span><span class="p">(</span><span class="n">pipeline</span><span class="p">,</span> <span class="s2">&quot;test prompt&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Success: </span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">success</span><span class="si">}</span><span class="s2">, Time: </span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">generation_time</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="integration-testing">Integration Testing<a class="headerlink" href="#integration-testing" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">integration_test_suite</span> <span class="kn">import</span> <span class="n">IntegrationTestSuite</span>
+
+<span class="n">suite</span> <span class="o">=</span> <span class="n">IntegrationTestSuite</span><span class="p">()</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">suite</span><span class="o">.</span><span class="n">run_all_tests</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Passed: </span><span class="si">{</span><span class="nb">sum</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">results</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">r</span><span class="o">.</span><span class="n">success</span><span class="p">)</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="performance-benchmarking">Performance Benchmarking<a class="headerlink" href="#performance-benchmarking" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">performance_benchmark_suite</span> <span class="kn">import</span> <span class="n">PerformanceBenchmarkSuite</span>
+
+<span class="n">benchmark</span> <span class="o">=</span> <span class="n">PerformanceBenchmarkSuite</span><span class="p">()</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">benchmark</span><span class="o">.</span><span class="n">run_comprehensive_benchmark</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Regressions: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">regressions</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="coverage-analysis">Coverage Analysis<a class="headerlink" href="#coverage-analysis" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">test_coverage_validator</span> <span class="kn">import</span> <span class="n">TestCoverageValidator</span>
+
+<span class="n">validator</span> <span class="o">=</span> <span class="n">TestCoverageValidator</span><span class="p">()</span>
+<span class="n">report</span> <span class="o">=</span> <span class="n">validator</span><span class="o">.</span><span class="n">analyze_coverage</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Coverage: </span><span class="si">{</span><span class="n">report</span><span class="o">.</span><span class="n">overall_coverage_percentage</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="comprehensive-testing">Comprehensive Testing<a class="headerlink" href="#comprehensive-testing" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">comprehensive_test_runner</span> <span class="kn">import</span> <span class="n">ComprehensiveTestRunner</span>
+
+<span class="n">runner</span> <span class="o">=</span> <span class="n">ComprehensiveTestRunner</span><span class="p">()</span>
+<span class="n">report</span> <span class="o">=</span> <span class="n">runner</span><span class="o">.</span><span class="n">run_comprehensive_tests</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Overall Success: </span><span class="si">{</span><span class="n">report</span><span class="o">.</span><span class="n">overall_success</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="command-line-usage">Command Line Usage<a class="headerlink" href="#command-line-usage" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Run all tests</span>
+python<span class="w"> </span>comprehensive_test_runner.py
+
+<span class="c1"># Run specific test types</span>
+python<span class="w"> </span>comprehensive_test_runner.py<span class="w"> </span>--smoke-only
+python<span class="w"> </span>comprehensive_test_runner.py<span class="w"> </span>--integration-only
+python<span class="w"> </span>comprehensive_test_runner.py<span class="w"> </span>--benchmark-only
+python<span class="w"> </span>comprehensive_test_runner.py<span class="w"> </span>--coverage-only
+
+<span class="c1"># Run with fail-fast</span>
+python<span class="w"> </span>comprehensive_test_runner.py<span class="w"> </span>--fail-fast
+
+<span class="c1"># Set timeout</span>
+python<span class="w"> </span>comprehensive_test_runner.py<span class="w"> </span>--timeout<span class="w"> </span><span class="m">30</span>
+</code></pre></div>
+<h2 id="output-and-reporting">Output and Reporting<a class="headerlink" href="#output-and-reporting" title="Permanent link">&para;</a></h2>
+<h3 id="generated-artifacts">Generated Artifacts<a class="headerlink" href="#generated-artifacts" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Test Results</strong>: JSON files with detailed test results</li>
+<li><strong>Performance Reports</strong>: Benchmark results with regression analysis</li>
+<li><strong>Coverage Reports</strong>: HTML and JSON coverage analysis</li>
+<li><strong>Summary Reports</strong>: Human-readable test summaries</li>
+<li><strong>Diagnostic Files</strong>: Detailed error and warning information</li>
+</ul>
+<h3 id="report-locations">Report Locations<a class="headerlink" href="#report-locations" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>test_results/</code>: Smoke test results</li>
+<li><code>integration_test_artifacts/</code>: Integration test outputs</li>
+<li><code>benchmark_results/</code>: Performance benchmark data</li>
+<li><code>coverage_reports/</code>: Coverage analysis reports</li>
+<li><code>comprehensive_test_results/</code>: Unified test reports</li>
+</ul>
+<h2 id="requirements-validation">Requirements Validation<a class="headerlink" href="#requirements-validation" title="Permanent link">&para;</a></h2>
+<h3 id="requirement-81-built-in-smoke-tests">Requirement 8.1: Built-in Smoke Tests ✅<a class="headerlink" href="#requirement-81-built-in-smoke-tests" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Implemented comprehensive smoke test runner</li>
+<li>Validates pipeline functionality with minimal prompts</li>
+<li>Automatic execution after successful model loading</li>
+</ul>
+<h3 id="requirement-82-output-validation">Requirement 8.2: Output Validation ✅<a class="headerlink" href="#requirement-82-output-validation" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Validates output tensor shapes and formats</li>
+<li>Checks for video properties (frame count, dimensions)</li>
+<li>Validates data ranges and detects corruption</li>
+</ul>
+<h3 id="requirement-83-integration-testing">Requirement 8.3: Integration Testing ✅<a class="headerlink" href="#requirement-83-integration-testing" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Tests complete workflows from model detection to video output</li>
+<li>Validates component interactions and error recovery</li>
+<li>Tests resource constraint scenarios</li>
+</ul>
+<h3 id="requirement-84-diagnostic-information">Requirement 8.4: Diagnostic Information ✅<a class="headerlink" href="#requirement-84-diagnostic-information" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Provides detailed diagnostic information on failures</li>
+<li>Identifies specific failure points in workflows</li>
+<li>Generates actionable recommendations for fixes</li>
+</ul>
+<h2 id="performance-characteristics">Performance Characteristics<a class="headerlink" href="#performance-characteristics" title="Permanent link">&para;</a></h2>
+<h3 id="execution-times-typical">Execution Times (Typical)<a class="headerlink" href="#execution-times-typical" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Smoke Tests</strong>: 10-30 seconds</li>
+<li><strong>Integration Tests</strong>: 2-5 minutes</li>
+<li><strong>Performance Benchmarks</strong>: 5-15 minutes</li>
+<li><strong>Coverage Analysis</strong>: 1-3 minutes</li>
+<li><strong>Comprehensive Suite</strong>: 10-25 minutes</li>
+</ul>
+<h3 id="resource-usage">Resource Usage<a class="headerlink" href="#resource-usage" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Memory</strong>: 100-500MB during testing</li>
+<li><strong>CPU</strong>: Moderate usage during benchmarks</li>
+<li><strong>GPU</strong>: Minimal usage (mock pipelines)</li>
+<li><strong>Disk</strong>: 10-50MB for reports and artifacts</li>
+</ul>
+<h2 id="error-handling-and-robustness">Error Handling and Robustness<a class="headerlink" href="#error-handling-and-robustness" title="Permanent link">&para;</a></h2>
+<h3 id="error-recovery">Error Recovery<a class="headerlink" href="#error-recovery" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Graceful handling of component failures</li>
+<li>Continuation of testing after non-critical errors</li>
+<li>Detailed error reporting and categorization</li>
+</ul>
+<h3 id="mock-components">Mock Components<a class="headerlink" href="#mock-components" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Comprehensive mock implementations for testing</li>
+<li>Realistic behavior simulation without dependencies</li>
+<li>Configurable failure scenarios for error testing</li>
+</ul>
+<h3 id="validation">Validation<a class="headerlink" href="#validation" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Input validation for all test parameters</li>
+<li>Output validation for all test results</li>
+<li>Comprehensive error checking and reporting</li>
+</ul>
+<h2 id="future-enhancements">Future Enhancements<a class="headerlink" href="#future-enhancements" title="Permanent link">&para;</a></h2>
+<h3 id="potential-improvements">Potential Improvements<a class="headerlink" href="#potential-improvements" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>GPU Testing</strong>: Enhanced GPU utilization testing</li>
+<li><strong>Network Testing</strong>: Remote model loading testing</li>
+<li><strong>Stress Testing</strong>: Extended duration and load testing</li>
+<li><strong>Visual Testing</strong>: Frame quality validation</li>
+<li><strong>Automated Regression</strong>: Automatic baseline updates</li>
+</ol>
+<h3 id="extensibility">Extensibility<a class="headerlink" href="#extensibility" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Plugin architecture for custom tests</li>
+<li>Configurable test scenarios</li>
+<li>Custom metric collection</li>
+<li>Integration with CI/CD systems</li>
+</ul>
+<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
+<p>The testing and validation framework provides comprehensive coverage of the Wan Model Compatibility System with multiple layers of validation:</p>
+<ol>
+<li><strong>Smoke Tests</strong> ensure basic functionality works</li>
+<li><strong>Integration Tests</strong> validate component interactions</li>
+<li><strong>Performance Benchmarks</strong> detect regressions and bottlenecks</li>
+<li><strong>Coverage Analysis</strong> identifies testing gaps</li>
+</ol>
+<p>The framework is designed to be:</p>
+<ul>
+<li><strong>Comprehensive</strong>: Covers all major system components</li>
+<li><strong>Reliable</strong>: Robust error handling and recovery</li>
+<li><strong>Extensible</strong>: Easy to add new tests and scenarios</li>
+<li><strong>Actionable</strong>: Provides clear recommendations for improvements</li>
+</ul>
+<p>This implementation fully satisfies the requirements for Task 11 and provides a solid foundation for maintaining system quality and reliability.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

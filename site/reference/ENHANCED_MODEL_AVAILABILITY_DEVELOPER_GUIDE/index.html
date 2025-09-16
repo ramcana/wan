@@ -1,0 +1,2230 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="WAN2.2 Video Generation System Documentation">
+      
+      
+      
+        <link rel="canonical" href="https://ramcana.github.io/wan/reference/ENHANCED_MODEL_AVAILABILITY_DEVELOPER_GUIDE/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>Enhanced Model Availability - Developer Guide - WAN22 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e53b48f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#enhanced-model-availability-developer-guide" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="WAN22 Documentation" class="md-header__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            WAN22 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Enhanced Model Availability - Developer Guide
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../WAN22_System_Capabilities_Report/" class="md-tabs__link">
+          
+  
+  
+  System Overview
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../model-orchestrator/requirements/" class="md-tabs__link">
+          
+  
+  
+  Model Orchestrator
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../config/models.toml" class="md-tabs__link">
+          
+  
+  
+  Configuration
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="WAN22 Documentation" class="md-nav__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    WAN22 Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    System Overview
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            System Overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../WAN22_System_Capabilities_Report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Capabilities Report
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Model Orchestrator
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Model Orchestrator
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Requirements
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/tasks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tasks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Configuration
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Configuration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Models Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models_simple.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simple Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Architecture Overview
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Architecture Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#system-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Components
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#core-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Interfaces
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Interfaces">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#base-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      Base Interfaces
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#development-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Development Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Development Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#environment-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environment Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#development-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Development Dependencies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-for-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration for Development
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-components-deep-dive" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core Components Deep Dive
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Core Components Deep Dive">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modelavailabilitymanager" class="md-nav__link">
+    <span class="md-ellipsis">
+      ModelAvailabilityManager
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enhancedmodeldownloader" class="md-nav__link">
+    <span class="md-ellipsis">
+      EnhancedModelDownloader
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modelhealthmonitor" class="md-nav__link">
+    <span class="md-ellipsis">
+      ModelHealthMonitor
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extension-points" class="md-nav__link">
+    <span class="md-ellipsis">
+      Extension Points
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Extension Points">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#custom-model-providers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom Model Providers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-health-checkers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom Health Checkers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-fallback-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom Fallback Strategies
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      API Development
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="API Development">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adding-new-endpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adding New Endpoints
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-middleware" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom Middleware
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing Framework
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing Framework">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unit-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unit Testing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integration-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration Testing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Testing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#debugging-and-profiling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Debugging and Profiling
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Debugging and Profiling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#logging-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logging Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-profiling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Profiling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-profiling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Profiling
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#code-organization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Organization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#error-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Handling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration Management
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="enhanced-model-availability-developer-guide">Enhanced Model Availability - Developer Guide<a class="headerlink" href="#enhanced-model-availability-developer-guide" title="Permanent link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>This guide provides comprehensive information for developers working with or extending the Enhanced Model Availability system. It covers architecture, APIs, extension points, development setup, and best practices.</p>
+<h2 id="architecture-overview">Architecture Overview<a class="headerlink" href="#architecture-overview" title="Permanent link">&para;</a></h2>
+<h3 id="system-components">System Components<a class="headerlink" href="#system-components" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────┐
+│ Enhanced Model Availability System                      │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│  ┌─────────────────┐  ┌─────────────────┐              │
+│  │ API Layer       │  │ WebSocket       │              │
+│  │ - FastAPI       │  │ - Real-time     │              │
+│  │ - REST Endpoints│  │ - Notifications │              │
+│  └─────────────────┘  └─────────────────┘              │
+│                                                         │
+│  ┌─────────────────────────────────────────────────────┐ │
+│  │ Core Services Layer                                 │ │
+│  │ ┌─────────────┐ ┌─────────────┐ ┌─────────────┐   │ │
+│  │ │Availability │ │ Enhanced    │ │ Health      │   │ │
+│  │ │ Manager     │ │ Downloader  │ │ Monitor     │   │ │
+│  │ └─────────────┘ └─────────────┘ └─────────────┘   │ │
+│  │ ┌─────────────┐ ┌─────────────┐ ┌─────────────┐   │ │
+│  │ │ Fallback    │ │ Usage       │ │ Error       │   │ │
+│  │ │ Manager     │ │ Analytics   │ │ Recovery    │   │ │
+│  │ └─────────────┘ └─────────────┘ └─────────────┘   │ │
+│  └─────────────────────────────────────────────────────┘ │
+│                                                         │
+│  ┌─────────────────────────────────────────────────────┐ │
+│  │ Integration Layer                                   │ │
+│  │ ┌─────────────┐ ┌─────────────┐ ┌─────────────┐   │ │
+│  │ │ Model       │ │ Model       │ │ Fallback    │   │ │
+│  │ │ Manager     │ │ Downloader  │ │ Recovery    │   │ │
+│  │ └─────────────┘ └─────────────┘ └─────────────┘   │ │
+│  └─────────────────────────────────────────────────────┘ │
+│                                                         │
+│  ┌─────────────────────────────────────────────────────┐ │
+│  │ Storage &amp; Data Layer                                │ │
+│  │ ┌─────────────┐ ┌─────────────┐ ┌─────────────┐   │ │
+│  │ │ File System │ │ Database    │ │ Cache       │   │ │
+│  │ │ Storage     │ │ (Optional)  │ │ Layer       │   │ │
+│  │ └─────────────┘ └─────────────┘ └─────────────┘   │ │
+│  └─────────────────────────────────────────────────────┘ │
+└─────────────────────────────────────────────────────────┘
+</code></pre></div>
+<h3 id="core-interfaces">Core Interfaces<a class="headerlink" href="#core-interfaces" title="Permanent link">&para;</a></h3>
+<h4 id="base-interfaces">Base Interfaces<a class="headerlink" href="#base-interfaces" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Any</span>
+<span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span>
+
+<span class="k">class</span> <span class="nc">ModelAvailabilityStatus</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="n">AVAILABLE</span> <span class="o">=</span> <span class="s2">&quot;available&quot;</span>
+    <span class="n">DOWNLOADING</span> <span class="o">=</span> <span class="s2">&quot;downloading&quot;</span>
+    <span class="n">MISSING</span> <span class="o">=</span> <span class="s2">&quot;missing&quot;</span>
+    <span class="n">CORRUPTED</span> <span class="o">=</span> <span class="s2">&quot;corrupted&quot;</span>
+    <span class="n">UPDATING</span> <span class="o">=</span> <span class="s2">&quot;updating&quot;</span>
+
+<span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">ModelStatus</span><span class="p">:</span>
+    <span class="n">model_id</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">is_available</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="n">availability_status</span><span class="p">:</span> <span class="n">ModelAvailabilityStatus</span>
+    <span class="n">size_mb</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">integrity_score</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">performance_score</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">last_health_check</span><span class="p">:</span> <span class="n">datetime</span>
+    <span class="c1"># ... additional fields</span>
+
+<span class="k">class</span> <span class="nc">IModelAvailabilityProvider</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Interface for model availability providers&quot;&quot;&quot;</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">get_model_status</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ModelStatus</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get status for a specific model&quot;&quot;&quot;</span>
+        <span class="k">pass</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">get_all_models_status</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">ModelStatus</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get status for all models&quot;&quot;&quot;</span>
+        <span class="k">pass</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">ensure_model_available</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Ensure a model is available for use&quot;&quot;&quot;</span>
+        <span class="k">pass</span>
+
+<span class="k">class</span> <span class="nc">IModelDownloader</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Interface for model downloaders&quot;&quot;&quot;</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">download_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DownloadResult</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Download a model&quot;&quot;&quot;</span>
+        <span class="k">pass</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">get_download_progress</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DownloadProgress</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get download progress&quot;&quot;&quot;</span>
+        <span class="k">pass</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">cancel_download</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Cancel an active download&quot;&quot;&quot;</span>
+        <span class="k">pass</span>
+
+<span class="k">class</span> <span class="nc">IModelHealthMonitor</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Interface for model health monitoring&quot;&quot;&quot;</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">check_model_health</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">HealthResult</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check health of a specific model&quot;&quot;&quot;</span>
+        <span class="k">pass</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">get_system_health</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SystemHealthResult</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get overall system health&quot;&quot;&quot;</span>
+        <span class="k">pass</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">repair_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">RepairResult</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Attempt to repair a model&quot;&quot;&quot;</span>
+        <span class="k">pass</span>
+</code></pre></div>
+<h2 id="development-setup">Development Setup<a class="headerlink" href="#development-setup" title="Permanent link">&para;</a></h2>
+<h3 id="environment-setup">Environment Setup<a class="headerlink" href="#environment-setup" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Clone repository</span>
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/your-org/enhanced-model-availability.git
+<span class="nb">cd</span><span class="w"> </span>enhanced-model-availability
+
+<span class="c1"># Create virtual environment</span>
+python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
+<span class="nb">source</span><span class="w"> </span>venv/bin/activate<span class="w">  </span><span class="c1"># On Windows: venv\Scripts\activate</span>
+
+<span class="c1"># Install development dependencies</span>
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements-dev.txt
+
+<span class="c1"># Install package in development mode</span>
+pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
+
+<span class="c1"># Set up pre-commit hooks</span>
+pre-commit<span class="w"> </span>install
+
+<span class="c1"># Run initial tests</span>
+pytest<span class="w"> </span>tests/
+</code></pre></div>
+<h3 id="development-dependencies">Development Dependencies<a class="headerlink" href="#development-dependencies" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code># requirements-dev.txt
+pytest&gt;=7.0.0
+pytest-asyncio&gt;=0.21.0
+pytest-cov&gt;=4.0.0
+black&gt;=22.0.0
+isort&gt;=5.10.0
+flake8&gt;=4.0.0
+mypy&gt;=0.950
+pre-commit&gt;=2.17.0
+httpx&gt;=0.23.0
+pytest-mock&gt;=3.7.0
+factory-boy&gt;=3.2.0
+faker&gt;=15.0.0
+</code></pre></div>
+<h3 id="configuration-for-development">Configuration for Development<a class="headerlink" href="#configuration-for-development" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;development&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;debug&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;log_level&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DEBUG&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;auto_reload&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;test_mode&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;storage&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;models_directory&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;./dev_models&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;cache_directory&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;./dev_cache&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;max_storage_gb&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;downloads&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;max_concurrent_downloads&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;use_mock_downloads&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;mock_download_delay_seconds&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;features&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;enhanced_downloads&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;health_monitoring&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;intelligent_fallback&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;usage_analytics&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="core-components-deep-dive">Core Components Deep Dive<a class="headerlink" href="#core-components-deep-dive" title="Permanent link">&para;</a></h2>
+<h3 id="modelavailabilitymanager">ModelAvailabilityManager<a class="headerlink" href="#modelavailabilitymanager" title="Permanent link">&para;</a></h3>
+<p>The central coordinator for all model availability operations.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">ModelAvailabilityManager</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Central coordinator for model availability&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">model_manager</span><span class="p">:</span> <span class="n">IModelManager</span><span class="p">,</span>
+        <span class="n">downloader</span><span class="p">:</span> <span class="n">IModelDownloader</span><span class="p">,</span>
+        <span class="n">health_monitor</span><span class="p">:</span> <span class="n">IModelHealthMonitor</span><span class="p">,</span>
+        <span class="n">analytics</span><span class="p">:</span> <span class="n">IModelUsageAnalytics</span><span class="p">,</span>
+        <span class="n">config</span><span class="p">:</span> <span class="n">Config</span>
+    <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model_manager</span> <span class="o">=</span> <span class="n">model_manager</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">downloader</span> <span class="o">=</span> <span class="n">downloader</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">health_monitor</span> <span class="o">=</span> <span class="n">health_monitor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">analytics</span> <span class="o">=</span> <span class="n">analytics</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">config</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_status_cache</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cache_ttl</span> <span class="o">=</span> <span class="mi">300</span>  <span class="c1"># 5 minutes</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">get_comprehensive_status</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">DetailedModelStatus</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get comprehensive status for all models&quot;&quot;&quot;</span>
+        <span class="c1"># Check cache first</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_cache_valid</span><span class="p">():</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_status_cache</span>
+
+        <span class="c1"># Gather status from all sources</span>
+        <span class="n">basic_status</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_manager</span><span class="o">.</span><span class="n">get_all_models_status</span><span class="p">()</span>
+        <span class="n">download_status</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">downloader</span><span class="o">.</span><span class="n">get_all_download_status</span><span class="p">()</span>
+        <span class="n">health_status</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">health_monitor</span><span class="o">.</span><span class="n">get_all_health_status</span><span class="p">()</span>
+        <span class="n">usage_stats</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">analytics</span><span class="o">.</span><span class="n">get_all_usage_stats</span><span class="p">()</span>
+
+        <span class="c1"># Combine into comprehensive status</span>
+        <span class="n">comprehensive_status</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">model_id</span> <span class="ow">in</span> <span class="n">basic_status</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="n">comprehensive_status</span><span class="p">[</span><span class="n">model_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">DetailedModelStatus</span><span class="p">(</span>
+                <span class="o">**</span><span class="n">basic_status</span><span class="p">[</span><span class="n">model_id</span><span class="p">]</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">,</span>
+                <span class="n">download_progress</span><span class="o">=</span><span class="n">download_status</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">model_id</span><span class="p">),</span>
+                <span class="n">health_info</span><span class="o">=</span><span class="n">health_status</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">model_id</span><span class="p">),</span>
+                <span class="n">usage_stats</span><span class="o">=</span><span class="n">usage_stats</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">model_id</span><span class="p">)</span>
+            <span class="p">)</span>
+
+        <span class="c1"># Update cache</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_status_cache</span> <span class="o">=</span> <span class="n">comprehensive_status</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cache_timestamp</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">comprehensive_status</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">handle_model_request</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ModelRequestResult</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Handle a request for a specific model&quot;&quot;&quot;</span>
+        <span class="n">status</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_model_status</span><span class="p">(</span><span class="n">model_id</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">status</span><span class="o">.</span><span class="n">is_available</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">ModelRequestResult</span><span class="p">(</span>
+                <span class="n">success</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="n">model_id</span><span class="o">=</span><span class="n">model_id</span><span class="p">,</span>
+                <span class="n">action_taken</span><span class="o">=</span><span class="s2">&quot;model_ready&quot;</span>
+            <span class="p">)</span>
+
+        <span class="c1"># Model not available, determine best action</span>
+        <span class="k">if</span> <span class="n">status</span><span class="o">.</span><span class="n">availability_status</span> <span class="o">==</span> <span class="n">ModelAvailabilityStatus</span><span class="o">.</span><span class="n">DOWNLOADING</span><span class="p">:</span>
+            <span class="c1"># Already downloading, provide wait estimate</span>
+            <span class="n">progress</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">downloader</span><span class="o">.</span><span class="n">get_download_progress</span><span class="p">(</span><span class="n">model_id</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">ModelRequestResult</span><span class="p">(</span>
+                <span class="n">success</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                <span class="n">model_id</span><span class="o">=</span><span class="n">model_id</span><span class="p">,</span>
+                <span class="n">action_taken</span><span class="o">=</span><span class="s2">&quot;download_in_progress&quot;</span><span class="p">,</span>
+                <span class="n">estimated_wait_time</span><span class="o">=</span><span class="n">progress</span><span class="o">.</span><span class="n">eta_seconds</span>
+            <span class="p">)</span>
+
+        <span class="k">elif</span> <span class="n">status</span><span class="o">.</span><span class="n">availability_status</span> <span class="o">==</span> <span class="n">ModelAvailabilityStatus</span><span class="o">.</span><span class="n">MISSING</span><span class="p">:</span>
+            <span class="c1"># Start download</span>
+            <span class="n">download_result</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">downloader</span><span class="o">.</span><span class="n">download_model</span><span class="p">(</span><span class="n">model_id</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">ModelRequestResult</span><span class="p">(</span>
+                <span class="n">success</span><span class="o">=</span><span class="n">download_result</span><span class="o">.</span><span class="n">success</span><span class="p">,</span>
+                <span class="n">model_id</span><span class="o">=</span><span class="n">model_id</span><span class="p">,</span>
+                <span class="n">action_taken</span><span class="o">=</span><span class="s2">&quot;download_started&quot;</span><span class="p">,</span>
+                <span class="n">download_id</span><span class="o">=</span><span class="n">download_result</span><span class="o">.</span><span class="n">download_id</span>
+            <span class="p">)</span>
+
+        <span class="k">elif</span> <span class="n">status</span><span class="o">.</span><span class="n">availability_status</span> <span class="o">==</span> <span class="n">ModelAvailabilityStatus</span><span class="o">.</span><span class="n">CORRUPTED</span><span class="p">:</span>
+            <span class="c1"># Attempt repair</span>
+            <span class="n">repair_result</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">health_monitor</span><span class="o">.</span><span class="n">repair_model</span><span class="p">(</span><span class="n">model_id</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">ModelRequestResult</span><span class="p">(</span>
+                <span class="n">success</span><span class="o">=</span><span class="n">repair_result</span><span class="o">.</span><span class="n">success</span><span class="p">,</span>
+                <span class="n">model_id</span><span class="o">=</span><span class="n">model_id</span><span class="p">,</span>
+                <span class="n">action_taken</span><span class="o">=</span><span class="s2">&quot;repair_attempted&quot;</span><span class="p">,</span>
+                <span class="n">repair_id</span><span class="o">=</span><span class="n">repair_result</span><span class="o">.</span><span class="n">repair_id</span>
+            <span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Unknown status, return error</span>
+            <span class="k">return</span> <span class="n">ModelRequestResult</span><span class="p">(</span>
+                <span class="n">success</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                <span class="n">model_id</span><span class="o">=</span><span class="n">model_id</span><span class="p">,</span>
+                <span class="n">action_taken</span><span class="o">=</span><span class="s2">&quot;error&quot;</span><span class="p">,</span>
+                <span class="n">error_message</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Unknown model status: </span><span class="si">{</span><span class="n">status</span><span class="o">.</span><span class="n">availability_status</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+</code></pre></div>
+<h3 id="enhancedmodeldownloader">EnhancedModelDownloader<a class="headerlink" href="#enhancedmodeldownloader" title="Permanent link">&para;</a></h3>
+<p>Enhanced downloader with retry logic and progress tracking.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">EnhancedModelDownloader</span><span class="p">(</span><span class="n">IModelDownloader</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Enhanced model downloader with retry logic&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">base_downloader</span><span class="p">:</span> <span class="n">IModelDownloader</span><span class="p">,</span>
+        <span class="n">config</span><span class="p">:</span> <span class="n">DownloadConfig</span><span class="p">,</span>
+        <span class="n">progress_tracker</span><span class="p">:</span> <span class="n">IProgressTracker</span>
+    <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">base_downloader</span> <span class="o">=</span> <span class="n">base_downloader</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">config</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">progress_tracker</span> <span class="o">=</span> <span class="n">progress_tracker</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">active_downloads</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">download_queue</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">Queue</span><span class="p">()</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">download_model</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">model_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">max_retries</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">priority</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;normal&quot;</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DownloadResult</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Download model with enhanced retry logic&quot;&quot;&quot;</span>
+        <span class="n">max_retries</span> <span class="o">=</span> <span class="n">max_retries</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">max_retries</span>
+
+        <span class="n">download_context</span> <span class="o">=</span> <span class="n">DownloadContext</span><span class="p">(</span>
+            <span class="n">model_id</span><span class="o">=</span><span class="n">model_id</span><span class="p">,</span>
+            <span class="n">max_retries</span><span class="o">=</span><span class="n">max_retries</span><span class="p">,</span>
+            <span class="n">priority</span><span class="o">=</span><span class="n">priority</span><span class="p">,</span>
+            <span class="n">start_time</span><span class="o">=</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">(),</span>
+            <span class="o">**</span><span class="n">kwargs</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Add to active downloads</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">active_downloads</span><span class="p">[</span><span class="n">model_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">download_context</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_download_with_retry</span><span class="p">(</span><span class="n">download_context</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">result</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="c1"># Remove from active downloads</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">active_downloads</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">model_id</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_download_with_retry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">DownloadContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DownloadResult</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Execute download with retry logic&quot;&quot;&quot;</span>
+        <span class="n">last_exception</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="k">for</span> <span class="n">attempt</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">max_retries</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="c1"># Update progress</span>
+                <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">progress_tracker</span><span class="o">.</span><span class="n">update_progress</span><span class="p">(</span>
+                    <span class="n">context</span><span class="o">.</span><span class="n">model_id</span><span class="p">,</span>
+                    <span class="n">DownloadProgress</span><span class="p">(</span>
+                        <span class="n">model_id</span><span class="o">=</span><span class="n">context</span><span class="o">.</span><span class="n">model_id</span><span class="p">,</span>
+                        <span class="n">status</span><span class="o">=</span><span class="n">DownloadStatus</span><span class="o">.</span><span class="n">DOWNLOADING</span><span class="p">,</span>
+                        <span class="n">retry_count</span><span class="o">=</span><span class="n">attempt</span><span class="p">,</span>
+                        <span class="n">max_retries</span><span class="o">=</span><span class="n">context</span><span class="o">.</span><span class="n">max_retries</span>
+                    <span class="p">)</span>
+                <span class="p">)</span>
+
+                <span class="c1"># Attempt download</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">base_downloader</span><span class="o">.</span><span class="n">download_model</span><span class="p">(</span>
+                    <span class="n">context</span><span class="o">.</span><span class="n">model_id</span><span class="p">,</span>
+                    <span class="o">**</span><span class="n">context</span><span class="o">.</span><span class="n">kwargs</span>
+                <span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">result</span><span class="o">.</span><span class="n">success</span><span class="p">:</span>
+                    <span class="c1"># Verify integrity</span>
+                    <span class="k">if</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_verify_download_integrity</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">model_id</span><span class="p">):</span>
+                        <span class="k">return</span> <span class="n">DownloadResult</span><span class="p">(</span>
+                            <span class="n">success</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                            <span class="n">model_id</span><span class="o">=</span><span class="n">context</span><span class="o">.</span><span class="n">model_id</span><span class="p">,</span>
+                            <span class="n">total_retries</span><span class="o">=</span><span class="n">attempt</span><span class="p">,</span>
+                            <span class="n">total_time_seconds</span><span class="o">=</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">context</span><span class="o">.</span><span class="n">start_time</span>
+                        <span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="c1"># Integrity check failed, treat as failure</span>
+                        <span class="k">raise</span> <span class="n">DownloadIntegrityError</span><span class="p">(</span><span class="s2">&quot;Downloaded model failed integrity check&quot;</span><span class="p">)</span>
+
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="n">last_exception</span> <span class="o">=</span> <span class="n">e</span>
+
+                <span class="k">if</span> <span class="n">attempt</span> <span class="o">&lt;</span> <span class="n">context</span><span class="o">.</span><span class="n">max_retries</span><span class="p">:</span>
+                    <span class="c1"># Calculate backoff delay</span>
+                    <span class="n">delay</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_backoff_delay</span><span class="p">(</span><span class="n">attempt</span><span class="p">)</span>
+                    <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">delay</span><span class="p">)</span>
+                    <span class="k">continue</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># Final attempt failed</span>
+                    <span class="k">break</span>
+
+        <span class="c1"># All attempts failed</span>
+        <span class="k">return</span> <span class="n">DownloadResult</span><span class="p">(</span>
+            <span class="n">success</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">model_id</span><span class="o">=</span><span class="n">context</span><span class="o">.</span><span class="n">model_id</span><span class="p">,</span>
+            <span class="n">total_retries</span><span class="o">=</span><span class="n">context</span><span class="o">.</span><span class="n">max_retries</span><span class="p">,</span>
+            <span class="n">total_time_seconds</span><span class="o">=</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">context</span><span class="o">.</span><span class="n">start_time</span><span class="p">,</span>
+            <span class="n">error_message</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">last_exception</span><span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_calculate_backoff_delay</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attempt</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate exponential backoff delay&quot;&quot;&quot;</span>
+        <span class="n">base_delay</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">retry_delay_seconds</span>
+        <span class="n">max_delay</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">max_retry_delay_seconds</span>
+
+        <span class="c1"># Exponential backoff with jitter</span>
+        <span class="n">delay</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">base_delay</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span> <span class="o">**</span> <span class="n">attempt</span><span class="p">),</span> <span class="n">max_delay</span><span class="p">)</span>
+        <span class="n">jitter</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span> <span class="o">*</span> <span class="n">delay</span>
+
+        <span class="k">return</span> <span class="n">delay</span> <span class="o">+</span> <span class="n">jitter</span>
+</code></pre></div>
+<h3 id="modelhealthmonitor">ModelHealthMonitor<a class="headerlink" href="#modelhealthmonitor" title="Permanent link">&para;</a></h3>
+<p>Health monitoring with corruption detection and repair.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">ModelHealthMonitor</span><span class="p">(</span><span class="n">IModelHealthMonitor</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Model health monitoring and repair system&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">storage_manager</span><span class="p">:</span> <span class="n">IStorageManager</span><span class="p">,</span>
+        <span class="n">integrity_checker</span><span class="p">:</span> <span class="n">IIntegrityChecker</span><span class="p">,</span>
+        <span class="n">performance_monitor</span><span class="p">:</span> <span class="n">IPerformanceMonitor</span><span class="p">,</span>
+        <span class="n">config</span><span class="p">:</span> <span class="n">HealthConfig</span>
+    <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">storage_manager</span> <span class="o">=</span> <span class="n">storage_manager</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">integrity_checker</span> <span class="o">=</span> <span class="n">integrity_checker</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">performance_monitor</span> <span class="o">=</span> <span class="n">performance_monitor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">config</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">health_cache</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scheduled_checks</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">check_model_health</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">HealthResult</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Comprehensive health check for a model&quot;&quot;&quot;</span>
+        <span class="c1"># Check cache first (unless forced)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">force</span> <span class="ow">and</span> <span class="n">model_id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">health_cache</span><span class="p">:</span>
+            <span class="n">cached_result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">health_cache</span><span class="p">[</span><span class="n">model_id</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">cached_result</span><span class="o">.</span><span class="n">timestamp</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">cache_ttl</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">cached_result</span>
+
+        <span class="n">health_result</span> <span class="o">=</span> <span class="n">HealthResult</span><span class="p">(</span>
+            <span class="n">model_id</span><span class="o">=</span><span class="n">model_id</span><span class="p">,</span>
+            <span class="n">timestamp</span><span class="o">=</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">(),</span>
+            <span class="n">checks_performed</span><span class="o">=</span><span class="p">[]</span>
+        <span class="p">)</span>
+
+        <span class="c1"># File integrity check</span>
+        <span class="n">integrity_result</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">integrity_checker</span><span class="o">.</span><span class="n">check_integrity</span><span class="p">(</span><span class="n">model_id</span><span class="p">)</span>
+        <span class="n">health_result</span><span class="o">.</span><span class="n">checks_performed</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;integrity&quot;</span><span class="p">)</span>
+        <span class="n">health_result</span><span class="o">.</span><span class="n">integrity_score</span> <span class="o">=</span> <span class="n">integrity_result</span><span class="o">.</span><span class="n">score</span>
+        <span class="n">health_result</span><span class="o">.</span><span class="n">integrity_issues</span> <span class="o">=</span> <span class="n">integrity_result</span><span class="o">.</span><span class="n">issues</span>
+
+        <span class="c1"># Performance check (if model is loaded)</span>
+        <span class="k">if</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_model_loaded</span><span class="p">(</span><span class="n">model_id</span><span class="p">):</span>
+            <span class="n">perf_result</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">performance_monitor</span><span class="o">.</span><span class="n">check_performance</span><span class="p">(</span><span class="n">model_id</span><span class="p">)</span>
+            <span class="n">health_result</span><span class="o">.</span><span class="n">checks_performed</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;performance&quot;</span><span class="p">)</span>
+            <span class="n">health_result</span><span class="o">.</span><span class="n">performance_score</span> <span class="o">=</span> <span class="n">perf_result</span><span class="o">.</span><span class="n">score</span>
+            <span class="n">health_result</span><span class="o">.</span><span class="n">performance_issues</span> <span class="o">=</span> <span class="n">perf_result</span><span class="o">.</span><span class="n">issues</span>
+
+        <span class="c1"># Storage check</span>
+        <span class="n">storage_result</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">storage_manager</span><span class="o">.</span><span class="n">check_storage_health</span><span class="p">(</span><span class="n">model_id</span><span class="p">)</span>
+        <span class="n">health_result</span><span class="o">.</span><span class="n">checks_performed</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;storage&quot;</span><span class="p">)</span>
+        <span class="n">health_result</span><span class="o">.</span><span class="n">storage_issues</span> <span class="o">=</span> <span class="n">storage_result</span><span class="o">.</span><span class="n">issues</span>
+
+        <span class="c1"># Calculate overall health score</span>
+        <span class="n">health_result</span><span class="o">.</span><span class="n">overall_score</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_overall_score</span><span class="p">(</span><span class="n">health_result</span><span class="p">)</span>
+        <span class="n">health_result</span><span class="o">.</span><span class="n">is_healthy</span> <span class="o">=</span> <span class="n">health_result</span><span class="o">.</span><span class="n">overall_score</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">healthy_threshold</span>
+
+        <span class="c1"># Generate recommendations</span>
+        <span class="n">health_result</span><span class="o">.</span><span class="n">recommendations</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_generate_recommendations</span><span class="p">(</span><span class="n">health_result</span><span class="p">)</span>
+
+        <span class="c1"># Cache result</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">health_cache</span><span class="p">[</span><span class="n">model_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">health_result</span>
+
+        <span class="c1"># Trigger auto-repair if needed</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">auto_repair_enabled</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">health_result</span><span class="o">.</span><span class="n">is_healthy</span><span class="p">:</span>
+            <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_trigger_auto_repair</span><span class="p">(</span><span class="n">model_id</span><span class="p">,</span> <span class="n">health_result</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">health_result</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">repair_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">repair_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;auto&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">RepairResult</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Attempt to repair a model&quot;&quot;&quot;</span>
+        <span class="n">repair_result</span> <span class="o">=</span> <span class="n">RepairResult</span><span class="p">(</span>
+            <span class="n">model_id</span><span class="o">=</span><span class="n">model_id</span><span class="p">,</span>
+            <span class="n">repair_type</span><span class="o">=</span><span class="n">repair_type</span><span class="p">,</span>
+            <span class="n">start_time</span><span class="o">=</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">(),</span>
+            <span class="n">actions_taken</span><span class="o">=</span><span class="p">[]</span>
+        <span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># Get current health status</span>
+            <span class="n">health</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_model_health</span><span class="p">(</span><span class="n">model_id</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">repair_type</span> <span class="o">==</span> <span class="s2">&quot;auto&quot;</span><span class="p">:</span>
+                <span class="c1"># Determine best repair strategy</span>
+                <span class="n">repair_actions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_determine_repair_actions</span><span class="p">(</span><span class="n">health</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># Use specified repair type</span>
+                <span class="n">repair_actions</span> <span class="o">=</span> <span class="p">[</span><span class="n">repair_type</span><span class="p">]</span>
+
+            <span class="c1"># Execute repair actions</span>
+            <span class="k">for</span> <span class="n">action</span> <span class="ow">in</span> <span class="n">repair_actions</span><span class="p">:</span>
+                <span class="n">action_result</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_execute_repair_action</span><span class="p">(</span><span class="n">model_id</span><span class="p">,</span> <span class="n">action</span><span class="p">)</span>
+                <span class="n">repair_result</span><span class="o">.</span><span class="n">actions_taken</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+                    <span class="s2">&quot;action&quot;</span><span class="p">:</span> <span class="n">action</span><span class="p">,</span>
+                    <span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="n">action_result</span><span class="o">.</span><span class="n">success</span><span class="p">,</span>
+                    <span class="s2">&quot;details&quot;</span><span class="p">:</span> <span class="n">action_result</span><span class="o">.</span><span class="n">details</span>
+                <span class="p">})</span>
+
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">action_result</span><span class="o">.</span><span class="n">success</span><span class="p">:</span>
+                    <span class="n">repair_result</span><span class="o">.</span><span class="n">success</span> <span class="o">=</span> <span class="kc">False</span>
+                    <span class="n">repair_result</span><span class="o">.</span><span class="n">error_message</span> <span class="o">=</span> <span class="n">action_result</span><span class="o">.</span><span class="n">error_message</span>
+                    <span class="k">break</span>
+
+            <span class="c1"># Verify repair success</span>
+            <span class="k">if</span> <span class="n">repair_result</span><span class="o">.</span><span class="n">success</span><span class="p">:</span>
+                <span class="n">post_repair_health</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_model_health</span><span class="p">(</span><span class="n">model_id</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                <span class="n">repair_result</span><span class="o">.</span><span class="n">success</span> <span class="o">=</span> <span class="n">post_repair_health</span><span class="o">.</span><span class="n">is_healthy</span>
+                <span class="n">repair_result</span><span class="o">.</span><span class="n">health_improvement</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="n">post_repair_health</span><span class="o">.</span><span class="n">overall_score</span> <span class="o">-</span> <span class="n">health</span><span class="o">.</span><span class="n">overall_score</span>
+                <span class="p">)</span>
+
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">repair_result</span><span class="o">.</span><span class="n">success</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="n">repair_result</span><span class="o">.</span><span class="n">error_message</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+
+        <span class="n">repair_result</span><span class="o">.</span><span class="n">total_time_seconds</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">repair_result</span><span class="o">.</span><span class="n">start_time</span>
+        <span class="k">return</span> <span class="n">repair_result</span>
+</code></pre></div>
+<h2 id="extension-points">Extension Points<a class="headerlink" href="#extension-points" title="Permanent link">&para;</a></h2>
+<h3 id="custom-model-providers">Custom Model Providers<a class="headerlink" href="#custom-model-providers" title="Permanent link">&para;</a></h3>
+<p>Implement custom model providers for different sources:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">CustomModelProvider</span><span class="p">(</span><span class="n">IModelAvailabilityProvider</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Custom model provider implementation&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">provider_config</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">provider_config</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_client</span><span class="p">()</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">get_model_status</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ModelStatus</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get model status from custom source&quot;&quot;&quot;</span>
+        <span class="c1"># Implement custom logic</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get_model_info</span><span class="p">(</span><span class="n">model_id</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">ModelStatus</span><span class="p">(</span>
+            <span class="n">model_id</span><span class="o">=</span><span class="n">model_id</span><span class="p">,</span>
+            <span class="n">is_available</span><span class="o">=</span><span class="n">response</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;available&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+            <span class="n">availability_status</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_map_status</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;status&#39;</span><span class="p">)),</span>
+            <span class="n">size_mb</span><span class="o">=</span><span class="n">response</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;size_mb&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+            <span class="c1"># ... map other fields</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_map_status</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">external_status</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ModelAvailabilityStatus</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Map external status to internal enum&quot;&quot;&quot;</span>
+        <span class="n">mapping</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;ready&#39;</span><span class="p">:</span> <span class="n">ModelAvailabilityStatus</span><span class="o">.</span><span class="n">AVAILABLE</span><span class="p">,</span>
+            <span class="s1">&#39;downloading&#39;</span><span class="p">:</span> <span class="n">ModelAvailabilityStatus</span><span class="o">.</span><span class="n">DOWNLOADING</span><span class="p">,</span>
+            <span class="s1">&#39;missing&#39;</span><span class="p">:</span> <span class="n">ModelAvailabilityStatus</span><span class="o">.</span><span class="n">MISSING</span><span class="p">,</span>
+            <span class="s1">&#39;corrupted&#39;</span><span class="p">:</span> <span class="n">ModelAvailabilityStatus</span><span class="o">.</span><span class="n">CORRUPTED</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">mapping</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">external_status</span><span class="p">,</span> <span class="n">ModelAvailabilityStatus</span><span class="o">.</span><span class="n">MISSING</span><span class="p">)</span>
+
+<span class="c1"># Register custom provider</span>
+<span class="k">def</span> <span class="nf">register_custom_provider</span><span class="p">():</span>
+    <span class="kn">from</span> <span class="nn">enhanced_model_availability.registry</span> <span class="kn">import</span> <span class="n">provider_registry</span>
+
+    <span class="n">provider_registry</span><span class="o">.</span><span class="n">register</span><span class="p">(</span>
+        <span class="s1">&#39;custom_provider&#39;</span><span class="p">,</span>
+        <span class="n">CustomModelProvider</span><span class="p">,</span>
+        <span class="n">config_schema</span><span class="o">=</span><span class="p">{</span>
+            <span class="s1">&#39;api_endpoint&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+            <span class="s1">&#39;api_key&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+            <span class="s1">&#39;timeout_seconds&#39;</span><span class="p">:</span> <span class="nb">int</span>
+        <span class="p">}</span>
+    <span class="p">)</span>
+</code></pre></div>
+<h3 id="custom-health-checkers">Custom Health Checkers<a class="headerlink" href="#custom-health-checkers" title="Permanent link">&para;</a></h3>
+<p>Implement custom health checking logic:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">CustomHealthChecker</span><span class="p">(</span><span class="n">IHealthChecker</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Custom health checker implementation&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">checker_config</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">checker_config</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">check_health</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">model_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">HealthCheckResult</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Perform custom health check&quot;&quot;&quot;</span>
+        <span class="n">issues</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">score</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+        <span class="c1"># Custom health check logic</span>
+        <span class="k">if</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_custom_condition</span><span class="p">(</span><span class="n">model_path</span><span class="p">):</span>
+            <span class="n">issues</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Custom condition failed&quot;</span><span class="p">)</span>
+            <span class="n">score</span> <span class="o">-=</span> <span class="mf">0.3</span>
+
+        <span class="c1"># Additional custom checks...</span>
+
+        <span class="k">return</span> <span class="n">HealthCheckResult</span><span class="p">(</span>
+            <span class="n">checker_name</span><span class="o">=</span><span class="s2">&quot;custom_checker&quot;</span><span class="p">,</span>
+            <span class="n">score</span><span class="o">=</span><span class="n">score</span><span class="p">,</span>
+            <span class="n">issues</span><span class="o">=</span><span class="n">issues</span><span class="p">,</span>
+            <span class="n">details</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;custom_metric&quot;</span><span class="p">:</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_custom_metric</span><span class="p">(</span><span class="n">model_path</span><span class="p">)}</span>
+        <span class="p">)</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_check_custom_condition</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Implement custom condition check&quot;&quot;&quot;</span>
+        <span class="c1"># Custom logic here</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+<span class="c1"># Register custom health checker</span>
+<span class="k">def</span> <span class="nf">register_custom_health_checker</span><span class="p">():</span>
+    <span class="kn">from</span> <span class="nn">enhanced_model_availability.health</span> <span class="kn">import</span> <span class="n">health_checker_registry</span>
+
+    <span class="n">health_checker_registry</span><span class="o">.</span><span class="n">register</span><span class="p">(</span>
+        <span class="s1">&#39;custom_checker&#39;</span><span class="p">,</span>
+        <span class="n">CustomHealthChecker</span><span class="p">,</span>
+        <span class="n">priority</span><span class="o">=</span><span class="mi">10</span>  <span class="c1"># Higher priority runs first</span>
+    <span class="p">)</span>
+</code></pre></div>
+<h3 id="custom-fallback-strategies">Custom Fallback Strategies<a class="headerlink" href="#custom-fallback-strategies" title="Permanent link">&para;</a></h3>
+<p>Implement custom fallback strategies:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">CustomFallbackStrategy</span><span class="p">(</span><span class="n">IFallbackStrategy</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Custom fallback strategy implementation&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">strategy_config</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">strategy_config</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">suggest_fallback</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">requested_model</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">requirements</span><span class="p">:</span> <span class="n">GenerationRequirements</span><span class="p">,</span>
+        <span class="n">available_models</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FallbackSuggestion</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Suggest custom fallback strategy&quot;&quot;&quot;</span>
+
+        <span class="c1"># Custom fallback logic</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_should_use_custom_strategy</span><span class="p">(</span><span class="n">requested_model</span><span class="p">,</span> <span class="n">requirements</span><span class="p">):</span>
+            <span class="n">alternative</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_find_custom_alternative</span><span class="p">(</span>
+                <span class="n">requested_model</span><span class="p">,</span>
+                <span class="n">available_models</span>
+            <span class="p">)</span>
+
+            <span class="k">return</span> <span class="n">FallbackSuggestion</span><span class="p">(</span>
+                <span class="n">strategy_type</span><span class="o">=</span><span class="n">FallbackType</span><span class="o">.</span><span class="n">ALTERNATIVE_MODEL</span><span class="p">,</span>
+                <span class="n">suggested_model</span><span class="o">=</span><span class="n">alternative</span><span class="p">,</span>
+                <span class="n">compatibility_score</span><span class="o">=</span><span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_compatibility</span><span class="p">(</span>
+                    <span class="n">requested_model</span><span class="p">,</span>
+                    <span class="n">alternative</span>
+                <span class="p">),</span>
+                <span class="n">reason</span><span class="o">=</span><span class="s2">&quot;Custom strategy recommendation&quot;</span>
+            <span class="p">)</span>
+
+        <span class="c1"># Fall back to default strategy</span>
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_default_fallback</span><span class="p">(</span><span class="n">requested_model</span><span class="p">,</span> <span class="n">requirements</span><span class="p">,</span> <span class="n">available_models</span><span class="p">)</span>
+
+<span class="c1"># Register custom fallback strategy</span>
+<span class="k">def</span> <span class="nf">register_custom_fallback_strategy</span><span class="p">():</span>
+    <span class="kn">from</span> <span class="nn">enhanced_model_availability.fallback</span> <span class="kn">import</span> <span class="n">fallback_strategy_registry</span>
+
+    <span class="n">fallback_strategy_registry</span><span class="o">.</span><span class="n">register</span><span class="p">(</span>
+        <span class="s1">&#39;custom_strategy&#39;</span><span class="p">,</span>
+        <span class="n">CustomFallbackStrategy</span><span class="p">,</span>
+        <span class="n">conditions</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;model_type:custom&#39;</span><span class="p">,</span> <span class="s1">&#39;priority:high&#39;</span><span class="p">]</span>
+    <span class="p">)</span>
+</code></pre></div>
+<h2 id="api-development">API Development<a class="headerlink" href="#api-development" title="Permanent link">&para;</a></h2>
+<h3 id="adding-new-endpoints">Adding New Endpoints<a class="headerlink" href="#adding-new-endpoints" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">fastapi</span> <span class="kn">import</span> <span class="n">APIRouter</span><span class="p">,</span> <span class="n">Depends</span><span class="p">,</span> <span class="n">HTTPException</span>
+<span class="kn">from</span> <span class="nn">enhanced_model_availability.dependencies</span> <span class="kn">import</span> <span class="n">get_availability_manager</span>
+
+<span class="n">router</span> <span class="o">=</span> <span class="n">APIRouter</span><span class="p">(</span><span class="n">prefix</span><span class="o">=</span><span class="s2">&quot;/api/v1/custom&quot;</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;custom&quot;</span><span class="p">])</span>
+
+<span class="nd">@router</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/models/</span><span class="si">{model_id}</span><span class="s2">/custom-status&quot;</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">get_custom_model_status</span><span class="p">(</span>
+    <span class="n">model_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">availability_manager</span><span class="p">:</span> <span class="n">ModelAvailabilityManager</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_availability_manager</span><span class="p">)</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get custom model status information&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Custom logic here</span>
+        <span class="n">custom_status</span> <span class="o">=</span> <span class="k">await</span> <span class="n">availability_manager</span><span class="o">.</span><span class="n">get_custom_status</span><span class="p">(</span><span class="n">model_id</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;model_id&quot;</span><span class="p">:</span> <span class="n">model_id</span><span class="p">,</span> <span class="s2">&quot;custom_status&quot;</span><span class="p">:</span> <span class="n">custom_status</span><span class="p">}</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span><span class="n">status_code</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+
+<span class="nd">@router</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/models/</span><span class="si">{model_id}</span><span class="s2">/custom-action&quot;</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">perform_custom_action</span><span class="p">(</span>
+    <span class="n">model_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">action_data</span><span class="p">:</span> <span class="n">CustomActionRequest</span><span class="p">,</span>
+    <span class="n">availability_manager</span><span class="p">:</span> <span class="n">ModelAvailabilityManager</span> <span class="o">=</span> <span class="n">Depends</span><span class="p">(</span><span class="n">get_availability_manager</span><span class="p">)</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Perform custom action on model&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">availability_manager</span><span class="o">.</span><span class="n">perform_custom_action</span><span class="p">(</span>
+            <span class="n">model_id</span><span class="p">,</span>
+            <span class="n">action_data</span><span class="o">.</span><span class="n">action_type</span><span class="p">,</span>
+            <span class="n">action_data</span><span class="o">.</span><span class="n">parameters</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;result&quot;</span><span class="p">:</span> <span class="n">result</span><span class="p">}</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span><span class="n">status_code</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+
+<span class="c1"># Register router</span>
+<span class="k">def</span> <span class="nf">register_custom_router</span><span class="p">(</span><span class="n">app</span><span class="p">):</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">include_router</span><span class="p">(</span><span class="n">router</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="custom-middleware">Custom Middleware<a class="headerlink" href="#custom-middleware" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">fastapi</span> <span class="kn">import</span> <span class="n">Request</span><span class="p">,</span> <span class="n">Response</span>
+<span class="kn">from</span> <span class="nn">starlette.middleware.base</span> <span class="kn">import</span> <span class="n">BaseHTTPMiddleware</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="k">class</span> <span class="nc">PerformanceMiddleware</span><span class="p">(</span><span class="n">BaseHTTPMiddleware</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Custom middleware for performance monitoring&quot;&quot;&quot;</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">dispatch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">:</span> <span class="n">Request</span><span class="p">,</span> <span class="n">call_next</span><span class="p">):</span>
+        <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+        <span class="c1"># Add custom headers</span>
+        <span class="n">request</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">start_time</span> <span class="o">=</span> <span class="n">start_time</span>
+        <span class="n">request</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">request_id</span> <span class="o">=</span> <span class="n">generate_request_id</span><span class="p">()</span>
+
+        <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">call_next</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+
+        <span class="c1"># Calculate processing time</span>
+        <span class="n">process_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span>
+        <span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s2">&quot;X-Process-Time&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">process_time</span><span class="p">)</span>
+        <span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s2">&quot;X-Request-ID&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">request_id</span>
+
+        <span class="c1"># Log performance metrics</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_log_performance_metrics</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">process_time</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">response</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">_log_performance_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">process_time</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Log performance metrics&quot;&quot;&quot;</span>
+        <span class="c1"># Custom logging logic</span>
+        <span class="k">pass</span>
+
+<span class="c1"># Register middleware</span>
+<span class="k">def</span> <span class="nf">register_custom_middleware</span><span class="p">(</span><span class="n">app</span><span class="p">):</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">add_middleware</span><span class="p">(</span><span class="n">PerformanceMiddleware</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="testing-framework">Testing Framework<a class="headerlink" href="#testing-framework" title="Permanent link">&para;</a></h2>
+<h3 id="unit-testing">Unit Testing<a class="headerlink" href="#unit-testing" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pytest</span>
+<span class="kn">from</span> <span class="nn">unittest.mock</span> <span class="kn">import</span> <span class="n">AsyncMock</span><span class="p">,</span> <span class="n">MagicMock</span>
+<span class="kn">from</span> <span class="nn">enhanced_model_availability.core</span> <span class="kn">import</span> <span class="n">ModelAvailabilityManager</span>
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span> <span class="nf">mock_dependencies</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create mock dependencies for testing&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;model_manager&#39;</span><span class="p">:</span> <span class="n">AsyncMock</span><span class="p">(),</span>
+        <span class="s1">&#39;downloader&#39;</span><span class="p">:</span> <span class="n">AsyncMock</span><span class="p">(),</span>
+        <span class="s1">&#39;health_monitor&#39;</span><span class="p">:</span> <span class="n">AsyncMock</span><span class="p">(),</span>
+        <span class="s1">&#39;analytics&#39;</span><span class="p">:</span> <span class="n">AsyncMock</span><span class="p">(),</span>
+        <span class="s1">&#39;config&#39;</span><span class="p">:</span> <span class="n">MagicMock</span><span class="p">()</span>
+    <span class="p">}</span>
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span> <span class="nf">availability_manager</span><span class="p">(</span><span class="n">mock_dependencies</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create ModelAvailabilityManager with mocked dependencies&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">ModelAvailabilityManager</span><span class="p">(</span><span class="o">**</span><span class="n">mock_dependencies</span><span class="p">)</span>
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">asyncio</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">test_get_model_status_available</span><span class="p">(</span><span class="n">availability_manager</span><span class="p">,</span> <span class="n">mock_dependencies</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Test getting status for available model&quot;&quot;&quot;</span>
+    <span class="c1"># Setup mocks</span>
+    <span class="n">mock_dependencies</span><span class="p">[</span><span class="s1">&#39;model_manager&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get_model_status</span><span class="o">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="n">ModelStatus</span><span class="p">(</span>
+        <span class="n">model_id</span><span class="o">=</span><span class="s2">&quot;test-model&quot;</span><span class="p">,</span>
+        <span class="n">is_available</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">availability_status</span><span class="o">=</span><span class="n">ModelAvailabilityStatus</span><span class="o">.</span><span class="n">AVAILABLE</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Execute</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">availability_manager</span><span class="o">.</span><span class="n">get_model_status</span><span class="p">(</span><span class="s2">&quot;test-model&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Assert</span>
+    <span class="k">assert</span> <span class="n">result</span><span class="o">.</span><span class="n">is_available</span>
+    <span class="k">assert</span> <span class="n">result</span><span class="o">.</span><span class="n">availability_status</span> <span class="o">==</span> <span class="n">ModelAvailabilityStatus</span><span class="o">.</span><span class="n">AVAILABLE</span>
+    <span class="n">mock_dependencies</span><span class="p">[</span><span class="s1">&#39;model_manager&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get_model_status</span><span class="o">.</span><span class="n">assert_called_once_with</span><span class="p">(</span><span class="s2">&quot;test-model&quot;</span><span class="p">)</span>
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">asyncio</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">test_handle_model_request_missing</span><span class="p">(</span><span class="n">availability_manager</span><span class="p">,</span> <span class="n">mock_dependencies</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Test handling request for missing model&quot;&quot;&quot;</span>
+    <span class="c1"># Setup mocks</span>
+    <span class="n">mock_dependencies</span><span class="p">[</span><span class="s1">&#39;model_manager&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get_model_status</span><span class="o">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="n">ModelStatus</span><span class="p">(</span>
+        <span class="n">model_id</span><span class="o">=</span><span class="s2">&quot;missing-model&quot;</span><span class="p">,</span>
+        <span class="n">is_available</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">availability_status</span><span class="o">=</span><span class="n">ModelAvailabilityStatus</span><span class="o">.</span><span class="n">MISSING</span>
+    <span class="p">)</span>
+    <span class="n">mock_dependencies</span><span class="p">[</span><span class="s1">&#39;downloader&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">download_model</span><span class="o">.</span><span class="n">return_value</span> <span class="o">=</span> <span class="n">DownloadResult</span><span class="p">(</span>
+        <span class="n">success</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">model_id</span><span class="o">=</span><span class="s2">&quot;missing-model&quot;</span><span class="p">,</span>
+        <span class="n">download_id</span><span class="o">=</span><span class="s2">&quot;dl_123&quot;</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Execute</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">availability_manager</span><span class="o">.</span><span class="n">handle_model_request</span><span class="p">(</span><span class="s2">&quot;missing-model&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Assert</span>
+    <span class="k">assert</span> <span class="n">result</span><span class="o">.</span><span class="n">action_taken</span> <span class="o">==</span> <span class="s2">&quot;download_started&quot;</span>
+    <span class="k">assert</span> <span class="n">result</span><span class="o">.</span><span class="n">download_id</span> <span class="o">==</span> <span class="s2">&quot;dl_123&quot;</span>
+    <span class="n">mock_dependencies</span><span class="p">[</span><span class="s1">&#39;downloader&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">download_model</span><span class="o">.</span><span class="n">assert_called_once_with</span><span class="p">(</span><span class="s2">&quot;missing-model&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="integration-testing">Integration Testing<a class="headerlink" href="#integration-testing" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pytest</span>
+<span class="kn">import</span> <span class="nn">httpx</span>
+<span class="kn">from</span> <span class="nn">fastapi.testclient</span> <span class="kn">import</span> <span class="n">TestClient</span>
+<span class="kn">from</span> <span class="nn">enhanced_model_availability.app</span> <span class="kn">import</span> <span class="n">create_app</span>
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span> <span class="nf">test_app</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create test application&quot;&quot;&quot;</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">create_app</span><span class="p">(</span><span class="n">config_path</span><span class="o">=</span><span class="s2">&quot;tests/test_config.json&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">app</span>
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span> <span class="nf">client</span><span class="p">(</span><span class="n">test_app</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create test client&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">TestClient</span><span class="p">(</span><span class="n">test_app</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">test_get_model_status_endpoint</span><span class="p">(</span><span class="n">client</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Test model status endpoint&quot;&quot;&quot;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;/api/v1/models/status/detailed&quot;</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+
+    <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="s2">&quot;models&quot;</span> <span class="ow">in</span> <span class="n">data</span>
+    <span class="k">assert</span> <span class="s2">&quot;summary&quot;</span> <span class="ow">in</span> <span class="n">data</span>
+
+<span class="k">def</span> <span class="nf">test_start_download_endpoint</span><span class="p">(</span><span class="n">client</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Test download start endpoint&quot;&quot;&quot;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+        <span class="s2">&quot;/api/v1/models/download/manage&quot;</span><span class="p">,</span>
+        <span class="n">json</span><span class="o">=</span><span class="p">{</span>
+            <span class="s2">&quot;model_id&quot;</span><span class="p">:</span> <span class="s2">&quot;test-model&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;start&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;max_retries&quot;</span><span class="p">:</span> <span class="mi">3</span>
+        <span class="p">}</span>
+    <span class="p">)</span>
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+
+    <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;success&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">True</span>
+    <span class="k">assert</span> <span class="s2">&quot;download_id&quot;</span> <span class="ow">in</span> <span class="n">data</span>
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">asyncio</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">test_websocket_notifications</span><span class="p">(</span><span class="n">test_app</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Test WebSocket notifications&quot;&quot;&quot;</span>
+    <span class="k">async</span> <span class="k">with</span> <span class="n">httpx</span><span class="o">.</span><span class="n">AsyncClient</span><span class="p">(</span><span class="n">app</span><span class="o">=</span><span class="n">test_app</span><span class="p">,</span> <span class="n">base_url</span><span class="o">=</span><span class="s2">&quot;http://test&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">client</span><span class="p">:</span>
+        <span class="k">async</span> <span class="k">with</span> <span class="n">client</span><span class="o">.</span><span class="n">websocket_connect</span><span class="p">(</span><span class="s2">&quot;/ws&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">websocket</span><span class="p">:</span>
+            <span class="c1"># Trigger an event that should send notification</span>
+            <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;/api/v1/models/download/manage&quot;</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="p">{</span>
+                <span class="s2">&quot;model_id&quot;</span><span class="p">:</span> <span class="s2">&quot;test-model&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;action&quot;</span><span class="p">:</span> <span class="s2">&quot;start&quot;</span>
+            <span class="p">})</span>
+
+            <span class="c1"># Wait for WebSocket message</span>
+            <span class="n">message</span> <span class="o">=</span> <span class="k">await</span> <span class="n">websocket</span><span class="o">.</span><span class="n">receive_json</span><span class="p">()</span>
+            <span class="k">assert</span> <span class="n">message</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;model_download_progress&quot;</span>
+            <span class="k">assert</span> <span class="n">message</span><span class="p">[</span><span class="s2">&quot;model_id&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;test-model&quot;</span>
+</code></pre></div>
+<h3 id="performance-testing">Performance Testing<a class="headerlink" href="#performance-testing" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span> <span class="nn">concurrent.futures</span> <span class="kn">import</span> <span class="n">ThreadPoolExecutor</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">performance_test_concurrent_downloads</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Test concurrent download performance&quot;&quot;&quot;</span>
+    <span class="n">model_ids</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;test-model-</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+
+    <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+    <span class="c1"># Start concurrent downloads</span>
+    <span class="n">tasks</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">model_id</span> <span class="ow">in</span> <span class="n">model_ids</span><span class="p">:</span>
+        <span class="n">task</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">start_download</span><span class="p">(</span><span class="n">model_id</span><span class="p">))</span>
+        <span class="n">tasks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
+
+    <span class="n">results</span> <span class="o">=</span> <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="o">*</span><span class="n">tasks</span><span class="p">,</span> <span class="n">return_exceptions</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">end_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">total_time</span> <span class="o">=</span> <span class="n">end_time</span> <span class="o">-</span> <span class="n">start_time</span>
+
+    <span class="c1"># Analyze results</span>
+    <span class="n">successful_downloads</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">results</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">DownloadResult</span><span class="p">)</span> <span class="ow">and</span> <span class="n">r</span><span class="o">.</span><span class="n">success</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Concurrent downloads: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">model_ids</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Successful: </span><span class="si">{</span><span class="n">successful_downloads</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total time: </span><span class="si">{</span><span class="n">total_time</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Average time per download: </span><span class="si">{</span><span class="n">total_time</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">model_ids</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">)</span>
+
+    <span class="k">assert</span> <span class="n">successful_downloads</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">model_ids</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.8</span>  <span class="c1"># 80% success rate</span>
+
+<span class="k">def</span> <span class="nf">performance_test_api_throughput</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Test API throughput&quot;&quot;&quot;</span>
+    <span class="kn">import</span> <span class="nn">requests</span>
+    <span class="kn">import</span> <span class="nn">threading</span>
+
+    <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="nf">make_request</span><span class="p">():</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;http://localhost:8000/api/v1/models/status/detailed&quot;</span><span class="p">)</span>
+        <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+            <span class="s1">&#39;status_code&#39;</span><span class="p">:</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span>
+            <span class="s1">&#39;response_time&#39;</span><span class="p">:</span> <span class="n">end</span> <span class="o">-</span> <span class="n">start</span>
+        <span class="p">})</span>
+
+    <span class="c1"># Create threads for concurrent requests</span>
+    <span class="n">threads</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+        <span class="n">thread</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">make_request</span><span class="p">)</span>
+        <span class="n">threads</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">thread</span><span class="p">)</span>
+
+    <span class="c1"># Start all threads</span>
+    <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">thread</span> <span class="ow">in</span> <span class="n">threads</span><span class="p">:</span>
+        <span class="n">thread</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+    <span class="c1"># Wait for completion</span>
+    <span class="k">for</span> <span class="n">thread</span> <span class="ow">in</span> <span class="n">threads</span><span class="p">:</span>
+        <span class="n">thread</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>
+
+    <span class="n">end_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+    <span class="c1"># Analyze results</span>
+    <span class="n">successful_requests</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">results</span> <span class="k">if</span> <span class="n">r</span><span class="p">[</span><span class="s1">&#39;status_code&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span>
+    <span class="n">average_response_time</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="s1">&#39;response_time&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">results</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+    <span class="n">requests_per_second</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">end_time</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total requests: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Successful: </span><span class="si">{</span><span class="n">successful_requests</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Average response time: </span><span class="si">{</span><span class="n">average_response_time</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Requests per second: </span><span class="si">{</span><span class="n">requests_per_second</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">assert</span> <span class="n">successful_requests</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.95</span>  <span class="c1"># 95% success rate</span>
+    <span class="k">assert</span> <span class="n">average_response_time</span> <span class="o">&lt;</span> <span class="mf">0.1</span>  <span class="c1"># Under 100ms average</span>
+</code></pre></div>
+<h2 id="debugging-and-profiling">Debugging and Profiling<a class="headerlink" href="#debugging-and-profiling" title="Permanent link">&para;</a></h2>
+<h3 id="logging-configuration">Logging Configuration<a class="headerlink" href="#logging-configuration" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">enhanced_model_availability.logging</span> <span class="kn">import</span> <span class="n">setup_logging</span>
+
+<span class="c1"># Configure logging for development</span>
+<span class="k">def</span> <span class="nf">setup_development_logging</span><span class="p">():</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span>
+        <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">,</span>
+        <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%(asctime)s</span><span class="s1"> - </span><span class="si">%(name)s</span><span class="s1"> - </span><span class="si">%(levelname)s</span><span class="s1"> - </span><span class="si">%(message)s</span><span class="s1">&#39;</span><span class="p">,</span>
+        <span class="n">handlers</span><span class="o">=</span><span class="p">[</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">StreamHandler</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">),</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">FileHandler</span><span class="p">(</span><span class="s1">&#39;debug.log&#39;</span><span class="p">)</span>
+        <span class="p">]</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Set specific loggers</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s1">&#39;enhanced_model_availability.downloads&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s1">&#39;enhanced_model_availability.health&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s1">&#39;httpx&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">WARNING</span><span class="p">)</span>
+
+<span class="c1"># Custom logger for component</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">debug_download_process</span><span class="p">(</span><span class="n">model_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Debug download process with detailed logging&quot;&quot;&quot;</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Starting download debug for model: </span><span class="si">{</span><span class="n">model_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Log each step</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Checking model status...&quot;</span><span class="p">)</span>
+        <span class="n">status</span> <span class="o">=</span> <span class="k">await</span> <span class="n">get_model_status</span><span class="p">(</span><span class="n">model_id</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Model status: </span><span class="si">{</span><span class="n">status</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Starting download...&quot;</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">download_model</span><span class="p">(</span><span class="n">model_id</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Download result: </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error during download debug: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">raise</span>
+</code></pre></div>
+<h3 id="performance-profiling">Performance Profiling<a class="headerlink" href="#performance-profiling" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">cProfile</span>
+<span class="kn">import</span> <span class="nn">pstats</span>
+<span class="kn">import</span> <span class="nn">io</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">wraps</span>
+
+<span class="k">def</span> <span class="nf">profile_function</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Decorator to profile function performance&quot;&quot;&quot;</span>
+    <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">profiler</span> <span class="o">=</span> <span class="n">cProfile</span><span class="o">.</span><span class="n">Profile</span><span class="p">()</span>
+        <span class="n">profiler</span><span class="o">.</span><span class="n">enable</span><span class="p">()</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">result</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="n">profiler</span><span class="o">.</span><span class="n">disable</span><span class="p">()</span>
+
+            <span class="c1"># Print profiling results</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">()</span>
+            <span class="n">ps</span> <span class="o">=</span> <span class="n">pstats</span><span class="o">.</span><span class="n">Stats</span><span class="p">(</span><span class="n">profiler</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="n">s</span><span class="p">)</span>
+            <span class="n">ps</span><span class="o">.</span><span class="n">sort_stats</span><span class="p">(</span><span class="s1">&#39;cumulative&#39;</span><span class="p">)</span>
+            <span class="n">ps</span><span class="o">.</span><span class="n">print_stats</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>  <span class="c1"># Top 20 functions</span>
+
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Profiling results for </span><span class="si">{</span><span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">:&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">getvalue</span><span class="p">())</span>
+
+    <span class="k">return</span> <span class="n">wrapper</span>
+
+<span class="c1"># Usage</span>
+<span class="nd">@profile_function</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">download_model_with_profiling</span><span class="p">(</span><span class="n">model_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="k">return</span> <span class="k">await</span> <span class="n">download_model</span><span class="p">(</span><span class="n">model_id</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="memory-profiling">Memory Profiling<a class="headerlink" href="#memory-profiling" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">tracemalloc</span>
+<span class="kn">from</span> <span class="nn">memory_profiler</span> <span class="kn">import</span> <span class="n">profile</span>
+
+<span class="k">def</span> <span class="nf">start_memory_profiling</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Start memory profiling&quot;&quot;&quot;</span>
+    <span class="n">tracemalloc</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">get_memory_snapshot</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get current memory snapshot&quot;&quot;&quot;</span>
+    <span class="n">snapshot</span> <span class="o">=</span> <span class="n">tracemalloc</span><span class="o">.</span><span class="n">take_snapshot</span><span class="p">()</span>
+    <span class="n">top_stats</span> <span class="o">=</span> <span class="n">snapshot</span><span class="o">.</span><span class="n">statistics</span><span class="p">(</span><span class="s1">&#39;lineno&#39;</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Top 10 memory allocations:&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">stat</span> <span class="ow">in</span> <span class="n">top_stats</span><span class="p">[:</span><span class="mi">10</span><span class="p">]:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">stat</span><span class="p">)</span>
+
+<span class="nd">@profile</span>
+<span class="k">def</span> <span class="nf">memory_intensive_function</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Function with memory profiling&quot;&quot;&quot;</span>
+    <span class="c1"># Function implementation</span>
+    <span class="k">pass</span>
+</code></pre></div>
+<h2 id="best-practices">Best Practices<a class="headerlink" href="#best-practices" title="Permanent link">&para;</a></h2>
+<h3 id="code-organization">Code Organization<a class="headerlink" href="#code-organization" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>enhanced_model_availability/
+├── core/                   # Core business logic
+│   ├── __init__.py
+│   ├── availability_manager.py
+│   ├── downloader.py
+│   ├── health_monitor.py
+│   └── analytics.py
+├── api/                    # API endpoints
+│   ├── __init__.py
+│   ├── models.py
+│   ├── downloads.py
+│   └── health.py
+├── services/               # Service layer
+│   ├── __init__.py
+│   ├── model_service.py
+│   └── notification_service.py
+├── repositories/           # Data access layer
+│   ├── __init__.py
+│   ├── model_repository.py
+│   └── analytics_repository.py
+├── utils/                  # Utility functions
+│   ├── __init__.py
+│   ├── config.py
+│   └── helpers.py
+├── tests/                  # Test files
+│   ├── unit/
+│   ├── integration/
+│   └── performance/
+└── examples/               # Example code
+    ├── basic_usage.py
+    └── advanced_usage.py
+</code></pre></div>
+<h3 id="error-handling">Error Handling<a class="headerlink" href="#error-handling" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">enhanced_model_availability.exceptions</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">ModelNotFoundError</span><span class="p">,</span>
+    <span class="n">DownloadFailedError</span><span class="p">,</span>
+    <span class="n">HealthCheckFailedError</span>
+<span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">EnhancedModelAvailabilityError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Base exception for enhanced model availability&quot;&quot;&quot;</span>
+    <span class="k">pass</span>
+
+<span class="k">class</span> <span class="nc">ModelNotFoundError</span><span class="p">(</span><span class="n">EnhancedModelAvailabilityError</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Raised when a model is not found&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model_id</span> <span class="o">=</span> <span class="n">model_id</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Model not found: </span><span class="si">{</span><span class="n">model_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">DownloadFailedError</span><span class="p">(</span><span class="n">EnhancedModelAvailabilityError</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Raised when model download fails&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">reason</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">retry_count</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model_id</span> <span class="o">=</span> <span class="n">model_id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reason</span> <span class="o">=</span> <span class="n">reason</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">retry_count</span> <span class="o">=</span> <span class="n">retry_count</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Download failed for </span><span class="si">{</span><span class="n">model_id</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">reason</span><span class="si">}</span><span class="s2"> (retries: </span><span class="si">{</span><span class="n">retry_count</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+
+<span class="c1"># Usage in code</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">download_model_safe</span><span class="p">(</span><span class="n">model_id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DownloadResult</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Safely download model with proper error handling&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">download_model</span><span class="p">(</span><span class="n">model_id</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span>
+    <span class="k">except</span> <span class="n">ModelNotFoundError</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Model </span><span class="si">{</span><span class="n">model_id</span><span class="si">}</span><span class="s2"> not found in registry&quot;</span><span class="p">)</span>
+        <span class="k">raise</span>
+    <span class="k">except</span> <span class="n">DownloadFailedError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Download failed: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="c1"># Attempt fallback strategy</span>
+        <span class="k">return</span> <span class="k">await</span> <span class="n">attempt_fallback_download</span><span class="p">(</span><span class="n">model_id</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unexpected error downloading </span><span class="si">{</span><span class="n">model_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">DownloadFailedError</span><span class="p">(</span><span class="n">model_id</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+</code></pre></div>
+<h3 id="configuration-management">Configuration Management<a class="headerlink" href="#configuration-management" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseSettings</span><span class="p">,</span> <span class="n">Field</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Any</span>
+
+<span class="k">class</span> <span class="nc">DownloadConfig</span><span class="p">(</span><span class="n">BaseSettings</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Download configuration&quot;&quot;&quot;</span>
+    <span class="n">max_concurrent_downloads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">le</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">max_retries</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">le</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">retry_delay_seconds</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">bandwidth_limit_mbps</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
+        <span class="n">env_prefix</span> <span class="o">=</span> <span class="s2">&quot;ENHANCED_MODEL_DOWNLOAD_&quot;</span>
+
+<span class="k">class</span> <span class="nc">HealthConfig</span><span class="p">(</span><span class="n">BaseSettings</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Health monitoring configuration&quot;&quot;&quot;</span>
+    <span class="n">enabled</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">check_interval_hours</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="mi">24</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">auto_repair_enabled</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">healthy_threshold</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">le</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+
+    <span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
+        <span class="n">env_prefix</span> <span class="o">=</span> <span class="s2">&quot;ENHANCED_MODEL_HEALTH_&quot;</span>
+
+<span class="k">class</span> <span class="nc">EnhancedModelConfig</span><span class="p">(</span><span class="n">BaseSettings</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Main configuration&quot;&quot;&quot;</span>
+    <span class="n">download</span><span class="p">:</span> <span class="n">DownloadConfig</span> <span class="o">=</span> <span class="n">DownloadConfig</span><span class="p">()</span>
+    <span class="n">health</span><span class="p">:</span> <span class="n">HealthConfig</span> <span class="o">=</span> <span class="n">HealthConfig</span><span class="p">()</span>
+    <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">log_level</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="s2">&quot;INFO&quot;</span><span class="p">)</span>
+
+    <span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
+        <span class="n">env_file</span> <span class="o">=</span> <span class="s2">&quot;.env&quot;</span>
+        <span class="n">case_sensitive</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="c1"># Usage</span>
+<span class="n">config</span> <span class="o">=</span> <span class="n">EnhancedModelConfig</span><span class="p">()</span>
+</code></pre></div>
+<p>This comprehensive developer guide provides all the information needed to work with, extend, and contribute to the Enhanced Model Availability system.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

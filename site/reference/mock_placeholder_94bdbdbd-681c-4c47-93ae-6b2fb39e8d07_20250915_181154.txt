@@ -1,0 +1,11 @@
+---
+category: reference
+last_updated: '2025-09-15T18:11:54.477552'
+original_path: outputs\videos\mock_placeholder_94bdbdbd-681c-4c47-93ae-6b2fb39e8d07_20250915_181154.txt
+tags: []
+title: Mock Placeholder 94Bdbdbd 681C 4C47 93Ae 6B2Fb39E8D07 20250915 181154
+---
+
+Mock generation placeholder for task 94bdbdbd-681c-4c47-93ae-6b2fb39e8d07
+Model: t2v-A14B
+Prompt: A cat walking in a garden

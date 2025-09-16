@@ -1,0 +1,1566 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="WAN2.2 Video Generation System Documentation">
+      
+      
+      
+        <link rel="canonical" href="https://ramcana.github.io/wan/reference/2-3-i2v-ti2v-implementation-summary/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>Task 2.3 Implementation Summary: I2V/TI2V Support and Queue Management - WAN22 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e53b48f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#task-23-implementation-summary-i2vti2v-support-and-queue-management" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="WAN22 Documentation" class="md-header__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            WAN22 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Task 2.3 Implementation Summary: I2V/TI2V Support and Queue Management
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../WAN22_System_Capabilities_Report/" class="md-tabs__link">
+          
+  
+  
+  System Overview
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../model-orchestrator/requirements/" class="md-tabs__link">
+          
+  
+  
+  Model Orchestrator
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../config/models.toml" class="md-tabs__link">
+          
+  
+  
+  Configuration
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="WAN22 Documentation" class="md-nav__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    WAN22 Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    System Overview
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            System Overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../WAN22_System_Capabilities_Report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Capabilities Report
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Model Orchestrator
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Model Orchestrator
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Requirements
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/tasks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tasks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Configuration
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Configuration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Models Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models_simple.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simple Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implemented-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implemented Features
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implemented Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-extended-generation-endpoint-for-i2vti2v-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Extended Generation Endpoint for I2V/TI2V Modes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-advanced-image-validation-and-preprocessing" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Advanced Image Validation and Preprocessing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Advanced Image Validation and Preprocessing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#supported-image-formats" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supported Image Formats
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validation-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validation Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#image-preprocessing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Image Preprocessing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-enhanced-queue-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Enhanced Queue Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Enhanced Queue Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#queue-status-endpoint-get-apiv1queue" class="md-nav__link">
+    <span class="md-ellipsis">
+      Queue Status Endpoint (GET /api/v1/queue)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task-cancellation-post-apiv1queuetask_idcancel" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task Cancellation (POST /api/v1/queue/{task_id}/cancel)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#queue-cleanup-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Queue Cleanup Operations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-http-polling-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. HTTP Polling Support
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. HTTP Polling Support">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#optimized-for-5-second-polling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optimized for 5-Second Polling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#response-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      Response Format
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-background-task-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Background Task Processing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Background Task Processing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhanced-processing-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enhanced Processing Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task-lifecycle-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task Lifecycle Management
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-queue-persistence-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Queue Persistence Testing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Queue Persistence Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comprehensive-test-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comprehensive Test Coverage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Results
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#database-schema-updates" class="md-nav__link">
+    <span class="md-ellipsis">
+      Database Schema Updates
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Database Schema Updates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enhanced-queuestatus-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enhanced QueueStatus Model
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task-status-enumeration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task Status Enumeration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api-endpoints-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      API Endpoints Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requirements-compliance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements Compliance
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Requirements Compliance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#requirement-21-image-to-video-i2v-mode-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Requirement 2.1: Image-to-Video (I2V) Mode Support
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement-22-text-image-to-video-ti2v-mode-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Requirement 2.2: Text-Image-to-Video (TI2V) Mode Support
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement-31-image-upload-and-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Requirement 3.1: Image Upload and Validation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement-32-image-preprocessing" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Requirement 3.2: Image Preprocessing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement-61-queue-management-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Requirement 6.1: Queue Management Interface
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement-62-real-time-progress-updates" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Requirement 6.2: Real-time Progress Updates
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement-63-task-cancellation-functionality" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Requirement 6.3: Task Cancellation Functionality
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-optimizations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Optimizations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Optimizations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#image-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Image Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#database-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Database Operations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http-polling" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTTP Polling
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Handling
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Error Handling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#image-upload-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Image Upload Errors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#queue-management-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Queue Management Errors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generation-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generation Errors
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-coverage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing Coverage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing Coverage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unit-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unit Tests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integration-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration Tests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persistence-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Persistence Tests
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#future-enhancements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Future Enhancements
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Future Enhancements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#planned-improvements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Planned Improvements
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scalability-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scalability Considerations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="task-23-implementation-summary-i2vti2v-support-and-queue-management">Task 2.3 Implementation Summary: I2V/TI2V Support and Queue Management<a class="headerlink" href="#task-23-implementation-summary-i2vti2v-support-and-queue-management" title="Permanent link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>Successfully implemented comprehensive I2V/TI2V support and enhanced queue management functionality for the React Frontend with FastAPI Backend project. This implementation extends the generation endpoint to handle image uploads, adds robust file validation, and provides complete queue management capabilities with HTTP polling support.</p>
+<h2 id="implemented-features">Implemented Features<a class="headerlink" href="#implemented-features" title="Permanent link">&para;</a></h2>
+<h3 id="1-extended-generation-endpoint-for-i2vti2v-modes">1. Extended Generation Endpoint for I2V/TI2V Modes<a class="headerlink" href="#1-extended-generation-endpoint-for-i2vti2v-modes" title="Permanent link">&para;</a></h3>
+<p><strong>File:</strong> <code>backend/api/routes/generation.py</code></p>
+<ul>
+<li><strong>Enhanced image upload handling</strong> for I2V and TI2V modes</li>
+<li><strong>Model-specific validation</strong> ensuring T2V rejects images while I2V/TI2V require them</li>
+<li><strong>Comprehensive error handling</strong> with user-friendly messages and suggestions</li>
+<li><strong>Integration with existing generation service</strong> for background processing</li>
+</ul>
+<h3 id="2-advanced-image-validation-and-preprocessing">2. Advanced Image Validation and Preprocessing<a class="headerlink" href="#2-advanced-image-validation-and-preprocessing" title="Permanent link">&para;</a></h3>
+<p><strong>Function:</strong> <code>validate_and_process_image()</code> in <code>backend/api/routes/generation.py</code></p>
+<h4 id="supported-image-formats">Supported Image Formats<a class="headerlink" href="#supported-image-formats" title="Permanent link">&para;</a></h4>
+<ul>
+<li>JPEG/JPG (<code>image/jpeg</code>, <code>image/jpg</code>)</li>
+<li>PNG (<code>image/png</code>)</li>
+<li>WebP (<code>image/webp</code>)</li>
+<li>BMP (<code>image/bmp</code>)</li>
+<li>TIFF (<code>image/tiff</code>)</li>
+</ul>
+<h4 id="validation-features">Validation Features<a class="headerlink" href="#validation-features" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>File size validation</strong>: Maximum 10MB per image</li>
+<li><strong>Dimension validation</strong>: 64x64 to 4096x4096 pixels</li>
+<li><strong>Format validation</strong>: Ensures valid image files using PIL</li>
+<li><strong>Content type verification</strong>: Validates MIME types</li>
+<li><strong>Automatic format conversion</strong>: RGBA→RGB, Palette→RGB for compatibility</li>
+</ul>
+<h4 id="image-preprocessing">Image Preprocessing<a class="headerlink" href="#image-preprocessing" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Safe filename generation</strong>: Uses task ID to prevent conflicts</li>
+<li><strong>Quality optimization</strong>: JPEG saved at 95% quality, PNG optimized</li>
+<li><strong>Secure file handling</strong>: Images saved to <code>uploads/</code> directory with proper naming</li>
+</ul>
+<h3 id="3-enhanced-queue-management">3. Enhanced Queue Management<a class="headerlink" href="#3-enhanced-queue-management" title="Permanent link">&para;</a></h3>
+<p><strong>File:</strong> <code>backend/api/routes/queue.py</code></p>
+<h4 id="queue-status-endpoint-get-apiv1queue">Queue Status Endpoint (<code>GET /api/v1/queue</code>)<a class="headerlink" href="#queue-status-endpoint-get-apiv1queue" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Comprehensive task listing</strong> with optional filtering and limits</li>
+<li><strong>Status-based filtering</strong> (pending, processing, completed, etc.)</li>
+<li><strong>Detailed task information</strong> including progress, timestamps, and metadata</li>
+<li><strong>Accurate statistics</strong> for all task statuses including cancelled tasks</li>
+</ul>
+<h4 id="task-cancellation-post-apiv1queuetask_idcancel">Task Cancellation (<code>POST /api/v1/queue/{task_id}/cancel</code>)<a class="headerlink" href="#task-cancellation-post-apiv1queuetask_idcancel" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Safe cancellation</strong> of pending and processing tasks</li>
+<li><strong>Status validation</strong> prevents cancellation of completed/failed tasks</li>
+<li><strong>Automatic timestamp updates</strong> for completion tracking</li>
+<li><strong>Database persistence</strong> ensures cancelled state survives restarts</li>
+</ul>
+<h4 id="queue-cleanup-operations">Queue Cleanup Operations<a class="headerlink" href="#queue-cleanup-operations" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Individual task deletion</strong> (<code>DELETE /api/v1/queue/{task_id}</code>)</li>
+<li><strong>Bulk cleanup</strong> (<code>POST /api/v1/queue/clear</code>) for completed tasks</li>
+<li><strong>File cleanup</strong> automatically removes associated image and output files</li>
+</ul>
+<h3 id="4-http-polling-support">4. HTTP Polling Support<a class="headerlink" href="#4-http-polling-support" title="Permanent link">&para;</a></h3>
+<p><strong>Endpoint:</strong> <code>GET /api/v1/queue/poll</code></p>
+<h4 id="optimized-for-5-second-polling">Optimized for 5-Second Polling<a class="headerlink" href="#optimized-for-5-second-polling" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Lightweight responses</strong> with only essential data</li>
+<li><strong>Active task filtering</strong> (pending/processing only)</li>
+<li><strong>Bandwidth optimization</strong> with truncated prompts and minimal data</li>
+<li><strong>Real-time statistics</strong> for pending and processing counts</li>
+<li><strong>Timestamp tracking</strong> for client synchronization</li>
+</ul>
+<h4 id="response-format">Response Format<a class="headerlink" href="#response-format" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2024-01-01T12:00:00&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;pending_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;processing_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;active_tasks&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;has_active_tasks&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="5-background-task-processing">5. Background Task Processing<a class="headerlink" href="#5-background-task-processing" title="Permanent link">&para;</a></h3>
+<p><strong>File:</strong> <code>backend/services/generation_service.py</code></p>
+<h4 id="enhanced-processing-features">Enhanced Processing Features<a class="headerlink" href="#enhanced-processing-features" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Image-aware generation</strong> handles I2V/TI2V with uploaded images</li>
+<li><strong>Progress tracking</strong> with real-time database updates</li>
+<li><strong>Error categorization</strong> provides specific feedback for VRAM, model, and timeout issues</li>
+<li><strong>Graceful failure handling</strong> with detailed error messages</li>
+</ul>
+<h4 id="task-lifecycle-management">Task Lifecycle Management<a class="headerlink" href="#task-lifecycle-management" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Automatic status transitions</strong>: pending → processing → completed/failed</li>
+<li><strong>Progress updates</strong>: 0% → 100% with intermediate milestones</li>
+<li><strong>Timestamp tracking</strong>: creation, start, and completion times</li>
+<li><strong>Output path management</strong>: automatic file path assignment</li>
+</ul>
+<h3 id="6-queue-persistence-testing">6. Queue Persistence Testing<a class="headerlink" href="#6-queue-persistence-testing" title="Permanent link">&para;</a></h3>
+<p><strong>Files:</strong></p>
+<ul>
+<li><code>backend/test_queue_persistence.py</code></li>
+<li><code>backend/test_queue_simple.py</code></li>
+<li><code>backend/test_task_2_3_validation.py</code></li>
+</ul>
+<h4 id="comprehensive-test-coverage">Comprehensive Test Coverage<a class="headerlink" href="#comprehensive-test-coverage" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Database persistence</strong> verification across restarts</li>
+<li><strong>Task state preservation</strong> for all status types</li>
+<li><strong>Image upload persistence</strong> with file path tracking</li>
+<li><strong>Cancellation persistence</strong> ensuring cancelled tasks remain cancelled</li>
+<li><strong>Queue statistics accuracy</strong> validation</li>
+</ul>
+<h4 id="test-results">Test Results<a class="headerlink" href="#test-results" title="Permanent link">&para;</a></h4>
+<ul>
+<li>✅ <strong>Queue persistence after restart</strong>: All tasks retained with correct status</li>
+<li>✅ <strong>Task cancellation persistence</strong>: Cancelled tasks remain cancelled</li>
+<li>✅ <strong>Image upload persistence</strong>: File paths and metadata preserved</li>
+<li>✅ <strong>Background processing</strong>: Progress updates work correctly</li>
+<li>✅ <strong>HTTP polling</strong>: Optimized responses for frequent requests</li>
+</ul>
+<h2 id="database-schema-updates">Database Schema Updates<a class="headerlink" href="#database-schema-updates" title="Permanent link">&para;</a></h2>
+<p><strong>File:</strong> <code>backend/models/schemas.py</code></p>
+<h3 id="enhanced-queuestatus-model">Enhanced QueueStatus Model<a class="headerlink" href="#enhanced-queuestatus-model" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">QueueStatus</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">total_tasks</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">pending_tasks</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">processing_tasks</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">completed_tasks</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">failed_tasks</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">cancelled_tasks</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># New field</span>
+    <span class="n">tasks</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">TaskInfo</span><span class="p">]</span>
+</code></pre></div>
+<h3 id="task-status-enumeration">Task Status Enumeration<a class="headerlink" href="#task-status-enumeration" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>PENDING</code>: Task created, waiting for processing</li>
+<li><code>PROCESSING</code>: Task currently being generated</li>
+<li><code>COMPLETED</code>: Task finished successfully</li>
+<li><code>FAILED</code>: Task failed with error</li>
+<li><code>CANCELLED</code>: Task cancelled by user (persistent)</li>
+</ul>
+<h2 id="api-endpoints-summary">API Endpoints Summary<a class="headerlink" href="#api-endpoints-summary" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Endpoint</th>
+<th>Purpose</th>
+<th>Features</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><code>/api/v1/generate</code></td>
+<td>Create generation task</td>
+<td>I2V/TI2V image upload, validation</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/v1/queue</code></td>
+<td>Get queue status</td>
+<td>Filtering, pagination, full details</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/v1/queue/poll</code></td>
+<td>Optimized polling</td>
+<td>Lightweight, active tasks only</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/api/v1/queue/{id}/cancel</code></td>
+<td>Cancel task</td>
+<td>Safe cancellation with validation</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><code>/api/v1/queue/{id}</code></td>
+<td>Delete task</td>
+<td>File cleanup, completed tasks only</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/api/v1/queue/clear</code></td>
+<td>Clear completed</td>
+<td>Bulk cleanup with file removal</td>
+</tr>
+</tbody>
+</table>
+<h2 id="requirements-compliance">Requirements Compliance<a class="headerlink" href="#requirements-compliance" title="Permanent link">&para;</a></h2>
+<h3 id="requirement-21-image-to-video-i2v-mode-support">✅ Requirement 2.1: Image-to-Video (I2V) Mode Support<a class="headerlink" href="#requirement-21-image-to-video-i2v-mode-support" title="Permanent link">&para;</a></h3>
+<ul>
+<li>I2V model type fully supported with image upload requirement</li>
+<li>Proper validation ensures images are provided for I2V generation</li>
+<li>Background processing handles I2V-specific parameters</li>
+</ul>
+<h3 id="requirement-22-text-image-to-video-ti2v-mode-support">✅ Requirement 2.2: Text-Image-to-Video (TI2V) Mode Support<a class="headerlink" href="#requirement-22-text-image-to-video-ti2v-mode-support" title="Permanent link">&para;</a></h3>
+<ul>
+<li>TI2V-5B model type implemented with image + text input</li>
+<li>Higher resolution support (up to 1920x1080)</li>
+<li>Extended processing time estimation for complex TI2V tasks</li>
+</ul>
+<h3 id="requirement-31-image-upload-and-validation">✅ Requirement 3.1: Image Upload and Validation<a class="headerlink" href="#requirement-31-image-upload-and-validation" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Comprehensive file format validation (JPEG, PNG, WebP, BMP, TIFF)</li>
+<li>File size limits (10MB maximum)</li>
+<li>Dimension validation (64x64 to 4096x4096 pixels)</li>
+<li>Content type verification and security checks</li>
+</ul>
+<h3 id="requirement-32-image-preprocessing">✅ Requirement 3.2: Image Preprocessing<a class="headerlink" href="#requirement-32-image-preprocessing" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Automatic format conversion for compatibility</li>
+<li>Quality optimization for storage efficiency</li>
+<li>Safe filename generation to prevent conflicts</li>
+<li>Proper file organization in uploads directory</li>
+</ul>
+<h3 id="requirement-61-queue-management-interface">✅ Requirement 6.1: Queue Management Interface<a class="headerlink" href="#requirement-61-queue-management-interface" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Complete queue status API with filtering and pagination</li>
+<li>Task lifecycle management with all status transitions</li>
+<li>Comprehensive task information including metadata</li>
+</ul>
+<h3 id="requirement-62-real-time-progress-updates">✅ Requirement 6.2: Real-time Progress Updates<a class="headerlink" href="#requirement-62-real-time-progress-updates" title="Permanent link">&para;</a></h3>
+<ul>
+<li>HTTP polling endpoint optimized for 5-second intervals</li>
+<li>Real-time progress tracking in database</li>
+<li>Lightweight responses for bandwidth efficiency</li>
+</ul>
+<h3 id="requirement-63-task-cancellation-functionality">✅ Requirement 6.3: Task Cancellation Functionality<a class="headerlink" href="#requirement-63-task-cancellation-functionality" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Safe task cancellation with status validation</li>
+<li>Persistent cancellation state across restarts</li>
+<li>Proper cleanup of associated files</li>
+</ul>
+<h2 id="performance-optimizations">Performance Optimizations<a class="headerlink" href="#performance-optimizations" title="Permanent link">&para;</a></h2>
+<h3 id="image-processing">Image Processing<a class="headerlink" href="#image-processing" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>PIL-based validation</strong> ensures only valid images are processed</li>
+<li><strong>Format conversion</strong> optimizes compatibility and storage</li>
+<li><strong>Quality settings</strong> balance file size and visual quality</li>
+</ul>
+<h3 id="database-operations">Database Operations<a class="headerlink" href="#database-operations" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Indexed queries</strong> for efficient task retrieval</li>
+<li><strong>Batch operations</strong> for bulk cleanup</li>
+<li><strong>Connection pooling</strong> for concurrent access</li>
+</ul>
+<h3 id="http-polling">HTTP Polling<a class="headerlink" href="#http-polling" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Active task filtering</strong> reduces response size</li>
+<li><strong>Truncated data</strong> minimizes bandwidth usage</li>
+<li><strong>Efficient queries</strong> with proper indexing</li>
+</ul>
+<h2 id="error-handling">Error Handling<a class="headerlink" href="#error-handling" title="Permanent link">&para;</a></h2>
+<h3 id="image-upload-errors">Image Upload Errors<a class="headerlink" href="#image-upload-errors" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Invalid format</strong>: Clear message with supported formats list</li>
+<li><strong>File too large</strong>: Specific size limit information</li>
+<li><strong>Corrupted image</strong>: PIL validation with helpful suggestions</li>
+<li><strong>Missing image</strong>: Model-specific requirements explanation</li>
+</ul>
+<h3 id="queue-management-errors">Queue Management Errors<a class="headerlink" href="#queue-management-errors" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Task not found</strong>: 404 with clear error message</li>
+<li><strong>Invalid cancellation</strong>: Status-based validation with explanation</li>
+<li><strong>Database errors</strong>: Graceful handling with retry suggestions</li>
+</ul>
+<h3 id="generation-errors">Generation Errors<a class="headerlink" href="#generation-errors" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>VRAM exhaustion</strong>: Specific optimization recommendations</li>
+<li><strong>Model loading</strong>: Clear model availability information</li>
+<li><strong>Timeout errors</strong>: Performance tuning suggestions</li>
+</ul>
+<h2 id="testing-coverage">Testing Coverage<a class="headerlink" href="#testing-coverage" title="Permanent link">&para;</a></h2>
+<h3 id="unit-tests">Unit Tests<a class="headerlink" href="#unit-tests" title="Permanent link">&para;</a></h3>
+<ul>
+<li>✅ Image validation logic</li>
+<li>✅ Queue status calculations</li>
+<li>✅ Task cancellation workflow</li>
+<li>✅ Database persistence</li>
+</ul>
+<h3 id="integration-tests">Integration Tests<a class="headerlink" href="#integration-tests" title="Permanent link">&para;</a></h3>
+<ul>
+<li>✅ End-to-end generation workflow</li>
+<li>✅ Image upload and processing</li>
+<li>✅ Queue management operations</li>
+<li>✅ HTTP polling functionality</li>
+</ul>
+<h3 id="persistence-tests">Persistence Tests<a class="headerlink" href="#persistence-tests" title="Permanent link">&para;</a></h3>
+<ul>
+<li>✅ Database restart simulation</li>
+<li>✅ Task state preservation</li>
+<li>✅ File path persistence</li>
+<li>✅ Status transition accuracy</li>
+</ul>
+<h2 id="future-enhancements">Future Enhancements<a class="headerlink" href="#future-enhancements" title="Permanent link">&para;</a></h2>
+<h3 id="planned-improvements">Planned Improvements<a class="headerlink" href="#planned-improvements" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>WebSocket support</strong> for sub-second updates (Phase 2)</li>
+<li><strong>Batch image upload</strong> for multiple I2V tasks</li>
+<li><strong>Image preview generation</strong> for uploaded files</li>
+<li><strong>Advanced queue filtering</strong> by model type, date range</li>
+<li><strong>Queue analytics</strong> with historical performance data</li>
+</ol>
+<h3 id="scalability-considerations">Scalability Considerations<a class="headerlink" href="#scalability-considerations" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Horizontal scaling</strong> with shared database</li>
+<li><strong>File storage optimization</strong> with cloud integration</li>
+<li><strong>Load balancing</strong> for multiple generation workers</li>
+<li><strong>Caching strategies</strong> for frequently accessed data</li>
+</ul>
+<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
+<p>Task 2.3 has been successfully implemented with comprehensive I2V/TI2V support and robust queue management functionality. The implementation provides:</p>
+<ul>
+<li><strong>Complete image upload workflow</strong> with validation and preprocessing</li>
+<li><strong>Robust queue management</strong> with persistence and real-time updates</li>
+<li><strong>HTTP polling optimization</strong> for efficient client updates</li>
+<li><strong>Comprehensive error handling</strong> with user-friendly messages</li>
+<li><strong>Thorough testing coverage</strong> ensuring reliability and persistence</li>
+</ul>
+<p>All requirements have been met and the system is ready for the next phase of development (Task 2.4: System monitoring and optimization endpoints).</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

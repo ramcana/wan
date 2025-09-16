@@ -1,0 +1,1676 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="WAN2.2 Video Generation System Documentation">
+      
+      
+      
+        <link rel="canonical" href="https://ramcana.github.io/wan/api/scripts-startup_manager-recovery_engine/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>scripts.startup_manager.recovery_engine - WAN22 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e53b48f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#scriptsstartup_managerrecovery_engine" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="WAN22 Documentation" class="md-header__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            WAN22 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              scripts.startup_manager.recovery_engine
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../WAN22_System_Capabilities_Report/" class="md-tabs__link">
+          
+  
+  
+  System Overview
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../model-orchestrator/requirements/" class="md-tabs__link">
+          
+  
+  
+  Model Orchestrator
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../config/models.toml" class="md-tabs__link">
+          
+  
+  
+  Configuration
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="WAN22 Documentation" class="md-nav__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    WAN22 Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    System Overview
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            System Overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../WAN22_System_Capabilities_Report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Capabilities Report
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Model Orchestrator
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Model Orchestrator
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Requirements
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/tasks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tasks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Configuration
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Configuration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Models Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models_simple.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simple Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Classes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#errortype" class="md-nav__link">
+    <span class="md-ellipsis">
+      ErrorType
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recoveryaction" class="md-nav__link">
+    <span class="md-ellipsis">
+      RecoveryAction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#startuperror" class="md-nav__link">
+    <span class="md-ellipsis">
+      StartupError
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recoveryresult" class="md-nav__link">
+    <span class="md-ellipsis">
+      RecoveryResult
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#errorpatternmatcher" class="md-nav__link">
+    <span class="md-ellipsis">
+      ErrorPatternMatcher
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ErrorPatternMatcher">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initself-any" class="md-nav__link">
+    <span class="md-ellipsis">
+      init(self: Any)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classify_errorself-any-error_message-str-exception-errortype" class="md-nav__link">
+    <span class="md-ellipsis">
+      classify_error(self: Any, error_message: str, exception: ) -&gt; ErrorType
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retrystrategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      RetryStrategy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="RetryStrategy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#methods_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initself-any-max_attempts-int-base_delay-float-max_delay-float" class="md-nav__link">
+    <span class="md-ellipsis">
+      init(self: Any, max_attempts: int, base_delay: float, max_delay: float)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#execute_with_retryself-any-operation-callable-operation_name-str-any" class="md-nav__link">
+    <span class="md-ellipsis">
+      execute_with_retry(self: Any, operation: Callable, operation_name: str) -&gt; Any
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recoveryengine" class="md-nav__link">
+    <span class="md-ellipsis">
+      RecoveryEngine
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="RecoveryEngine">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#methods_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initself-any-config_path" class="md-nav__link">
+    <span class="md-ellipsis">
+      init(self: Any, config_path: )
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#load_configurationself-any" class="md-nav__link">
+    <span class="md-ellipsis">
+      load_configuration(self: Any)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#save_configurationself-any" class="md-nav__link">
+    <span class="md-ellipsis">
+      save_configuration(self: Any)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classify_errorself-any-error_message-str-exception-context-startuperror" class="md-nav__link">
+    <span class="md-ellipsis">
+      classify_error(self: Any, error_message: str, exception: , context: ) -&gt; StartupError
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_get_suggested_actionsself-any-error_type-errortype-" class="md-nav__link">
+    <span class="md-ellipsis">
+      _get_suggested_actions(self: Any, error_type: ErrorType) -&gt;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_is_auto_fixableself-any-error_type-errortype-bool" class="md-nav__link">
+    <span class="md-ellipsis">
+      _is_auto_fixable(self: Any, error_type: ErrorType) -&gt; bool
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_get_error_detailsself-any-error_type-errortype-exception-context-" class="md-nav__link">
+    <span class="md-ellipsis">
+      _get_error_details(self: Any, error_type: ErrorType, exception: , context: ) -&gt;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_get_process_using_portself-any-port-int-" class="md-nav__link">
+    <span class="md-ellipsis">
+      _get_process_using_port(self: Any, port: int) -&gt;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_register_recovery_actionsself-any" class="md-nav__link">
+    <span class="md-ellipsis">
+      _register_recovery_actions(self: Any)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#register_recovery_actionself-any-error_type-errortype-action-recoveryaction" class="md-nav__link">
+    <span class="md-ellipsis">
+      register_recovery_action(self: Any, error_type: ErrorType, action: RecoveryAction)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_recovery_actionsself-any-error_type-errortype-" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_recovery_actions(self: Any, error_type: ErrorType) -&gt;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#attempt_recoveryself-any-error-startuperror-context-recoveryresult" class="md-nav__link">
+    <span class="md-ellipsis">
+      attempt_recovery(self: Any, error: StartupError, context: ) -&gt; RecoveryResult
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_update_success_rateself-any-action_name-str-success-bool" class="md-nav__link">
+    <span class="md-ellipsis">
+      _update_success_rate(self: Any, action_name: str, success: bool)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_kill_process_on_portself-any-error-startuperror-context-recoveryresult" class="md-nav__link">
+    <span class="md-ellipsis">
+      _kill_process_on_port(self: Any, error: StartupError, context: ) -&gt; RecoveryResult
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_find_alternative_portself-any-error-startuperror-context-recoveryresult" class="md-nav__link">
+    <span class="md-ellipsis">
+      _find_alternative_port(self: Any, error: StartupError, context: ) -&gt; RecoveryResult
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_is_port_availableself-any-port-int-bool" class="md-nav__link">
+    <span class="md-ellipsis">
+      _is_port_available(self: Any, port: int) -&gt; bool
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_try_alternative_portsself-any-error-startuperror-context-recoveryresult" class="md-nav__link">
+    <span class="md-ellipsis">
+      _try_alternative_ports(self: Any, error: StartupError, context: ) -&gt; RecoveryResult
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_check_firewall_exceptionsself-any-error-startuperror-context-recoveryresult" class="md-nav__link">
+    <span class="md-ellipsis">
+      _check_firewall_exceptions(self: Any, error: StartupError, context: ) -&gt; RecoveryResult
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_install_missing_dependenciesself-any-error-startuperror-context-recoveryresult" class="md-nav__link">
+    <span class="md-ellipsis">
+      _install_missing_dependencies(self: Any, error: StartupError, context: ) -&gt; RecoveryResult
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_activate_virtual_environmentself-any-error-startuperror-context-recoveryresult" class="md-nav__link">
+    <span class="md-ellipsis">
+      _activate_virtual_environment(self: Any, error: StartupError, context: ) -&gt; RecoveryResult
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_repair_config_fileself-any-error-startuperror-context-recoveryresult" class="md-nav__link">
+    <span class="md-ellipsis">
+      _repair_config_file(self: Any, error: StartupError, context: ) -&gt; RecoveryResult
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_create_virtual_environmentself-any-error-startuperror-context-recoveryresult" class="md-nav__link">
+    <span class="md-ellipsis">
+      _create_virtual_environment(self: Any, error: StartupError, context: ) -&gt; RecoveryResult
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_suggest_firewall_exceptionself-any-error-startuperror-context-recoveryresult" class="md-nav__link">
+    <span class="md-ellipsis">
+      _suggest_firewall_exception(self: Any, error: StartupError, context: ) -&gt; RecoveryResult
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_restart_with_different_paramsself-any-error-startuperror-context-recoveryresult" class="md-nav__link">
+    <span class="md-ellipsis">
+      _restart_with_different_params(self: Any, error: StartupError, context: ) -&gt; RecoveryResult
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_increase_timeoutself-any-error-startuperror-context-recoveryresult" class="md-nav__link">
+    <span class="md-ellipsis">
+      _increase_timeout(self: Any, error: StartupError, context: ) -&gt; RecoveryResult
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#failurepattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      FailurePattern
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="FailurePattern">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#methods_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initself-any-pattern_id-str-description-str-frequency-int" class="md-nav__link">
+    <span class="md-ellipsis">
+      init(self: Any, pattern_id: str, description: str, frequency: int)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add_occurrenceself-any-error_type-errortype-context" class="md-nav__link">
+    <span class="md-ellipsis">
+      add_occurrence(self: Any, error_type: ErrorType, context: )
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add_recovery_resultself-any-action_name-str-success-bool" class="md-nav__link">
+    <span class="md-ellipsis">
+      add_recovery_result(self: Any, action_name: str, success: bool)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_success_rate_for_actionself-any-action_name-str-float" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_success_rate_for_action(self: Any, action_name: str) -&gt; float
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_most_successful_actionsself-any-" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_most_successful_actions(self: Any) -&gt;
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fallbackconfiguration" class="md-nav__link">
+    <span class="md-ellipsis">
+      FallbackConfiguration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="FallbackConfiguration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#methods_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initself-any_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      init(self: Any)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_fallback_configself-any-error_type-errortype-" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_fallback_config(self: Any, error_type: ErrorType) -&gt;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apply_fallback_configself-any-error_type-errortype-base_config-" class="md-nav__link">
+    <span class="md-ellipsis">
+      apply_fallback_config(self: Any, error_type: ErrorType, base_config: ) -&gt;
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#intelligentfailurehandler" class="md-nav__link">
+    <span class="md-ellipsis">
+      IntelligentFailureHandler
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="IntelligentFailureHandler">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#methods_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initself-any-recovery_engine-any" class="md-nav__link">
+    <span class="md-ellipsis">
+      init(self: Any, recovery_engine: Any)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detect_failure_patternself-any-error-startuperror-context-" class="md-nav__link">
+    <span class="md-ellipsis">
+      detect_failure_pattern(self: Any, error: StartupError, context: ) -&gt;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_create_pattern_signatureself-any-error-startuperror-context-str" class="md-nav__link">
+    <span class="md-ellipsis">
+      _create_pattern_signature(self: Any, error: StartupError, context: ) -&gt; str
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_extract_error_keywordsself-any-error_message-str-str" class="md-nav__link">
+    <span class="md-ellipsis">
+      _extract_error_keywords(self: Any, error_message: str) -&gt; str
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_find_similar_patternself-any-error-startuperror-context-" class="md-nav__link">
+    <span class="md-ellipsis">
+      _find_similar_pattern(self: Any, error: StartupError, context: ) -&gt;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_should_create_patternself-any-error-startuperror-context-bool" class="md-nav__link">
+    <span class="md-ellipsis">
+      _should_create_pattern(self: Any, error: StartupError, context: ) -&gt; bool
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_generate_pattern_descriptionself-any-error-startuperror-context-str" class="md-nav__link">
+    <span class="md-ellipsis">
+      _generate_pattern_description(self: Any, error: StartupError, context: ) -&gt; str
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prioritize_recovery_actionsself-any-error-startuperror-context-" class="md-nav__link">
+    <span class="md-ellipsis">
+      prioritize_recovery_actions(self: Any, error: StartupError, context: ) -&gt;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#handle_recovery_failureself-any-error-startuperror-context-failed_actions-recoveryresult" class="md-nav__link">
+    <span class="md-ellipsis">
+      handle_recovery_failure(self: Any, error: StartupError, context: , failed_actions: ) -&gt; RecoveryResult
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_get_manual_intervention_suggestionsself-any-error_type-errortype-" class="md-nav__link">
+    <span class="md-ellipsis">
+      _get_manual_intervention_suggestions(self: Any, error_type: ErrorType) -&gt;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#save_failure_patternsself-any" class="md-nav__link">
+    <span class="md-ellipsis">
+      save_failure_patterns(self: Any)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#load_failure_patternsself-any" class="md-nav__link">
+    <span class="md-ellipsis">
+      load_failure_patterns(self: Any)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#constants" class="md-nav__link">
+    <span class="md-ellipsis">
+      Constants
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Constants">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#port_conflict" class="md-nav__link">
+    <span class="md-ellipsis">
+      PORT_CONFLICT
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#permission_denied" class="md-nav__link">
+    <span class="md-ellipsis">
+      PERMISSION_DENIED
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dependency_missing" class="md-nav__link">
+    <span class="md-ellipsis">
+      DEPENDENCY_MISSING
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#config_invalid" class="md-nav__link">
+    <span class="md-ellipsis">
+      CONFIG_INVALID
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#process_failed" class="md-nav__link">
+    <span class="md-ellipsis">
+      PROCESS_FAILED
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#network_error" class="md-nav__link">
+    <span class="md-ellipsis">
+      NETWORK_ERROR
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#firewall_blocked" class="md-nav__link">
+    <span class="md-ellipsis">
+      FIREWALL_BLOCKED
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#virtual_env_error" class="md-nav__link">
+    <span class="md-ellipsis">
+      VIRTUAL_ENV_ERROR
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timeout_error" class="md-nav__link">
+    <span class="md-ellipsis">
+      TIMEOUT_ERROR
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unknown" class="md-nav__link">
+    <span class="md-ellipsis">
+      UNKNOWN
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="scriptsstartup_managerrecovery_engine">scripts.startup_manager.recovery_engine<a class="headerlink" href="#scriptsstartup_managerrecovery_engine" title="Permanent link">&para;</a></h1>
+<p>Recovery Engine for Server Startup Management System</p>
+<p>This module provides error classification, recovery strategies, and intelligent
+failure handling for the WAN22 server startup process.</p>
+<h2 id="classes">Classes<a class="headerlink" href="#classes" title="Permanent link">&para;</a></h2>
+<h3 id="errortype">ErrorType<a class="headerlink" href="#errortype" title="Permanent link">&para;</a></h3>
+<p>Classification of different error types that can occur during startup</p>
+<h3 id="recoveryaction">RecoveryAction<a class="headerlink" href="#recoveryaction" title="Permanent link">&para;</a></h3>
+<p>Represents a specific recovery action that can be taken</p>
+<h3 id="startuperror">StartupError<a class="headerlink" href="#startuperror" title="Permanent link">&para;</a></h3>
+<p>Represents an error that occurred during startup</p>
+<h3 id="recoveryresult">RecoveryResult<a class="headerlink" href="#recoveryresult" title="Permanent link">&para;</a></h3>
+<p>Result of a recovery attempt</p>
+<h3 id="errorpatternmatcher">ErrorPatternMatcher<a class="headerlink" href="#errorpatternmatcher" title="Permanent link">&para;</a></h3>
+<p>Matches error messages to specific error types using patterns</p>
+<h4 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h4>
+<h5 id="initself-any"><strong>init</strong>(self: Any)<a class="headerlink" href="#initself-any" title="Permanent link">&para;</a></h5>
+<h5 id="classify_errorself-any-error_message-str-exception-errortype">classify_error(self: Any, error_message: str, exception: <ast.Subscript object at 0x0000019431A3ACE0>) -&gt; ErrorType<a class="headerlink" href="#classify_errorself-any-error_message-str-exception-errortype" title="Permanent link">&para;</a></h5>
+<p>Classify an error based on its message and exception type</p>
+<h3 id="retrystrategy">RetryStrategy<a class="headerlink" href="#retrystrategy" title="Permanent link">&para;</a></h3>
+<p>Implements exponential backoff retry logic</p>
+<h4 id="methods_1">Methods<a class="headerlink" href="#methods_1" title="Permanent link">&para;</a></h4>
+<h5 id="initself-any-max_attempts-int-base_delay-float-max_delay-float"><strong>init</strong>(self: Any, max_attempts: int, base_delay: float, max_delay: float)<a class="headerlink" href="#initself-any-max_attempts-int-base_delay-float-max_delay-float" title="Permanent link">&para;</a></h5>
+<h5 id="execute_with_retryself-any-operation-callable-operation_name-str-any">execute_with_retry(self: Any, operation: Callable, operation_name: str) -&gt; Any<a class="headerlink" href="#execute_with_retryself-any-operation-callable-operation_name-str-any" title="Permanent link">&para;</a></h5>
+<p>Execute an operation with exponential backoff retry</p>
+<h3 id="recoveryengine">RecoveryEngine<a class="headerlink" href="#recoveryengine" title="Permanent link">&para;</a></h3>
+<p>Main recovery engine that handles error classification and recovery strategies</p>
+<h4 id="methods_2">Methods<a class="headerlink" href="#methods_2" title="Permanent link">&para;</a></h4>
+<h5 id="initself-any-config_path"><strong>init</strong>(self: Any, config_path: <ast.Subscript object at 0x0000019434304AC0>)<a class="headerlink" href="#initself-any-config_path" title="Permanent link">&para;</a></h5>
+<h5 id="load_configurationself-any">load_configuration(self: Any)<a class="headerlink" href="#load_configurationself-any" title="Permanent link">&para;</a></h5>
+<p>Load recovery engine configuration</p>
+<h5 id="save_configurationself-any">save_configuration(self: Any)<a class="headerlink" href="#save_configurationself-any" title="Permanent link">&para;</a></h5>
+<p>Save current configuration</p>
+<h5 id="classify_errorself-any-error_message-str-exception-context-startuperror">classify_error(self: Any, error_message: str, exception: <ast.Subscript object at 0x0000019432D7C2E0>, context: <ast.Subscript object at 0x0000019432D7C0A0>) -&gt; StartupError<a class="headerlink" href="#classify_errorself-any-error_message-str-exception-context-startuperror" title="Permanent link">&para;</a></h5>
+<p>Classify an error and create a StartupError object</p>
+<h5 id="_get_suggested_actionsself-any-error_type-errortype-">_get_suggested_actions(self: Any, error_type: ErrorType) -&gt; <ast.Subscript object at 0x000001942F3C7AF0><a class="headerlink" href="#_get_suggested_actionsself-any-error_type-errortype-" title="Permanent link">&para;</a></h5>
+<p>Get human-readable suggested actions for an error type</p>
+<h5 id="_is_auto_fixableself-any-error_type-errortype-bool">_is_auto_fixable(self: Any, error_type: ErrorType) -&gt; bool<a class="headerlink" href="#_is_auto_fixableself-any-error_type-errortype-bool" title="Permanent link">&para;</a></h5>
+<p>Determine if an error type can be automatically fixed</p>
+<h5 id="_get_error_detailsself-any-error_type-errortype-exception-context-">_get_error_details(self: Any, error_type: ErrorType, exception: <ast.Subscript object at 0x000001942F3C7820>, context: <ast.Subscript object at 0x000001942F3C74F0>) -&gt; <ast.Subscript object at 0x000001942F436620><a class="headerlink" href="#_get_error_detailsself-any-error_type-errortype-exception-context-" title="Permanent link">&para;</a></h5>
+<p>Get detailed information about the error</p>
+<h5 id="_get_process_using_portself-any-port-int-">_get_process_using_port(self: Any, port: int) -&gt; <ast.Subscript object at 0x000001942F4357E0><a class="headerlink" href="#_get_process_using_portself-any-port-int-" title="Permanent link">&para;</a></h5>
+<p>Get information about the process using a specific port</p>
+<h5 id="_register_recovery_actionsself-any">_register_recovery_actions(self: Any)<a class="headerlink" href="#_register_recovery_actionsself-any" title="Permanent link">&para;</a></h5>
+<p>Register all available recovery actions</p>
+<h5 id="register_recovery_actionself-any-error_type-errortype-action-recoveryaction">register_recovery_action(self: Any, error_type: ErrorType, action: RecoveryAction)<a class="headerlink" href="#register_recovery_actionself-any-error_type-errortype-action-recoveryaction" title="Permanent link">&para;</a></h5>
+<p>Register a recovery action for a specific error type</p>
+<h5 id="get_recovery_actionsself-any-error_type-errortype-">get_recovery_actions(self: Any, error_type: ErrorType) -&gt; <ast.Subscript object at 0x000001942F415690><a class="headerlink" href="#get_recovery_actionsself-any-error_type-errortype-" title="Permanent link">&para;</a></h5>
+<p>Get available recovery actions for an error type</p>
+<h5 id="attempt_recoveryself-any-error-startuperror-context-recoveryresult">attempt_recovery(self: Any, error: StartupError, context: <ast.Subscript object at 0x000001942F4154E0>) -&gt; RecoveryResult<a class="headerlink" href="#attempt_recoveryself-any-error-startuperror-context-recoveryresult" title="Permanent link">&para;</a></h5>
+<p>Attempt to recover from an error</p>
+<h5 id="_update_success_rateself-any-action_name-str-success-bool">_update_success_rate(self: Any, action_name: str, success: bool)<a class="headerlink" href="#_update_success_rateself-any-action_name-str-success-bool" title="Permanent link">&para;</a></h5>
+<p>Update success rate for a recovery action</p>
+<h5 id="_kill_process_on_portself-any-error-startuperror-context-recoveryresult">_kill_process_on_port(self: Any, error: StartupError, context: <ast.Subscript object at 0x000001942F05EFE0>) -&gt; RecoveryResult<a class="headerlink" href="#_kill_process_on_portself-any-error-startuperror-context-recoveryresult" title="Permanent link">&para;</a></h5>
+<p>Kill process using a specific port</p>
+<h5 id="_find_alternative_portself-any-error-startuperror-context-recoveryresult">_find_alternative_port(self: Any, error: StartupError, context: <ast.Subscript object at 0x000001943035D690>) -&gt; RecoveryResult<a class="headerlink" href="#_find_alternative_portself-any-error-startuperror-context-recoveryresult" title="Permanent link">&para;</a></h5>
+<p>Find an alternative available port</p>
+<h5 id="_is_port_availableself-any-port-int-bool">_is_port_available(self: Any, port: int) -&gt; bool<a class="headerlink" href="#_is_port_availableself-any-port-int-bool" title="Permanent link">&para;</a></h5>
+<p>Check if a port is available</p>
+<h5 id="_try_alternative_portsself-any-error-startuperror-context-recoveryresult">_try_alternative_ports(self: Any, error: StartupError, context: <ast.Subscript object at 0x000001943035E6E0>) -&gt; RecoveryResult<a class="headerlink" href="#_try_alternative_portsself-any-error-startuperror-context-recoveryresult" title="Permanent link">&para;</a></h5>
+<p>Try ports in safe range for permission issues</p>
+<h5 id="_check_firewall_exceptionsself-any-error-startuperror-context-recoveryresult">_check_firewall_exceptions(self: Any, error: StartupError, context: <ast.Subscript object at 0x000001943035E350>) -&gt; RecoveryResult<a class="headerlink" href="#_check_firewall_exceptionsself-any-error-startuperror-context-recoveryresult" title="Permanent link">&para;</a></h5>
+<p>Check firewall exceptions and provide guidance</p>
+<h5 id="_install_missing_dependenciesself-any-error-startuperror-context-recoveryresult">_install_missing_dependencies(self: Any, error: StartupError, context: <ast.Subscript object at 0x0000019433FD44C0>) -&gt; RecoveryResult<a class="headerlink" href="#_install_missing_dependenciesself-any-error-startuperror-context-recoveryresult" title="Permanent link">&para;</a></h5>
+<p>Install missing dependencies</p>
+<h5 id="_activate_virtual_environmentself-any-error-startuperror-context-recoveryresult">_activate_virtual_environment(self: Any, error: StartupError, context: <ast.Subscript object at 0x0000019433FD7010>) -&gt; RecoveryResult<a class="headerlink" href="#_activate_virtual_environmentself-any-error-startuperror-context-recoveryresult" title="Permanent link">&para;</a></h5>
+<p>Activate virtual environment</p>
+<h5 id="_repair_config_fileself-any-error-startuperror-context-recoveryresult">_repair_config_file(self: Any, error: StartupError, context: <ast.Subscript object at 0x0000019431AFE6B0>) -&gt; RecoveryResult<a class="headerlink" href="#_repair_config_fileself-any-error-startuperror-context-recoveryresult" title="Permanent link">&para;</a></h5>
+<p>Repair or recreate configuration file</p>
+<h5 id="_create_virtual_environmentself-any-error-startuperror-context-recoveryresult">_create_virtual_environment(self: Any, error: StartupError, context: <ast.Subscript object at 0x0000019431AFCA90>) -&gt; RecoveryResult<a class="headerlink" href="#_create_virtual_environmentself-any-error-startuperror-context-recoveryresult" title="Permanent link">&para;</a></h5>
+<p>Create new virtual environment</p>
+<h5 id="_suggest_firewall_exceptionself-any-error-startuperror-context-recoveryresult">_suggest_firewall_exception(self: Any, error: StartupError, context: <ast.Subscript object at 0x0000019431AFC3A0>) -&gt; RecoveryResult<a class="headerlink" href="#_suggest_firewall_exceptionself-any-error-startuperror-context-recoveryresult" title="Permanent link">&para;</a></h5>
+<p>Provide firewall exception suggestions</p>
+<h5 id="_restart_with_different_paramsself-any-error-startuperror-context-recoveryresult">_restart_with_different_params(self: Any, error: StartupError, context: <ast.Subscript object at 0x000001942FB37FD0>) -&gt; RecoveryResult<a class="headerlink" href="#_restart_with_different_paramsself-any-error-startuperror-context-recoveryresult" title="Permanent link">&para;</a></h5>
+<p>Restart process with different parameters</p>
+<h5 id="_increase_timeoutself-any-error-startuperror-context-recoveryresult">_increase_timeout(self: Any, error: StartupError, context: <ast.Subscript object at 0x000001942FB36EC0>) -&gt; RecoveryResult<a class="headerlink" href="#_increase_timeoutself-any-error-startuperror-context-recoveryresult" title="Permanent link">&para;</a></h5>
+<p>Increase timeout values and retry</p>
+<h3 id="failurepattern">FailurePattern<a class="headerlink" href="#failurepattern" title="Permanent link">&para;</a></h3>
+<p>Represents a detected failure pattern</p>
+<h4 id="methods_3">Methods<a class="headerlink" href="#methods_3" title="Permanent link">&para;</a></h4>
+<h5 id="initself-any-pattern_id-str-description-str-frequency-int"><strong>init</strong>(self: Any, pattern_id: str, description: str, frequency: int)<a class="headerlink" href="#initself-any-pattern_id-str-description-str-frequency-int" title="Permanent link">&para;</a></h5>
+<h5 id="add_occurrenceself-any-error_type-errortype-context">add_occurrence(self: Any, error_type: ErrorType, context: <ast.Subscript object at 0x000001942FB36800>)<a class="headerlink" href="#add_occurrenceself-any-error_type-errortype-context" title="Permanent link">&para;</a></h5>
+<p>Add a new occurrence of this failure pattern</p>
+<h5 id="add_recovery_resultself-any-action_name-str-success-bool">add_recovery_result(self: Any, action_name: str, success: bool)<a class="headerlink" href="#add_recovery_resultself-any-action_name-str-success-bool" title="Permanent link">&para;</a></h5>
+<p>Record the result of a recovery attempt</p>
+<h5 id="get_success_rate_for_actionself-any-action_name-str-float">get_success_rate_for_action(self: Any, action_name: str) -&gt; float<a class="headerlink" href="#get_success_rate_for_actionself-any-action_name-str-float" title="Permanent link">&para;</a></h5>
+<p>Get success rate for a specific recovery action</p>
+<h5 id="get_most_successful_actionsself-any-">get_most_successful_actions(self: Any) -&gt; <ast.Subscript object at 0x0000019431B59C90><a class="headerlink" href="#get_most_successful_actionsself-any-" title="Permanent link">&para;</a></h5>
+<p>Get recovery actions sorted by success rate for this pattern</p>
+<h3 id="fallbackconfiguration">FallbackConfiguration<a class="headerlink" href="#fallbackconfiguration" title="Permanent link">&para;</a></h3>
+<p>Manages fallback configurations when primary recovery methods fail</p>
+<h4 id="methods_4">Methods<a class="headerlink" href="#methods_4" title="Permanent link">&para;</a></h4>
+<h5 id="initself-any_1"><strong>init</strong>(self: Any)<a class="headerlink" href="#initself-any_1" title="Permanent link">&para;</a></h5>
+<h5 id="get_fallback_configself-any-error_type-errortype-">get_fallback_config(self: Any, error_type: ErrorType) -&gt; <ast.Subscript object at 0x0000019431B58EE0><a class="headerlink" href="#get_fallback_configself-any-error_type-errortype-" title="Permanent link">&para;</a></h5>
+<p>Get fallback configuration for an error type</p>
+<h5 id="apply_fallback_configself-any-error_type-errortype-base_config-">apply_fallback_config(self: Any, error_type: ErrorType, base_config: <ast.Subscript object at 0x0000019431B5B850>) -&gt; <ast.Subscript object at 0x0000019431B5AD40><a class="headerlink" href="#apply_fallback_configself-any-error_type-errortype-base_config-" title="Permanent link">&para;</a></h5>
+<p>Apply fallback configuration to base configuration</p>
+<h3 id="intelligentfailurehandler">IntelligentFailureHandler<a class="headerlink" href="#intelligentfailurehandler" title="Permanent link">&para;</a></h3>
+<p>Handles intelligent failure detection and learning</p>
+<h4 id="methods_5">Methods<a class="headerlink" href="#methods_5" title="Permanent link">&para;</a></h4>
+<h5 id="initself-any-recovery_engine-any"><strong>init</strong>(self: Any, recovery_engine: Any)<a class="headerlink" href="#initself-any-recovery_engine-any" title="Permanent link">&para;</a></h5>
+<h5 id="detect_failure_patternself-any-error-startuperror-context-">detect_failure_pattern(self: Any, error: StartupError, context: <ast.Subscript object at 0x0000019431B59390>) -&gt; <ast.Subscript object at 0x000001943015CFD0><a class="headerlink" href="#detect_failure_patternself-any-error-startuperror-context-" title="Permanent link">&para;</a></h5>
+<p>Detect if this error matches an existing failure pattern</p>
+<h5 id="_create_pattern_signatureself-any-error-startuperror-context-str">_create_pattern_signature(self: Any, error: StartupError, context: <ast.Subscript object at 0x000001943015DEA0>) -&gt; str<a class="headerlink" href="#_create_pattern_signatureself-any-error-startuperror-context-str" title="Permanent link">&para;</a></h5>
+<p>Create a unique signature for a failure pattern</p>
+<h5 id="_extract_error_keywordsself-any-error_message-str-str">_extract_error_keywords(self: Any, error_message: str) -&gt; str<a class="headerlink" href="#_extract_error_keywordsself-any-error_message-str-str" title="Permanent link">&para;</a></h5>
+<p>Extract key words from error message for pattern matching</p>
+<h5 id="_find_similar_patternself-any-error-startuperror-context-">_find_similar_pattern(self: Any, error: StartupError, context: <ast.Subscript object at 0x000001943015F340>) -&gt; <ast.Subscript object at 0x000001942FE354E0><a class="headerlink" href="#_find_similar_patternself-any-error-startuperror-context-" title="Permanent link">&para;</a></h5>
+<p>Find similar existing patterns</p>
+<h5 id="_should_create_patternself-any-error-startuperror-context-bool">_should_create_pattern(self: Any, error: StartupError, context: <ast.Subscript object at 0x000001942FE34880>) -&gt; bool<a class="headerlink" href="#_should_create_patternself-any-error-startuperror-context-bool" title="Permanent link">&para;</a></h5>
+<p>Determine if we should create a new failure pattern</p>
+<h5 id="_generate_pattern_descriptionself-any-error-startuperror-context-str">_generate_pattern_description(self: Any, error: StartupError, context: <ast.Subscript object at 0x000001942FE34A00>) -&gt; str<a class="headerlink" href="#_generate_pattern_descriptionself-any-error-startuperror-context-str" title="Permanent link">&para;</a></h5>
+<p>Generate a human-readable description for the pattern</p>
+<h5 id="prioritize_recovery_actionsself-any-error-startuperror-context-">prioritize_recovery_actions(self: Any, error: StartupError, context: <ast.Subscript object at 0x000001942FE34160>) -&gt; <ast.Subscript object at 0x000001942FE371F0><a class="headerlink" href="#prioritize_recovery_actionsself-any-error-startuperror-context-" title="Permanent link">&para;</a></h5>
+<p>Prioritize recovery actions based on learned patterns and success rates</p>
+<h5 id="handle_recovery_failureself-any-error-startuperror-context-failed_actions-recoveryresult">handle_recovery_failure(self: Any, error: StartupError, context: <ast.Subscript object at 0x000001942FE37D90>, failed_actions: <ast.Subscript object at 0x000001942FE37FA0>) -&gt; RecoveryResult<a class="headerlink" href="#handle_recovery_failureself-any-error-startuperror-context-failed_actions-recoveryresult" title="Permanent link">&para;</a></h5>
+<p>Handle the case when all primary recovery actions fail</p>
+<h5 id="_get_manual_intervention_suggestionsself-any-error_type-errortype-">_get_manual_intervention_suggestions(self: Any, error_type: ErrorType) -&gt; <ast.Subscript object at 0x000001942FDED630><a class="headerlink" href="#_get_manual_intervention_suggestionsself-any-error_type-errortype-" title="Permanent link">&para;</a></h5>
+<p>Get manual intervention suggestions for an error type</p>
+<h5 id="save_failure_patternsself-any">save_failure_patterns(self: Any)<a class="headerlink" href="#save_failure_patternsself-any" title="Permanent link">&para;</a></h5>
+<p>Save learned failure patterns to persistent storage</p>
+<h5 id="load_failure_patternsself-any">load_failure_patterns(self: Any)<a class="headerlink" href="#load_failure_patternsself-any" title="Permanent link">&para;</a></h5>
+<p>Load failure patterns from persistent storage</p>
+<h2 id="constants">Constants<a class="headerlink" href="#constants" title="Permanent link">&para;</a></h2>
+<h3 id="port_conflict">PORT_CONFLICT<a class="headerlink" href="#port_conflict" title="Permanent link">&para;</a></h3>
+<p>Type: <code>str</code></p>
+<p>Value: <code>port_conflict</code></p>
+<h3 id="permission_denied">PERMISSION_DENIED<a class="headerlink" href="#permission_denied" title="Permanent link">&para;</a></h3>
+<p>Type: <code>str</code></p>
+<p>Value: <code>permission_denied</code></p>
+<h3 id="dependency_missing">DEPENDENCY_MISSING<a class="headerlink" href="#dependency_missing" title="Permanent link">&para;</a></h3>
+<p>Type: <code>str</code></p>
+<p>Value: <code>dependency_missing</code></p>
+<h3 id="config_invalid">CONFIG_INVALID<a class="headerlink" href="#config_invalid" title="Permanent link">&para;</a></h3>
+<p>Type: <code>str</code></p>
+<p>Value: <code>config_invalid</code></p>
+<h3 id="process_failed">PROCESS_FAILED<a class="headerlink" href="#process_failed" title="Permanent link">&para;</a></h3>
+<p>Type: <code>str</code></p>
+<p>Value: <code>process_failed</code></p>
+<h3 id="network_error">NETWORK_ERROR<a class="headerlink" href="#network_error" title="Permanent link">&para;</a></h3>
+<p>Type: <code>str</code></p>
+<p>Value: <code>network_error</code></p>
+<h3 id="firewall_blocked">FIREWALL_BLOCKED<a class="headerlink" href="#firewall_blocked" title="Permanent link">&para;</a></h3>
+<p>Type: <code>str</code></p>
+<p>Value: <code>firewall_blocked</code></p>
+<h3 id="virtual_env_error">VIRTUAL_ENV_ERROR<a class="headerlink" href="#virtual_env_error" title="Permanent link">&para;</a></h3>
+<p>Type: <code>str</code></p>
+<p>Value: <code>virtual_env_error</code></p>
+<h3 id="timeout_error">TIMEOUT_ERROR<a class="headerlink" href="#timeout_error" title="Permanent link">&para;</a></h3>
+<p>Type: <code>str</code></p>
+<p>Value: <code>timeout_error</code></p>
+<h3 id="unknown">UNKNOWN<a class="headerlink" href="#unknown" title="Permanent link">&para;</a></h3>
+<p>Type: <code>str</code></p>
+<p>Value: <code>unknown</code></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

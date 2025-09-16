@@ -1,0 +1,1302 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="WAN2.2 Video Generation System Documentation">
+      
+      
+      
+        <link rel="canonical" href="https://ramcana.github.io/wan/model-orchestrator/tasks/">
+      
+      
+        <link rel="prev" href="../requirements/">
+      
+      
+        <link rel="next" href="../../config/models.toml">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>Tasks - WAN22 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e53b48f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#implementation-plan" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="WAN22 Documentation" class="md-header__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            WAN22 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Tasks
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../WAN22_System_Capabilities_Report/" class="md-tabs__link">
+          
+  
+  
+  System Overview
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../requirements/" class="md-tabs__link">
+          
+  
+  
+  Model Orchestrator
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../config/models.toml" class="md-tabs__link">
+          
+  
+  
+  Configuration
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="WAN22 Documentation" class="md-nav__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    WAN22 Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    System Overview
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            System Overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../WAN22_System_Capabilities_Report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Capabilities Report
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Model Orchestrator
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Model Orchestrator
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Requirements
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Tasks
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tasks
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sprint-0-project-wiring-12-day" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sprint 0: Project Wiring (½ day)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mvp-sprint-1-core-orchestrator-foundation" class="md-nav__link">
+    <span class="md-ellipsis">
+      MVP Sprint 1: Core Orchestrator Foundation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MVP Sprint 1: Core Orchestrator Foundation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mvp-definition-of-done" class="md-nav__link">
+    <span class="md-ellipsis">
+      MVP Definition of Done
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sprint-2-production-hardening" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sprint 2: Production Hardening
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sprint-3-advanced-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sprint 3: Advanced Features
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation-guidelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation Guidelines
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementation Guidelines">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#code-quality-standards" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Quality Standards
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sanity-checklist-validate-while-building" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sanity Checklist (validate while building)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Configuration
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Configuration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Models Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models_simple.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simple Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sprint-0-project-wiring-12-day" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sprint 0: Project Wiring (½ day)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mvp-sprint-1-core-orchestrator-foundation" class="md-nav__link">
+    <span class="md-ellipsis">
+      MVP Sprint 1: Core Orchestrator Foundation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MVP Sprint 1: Core Orchestrator Foundation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mvp-definition-of-done" class="md-nav__link">
+    <span class="md-ellipsis">
+      MVP Definition of Done
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sprint-2-production-hardening" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sprint 2: Production Hardening
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sprint-3-advanced-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sprint 3: Advanced Features
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation-guidelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation Guidelines
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementation Guidelines">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#code-quality-standards" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Quality Standards
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sanity-checklist-validate-while-building" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sanity Checklist (validate while building)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="implementation-plan">Implementation Plan<a class="headerlink" href="#implementation-plan" title="Permanent link">&para;</a></h1>
+<h2 id="sprint-0-project-wiring-12-day">Sprint 0: Project Wiring (½ day)<a class="headerlink" href="#sprint-0-project-wiring-12-day" title="Permanent link">&para;</a></h2>
+<ul>
+<li>[ ] 0.1 Set up package structure and development environment</li>
+<li>Create backend/core/model_orchestrator/ package with <strong>init</strong>.py</li>
+<li>Add empty class stubs for ModelRegistry, ModelResolver, LockManager, ModelEnsurer</li>
+<li>Set up CI configuration (ruff + mypy + pytest) and pre-commit hooks</li>
+<li>Configure basic logging with structured output and correlation IDs</li>
+<li>Add environment variable handling for MODELS_ROOT, WAN_MODELS_MANIFEST</li>
+<li>Write basic smoke test to validate package imports and environment setup</li>
+</ul>
+<h2 id="mvp-sprint-1-core-orchestrator-foundation">MVP Sprint 1: Core Orchestrator Foundation<a class="headerlink" href="#mvp-sprint-1-core-orchestrator-foundation" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>[x] 1. Implement manifest system with validation</p>
+</li>
+<li>
+<p>Implement TOML manifest parsing with schema_version validation</p>
+</li>
+<li>Define core data models (ModelSpec, FileSpec) with WAN2.2 model support</li>
+<li>Add model ID normalization function returning canonical {model_id, version, variant}</li>
+<li>Create manifest validator with path safety checks (no .., Windows case collisions)</li>
+<li>Add schema version compatibility checking with migration guidance</li>
+<li>Write unit tests for manifest parsing, validation, and ID normalization</li>
+<li>
+<p><em>Requirements: 1.1, 1.2, 1.3, 1.6</em></p>
+</li>
+<li>
+<p>[x] 2. Implement deterministic path resolver with atomic operations</p>
+</li>
+<li>
+<p>Create ModelResolver class with cross-platform path handling</p>
+</li>
+<li>Implement deterministic path generation from MODELS_ROOT</li>
+<li>Add support for model variants in path resolution</li>
+<li>Create temp directory strategy: {MODELS_ROOT}/.tmp/{model}@{variant}.{uuid}.partial</li>
+<li>Ensure temp and final paths are on same filesystem for atomic rename</li>
+<li>Handle Windows long path scenarios with appropriate error messages</li>
+<li>Write unit tests for path resolution and atomic operations across platforms</li>
+<li>
+<p><em>Requirements: 3.1, 3.2, 3.3, 4.2</em></p>
+</li>
+<li>
+<p>[x] 3. Build cross-process locking system</p>
+</li>
+<li>
+<p>Implement LockManager with OS-appropriate file locking (fcntl/msvcrt)</p>
+</li>
+<li>Create context manager for safe lock acquisition and release</li>
+<li>Add timeout-based lock acquisition with clear error handling</li>
+<li>Implement stale lock cleanup for crashed processes</li>
+<li>Write unit tests for concurrent lock scenarios</li>
+<li>
+<p><em>Requirements: 4.3, 4.6</em></p>
+</li>
+<li>
+<p>[x] 4. Create HuggingFace storage backend</p>
+</li>
+<li>
+<p>Implement HFStore class using huggingface_hub snapshot_download</p>
+</li>
+<li>Add support for allow_patterns to download only required file types</li>
+<li>Integrate with shared HF cache (HF_HOME, HF_HUB_CACHE)</li>
+<li>Enable hf_transfer for multi-connection downloads when available</li>
+<li>Write unit tests with mocked HuggingFace Hub responses</li>
+<li>
+<p><em>Requirements: 2.5, 4.1, 4.4, 9.1, 9.4</em></p>
+</li>
+<li>
+<p>[x] 5. Implement atomic download orchestration with preflight checks</p>
+</li>
+<li>
+<p>Create ModelEnsurer class with atomic download workflow</p>
+</li>
+<li>Add preflight disk space check: bytes_needed ≤ free_space - safety_margin</li>
+<li>Implement temporary directory downloads with fsync() before atomic rename</li>
+<li>Add basic file completeness checking (existence and size)</li>
+<li>Integrate cross-process locking with download operations</li>
+<li>Add optional checksum verification when manifest provides hashes</li>
+<li>Create .verified.json file after successful verification for fast status checks</li>
+<li>Write integration tests for complete download workflows and disk space scenarios</li>
+<li>
+<p><em>Requirements: 4.1, 4.2, 4.5, 5.1, 5.7, 10.1</em></p>
+</li>
+<li>
+<p>[x] 6. Build core API surface with status states</p>
+</li>
+<li>
+<p>Implement ensure(model_id, variant) -&gt; Path method with structured error codes</p>
+</li>
+<li>Create status(model_id, variant) -&gt; ModelStatus with states: NOT_PRESENT | PARTIAL | VERIFYING | COMPLETE | CORRUPT</li>
+<li>Add verify_integrity(model_id) method with checksum validation</li>
+<li>Implement HuggingFace fallback logic (log once if hf_transfer unavailable, continue without)</li>
+<li>Add optional negative cache for recently failed sources (in-memory TTL)</li>
+<li>Write unit tests for all API methods with various scenarios and error conditions</li>
+<li>
+<p><em>Requirements: 6.1, 6.3, 6.4, 13.1, 13.2</em></p>
+</li>
+<li>
+<p>[x] 7. Create CLI interface</p>
+</li>
+<li>
+<p>Implement <code>wan models status</code> command with human-readable output</p>
+</li>
+<li>Add <code>wan models ensure --only {model_id}</code> for selective downloads</li>
+<li>Support <code>--json</code> flag for machine-readable output</li>
+<li>Implement proper exit codes for success/failure scenarios</li>
+<li>Add progress indicators for download operations</li>
+<li>Write CLI integration tests with various command combinations</li>
+<li>
+<p><em>Requirements: 7.1, 7.2, 7.4, 13.3, 13.4</em></p>
+</li>
+<li>
+<p>[x] 8. Add basic health monitoring endpoint (no GPU)</p>
+</li>
+<li>
+<p>Create /health/models endpoint that reports orchestrator status only</p>
+</li>
+<li>Implement dry-run model status checking: present/partial/missing + bytes_needed</li>
+<li>Return structured JSON showing missing components per model without downloads</li>
+<li>Add ?dry_run=true parameter to prevent any side effects</li>
+<li>Ensure response time &lt;100ms for 3 models by using .verified.json cache</li>
+<li>Add basic error handling and timeout protection for health checks</li>
+<li>Write tests for health endpoint with various model states</li>
+<li>
+<p><em>Requirements: 10.1, 10.2, 12.4</em></p>
+</li>
+<li>
+<p>[x] 9. Integrate with WAN pipeline loader with model-specific handling</p>
+</li>
+<li>
+<p>Create pipeline class mapping (t2v-A14B → WanT2VPipeline, i2v-A14B → WanI2VPipeline, ti2v-5b → WanTI2VPipeline)</p>
+</li>
+<li>Modify wan_pipeline_loader.py to validate required components per model type</li>
+<li>Implement component validation before GPU initialization (prevent loading image_encoder for t2v)</li>
+<li>Add model-specific VRAM estimation using manifest parameters</li>
+<li>Replace hardcoded paths with get_wan_paths(model_id) and validate component completeness</li>
+<li>Write integration tests for each model type with correct component loading</li>
+<li>
+<p><em>Requirements: 6.1, 6.2, 6.3, 14.1, 14.4</em></p>
+</li>
+<li>
+<p>[x] 10. Create WAN2.2-specific models.toml manifest</p>
+</li>
+<li>
+<p>Define manifest schema with model-specific required components (text_encoder, image_encoder, unet, vae)</p>
+</li>
+<li>Add t2v-A14B manifest with text_encoder + unet + vae (no image_encoder)</li>
+<li>Add i2v-A14B manifest with image_encoder + unet + vae (optional text_encoder)</li>
+<li>Add ti2v-5b manifest with text_encoder + image_encoder + unet + vae (dual conditioning)</li>
+<li>Include per-model defaults (fps, frames, scheduler, precision, guidance_scale)</li>
+<li>Add VRAM estimation parameters (params_billion, family_size) for each model</li>
+<li>Support shard-aware downloads using index.json files for large models</li>
+<li><em>Requirements: 1.1, 1.3, 1.7, 14.1, 14.2</em></li>
+</ul>
+<h3 id="mvp-definition-of-done">MVP Definition of Done<a class="headerlink" href="#mvp-definition-of-done" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>ensure(model_id, variant)</code> returns ready absolute path or raises with structured error code</li>
+<li>Atomic download + cross-process lock + checksum (if present) + basic size checks</li>
+<li>CLI: <code>wan models status|ensure --only t2v-A14B --json</code> with proper exit codes</li>
+<li><code>/health/models?dry_run=true</code> lists models and missing bytes without downloading</li>
+<li>Two concurrent <code>ensure()</code> calls: one downloads, one waits, both succeed</li>
+<li>Kill during download → next <code>ensure()</code> resumes and completes; no stray .partial files</li>
+<li>Disk nearly full: <code>ensure()</code> fails with NO_SPACE and suggests <code>wan models gc</code></li>
+</ul>
+<h2 id="sprint-2-production-hardening">Sprint 2: Production Hardening<a class="headerlink" href="#sprint-2-production-hardening" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>[x] 11. Add comprehensive error handling and recovery</p>
+</li>
+<li>
+<p>Implement structured error codes (NO_SPACE, AUTH_FAIL, CHECKSUM_FAIL, etc.)</p>
+</li>
+<li>Add retry logic with exponential backoff for transient failures</li>
+<li>Create error recovery strategies for common failure modes</li>
+<li>Implement proper logging with correlation IDs and structured metadata</li>
+<li>Write chaos tests for network failures and interruptions</li>
+<li>
+<p><em>Requirements: 4.8, 5.3, 5.4, 12.1, 12.2</em></p>
+</li>
+<li>
+<p>[x] 12. Implement disk space management</p>
+</li>
+<li>
+<p>Add preflight disk space checks before downloads</p>
+</li>
+<li>Create basic garbage collection with LRU-based cleanup</li>
+<li>Implement configurable disk quotas and size limits</li>
+<li>Add model pinning to protect critical models from GC</li>
+<li>Create <code>wan models gc</code> CLI command with dry-run support</li>
+<li>
+<p><em>Requirements: 10.1, 10.3, 10.4, 10.5</em></p>
+</li>
+<li>
+<p>[x] 13. Add S3/MinIO storage backend</p>
+</li>
+<li>
+<p>Implement S3Store class with boto3 integration</p>
+</li>
+<li>Support custom endpoints for MinIO compatibility</li>
+<li>Add parallel downloads with configurable concurrency</li>
+<li>Implement resume capability using HTTP Range requests</li>
+<li>Write tests with mocked S3 responses and error scenarios</li>
+<li>
+<p><em>Requirements: 2.4, 8.4, 9.2</em></p>
+</li>
+<li>
+<p>[x] 14. Enhance observability and monitoring</p>
+</li>
+<li>
+<p>Add Prometheus metrics for downloads, errors, and storage usage (limit cardinality: model_id, variant, source only)</p>
+</li>
+<li>Implement structured logging with configurable levels and correlation IDs</li>
+<li>Add GPU-based health checks: t2v/i2v/ti2v smoke tests with 1-2 denoise steps at 128x128</li>
+<li>Create detailed health endpoints with per-model diagnostics and component validation</li>
+<li>Add performance metrics and download duration tracking</li>
+<li>Write monitoring integration tests</li>
+<li>
+<p><em>Requirements: 12.1, 12.3, 12.5, 12.6, 14.6</em></p>
+</li>
+<li>
+<p>[x] 15. Add comprehensive integrity verification</p>
+</li>
+<li>
+<p>Implement per-file SHA256 checksum verification</p>
+</li>
+<li>Add fallback to HuggingFace ETag verification when checksums unavailable</li>
+<li>Create manifest signature verification for enhanced security</li>
+<li>Implement retry logic for checksum failures</li>
+<li>Write tests for various integrity failure scenarios</li>
+<li>
+<p><em>Requirements: 5.1, 5.2, 5.3, 5.5</em></p>
+</li>
+<li>
+<p>[x] 16. Implement component deduplication system</p>
+</li>
+<li>
+<p>Create shared component store at {MODELS_ROOT}/components/<name>@<version></p>
+</li>
+<li>Implement content-addressed storage for shared files (tokenizers, common encoders)</li>
+<li>Add hardlink/symlink/junction creation during atomic move step</li>
+<li>Detect duplicate files across models and create links to save disk space</li>
+<li>Add component reference tracking to prevent premature deletion</li>
+<li>Write tests for component sharing across t2v/i2v/ti2v models</li>
+<li><em>Requirements: 10.6, 11.7</em></li>
+</ul>
+<h2 id="sprint-3-advanced-features">Sprint 3: Advanced Features<a class="headerlink" href="#sprint-3-advanced-features" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>[x] 17. Enhance WAN2.2-specific model handling</p>
+</li>
+<li>
+<p>Add support for sharded models with index.json files (selective shard downloading)</p>
+</li>
+<li>Implement model-specific conditioning and preprocessing (image normalization for i2v/ti2v)</li>
+<li>Add text embedding caching for multi-clip sequences in t2v/ti2v</li>
+<li>Configure VAE tile size and decode strategy per model to prevent OOM</li>
+<li>Create development/production variant switching with different precision defaults</li>
+<li>Add model-specific input validation (prevent image input to t2v, require image for i2v/ti2v)</li>
+<li>Write tests for WAN2.2 model structure variations and input validation</li>
+<li>
+<p><em>Requirements: 14.1, 14.2, 14.3, 14.5, 14.6, 14.7</em></p>
+</li>
+<li>
+<p>[x] 18. Add advanced concurrency and performance features</p>
+</li>
+<li>
+<p>Implement parallel file downloads within single models</p>
+</li>
+<li>Add bandwidth limiting and connection pooling</li>
+<li>Create download queue management for multiple concurrent models</li>
+<li>Optimize memory usage for large model downloads</li>
+<li>Write performance benchmarks and optimization tests</li>
+<li>
+<p><em>Requirements: 9.2, 9.3</em></p>
+</li>
+<li>
+<p>[x] 19. Enhance security and credential management</p>
+</li>
+<li>
+<p>Implement secure credential storage using system keyring</p>
+</li>
+<li>Add support for presigned URLs and temporary access</li>
+<li>Create credential masking in all log output</li>
+<li>Add at-rest encryption support for sensitive models</li>
+<li>Write security tests for credential handling</li>
+<li>
+<p><em>Requirements: 8.3, 8.5, 8.6, 8.7</em></p>
+</li>
+<li>
+<p>[x] 20. Create migration and compatibility tools</p>
+</li>
+<li>
+<p>Build configuration migration tool from existing setups</p>
+</li>
+<li>Create backward compatibility adapters for legacy paths</li>
+<li>Implement gradual rollout with feature flags</li>
+<li>Add validation tools for manifest and configuration</li>
+<li>Write migration tests and rollback procedures</li>
+<li>
+<p><em>Requirements: 13.7</em></p>
+</li>
+<li>
+<p>[x] 21. Add comprehensive testing and documentation</p>
+</li>
+<li>
+<p>Create end-to-end integration tests for complete workflows</p>
+</li>
+<li>Add cross-platform compatibility tests (Windows, WSL, Unix)</li>
+<li>Implement performance and load testing suites</li>
+<li>Create user documentation and deployment guides</li>
+<li>Add troubleshooting guides and operational runbooks</li>
+<li><em>Requirements: All requirements validation</em></li>
+</ul>
+<h2 id="implementation-guidelines">Implementation Guidelines<a class="headerlink" href="#implementation-guidelines" title="Permanent link">&para;</a></h2>
+<h3 id="code-quality-standards">Code Quality Standards<a class="headerlink" href="#code-quality-standards" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Keep temp/locks/state in <code>{MODELS_ROOT}/.tmp</code>, <code>/.locks</code>, <code>/.state</code></li>
+<li>Use same-volume temp dirs to guarantee atomic rename</li>
+<li>Always <code>fsync()</code> before atomic rename on large files (especially Windows)</li>
+<li>Never log tokens or full presigned URLs; redact sensitive information</li>
+<li>On Windows, document enabling long paths and prefer junctions over symlinks</li>
+</ul>
+<h3 id="sanity-checklist-validate-while-building">Sanity Checklist (validate while building)<a class="headerlink" href="#sanity-checklist-validate-while-building" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>[x] <code>models.toml</code> passes validator (schema_version, no dupes, no traversal, Windows case OK)</p>
+</li>
+<li>
+<p>[ ] <code>status()</code> returns PARTIAL with exact missing files and bytes_needed</p>
+</li>
+<li>
+<p>[x] Two concurrent <code>ensure()</code> calls for same model: one downloads, one waits, both succeed</p>
+</li>
+<li>
+<p>[ ] Kill during download → next <code>ensure()</code> resumes and completes; no stray .partial remains</p>
+</li>
+<li>[ ] Disk nearly full: <code>ensure()</code> fails with NO_SPACE and suggests <code>wan models gc</code></li>
+<li>[ ] Health endpoint returns read-only status in &lt;100ms for 3 models</li>
+<li>[ ] CLI <code>--json</code> output is stable and parseable (add JSON schema test)</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1613 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="WAN2.2 Video Generation System Documentation">
+      
+      
+      
+        <link rel="canonical" href="https://ramcana.github.io/wan/reference/user-guide/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>Wan2.2 Compatibility System - User Guide - WAN22 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e53b48f4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#wan22-compatibility-system-user-guide" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="WAN22 Documentation" class="md-header__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            WAN22 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Wan2.2 Compatibility System - User Guide
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../WAN22_System_Capabilities_Report/" class="md-tabs__link">
+          
+  
+  
+  System Overview
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../model-orchestrator/requirements/" class="md-tabs__link">
+          
+  
+  
+  Model Orchestrator
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../config/models.toml" class="md-tabs__link">
+          
+  
+  
+  Configuration
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="WAN22 Documentation" class="md-nav__button md-logo" aria-label="WAN22 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    WAN22 Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ramcana/wan" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ramcana/wan
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    System Overview
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            System Overview
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../WAN22_System_Capabilities_Report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Capabilities Report
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Model Orchestrator
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Model Orchestrator
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Requirements
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-orchestrator/tasks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tasks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Configuration
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Configuration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Models Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../config/models_simple.toml" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simple Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick Start
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick Start">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Usage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-automatic-model-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Automatic Model Detection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-smart-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Smart Optimization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-fallback-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Fallback Strategies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-security-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Security Features
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supported-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supported Models
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Supported Models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wan-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wan Models
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#standard-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Standard Models
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hardware-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hardware Requirements
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hardware Requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#minimum-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Minimum Requirements
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recommended-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recommended Requirements
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimal-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optimal Requirements
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration Options
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration Options">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#system-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-specific-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model-Specific Settings
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generation-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generation Parameters
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Handling
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Error Handling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-issues-and-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Issues and Solutions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Issues and Solutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-model-not-found-error" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. "Model not found" Error
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-insufficient-vram-error" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. "Insufficient VRAM" Error
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-pipeline-not-found-error" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. "Pipeline not found" Error
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-vae-loading-failed-error" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. "VAE loading failed" Error
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getting-help" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting Help
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Optimization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Optimization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#memory-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Optimization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#speed-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Speed Optimization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quality-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quality Optimization
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Usage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Usage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#custom-pipeline-loading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom Pipeline Loading
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manual-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manual Optimization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagnostics-and-debugging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagnostics and Debugging
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-model-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Model Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-memory-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Memory Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-generation-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Generation Settings
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Troubleshooting
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-with-existing-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration with Existing Code
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration with Existing Code">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gradio-ui-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gradio UI Integration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flask-api-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Flask API Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="wan22-compatibility-system-user-guide">Wan2.2 Compatibility System - User Guide<a class="headerlink" href="#wan22-compatibility-system-user-guide" title="Permanent link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>The Wan2.2 Compatibility System provides seamless integration for Wan2.2 video generation models with automatic compatibility detection, optimization, and error handling. This guide will help you understand how to use the system effectively.</p>
+<h2 id="quick-start">Quick Start<a class="headerlink" href="#quick-start" title="Permanent link">&para;</a></h2>
+<h3 id="basic-usage">Basic Usage<a class="headerlink" href="#basic-usage" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">wan22_compatibility_system</span> <span class="kn">import</span> <span class="n">get_compatibility_system</span>
+
+<span class="c1"># Initialize the compatibility system</span>
+<span class="n">compat_system</span> <span class="o">=</span> <span class="n">get_compatibility_system</span><span class="p">()</span>
+
+<span class="c1"># Load a Wan model</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">compat_system</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="s2">&quot;path/to/wan2.2-model&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">result</span><span class="o">.</span><span class="n">success</span><span class="p">:</span>
+    <span class="c1"># Generate a video</span>
+    <span class="n">video_result</span> <span class="o">=</span> <span class="n">compat_system</span><span class="o">.</span><span class="n">generate_video</span><span class="p">(</span>
+        <span class="n">result</span><span class="o">.</span><span class="n">pipeline</span><span class="p">,</span>
+        <span class="s2">&quot;A beautiful sunset over mountains&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;output.mp4&quot;</span>
+    <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">video_result</span><span class="o">.</span><span class="n">success</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Video saved to: </span><span class="si">{</span><span class="n">video_result</span><span class="o">.</span><span class="n">output_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Generation failed: </span><span class="si">{</span><span class="n">video_result</span><span class="o">.</span><span class="n">errors</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Model loading failed: </span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">errors</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">wan22_compatibility_system</span> <span class="kn">import</span> <span class="n">CompatibilitySystemConfig</span><span class="p">,</span> <span class="n">initialize_compatibility_system</span>
+
+<span class="c1"># Custom configuration</span>
+<span class="n">config</span> <span class="o">=</span> <span class="n">CompatibilitySystemConfig</span><span class="p">(</span>
+    <span class="n">enable_optimization</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">enable_safe_loading</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">max_memory_usage_gb</span><span class="o">=</span><span class="mf">8.0</span><span class="p">,</span>
+    <span class="n">default_precision</span><span class="o">=</span><span class="s2">&quot;bf16&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># Initialize with custom config</span>
+<span class="n">compat_system</span> <span class="o">=</span> <span class="n">initialize_compatibility_system</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="features">Features<a class="headerlink" href="#features" title="Permanent link">&para;</a></h2>
+<h3 id="1-automatic-model-detection">1. Automatic Model Detection<a class="headerlink" href="#1-automatic-model-detection" title="Permanent link">&para;</a></h3>
+<p>The system automatically detects:</p>
+<ul>
+<li>Model architecture (Wan T2V, T2I, standard Diffusers)</li>
+<li>Required pipeline classes</li>
+<li>Component compatibility</li>
+<li>Resource requirements</li>
+</ul>
+<h3 id="2-smart-optimization">2. Smart Optimization<a class="headerlink" href="#2-smart-optimization" title="Permanent link">&para;</a></h3>
+<p>Based on your hardware, the system applies:</p>
+<ul>
+<li><strong>Mixed Precision</strong>: Reduces memory usage by 30-50%</li>
+<li><strong>CPU Offloading</strong>: Moves unused components to CPU</li>
+<li><strong>Chunked Processing</strong>: Processes videos in smaller chunks</li>
+<li><strong>Memory Management</strong>: Automatic cleanup and optimization</li>
+</ul>
+<h3 id="3-fallback-strategies">3. Fallback Strategies<a class="headerlink" href="#3-fallback-strategies" title="Permanent link">&para;</a></h3>
+<p>When primary loading fails:</p>
+<ul>
+<li><strong>Component Isolation</strong>: Uses compatible components only</li>
+<li><strong>Alternative Models</strong>: Suggests similar models</li>
+<li><strong>Reduced Functionality</strong>: Loads with basic features</li>
+</ul>
+<h3 id="4-security-features">4. Security Features<a class="headerlink" href="#4-security-features" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Safe Loading</strong>: Validates model sources</li>
+<li><strong>Remote Code Handling</strong>: Secure execution of custom pipelines</li>
+<li><strong>Sandboxing</strong>: Isolates untrusted code execution</li>
+</ul>
+<h2 id="supported-models">Supported Models<a class="headerlink" href="#supported-models" title="Permanent link">&para;</a></h2>
+<h3 id="wan-models">Wan Models<a class="headerlink" href="#wan-models" title="Permanent link">&para;</a></h3>
+<ul>
+<li>✅ Wan2.2-T2V-A14B (Text-to-Video)</li>
+<li>✅ Wan2.2-I2V-A14B (Image-to-Video)</li>
+<li>✅ Wan2.2-TI2V-5B (Text+Image-to-Video)</li>
+<li>✅ Wan2.2 Mini variants</li>
+<li>✅ Community fine-tuned models</li>
+</ul>
+<h3 id="standard-models">Standard Models<a class="headerlink" href="#standard-models" title="Permanent link">&para;</a></h3>
+<ul>
+<li>✅ Stable Diffusion variants</li>
+<li>✅ Other Diffusers-compatible models</li>
+</ul>
+<h2 id="hardware-requirements">Hardware Requirements<a class="headerlink" href="#hardware-requirements" title="Permanent link">&para;</a></h2>
+<h3 id="minimum-requirements">Minimum Requirements<a class="headerlink" href="#minimum-requirements" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>GPU</strong>: NVIDIA GTX 1060 6GB or equivalent</li>
+<li><strong>VRAM</strong>: 6GB (with optimizations)</li>
+<li><strong>RAM</strong>: 16GB system memory</li>
+<li><strong>Storage</strong>: 50GB free space</li>
+</ul>
+<h3 id="recommended-requirements">Recommended Requirements<a class="headerlink" href="#recommended-requirements" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>GPU</strong>: NVIDIA RTX 3080 or better</li>
+<li><strong>VRAM</strong>: 12GB or more</li>
+<li><strong>RAM</strong>: 32GB system memory</li>
+<li><strong>Storage</strong>: 100GB+ SSD storage</li>
+</ul>
+<h3 id="optimal-requirements">Optimal Requirements<a class="headerlink" href="#optimal-requirements" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>GPU</strong>: NVIDIA RTX 4090 or better</li>
+<li><strong>VRAM</strong>: 24GB or more</li>
+<li><strong>RAM</strong>: 64GB system memory</li>
+<li><strong>Storage</strong>: 500GB+ NVMe SSD</li>
+</ul>
+<h2 id="configuration-options">Configuration Options<a class="headerlink" href="#configuration-options" title="Permanent link">&para;</a></h2>
+<h3 id="system-configuration">System Configuration<a class="headerlink" href="#system-configuration" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">config</span> <span class="o">=</span> <span class="n">CompatibilitySystemConfig</span><span class="p">(</span>
+    <span class="c1"># Core features</span>
+    <span class="n">enable_diagnostics</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>           <span class="c1"># Detailed error reporting</span>
+    <span class="n">enable_performance_monitoring</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="c1"># Performance tracking</span>
+    <span class="n">enable_safe_loading</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>          <span class="c1"># Security features</span>
+    <span class="n">enable_optimization</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>          <span class="c1"># Memory optimizations</span>
+    <span class="n">enable_fallback</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>             <span class="c1"># Fallback strategies</span>
+
+    <span class="c1"># Resource limits</span>
+    <span class="n">max_memory_usage_gb</span><span class="o">=</span><span class="mf">12.0</span><span class="p">,</span>         <span class="c1"># Maximum VRAM usage</span>
+    <span class="n">default_precision</span><span class="o">=</span><span class="s2">&quot;bf16&quot;</span><span class="p">,</span>         <span class="c1"># Default precision (fp16/bf16/fp32)</span>
+
+    <span class="c1"># Optimization settings</span>
+    <span class="n">enable_cpu_offload</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>          <span class="c1"># CPU offloading</span>
+    <span class="n">enable_chunked_processing</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>   <span class="c1"># Chunked video processing</span>
+
+    <span class="c1"># Logging</span>
+    <span class="n">log_level</span><span class="o">=</span><span class="s2">&quot;INFO&quot;</span><span class="p">,</span>                 <span class="c1"># Logging level</span>
+    <span class="n">diagnostics_dir</span><span class="o">=</span><span class="s2">&quot;diagnostics&quot;</span><span class="p">,</span>    <span class="c1"># Diagnostics output directory</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="model-specific-settings">Model-Specific Settings<a class="headerlink" href="#model-specific-settings" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Load with specific optimizations</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">compat_system</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span>
+    <span class="s2">&quot;path/to/model&quot;</span><span class="p">,</span>
+    <span class="n">torch_dtype</span><span class="o">=</span><span class="s2">&quot;float16&quot;</span><span class="p">,</span>           <span class="c1"># Precision override</span>
+    <span class="n">low_cpu_mem_usage</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>         <span class="c1"># Memory optimization</span>
+    <span class="n">device_map</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>              <span class="c1"># Automatic device mapping</span>
+    <span class="n">trust_remote_code</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>         <span class="c1"># Allow remote pipeline code</span>
+    <span class="n">use_safetensors</span><span class="o">=</span><span class="kc">True</span>           <span class="c1"># Use safe tensor format</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="generation-parameters">Generation Parameters<a class="headerlink" href="#generation-parameters" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">video_result</span> <span class="o">=</span> <span class="n">compat_system</span><span class="o">.</span><span class="n">generate_video</span><span class="p">(</span>
+    <span class="n">pipeline</span><span class="p">,</span>
+    <span class="n">prompt</span><span class="o">=</span><span class="s2">&quot;Your prompt here&quot;</span><span class="p">,</span>
+    <span class="n">output_path</span><span class="o">=</span><span class="s2">&quot;output.mp4&quot;</span><span class="p">,</span>
+
+    <span class="c1"># Video settings</span>
+    <span class="n">num_frames</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>                  <span class="c1"># Number of frames</span>
+    <span class="n">height</span><span class="o">=</span><span class="mi">720</span><span class="p">,</span>                     <span class="c1"># Video height</span>
+    <span class="n">width</span><span class="o">=</span><span class="mi">1280</span><span class="p">,</span>                     <span class="c1"># Video width</span>
+    <span class="n">fps</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>                         <span class="c1"># Frames per second</span>
+
+    <span class="c1"># Generation settings</span>
+    <span class="n">num_inference_steps</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>         <span class="c1"># Quality vs speed</span>
+    <span class="n">guidance_scale</span><span class="o">=</span><span class="mf">7.5</span><span class="p">,</span>            <span class="c1"># Prompt adherence</span>
+    <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>                       <span class="c1"># Reproducibility</span>
+
+    <span class="c1"># Memory settings</span>
+    <span class="n">enable_cpu_offload</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>       <span class="c1"># CPU offloading</span>
+    <span class="n">chunk_size</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>                  <span class="c1"># Chunk size for processing</span>
+<span class="p">)</span>
+</code></pre></div>
+<h2 id="error-handling">Error Handling<a class="headerlink" href="#error-handling" title="Permanent link">&para;</a></h2>
+<h3 id="common-issues-and-solutions">Common Issues and Solutions<a class="headerlink" href="#common-issues-and-solutions" title="Permanent link">&para;</a></h3>
+<h4 id="1-model-not-found-error">1. "Model not found" Error<a class="headerlink" href="#1-model-not-found-error" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>Error: Could not find model at specified path
+</code></pre></div>
+<p><strong>Solution</strong>:</p>
+<ul>
+<li>Verify the model path is correct</li>
+<li>Ensure model files are downloaded completely</li>
+<li>Check file permissions</li>
+</ul>
+<h4 id="2-insufficient-vram-error">2. "Insufficient VRAM" Error<a class="headerlink" href="#2-insufficient-vram-error" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>Error: CUDA out of memory
+</code></pre></div>
+<p><strong>Solutions</strong>:</p>
+<ul>
+<li>Enable CPU offloading: <code>enable_cpu_offload=True</code></li>
+<li>Use lower precision: <code>torch_dtype="float16"</code></li>
+<li>Reduce batch size or video resolution</li>
+<li>Enable chunked processing</li>
+</ul>
+<h4 id="3-pipeline-not-found-error">3. "Pipeline not found" Error<a class="headerlink" href="#3-pipeline-not-found-error" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>Error: WanPipeline class not found
+</code></pre></div>
+<p><strong>Solutions</strong>:</p>
+<ul>
+<li>Enable remote code: <code>trust_remote_code=True</code></li>
+<li>Install required dependencies</li>
+<li>Check internet connection for remote code download</li>
+</ul>
+<h4 id="4-vae-loading-failed-error">4. "VAE loading failed" Error<a class="headerlink" href="#4-vae-loading-failed-error" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>Error: VAE shape mismatch
+</code></pre></div>
+<p><strong>Solutions</strong>:</p>
+<ul>
+<li>The system handles this automatically</li>
+<li>If issues persist, try safe loading mode</li>
+<li>Check model compatibility</li>
+</ul>
+<h3 id="getting-help">Getting Help<a class="headerlink" href="#getting-help" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Check Diagnostics</strong>: Look in the <code>diagnostics/</code> folder for detailed reports</li>
+<li><strong>Enable Debug Logging</strong>: Set <code>log_level="DEBUG"</code> for detailed logs</li>
+<li><strong>System Status</strong>: Use <code>compat_system.get_system_status()</code> for system info</li>
+<li><strong>Performance Stats</strong>: Check performance metrics for bottlenecks</li>
+</ol>
+<h2 id="performance-optimization">Performance Optimization<a class="headerlink" href="#performance-optimization" title="Permanent link">&para;</a></h2>
+<h3 id="memory-optimization">Memory Optimization<a class="headerlink" href="#memory-optimization" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># For 8GB VRAM systems</span>
+<span class="n">config</span> <span class="o">=</span> <span class="n">CompatibilitySystemConfig</span><span class="p">(</span>
+    <span class="n">max_memory_usage_gb</span><span class="o">=</span><span class="mf">6.0</span><span class="p">,</span>
+    <span class="n">default_precision</span><span class="o">=</span><span class="s2">&quot;fp16&quot;</span><span class="p">,</span>
+    <span class="n">enable_cpu_offload</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">enable_chunked_processing</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+
+<span class="c1"># Load with aggressive optimizations</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">compat_system</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span>
+    <span class="n">model_path</span><span class="p">,</span>
+    <span class="n">torch_dtype</span><span class="o">=</span><span class="s2">&quot;float16&quot;</span><span class="p">,</span>
+    <span class="n">low_cpu_mem_usage</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">device_map</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="speed-optimization">Speed Optimization<a class="headerlink" href="#speed-optimization" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># For faster generation (may use more memory)</span>
+<span class="n">config</span> <span class="o">=</span> <span class="n">CompatibilitySystemConfig</span><span class="p">(</span>
+    <span class="n">default_precision</span><span class="o">=</span><span class="s2">&quot;bf16&quot;</span><span class="p">,</span>
+    <span class="n">enable_cpu_offload</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>  <span class="c1"># Keep everything on GPU</span>
+    <span class="n">enable_chunked_processing</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+
+<span class="c1"># Generate with speed settings</span>
+<span class="n">video_result</span> <span class="o">=</span> <span class="n">compat_system</span><span class="o">.</span><span class="n">generate_video</span><span class="p">(</span>
+    <span class="n">pipeline</span><span class="p">,</span>
+    <span class="n">prompt</span><span class="p">,</span>
+    <span class="n">output_path</span><span class="p">,</span>
+    <span class="n">num_inference_steps</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span>  <span class="c1"># Fewer steps = faster</span>
+    <span class="n">guidance_scale</span><span class="o">=</span><span class="mf">7.0</span>       <span class="c1"># Lower guidance = faster</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="quality-optimization">Quality Optimization<a class="headerlink" href="#quality-optimization" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># For best quality (slower, more memory)</span>
+<span class="n">video_result</span> <span class="o">=</span> <span class="n">compat_system</span><span class="o">.</span><span class="n">generate_video</span><span class="p">(</span>
+    <span class="n">pipeline</span><span class="p">,</span>
+    <span class="n">prompt</span><span class="p">,</span>
+    <span class="n">output_path</span><span class="p">,</span>
+    <span class="n">num_inference_steps</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>  <span class="c1"># More steps = better quality</span>
+    <span class="n">guidance_scale</span><span class="o">=</span><span class="mf">12.0</span><span class="p">,</span>      <span class="c1"># Higher guidance = better prompt adherence</span>
+    <span class="n">height</span><span class="o">=</span><span class="mi">1080</span><span class="p">,</span>              <span class="c1"># Higher resolution</span>
+    <span class="n">width</span><span class="o">=</span><span class="mi">1920</span><span class="p">,</span>
+    <span class="n">num_frames</span><span class="o">=</span><span class="mi">24</span>             <span class="c1"># More frames = smoother video</span>
+<span class="p">)</span>
+</code></pre></div>
+<h2 id="advanced-usage">Advanced Usage<a class="headerlink" href="#advanced-usage" title="Permanent link">&para;</a></h2>
+<h3 id="custom-pipeline-loading">Custom Pipeline Loading<a class="headerlink" href="#custom-pipeline-loading" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pipeline_manager</span> <span class="kn">import</span> <span class="n">PipelineManager</span>
+
+<span class="n">pipeline_manager</span> <span class="o">=</span> <span class="n">PipelineManager</span><span class="p">()</span>
+
+<span class="c1"># Load custom pipeline</span>
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">pipeline_manager</span><span class="o">.</span><span class="n">load_custom_pipeline</span><span class="p">(</span>
+    <span class="n">model_path</span><span class="p">,</span>
+    <span class="s2">&quot;CustomWanPipeline&quot;</span><span class="p">,</span>
+    <span class="n">custom_arg1</span><span class="o">=</span><span class="s2">&quot;value1&quot;</span><span class="p">,</span>
+    <span class="n">custom_arg2</span><span class="o">=</span><span class="s2">&quot;value2&quot;</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="manual-optimization">Manual Optimization<a class="headerlink" href="#manual-optimization" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">optimization_manager</span> <span class="kn">import</span> <span class="n">OptimizationManager</span>
+
+<span class="n">opt_manager</span> <span class="o">=</span> <span class="n">OptimizationManager</span><span class="p">()</span>
+
+<span class="c1"># Analyze system</span>
+<span class="n">resources</span> <span class="o">=</span> <span class="n">opt_manager</span><span class="o">.</span><span class="n">analyze_system_resources</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Available VRAM: </span><span class="si">{</span><span class="n">resources</span><span class="o">.</span><span class="n">available_vram_mb</span><span class="si">}</span><span class="s2">MB&quot;</span><span class="p">)</span>
+
+<span class="c1"># Create optimization plan</span>
+<span class="n">plan</span> <span class="o">=</span> <span class="n">opt_manager</span><span class="o">.</span><span class="n">recommend_optimizations</span><span class="p">(</span><span class="n">model_requirements</span><span class="p">,</span> <span class="n">resources</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Recommended optimizations: </span><span class="si">{</span><span class="n">plan</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="diagnostics-and-debugging">Diagnostics and Debugging<a class="headerlink" href="#diagnostics-and-debugging" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Enable detailed diagnostics</span>
+<span class="n">config</span> <span class="o">=</span> <span class="n">CompatibilitySystemConfig</span><span class="p">(</span>
+    <span class="n">enable_diagnostics</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">log_level</span><span class="o">=</span><span class="s2">&quot;DEBUG&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># Get system status</span>
+<span class="n">status</span> <span class="o">=</span> <span class="n">compat_system</span><span class="o">.</span><span class="n">get_system_status</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">status</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="c1"># Check specific component</span>
+<span class="kn">from</span> <span class="nn">architecture_detector</span> <span class="kn">import</span> <span class="n">ArchitectureDetector</span>
+
+<span class="n">detector</span> <span class="o">=</span> <span class="n">ArchitectureDetector</span><span class="p">()</span>
+<span class="n">architecture</span> <span class="o">=</span> <span class="n">detector</span><span class="o">.</span><span class="n">detect_model_architecture</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Detected architecture: </span><span class="si">{</span><span class="n">architecture</span><span class="o">.</span><span class="n">architecture_type</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="best-practices">Best Practices<a class="headerlink" href="#best-practices" title="Permanent link">&para;</a></h2>
+<h3 id="1-model-management">1. Model Management<a class="headerlink" href="#1-model-management" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Keep models in a dedicated directory</li>
+<li>Use descriptive folder names</li>
+<li>Regularly clean up unused models</li>
+<li>Backup important fine-tuned models</li>
+</ul>
+<h3 id="2-memory-management">2. Memory Management<a class="headerlink" href="#2-memory-management" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Monitor VRAM usage during generation</li>
+<li>Use appropriate precision for your hardware</li>
+<li>Enable optimizations for resource-constrained systems</li>
+<li>Close unused applications during generation</li>
+</ul>
+<h3 id="3-generation-settings">3. Generation Settings<a class="headerlink" href="#3-generation-settings" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Start with default settings and adjust as needed</li>
+<li>Use lower inference steps for testing</li>
+<li>Increase steps and resolution for final outputs</li>
+<li>Save successful parameter combinations</li>
+</ul>
+<h3 id="4-troubleshooting">4. Troubleshooting<a class="headerlink" href="#4-troubleshooting" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Always check the diagnostics folder first</li>
+<li>Enable debug logging for persistent issues</li>
+<li>Test with simple prompts first</li>
+<li>Verify model integrity if loading fails</li>
+</ul>
+<h2 id="integration-with-existing-code">Integration with Existing Code<a class="headerlink" href="#integration-with-existing-code" title="Permanent link">&para;</a></h2>
+<h3 id="gradio-ui-integration">Gradio UI Integration<a class="headerlink" href="#gradio-ui-integration" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">gradio</span> <span class="k">as</span> <span class="nn">gr</span>
+<span class="kn">from</span> <span class="nn">wan22_compatibility_system</span> <span class="kn">import</span> <span class="n">get_compatibility_system</span>
+
+<span class="n">compat_system</span> <span class="o">=</span> <span class="n">get_compatibility_system</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">generate_video_ui</span><span class="p">(</span><span class="n">prompt</span><span class="p">,</span> <span class="n">model_path</span><span class="p">):</span>
+    <span class="c1"># Load model</span>
+    <span class="n">load_result</span> <span class="o">=</span> <span class="n">compat_system</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">load_result</span><span class="o">.</span><span class="n">success</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Error: </span><span class="si">{</span><span class="n">load_result</span><span class="o">.</span><span class="n">errors</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+
+    <span class="c1"># Generate video</span>
+    <span class="n">video_result</span> <span class="o">=</span> <span class="n">compat_system</span><span class="o">.</span><span class="n">generate_video</span><span class="p">(</span>
+        <span class="n">load_result</span><span class="o">.</span><span class="n">pipeline</span><span class="p">,</span> <span class="n">prompt</span><span class="p">,</span> <span class="s2">&quot;output.mp4&quot;</span>
+    <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">video_result</span><span class="o">.</span><span class="n">success</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">video_result</span><span class="o">.</span><span class="n">output_path</span><span class="p">,</span> <span class="s2">&quot;Success!&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Error: </span><span class="si">{</span><span class="n">video_result</span><span class="o">.</span><span class="n">errors</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="c1"># Create Gradio interface</span>
+<span class="n">interface</span> <span class="o">=</span> <span class="n">gr</span><span class="o">.</span><span class="n">Interface</span><span class="p">(</span>
+    <span class="n">fn</span><span class="o">=</span><span class="n">generate_video_ui</span><span class="p">,</span>
+    <span class="n">inputs</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">gr</span><span class="o">.</span><span class="n">Textbox</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Prompt&quot;</span><span class="p">),</span>
+        <span class="n">gr</span><span class="o">.</span><span class="n">Textbox</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Model Path&quot;</span><span class="p">)</span>
+    <span class="p">],</span>
+    <span class="n">outputs</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">gr</span><span class="o">.</span><span class="n">Video</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Generated Video&quot;</span><span class="p">),</span>
+        <span class="n">gr</span><span class="o">.</span><span class="n">Textbox</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Status&quot;</span><span class="p">)</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+</code></pre></div>
+<h3 id="flask-api-integration">Flask API Integration<a class="headerlink" href="#flask-api-integration" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">jsonify</span>
+<span class="kn">from</span> <span class="nn">wan22_compatibility_system</span> <span class="kn">import</span> <span class="n">get_compatibility_system</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="n">compat_system</span> <span class="o">=</span> <span class="n">get_compatibility_system</span><span class="p">()</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/generate&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;POST&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">generate_video</span><span class="p">():</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">json</span>
+
+    <span class="c1"># Load model</span>
+    <span class="n">load_result</span> <span class="o">=</span> <span class="n">compat_system</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;model_path&#39;</span><span class="p">])</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">load_result</span><span class="o">.</span><span class="n">success</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s1">&#39;error&#39;</span><span class="p">:</span> <span class="n">load_result</span><span class="o">.</span><span class="n">errors</span><span class="p">[</span><span class="mi">0</span><span class="p">]}),</span> <span class="mi">400</span>
+
+    <span class="c1"># Generate video</span>
+    <span class="n">video_result</span> <span class="o">=</span> <span class="n">compat_system</span><span class="o">.</span><span class="n">generate_video</span><span class="p">(</span>
+        <span class="n">load_result</span><span class="o">.</span><span class="n">pipeline</span><span class="p">,</span>
+        <span class="n">data</span><span class="p">[</span><span class="s1">&#39;prompt&#39;</span><span class="p">],</span>
+        <span class="sa">f</span><span class="s2">&quot;outputs/</span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;output_name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">.mp4&quot;</span>
+    <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">video_result</span><span class="o">.</span><span class="n">success</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span>
+            <span class="s1">&#39;success&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+            <span class="s1">&#39;output_path&#39;</span><span class="p">:</span> <span class="n">video_result</span><span class="o">.</span><span class="n">output_path</span><span class="p">,</span>
+            <span class="s1">&#39;generation_time&#39;</span><span class="p">:</span> <span class="n">video_result</span><span class="o">.</span><span class="n">generation_time</span>
+        <span class="p">})</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">jsonify</span><span class="p">({</span><span class="s1">&#39;error&#39;</span><span class="p">:</span> <span class="n">video_result</span><span class="o">.</span><span class="n">errors</span><span class="p">[</span><span class="mi">0</span><span class="p">]}),</span> <span class="mi">500</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
+<p>The Wan2.2 Compatibility System provides a robust, user-friendly way to work with Wan models and other video generation systems. With automatic optimization, comprehensive error handling, and detailed diagnostics, it simplifies the complex process of video generation while maintaining flexibility for advanced users.</p>
+<p>For additional support or questions, check the troubleshooting section or enable debug logging for detailed information about system behavior.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>
