@@ -1,5 +1,9 @@
 name: Deployment Gates with Health Monitoring
 
+permissions:
+  pull-requests: write
+  contents: read
+
 on:
   push:
     branches: [main]
