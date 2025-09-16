@@ -12,11 +12,9 @@ export interface StreamIntegrationOptions extends StreamOptions {
 
 export class StreamManagerIntegration {
   private config: IntegrationConfig
-  private options: StreamIntegrationOptions
 
   constructor(options: StreamIntegrationOptions) {
     this.config = options.config
-    this.options = options
   }
 
   async startVideoStream(taskId: string): Promise<ReadableStream> {
