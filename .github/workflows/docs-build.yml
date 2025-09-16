@@ -84,6 +84,9 @@ jobs:
           # Additional Git configuration to prevent errors
           git config --global pull.rebase false
           git config --global push.autoSetupRemote true
+          # Configure credentials for GitHub Pages deployment
+          git config --global credential.helper store
+          echo "https://${{ secrets.GITHUB_TOKEN }}:x-oauth-basic@github.com" > ~/.netrc
 
       - name: Deploy to GitHub Pages (main branch only)
         if: github.ref == 'refs/heads/main'
