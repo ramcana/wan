@@ -35,6 +35,12 @@ from backend.core.fallback_recovery_system import (
 from backend.core.cors_validator import (
     validate_cors_configuration, get_cors_error_info, generate_cors_error_response
 )
+from backend.repositories.database import (
+    SessionLocal,
+    GenerationTaskDB,
+    TaskStatusEnum,
+    ModelTypeEnum,
+)
 
 # Configure logging
 logging.basicConfig(
@@ -57,9 +63,6 @@ class GenerationRequest(BaseModel):
     steps: int = Field(default=50, ge=1, le=100, description="Generation steps")
     lora_path: Optional[str] = Field(default="", description="LoRA model path")
     lora_strength: float = Field(default=1.0, ge=0.0, le=2.0, description="LoRA strength")
-
-# In-memory task storage (in production, use a proper database)
-task_queue: Dict[str, Dict] = {}
 
 # WebSocket connection manager
 class ConnectionManager:
@@ -618,56 +621,66 @@ async def get_prompt_styles():
 @app.get("/api/v1/queue")
 async def get_queue():
     """Get generation queue"""
-    queue_items = []
-    for task_id, task_data in task_queue.items():
-        # Build task item, omitting optional fields that are None/empty
-        task_item = {
-            "id": task_id,
-            "model_type": task_data["parameters"]["model_type"],
-            "prompt": task_data["parameters"]["prompt"],
-            "resolution": task_data["parameters"]["resolution"],
-            "steps": task_data["parameters"]["steps"],
-            "lora_strength": task_data["parameters"]["lora_strength"],
-            "status": task_data["status"],  # Should now be "pending" instead of "queued"
-            "progress": task_data.get("progress", 0),
-            "created_at": task_data["created_at"],
+    db = SessionLocal()
+    try:
+        tasks = (
+            db.query(GenerationTaskDB)
+            .order_by(GenerationTaskDB.created_at.desc())
+            .all()
+        )
+
+        queue_items: List[Dict[str, object]] = []
+
+        for task in tasks:
+            status_value = task.status.value if task.status else TaskStatusEnum.PENDING.value
+
+            task_item: Dict[str, object] = {
+                "id": task.id,
+                "model_type": task.model_type.value if task.model_type else None,
+                "prompt": task.prompt,
+                "resolution": task.resolution,
+                "steps": task.steps,
+                "lora_strength": task.lora_strength,
+                "status": status_value,
+                "progress": task.progress or 0,
+                "created_at": task.created_at.isoformat() if task.created_at else None,
+            }
+
+            if task.image_path:
+                task_item["image_path"] = task.image_path
+
+            if task.lora_path:
+                task_item["lora_path"] = task.lora_path
+
+            if task.started_at:
+                task_item["started_at"] = task.started_at.isoformat()
+
+            if task.completed_at:
+                task_item["completed_at"] = task.completed_at.isoformat()
+
+            if task.output_path:
+                task_item["output_path"] = task.output_path
+
+            if task.error_message:
+                task_item["error_message"] = task.error_message
+
+            if task.estimated_time_minutes is not None:
+                task_item["estimated_time_minutes"] = task.estimated_time_minutes
+            elif status_value == TaskStatusEnum.PENDING.value:
+                task_item["estimated_time_minutes"] = 10
+
+            queue_items.append(task_item)
+
+        return {
+            "tasks": queue_items,
+            "total_tasks": len(tasks),
+            "pending_tasks": sum(1 for t in tasks if t.status == TaskStatusEnum.PENDING),
+            "processing_tasks": sum(1 for t in tasks if t.status == TaskStatusEnum.PROCESSING),
+            "completed_tasks": sum(1 for t in tasks if t.status == TaskStatusEnum.COMPLETED),
+            "failed_tasks": sum(1 for t in tasks if t.status == TaskStatusEnum.FAILED),
         }
-        
-        # Add optional fields only if they have values
-        if task_data["parameters"].get("image_path"):
-            task_item["image_path"] = task_data["parameters"]["image_path"]
-        
-        if task_data["parameters"].get("lora_path"):
-            task_item["lora_path"] = task_data["parameters"]["lora_path"]
-        
-        if task_data.get("started_at"):
-            task_item["started_at"] = task_data["started_at"]
-        
-        if task_data.get("completed_at"):
-            task_item["completed_at"] = task_data["completed_at"]
-        
-        if task_data["status"] == "completed":
-            task_item["output_path"] = f"outputs/{task_id}.mp4"
-        
-        if task_data.get("error_message"):
-            task_item["error_message"] = task_data["error_message"]
-        
-        if task_data["status"] == "pending":
-            task_item["estimated_time_minutes"] = 10
-        
-        queue_items.append(task_item)
-    
-    # Sort by creation time (newest first)
-    queue_items.sort(key=lambda x: x["created_at"], reverse=True)
-    
-    return {
-        "tasks": queue_items,
-        "total_tasks": len(queue_items),
-        "pending_tasks": len([t for t in queue_items if t["status"] == "pending"]),  # Changed from "queued" to "pending"
-        "processing_tasks": len([t for t in queue_items if t["status"] == "processing"]),
-        "completed_tasks": len([t for t in queue_items if t["status"] == "completed"]),
-        "failed_tasks": len([t for t in queue_items if t["status"] == "failed"])
-    }
+    finally:
+        db.close()
 
 # Enhanced generation endpoint with real AI integration
 @app.post("/api/v1/generation/submit")
@@ -902,9 +915,37 @@ async def submit_generation(
                 "lora_strength": lora_strength
             }
         }
-        
-        task_queue[task_id] = task_data
-        
+
+        db = SessionLocal()
+        try:
+            try:
+                model_enum = ModelTypeEnum(model_type) if model_type else ModelTypeEnum.T2V_A14B
+            except ValueError:
+                model_enum = ModelTypeEnum.T2V_A14B
+
+            fallback_task = GenerationTaskDB(
+                id=task_id,
+                model_type=model_enum,
+                prompt=prompt or "",
+                image_path=image_path,
+                end_image_path=end_image_path,
+                resolution=resolution,
+                steps=steps,
+                lora_path=lora_path if lora_path else None,
+                lora_strength=lora_strength,
+                status=TaskStatusEnum.PENDING,
+                progress=0,
+                estimated_time_minutes=10,
+            )
+
+            db.add(fallback_task)
+            db.commit()
+        except Exception as db_error:
+            db.rollback()
+            logger.error(f"Failed to persist fallback task {task_id}: {db_error}")
+        finally:
+            db.close()
+
         return {
             "task_id": task_id,
             "status": "pending",
@@ -1082,93 +1123,144 @@ async def get_outputs():
     """Get generated outputs"""
     outputs_dir = "outputs"
     os.makedirs(outputs_dir, exist_ok=True)
-    
-    videos = []
-    completed_tasks = [task for task in task_queue.values() if task["status"] == "completed"]
-    
-    for task in completed_tasks:
-        task_id = task["task_id"]
-        video_path = f"{outputs_dir}/{task_id}.mp4"
-        thumbnail_path = f"{outputs_dir}/thumbnails/{task_id}_thumb.jpg"
-        
-        # Check if video file exists
-        if os.path.exists(video_path):
-            file_size = os.path.getsize(video_path) / (1024 * 1024)  # Size in MB
-            
+
+    db = SessionLocal()
+    try:
+        completed_tasks = (
+            db.query(GenerationTaskDB)
+            .filter(GenerationTaskDB.status == TaskStatusEnum.COMPLETED)
+            .order_by(GenerationTaskDB.completed_at.desc())
+            .all()
+        )
+
+        videos: List[Dict[str, object]] = []
+        total_size = 0.0
+
+        for task in completed_tasks:
+            video_path = task.output_path or os.path.join(outputs_dir, f"{task.id}.mp4")
+            thumbnail_path = os.path.join(outputs_dir, "thumbnails", f"{task.id}_thumb.jpg")
+
+            if not os.path.exists(video_path):
+                continue
+
+            file_size_mb = os.path.getsize(video_path) / (1024 * 1024)
+            total_size += file_size_mb
+
             videos.append({
-                "id": task_id,
-                "filename": f"{task_id}.mp4",
-                "prompt": task["parameters"]["prompt"],
-                "model_type": task["parameters"]["model_type"],
-                "resolution": task["parameters"]["resolution"],
-                "file_size_mb": round(file_size, 2),
-                "created_at": task["created_at"],
-                "duration": "10.0",  # Default duration
-                "thumbnail_url": f"/api/v1/outputs/{task_id}/thumbnail",
-                "download_url": f"/api/v1/outputs/{task_id}/download",
-                "video_url": f"/api/v1/outputs/{task_id}/video"
+                "id": task.id,
+                "filename": os.path.basename(video_path),
+                "prompt": task.prompt,
+                "model_type": task.model_type.value if task.model_type else None,
+                "resolution": task.resolution,
+                "file_size_mb": round(file_size_mb, 2),
+                "created_at": (task.completed_at or task.created_at).isoformat()
+                if (task.completed_at or task.created_at)
+                else None,
+                "duration": "10.0",
+                "thumbnail_url": f"/api/v1/outputs/{task.id}/thumbnail",
+                "download_url": f"/api/v1/outputs/{task.id}/download",
+                "video_url": f"/api/v1/outputs/{task.id}/video",
+                "thumbnail_path": thumbnail_path if os.path.exists(thumbnail_path) else None,
+                "output_path": video_path,
             })
-    
-    return {
-        "videos": videos,
-        "total_count": len(videos),
-        "total_size_mb": sum(v["file_size_mb"] for v in videos)
-    }
+
+        return {
+            "videos": videos,
+            "total_count": len(videos),
+            "total_size_mb": round(total_size, 2),
+        }
+    finally:
+        db.close()
 
 # Get specific video info
 @app.get("/api/v1/outputs/{video_id}")
 async def get_video_info(video_id: str):
     """Get specific video information"""
-    if video_id not in task_queue:
-        raise HTTPException(status_code=404, detail="Video not found")
-    
-    task = task_queue[video_id]
-    video_path = f"outputs/{video_id}.mp4"
-    
-    if not os.path.exists(video_path):
-        raise HTTPException(status_code=404, detail="Video file not found")
-    
-    file_size = os.path.getsize(video_path) / (1024 * 1024)
-    
-    return {
-        "id": video_id,
-        "filename": f"{video_id}.mp4",
-        "prompt": task["parameters"]["prompt"],
-        "model_type": task["parameters"]["model_type"],
-        "resolution": task["parameters"]["resolution"],
-        "file_size_mb": round(file_size, 2),
-        "created_at": task["created_at"],
-        "duration": "10.0",
-        "thumbnail_url": f"/api/v1/outputs/{video_id}/thumbnail",
-        "download_url": f"/api/v1/outputs/{video_id}/download",
-        "video_url": f"/api/v1/outputs/{video_id}/video"
-    }
+    db = SessionLocal()
+    try:
+        task = (
+            db.query(GenerationTaskDB)
+            .filter(
+                GenerationTaskDB.id == video_id,
+                GenerationTaskDB.status == TaskStatusEnum.COMPLETED,
+            )
+            .first()
+        )
+
+        if not task:
+            raise HTTPException(status_code=404, detail="Video not found")
+
+        video_path = task.output_path or os.path.join("outputs", f"{video_id}.mp4")
+
+        if not os.path.exists(video_path):
+            raise HTTPException(status_code=404, detail="Video file not found")
+
+        file_size = os.path.getsize(video_path) / (1024 * 1024)
+
+        created_at = task.completed_at or task.created_at
+
+        return {
+            "id": video_id,
+            "filename": os.path.basename(video_path),
+            "prompt": task.prompt,
+            "model_type": task.model_type.value if task.model_type else None,
+            "resolution": task.resolution,
+            "file_size_mb": round(file_size, 2),
+            "created_at": created_at.isoformat() if created_at else None,
+            "duration": "10.0",
+            "thumbnail_url": f"/api/v1/outputs/{video_id}/thumbnail",
+            "download_url": f"/api/v1/outputs/{video_id}/download",
+            "video_url": f"/api/v1/outputs/{video_id}/video",
+        }
+    finally:
+        db.close()
 
 # Serve video files
 @app.get("/api/v1/outputs/{video_id}/video")
 async def get_video_file(video_id: str):
     """Serve video file"""
-    video_path = f"outputs/{video_id}.mp4"
+    db = SessionLocal()
+    try:
+        task = db.query(GenerationTaskDB).filter(GenerationTaskDB.id == video_id).first()
+    finally:
+        db.close()
+
+    video_path = (
+        task.output_path if task and task.output_path else os.path.join("outputs", f"{video_id}.mp4")
+    )
+
     if not os.path.exists(video_path):
         raise HTTPException(status_code=404, detail="Video file not found")
-    
+
     from fastapi.responses import FileResponse
+
     return FileResponse(
         video_path,
         media_type="video/mp4",
-        filename=f"{video_id}.mp4"
+        filename=os.path.basename(video_path)
     )
 
 # Serve thumbnail files
 @app.get("/api/v1/outputs/{video_id}/thumbnail")
 async def get_thumbnail_file(video_id: str):
     """Serve thumbnail file"""
-    thumbnail_path = f"outputs/thumbnails/{video_id}_thumb.jpg"
+    db = SessionLocal()
+    try:
+        task = db.query(GenerationTaskDB).filter(GenerationTaskDB.id == video_id).first()
+    finally:
+        db.close()
+
+    if not task:
+        raise HTTPException(status_code=404, detail="Video not found")
+
+    thumbnail_path = os.path.join("outputs", "thumbnails", f"{video_id}_thumb.jpg")
+
     if not os.path.exists(thumbnail_path):
         # Return a default thumbnail or generate one
         raise HTTPException(status_code=404, detail="Thumbnail not found")
-    
+
     from fastapi.responses import FileResponse
+
     return FileResponse(
         thumbnail_path,
         media_type="image/jpeg",
@@ -1179,11 +1271,21 @@ async def get_thumbnail_file(video_id: str):
 @app.get("/api/v1/outputs/{video_id}/download")
 async def download_video(video_id: str):
     """Download video file"""
-    video_path = f"outputs/{video_id}.mp4"
+    db = SessionLocal()
+    try:
+        task = db.query(GenerationTaskDB).filter(GenerationTaskDB.id == video_id).first()
+    finally:
+        db.close()
+
+    video_path = (
+        task.output_path if task and task.output_path else os.path.join("outputs", f"{video_id}.mp4")
+    )
+
     if not os.path.exists(video_path):
         raise HTTPException(status_code=404, detail="Video file not found")
-    
+
     from fastapi.responses import FileResponse
+
     return FileResponse(
         video_path,
         media_type="video/mp4",
@@ -1195,59 +1297,80 @@ async def download_video(video_id: str):
 @app.delete("/api/v1/outputs/{video_id}")
 async def delete_video(video_id: str):
     """Delete video and associated files"""
-    if video_id not in task_queue:
-        raise HTTPException(status_code=404, detail="Video not found")
-    
-    # Remove files
-    video_path = f"outputs/{video_id}.mp4"
-    thumbnail_path = f"outputs/thumbnails/{video_id}_thumb.jpg"
-    
-    if os.path.exists(video_path):
-        os.remove(video_path)
-    if os.path.exists(thumbnail_path):
-        os.remove(thumbnail_path)
-    
-    # Remove from task queue
-    del task_queue[video_id]
-    
-    return {"message": "Video deleted successfully"}
+    db = SessionLocal()
+    try:
+        task = db.query(GenerationTaskDB).filter(GenerationTaskDB.id == video_id).first()
+
+        if not task:
+            raise HTTPException(status_code=404, detail="Video not found")
+
+        video_path = task.output_path or os.path.join("outputs", f"{video_id}.mp4")
+        thumbnail_path = os.path.join("outputs", "thumbnails", f"{video_id}_thumb.jpg")
+
+        if os.path.exists(video_path):
+            os.remove(video_path)
+
+        if os.path.exists(thumbnail_path):
+            os.remove(thumbnail_path)
+
+        if task.image_path and os.path.exists(task.image_path):
+            try:
+                os.remove(task.image_path)
+            except Exception as exc:
+                logger.warning(f"Could not remove input image for {video_id}: {exc}")
+
+        db.delete(task)
+        db.commit()
+
+        return {"message": "Video deleted successfully"}
+    finally:
+        db.close()
 
 # Simulate video generation completion (for testing)
 @app.post("/api/v1/simulate/complete/{task_id}")
 async def simulate_completion(task_id: str):
     """Simulate video generation completion for testing"""
-    if task_id not in task_queue:
-        raise HTTPException(status_code=404, detail="Task not found")
-    
-    # Update task status
-    task_queue[task_id]["status"] = "completed"
-    task_queue[task_id]["progress"] = 100
-    task_queue[task_id]["completed_at"] = datetime.now().isoformat()
-    
-    # Create dummy video file for demonstration
-    outputs_dir = "outputs"
-    thumbnails_dir = "outputs/thumbnails"
-    os.makedirs(outputs_dir, exist_ok=True)
-    os.makedirs(thumbnails_dir, exist_ok=True)
-    
-    video_path = f"{outputs_dir}/{task_id}.mp4"
-    thumbnail_path = f"{thumbnails_dir}/{task_id}_thumb.jpg"
-    
-    # Create a small dummy video file (1KB)
-    with open(video_path, "wb") as f:
-        f.write(b"dummy video content for testing" * 32)  # ~1KB file
-    
-    # Create a small dummy thumbnail (if one exists in outputs/thumbnails/)
-    existing_thumb = "outputs/thumbnails/0846777d-d15a-40d5-ae78-ab1b13244649_thumb.jpg"
-    if os.path.exists(existing_thumb):
-        import shutil
-        shutil.copy2(existing_thumb, thumbnail_path)
-    else:
-        # Create dummy thumbnail
-        with open(thumbnail_path, "wb") as f:
-            f.write(b"dummy thumbnail content" * 10)
-    
-    # Broadcast completion via WebSocket
+    db = SessionLocal()
+    try:
+        task = db.query(GenerationTaskDB).filter(GenerationTaskDB.id == task_id).first()
+
+        if not task:
+            raise HTTPException(status_code=404, detail="Task not found")
+
+        outputs_dir = "outputs"
+        thumbnails_dir = os.path.join(outputs_dir, "thumbnails")
+        os.makedirs(outputs_dir, exist_ok=True)
+        os.makedirs(thumbnails_dir, exist_ok=True)
+
+        video_path = os.path.join(outputs_dir, f"{task_id}.mp4")
+        thumbnail_path = os.path.join(thumbnails_dir, f"{task_id}_thumb.jpg")
+
+        with open(video_path, "wb") as f:
+            f.write(b"dummy video content for testing" * 32)
+
+        existing_thumb = os.path.join(
+            "outputs",
+            "thumbnails",
+            "0846777d-d15a-40d5-ae78-ab1b13244649_thumb.jpg",
+        )
+        if os.path.exists(existing_thumb):
+            import shutil
+
+            shutil.copy2(existing_thumb, thumbnail_path)
+        else:
+            with open(thumbnail_path, "wb") as f:
+                f.write(b"dummy thumbnail content" * 10)
+
+        task.status = TaskStatusEnum.COMPLETED
+        task.progress = 100
+        task.completed_at = datetime.utcnow()
+        task.output_path = video_path
+
+        db.commit()
+
+    finally:
+        db.close()
+
     await manager.broadcast({
         "type": "task_update",
         "task_id": task_id,
@@ -1256,7 +1379,7 @@ async def simulate_completion(task_id: str):
         "message": "Video generation completed!",
         "output_path": f"outputs/{task_id}.mp4"
     })
-    
+
     return {
         "message": "Video generation completed",
         "task_id": task_id,
@@ -1739,74 +1862,78 @@ async def websocket_endpoint(websocket: WebSocket):
 # Background task processor
 async def process_generation_task(task_id: str):
     """Process a generation task with real-time updates"""
+    db = SessionLocal()
+    task: Optional[GenerationTaskDB] = None
+
     try:
-        if task_id not in task_queue:
-            logger.error(f"Task {task_id} not found in queue")
+        task = db.query(GenerationTaskDB).filter(GenerationTaskDB.id == task_id).first()
+
+        if not task:
+            logger.error(f"Task {task_id} not found in database")
             return
-        
-        task_data = task_queue[task_id]
-        
-        # Update status to processing
-        task_data["status"] = "processing"
-        task_data["started_at"] = datetime.now().isoformat()
-        task_data["progress"] = 0
-        
-        # Broadcast status update
+
+        task.status = TaskStatusEnum.PROCESSING
+        task.started_at = datetime.utcnow()
+        task.progress = 0
+        task.error_message = None
+        db.commit()
+        db.refresh(task)
+
         await manager.broadcast({
             "type": "task_update",
             "task_id": task_id,
             "status": "processing",
             "progress": 0,
-            "message": "Loading AI models..."
+            "message": "Loading AI models...",
         })
-        
-        logger.info(f"Starting real AI generation for task {task_id}")
-        logger.info(f"Model: {task_data['parameters']['model_type']}")
-        logger.info(f"Prompt: {task_data['parameters']['prompt']}")
-        logger.info(f"Resolution: {task_data['parameters']['resolution']}")
-        logger.info(f"Steps: {task_data['parameters']['steps']}")
-        
-        # Try to integrate with real AI system
+
+        model_label = task.model_type.value if task.model_type else "unknown"
+        logger.info(f"Starting fallback generation for task {task_id}")
+        logger.info(f"Model: {model_label}")
+        logger.info(f"Prompt: {task.prompt}")
+        logger.info(f"Resolution: {task.resolution}")
+        logger.info(f"Steps: {task.steps}")
+
         try:
-            # Import the real generation system
             sys.path.append(str(Path(__file__).parent.parent))
-            from utils import generate_video_from_prompt  # This would be the real function
-            
-            # This is where real AI generation would happen
-            logger.info("🤖 Loading AI models (T2V-A14B/I2V-A14B/TI2V-5B)...")
+            from utils import generate_video_from_prompt  # noqa: F401
+
+            logger.info("🤖 Loading AI models (fallback simulation)...")
             await manager.broadcast({
                 "type": "task_update",
                 "task_id": task_id,
-                "status": "processing", 
+                "status": "processing",
                 "progress": 10,
-                "message": "AI models loaded, starting generation..."
+                "message": "AI models loaded, starting generation...",
             })
-            
-            # Real generation would happen here
-            # result = generate_video_from_prompt(
-            #     prompt=task_data['parameters']['prompt'],
-            #     model_type=task_data['parameters']['model_type'],
-            #     resolution=task_data['parameters']['resolution'],
-            #     steps=task_data['parameters']['steps']
-            # )
-            
+
             logger.warning("⚠️  Real AI generation not yet integrated - using simulation")
-            
-        except ImportError as e:
-            logger.warning(f"Real AI system not available: {e}")
+
+        except ImportError as import_error:
+            logger.warning(f"Real AI system not available: {import_error}")
             logger.info("🎭 Using simulation mode for demo")
-        
-        # Simulate generation process with progress updates (until real AI is integrated)
-        total_steps = task_data["parameters"]["steps"]
-        
+
+        total_steps = task.steps or 50
+
         for step in range(1, total_steps + 1):
-            # Simulate processing time
-            await asyncio.sleep(0.5)  # Faster for demo, real generation would be much slower
-            
-            progress = int(10 + (step / total_steps) * 85)  # 10-95% for generation
-            task_data["progress"] = progress
-            
-            # Broadcast progress update with more realistic messages
+            await asyncio.sleep(0.5)
+
+            progress = int(10 + (step / total_steps) * 85)
+            task.progress = progress
+            db.commit()
+            db.refresh(task)
+
+            if task.status == TaskStatusEnum.CANCELLED:
+                logger.info(f"Task {task_id} was cancelled during processing")
+                await manager.broadcast({
+                    "type": "task_update",
+                    "task_id": task_id,
+                    "status": "cancelled",
+                    "progress": task.progress,
+                    "message": "Task cancelled by user",
+                })
+                return
+
             if step <= total_steps * 0.2:
                 message = f"Initializing generation pipeline... ({step}/{total_steps})"
             elif step <= total_steps * 0.5:
@@ -1815,86 +1942,79 @@ async def process_generation_task(task_id: str):
                 message = f"Rendering video sequences... ({step}/{total_steps})"
             else:
                 message = f"Finalizing video output... ({step}/{total_steps})"
-            
+
             await manager.broadcast({
                 "type": "task_update",
                 "task_id": task_id,
                 "status": "processing",
                 "progress": progress,
-                "message": message
+                "message": message,
             })
-            
-            # Check if task was cancelled
-            if task_data.get("status") == "cancelled":
-                logger.info(f"Task {task_id} was cancelled")
-                return
-        
-        # Post-processing phase
+
         await manager.broadcast({
             "type": "task_update",
             "task_id": task_id,
             "status": "processing",
             "progress": 95,
-            "message": "Post-processing and saving video..."
+            "message": "Post-processing and saving video...",
         })
-        
-        # Complete the task
-        task_data["status"] = "completed"
-        task_data["completed_at"] = datetime.now().isoformat()
-        task_data["progress"] = 100
-        
-        # Create output files
+
         outputs_dir = "outputs"
-        thumbnails_dir = "outputs/thumbnails"
+        thumbnails_dir = os.path.join(outputs_dir, "thumbnails")
         os.makedirs(outputs_dir, exist_ok=True)
         os.makedirs(thumbnails_dir, exist_ok=True)
-        
-        video_path = f"{outputs_dir}/{task_id}.mp4"
-        thumbnail_path = f"{thumbnails_dir}/{task_id}_thumb.jpg"
-        
-        # Create demo files (in real implementation, these would be the actual generated videos)
-        with open(video_path, "wb") as f:
-            f.write(b"dummy video content for demo" * 100)  # ~3KB file
-        
-        with open(thumbnail_path, "wb") as f:
-            f.write(b"dummy thumbnail content" * 50)  # ~1KB file
-        
-        # Broadcast completion
+
+        video_path = os.path.join(outputs_dir, f"{task_id}.mp4")
+        thumbnail_path = os.path.join(thumbnails_dir, f"{task_id}_thumb.jpg")
+
+        with open(video_path, "wb") as file_handle:
+            file_handle.write(b"dummy video content for demo" * 100)
+
+        with open(thumbnail_path, "wb") as thumb_handle:
+            thumb_handle.write(b"dummy thumbnail content" * 50)
+
+        task.status = TaskStatusEnum.COMPLETED
+        task.completed_at = datetime.utcnow()
+        task.progress = 100
+        task.output_path = video_path
+        db.commit()
+
         await manager.broadcast({
             "type": "task_update",
             "task_id": task_id,
             "status": "completed",
             "progress": 100,
             "message": "Video generation completed successfully!",
-            "output_path": f"outputs/{task_id}.mp4"
+            "output_path": f"outputs/{task_id}.mp4",
         })
-        
-        # Also broadcast queue update
-        await manager.broadcast({
-            "type": "queue_update",
-            "message": "Queue updated"
-        })
-        
+
+        await manager.broadcast({"type": "queue_update", "message": "Queue updated"})
+
         logger.info(f"✅ Task {task_id} completed successfully")
         logger.info(f"📁 Output saved to: {video_path}")
-        
-    except Exception as e:
-        logger.error(f"❌ Error processing task {task_id}: {e}")
-        
-        # Update task status to failed
-        if task_id in task_queue:
-            task_queue[task_id]["status"] = "failed"
-            task_queue[task_id]["error_message"] = str(e)
-            task_queue[task_id]["progress"] = 0
-            
-            # Broadcast failure
+
+    except Exception as error:
+        logger.error(f"❌ Error processing task {task_id}: {error}")
+
+        if db.is_active:
+            db.rollback()
+
+        if task:
+            task.status = TaskStatusEnum.FAILED
+            task.error_message = str(error)
+            task.progress = 0
+            db.commit()
+
             await manager.broadcast({
                 "type": "task_update",
                 "task_id": task_id,
                 "status": "failed",
                 "progress": 0,
-                "message": f"Generation failed: {str(e)}"
+                "message": f"Generation failed: {error}",
             })
+
+    finally:
+        db.close()
 
 # Start background task processing
 def start_background_task(task_id: str):
@@ -1906,28 +2026,39 @@ def start_background_task(task_id: str):
 @app.post("/api/v1/queue/{task_id}/cancel")
 async def cancel_task(task_id: str):
     """Cancel a pending or processing task"""
-    if task_id not in task_queue:
-        raise HTTPException(status_code=404, detail="Task not found")
-    
-    task_data = task_queue[task_id]
-    
-    if task_data["status"] in ["completed", "failed", "cancelled"]:
-        raise HTTPException(status_code=400, detail=f"Cannot cancel task with status: {task_data['status']}")
-    
-    # Update task status
-    task_data["status"] = "cancelled"
-    task_data["progress"] = 0
-    task_data["completed_at"] = datetime.now().isoformat()
-    
-    # Broadcast cancellation
+    db = SessionLocal()
+    try:
+        task = db.query(GenerationTaskDB).filter(GenerationTaskDB.id == task_id).first()
+
+        if not task:
+            raise HTTPException(status_code=404, detail="Task not found")
+
+        if task.status in [
+            TaskStatusEnum.COMPLETED,
+            TaskStatusEnum.FAILED,
+            TaskStatusEnum.CANCELLED,
+        ]:
+            raise HTTPException(
+                status_code=400,
+                detail=f"Cannot cancel task with status: {task.status.value}",
+            )
+
+        task.status = TaskStatusEnum.CANCELLED
+        task.progress = 0
+        task.completed_at = datetime.utcnow()
+        db.commit()
+
+    finally:
+        db.close()
+
     await manager.broadcast({
         "type": "task_update",
         "task_id": task_id,
         "status": "cancelled",
         "progress": 0,
-        "message": "Task cancelled by user"
+        "message": "Task cancelled by user",
     })
-    
+
     return {"message": "Task cancelled successfully", "task_id": task_id}
 
 # Enhanced Model Management Endpoints
