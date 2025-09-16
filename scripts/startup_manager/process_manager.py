@@ -356,7 +356,8 @@ class ProcessManager:
             # Ensure working directory exists
             working_dir = Path(process_info.working_directory)
             if not working_dir.exists():
-                # In test mode, create directory or proceed anyway; otherwise, return error
+                # In test mode, create directory or proceed anyway;
+                # otherwise, return error
                 if is_test_mode:
                     try:
                         working_dir.mkdir(parents=True, exist_ok=True)
