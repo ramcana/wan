@@ -1,0 +1,3 @@
+Mock generation placeholder for task 29b81cb9-f357-43fd-9bd3-baa8100ea0f7
+Model: t2v-A14B
+Prompt: A beautiful sunset over mountains

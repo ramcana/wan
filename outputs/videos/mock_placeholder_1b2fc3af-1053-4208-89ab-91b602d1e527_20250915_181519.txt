@@ -1,0 +1,3 @@
+Mock generation placeholder for task 1b2fc3af-1053-4208-89ab-91b602d1e527
+Model: t2v-A14B
+Prompt: A cat walking in a garden
