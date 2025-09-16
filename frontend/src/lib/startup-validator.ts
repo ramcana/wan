@@ -10,7 +10,7 @@ export interface StartupValidationResult {
 
 export interface ValidationCheck {
   name: string
-  check: () => Promise<{ success: boolean; message?: string }>
+  check: (systemHealth?: SystemHealth) => Promise<{ success: boolean; message?: string }>
   required: boolean
 }
 
@@ -36,61 +36,56 @@ export class StartupValidator {
     },
     {
       name: 'System Health',
-      check: async () => {
-        try {
-          const health = await getSystemHealth()
-          const isHealthy = health.status === 'healthy'
-          return {
-            success: isHealthy,
-            message: isHealthy 
-              ? 'System is healthy' 
-              : `System status: ${health.status}`
-          }
-        } catch (error) {
+      check: async (health?: SystemHealth) => {
+        if (!health) {
           return {
             success: false,
-            message: `Health check failed: ${error instanceof Error ? error.message : 'Unknown error'}`
+            message: 'Health check could not be completed: System health unavailable'
           }
+        }
+
+        const isHealthy = health.status === 'healthy'
+        return {
+          success: isHealthy,
+          message: isHealthy ? 'System is healthy' : `System status: ${health.status}`
         }
       },
       required: false
     },
     {
       name: 'GPU Availability',
-      check: async () => {
-        try {
-          const health = await getSystemHealth()
-          return {
-            success: health.gpu_available || false,
-            message: health.gpu_available 
-              ? 'GPU is available' 
-              : 'GPU not detected or unavailable'
-          }
-        } catch (error) {
+      check: async (health?: SystemHealth) => {
+        if (!health) {
           return {
             success: false,
-            message: `GPU check failed: ${error instanceof Error ? error.message : 'Unknown error'}`
+            message: 'GPU check could not be completed: System health unavailable'
           }
+        }
+
+        return {
+          success: health.gpu_available || false,
+          message: health.gpu_available
+            ? 'GPU is available'
+            : 'GPU not detected or unavailable'
         }
       },
       required: false
     },
     {
       name: 'Database Connection',
-      check: async () => {
-        try {
-          const health = await getSystemHealth()
-          return {
-            success: health.database_connected || false,
-            message: health.database_connected 
-              ? 'Database is connected' 
-              : 'Database connection failed'
-          }
-        } catch (error) {
+      check: async (health?: SystemHealth) => {
+        if (!health) {
           return {
             success: false,
-            message: `Database check failed: ${error instanceof Error ? error.message : 'Unknown error'}`
+            message: 'Database check could not be completed: System health unavailable'
           }
+        }
+
+        return {
+          success: health.database_connected || false,
+          message: health.database_connected
+            ? 'Database is connected'
+            : 'Database connection failed'
         }
       },
       required: true
@@ -106,8 +101,10 @@ export class StartupValidator {
 
     try {
       // Get system health first
+      let systemHealth: SystemHealth | undefined
       try {
-        result.systemHealth = await getSystemHealth()
+        systemHealth = await getSystemHealth()
+        result.systemHealth = systemHealth
       } catch (error) {
         result.warnings.push('Could not retrieve system health information')
       }
@@ -115,7 +112,7 @@ export class StartupValidator {
       // Run all validation checks
       for (const check of this.checks) {
         try {
-          const checkResult = await check.check()
+          const checkResult = await check.check(systemHealth)
           
           if (!checkResult.success) {
             const message = `${check.name}: ${checkResult.message || 'Check failed'}`
