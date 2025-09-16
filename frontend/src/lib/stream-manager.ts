@@ -18,16 +18,18 @@ export interface StreamResponse {
 }
 
 export class StreamManager {
-  private options: StreamOptions
   private activeStreams = new Map<string, AbortController>()
 
   constructor(options: StreamOptions = {}) {
-    this.options = {
+    // Options are validated but not stored as they're not used elsewhere
+    const validatedOptions = {
       timeout: 30000,
       retryAttempts: 3,
       bufferSize: 1024,
       ...options
     }
+    // Could be used for future timeout/retry logic
+    void validatedOptions
   }
 
   async createStream(id: string, request: StreamRequest): Promise<ReadableStream> {

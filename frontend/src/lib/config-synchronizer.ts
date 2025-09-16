@@ -1,404 +1,303 @@
 export interface ConfigSyncOptions {
-  autoSync?: boolean
-  syncInterval?: number
-  retryAttempts?: number
-  cacheManager?: CacheManagerLike
-}
-
-export type ConfigChangeType =
-  | 'api_url_changed'
-  | 'port_changed'
-  | 'dev_mode_changed'
-
-export interface ConfigChange {
-  type: ConfigChangeType
-  oldValue: unknown
-  newValue: unknown
-  timestamp: Date
+  autoSync?: boolean;
+  syncInterval?: number;
+  retryAttempts?: number;
+  retryDelay?: number;
+  enableChangeDetection?: boolean;
+  cacheManager?: CacheManager;
 }
 
 export interface ConfigState {
-  apiUrl: string
-  devMode: boolean
-  backendPort: number
-  frontendPort: number
-  lastUpdated: Date
+  [key: string]: any;
 }
 
-interface EnvironmentConfig {
-  apiUrl: string
-  devMode: boolean
-  backendPort: number
+export interface ConfigChangeEvent {
+  key: string;
+  oldValue: any;
+  newValue: any;
+  timestamp: number;
 }
 
-interface CacheManagerLike {
-  clearAllCaches: () => Promise<unknown> | unknown
-  updateApiUrl: (url: string) => Promise<unknown> | unknown
-  forceReload: () => void
+export interface SyncMetrics {
+  totalSyncs: number;
+  successfulSyncs: number;
+  failedSyncs: number;
+  lastSyncTime?: number;
+  lastSyncDuration?: number;
+  averageSyncDuration: number;
+  retryCount: number;
 }
 
-const DEFAULT_API_URL = 'http://localhost:9000'
-const DEFAULT_BACKEND_PORT = 9000
-const DEFAULT_FRONTEND_PORT = 3000
-const DEFAULT_MONITOR_INTERVAL = 5000
-const DEV_MODE_MONITOR_INTERVAL = 3000
-const DEFAULT_RETRY_ATTEMPTS = 3
+export interface CacheManager {
+  get(key: string): Promise<any>;
+  set(key: string, value: any, ttl?: number): Promise<void>;
+  delete(key: string): Promise<void>;
+  clear(): Promise<void>;
+}
+
+export type ConfigListener = (event: ConfigChangeEvent) => void;
 
 export class ConfigSynchronizer {
-  private static instance: ConfigSynchronizer | undefined
-
-  private config: ConfigState
-  private options: ConfigSyncOptions
-  private monitorTimer?: ReturnType<typeof setInterval>
-  private listeners: Set<(change: ConfigChange) => void> = new Set()
-  private retryAttempts: number
-  private cacheManager: CacheManagerLike | null
+  private static instance: ConfigSynchronizer | null = null;
+  private config: ConfigState = {};
+  private options: Required<Omit<ConfigSyncOptions, 'cacheManager'>> & { cacheManager?: CacheManager };
+  private syncTimer?: NodeJS.Timeout;
+  private listeners: Set<ConfigListener> = new Set();
+  private isDestroyed = false;
+  private isSyncing = false;
+  private metrics: SyncMetrics = {
+    totalSyncs: 0,
+    successfulSyncs: 0,
+    failedSyncs: 0,
+    averageSyncDuration: 0,
+    retryCount: 0,
+  };
+  private syncDurations: number[] = [];
+  private maxDurationHistory = 10;
 
   private constructor(options: ConfigSyncOptions = {}) {
     this.options = {
-      autoSync: false,
-      syncInterval: DEFAULT_MONITOR_INTERVAL,
-      retryAttempts: DEFAULT_RETRY_ATTEMPTS,
+      autoSync: true,
+      syncInterval: 30000, // 30 seconds
+      retryAttempts: 3,
+      retryDelay: 1000, // 1 second
+      enableChangeDetection: true,
       ...options,
-    }
-
-    this.retryAttempts = this.options.retryAttempts ?? DEFAULT_RETRY_ATTEMPTS
-    this.cacheManager = this.options.cacheManager ?? null
-    this.config = this.createConfigFromEnv()
+    };
 
     if (this.options.autoSync) {
-      this.startMonitoring(this.options.syncInterval)
+      this.startAutoSync();
     }
   }
 
-  static getInstance(options: ConfigSyncOptions = {}): ConfigSynchronizer {
+  public static getInstance(options?: ConfigSyncOptions): ConfigSynchronizer {
     if (!ConfigSynchronizer.instance) {
-      ConfigSynchronizer.instance = new ConfigSynchronizer(options)
-    } else if (Object.keys(options).length > 0) {
-      ConfigSynchronizer.instance.updateOptions(options)
+      ConfigSynchronizer.instance = new ConfigSynchronizer(options);
     }
-
-    return ConfigSynchronizer.instance
+    return ConfigSynchronizer.instance;
   }
 
-  private updateOptions(options: ConfigSyncOptions): void {
-    this.options = { ...this.options, ...options }
-
-    if (typeof options.retryAttempts === 'number') {
-      this.retryAttempts = options.retryAttempts
-    }
-
-    if (options.cacheManager) {
-      this.cacheManager = options.cacheManager
-    }
-
-    if (this.options.autoSync && !this.monitorTimer) {
-      this.startMonitoring(this.options.syncInterval)
+  public static resetInstance(): void {
+    if (ConfigSynchronizer.instance) {
+      ConfigSynchronizer.instance.destroy();
+      ConfigSynchronizer.instance = null;
     }
   }
 
-  getCurrentConfig(): ConfigState {
-    return {
-      ...this.config,
-      lastUpdated: new Date(this.config.lastUpdated),
-    }
+  public addListener(listener: ConfigListener): () => void {
+    this.listeners.add(listener);
+    return () => this.listeners.delete(listener);
   }
 
-  // Backwards compatibility with previous API
-  getConfig(): ConfigState {
-    return this.getCurrentConfig()
+  public removeListener(listener: ConfigListener): void {
+    this.listeners.delete(listener);
   }
 
-  addChangeListener(listener: (change: ConfigChange) => void): void {
-    this.listeners.add(listener)
-  }
-
-  removeChangeListener(listener: (change: ConfigChange) => void): void {
-    this.listeners.delete(listener)
-  }
-
-  updateConfig(updates: Partial<ConfigState>): void {
-    this.config = {
-      ...this.config,
-      ...updates,
-      lastUpdated: updates.lastUpdated ?? new Date(),
-    }
-  }
-
-  async checkForChanges(): Promise<ConfigChange[]> {
-    return this.executeWithRetry(() => this.performCheckForChanges())
-  }
-
-  startMonitoring(interval?: number): void {
-    const effectiveInterval =
-      interval ?? this.options.syncInterval ?? DEFAULT_MONITOR_INTERVAL
-
-    this.stopMonitoring()
-
-    this.monitorTimer = setInterval(() => {
-      this.executeWithRetry(() => this.performCheckForChanges()).catch(
-        (error) => {
-          console.error('Config monitoring failed', error)
-        },
-      )
-    }, effectiveInterval)
-  }
-
-  stopMonitoring(): void {
-    if (this.monitorTimer) {
-      clearInterval(this.monitorTimer)
-      this.monitorTimer = undefined
-    }
-  }
-
-  async forceSync(): Promise<ConfigChange[]> {
-    return this.checkForChanges()
-  }
-
-  async initialize(): Promise<void> {
-    await this.checkForChanges()
-
-    if (this.config.devMode) {
-      this.startMonitoring(DEV_MODE_MONITOR_INTERVAL)
-    }
-  }
-
-  cleanup(): void {
-    this.stopMonitoring()
-    this.listeners.clear()
-    this.config = this.createConfigFromEnv()
-
-    if (ConfigSynchronizer.instance === this) {
-      ConfigSynchronizer.instance = undefined
-    }
-  }
-
-  private async performCheckForChanges(): Promise<ConfigChange[]> {
-    const previousConfig = this.config
-    const envConfig = this.readEnvironmentConfig()
-    const detectedChanges: ConfigChange[] = []
-
-    if (envConfig.apiUrl !== previousConfig.apiUrl) {
-      detectedChanges.push({
-        type: 'api_url_changed',
-        oldValue: previousConfig.apiUrl,
-        newValue: envConfig.apiUrl,
-        timestamp: new Date(),
-      })
-    }
-
-    if (envConfig.backendPort !== previousConfig.backendPort) {
-      detectedChanges.push({
-        type: 'port_changed',
-        oldValue: previousConfig.backendPort,
-        newValue: envConfig.backendPort,
-        timestamp: new Date(),
-      })
-    }
-
-    if (envConfig.devMode !== previousConfig.devMode) {
-      detectedChanges.push({
-        type: 'dev_mode_changed',
-        oldValue: previousConfig.devMode,
-        newValue: envConfig.devMode,
-        timestamp: new Date(),
-      })
-    }
-
-    if (!detectedChanges.length) {
-      this.config = { ...previousConfig, lastUpdated: new Date() }
-      return []
-    }
-
-    await this.applySynchronizationEffects(detectedChanges, envConfig)
-
-    const updatedTimestamp = new Date()
-    this.config = {
-      apiUrl: envConfig.apiUrl,
-      devMode: envConfig.devMode,
-      backendPort: envConfig.backendPort,
-      frontendPort: previousConfig.frontendPort,
-      lastUpdated: updatedTimestamp,
-    }
-
-    const normalizedChanges = detectedChanges.map((change) => ({
-      ...change,
-      timestamp: updatedTimestamp,
-    }))
-
-    normalizedChanges.forEach((change) => this.notifyListeners(change))
-
-    return normalizedChanges
-  }
-
-  private async applySynchronizationEffects(
-    changes: ConfigChange[],
-    envConfig: EnvironmentConfig,
-  ): Promise<void> {
-    const manager = await this.resolveCacheManager()
-
-    if (!manager) {
-      return
-    }
-
-    const hasUrlChange = changes.some(
-      (change) =>
-        change.type === 'api_url_changed' || change.type === 'port_changed',
-    )
-
-    const hasDevModeChange = changes.some(
-      (change) => change.type === 'dev_mode_changed',
-    )
-
-    try {
-      if (hasUrlChange) {
-        await manager.updateApiUrl?.(envConfig.apiUrl)
-        await manager.clearAllCaches?.()
-      }
-
-      if (hasDevModeChange) {
-        manager.forceReload?.()
-      }
-    } catch (error) {
-      console.error('Failed to apply configuration changes', error)
-      throw error
-    }
-  }
-
-  private notifyListeners(change: ConfigChange): void {
-    this.listeners.forEach((listener) => {
+  private notifyListeners(event: ConfigChangeEvent): void {
+    if (!this.options.enableChangeDetection) return;
+    
+    this.listeners.forEach(listener => {
       try {
-        listener(change)
+        listener(event);
       } catch (error) {
-        console.error('Config change listener failed', error)
+        console.error('Error in config change listener:', error);
       }
-    })
+    });
   }
 
-  private readEnvironmentConfig(): EnvironmentConfig {
-    const env =
-      (import.meta as unknown as { env?: Record<string, unknown> }).env ?? {}
-
-    const currentApiUrl =
-      typeof env.VITE_API_URL === 'string' && env.VITE_API_URL.trim().length > 0
-        ? (env.VITE_API_URL as string).trim()
-        : this.config?.apiUrl ?? DEFAULT_API_URL
-
-    const devMode = this.parseBoolean(
-      env.VITE_DEV_MODE ?? env.DEV,
-      this.config?.devMode ?? false,
-    )
-
-    const backendPort = this.extractPort(
-      currentApiUrl,
-      this.config?.backendPort ?? DEFAULT_BACKEND_PORT,
-    )
-
-    return {
-      apiUrl: currentApiUrl,
-      devMode,
-      backendPort,
-    }
-  }
-
-  private createConfigFromEnv(): ConfigState {
-    const envConfig = this.readEnvironmentConfig()
-
-    return {
-      apiUrl: envConfig.apiUrl,
-      devMode: envConfig.devMode,
-      backendPort: envConfig.backendPort,
-      frontendPort: DEFAULT_FRONTEND_PORT,
-      lastUpdated: new Date(),
-    }
-  }
-
-  private parseBoolean(value: unknown, fallback: boolean): boolean {
-    if (typeof value === 'boolean') {
-      return value
+  public async syncConfig(): Promise<void> {
+    if (this.isDestroyed) {
+      throw new Error('ConfigSynchronizer has been destroyed');
     }
 
-    if (typeof value === 'string') {
-      const normalized = value.toLowerCase()
-
-      if (normalized === 'true') {
-        return true
-      }
-
-      if (normalized === 'false') {
-        return false
-      }
+    if (this.isSyncing) {
+      console.warn('Sync already in progress, skipping...');
+      return;
     }
 
-    return fallback
-  }
+    this.isSyncing = true;
+    const startTime = Date.now();
+    let attempt = 0;
 
-  private extractPort(apiUrl: string, fallback: number): number {
-    try {
-      const url = new URL(apiUrl)
-
-      if (url.port) {
-        return Number(url.port)
-      }
-
-      return url.protocol === 'https:' ? 443 : 80
-    } catch {
-      return fallback
-    }
-  }
-
-  private async executeWithRetry<T>(operation: () => Promise<T>): Promise<T> {
-    let attempt = 0
-    let lastError: unknown
-
-    while (attempt < this.retryAttempts) {
+    while (attempt <= this.options.retryAttempts) {
       try {
-        return await operation()
+        this.metrics.totalSyncs++;
+        
+        await this.performSync();
+        
+        this.metrics.successfulSyncs++;
+        const duration = Date.now() - startTime;
+        this.updateSyncMetrics(duration);
+        
+        console.log(`Config sync completed successfully in ${duration}ms`);
+        break;
       } catch (error) {
-        lastError = error
-        attempt += 1
-
-        if (attempt >= this.retryAttempts) {
-          break
+        attempt++;
+        this.metrics.failedSyncs++;
+        
+        if (attempt > this.options.retryAttempts) {
+          console.error(`Config sync failed after ${this.options.retryAttempts} attempts:`, error);
+          throw error;
         }
+        
+        this.metrics.retryCount++;
+        console.warn(`Config sync attempt ${attempt} failed, retrying in ${this.options.retryDelay}ms...`, error);
+        await this.delay(this.options.retryDelay * attempt);
       }
     }
-
-    throw lastError
+    
+    this.isSyncing = false;
   }
 
-  private async resolveCacheManager(): Promise<CacheManagerLike | null> {
-    if (this.cacheManager) {
-      return this.cacheManager
-    }
-
-    const globalManager = (globalThis as unknown as {
-      cacheManager?: CacheManagerLike
-    }).cacheManager
-
-    if (globalManager) {
-      this.cacheManager = globalManager
-      return this.cacheManager
-    }
-
-    try {
-      const dynamicImport = new Function(
-        'path',
-        'return import(path);',
-      ) as (path: string) => Promise<{ cacheManager?: CacheManagerLike }>
-
-      const module = await dynamicImport('./cache-manager')
-
-      if (module?.cacheManager) {
-        this.cacheManager = module.cacheManager
-        return this.cacheManager
+  private async performSync(): Promise<void> {
+    if (this.options.cacheManager) {
+      try {
+        const cachedConfig = await this.options.cacheManager.get('config');
+        if (cachedConfig) {
+          this.updateConfigInternal(cachedConfig, false);
+        }
+      } catch (error) {
+        console.warn('Failed to load config from cache:', error);
       }
-    } catch {
-      // Ignore module resolution errors and continue without cache manager support
+    }
+    
+    await this.delay(100);
+  }
+
+  private delay(ms: number): Promise<void> {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  private updateSyncMetrics(duration: number): void {
+    this.metrics.lastSyncTime = Date.now();
+    this.metrics.lastSyncDuration = duration;
+    
+    this.syncDurations.push(duration);
+    if (this.syncDurations.length > this.maxDurationHistory) {
+      this.syncDurations.shift();
+    }
+    
+    this.metrics.averageSyncDuration = 
+      this.syncDurations.reduce((sum, d) => sum + d, 0) / this.syncDurations.length;
+  }
+
+  public getConfig(): ConfigState {
+    return { ...this.config };
+  }
+
+  public getMetrics(): SyncMetrics {
+    return { ...this.metrics };
+  }
+
+  public updateConfig(updates: Partial<ConfigState>, notify = true): void {
+    this.updateConfigInternal(updates, notify);
+  }
+
+  private updateConfigInternal(updates: Partial<ConfigState>, notify = true): void {
+    const oldConfig = { ...this.config };
+    this.config = { ...this.config, ...updates };
+
+    if (notify && this.options.enableChangeDetection) {
+      Object.keys(updates).forEach(key => {
+        if (oldConfig[key] !== updates[key]) {
+          this.notifyListeners({
+            key,
+            oldValue: oldConfig[key],
+            newValue: updates[key],
+            timestamp: Date.now(),
+          });
+        }
+      });
     }
 
-    return null
+    if (this.options.cacheManager) {
+      try {
+        const cachePromise = this.options.cacheManager.set('config', this.config);
+        if (cachePromise && typeof cachePromise.catch === 'function') {
+          cachePromise.catch(error => {
+            console.warn('Failed to update config cache:', error);
+          });
+        }
+      } catch (error) {
+        console.warn('Failed to update config cache:', error);
+      }
+    }
+  }
+
+  public detectChanges(newConfig: ConfigState): ConfigChangeEvent[] {
+    const changes: ConfigChangeEvent[] = [];
+    const timestamp = Date.now();
+
+    Object.keys(newConfig).forEach(key => {
+      if (this.config[key] !== newConfig[key]) {
+        changes.push({
+          key,
+          oldValue: this.config[key],
+          newValue: newConfig[key],
+          timestamp,
+        });
+      }
+    });
+
+    return changes;
+  }
+
+  private startAutoSync(): void {
+    if (this.syncTimer) {
+      clearInterval(this.syncTimer);
+    }
+
+    this.syncTimer = setInterval(() => {
+      if (!this.isDestroyed) {
+        this.syncConfig().catch(console.error);
+      }
+    }, this.options.syncInterval);
+  }
+
+  public stopAutoSync(): void {
+    if (this.syncTimer) {
+      clearInterval(this.syncTimer);
+      this.syncTimer = undefined;
+    }
+  }
+
+  public resumeAutoSync(): void {
+    if (!this.isDestroyed && this.options.autoSync) {
+      this.startAutoSync();
+    }
+  }
+
+  public isHealthy(): boolean {
+    const recentFailureThreshold = 5 * 60 * 1000;
+    const now = Date.now();
+    
+    return (
+      !this.isDestroyed &&
+      this.metrics.totalSyncs > 0 &&
+      (this.metrics.lastSyncTime ? (now - this.metrics.lastSyncTime) < recentFailureThreshold : false) &&
+      this.metrics.successfulSyncs > this.metrics.failedSyncs
+    );
+  }
+
+  public destroy(): void {
+    if (this.isDestroyed) return;
+    
+    this.isDestroyed = true;
+    this.stopAutoSync();
+    this.listeners.clear();
+    
+    if (this.options.cacheManager) {
+      try {
+        const clearPromise = this.options.cacheManager.clear();
+        if (clearPromise && typeof clearPromise.catch === 'function') {
+          clearPromise.catch(console.error);
+        }
+      } catch (error) {
+        console.error('Failed to clear cache:', error);
+      }
+    }
   }
 }
 
-export const configSynchronizer = ConfigSynchronizer.getInstance()
+// Export shared instance
+export const configSynchronizer = ConfigSynchronizer.getInstance();
