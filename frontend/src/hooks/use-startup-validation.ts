@@ -48,7 +48,8 @@ export function useStartupValidation() {
       if (validationResult.isValid) {
         console.log(`✅ [${new Date().toISOString()}] Application initialization completed successfully`);
       } else {
-        console.warn(`⚠️ [${new Date().toISOString()}] Application initialization completed with issues:`, validationResult.issues);
+        const allIssues = [...validationResult.errors, ...validationResult.warnings];
+        console.warn(`⚠️ [${new Date().toISOString()}] Application initialization completed with issues:`, allIssues);
       }
 
     } catch (error) {
