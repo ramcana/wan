@@ -336,18 +336,53 @@ async def submit_enhanced_generation(
         estimated_time_minutes = (frames_count * time_per_frame) / 60.0
         
         # Submit to generation service
-        success = await generation_service.submit_generation_task(
+        submission_result = await generation_service.submit_generation_task(
             task_id=task_id,
             parameters=generation_params,
             priority=priority
         )
-        
-        if not success:
-            raise HTTPException(status_code=500, detail="Failed to submit generation task")
-        
+
+        submission_success = False
+        submission_error = None
+        submission_message = None
+        queue_position = None
+
+        if isinstance(submission_result, bool):
+            submission_success = submission_result
+        elif isinstance(submission_result, dict):
+            submission_success = submission_result.get("success", False)
+            submission_error = submission_result.get("error_message") or submission_result.get("error")
+            submission_message = submission_result.get("message")
+            queue_position = submission_result.get("queue_position")
+            task_id = submission_result.get("task_id", task_id)
+        else:
+            submission_success = getattr(submission_result, "success", False)
+            submission_error = getattr(submission_result, "error_message", None)
+            submission_message = getattr(submission_result, "message", None)
+            queue_position = getattr(submission_result, "queue_position", None)
+            task_id = getattr(submission_result, "task_id", task_id)
+
+        if submission_message:
+            logger.info(f"📥 {submission_message}")
+
+        if not submission_success:
+            raise HTTPException(
+                status_code=500,
+                detail=submission_error or submission_message or "Failed to submit generation task"
+            )
+
         # Get queue position
         queue_info = await generation_service.get_queue_status()
-        queue_position = len([t for t in queue_info.get("tasks", []) if t.get("status") == "pending"])
+        pending_tasks = [t for t in queue_info.get("tasks", []) if t.get("status") == "pending"]
+
+        if queue_position is None:
+            for pending in pending_tasks:
+                if pending.get("id") == task_id:
+                    queue_position = pending.get("queue_position") or (pending_tasks.index(pending) + 1)
+                    break
+
+        if queue_position is None:
+            queue_position = len(pending_tasks)
         
         # Applied optimizations for Phase 1
         applied_optimizations = []
