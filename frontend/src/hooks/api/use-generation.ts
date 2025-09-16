@@ -40,7 +40,7 @@ export const useGenerateVideo = () => {
         console.log("Sending FormData with files");
         
         // Submit with FormData
-        const response = await post<GenerationResponse>("/api/v1/generation/submit", uploadData, {
+        const response = await post<GenerationResponse>("/generation/submit", uploadData, {
           timeout: 300000, // 5 minutes for generation submission
         });
         
@@ -59,7 +59,7 @@ export const useGenerateVideo = () => {
         console.log("Sending JSON data:", jsonData);
         
         // Submit with JSON
-        const response = await post<GenerationResponse>("/api/v1/generation/submit", jsonData, {
+        const response = await post<GenerationResponse>("/generation/submit", jsonData, {
           headers: {
             'Content-Type': 'application/json'
           },
