@@ -26,11 +26,11 @@ Provides capabilities to:
 
 #### Methods
 
-##### __init__(self: Any, config: <ast.Subscript object at 0x00000194302690F0>)
+##### __init__(self: Any, config: <ast.Subscript object at 0x0000019429C1A350>)
 
 
 
-##### get_rollback_points(self: Any, task_id: <ast.Subscript object at 0x000001942F221360>) -> <ast.Subscript object at 0x000001942F222650>
+##### get_rollback_points(self: Any, task_id: <ast.Subscript object at 0x0000019429C9D0C0>) -> <ast.Subscript object at 0x0000019429C9D7E0>
 
 Get available rollback points.
 
@@ -38,15 +38,15 @@ Get available rollback points.
 
 Clean up old and invalid rollback points.
 
-##### get_rollback_statistics(self: Any) -> <ast.Subscript object at 0x000001943193A950>
+##### get_rollback_statistics(self: Any) -> <ast.Subscript object at 0x0000019428130B20>
 
 Get statistics about rollback points.
 
-##### _get_files_to_backup(self: Any, task: MaintenanceTask) -> <ast.Subscript object at 0x00000194344A24D0>
+##### _get_files_to_backup(self: Any, task: MaintenanceTask) -> <ast.Subscript object at 0x0000019428037A60>
 
 Determine which files to backup based on task type.
 
-##### _get_config_files_to_backup(self: Any, task: MaintenanceTask) -> <ast.Subscript object at 0x00000194344A2D40>
+##### _get_config_files_to_backup(self: Any, task: MaintenanceTask) -> <ast.Subscript object at 0x0000019428034A60>
 
 Get configuration files to backup.
 
@@ -62,11 +62,11 @@ Calculate total size of backup directory.
 
 Verify backup integrity using checksum.
 
-##### _get_current_branch(self: Any) -> <ast.Subscript object at 0x00000194344A38E0>
+##### _get_current_branch(self: Any) -> <ast.Subscript object at 0x0000019427C78430>
 
 Get current git branch.
 
-##### _get_git_status(self: Any) -> <ast.Subscript object at 0x00000194344A1210>
+##### _get_git_status(self: Any) -> <ast.Subscript object at 0x0000019427C7B220>
 
 Get git status.
 
@@ -82,7 +82,7 @@ Save rollback points to storage.
 
 Serialize rollback point to dictionary.
 
-##### _deserialize_rollback_point(self: Any, data: Dict) -> <ast.Subscript object at 0x00000194319C7250>
+##### _deserialize_rollback_point(self: Any, data: Dict) -> <ast.Subscript object at 0x000001942CC457E0>
 
 Deserialize rollback point from dictionary.
 

@@ -870,23 +870,23 @@
 - Historical success rates
 - Dependencies and blocking relationships</p>
 <h4 id="methods_1">Methods<a class="headerlink" href="#methods_1" title="Permanent link">&para;</a></h4>
-<h5 id="initself-any-config"><strong>init</strong>(self: Any, config: <ast.Subscript object at 0x0000019431B040D0>)<a class="headerlink" href="#initself-any-config" title="Permanent link">&para;</a></h5>
-<h5 id="get_priority_scoreself-any-task-maintenancetask-history-float">get_priority_score(self: Any, task: MaintenanceTask, history: <ast.Subscript object at 0x000001942FBAD690>) -&gt; float<a class="headerlink" href="#get_priority_scoreself-any-task-maintenancetask-history-float" title="Permanent link">&para;</a></h5>
+<h5 id="initself-any-config"><strong>init</strong>(self: Any, config: <ast.Subscript object at 0x000001942C6634F0>)<a class="headerlink" href="#initself-any-config" title="Permanent link">&para;</a></h5>
+<h5 id="get_priority_scoreself-any-task-maintenancetask-history-float">get_priority_score(self: Any, task: MaintenanceTask, history: <ast.Subscript object at 0x000001942C6633A0>) -&gt; float<a class="headerlink" href="#get_priority_scoreself-any-task-maintenancetask-history-float" title="Permanent link">&para;</a></h5>
 <p>Calculate comprehensive priority score for a task.</p>
 <p>Returns a score from 0-100 where higher scores indicate higher priority.</p>
 <h5 id="analyze_impactself-any-task-maintenancetask-impactanalysis">analyze_impact(self: Any, task: MaintenanceTask) -&gt; ImpactAnalysis<a class="headerlink" href="#analyze_impactself-any-task-maintenancetask-impactanalysis" title="Permanent link">&para;</a></h5>
 <p>Analyze the potential impact of completing a task.</p>
-<h5 id="analyze_effortself-any-task-maintenancetask-history-effortanalysis">analyze_effort(self: Any, task: MaintenanceTask, history: <ast.Subscript object at 0x00000194341D1510>) -&gt; EffortAnalysis<a class="headerlink" href="#analyze_effortself-any-task-maintenancetask-history-effortanalysis" title="Permanent link">&para;</a></h5>
+<h5 id="analyze_effortself-any-task-maintenancetask-history-effortanalysis">analyze_effort(self: Any, task: MaintenanceTask, history: <ast.Subscript object at 0x000001942C6D2380>) -&gt; EffortAnalysis<a class="headerlink" href="#analyze_effortself-any-task-maintenancetask-history-effortanalysis" title="Permanent link">&para;</a></h5>
 <p>Analyze the effort required to complete a task.</p>
 <h5 id="calculate_urgencyself-any-task-maintenancetask-float">calculate_urgency(self: Any, task: MaintenanceTask) -&gt; float<a class="headerlink" href="#calculate_urgencyself-any-task-maintenancetask-float" title="Permanent link">&para;</a></h5>
 <p>Calculate urgency score based on timing and dependencies.</p>
-<h5 id="get_recommended_execution_orderself-any-tasks-history_map-">get_recommended_execution_order(self: Any, tasks: <ast.Subscript object at 0x000001942F1C9F90>, history_map: <ast.Subscript object at 0x000001942F1CAC50>) -&gt; <ast.Subscript object at 0x000001942F1CBD90><a class="headerlink" href="#get_recommended_execution_orderself-any-tasks-history_map-" title="Permanent link">&para;</a></h5>
+<h5 id="get_recommended_execution_orderself-any-tasks-history_map-">get_recommended_execution_order(self: Any, tasks: <ast.Subscript object at 0x000001942CCB60E0>, history_map: <ast.Subscript object at 0x000001942CCB6920>) -&gt; <ast.Subscript object at 0x000001942CCB40A0><a class="headerlink" href="#get_recommended_execution_orderself-any-tasks-history_map-" title="Permanent link">&para;</a></h5>
 <p>Get tasks in recommended execution order based on priority scores.</p>
 <h5 id="_calculate_effort_scoreself-any-effort_analysis-effortanalysis-float">_calculate_effort_score(self: Any, effort_analysis: EffortAnalysis) -&gt; float<a class="headerlink" href="#_calculate_effort_scoreself-any-effort_analysis-effortanalysis-float" title="Permanent link">&para;</a></h5>
 <p>Convert effort analysis to a score (higher score = less effort).</p>
 <h5 id="_get_priority_adjustmentself-any-priority-taskpriority-float">_get_priority_adjustment(self: Any, priority: TaskPriority) -&gt; float<a class="headerlink" href="#_get_priority_adjustmentself-any-priority-taskpriority-float" title="Permanent link">&para;</a></h5>
 <p>Get priority level adjustment multiplier.</p>
-<h5 id="_analyze_config_impactself-any-config-dict-">_analyze_config_impact(self: Any, config: Dict) -&gt; <ast.Subscript object at 0x000001943451FFD0><a class="headerlink" href="#_analyze_config_impactself-any-config-dict-" title="Permanent link">&para;</a></h5>
+<h5 id="_analyze_config_impactself-any-config-dict-">_analyze_config_impact(self: Any, config: Dict) -&gt; <ast.Subscript object at 0x000001942CCF7490><a class="headerlink" href="#_analyze_config_impactself-any-config-dict-" title="Permanent link">&para;</a></h5>
 <p>Analyze task configuration to determine impact adjustments.</p>
 
 

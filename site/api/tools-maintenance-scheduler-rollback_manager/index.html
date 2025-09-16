@@ -879,16 +879,16 @@
 - Execute rollbacks when operations fail or need to be undone
 - Clean up old rollback points</p>
 <h4 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h4>
-<h5 id="initself-any-config"><strong>init</strong>(self: Any, config: <ast.Subscript object at 0x00000194302690F0>)<a class="headerlink" href="#initself-any-config" title="Permanent link">&para;</a></h5>
-<h5 id="get_rollback_pointsself-any-task_id-">get_rollback_points(self: Any, task_id: <ast.Subscript object at 0x000001942F221360>) -&gt; <ast.Subscript object at 0x000001942F222650><a class="headerlink" href="#get_rollback_pointsself-any-task_id-" title="Permanent link">&para;</a></h5>
+<h5 id="initself-any-config"><strong>init</strong>(self: Any, config: <ast.Subscript object at 0x0000019429C1A350>)<a class="headerlink" href="#initself-any-config" title="Permanent link">&para;</a></h5>
+<h5 id="get_rollback_pointsself-any-task_id-">get_rollback_points(self: Any, task_id: <ast.Subscript object at 0x0000019429C9D0C0>) -&gt; <ast.Subscript object at 0x0000019429C9D7E0><a class="headerlink" href="#get_rollback_pointsself-any-task_id-" title="Permanent link">&para;</a></h5>
 <p>Get available rollback points.</p>
 <h5 id="cleanup_old_rollback_pointsself-any-int">cleanup_old_rollback_points(self: Any) -&gt; int<a class="headerlink" href="#cleanup_old_rollback_pointsself-any-int" title="Permanent link">&para;</a></h5>
 <p>Clean up old and invalid rollback points.</p>
-<h5 id="get_rollback_statisticsself-any-">get_rollback_statistics(self: Any) -&gt; <ast.Subscript object at 0x000001943193A950><a class="headerlink" href="#get_rollback_statisticsself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="get_rollback_statisticsself-any-">get_rollback_statistics(self: Any) -&gt; <ast.Subscript object at 0x0000019428130B20><a class="headerlink" href="#get_rollback_statisticsself-any-" title="Permanent link">&para;</a></h5>
 <p>Get statistics about rollback points.</p>
-<h5 id="_get_files_to_backupself-any-task-maintenancetask-">_get_files_to_backup(self: Any, task: MaintenanceTask) -&gt; <ast.Subscript object at 0x00000194344A24D0><a class="headerlink" href="#_get_files_to_backupself-any-task-maintenancetask-" title="Permanent link">&para;</a></h5>
+<h5 id="_get_files_to_backupself-any-task-maintenancetask-">_get_files_to_backup(self: Any, task: MaintenanceTask) -&gt; <ast.Subscript object at 0x0000019428037A60><a class="headerlink" href="#_get_files_to_backupself-any-task-maintenancetask-" title="Permanent link">&para;</a></h5>
 <p>Determine which files to backup based on task type.</p>
-<h5 id="_get_config_files_to_backupself-any-task-maintenancetask-">_get_config_files_to_backup(self: Any, task: MaintenanceTask) -&gt; <ast.Subscript object at 0x00000194344A2D40><a class="headerlink" href="#_get_config_files_to_backupself-any-task-maintenancetask-" title="Permanent link">&para;</a></h5>
+<h5 id="_get_config_files_to_backupself-any-task-maintenancetask-">_get_config_files_to_backup(self: Any, task: MaintenanceTask) -&gt; <ast.Subscript object at 0x0000019428034A60><a class="headerlink" href="#_get_config_files_to_backupself-any-task-maintenancetask-" title="Permanent link">&para;</a></h5>
 <p>Get configuration files to backup.</p>
 <h5 id="_calculate_backup_checksumself-any-backup_dir-path-str">_calculate_backup_checksum(self: Any, backup_dir: Path) -&gt; str<a class="headerlink" href="#_calculate_backup_checksumself-any-backup_dir-path-str" title="Permanent link">&para;</a></h5>
 <p>Calculate checksum for backup directory.</p>
@@ -896,9 +896,9 @@
 <p>Calculate total size of backup directory.</p>
 <h5 id="_verify_backup_integrityself-any-rollback_point-rollbackpoint-backup_dir-path-bool">_verify_backup_integrity(self: Any, rollback_point: RollbackPoint, backup_dir: Path) -&gt; bool<a class="headerlink" href="#_verify_backup_integrityself-any-rollback_point-rollbackpoint-backup_dir-path-bool" title="Permanent link">&para;</a></h5>
 <p>Verify backup integrity using checksum.</p>
-<h5 id="_get_current_branchself-any-">_get_current_branch(self: Any) -&gt; <ast.Subscript object at 0x00000194344A38E0><a class="headerlink" href="#_get_current_branchself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="_get_current_branchself-any-">_get_current_branch(self: Any) -&gt; <ast.Subscript object at 0x0000019427C78430><a class="headerlink" href="#_get_current_branchself-any-" title="Permanent link">&para;</a></h5>
 <p>Get current git branch.</p>
-<h5 id="_get_git_statusself-any-">_get_git_status(self: Any) -&gt; <ast.Subscript object at 0x00000194344A1210><a class="headerlink" href="#_get_git_statusself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="_get_git_statusself-any-">_get_git_status(self: Any) -&gt; <ast.Subscript object at 0x0000019427C7B220><a class="headerlink" href="#_get_git_statusself-any-" title="Permanent link">&para;</a></h5>
 <p>Get git status.</p>
 <h5 id="_load_rollback_pointsself-any-none">_load_rollback_points(self: Any) -&gt; None<a class="headerlink" href="#_load_rollback_pointsself-any-none" title="Permanent link">&para;</a></h5>
 <p>Load rollback points from storage.</p>
@@ -906,7 +906,7 @@
 <p>Save rollback points to storage.</p>
 <h5 id="_serialize_rollback_pointself-any-point-rollbackpoint-dict">_serialize_rollback_point(self: Any, point: RollbackPoint) -&gt; Dict<a class="headerlink" href="#_serialize_rollback_pointself-any-point-rollbackpoint-dict" title="Permanent link">&para;</a></h5>
 <p>Serialize rollback point to dictionary.</p>
-<h5 id="_deserialize_rollback_pointself-any-data-dict-">_deserialize_rollback_point(self: Any, data: Dict) -&gt; <ast.Subscript object at 0x00000194319C7250><a class="headerlink" href="#_deserialize_rollback_pointself-any-data-dict-" title="Permanent link">&para;</a></h5>
+<h5 id="_deserialize_rollback_pointself-any-data-dict-">_deserialize_rollback_point(self: Any, data: Dict) -&gt; <ast.Subscript object at 0x000001942CC457E0><a class="headerlink" href="#_deserialize_rollback_pointself-any-data-dict-" title="Permanent link">&para;</a></h5>
 <p>Deserialize rollback point from dictionary.</p>
 
 

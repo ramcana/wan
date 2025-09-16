@@ -21,14 +21,14 @@ CORS configuration validator and manager
 
 
 
-##### validate_cors_configuration(self: Any, app: Any) -> <ast.Subscript object at 0x0000019430267B20>
+##### validate_cors_configuration(self: Any, app: Any) -> <ast.Subscript object at 0x000001942CBA41F0>
 
 Validate CORS middleware configuration
 
 Returns:
     Tuple[bool, List[str]]: (is_valid, error_messages)
 
-##### get_cors_configuration_suggestions(self: Any, current_origins: <ast.Subscript object at 0x0000019430267910>) -> <ast.Subscript object at 0x00000194302647F0>
+##### get_cors_configuration_suggestions(self: Any, current_origins: <ast.Subscript object at 0x000001942CBA40D0>) -> <ast.Subscript object at 0x000001942CBA4040>
 
 Get suggested CORS configuration
 
@@ -48,7 +48,7 @@ Args:
 Returns:
     bool: True if valid origin format
 
-##### check_cors_error(self: Any, request: Request, error: Exception) -> <ast.Subscript object at 0x00000194302BB130>
+##### check_cors_error(self: Any, request: Request, error: Exception) -> <ast.Subscript object at 0x000001942CBA66E0>
 
 Check if an error is CORS-related and provide resolution steps
 
@@ -59,7 +59,7 @@ Args:
 Returns:
     Dict with CORS error details and resolution steps, or None if not CORS-related
 
-##### _get_cors_resolution_steps(self: Any, origin: str, method: str) -> <ast.Subscript object at 0x00000194302B8C70>
+##### _get_cors_resolution_steps(self: Any, origin: str, method: str) -> <ast.Subscript object at 0x000001942CBC7070>
 
 Get resolution steps for CORS errors
 

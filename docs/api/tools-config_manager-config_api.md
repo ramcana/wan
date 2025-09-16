@@ -27,11 +27,11 @@ Handles configuration change notifications
 
 
 
-##### register_callback(self: Any, callback: <ast.Subscript object at 0x000001942F6D7160>)
+##### register_callback(self: Any, callback: <ast.Subscript object at 0x000001942C803160>)
 
 Register a callback for configuration changes
 
-##### unregister_callback(self: Any, callback: <ast.Subscript object at 0x000001942F6D6E00>)
+##### unregister_callback(self: Any, callback: <ast.Subscript object at 0x000001942C802E00>)
 
 Unregister a configuration change callback
 
@@ -59,7 +59,7 @@ Comprehensive configuration API with hot-reloading and change notifications
 
 #### Methods
 
-##### __init__(self: Any, config_file_path: <ast.Subscript object at 0x000001942F6D5930>, auto_reload: bool, validate_changes: bool)
+##### __init__(self: Any, config_file_path: <ast.Subscript object at 0x000001942C858AC0>, auto_reload: bool, validate_changes: bool)
 
 
 
@@ -83,7 +83,7 @@ Detect changes between configurations and notify callbacks
 
 Recursively compare dictionaries and generate change events
 
-##### get_config(self: Any, path: <ast.Subscript object at 0x000001942F72C820>) -> Any
+##### get_config(self: Any, path: <ast.Subscript object at 0x000001942C8EA230>) -> Any
 
 Get configuration value by path
 
@@ -106,7 +106,7 @@ Args:
 Returns:
     True if successful, False otherwise
 
-##### update_config(self: Any, updates: <ast.Subscript object at 0x000001942F6B0250>, validate: bool) -> <ast.Subscript object at 0x000001942F6CBC10>
+##### update_config(self: Any, updates: <ast.Subscript object at 0x000001942C8E8250>, validate: bool) -> <ast.Subscript object at 0x000001942C873C10>
 
 Update multiple configuration values
 
@@ -124,7 +124,7 @@ Manually reload configuration from file
 Returns:
     True if successful, False otherwise
 
-##### save_config(self: Any, file_path: <ast.Subscript object at 0x000001942F6CB580>) -> bool
+##### save_config(self: Any, file_path: <ast.Subscript object at 0x000001942C873580>) -> bool
 
 Save current configuration to file
 
@@ -141,15 +141,15 @@ Validate the current configuration
 Returns:
     Validation result
 
-##### register_change_callback(self: Any, callback: <ast.Subscript object at 0x000001942F6CA5C0>)
+##### register_change_callback(self: Any, callback: <ast.Subscript object at 0x0000019427F253F0>)
 
 Register a callback for configuration changes
 
-##### unregister_change_callback(self: Any, callback: <ast.Subscript object at 0x0000019431B1D030>)
+##### unregister_change_callback(self: Any, callback: <ast.Subscript object at 0x0000019427F25090>)
 
 Unregister a configuration change callback
 
-##### get_config_info(self: Any) -> <ast.Subscript object at 0x0000019431B4BFA0>
+##### get_config_info(self: Any) -> <ast.Subscript object at 0x0000019427F3BFA0>
 
 Get information about the current configuration
 

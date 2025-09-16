@@ -29,7 +29,7 @@ Initialize progress integration
 Args:
     websocket_manager: WebSocket connection manager instance
 
-##### _calculate_estimated_time_remaining(self: Any, current_progress: int) -> <ast.Subscript object at 0x000001942F3CC580>
+##### _calculate_estimated_time_remaining(self: Any, current_progress: int) -> <ast.Subscript object at 0x000001942B368610>
 
 Calculate estimated time remaining based on current progress
 

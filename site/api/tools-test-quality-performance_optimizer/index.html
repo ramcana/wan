@@ -1145,19 +1145,19 @@
 <p>Profiles test performance and identifies bottlenecks</p>
 <h4 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h4>
 <h5 id="initself-any-project_root-path"><strong>init</strong>(self: Any, project_root: Path)<a class="headerlink" href="#initself-any-project_root-path" title="Permanent link">&para;</a></h5>
-<h5 id="profile_test_suiteself-any-test_files-testperformanceprofile">profile_test_suite(self: Any, test_files: <ast.Subscript object at 0x00000194302DD630>) -&gt; TestPerformanceProfile<a class="headerlink" href="#profile_test_suiteself-any-test_files-testperformanceprofile" title="Permanent link">&para;</a></h5>
+<h5 id="profile_test_suiteself-any-test_files-testperformanceprofile">profile_test_suite(self: Any, test_files: <ast.Subscript object at 0x000001942834D630>) -&gt; TestPerformanceProfile<a class="headerlink" href="#profile_test_suiteself-any-test_files-testperformanceprofile" title="Permanent link">&para;</a></h5>
 <p>Profile performance of test suite</p>
-<h5 id="_discover_test_filesself-any-">_discover_test_files(self: Any) -&gt; <ast.Subscript object at 0x0000019430288340><a class="headerlink" href="#_discover_test_filesself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="_discover_test_filesself-any-">_discover_test_files(self: Any) -&gt; <ast.Subscript object at 0x0000019428328340><a class="headerlink" href="#_discover_test_filesself-any-" title="Permanent link">&para;</a></h5>
 <p>Discover test files in the project</p>
-<h5 id="_run_performance_testsself-any-test_files-">_run_performance_tests(self: Any, test_files: <ast.Subscript object at 0x00000194302881F0>) -&gt; <ast.Subscript object at 0x0000019432E65210><a class="headerlink" href="#_run_performance_testsself-any-test_files-" title="Permanent link">&para;</a></h5>
+<h5 id="_run_performance_testsself-any-test_files-">_run_performance_tests(self: Any, test_files: <ast.Subscript object at 0x00000194283281F0>) -&gt; <ast.Subscript object at 0x0000019428307BB0><a class="headerlink" href="#_run_performance_testsself-any-test_files-" title="Permanent link">&para;</a></h5>
 <p>Run tests with performance monitoring</p>
-<h5 id="_profile_test_fileself-any-test_file-path-">_profile_test_file(self: Any, test_file: Path) -&gt; <ast.Subscript object at 0x0000019432E64FD0><a class="headerlink" href="#_profile_test_fileself-any-test_file-path-" title="Permanent link">&para;</a></h5>
+<h5 id="_profile_test_fileself-any-test_file-path-">_profile_test_file(self: Any, test_file: Path) -&gt; <ast.Subscript object at 0x0000019428305FF0><a class="headerlink" href="#_profile_test_fileself-any-test_file-path-" title="Permanent link">&para;</a></h5>
 <p>Profile performance of a single test file</p>
-<h5 id="_parse_pytest_outputself-any-test_file-path-output-str-total_time-float-">_parse_pytest_output(self: Any, test_file: Path, output: str, total_time: float) -&gt; <ast.Subscript object at 0x0000019432D7F9D0><a class="headerlink" href="#_parse_pytest_outputself-any-test_file-path-output-str-total_time-float-" title="Permanent link">&para;</a></h5>
+<h5 id="_parse_pytest_outputself-any-test_file-path-output-str-total_time-float-">_parse_pytest_output(self: Any, test_file: Path, output: str, total_time: float) -&gt; <ast.Subscript object at 0x000001942833F610><a class="headerlink" href="#_parse_pytest_outputself-any-test_file-path-output-str-total_time-float-" title="Permanent link">&para;</a></h5>
 <p>Parse pytest output to extract individual test timings</p>
-<h5 id="_analyze_performance_dataself-any-metrics-testperformanceprofile">_analyze_performance_data(self: Any, metrics: <ast.Subscript object at 0x0000019432D7E170>) -&gt; TestPerformanceProfile<a class="headerlink" href="#_analyze_performance_dataself-any-metrics-testperformanceprofile" title="Permanent link">&para;</a></h5>
+<h5 id="_analyze_performance_dataself-any-metrics-testperformanceprofile">_analyze_performance_data(self: Any, metrics: <ast.Subscript object at 0x000001942833F4C0>) -&gt; TestPerformanceProfile<a class="headerlink" href="#_analyze_performance_dataself-any-metrics-testperformanceprofile" title="Permanent link">&para;</a></h5>
 <p>Analyze performance metrics to create profile</p>
-<h5 id="_percentileself-any-data-percentile-int-float">_percentile(self: Any, data: <ast.Subscript object at 0x0000019432D7DCF0>, percentile: int) -&gt; float<a class="headerlink" href="#_percentileself-any-data-percentile-int-float" title="Permanent link">&para;</a></h5>
+<h5 id="_percentileself-any-data-percentile-int-float">_percentile(self: Any, data: <ast.Subscript object at 0x000001942833D990>, percentile: int) -&gt; float<a class="headerlink" href="#_percentileself-any-data-percentile-int-float" title="Permanent link">&para;</a></h5>
 <p>Calculate percentile of data</p>
 <h3 id="testcachemanager">TestCacheManager<a class="headerlink" href="#testcachemanager" title="Permanent link">&para;</a></h3>
 <p>Manages test caching and memoization for expensive operations</p>
@@ -1169,7 +1169,7 @@
 <p>Create hash of function arguments for cache key</p>
 <h5 id="clear_cacheself-any-pattern-str">clear_cache(self: Any, pattern: str)<a class="headerlink" href="#clear_cacheself-any-pattern-str" title="Permanent link">&para;</a></h5>
 <p>Clear cache entries matching pattern</p>
-<h5 id="get_cache_statsself-any-">get_cache_stats(self: Any) -&gt; <ast.Subscript object at 0x0000019434076740><a class="headerlink" href="#get_cache_statsself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="get_cache_statsself-any-">get_cache_stats(self: Any) -&gt; <ast.Subscript object at 0x0000019427F97670><a class="headerlink" href="#get_cache_statsself-any-" title="Permanent link">&para;</a></h5>
 <p>Get cache performance statistics</p>
 <h3 id="performanceregressiondetector">PerformanceRegressionDetector<a class="headerlink" href="#performanceregressiondetector" title="Permanent link">&para;</a></h3>
 <p>Detects performance regressions in test execution</p>
@@ -1177,35 +1177,35 @@
 <h5 id="initself-any-project_root-path_2"><strong>init</strong>(self: Any, project_root: Path)<a class="headerlink" href="#initself-any-project_root-path_2" title="Permanent link">&para;</a></h5>
 <h5 id="_init_databaseself-any">_init_database(self: Any)<a class="headerlink" href="#_init_databaseself-any" title="Permanent link">&para;</a></h5>
 <p>Initialize performance tracking database</p>
-<h5 id="record_performanceself-any-metrics">record_performance(self: Any, metrics: <ast.Subscript object at 0x0000019434074610>)<a class="headerlink" href="#record_performanceself-any-metrics" title="Permanent link">&para;</a></h5>
+<h5 id="record_performanceself-any-metrics">record_performance(self: Any, metrics: <ast.Subscript object at 0x0000019427F95A50>)<a class="headerlink" href="#record_performanceself-any-metrics" title="Permanent link">&para;</a></h5>
 <p>Record performance metrics for regression detection</p>
-<h5 id="detect_regressionsself-any-current_metrics-">detect_regressions(self: Any, current_metrics: <ast.Subscript object at 0x000001942F3326E0>) -&gt; <ast.Subscript object at 0x000001942F331A20><a class="headerlink" href="#detect_regressionsself-any-current_metrics-" title="Permanent link">&para;</a></h5>
+<h5 id="detect_regressionsself-any-current_metrics-">detect_regressions(self: Any, current_metrics: <ast.Subscript object at 0x0000019428D7C160>) -&gt; <ast.Subscript object at 0x0000019427547970><a class="headerlink" href="#detect_regressionsself-any-current_metrics-" title="Permanent link">&para;</a></h5>
 <p>Detect performance regressions compared to baseline</p>
-<h5 id="get_performance_historyself-any-test_id-str-days-int-">get_performance_history(self: Any, test_id: str, days: int) -&gt; <ast.Subscript object at 0x000001942FC676A0><a class="headerlink" href="#get_performance_historyself-any-test_id-str-days-int-" title="Permanent link">&para;</a></h5>
+<h5 id="get_performance_historyself-any-test_id-str-days-int-">get_performance_history(self: Any, test_id: str, days: int) -&gt; <ast.Subscript object at 0x0000019429C053C0><a class="headerlink" href="#get_performance_historyself-any-test_id-str-days-int-" title="Permanent link">&para;</a></h5>
 <p>Get performance history for a specific test</p>
-<h5 id="_get_current_commitself-any-">_get_current_commit(self: Any) -&gt; <ast.Subscript object at 0x0000019431A9D150><a class="headerlink" href="#_get_current_commitself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="_get_current_commitself-any-">_get_current_commit(self: Any) -&gt; <ast.Subscript object at 0x00000194288B3AC0><a class="headerlink" href="#_get_current_commitself-any-" title="Permanent link">&para;</a></h5>
 <p>Get current git commit hash</p>
-<h5 id="_get_current_branchself-any-">_get_current_branch(self: Any) -&gt; <ast.Subscript object at 0x0000019431A9E710><a class="headerlink" href="#_get_current_branchself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="_get_current_branchself-any-">_get_current_branch(self: Any) -&gt; <ast.Subscript object at 0x00000194288B14E0><a class="headerlink" href="#_get_current_branchself-any-" title="Permanent link">&para;</a></h5>
 <p>Get current git branch</p>
 <h3 id="testoptimizationrecommendationengine">TestOptimizationRecommendationEngine<a class="headerlink" href="#testoptimizationrecommendationengine" title="Permanent link">&para;</a></h3>
 <p>Generates optimization recommendations based on performance analysis</p>
 <h4 id="methods_3">Methods<a class="headerlink" href="#methods_3" title="Permanent link">&para;</a></h4>
 <h5 id="initself-any-project_root-path_3"><strong>init</strong>(self: Any, project_root: Path)<a class="headerlink" href="#initself-any-project_root-path_3" title="Permanent link">&para;</a></h5>
-<h5 id="generate_recommendationsself-any-profile-testperformanceprofile-regressions-">generate_recommendations(self: Any, profile: TestPerformanceProfile, regressions: <ast.Subscript object at 0x0000019431A9FB20>) -&gt; <ast.Subscript object at 0x0000019431A9F010><a class="headerlink" href="#generate_recommendationsself-any-profile-testperformanceprofile-regressions-" title="Permanent link">&para;</a></h5>
+<h5 id="generate_recommendationsself-any-profile-testperformanceprofile-regressions-">generate_recommendations(self: Any, profile: TestPerformanceProfile, regressions: <ast.Subscript object at 0x00000194288B3BE0>) -&gt; <ast.Subscript object at 0x00000194288B2530><a class="headerlink" href="#generate_recommendationsself-any-profile-testperformanceprofile-regressions-" title="Permanent link">&para;</a></h5>
 <p>Generate optimization recommendations</p>
-<h5 id="_recommend_slow_test_optimizationsself-any-slow_tests-">_recommend_slow_test_optimizations(self: Any, slow_tests: <ast.Subscript object at 0x0000019431A9ED10>) -&gt; <ast.Subscript object at 0x000001942F8432B0><a class="headerlink" href="#_recommend_slow_test_optimizationsself-any-slow_tests-" title="Permanent link">&para;</a></h5>
+<h5 id="_recommend_slow_test_optimizationsself-any-slow_tests-">_recommend_slow_test_optimizations(self: Any, slow_tests: <ast.Subscript object at 0x0000019427B88B80>) -&gt; <ast.Subscript object at 0x0000019428149150><a class="headerlink" href="#_recommend_slow_test_optimizationsself-any-slow_tests-" title="Permanent link">&para;</a></h5>
 <p>Generate recommendations for slow tests</p>
-<h5 id="_recommend_regression_fixesself-any-regressions-">_recommend_regression_fixes(self: Any, regressions: <ast.Subscript object at 0x000001942F841750>) -&gt; <ast.Subscript object at 0x00000194318D4220><a class="headerlink" href="#_recommend_regression_fixesself-any-regressions-" title="Permanent link">&para;</a></h5>
+<h5 id="_recommend_regression_fixesself-any-regressions-">_recommend_regression_fixes(self: Any, regressions: <ast.Subscript object at 0x0000019428149000>) -&gt; <ast.Subscript object at 0x0000019428148460><a class="headerlink" href="#_recommend_regression_fixesself-any-regressions-" title="Permanent link">&para;</a></h5>
 <p>Generate recommendations for performance regressions</p>
-<h5 id="_recommend_general_optimizationsself-any-profile-testperformanceprofile-">_recommend_general_optimizations(self: Any, profile: TestPerformanceProfile) -&gt; <ast.Subscript object at 0x000001942F048AF0><a class="headerlink" href="#_recommend_general_optimizationsself-any-profile-testperformanceprofile-" title="Permanent link">&para;</a></h5>
+<h5 id="_recommend_general_optimizationsself-any-profile-testperformanceprofile-">_recommend_general_optimizations(self: Any, profile: TestPerformanceProfile) -&gt; <ast.Subscript object at 0x000001942814B580><a class="headerlink" href="#_recommend_general_optimizationsself-any-profile-testperformanceprofile-" title="Permanent link">&para;</a></h5>
 <p>Generate general optimization recommendations</p>
 <h3 id="testperformanceoptimizer">TestPerformanceOptimizer<a class="headerlink" href="#testperformanceoptimizer" title="Permanent link">&para;</a></h3>
 <p>Main system that orchestrates all performance optimization components</p>
 <h4 id="methods_4">Methods<a class="headerlink" href="#methods_4" title="Permanent link">&para;</a></h4>
 <h5 id="initself-any-project_root-path_4"><strong>init</strong>(self: Any, project_root: Path)<a class="headerlink" href="#initself-any-project_root-path_4" title="Permanent link">&para;</a></h5>
-<h5 id="optimize_test_performanceself-any-test_files-">optimize_test_performance(self: Any, test_files: <ast.Subscript object at 0x000001942F049660>) -&gt; <ast.Subscript object at 0x000001942F048190><a class="headerlink" href="#optimize_test_performanceself-any-test_files-" title="Permanent link">&para;</a></h5>
+<h5 id="optimize_test_performanceself-any-test_files-">optimize_test_performance(self: Any, test_files: <ast.Subscript object at 0x000001942814BDC0>) -&gt; <ast.Subscript object at 0x000001942B2F94E0><a class="headerlink" href="#optimize_test_performanceself-any-test_files-" title="Permanent link">&para;</a></h5>
 <p>Run comprehensive test performance optimization</p>
-<h5 id="save_optimization_reportself-any-optimization_result-output_path-path">save_optimization_report(self: Any, optimization_result: <ast.Subscript object at 0x000001942F049930>, output_path: Path)<a class="headerlink" href="#save_optimization_reportself-any-optimization_result-output_path-path" title="Permanent link">&para;</a></h5>
+<h5 id="save_optimization_reportself-any-optimization_result-output_path-path">save_optimization_report(self: Any, optimization_result: <ast.Subscript object at 0x000001942B2F9690>, output_path: Path)<a class="headerlink" href="#save_optimization_reportself-any-optimization_result-output_path-path" title="Permanent link">&para;</a></h5>
 <p>Save optimization report to file</p>
 
 

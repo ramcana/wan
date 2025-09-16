@@ -42,7 +42,7 @@ Watch files and run tests with selective execution
 
 #### Methods
 
-##### __init__(self: Any, config: WatchConfig, project_root: <ast.Subscript object at 0x0000019431ABBE50>)
+##### __init__(self: Any, config: WatchConfig, project_root: <ast.Subscript object at 0x00000194288F27D0>)
 
 
 
@@ -66,7 +66,7 @@ Schedule test run with debouncing
 
 Execute pending test runs
 
-##### _determine_tests_to_run(self: Any, changed_files: <ast.Subscript object at 0x00000194346328F0>) -> <ast.Subscript object at 0x0000019434630A30>
+##### _determine_tests_to_run(self: Any, changed_files: <ast.Subscript object at 0x000001942CE6E290>) -> <ast.Subscript object at 0x000001942CE6CFA0>
 
 Determine which tests to run based on changed files
 
@@ -74,7 +74,7 @@ Determine which tests to run based on changed files
 
 Check if file is a test file
 
-##### _find_related_tests(self: Any, source_file: Path) -> <ast.Subscript object at 0x00000194300D95A0>
+##### _find_related_tests(self: Any, source_file: Path) -> <ast.Subscript object at 0x00000194283E26B0>
 
 Find test files related to a source file
 
@@ -90,11 +90,11 @@ Determine test category from file path
 
 Check if test is considered slow
 
-##### _run_tests(self: Any, test_files: <ast.Subscript object at 0x00000194300D9360>)
+##### _run_tests(self: Any, test_files: <ast.Subscript object at 0x00000194283E3A60>)
 
 Run the specified test files
 
-##### _run_test_batch(self: Any, test_files: <ast.Subscript object at 0x00000194300DBFA0>) -> <ast.Subscript object at 0x00000194300DB670>
+##### _run_test_batch(self: Any, test_files: <ast.Subscript object at 0x00000194283E0C70>) -> <ast.Subscript object at 0x00000194283E37F0>
 
 Run a batch of test files
 
@@ -102,7 +102,7 @@ Run a batch of test files
 
 Run a single test file
 
-##### _report_test_results(self: Any, results: <ast.Subscript object at 0x000001942EF9EBC0>, total_duration: float)
+##### _report_test_results(self: Any, results: <ast.Subscript object at 0x000001942B318760>, total_duration: float)
 
 Report test execution results
 

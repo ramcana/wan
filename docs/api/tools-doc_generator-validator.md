@@ -31,15 +31,15 @@ Comprehensive documentation validator
 
 #### Methods
 
-##### __init__(self: Any, docs_root: Path, config: <ast.Subscript object at 0x00000194319D05E0>)
+##### __init__(self: Any, docs_root: Path, config: <ast.Subscript object at 0x000001942C660A30>)
 
 
 
-##### _default_config(self: Any) -> <ast.Subscript object at 0x0000019431B5B550>
+##### _default_config(self: Any) -> <ast.Subscript object at 0x000001942C62B9A0>
 
 Default validation configuration
 
-##### _load_style_rules(self: Any) -> <ast.Subscript object at 0x0000019431B5AEF0>
+##### _load_style_rules(self: Any) -> <ast.Subscript object at 0x000001942C62B340>
 
 Load style validation rules
 
@@ -87,15 +87,15 @@ Check if external link is accessible
 
 Validate document freshness
 
-##### _extract_metadata(self: Any, content: str) -> <ast.Subscript object at 0x00000194341F3940>
+##### _extract_metadata(self: Any, content: str) -> <ast.Subscript object at 0x0000019428400A60>
 
 Extract YAML frontmatter metadata
 
-##### _generate_summary(self: Any) -> <ast.Subscript object at 0x0000019431A3B3A0>
+##### _generate_summary(self: Any) -> <ast.Subscript object at 0x000001942C686E00>
 
 Generate validation summary statistics
 
-##### check_links_only(self: Any, external_only: bool) -> <ast.Subscript object at 0x000001942FBD46D0>
+##### check_links_only(self: Any, external_only: bool) -> <ast.Subscript object at 0x0000019428504B20>
 
 Quick link-only validation
 

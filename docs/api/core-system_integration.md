@@ -24,7 +24,7 @@ Manages integration with existing Wan2.2 system components
 
 Initialize configuration bridge for enhanced config management
 
-##### _load_config(self: Any) -> <ast.Subscript object at 0x00000194319959F0>
+##### _load_config(self: Any) -> <ast.Subscript object at 0x000001942A1DDF60>
 
 Load system configuration from config.json (fallback method)
 
@@ -32,11 +32,11 @@ Load system configuration from config.json (fallback method)
 
 Initialize system stats monitoring
 
-##### get_system_info(self: Any) -> <ast.Subscript object at 0x00000194319C74F0>
+##### get_system_info(self: Any) -> <ast.Subscript object at 0x0000019428D7FA60>
 
 Get comprehensive system information combining all integrated components
 
-##### _get_model_status_from_manager(self: Any) -> <ast.Subscript object at 0x000001942F926E90>
+##### _get_model_status_from_manager(self: Any) -> <ast.Subscript object at 0x0000019428DE7400>
 
 Get model status information from the ModelManager
 
@@ -72,11 +72,11 @@ Get the initialized WanPipelineLoader instance
 
 Get the initialized ConfigurationBridge instance
 
-##### get_initialization_errors(self: Any) -> <ast.Subscript object at 0x000001942F8FE980>
+##### get_initialization_errors(self: Any) -> <ast.Subscript object at 0x0000019428516EF0>
 
 Get list of initialization errors that occurred during setup
 
-##### get_runtime_config_for_generation(self: Any, model_type: str) -> <ast.Subscript object at 0x000001942F8FF160>
+##### get_runtime_config_for_generation(self: Any, model_type: str) -> <ast.Subscript object at 0x00000194285176D0>
 
 Get runtime configuration optimized for specific model generation
 
@@ -84,19 +84,19 @@ Get runtime configuration optimized for specific model generation
 
 Update optimization setting at runtime
 
-##### get_model_paths(self: Any) -> <ast.Subscript object at 0x000001942F90C190>
+##### get_model_paths(self: Any) -> <ast.Subscript object at 0x0000019428551E10>
 
 Get model path configuration
 
-##### get_optimization_settings(self: Any) -> <ast.Subscript object at 0x000001942F90C640>
+##### get_optimization_settings(self: Any) -> <ast.Subscript object at 0x00000194285522C0>
 
 Get current optimization settings
 
-##### validate_current_configuration(self: Any) -> <ast.Subscript object at 0x000001942F90D030>
+##### validate_current_configuration(self: Any) -> <ast.Subscript object at 0x00000194285511B0>
 
 Validate current configuration
 
-##### scan_available_loras(self: Any, loras_directory: str) -> <ast.Subscript object at 0x000001942F90E2C0>
+##### scan_available_loras(self: Any, loras_directory: str) -> <ast.Subscript object at 0x0000019428552A10>
 
 Scan for available LoRA files in the specified directory
 
@@ -130,7 +130,7 @@ Create a basic system stats function
 
 
 
-##### get_model_id(self: Any, model_type: str) -> <ast.Subscript object at 0x000001942F90E980>
+##### get_model_id(self: Any, model_type: str) -> <ast.Subscript object at 0x0000019428551570>
 
 
 

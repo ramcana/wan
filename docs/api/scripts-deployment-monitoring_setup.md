@@ -43,19 +43,19 @@ Collects metrics from the enhanced model availability system
 
 
 
-##### record_metric(self: Any, name: str, metric_type: MetricType, value: float, labels: <ast.Subscript object at 0x000001942FDECB20>, description: str)
+##### record_metric(self: Any, name: str, metric_type: MetricType, value: float, labels: <ast.Subscript object at 0x000001942CC89090>, description: str)
 
 Record a metric value
 
-##### get_metric(self: Any, name: str) -> <ast.Subscript object at 0x000001942FE23B50>
+##### get_metric(self: Any, name: str) -> <ast.Subscript object at 0x000001942CC8B640>
 
 Get current value of a metric
 
-##### get_metrics_by_prefix(self: Any, prefix: str) -> <ast.Subscript object at 0x000001942FE236A0>
+##### get_metrics_by_prefix(self: Any, prefix: str) -> <ast.Subscript object at 0x000001942CC89DE0>
 
 Get all metrics with a given prefix
 
-##### get_metric_history(self: Any, name: str, hours: int) -> <ast.Subscript object at 0x000001942FE3AEF0>
+##### get_metric_history(self: Any, name: str, hours: int) -> <ast.Subscript object at 0x000001942CC8A740>
 
 Get metric history for the specified time period
 
@@ -73,7 +73,7 @@ Manages alerts and notifications
 
 Add an alert rule
 
-##### add_notification_handler(self: Any, handler: <ast.Subscript object at 0x000001942F4479D0>)
+##### add_notification_handler(self: Any, handler: <ast.Subscript object at 0x000001942CC8ADA0>)
 
 Add a notification handler
 
@@ -139,11 +139,11 @@ Setup default alert rules
 
 Setup notification handlers
 
-##### _load_config(self: Any) -> <ast.Subscript object at 0x0000019434529030>
+##### _load_config(self: Any) -> <ast.Subscript object at 0x0000019428A9C3A0>
 
 Load monitoring configuration
 
-##### get_monitoring_status(self: Any) -> <ast.Subscript object at 0x0000019434529150>
+##### get_monitoring_status(self: Any) -> <ast.Subscript object at 0x0000019428A9F460>
 
 Get current monitoring status
 

@@ -19,14 +19,14 @@ Command-line interface for credential management.
 
 #### Methods
 
-##### __init__(self: Any, config: <ast.Subscript object at 0x000001942F76BA00>)
+##### __init__(self: Any, config: <ast.Subscript object at 0x000001942C5C2440>)
 
 Initialize credential CLI.
 
 Args:
     config: Credential configuration
 
-##### store_credential(self: Any, key: str, value: <ast.Subscript object at 0x000001942F76A290>, interactive: bool) -> bool
+##### store_credential(self: Any, key: str, value: <ast.Subscript object at 0x000001942C5C1F60>, interactive: bool) -> bool
 
 Store a credential securely.
 
@@ -38,7 +38,7 @@ Args:
 Returns:
     True if stored successfully, False otherwise
 
-##### get_credential(self: Any, key: str, show_value: bool) -> <ast.Subscript object at 0x0000019432DFDE70>
+##### get_credential(self: Any, key: str, show_value: bool) -> <ast.Subscript object at 0x00000194283E2080>
 
 Retrieve a credential.
 

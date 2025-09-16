@@ -19,7 +19,7 @@ Automated development environment setup
 
 #### Methods
 
-##### __init__(self: Any, project_root: <ast.Subscript object at 0x000001942F70F700>, verbose: bool)
+##### __init__(self: Any, project_root: <ast.Subscript object at 0x000001942CE1FA60>, verbose: bool)
 
 
 

@@ -27,11 +27,11 @@ Documentation server using MkDocs for static site generation
 
 
 
-##### generate_mkdocs_config(self: Any) -> <ast.Subscript object at 0x000001942EFFB790>
+##### generate_mkdocs_config(self: Any) -> <ast.Subscript object at 0x0000019428403BE0>
 
 Generate MkDocs configuration
 
-##### _generate_navigation_structure(self: Any) -> <ast.Subscript object at 0x000001942EFFA5C0>
+##### _generate_navigation_structure(self: Any) -> <ast.Subscript object at 0x0000019428402A10>
 
 Generate navigation structure from documentation files
 
@@ -59,7 +59,7 @@ Generate search index for documentation
 
 Check if file should be skipped for indexing
 
-##### _extract_content_for_search(self: Any, content: str) -> <ast.Subscript object at 0x000001942FE0FDF0>
+##### _extract_content_for_search(self: Any, content: str) -> <ast.Subscript object at 0x000001942791A3B0>
 
 Extract title and searchable content from markdown
 

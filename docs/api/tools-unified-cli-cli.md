@@ -36,7 +36,7 @@ Mock tool for tools that aren't implemented yet
 
 
 
-##### run(self: Any, args: <ast.Subscript object at 0x0000019431A3A860>) -> <ast.Subscript object at 0x0000019431A3B5E0>
+##### run(self: Any, args: <ast.Subscript object at 0x00000194289B32B0>) -> <ast.Subscript object at 0x00000194289B02E0>
 
 Mock run method
 
@@ -50,7 +50,7 @@ Unified CLI for all project cleanup and quality tools
 
 
 
-##### load_team_config(self: Any) -> <ast.Subscript object at 0x0000019431BDED10>
+##### load_team_config(self: Any) -> <ast.Subscript object at 0x000001942A2E66E0>
 
 Load team collaboration configuration
 
@@ -58,7 +58,7 @@ Load team collaboration configuration
 
 Save team collaboration configuration
 
-##### setup_team_collaboration(self: Any, team_name: str, standards: <ast.Subscript object at 0x0000019431BDFD60>)
+##### setup_team_collaboration(self: Any, team_name: str, standards: <ast.Subscript object at 0x000001942A2E6890>)
 
 Set up team collaboration features
 
@@ -70,11 +70,11 @@ Check if quality gates are met for a specific context
 
 Send notification to team channels
 
-##### generate_team_report(self: Any) -> <ast.Subscript object at 0x0000019434212B90>
+##### generate_team_report(self: Any) -> <ast.Subscript object at 0x0000019428471A50>
 
 Generate a comprehensive team report
 
-##### generate_team_recommendations(self: Any, report: <ast.Subscript object at 0x0000019434211900>) -> <ast.Subscript object at 0x0000019434212290>
+##### generate_team_recommendations(self: Any, report: <ast.Subscript object at 0x00000194284735B0>) -> <ast.Subscript object at 0x000001942CE20910>
 
 Generate recommendations for the team based on project state
 
@@ -90,7 +90,7 @@ Import team standards from a shared file
 
 Determine workflow context based on git status and environment
 
-##### print_results(self: Any, results: <ast.Subscript object at 0x0000019434252F50>)
+##### print_results(self: Any, results: <ast.Subscript object at 0x000001942CE2A0E0>)
 
 Print workflow results in a formatted way
 

@@ -28,7 +28,7 @@ Generates comprehensive project documentation.
 
 Initialize the documentation generator.
 
-##### generate_project_overview(self: Any, structure: ProjectStructure, relationships: <ast.Subscript object at 0x000001942F3BEBC0>, complexity: <ast.Subscript object at 0x000001942F3BEB00>) -> str
+##### generate_project_overview(self: Any, structure: ProjectStructure, relationships: <ast.Subscript object at 0x000001942886F1C0>, complexity: <ast.Subscript object at 0x000001942886F100>) -> str
 
 Generate comprehensive project overview documentation.
 
@@ -40,7 +40,7 @@ Generate detailed documentation for a specific component.
 
 Generate specific documentation for the Local Testing Framework.
 
-##### generate_developer_onboarding_guide(self: Any, structure: ProjectStructure, relationships: <ast.Subscript object at 0x00000194318D7010>, complexity: <ast.Subscript object at 0x00000194318D6F50>) -> str
+##### generate_developer_onboarding_guide(self: Any, structure: ProjectStructure, relationships: <ast.Subscript object at 0x00000194288BF610>, complexity: <ast.Subscript object at 0x00000194288BF550>) -> str
 
 Generate step-by-step developer onboarding guide.
 
@@ -52,7 +52,7 @@ Generate documentation explaining component relationships.
 
 Create the header section for project documentation.
 
-##### _create_executive_summary(self: Any, structure: ProjectStructure, relationships: <ast.Subscript object at 0x000001942FBB2260>, complexity: <ast.Subscript object at 0x000001942FBB21A0>) -> DocumentationSection
+##### _create_executive_summary(self: Any, structure: ProjectStructure, relationships: <ast.Subscript object at 0x0000019429CBA860>, complexity: <ast.Subscript object at 0x0000019429CBA7A0>) -> DocumentationSection
 
 Create executive summary section.
 
@@ -60,7 +60,7 @@ Create executive summary section.
 
 Create project structure section.
 
-##### _create_component_overview(self: Any, structure: ProjectStructure, relationships: <ast.Subscript object at 0x000001942F3B54B0>) -> DocumentationSection
+##### _create_component_overview(self: Any, structure: ProjectStructure, relationships: <ast.Subscript object at 0x000001942C5E5AB0>) -> DocumentationSection
 
 Create component overview section.
 
@@ -72,15 +72,15 @@ Create architecture overview section.
 
 Create getting started section.
 
-##### _create_development_guide(self: Any, structure: ProjectStructure, complexity: <ast.Subscript object at 0x000001942FDFACE0>) -> DocumentationSection
+##### _create_development_guide(self: Any, structure: ProjectStructure, complexity: <ast.Subscript object at 0x0000019428D9B6D0>) -> DocumentationSection
 
 Create development guide section.
 
-##### _create_dependency_documentation(self: Any, dependencies: <ast.Subscript object at 0x000001942FDFBFA0>, title: str) -> str
+##### _create_dependency_documentation(self: Any, dependencies: <ast.Subscript object at 0x0000019428DB85E0>, title: str) -> str
 
 Create documentation for a list of dependencies.
 
-##### _find_file_info(self: Any, file_path: str, structure: ProjectStructure) -> <ast.Subscript object at 0x000001942FDC9D50>
+##### _find_file_info(self: Any, file_path: str, structure: ProjectStructure) -> <ast.Subscript object at 0x0000019428DBA350>
 
 Find file info from structure analysis.
 
@@ -92,11 +92,11 @@ Guess the purpose of a file based on its name.
 
 Guess the purpose of a directory based on its name.
 
-##### _get_component_icon(self: Any, purpose: <ast.Subscript object at 0x000001942FDCB0A0>) -> str
+##### _get_component_icon(self: Any, purpose: <ast.Subscript object at 0x0000019428DBB6A0>) -> str
 
 Get appropriate icon for component purpose.
 
-##### _render_sections(self: Any, sections: <ast.Subscript object at 0x000001942FDCBD30>) -> str
+##### _render_sections(self: Any, sections: <ast.Subscript object at 0x0000019428D80370>) -> str
 
 Render documentation sections to markdown.
 
@@ -104,7 +104,7 @@ Render documentation sections to markdown.
 
 Save documentation to file.
 
-##### generate_all_documentation(self: Any, structure: ProjectStructure, relationships: <ast.Subscript object at 0x000001942FE39330>, complexity: <ast.Subscript object at 0x000001942FE393F0>, output_dir: str) -> <ast.Subscript object at 0x000001942FE3A7D0>
+##### generate_all_documentation(self: Any, structure: ProjectStructure, relationships: <ast.Subscript object at 0x0000019428D81930>, complexity: <ast.Subscript object at 0x0000019428D819F0>, output_dir: str) -> <ast.Subscript object at 0x0000019428D82DD0>
 
 Generate all documentation types.
 

@@ -38,11 +38,11 @@ Perform comprehensive duplicate detection scan
 Returns:
     DuplicateReport with all findings and recommendations
 
-##### _get_files_to_scan(self: Any) -> <ast.Subscript object at 0x00000194319198A0>
+##### _get_files_to_scan(self: Any) -> <ast.Subscript object at 0x0000019427C7AB30>
 
 Get list of files to scan, excluding patterns
 
-##### _calculate_file_hashes(self: Any, files: <ast.Subscript object at 0x0000019431919750>) -> <ast.Subscript object at 0x0000019431B8FC40>
+##### _calculate_file_hashes(self: Any, files: <ast.Subscript object at 0x0000019427C7A9E0>) -> <ast.Subscript object at 0x0000019427C0CF10>
 
 Calculate both file hash and content hash for each file
 
@@ -65,11 +65,11 @@ Normalize Python code content
 
 Normalize JavaScript/TypeScript content
 
-##### _find_exact_duplicates(self: Any, file_hashes: <ast.Subscript object at 0x0000019431B8D780>) -> <ast.Subscript object at 0x000001942F791000>
+##### _find_exact_duplicates(self: Any, file_hashes: <ast.Subscript object at 0x000001942835EA10>) -> <ast.Subscript object at 0x00000194289A1FC0>
 
 Find files with identical hashes
 
-##### _find_near_duplicates(self: Any, files: <ast.Subscript object at 0x000001942F790EB0>) -> <ast.Subscript object at 0x000001942F7AF7F0>
+##### _find_near_duplicates(self: Any, files: <ast.Subscript object at 0x00000194289A1DE0>) -> <ast.Subscript object at 0x00000194289A07C0>
 
 Find near-duplicate files using content similarity
 
@@ -77,30 +77,30 @@ Find near-duplicate files using content similarity
 
 Calculate similarity between two files
 
-##### _combine_duplicate_results(self: Any, exact: <ast.Subscript object at 0x000001942FC32440>, near: <ast.Subscript object at 0x000001942FC324A0>) -> <ast.Subscript object at 0x000001942FC31A50>
+##### _combine_duplicate_results(self: Any, exact: <ast.Subscript object at 0x000001942890F790>, near: <ast.Subscript object at 0x000001942890F6D0>) -> <ast.Subscript object at 0x000001942890ECE0>
 
 Combine exact and near-duplicate results, removing overlaps
 
-##### _group_duplicates(self: Any, duplicates: <ast.Subscript object at 0x000001942FC31900>) -> <ast.Subscript object at 0x000001942FC310C0>
+##### _group_duplicates(self: Any, duplicates: <ast.Subscript object at 0x000001942890EB90>) -> <ast.Subscript object at 0x000001942890E560>
 
 Group duplicates by their duplicate_group
 
-##### _calculate_potential_savings(self: Any, duplicates: <ast.Subscript object at 0x000001942FC31150>) -> int
+##### _calculate_potential_savings(self: Any, duplicates: <ast.Subscript object at 0x000001942890E350>) -> int
 
 Calculate potential disk space savings
 
-##### _generate_recommendations(self: Any, duplicates: <ast.Subscript object at 0x000001942FC30430>) -> <ast.Subscript object at 0x000001942FBADC00>
+##### _generate_recommendations(self: Any, duplicates: <ast.Subscript object at 0x0000019427B61630>) -> <ast.Subscript object at 0x0000019427B62200>
 
 Generate recommendations for handling duplicates
 
-##### create_backup(self: Any, files_to_remove: <ast.Subscript object at 0x000001942FBADAB0>) -> str
+##### create_backup(self: Any, files_to_remove: <ast.Subscript object at 0x0000019427B61F60>) -> str
 
 Create backup of files before removal
 
 Returns:
     Path to backup directory
 
-##### safe_remove_duplicates(self: Any, duplicate_groups: <ast.Subscript object at 0x000001942FBAC6D0>, auto_remove_exact: bool) -> <ast.Subscript object at 0x000001942FBC1DB0>
+##### safe_remove_duplicates(self: Any, duplicate_groups: <ast.Subscript object at 0x0000019427B62EC0>, auto_remove_exact: bool) -> <ast.Subscript object at 0x000001942854B5E0>
 
 Safely remove duplicate files with backup
 

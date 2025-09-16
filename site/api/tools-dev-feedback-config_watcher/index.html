@@ -996,7 +996,7 @@
 <h3 id="configwatcher">ConfigWatcher<a class="headerlink" href="#configwatcher" title="Permanent link">&para;</a></h3>
 <p>Watch configuration files and provide hot-reloading</p>
 <h4 id="methods_1">Methods<a class="headerlink" href="#methods_1" title="Permanent link">&para;</a></h4>
-<h5 id="initself-any-project_root"><strong>init</strong>(self: Any, project_root: <ast.Subscript object at 0x000001942F6FA0E0>)<a class="headerlink" href="#initself-any-project_root" title="Permanent link">&para;</a></h5>
+<h5 id="initself-any-project_root"><strong>init</strong>(self: Any, project_root: <ast.Subscript object at 0x000001942A28B9A0>)<a class="headerlink" href="#initself-any-project_root" title="Permanent link">&para;</a></h5>
 <h5 id="_load_initial_configsself-any">_load_initial_configs(self: Any)<a class="headerlink" href="#_load_initial_configsself-any" title="Permanent link">&para;</a></h5>
 <p>Load initial configuration files into cache</p>
 <h5 id="_read_config_fileself-any-file_path-path-any">_read_config_file(self: Any, file_path: Path) -&gt; Any<a class="headerlink" href="#_read_config_fileself-any-file_path-path-any" title="Permanent link">&para;</a></h5>
@@ -1007,11 +1007,11 @@
 <p>Handle configuration file change with debouncing</p>
 <h5 id="_process_config_changeself-any-file_path-path-change_type-str">_process_config_change(self: Any, file_path: Path, change_type: str)<a class="headerlink" href="#_process_config_changeself-any-file_path-path-change_type-str" title="Permanent link">&para;</a></h5>
 <p>Process configuration change after debouncing</p>
-<h5 id="_validate_configself-any-file_path-path-content-any-">_validate_config(self: Any, file_path: Path, content: Any) -&gt; <ast.Subscript object at 0x0000019433CBDCC0><a class="headerlink" href="#_validate_configself-any-file_path-path-content-any-" title="Permanent link">&para;</a></h5>
+<h5 id="_validate_configself-any-file_path-path-content-any-">_validate_config(self: Any, file_path: Path, content: Any) -&gt; <ast.Subscript object at 0x0000019428120F70><a class="headerlink" href="#_validate_configself-any-file_path-path-content-any-" title="Permanent link">&para;</a></h5>
 <p>Validate configuration content</p>
-<h5 id="_validate_unified_configself-any-config-">_validate_unified_config(self: Any, config: <ast.Subscript object at 0x0000019433CBE950>) -&gt; <ast.Subscript object at 0x0000019433CBF5E0><a class="headerlink" href="#_validate_unified_configself-any-config-" title="Permanent link">&para;</a></h5>
+<h5 id="_validate_unified_configself-any-config-">_validate_unified_config(self: Any, config: <ast.Subscript object at 0x00000194281238E0>) -&gt; <ast.Subscript object at 0x0000019428122F80><a class="headerlink" href="#_validate_unified_configself-any-config-" title="Permanent link">&para;</a></h5>
 <p>Validate unified configuration</p>
-<h5 id="_validate_package_jsonself-any-config-">_validate_package_json(self: Any, config: <ast.Subscript object at 0x0000019433CBCDF0>) -&gt; <ast.Subscript object at 0x0000019433CBE020><a class="headerlink" href="#_validate_package_jsonself-any-config-" title="Permanent link">&para;</a></h5>
+<h5 id="_validate_package_jsonself-any-config-">_validate_package_json(self: Any, config: <ast.Subscript object at 0x0000019428121630>) -&gt; <ast.Subscript object at 0x0000019428120370><a class="headerlink" href="#_validate_package_jsonself-any-config-" title="Permanent link">&para;</a></h5>
 <p>Validate package.json</p>
 <h5 id="_notify_change_handlersself-any-change-configchange">_notify_change_handlers(self: Any, change: ConfigChange)<a class="headerlink" href="#_notify_change_handlersself-any-change-configchange" title="Permanent link">&para;</a></h5>
 <p>Notify registered change handlers</p>
@@ -1021,13 +1021,13 @@
 <p>Check if service should be reloaded for the changed file</p>
 <h5 id="_reload_serviceself-any-service_name-str">_reload_service(self: Any, service_name: str)<a class="headerlink" href="#_reload_serviceself-any-service_name-str" title="Permanent link">&para;</a></h5>
 <p>Reload a service</p>
-<h5 id="register_change_handlerself-any-handler">register_change_handler(self: Any, handler: <ast.Subscript object at 0x00000194319C7D60>)<a class="headerlink" href="#register_change_handlerself-any-handler" title="Permanent link">&para;</a></h5>
+<h5 id="register_change_handlerself-any-handler">register_change_handler(self: Any, handler: <ast.Subscript object at 0x0000019428927E20>)<a class="headerlink" href="#register_change_handlerself-any-handler" title="Permanent link">&para;</a></h5>
 <p>Register a configuration change handler</p>
 <h5 id="register_serviceself-any-service_config-serviceconfig">register_service(self: Any, service_config: ServiceConfig)<a class="headerlink" href="#register_serviceself-any-service_config-serviceconfig" title="Permanent link">&para;</a></h5>
 <p>Register a service for automatic reloading</p>
-<h5 id="get_configself-any-file_path-str-">get_config(self: Any, file_path: str) -&gt; <ast.Subscript object at 0x00000194319C6080><a class="headerlink" href="#get_configself-any-file_path-str-" title="Permanent link">&para;</a></h5>
+<h5 id="get_configself-any-file_path-str-">get_config(self: Any, file_path: str) -&gt; <ast.Subscript object at 0x0000019428925E10><a class="headerlink" href="#get_configself-any-file_path-str-" title="Permanent link">&para;</a></h5>
 <p>Get cached configuration content</p>
-<h5 id="get_all_configsself-any-">get_all_configs(self: Any) -&gt; <ast.Subscript object at 0x00000194319C6AA0><a class="headerlink" href="#get_all_configsself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="get_all_configsself-any-">get_all_configs(self: Any) -&gt; <ast.Subscript object at 0x0000019428925B70><a class="headerlink" href="#get_all_configsself-any-" title="Permanent link">&para;</a></h5>
 <p>Get all cached configurations</p>
 <h5 id="start_watchingself-any">start_watching(self: Any)<a class="headerlink" href="#start_watchingself-any" title="Permanent link">&para;</a></h5>
 <p>Start watching for configuration changes</p>

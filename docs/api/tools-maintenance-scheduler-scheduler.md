@@ -18,7 +18,7 @@ Handles task scheduling, execution, prioritization, and monitoring.
 
 #### Methods
 
-##### __init__(self: Any, config: <ast.Subscript object at 0x000001942FA8D3C0>)
+##### __init__(self: Any, config: <ast.Subscript object at 0x000001942A2E4310>)
 
 
 
@@ -30,7 +30,7 @@ Start the maintenance scheduler.
 
 Stop the maintenance scheduler.
 
-##### add_task(self: Any, task: MaintenanceTask, schedule: <ast.Subscript object at 0x000001942FA8D330>) -> None
+##### add_task(self: Any, task: MaintenanceTask, schedule: <ast.Subscript object at 0x0000019427F117E0>) -> None
 
 Add a maintenance task to the scheduler.
 
@@ -38,19 +38,19 @@ Add a maintenance task to the scheduler.
 
 Remove a task from the scheduler.
 
-##### run_task_now(self: Any, task_id: str) -> <ast.Subscript object at 0x00000194346707F0>
+##### run_task_now(self: Any, task_id: str) -> <ast.Subscript object at 0x000001942CC899C0>
 
 Run a specific task immediately.
 
-##### get_next_scheduled_tasks(self: Any, limit: int) -> <ast.Subscript object at 0x0000019434673A90>
+##### get_next_scheduled_tasks(self: Any, limit: int) -> <ast.Subscript object at 0x000001942CC886A0>
 
 Get the next tasks scheduled to run.
 
-##### get_running_tasks(self: Any) -> <ast.Subscript object at 0x0000019434671540>
+##### get_running_tasks(self: Any) -> <ast.Subscript object at 0x000001942CC8B8B0>
 
 Get list of currently running task IDs.
 
-##### get_task_history(self: Any, task_id: str, limit: int) -> <ast.Subscript object at 0x0000019434673250>
+##### get_task_history(self: Any, task_id: str, limit: int) -> <ast.Subscript object at 0x000001942CC8BD60>
 
 Get execution history for a specific task.
 
@@ -62,7 +62,7 @@ Main scheduler loop that runs in a separate thread.
 
 Check for tasks that need to run and execute them.
 
-##### _get_tasks_ready_to_run(self: Any, now: datetime) -> <ast.Subscript object at 0x000001942F6C8130>
+##### _get_tasks_ready_to_run(self: Any, now: datetime) -> <ast.Subscript object at 0x000001942CB37130>
 
 Get tasks that are ready to run based on schedule.
 

@@ -1141,7 +1141,7 @@ including user preferences, admin controls, feature flags, and runtime configura
 <p>Load configuration from file</p>
 <h5 id="save_configurationself-any-bool">save_configuration(self: Any) -&gt; bool<a class="headerlink" href="#save_configurationself-any-bool" title="Permanent link">&para;</a></h5>
 <p>Save configuration to file</p>
-<h5 id="is_feature_enabledself-any-flag-user_id-bool">is_feature_enabled(self: Any, flag: <ast.Subscript object at 0x00000194319B4E20>, user_id: <ast.Subscript object at 0x00000194319B4D00>) -&gt; bool<a class="headerlink" href="#is_feature_enabledself-any-flag-user_id-bool" title="Permanent link">&para;</a></h5>
+<h5 id="is_feature_enabledself-any-flag-user_id-bool">is_feature_enabled(self: Any, flag: <ast.Subscript object at 0x000001942CBC36D0>, user_id: <ast.Subscript object at 0x000001942CBC36A0>) -&gt; bool<a class="headerlink" href="#is_feature_enabledself-any-flag-user_id-bool" title="Permanent link">&para;</a></h5>
 <p>Check if a feature flag is enabled for a user or globally</p>
 <h5 id="get_user_preferencesself-any-userpreferences">get_user_preferences(self: Any) -&gt; UserPreferences<a class="headerlink" href="#get_user_preferencesself-any-userpreferences" title="Permanent link">&para;</a></h5>
 <p>Get current user preferences</p>
@@ -1153,17 +1153,17 @@ including user preferences, admin controls, feature flags, and runtime configura
 <p>Validate admin policies</p>
 <h5 id="_apply_admin_constraintsself-any-preferences-userpreferences-userpreferences">_apply_admin_constraints(self: Any, preferences: UserPreferences) -&gt; UserPreferences<a class="headerlink" href="#_apply_admin_constraintsself-any-preferences-userpreferences-userpreferences" title="Permanent link">&para;</a></h5>
 <p>Apply admin policy constraints to user preferences</p>
-<h5 id="_needs_migrationself-any-config_data-bool">_needs_migration(self: Any, config_data: <ast.Subscript object at 0x00000194319FCC40>) -&gt; bool<a class="headerlink" href="#_needs_migrationself-any-config_data-bool" title="Permanent link">&para;</a></h5>
+<h5 id="_needs_migrationself-any-config_data-bool">_needs_migration(self: Any, config_data: <ast.Subscript object at 0x000001942CBE3580>) -&gt; bool<a class="headerlink" href="#_needs_migrationself-any-config_data-bool" title="Permanent link">&para;</a></h5>
 <p>Check if configuration needs migration</p>
-<h5 id="_migrate_configurationself-any-config_data-">_migrate_configuration(self: Any, config_data: <ast.Subscript object at 0x00000194319FC790>) -&gt; <ast.Subscript object at 0x00000194319FC0A0><a class="headerlink" href="#_migrate_configurationself-any-config_data-" title="Permanent link">&para;</a></h5>
+<h5 id="_migrate_configurationself-any-config_data-">_migrate_configuration(self: Any, config_data: <ast.Subscript object at 0x000001942CBE30D0>) -&gt; <ast.Subscript object at 0x000001942CBE29E0><a class="headerlink" href="#_migrate_configurationself-any-config_data-" title="Permanent link">&para;</a></h5>
 <p>Migrate configuration to current schema version</p>
-<h5 id="_migrate_from_unversionedself-any-config_data-">_migrate_from_unversioned(self: Any, config_data: <ast.Subscript object at 0x0000019431A07F70>) -&gt; <ast.Subscript object at 0x0000019431A076D0><a class="headerlink" href="#_migrate_from_unversionedself-any-config_data-" title="Permanent link">&para;</a></h5>
+<h5 id="_migrate_from_unversionedself-any-config_data-">_migrate_from_unversioned(self: Any, config_data: <ast.Subscript object at 0x000001942CBE2920>) -&gt; <ast.Subscript object at 0x000001942CBE2050><a class="headerlink" href="#_migrate_from_unversionedself-any-config_data-" title="Permanent link">&para;</a></h5>
 <p>Migrate from unversioned configuration</p>
-<h5 id="_serialize_configself-any-config-enhancedmodelconfiguration-">_serialize_config(self: Any, config: EnhancedModelConfiguration) -&gt; <ast.Subscript object at 0x0000019431A06B90><a class="headerlink" href="#_serialize_configself-any-config-enhancedmodelconfiguration-" title="Permanent link">&para;</a></h5>
+<h5 id="_serialize_configself-any-config-enhancedmodelconfiguration-">_serialize_config(self: Any, config: EnhancedModelConfiguration) -&gt; <ast.Subscript object at 0x000001942CBE1510><a class="headerlink" href="#_serialize_configself-any-config-enhancedmodelconfiguration-" title="Permanent link">&para;</a></h5>
 <p>Serialize configuration to dictionary</p>
-<h5 id="_deserialize_configself-any-config_data-enhancedmodelconfiguration">_deserialize_config(self: Any, config_data: <ast.Subscript object at 0x0000019431A069E0>) -&gt; EnhancedModelConfiguration<a class="headerlink" href="#_deserialize_configself-any-config_data-enhancedmodelconfiguration" title="Permanent link">&para;</a></h5>
+<h5 id="_deserialize_configself-any-config_data-enhancedmodelconfiguration">_deserialize_config(self: Any, config_data: <ast.Subscript object at 0x000001942CBE1360>) -&gt; EnhancedModelConfiguration<a class="headerlink" href="#_deserialize_configself-any-config_data-enhancedmodelconfiguration" title="Permanent link">&para;</a></h5>
 <p>Deserialize configuration from dictionary</p>
-<h5 id="_dict_to_dataclassself-any-data-dataclass_type-any">_dict_to_dataclass(self: Any, data: <ast.Subscript object at 0x000001943197DBA0>, dataclass_type: Any)<a class="headerlink" href="#_dict_to_dataclassself-any-data-dataclass_type-any" title="Permanent link">&para;</a></h5>
+<h5 id="_dict_to_dataclassself-any-data-dataclass_type-any">_dict_to_dataclass(self: Any, data: <ast.Subscript object at 0x000001942CB48520>, dataclass_type: Any)<a class="headerlink" href="#_dict_to_dataclassself-any-data-dataclass_type-any" title="Permanent link">&para;</a></h5>
 <p>Convert dictionary to dataclass instance</p>
 <h5 id="_create_backupself-any-none">_create_backup(self: Any) -&gt; None<a class="headerlink" href="#_create_backupself-any-none" title="Permanent link">&para;</a></h5>
 <p>Create backup of current configuration</p>

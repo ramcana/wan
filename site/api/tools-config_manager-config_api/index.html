@@ -1046,9 +1046,9 @@ including get/set operations, hot-reloading, and change notifications.</p>
 <p>Handles configuration change notifications</p>
 <h4 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h4>
 <h5 id="initself-any"><strong>init</strong>(self: Any)<a class="headerlink" href="#initself-any" title="Permanent link">&para;</a></h5>
-<h5 id="register_callbackself-any-callback">register_callback(self: Any, callback: <ast.Subscript object at 0x000001942F6D7160>)<a class="headerlink" href="#register_callbackself-any-callback" title="Permanent link">&para;</a></h5>
+<h5 id="register_callbackself-any-callback">register_callback(self: Any, callback: <ast.Subscript object at 0x000001942C803160>)<a class="headerlink" href="#register_callbackself-any-callback" title="Permanent link">&para;</a></h5>
 <p>Register a callback for configuration changes</p>
-<h5 id="unregister_callbackself-any-callback">unregister_callback(self: Any, callback: <ast.Subscript object at 0x000001942F6D6E00>)<a class="headerlink" href="#unregister_callbackself-any-callback" title="Permanent link">&para;</a></h5>
+<h5 id="unregister_callbackself-any-callback">unregister_callback(self: Any, callback: <ast.Subscript object at 0x000001942C802E00>)<a class="headerlink" href="#unregister_callbackself-any-callback" title="Permanent link">&para;</a></h5>
 <p>Unregister a configuration change callback</p>
 <h5 id="notify_changeself-any-event-configchangeevent">notify_change(self: Any, event: ConfigChangeEvent)<a class="headerlink" href="#notify_changeself-any-event-configchangeevent" title="Permanent link">&para;</a></h5>
 <p>Notify all registered callbacks of a configuration change</p>
@@ -1061,7 +1061,7 @@ including get/set operations, hot-reloading, and change notifications.</p>
 <h3 id="configurationapi">ConfigurationAPI<a class="headerlink" href="#configurationapi" title="Permanent link">&para;</a></h3>
 <p>Comprehensive configuration API with hot-reloading and change notifications</p>
 <h4 id="methods_2">Methods<a class="headerlink" href="#methods_2" title="Permanent link">&para;</a></h4>
-<h5 id="initself-any-config_file_path-auto_reload-bool-validate_changes-bool"><strong>init</strong>(self: Any, config_file_path: <ast.Subscript object at 0x000001942F6D5930>, auto_reload: bool, validate_changes: bool)<a class="headerlink" href="#initself-any-config_file_path-auto_reload-bool-validate_changes-bool" title="Permanent link">&para;</a></h5>
+<h5 id="initself-any-config_file_path-auto_reload-bool-validate_changes-bool"><strong>init</strong>(self: Any, config_file_path: <ast.Subscript object at 0x000001942C858AC0>, auto_reload: bool, validate_changes: bool)<a class="headerlink" href="#initself-any-config_file_path-auto_reload-bool-validate_changes-bool" title="Permanent link">&para;</a></h5>
 <h5 id="_load_configself-any-unifiedconfig">_load_config(self: Any) -&gt; UnifiedConfig<a class="headerlink" href="#_load_configself-any-unifiedconfig" title="Permanent link">&para;</a></h5>
 <p>Load configuration from file or create default</p>
 <h5 id="_setup_file_watcherself-any">_setup_file_watcher(self: Any)<a class="headerlink" href="#_setup_file_watcherself-any" title="Permanent link">&para;</a></h5>
@@ -1072,7 +1072,7 @@ including get/set operations, hot-reloading, and change notifications.</p>
 <p>Detect changes between configurations and notify callbacks</p>
 <h5 id="_compare_dictsself-any-old_dict-dict-new_dict-dict-path_prefix-str-source-str">_compare_dicts(self: Any, old_dict: Dict, new_dict: Dict, path_prefix: str, source: str)<a class="headerlink" href="#_compare_dictsself-any-old_dict-dict-new_dict-dict-path_prefix-str-source-str" title="Permanent link">&para;</a></h5>
 <p>Recursively compare dictionaries and generate change events</p>
-<h5 id="get_configself-any-path-any">get_config(self: Any, path: <ast.Subscript object at 0x000001942F72C820>) -&gt; Any<a class="headerlink" href="#get_configself-any-path-any" title="Permanent link">&para;</a></h5>
+<h5 id="get_configself-any-path-any">get_config(self: Any, path: <ast.Subscript object at 0x000001942C8EA230>) -&gt; Any<a class="headerlink" href="#get_configself-any-path-any" title="Permanent link">&para;</a></h5>
 <p>Get configuration value by path</p>
 <p>Args:
     path: Dot-separated path to configuration value (e.g., 'api.port')
@@ -1087,7 +1087,7 @@ including get/set operations, hot-reloading, and change notifications.</p>
     validate: Whether to validate the change (uses instance default if None)</p>
 <p>Returns:
     True if successful, False otherwise</p>
-<h5 id="update_configself-any-updates-validate-bool-">update_config(self: Any, updates: <ast.Subscript object at 0x000001942F6B0250>, validate: bool) -&gt; <ast.Subscript object at 0x000001942F6CBC10><a class="headerlink" href="#update_configself-any-updates-validate-bool-" title="Permanent link">&para;</a></h5>
+<h5 id="update_configself-any-updates-validate-bool-">update_config(self: Any, updates: <ast.Subscript object at 0x000001942C8E8250>, validate: bool) -&gt; <ast.Subscript object at 0x000001942C873C10><a class="headerlink" href="#update_configself-any-updates-validate-bool-" title="Permanent link">&para;</a></h5>
 <p>Update multiple configuration values</p>
 <p>Args:
     updates: Dictionary of path -&gt; value updates
@@ -1098,7 +1098,7 @@ including get/set operations, hot-reloading, and change notifications.</p>
 <p>Manually reload configuration from file</p>
 <p>Returns:
     True if successful, False otherwise</p>
-<h5 id="save_configself-any-file_path-bool">save_config(self: Any, file_path: <ast.Subscript object at 0x000001942F6CB580>) -&gt; bool<a class="headerlink" href="#save_configself-any-file_path-bool" title="Permanent link">&para;</a></h5>
+<h5 id="save_configself-any-file_path-bool">save_config(self: Any, file_path: <ast.Subscript object at 0x000001942C873580>) -&gt; bool<a class="headerlink" href="#save_configself-any-file_path-bool" title="Permanent link">&para;</a></h5>
 <p>Save current configuration to file</p>
 <p>Args:
     file_path: Path to save to (uses default if None)</p>
@@ -1108,11 +1108,11 @@ including get/set operations, hot-reloading, and change notifications.</p>
 <p>Validate the current configuration</p>
 <p>Returns:
     Validation result</p>
-<h5 id="register_change_callbackself-any-callback">register_change_callback(self: Any, callback: <ast.Subscript object at 0x000001942F6CA5C0>)<a class="headerlink" href="#register_change_callbackself-any-callback" title="Permanent link">&para;</a></h5>
+<h5 id="register_change_callbackself-any-callback">register_change_callback(self: Any, callback: <ast.Subscript object at 0x0000019427F253F0>)<a class="headerlink" href="#register_change_callbackself-any-callback" title="Permanent link">&para;</a></h5>
 <p>Register a callback for configuration changes</p>
-<h5 id="unregister_change_callbackself-any-callback">unregister_change_callback(self: Any, callback: <ast.Subscript object at 0x0000019431B1D030>)<a class="headerlink" href="#unregister_change_callbackself-any-callback" title="Permanent link">&para;</a></h5>
+<h5 id="unregister_change_callbackself-any-callback">unregister_change_callback(self: Any, callback: <ast.Subscript object at 0x0000019427F25090>)<a class="headerlink" href="#unregister_change_callbackself-any-callback" title="Permanent link">&para;</a></h5>
 <p>Unregister a configuration change callback</p>
-<h5 id="get_config_infoself-any-">get_config_info(self: Any) -&gt; <ast.Subscript object at 0x0000019431B4BFA0><a class="headerlink" href="#get_config_infoself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="get_config_infoself-any-">get_config_info(self: Any) -&gt; <ast.Subscript object at 0x0000019427F3BFA0><a class="headerlink" href="#get_config_infoself-any-" title="Permanent link">&para;</a></h5>
 <p>Get information about the current configuration</p>
 <p>Returns:
     Dictionary with configuration metadata</p>

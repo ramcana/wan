@@ -51,18 +51,18 @@ Provides adapter methods to convert between existing model interfaces and FastAP
 
 
 
-##### _get_recommended_hardware_profile(self: Any, model_type: str, available_vram_gb: float) -> <ast.Subscript object at 0x000001942EF964A0>
+##### _get_recommended_hardware_profile(self: Any, model_type: str, available_vram_gb: float) -> <ast.Subscript object at 0x000001942CB8A110>
 
 Get recommended hardware profile for given VRAM
 
-##### replace_placeholder_model_mappings(self: Any) -> <ast.Subscript object at 0x000001942EF9C730>
+##### replace_placeholder_model_mappings(self: Any) -> <ast.Subscript object at 0x000001942CB05FF0>
 
 Replace placeholder model mappings with real WAN model references
 
 Returns:
     Dictionary mapping old placeholder references to new WAN implementations
 
-##### get_model_implementation_info(self: Any, model_type: str) -> <ast.Subscript object at 0x000001942EF9D570>
+##### get_model_implementation_info(self: Any, model_type: str) -> <ast.Subscript object at 0x000001942CB043A0>
 
 Get information about model implementation (real vs placeholder)
 
@@ -72,7 +72,7 @@ Args:
 Returns:
     Dictionary with implementation information
 
-##### get_model_status_from_existing_system(self: Any) -> <ast.Subscript object at 0x000001943459CC10>
+##### get_model_status_from_existing_system(self: Any) -> <ast.Subscript object at 0x000001942C8ABFD0>
 
 Get model status for all supported models from existing system
 
@@ -84,7 +84,7 @@ Convert model type string to enum
 
 Estimate VRAM usage for a model type in MB
 
-##### get_hardware_profile(self: Any) -> <ast.Subscript object at 0x000001943459EAD0>
+##### get_hardware_profile(self: Any) -> <ast.Subscript object at 0x000001942C889540>
 
 Get the detected hardware profile
 
@@ -92,15 +92,15 @@ Get the detected hardware profile
 
 Check if the bridge is initialized
 
-##### get_download_progress(self: Any, model_type: str) -> <ast.Subscript object at 0x000001942F33F490>
+##### get_download_progress(self: Any, model_type: str) -> <ast.Subscript object at 0x0000019428ADD9C0>
 
 Get current download progress for a specific model
 
-##### get_all_download_progress(self: Any) -> <ast.Subscript object at 0x000001942F33F520>
+##### get_all_download_progress(self: Any) -> <ast.Subscript object at 0x0000019428ADDDB0>
 
 Get download progress for all models
 
-##### get_integration_status(self: Any) -> <ast.Subscript object at 0x000001942F33F820>
+##### get_integration_status(self: Any) -> <ast.Subscript object at 0x0000019428ADEA40>
 
 Get comprehensive integration status
 
@@ -116,7 +116,7 @@ Schedule hardware detection to run asynchronously
 
 Synchronous hardware detection fallback
 
-##### get_lora_status(self: Any, model_type: <ast.Subscript object at 0x000001942FDC97E0>) -> <ast.Subscript object at 0x000001942FE5B790>
+##### get_lora_status(self: Any, model_type: <ast.Subscript object at 0x0000019428AAD8D0>) -> <ast.Subscript object at 0x0000019428AAF8B0>
 
 Get LoRA status information for models
 
@@ -126,7 +126,7 @@ Args:
 Returns:
     Dictionary with LoRA status information
 
-##### get_lora_memory_impact(self: Any, lora_name: str) -> <ast.Subscript object at 0x000001942FE3EDD0>
+##### get_lora_memory_impact(self: Any, lora_name: str) -> <ast.Subscript object at 0x0000019428AB5F60>
 
 Get memory impact estimation for a LoRA
 

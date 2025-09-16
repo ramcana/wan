@@ -31,7 +31,7 @@ Load existing baseline data if available.
 
 Establish comprehensive baseline by running multiple health checks.
 
-##### _calculate_baseline_metrics(self: Any, reports: <ast.Subscript object at 0x00000194345E0DC0>) -> Dict
+##### _calculate_baseline_metrics(self: Any, reports: <ast.Subscript object at 0x000001942CD386A0>) -> Dict
 
 Calculate baseline metrics from health reports.
 
@@ -55,7 +55,7 @@ Print baseline summary.
 
 Update baseline with new health report data.
 
-##### _count_issues_by_severity(self: Any, issues: List) -> <ast.Subscript object at 0x00000194319C6980>
+##### _count_issues_by_severity(self: Any, issues: List) -> <ast.Subscript object at 0x000001942C8708B0>
 
 Count issues by severity level.
 
@@ -97,7 +97,7 @@ Update progress for an improvement initiative.
 
 Analyze health trends over specified period.
 
-##### _calculate_trend(self: Any, values: <ast.Subscript object at 0x00000194318AA500>) -> Dict
+##### _calculate_trend(self: Any, values: <ast.Subscript object at 0x0000019427BB8100>) -> Dict
 
 Calculate trend statistics for a series of values.
 
@@ -109,7 +109,7 @@ Save improvement tracking data.
 
 Generate comprehensive improvement report.
 
-##### _generate_improvement_recommendations(self: Any, trends: Dict) -> <ast.Subscript object at 0x0000019434672BC0>
+##### _generate_improvement_recommendations(self: Any, trends: Dict) -> <ast.Subscript object at 0x0000019427B2EA70>
 
 Generate improvement recommendations based on trends.
 

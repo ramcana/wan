@@ -59,7 +59,7 @@ Calculate performance improvements from optimizations.
 
 Generate comprehensive performance report.
 
-##### generate_performance_recommendations(self: Any) -> <ast.Subscript object at 0x000001942FC1C6A0>
+##### generate_performance_recommendations(self: Any) -> <ast.Subscript object at 0x000001942836D360>
 
 Generate performance optimization recommendations.
 

@@ -20,7 +20,7 @@ Manages environment-specific configuration.
 
 #### Methods
 
-##### __init__(self: Any, env: <ast.Subscript object at 0x000001942EFF76D0>)
+##### __init__(self: Any, env: <ast.Subscript object at 0x000001942A2AABC0>)
 
 
 
@@ -28,7 +28,7 @@ Manages environment-specific configuration.
 
 Load configuration based on environment.
 
-##### _merge_config(self: Any, env_config: <ast.Subscript object at 0x000001942EFF6350>) -> None
+##### _merge_config(self: Any, env_config: <ast.Subscript object at 0x000001942A2A9840>) -> None
 
 Merge environment-specific config with base config.
 
@@ -40,7 +40,7 @@ Apply environment variable overrides.
 
 Get configuration value.
 
-##### get_section(self: Any, section: str) -> <ast.Subscript object at 0x000001942F028430>
+##### get_section(self: Any, section: str) -> <ast.Subscript object at 0x000001942A2178E0>
 
 Get entire configuration section.
 
@@ -64,7 +64,7 @@ Check if running in testing environment.
 
 Get database URL based on environment.
 
-##### get_log_config(self: Any) -> <ast.Subscript object at 0x00000194345FBA90>
+##### get_log_config(self: Any) -> <ast.Subscript object at 0x000001942A214160>
 
 Get logging configuration.
 
@@ -72,23 +72,23 @@ Get logging configuration.
 
 Get CORS origins based on environment.
 
-##### get_api_config(self: Any) -> <ast.Subscript object at 0x000001943463AC20>
+##### get_api_config(self: Any) -> <ast.Subscript object at 0x000001942A1B4550>
 
 Get API configuration.
 
-##### get_storage_config(self: Any) -> <ast.Subscript object at 0x0000019434381120>
+##### get_storage_config(self: Any) -> <ast.Subscript object at 0x00000194278F71C0>
 
 Get storage configuration.
 
-##### get_model_config(self: Any) -> <ast.Subscript object at 0x00000194343809A0>
+##### get_model_config(self: Any) -> <ast.Subscript object at 0x00000194278F6B30>
 
 Get model configuration.
 
-##### get_optimization_config(self: Any) -> <ast.Subscript object at 0x0000019434380220>
+##### get_optimization_config(self: Any) -> <ast.Subscript object at 0x00000194278F62C0>
 
 Get optimization configuration.
 
-##### save_config(self: Any, path: <ast.Subscript object at 0x0000019434380070>) -> None
+##### save_config(self: Any, path: <ast.Subscript object at 0x00000194278F6110>) -> None
 
 Save current configuration to file.
 

@@ -61,7 +61,7 @@ Features:
 
 #### Methods
 
-##### __init__(self: Any, performance_monitor: PerformanceMonitor, data_dir: <ast.Subscript object at 0x000001942FC0DA50>, enable_analytics: bool)
+##### __init__(self: Any, performance_monitor: PerformanceMonitor, data_dir: <ast.Subscript object at 0x00000194288DA590>, enable_analytics: bool)
 
 Initialize analytics engine.
 
@@ -77,7 +77,7 @@ Collect analytics from a startup session.
 Args:
     session: Completed startup session
 
-##### get_optimization_suggestions(self: Any, max_suggestions: int, min_priority: OptimizationPriority) -> <ast.Subscript object at 0x000001942F05FA00>
+##### get_optimization_suggestions(self: Any, max_suggestions: int, min_priority: OptimizationPriority) -> <ast.Subscript object at 0x00000194288D82B0>
 
 Get optimization suggestions for the current system.
 
@@ -154,15 +154,15 @@ Check if suggestion is applicable to current system.
 
 Get baseline startup duration for similar systems.
 
-##### _get_baseline_phase_durations(self: Any) -> <ast.Subscript object at 0x000001942F01B010>
+##### _get_baseline_phase_durations(self: Any) -> <ast.Subscript object at 0x0000019427C87B50>
 
 Get baseline phase durations.
 
-##### _generate_error_fixes(self: Any, error_type: str) -> <ast.Subscript object at 0x000001942F01BAC0>
+##### _generate_error_fixes(self: Any, error_type: str) -> <ast.Subscript object at 0x000001942C590640>
 
 Generate suggested fixes for error type.
 
-##### _extract_error_conditions(self: Any, session: StartupSession) -> <ast.Subscript object at 0x00000194318B4C40>
+##### _extract_error_conditions(self: Any, session: StartupSession) -> <ast.Subscript object at 0x000001942C591780>
 
 Extract conditions that may have contributed to errors.
 

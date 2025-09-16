@@ -21,11 +21,11 @@ Manages downloading and setup of WAN models
 
 
 
-##### check_model_status(self: Any, model_type: str) -> <ast.Subscript object at 0x000001943445B4C0>
+##### check_model_status(self: Any, model_type: str) -> <ast.Subscript object at 0x000001942B338D90>
 
 Check if a model is downloaded and valid
 
-##### download_file(self: Any, url: str, local_path: Path, expected_size: <ast.Subscript object at 0x00000194344584C0>) -> bool
+##### download_file(self: Any, url: str, local_path: Path, expected_size: <ast.Subscript object at 0x000001942B338B20>) -> bool
 
 Download a file with progress bar or create placeholder
 
@@ -45,7 +45,7 @@ Download a specific model (tries HF CLI first, falls back to placeholder)
 
 Create a complete model placeholder structure
 
-##### download_all_models(self: Any, force: bool) -> <ast.Subscript object at 0x00000194302EFFA0>
+##### download_all_models(self: Any, force: bool) -> <ast.Subscript object at 0x000001942CE6FD90>
 
 Download all available models
 

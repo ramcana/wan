@@ -28,7 +28,7 @@ Handles migration of scattered configuration files to unified system
 
 
 
-##### discover_config_files(self: Any) -> <ast.Subscript object at 0x00000194300CC250>
+##### discover_config_files(self: Any) -> <ast.Subscript object at 0x0000019428D40D30>
 
 Discover all configuration files in the project
 
@@ -39,7 +39,7 @@ Returns:
 
 Check if a file should be skipped during discovery
 
-##### _analyze_config_file(self: Any, file_path: Path) -> <ast.Subscript object at 0x00000194300E4970>
+##### _analyze_config_file(self: Any, file_path: Path) -> <ast.Subscript object at 0x000001942B3020B0>
 
 Analyze a configuration file and extract its content
 
@@ -53,18 +53,18 @@ Returns:
 
 Detect the format of a configuration file
 
-##### _parse_env_file(self: Any, file_path: Path) -> <ast.Subscript object at 0x000001942FA9B7C0>
+##### _parse_env_file(self: Any, file_path: Path) -> <ast.Subscript object at 0x000001942B3002E0>
 
 Parse environment file into dictionary
 
-##### _categorize_config(self: Any, file_path: Path, content: <ast.Subscript object at 0x000001942FA9B5B0>) -> <ast.Subscript object at 0x000001942FA99DE0>
+##### _categorize_config(self: Any, file_path: Path, content: <ast.Subscript object at 0x000001942B3000D0>) -> <ast.Subscript object at 0x000001942B2F68C0>
 
 Categorize a configuration file based on path and content
 
 Returns:
     Tuple of (category, confidence_score)
 
-##### migrate_to_unified_config(self: Any, sources: <ast.Subscript object at 0x000001942FA99C30>, output_path: Path, create_backup: bool) -> MigrationReport
+##### migrate_to_unified_config(self: Any, sources: <ast.Subscript object at 0x000001942B2F6710>, output_path: Path, create_backup: bool) -> MigrationReport
 
 Migrate discovered configuration sources to unified configuration
 
@@ -76,11 +76,11 @@ Args:
 Returns:
     Migration report with results and any errors
 
-##### _create_backup(self: Any, sources: <ast.Subscript object at 0x000001942FAC1990>) -> Path
+##### _create_backup(self: Any, sources: <ast.Subscript object at 0x000001942B3BA470>) -> Path
 
 Create backup of original configuration files
 
-##### _merge_configurations(self: Any, sources: <ast.Subscript object at 0x000001942FAC01F0>, report: MigrationReport) -> UnifiedConfig
+##### _merge_configurations(self: Any, sources: <ast.Subscript object at 0x000001942B3B8CD0>, report: MigrationReport) -> UnifiedConfig
 
 Merge multiple configuration sources into a unified configuration
 
@@ -91,7 +91,7 @@ Args:
 Returns:
     Unified configuration object
 
-##### _merge_category(self: Any, unified_config: UnifiedConfig, category: str, sources: <ast.Subscript object at 0x000001942FADF130>, report: MigrationReport)
+##### _merge_category(self: Any, unified_config: UnifiedConfig, category: str, sources: <ast.Subscript object at 0x0000019427F3A950>, report: MigrationReport)
 
 Merge sources for a specific category into the unified configuration
 
@@ -137,7 +137,7 @@ Args:
 Returns:
     True if rollback was successful, False otherwise
 
-##### generate_migration_preview(self: Any, sources: <ast.Subscript object at 0x00000194300770A0>) -> <ast.Subscript object at 0x0000019433D385B0>
+##### generate_migration_preview(self: Any, sources: <ast.Subscript object at 0x0000019428D4FB80>) -> <ast.Subscript object at 0x0000019428DA5090>
 
 Generate a preview of what would be migrated without actually doing it
 
@@ -147,11 +147,11 @@ Args:
 Returns:
     Dictionary with migration preview information
 
-##### _detect_conflicts(self: Any, sources: <ast.Subscript object at 0x0000019433D38760>, preview: <ast.Subscript object at 0x0000019433D38820>)
+##### _detect_conflicts(self: Any, sources: <ast.Subscript object at 0x0000019428DA5240>, preview: <ast.Subscript object at 0x0000019428DA5300>)
 
 Detect potential conflicts in configuration migration
 
-##### _generate_recommendations(self: Any, sources: <ast.Subscript object at 0x0000019433D39600>, preview: <ast.Subscript object at 0x0000019433D396C0>)
+##### _generate_recommendations(self: Any, sources: <ast.Subscript object at 0x0000019428DA60E0>, preview: <ast.Subscript object at 0x0000019428DA61A0>)
 
 Generate recommendations for configuration migration
 

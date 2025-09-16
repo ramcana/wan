@@ -36,7 +36,7 @@ fallback for environments without prometheus_client.
 
 #### Methods
 
-##### __init__(self: Any, registry: <ast.Subscript object at 0x000001942F6D4FD0>)
+##### __init__(self: Any, registry: <ast.Subscript object at 0x0000019427A22890>)
 
 
 
@@ -80,7 +80,7 @@ Record a completed deduplication operation.
 
 Get metrics in Prometheus text format.
 
-##### get_metrics_dict(self: Any) -> <ast.Subscript object at 0x000001942F028280>
+##### get_metrics_dict(self: Any) -> <ast.Subscript object at 0x000001942A246470>
 
 Get metrics as a dictionary for JSON serialization.
 

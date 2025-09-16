@@ -952,28 +952,28 @@ escalation policies, and integration with project management tools.</p>
 <h3 id="automatedalertingsystem">AutomatedAlertingSystem<a class="headerlink" href="#automatedalertingsystem" title="Permanent link">&para;</a></h3>
 <p>Automated alerting system with escalation and rate limiting</p>
 <h4 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h4>
-<h5 id="initself-any-config_path"><strong>init</strong>(self: Any, config_path: <ast.Subscript object at 0x00000194302CBA60>)<a class="headerlink" href="#initself-any-config_path" title="Permanent link">&para;</a></h5>
+<h5 id="initself-any-config_path"><strong>init</strong>(self: Any, config_path: <ast.Subscript object at 0x0000019428137EE0>)<a class="headerlink" href="#initself-any-config_path" title="Permanent link">&para;</a></h5>
 <h5 id="_setup_loggingself-any-logginglogger">_setup_logging(self: Any) -&gt; logging.Logger<a class="headerlink" href="#_setup_loggingself-any-logginglogger" title="Permanent link">&para;</a></h5>
 <p>Set up logging for alerting system</p>
-<h5 id="_load_alert_rulesself-any-">_load_alert_rules(self: Any) -&gt; <ast.Subscript object at 0x000001943026BD90><a class="headerlink" href="#_load_alert_rulesself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="_load_alert_rulesself-any-">_load_alert_rules(self: Any) -&gt; <ast.Subscript object at 0x0000019428160250><a class="headerlink" href="#_load_alert_rulesself-any-" title="Permanent link">&para;</a></h5>
 <p>Load alert rules from configuration</p>
-<h5 id="_create_default_alert_rulesself-any-">_create_default_alert_rules(self: Any) -&gt; <ast.Subscript object at 0x000001943026ABF0><a class="headerlink" href="#_create_default_alert_rulesself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="_create_default_alert_rulesself-any-">_create_default_alert_rules(self: Any) -&gt; <ast.Subscript object at 0x0000019428133070><a class="headerlink" href="#_create_default_alert_rulesself-any-" title="Permanent link">&para;</a></h5>
 <p>Create default alert rules</p>
-<h5 id="_load_escalation_policiesself-any-">_load_escalation_policies(self: Any) -&gt; <ast.Subscript object at 0x0000019430269AE0><a class="headerlink" href="#_load_escalation_policiesself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="_load_escalation_policiesself-any-">_load_escalation_policies(self: Any) -&gt; <ast.Subscript object at 0x0000019428131F60><a class="headerlink" href="#_load_escalation_policiesself-any-" title="Permanent link">&para;</a></h5>
 <p>Load escalation policies from configuration</p>
-<h5 id="_create_default_escalation_policiesself-any-">_create_default_escalation_policies(self: Any) -&gt; <ast.Subscript object at 0x0000019430268DC0><a class="headerlink" href="#_create_default_escalation_policiesself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="_create_default_escalation_policiesself-any-">_create_default_escalation_policies(self: Any) -&gt; <ast.Subscript object at 0x0000019428131240><a class="headerlink" href="#_create_default_escalation_policiesself-any-" title="Permanent link">&para;</a></h5>
 <p>Create default escalation policies</p>
 <h5 id="_should_trigger_alertself-any-rule-alertrule-now-datetime-bool">_should_trigger_alert(self: Any, rule: AlertRule, now: datetime) -&gt; bool<a class="headerlink" href="#_should_trigger_alertself-any-rule-alertrule-now-datetime-bool" title="Permanent link">&para;</a></h5>
 <p>Check if alert should be triggered based on rate limiting</p>
-<h5 id="_create_alert_messageself-any-rule-alertrule-health_report-healthreport-history-alerthistory-">_create_alert_message(self: Any, rule: AlertRule, health_report: HealthReport, history: AlertHistory) -&gt; <ast.Subscript object at 0x000001942EFFA320><a class="headerlink" href="#_create_alert_messageself-any-rule-alertrule-health_report-healthreport-history-alerthistory-" title="Permanent link">&para;</a></h5>
+<h5 id="_create_alert_messageself-any-rule-alertrule-health_report-healthreport-history-alerthistory-">_create_alert_message(self: Any, rule: AlertRule, health_report: HealthReport, history: AlertHistory) -&gt; <ast.Subscript object at 0x0000019428400EE0><a class="headerlink" href="#_create_alert_messageself-any-rule-alertrule-health_report-healthreport-history-alerthistory-" title="Permanent link">&para;</a></h5>
 <p>Create alert message with relevant information</p>
-<h5 id="_get_escalation_policyself-any-alert_level-alertlevel-">_get_escalation_policy(self: Any, alert_level: AlertLevel) -&gt; <ast.Subscript object at 0x0000019431B5E2F0><a class="headerlink" href="#_get_escalation_policyself-any-alert_level-alertlevel-" title="Permanent link">&para;</a></h5>
+<h5 id="_get_escalation_policyself-any-alert_level-alertlevel-">_get_escalation_policy(self: Any, alert_level: AlertLevel) -&gt; <ast.Subscript object at 0x000001942C6662C0><a class="headerlink" href="#_get_escalation_policyself-any-alert_level-alertlevel-" title="Permanent link">&para;</a></h5>
 <p>Get appropriate escalation policy for alert level</p>
 <h5 id="acknowledge_alertself-any-rule_name-str-acknowledged_by-str-bool">acknowledge_alert(self: Any, rule_name: str, acknowledged_by: str) -&gt; bool<a class="headerlink" href="#acknowledge_alertself-any-rule_name-str-acknowledged_by-str-bool" title="Permanent link">&para;</a></h5>
 <p>Acknowledge an alert to stop escalation</p>
 <h5 id="resolve_alertself-any-rule_name-str-resolved_by-str-resolution_notes-str-bool">resolve_alert(self: Any, rule_name: str, resolved_by: str, resolution_notes: str) -&gt; bool<a class="headerlink" href="#resolve_alertself-any-rule_name-str-resolved_by-str-resolution_notes-str-bool" title="Permanent link">&para;</a></h5>
 <p>Mark an alert as resolved</p>
-<h5 id="get_active_alertsself-any-">get_active_alerts(self: Any) -&gt; <ast.Subscript object at 0x0000019431B59750><a class="headerlink" href="#get_active_alertsself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="get_active_alertsself-any-">get_active_alerts(self: Any) -&gt; <ast.Subscript object at 0x000001942C629B70><a class="headerlink" href="#get_active_alertsself-any-" title="Permanent link">&para;</a></h5>
 <p>Get list of active (unresolved) alerts</p>
 <h5 id="cleanup_old_alertsself-any-days-int-none">cleanup_old_alerts(self: Any, days: int) -&gt; None<a class="headerlink" href="#cleanup_old_alertsself-any-days-int-none" title="Permanent link">&para;</a></h5>
 <p>Clean up old resolved alerts</p>

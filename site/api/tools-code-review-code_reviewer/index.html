@@ -1183,42 +1183,42 @@ and technical debt tracking to improve code quality and maintainability.</p>
 <p>Main code review and refactoring assistance system</p>
 <h4 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h4>
 <h5 id="initself-any-project_root-str"><strong>init</strong>(self: Any, project_root: str)<a class="headerlink" href="#initself-any-project_root-str" title="Permanent link">&para;</a></h5>
-<h5 id="_load_configself-any-">_load_config(self: Any) -&gt; <ast.Subscript object at 0x000001942FA78610><a class="headerlink" href="#_load_configself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="_load_configself-any-">_load_config(self: Any) -&gt; <ast.Subscript object at 0x000001942C83E8C0><a class="headerlink" href="#_load_configself-any-" title="Permanent link">&para;</a></h5>
 <p>Load code review configuration</p>
-<h5 id="review_fileself-any-file_path-str-">review_file(self: Any, file_path: str) -&gt; <ast.Subscript object at 0x000001942F70D5D0><a class="headerlink" href="#review_fileself-any-file_path-str-" title="Permanent link">&para;</a></h5>
+<h5 id="review_fileself-any-file_path-str-">review_file(self: Any, file_path: str) -&gt; <ast.Subscript object at 0x000001942C83D270><a class="headerlink" href="#review_fileself-any-file_path-str-" title="Permanent link">&para;</a></h5>
 <p>Review a single file and return issues</p>
-<h5 id="review_projectself-any-include_patterns-">review_project(self: Any, include_patterns: <ast.Subscript object at 0x000001942F70D720>) -&gt; <ast.Subscript object at 0x000001942F70E860><a class="headerlink" href="#review_projectself-any-include_patterns-" title="Permanent link">&para;</a></h5>
+<h5 id="review_projectself-any-include_patterns-">review_project(self: Any, include_patterns: <ast.Subscript object at 0x000001942C83D120>) -&gt; <ast.Subscript object at 0x0000019427F97160><a class="headerlink" href="#review_projectself-any-include_patterns-" title="Permanent link">&para;</a></h5>
 <p>Review entire project</p>
-<h5 id="_generate_refactoring_recommendationsself-any-file_path-str-issues-">_generate_refactoring_recommendations(self: Any, file_path: str, issues: <ast.Subscript object at 0x000001942F70F1C0>) -&gt; <ast.Subscript object at 0x000001942F6FBE80><a class="headerlink" href="#_generate_refactoring_recommendationsself-any-file_path-str-issues-" title="Permanent link">&para;</a></h5>
+<h5 id="_generate_refactoring_recommendationsself-any-file_path-str-issues-">_generate_refactoring_recommendations(self: Any, file_path: str, issues: <ast.Subscript object at 0x0000019427F97430>) -&gt; <ast.Subscript object at 0x0000019428D3BD30><a class="headerlink" href="#_generate_refactoring_recommendationsself-any-file_path-str-issues-" title="Permanent link">&para;</a></h5>
 <p>Generate refactoring recommendations based on issues</p>
 <h5 id="_update_technical_debtself-any">_update_technical_debt(self: Any)<a class="headerlink" href="#_update_technical_debtself-any" title="Permanent link">&para;</a></h5>
 <p>Update technical debt tracking based on current issues</p>
-<h5 id="_calculate_priority_scoreself-any-issues-float">_calculate_priority_score(self: Any, issues: <ast.Subscript object at 0x000001942F6DDCC0>) -&gt; float<a class="headerlink" href="#_calculate_priority_scoreself-any-issues-float" title="Permanent link">&para;</a></h5>
+<h5 id="_calculate_priority_scoreself-any-issues-float">_calculate_priority_score(self: Any, issues: <ast.Subscript object at 0x000001942CC8A3E0>) -&gt; float<a class="headerlink" href="#_calculate_priority_scoreself-any-issues-float" title="Permanent link">&para;</a></h5>
 <p>Calculate priority score for technical debt</p>
-<h5 id="_generate_summaryself-any-">_generate_summary(self: Any) -&gt; <ast.Subscript object at 0x000001942F6DE5F0><a class="headerlink" href="#_generate_summaryself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="_generate_summaryself-any-">_generate_summary(self: Any) -&gt; <ast.Subscript object at 0x000001942CC8AFB0><a class="headerlink" href="#_generate_summaryself-any-" title="Permanent link">&para;</a></h5>
 <p>Generate review summary</p>
 <h5 id="generate_reportself-any-output_path-str">generate_report(self: Any, output_path: str)<a class="headerlink" href="#generate_reportself-any-output_path-str" title="Permanent link">&para;</a></h5>
 <p>Generate comprehensive code review report</p>
 <h3 id="complexityanalyzer">ComplexityAnalyzer<a class="headerlink" href="#complexityanalyzer" title="Permanent link">&para;</a></h3>
 <p>Analyzes code complexity</p>
 <h4 id="methods_1">Methods<a class="headerlink" href="#methods_1" title="Permanent link">&para;</a></h4>
-<h5 id="analyzeself-any-file_path-str-tree-astast-content-str-">analyze(self: Any, file_path: str, tree: ast.AST, content: str) -&gt; <ast.Subscript object at 0x000001942F6C6590><a class="headerlink" href="#analyzeself-any-file_path-str-tree-astast-content-str-" title="Permanent link">&para;</a></h5>
+<h5 id="analyzeself-any-file_path-str-tree-astast-content-str-">analyze(self: Any, file_path: str, tree: ast.AST, content: str) -&gt; <ast.Subscript object at 0x000001942B33EB30><a class="headerlink" href="#analyzeself-any-file_path-str-tree-astast-content-str-" title="Permanent link">&para;</a></h5>
 <h5 id="_calculate_complexityself-any-node-astfunctiondef-int">_calculate_complexity(self: Any, node: ast.FunctionDef) -&gt; int<a class="headerlink" href="#_calculate_complexityself-any-node-astfunctiondef-int" title="Permanent link">&para;</a></h5>
 <p>Calculate cyclomatic complexity</p>
 <h3 id="maintainabilityanalyzer">MaintainabilityAnalyzer<a class="headerlink" href="#maintainabilityanalyzer" title="Permanent link">&para;</a></h3>
 <p>Analyzes code maintainability</p>
 <h4 id="methods_2">Methods<a class="headerlink" href="#methods_2" title="Permanent link">&para;</a></h4>
-<h5 id="analyzeself-any-file_path-str-tree-astast-content-str-_1">analyze(self: Any, file_path: str, tree: ast.AST, content: str) -&gt; <ast.Subscript object at 0x000001942F92AEF0><a class="headerlink" href="#analyzeself-any-file_path-str-tree-astast-content-str-_1" title="Permanent link">&para;</a></h5>
+<h5 id="analyzeself-any-file_path-str-tree-astast-content-str-_1">analyze(self: Any, file_path: str, tree: ast.AST, content: str) -&gt; <ast.Subscript object at 0x0000019427AD9BD0><a class="headerlink" href="#analyzeself-any-file_path-str-tree-astast-content-str-_1" title="Permanent link">&para;</a></h5>
 <h3 id="performanceanalyzer">PerformanceAnalyzer<a class="headerlink" href="#performanceanalyzer" title="Permanent link">&para;</a></h3>
 <p>Analyzes potential performance issues</p>
 <h4 id="methods_3">Methods<a class="headerlink" href="#methods_3" title="Permanent link">&para;</a></h4>
-<h5 id="analyzeself-any-file_path-str-tree-astast-content-str-_2">analyze(self: Any, file_path: str, tree: ast.AST, content: str) -&gt; <ast.Subscript object at 0x000001942F92B190><a class="headerlink" href="#analyzeself-any-file_path-str-tree-astast-content-str-_2" title="Permanent link">&para;</a></h5>
+<h5 id="analyzeself-any-file_path-str-tree-astast-content-str-_2">analyze(self: Any, file_path: str, tree: ast.AST, content: str) -&gt; <ast.Subscript object at 0x0000019427AD83D0><a class="headerlink" href="#analyzeself-any-file_path-str-tree-astast-content-str-_2" title="Permanent link">&para;</a></h5>
 <h5 id="_count_nested_loopsself-any-node-astast-int">_count_nested_loops(self: Any, node: ast.AST) -&gt; int<a class="headerlink" href="#_count_nested_loopsself-any-node-astast-int" title="Permanent link">&para;</a></h5>
 <p>Count nested loop levels</p>
 <h3 id="securityanalyzer">SecurityAnalyzer<a class="headerlink" href="#securityanalyzer" title="Permanent link">&para;</a></h3>
 <p>Analyzes potential security issues</p>
 <h4 id="methods_4">Methods<a class="headerlink" href="#methods_4" title="Permanent link">&para;</a></h4>
-<h5 id="analyzeself-any-file_path-str-tree-astast-content-str-_3">analyze(self: Any, file_path: str, tree: ast.AST, content: str) -&gt; <ast.Subscript object at 0x000001942F220A60><a class="headerlink" href="#analyzeself-any-file_path-str-tree-astast-content-str-_3" title="Permanent link">&para;</a></h5>
+<h5 id="analyzeself-any-file_path-str-tree-astast-content-str-_3">analyze(self: Any, file_path: str, tree: ast.AST, content: str) -&gt; <ast.Subscript object at 0x0000019427AD97E0><a class="headerlink" href="#analyzeself-any-file_path-str-tree-astast-content-str-_3" title="Permanent link">&para;</a></h5>
 <h5 id="_get_function_nameself-any-node-astast-str">_get_function_name(self: Any, node: ast.AST) -&gt; str<a class="headerlink" href="#_get_function_nameself-any-node-astast-str" title="Permanent link">&para;</a></h5>
 <p>Get function name from AST node</p>
 <h2 id="constants">Constants<a class="headerlink" href="#constants" title="Permanent link">&para;</a></h2>

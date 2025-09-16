@@ -16,7 +16,7 @@ Main health checker that orchestrates all health checks and generates reports
 
 #### Methods
 
-##### __init__(self: Any, config: <ast.Subscript object at 0x0000019431B340A0>)
+##### __init__(self: Any, config: <ast.Subscript object at 0x00000194280EAD40>)
 
 
 
@@ -28,7 +28,7 @@ Run a single health check
 
 Create a component health result for errors
 
-##### _calculate_overall_score(self: Any, components: <ast.Subscript object at 0x0000019431B8D510>) -> float
+##### _calculate_overall_score(self: Any, components: <ast.Subscript object at 0x000001942CC0B3D0>) -> float
 
 Calculate weighted overall health score
 
@@ -56,7 +56,7 @@ Run health check with caching support.
 
 Get cache inputs for a specific health check category.
 
-##### _get_files_hash(self: Any, files: <ast.Subscript object at 0x000001942FBAF280>) -> str
+##### _get_files_hash(self: Any, files: <ast.Subscript object at 0x0000019427F13070>) -> str
 
 Get hash of file modification times for cache invalidation.
 
@@ -80,7 +80,7 @@ Clear health check cache.
 
 Get performance summary from profiler.
 
-##### get_optimization_recommendations(self: Any) -> <ast.Subscript object at 0x0000019431A9EE00>
+##### get_optimization_recommendations(self: Any) -> <ast.Subscript object at 0x000001942C800100>
 
 Get performance optimization recommendations.
 

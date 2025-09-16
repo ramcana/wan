@@ -1110,7 +1110,7 @@
 <p>Add file pattern that requires high coverage</p>
 <h5 id="exclude_fileself-any-file_pattern-str">exclude_file(self: Any, file_pattern: str)<a class="headerlink" href="#exclude_fileself-any-file_pattern-str" title="Permanent link">&para;</a></h5>
 <p>Exclude file pattern from coverage requirements</p>
-<h5 id="check_violationsself-any-coverage_report-coveragereport-">check_violations(self: Any, coverage_report: CoverageReport) -&gt; <ast.Subscript object at 0x00000194345E0790><a class="headerlink" href="#check_violationsself-any-coverage_report-coveragereport-" title="Permanent link">&para;</a></h5>
+<h5 id="check_violationsself-any-coverage_report-coveragereport-">check_violations(self: Any, coverage_report: CoverageReport) -&gt; <ast.Subscript object at 0x000001942CE20CD0><a class="headerlink" href="#check_violationsself-any-coverage_report-coveragereport-" title="Permanent link">&para;</a></h5>
 <p>Check for threshold violations</p>
 <h5 id="_is_excludedself-any-file_path-str-bool">_is_excluded(self: Any, file_path: str) -&gt; bool<a class="headerlink" href="#_is_excludedself-any-file_path-str-bool" title="Permanent link">&para;</a></h5>
 <p>Check if file is excluded from coverage requirements</p>
@@ -1120,31 +1120,31 @@
 <p>Collects coverage data from various sources</p>
 <h4 id="methods_1">Methods<a class="headerlink" href="#methods_1" title="Permanent link">&para;</a></h4>
 <h5 id="initself-any-project_root-path"><strong>init</strong>(self: Any, project_root: Path)<a class="headerlink" href="#initself-any-project_root-path" title="Permanent link">&para;</a></h5>
-<h5 id="collect_coverage_dataself-any-test_files-">collect_coverage_data(self: Any, test_files: <ast.Subscript object at 0x00000194345E0F40>) -&gt; <ast.Subscript object at 0x00000194345E2B00><a class="headerlink" href="#collect_coverage_dataself-any-test_files-" title="Permanent link">&para;</a></h5>
+<h5 id="collect_coverage_dataself-any-test_files-">collect_coverage_data(self: Any, test_files: <ast.Subscript object at 0x000001942CE23A90>) -&gt; <ast.Subscript object at 0x000001942CE20280><a class="headerlink" href="#collect_coverage_dataself-any-test_files-" title="Permanent link">&para;</a></h5>
 <p>Collect coverage data by running tests with coverage</p>
-<h5 id="_run_coverage_testsself-any-test_files-coverage_dir-path-bool">_run_coverage_tests(self: Any, test_files: <ast.Subscript object at 0x00000194345E3790>, coverage_dir: Path) -&gt; bool<a class="headerlink" href="#_run_coverage_testsself-any-test_files-coverage_dir-path-bool" title="Permanent link">&para;</a></h5>
+<h5 id="_run_coverage_testsself-any-test_files-coverage_dir-path-bool">_run_coverage_tests(self: Any, test_files: <ast.Subscript object at 0x000001942CE23730>, coverage_dir: Path) -&gt; bool<a class="headerlink" href="#_run_coverage_testsself-any-test_files-coverage_dir-path-bool" title="Permanent link">&para;</a></h5>
 <p>Run tests with coverage collection</p>
 <h5 id="_generate_coverage_reportsself-any-coverage_dir-path">_generate_coverage_reports(self: Any, coverage_dir: Path)<a class="headerlink" href="#_generate_coverage_reportsself-any-coverage_dir-path" title="Permanent link">&para;</a></h5>
 <p>Generate coverage reports in multiple formats</p>
-<h5 id="_parse_coverage_dataself-any-coverage_dir-path-">_parse_coverage_data(self: Any, coverage_dir: Path) -&gt; <ast.Subscript object at 0x0000019433CBE890><a class="headerlink" href="#_parse_coverage_dataself-any-coverage_dir-path-" title="Permanent link">&para;</a></h5>
+<h5 id="_parse_coverage_dataself-any-coverage_dir-path-">_parse_coverage_data(self: Any, coverage_dir: Path) -&gt; <ast.Subscript object at 0x0000019428D0E260><a class="headerlink" href="#_parse_coverage_dataself-any-coverage_dir-path-" title="Permanent link">&para;</a></h5>
 <p>Parse coverage data from generated reports</p>
-<h5 id="_parse_xml_coverageself-any-xml_file-path-">_parse_xml_coverage(self: Any, xml_file: Path) -&gt; <ast.Subscript object at 0x000001943026AC20><a class="headerlink" href="#_parse_xml_coverageself-any-xml_file-path-" title="Permanent link">&para;</a></h5>
+<h5 id="_parse_xml_coverageself-any-xml_file-path-">_parse_xml_coverage(self: Any, xml_file: Path) -&gt; <ast.Subscript object at 0x0000019428D0DE70><a class="headerlink" href="#_parse_xml_coverageself-any-xml_file-path-" title="Permanent link">&para;</a></h5>
 <p>Parse XML coverage report</p>
-<h5 id="_parse_class_coverageself-any-class_elem-any-">_parse_class_coverage(self: Any, class_elem: Any) -&gt; <ast.Subscript object at 0x000001943026BE20><a class="headerlink" href="#_parse_class_coverageself-any-class_elem-any-" title="Permanent link">&para;</a></h5>
+<h5 id="_parse_class_coverageself-any-class_elem-any-">_parse_class_coverage(self: Any, class_elem: Any) -&gt; <ast.Subscript object at 0x000001942CE28430><a class="headerlink" href="#_parse_class_coverageself-any-class_elem-any-" title="Permanent link">&para;</a></h5>
 <p>Parse coverage for a single class/file</p>
 <h3 id="coveragegapanalyzer">CoverageGapAnalyzer<a class="headerlink" href="#coveragegapanalyzer" title="Permanent link">&para;</a></h3>
 <p>Analyzes coverage gaps and generates recommendations</p>
 <h4 id="methods_2">Methods<a class="headerlink" href="#methods_2" title="Permanent link">&para;</a></h4>
 <h5 id="initself-any-project_root-path_1"><strong>init</strong>(self: Any, project_root: Path)<a class="headerlink" href="#initself-any-project_root-path_1" title="Permanent link">&para;</a></h5>
-<h5 id="analyze_gapsself-any-coverage_data-">analyze_gaps(self: Any, coverage_data: <ast.Subscript object at 0x0000019430268F10>) -&gt; <ast.Subscript object at 0x0000019430269B40><a class="headerlink" href="#analyze_gapsself-any-coverage_data-" title="Permanent link">&para;</a></h5>
+<h5 id="analyze_gapsself-any-coverage_data-">analyze_gaps(self: Any, coverage_data: <ast.Subscript object at 0x000001942CE28E80>) -&gt; <ast.Subscript object at 0x000001942CE29CF0><a class="headerlink" href="#analyze_gapsself-any-coverage_data-" title="Permanent link">&para;</a></h5>
 <p>Analyze coverage data to identify gaps</p>
-<h5 id="_analyze_json_gapsself-any-json_data-">_analyze_json_gaps(self: Any, json_data: <ast.Subscript object at 0x00000194302697B0>) -&gt; <ast.Subscript object at 0x000001942EF26980><a class="headerlink" href="#_analyze_json_gapsself-any-json_data-" title="Permanent link">&para;</a></h5>
+<h5 id="_analyze_json_gapsself-any-json_data-">_analyze_json_gaps(self: Any, json_data: <ast.Subscript object at 0x000001942CE28670>) -&gt; <ast.Subscript object at 0x000001942CE2BFA0><a class="headerlink" href="#_analyze_json_gapsself-any-json_data-" title="Permanent link">&para;</a></h5>
 <p>Analyze gaps from JSON coverage data</p>
-<h5 id="_analyze_missing_functionsself-any-file_path-str-missing_lines-">_analyze_missing_functions(self: Any, file_path: str, missing_lines: <ast.Subscript object at 0x000001942EF25900>) -&gt; <ast.Subscript object at 0x000001942EF26EC0><a class="headerlink" href="#_analyze_missing_functionsself-any-file_path-str-missing_lines-" title="Permanent link">&para;</a></h5>
+<h5 id="_analyze_missing_functionsself-any-file_path-str-missing_lines-">_analyze_missing_functions(self: Any, file_path: str, missing_lines: <ast.Subscript object at 0x000001942CE28460>) -&gt; <ast.Subscript object at 0x000001942CE2A290><a class="headerlink" href="#_analyze_missing_functionsself-any-file_path-str-missing_lines-" title="Permanent link">&para;</a></h5>
 <p>Analyze missing function coverage</p>
-<h5 id="_analyze_missing_branchesself-any-file_path-str-missing_branches-list-">_analyze_missing_branches(self: Any, file_path: str, missing_branches: List) -&gt; <ast.Subscript object at 0x000001942F2221D0><a class="headerlink" href="#_analyze_missing_branchesself-any-file_path-str-missing_branches-list-" title="Permanent link">&para;</a></h5>
+<h5 id="_analyze_missing_branchesself-any-file_path-str-missing_branches-list-">_analyze_missing_branches(self: Any, file_path: str, missing_branches: List) -&gt; <ast.Subscript object at 0x00000194285495D0><a class="headerlink" href="#_analyze_missing_branchesself-any-file_path-str-missing_branches-list-" title="Permanent link">&para;</a></h5>
 <p>Analyze missing branch coverage</p>
-<h5 id="_analyze_uncovered_blocksself-any-file_path-str-missing_lines-">_analyze_uncovered_blocks(self: Any, file_path: str, missing_lines: <ast.Subscript object at 0x000001942F222FB0>) -&gt; <ast.Subscript object at 0x000001942F222110><a class="headerlink" href="#_analyze_uncovered_blocksself-any-file_path-str-missing_lines-" title="Permanent link">&para;</a></h5>
+<h5 id="_analyze_uncovered_blocksself-any-file_path-str-missing_lines-">_analyze_uncovered_blocks(self: Any, file_path: str, missing_lines: <ast.Subscript object at 0x00000194285498D0>) -&gt; <ast.Subscript object at 0x00000194285498A0><a class="headerlink" href="#_analyze_uncovered_blocksself-any-file_path-str-missing_lines-" title="Permanent link">&para;</a></h5>
 <p>Analyze large blocks of uncovered code</p>
 <h5 id="_determine_function_severityself-any-func_node-astfunctiondef-str">_determine_function_severity(self: Any, func_node: ast.FunctionDef) -&gt; str<a class="headerlink" href="#_determine_function_severityself-any-func_node-astfunctiondef-str" title="Permanent link">&para;</a></h5>
 <p>Determine severity of missing function coverage</p>
@@ -1154,13 +1154,13 @@
 <p>Main coverage analyzer that orchestrates all analysis</p>
 <h4 id="methods_3">Methods<a class="headerlink" href="#methods_3" title="Permanent link">&para;</a></h4>
 <h5 id="initself-any-project_root-path_2"><strong>init</strong>(self: Any, project_root: Path)<a class="headerlink" href="#initself-any-project_root-path_2" title="Permanent link">&para;</a></h5>
-<h5 id="analyze_coverageself-any-test_files-coveragereport">analyze_coverage(self: Any, test_files: <ast.Subscript object at 0x000001942F223430>) -&gt; CoverageReport<a class="headerlink" href="#analyze_coverageself-any-test_files-coveragereport" title="Permanent link">&para;</a></h5>
+<h5 id="analyze_coverageself-any-test_files-coveragereport">analyze_coverage(self: Any, test_files: <ast.Subscript object at 0x00000194285490F0>) -&gt; CoverageReport<a class="headerlink" href="#analyze_coverageself-any-test_files-coveragereport" title="Permanent link">&para;</a></h5>
 <p>Perform comprehensive coverage analysis</p>
-<h5 id="_extract_file_coveragesself-any-coverage_data-">_extract_file_coverages(self: Any, coverage_data: <ast.Subscript object at 0x000001943193A860>) -&gt; <ast.Subscript object at 0x0000019431939900><a class="headerlink" href="#_extract_file_coveragesself-any-coverage_data-" title="Permanent link">&para;</a></h5>
+<h5 id="_extract_file_coveragesself-any-coverage_data-">_extract_file_coverages(self: Any, coverage_data: <ast.Subscript object at 0x000001942CC089A0>) -&gt; <ast.Subscript object at 0x000001942CC09A20><a class="headerlink" href="#_extract_file_coveragesself-any-coverage_data-" title="Permanent link">&para;</a></h5>
 <p>Extract file coverage information</p>
-<h5 id="_extract_function_coverageself-any-file_path-str-file_data-">_extract_function_coverage(self: Any, file_path: str, file_data: <ast.Subscript object at 0x000001943193BD60>) -&gt; <ast.Subscript object at 0x0000019432E5E470><a class="headerlink" href="#_extract_function_coverageself-any-file_path-str-file_data-" title="Permanent link">&para;</a></h5>
+<h5 id="_extract_function_coverageself-any-file_path-str-file_data-">_extract_function_coverage(self: Any, file_path: str, file_data: <ast.Subscript object at 0x000001942CC09A50>) -&gt; <ast.Subscript object at 0x000001942C5F24D0><a class="headerlink" href="#_extract_function_coverageself-any-file_path-str-file_data-" title="Permanent link">&para;</a></h5>
 <p>Extract function-level coverage information</p>
-<h5 id="_generate_recommendationsself-any-file_coverages-gaps-">_generate_recommendations(self: Any, file_coverages: <ast.Subscript object at 0x0000019432E5D780>, gaps: <ast.Subscript object at 0x0000019432E5D450>) -&gt; <ast.Subscript object at 0x00000194344A1540><a class="headerlink" href="#_generate_recommendationsself-any-file_coverages-gaps-" title="Permanent link">&para;</a></h5>
+<h5 id="_generate_recommendationsself-any-file_coverages-gaps-">_generate_recommendations(self: Any, file_coverages: <ast.Subscript object at 0x000001942C5F0820>, gaps: <ast.Subscript object at 0x000001942C5F1390>) -&gt; <ast.Subscript object at 0x0000019427F96650><a class="headerlink" href="#_generate_recommendationsself-any-file_coverages-gaps-" title="Permanent link">&para;</a></h5>
 <p>Generate actionable recommendations</p>
 <h5 id="_create_empty_reportself-any-coveragereport">_create_empty_report(self: Any) -&gt; CoverageReport<a class="headerlink" href="#_create_empty_reportself-any-coveragereport" title="Permanent link">&para;</a></h5>
 <p>Create empty report when coverage data collection fails</p>

@@ -21,7 +21,7 @@ Enhanced model management API using existing infrastructure
 
 
 
-##### _estimate_vram_usage(self: Any, model_type: str, optimization_settings: <ast.Subscript object at 0x000001943029A5C0>) -> float
+##### _estimate_vram_usage(self: Any, model_type: str, optimization_settings: <ast.Subscript object at 0x0000019428518820>) -> float
 
 Estimate VRAM usage for a model type
 

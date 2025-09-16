@@ -974,7 +974,7 @@
 <h3 id="projectstructureanalyzer">ProjectStructureAnalyzer<a class="headerlink" href="#projectstructureanalyzer" title="Permanent link">&para;</a></h3>
 <p>Analyzes project directory structure and identifies components.</p>
 <h4 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h4>
-<h5 id="initself-any-root_path-str-ignore_patterns"><strong>init</strong>(self: Any, root_path: str, ignore_patterns: <ast.Subscript object at 0x0000019433F99330>)<a class="headerlink" href="#initself-any-root_path-str-ignore_patterns" title="Permanent link">&para;</a></h5>
+<h5 id="initself-any-root_path-str-ignore_patterns"><strong>init</strong>(self: Any, root_path: str, ignore_patterns: <ast.Subscript object at 0x0000019427F12E60>)<a class="headerlink" href="#initself-any-root_path-str-ignore_patterns" title="Permanent link">&para;</a></h5>
 <p>Initialize the analyzer with project root path.</p>
 <h5 id="analyzeself-any-projectstructure">analyze(self: Any) -&gt; ProjectStructure<a class="headerlink" href="#analyzeself-any-projectstructure" title="Permanent link">&para;</a></h5>
 <p>Perform complete project structure analysis.</p>
@@ -982,7 +982,7 @@
 <p>Check if a file or directory should be ignored.</p>
 <h5 id="_analyze_fileself-any-file_path-path-fileinfo">_analyze_file(self: Any, file_path: Path) -&gt; FileInfo<a class="headerlink" href="#_analyze_fileself-any-file_path-path-fileinfo" title="Permanent link">&para;</a></h5>
 <p>Analyze a single file and determine its characteristics.</p>
-<h5 id="_analyze_directoryself-any-dir_path-path-files-directoryinfo">_analyze_directory(self: Any, dir_path: Path, files: <ast.Subscript object at 0x0000019433F73EE0>) -&gt; DirectoryInfo<a class="headerlink" href="#_analyze_directoryself-any-dir_path-path-files-directoryinfo" title="Permanent link">&para;</a></h5>
+<h5 id="_analyze_directoryself-any-dir_path-path-files-directoryinfo">_analyze_directory(self: Any, dir_path: Path, files: <ast.Subscript object at 0x000001942CDDBF10>) -&gt; DirectoryInfo<a class="headerlink" href="#_analyze_directoryself-any-dir_path-path-files-directoryinfo" title="Permanent link">&para;</a></h5>
 <p>Analyze a directory and determine its characteristics.</p>
 <h5 id="_is_config_fileself-any-name-str-extension-str-bool">_is_config_file(self: Any, name: str, extension: str) -&gt; bool<a class="headerlink" href="#_is_config_fileself-any-name-str-extension-str-bool" title="Permanent link">&para;</a></h5>
 <p>Determine if a file is a configuration file.</p>
@@ -992,13 +992,13 @@
 <p>Determine if a file is a test file.</p>
 <h5 id="_is_script_fileself-any-name-str-extension-str-path-str-bool">_is_script_file(self: Any, name: str, extension: str, path: str) -&gt; bool<a class="headerlink" href="#_is_script_fileself-any-name-str-extension-str-path-str-bool" title="Permanent link">&para;</a></h5>
 <p>Determine if a file is a script.</p>
-<h5 id="_determine_file_purposeself-any-name-str-extension-str-path-str-">_determine_file_purpose(self: Any, name: str, extension: str, path: str) -&gt; <ast.Subscript object at 0x00000194340F38E0><a class="headerlink" href="#_determine_file_purposeself-any-name-str-extension-str-path-str-" title="Permanent link">&para;</a></h5>
+<h5 id="_determine_file_purposeself-any-name-str-extension-str-path-str-">_determine_file_purpose(self: Any, name: str, extension: str, path: str) -&gt; <ast.Subscript object at 0x000001942791A380><a class="headerlink" href="#_determine_file_purposeself-any-name-str-extension-str-path-str-" title="Permanent link">&para;</a></h5>
 <p>Determine the purpose of a file based on its characteristics.</p>
-<h5 id="_determine_directory_purposeself-any-name-str-path-str-files-is_package-bool-">_determine_directory_purpose(self: Any, name: str, path: str, files: <ast.Subscript object at 0x000001942FBB1D20>, is_package: bool) -&gt; <ast.Subscript object at 0x000001942F3B6350><a class="headerlink" href="#_determine_directory_purposeself-any-name-str-path-str-files-is_package-bool-" title="Permanent link">&para;</a></h5>
+<h5 id="_determine_directory_purposeself-any-name-str-path-str-files-is_package-bool-">_determine_directory_purpose(self: Any, name: str, path: str, files: <ast.Subscript object at 0x000001942791B970>, is_package: bool) -&gt; <ast.Subscript object at 0x0000019428929BA0><a class="headerlink" href="#_determine_directory_purposeself-any-name-str-path-str-files-is_package-bool-" title="Permanent link">&para;</a></h5>
 <p>Determine the purpose of a directory.</p>
-<h5 id="_identify_entry_pointsself-any-files-">_identify_entry_points(self: Any, files: <ast.Subscript object at 0x000001942F3B53C0>) -&gt; <ast.Subscript object at 0x000001942F3B5A80><a class="headerlink" href="#_identify_entry_pointsself-any-files-" title="Permanent link">&para;</a></h5>
+<h5 id="_identify_entry_pointsself-any-files-">_identify_entry_points(self: Any, files: <ast.Subscript object at 0x000001942892B7C0>) -&gt; <ast.Subscript object at 0x0000019428928D60><a class="headerlink" href="#_identify_entry_pointsself-any-files-" title="Permanent link">&para;</a></h5>
 <p>Identify potential application entry points.</p>
-<h5 id="_identify_main_componentsself-any-directories-">_identify_main_components(self: Any, directories: <ast.Subscript object at 0x000001942F3B72E0>) -&gt; <ast.Subscript object at 0x000001942F3B6680><a class="headerlink" href="#_identify_main_componentsself-any-directories-" title="Permanent link">&para;</a></h5>
+<h5 id="_identify_main_componentsself-any-directories-">_identify_main_components(self: Any, directories: <ast.Subscript object at 0x000001942892A290>) -&gt; <ast.Subscript object at 0x000001942892B100><a class="headerlink" href="#_identify_main_componentsself-any-directories-" title="Permanent link">&para;</a></h5>
 <p>Identify the main components of the project.</p>
 <h5 id="save_analysisself-any-analysis-projectstructure-output_path-str-none">save_analysis(self: Any, analysis: ProjectStructure, output_path: str) -&gt; None<a class="headerlink" href="#save_analysisself-any-analysis-projectstructure-output_path-str-none" title="Permanent link">&para;</a></h5>
 <p>Save analysis results to JSON file.</p>

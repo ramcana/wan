@@ -41,14 +41,14 @@ Provides multiple verification methods with fallback support:
 
 #### Methods
 
-##### __init__(self: Any, retry_config: <ast.Subscript object at 0x000001943459CA30>)
+##### __init__(self: Any, retry_config: <ast.Subscript object at 0x000001942CC466E0>)
 
 Initialize the integrity verifier.
 
 Args:
     retry_config: Configuration for retry logic on verification failures
 
-##### verify_model_integrity(self: Any, spec: ModelSpec, model_dir: Path, hf_metadata: <ast.Subscript object at 0x000001943459C040>, manifest_signature: <ast.Subscript object at 0x000001943459D870>, public_key: <ast.Subscript object at 0x000001943459DA20>) -> IntegrityVerificationResult
+##### verify_model_integrity(self: Any, spec: ModelSpec, model_dir: Path, hf_metadata: <ast.Subscript object at 0x000001942CC46230>, manifest_signature: <ast.Subscript object at 0x000001942CC46200>, public_key: <ast.Subscript object at 0x000001942CC46E90>) -> IntegrityVerificationResult
 
 Perform comprehensive integrity verification for a model.
 
@@ -62,7 +62,7 @@ Args:
 Returns:
     IntegrityVerificationResult with detailed verification results
 
-##### _verify_single_file(self: Any, file_spec: FileSpec, file_path: Path, hf_metadata: <ast.Subscript object at 0x00000194319C4550>) -> FileVerificationResult
+##### _verify_single_file(self: Any, file_spec: FileSpec, file_path: Path, hf_metadata: <ast.Subscript object at 0x000001942CE6D3F0>) -> FileVerificationResult
 
 Verify a single file using the best available method.
 
@@ -104,7 +104,7 @@ Create a canonical string representation of model spec for signing.
 This ensures consistent signature verification across different
 serialization formats and field ordering.
 
-##### extract_hf_metadata_from_download(self: Any, downloaded_files: <ast.Subscript object at 0x000001942FC41ED0>, hf_cache_dir: <ast.Subscript object at 0x000001942FC41F90>) -> <ast.Subscript object at 0x000001942FC43DC0>
+##### extract_hf_metadata_from_download(self: Any, downloaded_files: <ast.Subscript object at 0x000001942C8463B0>, hf_cache_dir: <ast.Subscript object at 0x000001942C8465C0>) -> <ast.Subscript object at 0x000001942C846EC0>
 
 Extract HuggingFace metadata from downloaded files.
 

@@ -42,7 +42,7 @@ Analyzes the configuration landscape of a project.
 
 
 
-##### scan_project(self: Any) -> <ast.Subscript object at 0x0000019431B37040>
+##### scan_project(self: Any) -> <ast.Subscript object at 0x0000019427F1FAF0>
 
 Scan the project for all configuration files.
 
@@ -50,7 +50,7 @@ Scan the project for all configuration files.
 
 Determine if a file is a configuration file.
 
-##### _analyze_config_file(self: Any, file_path: Path, relative_path: Path) -> <ast.Subscript object at 0x0000019431B35780>
+##### _analyze_config_file(self: Any, file_path: Path, relative_path: Path) -> <ast.Subscript object at 0x0000019427F1E230>
 
 Analyze a single configuration file.
 
@@ -58,39 +58,39 @@ Analyze a single configuration file.
 
 Determine the configuration file type.
 
-##### _load_config_content(self: Any, file_path: Path, file_type: str) -> <ast.Subscript object at 0x0000019431A9F580>
+##### _load_config_content(self: Any, file_path: Path, file_type: str) -> <ast.Subscript object at 0x0000019427F1C070>
 
 Load configuration file content.
 
-##### _parse_env_file(self: Any, content: str) -> <ast.Subscript object at 0x0000019431A9C160>
+##### _parse_env_file(self: Any, content: str) -> <ast.Subscript object at 0x0000019427F13700>
 
 Parse environment file content.
 
-##### _extract_settings(self: Any, content: <ast.Subscript object at 0x000001943028BF70>, prefix: str) -> <ast.Subscript object at 0x000001943028B3D0>
+##### _extract_settings(self: Any, content: <ast.Subscript object at 0x0000019427F12B90>, prefix: str) -> <ast.Subscript object at 0x000001942C6D3220>
 
 Extract all setting keys from configuration content.
 
-##### analyze_dependencies(self: Any) -> <ast.Subscript object at 0x00000194302893F0>
+##### analyze_dependencies(self: Any) -> <ast.Subscript object at 0x000001942A1B5CF0>
 
 Analyze dependencies between configuration files.
 
-##### detect_conflicts(self: Any) -> <ast.Subscript object at 0x000001942F393B20>
+##### detect_conflicts(self: Any) -> <ast.Subscript object at 0x00000194281528F0>
 
 Detect conflicts between configuration settings.
 
-##### _determine_conflict_severity(self: Any, setting_name: str, values: <ast.Subscript object at 0x000001942F393C40>) -> str
+##### _determine_conflict_severity(self: Any, setting_name: str, values: <ast.Subscript object at 0x0000019428152740>) -> str
 
 Determine the severity of a configuration conflict.
 
-##### find_duplicate_settings(self: Any) -> <ast.Subscript object at 0x00000194340B30D0>
+##### find_duplicate_settings(self: Any) -> <ast.Subscript object at 0x00000194281515D0>
 
 Find duplicate settings across configuration files.
 
-##### generate_recommendations(self: Any) -> <ast.Subscript object at 0x00000194302A2E00>
+##### generate_recommendations(self: Any) -> <ast.Subscript object at 0x000001942818DB10>
 
 Generate recommendations for configuration consolidation.
 
-##### create_migration_plan(self: Any) -> <ast.Subscript object at 0x0000019434136C50>
+##### create_migration_plan(self: Any) -> <ast.Subscript object at 0x00000194279B9DB0>
 
 Create a migration plan for configuration consolidation.
 

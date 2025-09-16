@@ -830,7 +830,7 @@
 <h3 id="hfstore">HFStore<a class="headerlink" href="#hfstore" title="Permanent link">&para;</a></h3>
 <p>HuggingFace Hub storage backend using huggingface_hub.</p>
 <h4 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h4>
-<h5 id="initself-any-token-enable_hf_transfer-bool-credential_manager"><strong>init</strong>(self: Any, token: <ast.Subscript object at 0x000001942F777550>, enable_hf_transfer: bool, credential_manager: <ast.Subscript object at 0x000001942F777430>)<a class="headerlink" href="#initself-any-token-enable_hf_transfer-bool-credential_manager" title="Permanent link">&para;</a></h5>
+<h5 id="initself-any-token-enable_hf_transfer-bool-credential_manager"><strong>init</strong>(self: Any, token: <ast.Subscript object at 0x0000019428493550>, enable_hf_transfer: bool, credential_manager: <ast.Subscript object at 0x0000019428493430>)<a class="headerlink" href="#initself-any-token-enable_hf_transfer-bool-credential_manager" title="Permanent link">&para;</a></h5>
 <p>Initialize HuggingFace store.</p>
 <p>Args:
     token: HuggingFace API token (if None, will try to get from credential manager or environment)
@@ -838,13 +838,13 @@
     credential_manager: Secure credential manager for handling credentials</p>
 <h5 id="can_handleself-any-source_url-str-bool">can_handle(self: Any, source_url: str) -&gt; bool<a class="headerlink" href="#can_handleself-any-source_url-str-bool" title="Permanent link">&para;</a></h5>
 <p>Check if this backend can handle HuggingFace URLs.</p>
-<h5 id="_parse_hf_urlself-any-source_url-str-">_parse_hf_url(self: Any, source_url: str) -&gt; <ast.Subscript object at 0x000001942F826B30><a class="headerlink" href="#_parse_hf_urlself-any-source_url-str-" title="Permanent link">&para;</a></h5>
+<h5 id="_parse_hf_urlself-any-source_url-str-">_parse_hf_url(self: Any, source_url: str) -&gt; <ast.Subscript object at 0x0000019428491210><a class="headerlink" href="#_parse_hf_urlself-any-source_url-str-" title="Permanent link">&para;</a></h5>
 <p>Parse HuggingFace URL to extract repo_id and revision.</p>
 <p>Args:
     source_url: URL in format hf://repo_id or hf://repo_id@revision</p>
 <p>Returns:
     Tuple of (repo_id, revision)</p>
-<h5 id="downloadself-any-source_url-str-local_dir-path-file_specs-allow_patterns-progress_callback-downloadresult">download(self: Any, source_url: str, local_dir: Path, file_specs: <ast.Subscript object at 0x000001942F826740>, allow_patterns: <ast.Subscript object at 0x000001942F826710>, progress_callback: <ast.Subscript object at 0x000001942F8254B0>) -&gt; DownloadResult<a class="headerlink" href="#downloadself-any-source_url-str-local_dir-path-file_specs-allow_patterns-progress_callback-downloadresult" title="Permanent link">&para;</a></h5>
+<h5 id="downloadself-any-source_url-str-local_dir-path-file_specs-allow_patterns-progress_callback-downloadresult">download(self: Any, source_url: str, local_dir: Path, file_specs: <ast.Subscript object at 0x00000194284AAA70>, allow_patterns: <ast.Subscript object at 0x00000194284AA9B0>, progress_callback: <ast.Subscript object at 0x00000194284AA890>) -&gt; DownloadResult<a class="headerlink" href="#downloadself-any-source_url-str-local_dir-path-file_specs-allow_patterns-progress_callback-downloadresult" title="Permanent link">&para;</a></h5>
 <p>Download model from HuggingFace Hub.</p>
 <p>Args:
     source_url: HuggingFace URL (hf://repo_id or hf://repo_id@revision)
@@ -856,7 +856,7 @@
     DownloadResult with download statistics</p>
 <h5 id="verify_availabilityself-any-source_url-str-bool">verify_availability(self: Any, source_url: str) -&gt; bool<a class="headerlink" href="#verify_availabilityself-any-source_url-str-bool" title="Permanent link">&para;</a></h5>
 <p>Verify if the HuggingFace repository is available.</p>
-<h5 id="estimate_download_sizeself-any-source_url-str-file_specs-allow_patterns-int">estimate_download_size(self: Any, source_url: str, file_specs: <ast.Subscript object at 0x00000194344C31F0>, allow_patterns: <ast.Subscript object at 0x00000194344C32B0>) -&gt; int<a class="headerlink" href="#estimate_download_sizeself-any-source_url-str-file_specs-allow_patterns-int" title="Permanent link">&para;</a></h5>
+<h5 id="estimate_download_sizeself-any-source_url-str-file_specs-allow_patterns-int">estimate_download_size(self: Any, source_url: str, file_specs: <ast.Subscript object at 0x000001942CD13130>, allow_patterns: <ast.Subscript object at 0x000001942CD131F0>) -&gt; int<a class="headerlink" href="#estimate_download_sizeself-any-source_url-str-file_specs-allow_patterns-int" title="Permanent link">&para;</a></h5>
 <p>Estimate download size from HuggingFace repository.</p>
 <p>Note: This is a rough estimate as HuggingFace doesn't provide
 easy access to file sizes without downloading. Returns 0 for now.</p>
@@ -864,11 +864,11 @@ easy access to file sizes without downloading. Returns 0 for now.</p>
 <p>Calculate total size of all files in directory.</p>
 <h5 id="_count_filesself-any-directory-path-int">_count_files(self: Any, directory: Path) -&gt; int<a class="headerlink" href="#_count_filesself-any-directory-path-int" title="Permanent link">&para;</a></h5>
 <p>Count total number of files in directory.</p>
-<h5 id="_extract_file_metadataself-any-directory-path-">_extract_file_metadata(self: Any, directory: Path) -&gt; <ast.Subscript object at 0x000001942FCA1360><a class="headerlink" href="#_extract_file_metadataself-any-directory-path-" title="Permanent link">&para;</a></h5>
+<h5 id="_extract_file_metadataself-any-directory-path-">_extract_file_metadata(self: Any, directory: Path) -&gt; <ast.Subscript object at 0x00000194284A5360><a class="headerlink" href="#_extract_file_metadataself-any-directory-path-" title="Permanent link">&para;</a></h5>
 <p>Extract file metadata from downloaded HuggingFace files.</p>
 <p>This attempts to extract ETags and other metadata that can be used
 for integrity verification when SHA256 checksums are not available.</p>
-<h5 id="get_file_metadataself-any-source_url-str-file_path-str-">get_file_metadata(self: Any, source_url: str, file_path: str) -&gt; <ast.Subscript object at 0x000001942FCA0850><a class="headerlink" href="#get_file_metadataself-any-source_url-str-file_path-str-" title="Permanent link">&para;</a></h5>
+<h5 id="get_file_metadataself-any-source_url-str-file_path-str-">get_file_metadata(self: Any, source_url: str, file_path: str) -&gt; <ast.Subscript object at 0x00000194284A4850><a class="headerlink" href="#get_file_metadataself-any-source_url-str-file_path-str-" title="Permanent link">&para;</a></h5>
 <p>Get metadata for a specific file from HuggingFace Hub.</p>
 <p>This can be used to get ETag information before downloading
 for integrity verification purposes.</p>

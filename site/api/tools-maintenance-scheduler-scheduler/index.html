@@ -874,28 +874,28 @@
 <p>Main scheduler for automated maintenance tasks.</p>
 <p>Handles task scheduling, execution, prioritization, and monitoring.</p>
 <h4 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h4>
-<h5 id="initself-any-config"><strong>init</strong>(self: Any, config: <ast.Subscript object at 0x000001942FA8D3C0>)<a class="headerlink" href="#initself-any-config" title="Permanent link">&para;</a></h5>
+<h5 id="initself-any-config"><strong>init</strong>(self: Any, config: <ast.Subscript object at 0x000001942A2E4310>)<a class="headerlink" href="#initself-any-config" title="Permanent link">&para;</a></h5>
 <h5 id="startself-any-none">start(self: Any) -&gt; None<a class="headerlink" href="#startself-any-none" title="Permanent link">&para;</a></h5>
 <p>Start the maintenance scheduler.</p>
 <h5 id="stopself-any-none">stop(self: Any) -&gt; None<a class="headerlink" href="#stopself-any-none" title="Permanent link">&para;</a></h5>
 <p>Stop the maintenance scheduler.</p>
-<h5 id="add_taskself-any-task-maintenancetask-schedule-none">add_task(self: Any, task: MaintenanceTask, schedule: <ast.Subscript object at 0x000001942FA8D330>) -&gt; None<a class="headerlink" href="#add_taskself-any-task-maintenancetask-schedule-none" title="Permanent link">&para;</a></h5>
+<h5 id="add_taskself-any-task-maintenancetask-schedule-none">add_task(self: Any, task: MaintenanceTask, schedule: <ast.Subscript object at 0x0000019427F117E0>) -&gt; None<a class="headerlink" href="#add_taskself-any-task-maintenancetask-schedule-none" title="Permanent link">&para;</a></h5>
 <p>Add a maintenance task to the scheduler.</p>
 <h5 id="remove_taskself-any-task_id-str-bool">remove_task(self: Any, task_id: str) -&gt; bool<a class="headerlink" href="#remove_taskself-any-task_id-str-bool" title="Permanent link">&para;</a></h5>
 <p>Remove a task from the scheduler.</p>
-<h5 id="run_task_nowself-any-task_id-str-">run_task_now(self: Any, task_id: str) -&gt; <ast.Subscript object at 0x00000194346707F0><a class="headerlink" href="#run_task_nowself-any-task_id-str-" title="Permanent link">&para;</a></h5>
+<h5 id="run_task_nowself-any-task_id-str-">run_task_now(self: Any, task_id: str) -&gt; <ast.Subscript object at 0x000001942CC899C0><a class="headerlink" href="#run_task_nowself-any-task_id-str-" title="Permanent link">&para;</a></h5>
 <p>Run a specific task immediately.</p>
-<h5 id="get_next_scheduled_tasksself-any-limit-int-">get_next_scheduled_tasks(self: Any, limit: int) -&gt; <ast.Subscript object at 0x0000019434673A90><a class="headerlink" href="#get_next_scheduled_tasksself-any-limit-int-" title="Permanent link">&para;</a></h5>
+<h5 id="get_next_scheduled_tasksself-any-limit-int-">get_next_scheduled_tasks(self: Any, limit: int) -&gt; <ast.Subscript object at 0x000001942CC886A0><a class="headerlink" href="#get_next_scheduled_tasksself-any-limit-int-" title="Permanent link">&para;</a></h5>
 <p>Get the next tasks scheduled to run.</p>
-<h5 id="get_running_tasksself-any-">get_running_tasks(self: Any) -&gt; <ast.Subscript object at 0x0000019434671540><a class="headerlink" href="#get_running_tasksself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="get_running_tasksself-any-">get_running_tasks(self: Any) -&gt; <ast.Subscript object at 0x000001942CC8B8B0><a class="headerlink" href="#get_running_tasksself-any-" title="Permanent link">&para;</a></h5>
 <p>Get list of currently running task IDs.</p>
-<h5 id="get_task_historyself-any-task_id-str-limit-int-">get_task_history(self: Any, task_id: str, limit: int) -&gt; <ast.Subscript object at 0x0000019434673250><a class="headerlink" href="#get_task_historyself-any-task_id-str-limit-int-" title="Permanent link">&para;</a></h5>
+<h5 id="get_task_historyself-any-task_id-str-limit-int-">get_task_history(self: Any, task_id: str, limit: int) -&gt; <ast.Subscript object at 0x000001942CC8BD60><a class="headerlink" href="#get_task_historyself-any-task_id-str-limit-int-" title="Permanent link">&para;</a></h5>
 <p>Get execution history for a specific task.</p>
 <h5 id="_scheduler_loopself-any-none">_scheduler_loop(self: Any) -&gt; None<a class="headerlink" href="#_scheduler_loopself-any-none" title="Permanent link">&para;</a></h5>
 <p>Main scheduler loop that runs in a separate thread.</p>
 <h5 id="_check_and_run_tasksself-any-none">_check_and_run_tasks(self: Any) -&gt; None<a class="headerlink" href="#_check_and_run_tasksself-any-none" title="Permanent link">&para;</a></h5>
 <p>Check for tasks that need to run and execute them.</p>
-<h5 id="_get_tasks_ready_to_runself-any-now-datetime-">_get_tasks_ready_to_run(self: Any, now: datetime) -&gt; <ast.Subscript object at 0x000001942F6C8130><a class="headerlink" href="#_get_tasks_ready_to_runself-any-now-datetime-" title="Permanent link">&para;</a></h5>
+<h5 id="_get_tasks_ready_to_runself-any-now-datetime-">_get_tasks_ready_to_run(self: Any, now: datetime) -&gt; <ast.Subscript object at 0x000001942CB37130><a class="headerlink" href="#_get_tasks_ready_to_runself-any-now-datetime-" title="Permanent link">&para;</a></h5>
 <p>Get tasks that are ready to run based on schedule.</p>
 <h5 id="_is_task_dueself-any-task-maintenancetask-schedule-taskschedule-now-datetime-bool">_is_task_due(self: Any, task: MaintenanceTask, schedule: TaskSchedule, now: datetime) -&gt; bool<a class="headerlink" href="#_is_task_dueself-any-task-maintenancetask-schedule-taskschedule-now-datetime-bool" title="Permanent link">&para;</a></h5>
 <p>Check if a task is due to run.</p>

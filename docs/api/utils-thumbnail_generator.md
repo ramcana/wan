@@ -20,7 +20,7 @@ Generate thumbnails for video files using ffmpeg
 
 
 
-##### generate_thumbnail(self: Any, video_path: str, thumbnail_name: <ast.Subscript object at 0x000001942EF9E110>, timestamp: str, width: int, height: int) -> <ast.Subscript object at 0x000001942EF9C700>
+##### generate_thumbnail(self: Any, video_path: str, thumbnail_name: <ast.Subscript object at 0x000001942A1BF2B0>, timestamp: str, width: int, height: int) -> <ast.Subscript object at 0x0000019428D7C1C0>
 
 Generate a thumbnail for a video file
 
@@ -34,7 +34,7 @@ Args:
 Returns:
     Path to the generated thumbnail or None if failed
 
-##### generate_thumbnail_async(self: Any, video_path: str, thumbnail_name: <ast.Subscript object at 0x000001942EF9FD60>) -> <ast.Subscript object at 0x000001942EF9F1C0>
+##### generate_thumbnail_async(self: Any, video_path: str, thumbnail_name: <ast.Subscript object at 0x0000019428D7FDF0>) -> <ast.Subscript object at 0x0000019428D7C5B0>
 
 Generate thumbnail asynchronously (placeholder for future async implementation)
 Currently just calls the sync version

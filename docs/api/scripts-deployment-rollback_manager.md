@@ -39,7 +39,7 @@ Manages rollback operations for enhanced model availability system
 
 
 
-##### _load_rollback_points(self: Any) -> <ast.Subscript object at 0x00000194301017E0>
+##### _load_rollback_points(self: Any) -> <ast.Subscript object at 0x000001942C557430>
 
 Load rollback points from storage
 

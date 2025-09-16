@@ -49,7 +49,7 @@ Model Usage Analytics System
 
 #### Methods
 
-##### __init__(self: Any, models_dir: <ast.Subscript object at 0x000001942FD64700>)
+##### __init__(self: Any, models_dir: <ast.Subscript object at 0x000001942CDCB760>)
 
 
 

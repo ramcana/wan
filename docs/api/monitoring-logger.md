@@ -30,11 +30,11 @@ Logger for performance metrics and monitoring.
 
 
 
-##### log_request(self: Any, method: str, path: str, status_code: int, duration: float, user_id: <ast.Subscript object at 0x000001942FBF1E70>) -> None
+##### log_request(self: Any, method: str, path: str, status_code: int, duration: float, user_id: <ast.Subscript object at 0x0000019427FEA470>) -> None
 
 Log HTTP request metrics.
 
-##### log_generation(self: Any, task_id: str, model_type: str, duration: float, success: bool, error_type: <ast.Subscript object at 0x000001942FBF1F60>) -> None
+##### log_generation(self: Any, task_id: str, model_type: str, duration: float, success: bool, error_type: <ast.Subscript object at 0x0000019427FEBC70>) -> None
 
 Log generation task metrics.
 
@@ -56,15 +56,15 @@ Logger for error tracking and monitoring.
 
 
 
-##### log_error(self: Any, error: Exception, context: <ast.Subscript object at 0x0000019431A06860>, user_id: <ast.Subscript object at 0x0000019431A068C0>, request_id: <ast.Subscript object at 0x0000019431A07B50>) -> None
+##### log_error(self: Any, error: Exception, context: <ast.Subscript object at 0x00000194280CA620>, user_id: <ast.Subscript object at 0x00000194280C8AC0>, request_id: <ast.Subscript object at 0x00000194280C85B0>) -> None
 
 Log error with context information.
 
-##### log_validation_error(self: Any, field: str, value: Any, message: str, request_id: <ast.Subscript object at 0x0000019431A064A0>) -> None
+##### log_validation_error(self: Any, field: str, value: Any, message: str, request_id: <ast.Subscript object at 0x00000194280C9B40>) -> None
 
 Log validation error.
 
-##### log_generation_error(self: Any, task_id: str, model_type: str, error: Exception, prompt: <ast.Subscript object at 0x0000019431A04D60>) -> None
+##### log_generation_error(self: Any, task_id: str, model_type: str, error: Exception, prompt: <ast.Subscript object at 0x00000194280C9450>) -> None
 
 Log generation-specific error.
 

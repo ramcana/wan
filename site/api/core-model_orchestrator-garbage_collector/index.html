@@ -1015,30 +1015,30 @@
 <h3 id="garbagecollector">GarbageCollector<a class="headerlink" href="#garbagecollector" title="Permanent link">&para;</a></h3>
 <p>Manages disk space through configurable retention policies.</p>
 <h4 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h4>
-<h5 id="initself-any-registry-modelregistry-resolver-modelresolver-config-component_deduplicator-any"><strong>init</strong>(self: Any, registry: ModelRegistry, resolver: ModelResolver, config: <ast.Subscript object at 0x00000194340B0AF0>, component_deduplicator: Any)<a class="headerlink" href="#initself-any-registry-modelregistry-resolver-modelresolver-config-component_deduplicator-any" title="Permanent link">&para;</a></h5>
+<h5 id="initself-any-registry-modelregistry-resolver-modelresolver-config-component_deduplicator-any"><strong>init</strong>(self: Any, registry: ModelRegistry, resolver: ModelResolver, config: <ast.Subscript object at 0x000001942CB41A50>, component_deduplicator: Any)<a class="headerlink" href="#initself-any-registry-modelregistry-resolver-modelresolver-config-component_deduplicator-any" title="Permanent link">&para;</a></h5>
 <h5 id="collectself-any-dry_run-bool-trigger-gctrigger-gcresult">collect(self: Any, dry_run: bool, trigger: GCTrigger) -&gt; GCResult<a class="headerlink" href="#collectself-any-dry_run-bool-trigger-gctrigger-gcresult" title="Permanent link">&para;</a></h5>
 <p>Perform garbage collection with configurable policies.</p>
-<h5 id="pin_modelself-any-model_id-str-variant-none">pin_model(self: Any, model_id: str, variant: <ast.Subscript object at 0x00000194340B3BB0>) -&gt; None<a class="headerlink" href="#pin_modelself-any-model_id-str-variant-none" title="Permanent link">&para;</a></h5>
+<h5 id="pin_modelself-any-model_id-str-variant-none">pin_model(self: Any, model_id: str, variant: <ast.Subscript object at 0x000001942CB43160>) -&gt; None<a class="headerlink" href="#pin_modelself-any-model_id-str-variant-none" title="Permanent link">&para;</a></h5>
 <p>Pin a model to protect it from garbage collection.</p>
-<h5 id="unpin_modelself-any-model_id-str-variant-none">unpin_model(self: Any, model_id: str, variant: <ast.Subscript object at 0x00000194340B0BE0>) -&gt; None<a class="headerlink" href="#unpin_modelself-any-model_id-str-variant-none" title="Permanent link">&para;</a></h5>
+<h5 id="unpin_modelself-any-model_id-str-variant-none">unpin_model(self: Any, model_id: str, variant: <ast.Subscript object at 0x00000194278F5C30>) -&gt; None<a class="headerlink" href="#unpin_modelself-any-model_id-str-variant-none" title="Permanent link">&para;</a></h5>
 <p>Unpin a model to allow garbage collection.</p>
-<h5 id="is_pinnedself-any-model_id-str-variant-bool">is_pinned(self: Any, model_id: str, variant: <ast.Subscript object at 0x00000194340B35B0>) -&gt; bool<a class="headerlink" href="#is_pinnedself-any-model_id-str-variant-bool" title="Permanent link">&para;</a></h5>
+<h5 id="is_pinnedself-any-model_id-str-variant-bool">is_pinned(self: Any, model_id: str, variant: <ast.Subscript object at 0x00000194278F6680>) -&gt; bool<a class="headerlink" href="#is_pinnedself-any-model_id-str-variant-bool" title="Permanent link">&para;</a></h5>
 <p>Check if a model is pinned.</p>
 <h5 id="get_disk_usageself-any-diskusage">get_disk_usage(self: Any) -&gt; DiskUsage<a class="headerlink" href="#get_disk_usageself-any-diskusage" title="Permanent link">&para;</a></h5>
 <p>Get current disk usage information.</p>
 <h5 id="estimate_reclaimable_spaceself-any-int">estimate_reclaimable_space(self: Any) -&gt; int<a class="headerlink" href="#estimate_reclaimable_spaceself-any-int" title="Permanent link">&para;</a></h5>
 <p>Estimate how much space could be reclaimed by garbage collection.</p>
-<h5 id="should_trigger_gcself-any-">should_trigger_gc(self: Any) -&gt; <ast.Subscript object at 0x00000194319A3940><a class="headerlink" href="#should_trigger_gcself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="should_trigger_gcself-any-">should_trigger_gc(self: Any) -&gt; <ast.Subscript object at 0x00000194278F5000><a class="headerlink" href="#should_trigger_gcself-any-" title="Permanent link">&para;</a></h5>
 <p>Check if garbage collection should be triggered automatically.</p>
 <h5 id="_perform_collectionself-any-dry_run-bool-trigger-gctrigger-gcresult">_perform_collection(self: Any, dry_run: bool, trigger: GCTrigger) -&gt; GCResult<a class="headerlink" href="#_perform_collectionself-any-dry_run-bool-trigger-gctrigger-gcresult" title="Permanent link">&para;</a></h5>
 <p>Perform the actual garbage collection.</p>
-<h5 id="_discover_modelsself-any-">_discover_models(self: Any) -&gt; <ast.Subscript object at 0x00000194344785B0><a class="headerlink" href="#_discover_modelsself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="_discover_modelsself-any-">_discover_models(self: Any) -&gt; <ast.Subscript object at 0x0000019427ADB250><a class="headerlink" href="#_discover_modelsself-any-" title="Permanent link">&para;</a></h5>
 <p>Discover all models in the models directory.</p>
-<h5 id="_analyze_model_directoryself-any-model_dir-path-">_analyze_model_directory(self: Any, model_dir: Path) -&gt; <ast.Subscript object at 0x00000194302698D0><a class="headerlink" href="#_analyze_model_directoryself-any-model_dir-path-" title="Permanent link">&para;</a></h5>
+<h5 id="_analyze_model_directoryself-any-model_dir-path-">_analyze_model_directory(self: Any, model_dir: Path) -&gt; <ast.Subscript object at 0x0000019427ADA590><a class="headerlink" href="#_analyze_model_directoryself-any-model_dir-path-" title="Permanent link">&para;</a></h5>
 <p>Analyze a model directory to extract information.</p>
-<h5 id="_select_removal_candidatesself-any-models-dry_run-bool-">_select_removal_candidates(self: Any, models: <ast.Subscript object at 0x000001943026BFA0>, dry_run: bool) -&gt; <ast.Subscript object at 0x0000019430269AE0><a class="headerlink" href="#_select_removal_candidatesself-any-models-dry_run-bool-" title="Permanent link">&para;</a></h5>
+<h5 id="_select_removal_candidatesself-any-models-dry_run-bool-">_select_removal_candidates(self: Any, models: <ast.Subscript object at 0x0000019427ADAB30>, dry_run: bool) -&gt; <ast.Subscript object at 0x00000194281044C0><a class="headerlink" href="#_select_removal_candidatesself-any-models-dry_run-bool-" title="Permanent link">&para;</a></h5>
 <p>Select models for removal based on configured policies.</p>
-<h5 id="_auto_pin_recent_modelsself-any-models-none">_auto_pin_recent_models(self: Any, models: <ast.Subscript object at 0x00000194302693F0>) -&gt; None<a class="headerlink" href="#_auto_pin_recent_modelsself-any-models-none" title="Permanent link">&para;</a></h5>
+<h5 id="_auto_pin_recent_modelsself-any-models-none">_auto_pin_recent_models(self: Any, models: <ast.Subscript object at 0x0000019428104820>) -&gt; None<a class="headerlink" href="#_auto_pin_recent_modelsself-any-models-none" title="Permanent link">&para;</a></h5>
 <p>Automatically pin recently accessed models.</p>
 <h5 id="_remove_modelself-any-model-modelinfo-none">_remove_model(self: Any, model: ModelInfo) -&gt; None<a class="headerlink" href="#_remove_modelself-any-model-modelinfo-none" title="Permanent link">&para;</a></h5>
 <p>Remove a model from disk.</p>
@@ -1046,11 +1046,11 @@
 <p>Calculate the total size of a directory.</p>
 <h5 id="_get_last_access_timeself-any-model_dir-path-float">_get_last_access_time(self: Any, model_dir: Path) -&gt; float<a class="headerlink" href="#_get_last_access_timeself-any-model_dir-path-float" title="Permanent link">&para;</a></h5>
 <p>Get the last access time for a model directory.</p>
-<h5 id="_get_verification_timeself-any-model_dir-path-">_get_verification_time(self: Any, model_dir: Path) -&gt; <ast.Subscript object at 0x000001942F00B370><a class="headerlink" href="#_get_verification_timeself-any-model_dir-path-" title="Permanent link">&para;</a></h5>
+<h5 id="_get_verification_timeself-any-model_dir-path-">_get_verification_time(self: Any, model_dir: Path) -&gt; <ast.Subscript object at 0x0000019427A95A20><a class="headerlink" href="#_get_verification_timeself-any-model_dir-path-" title="Permanent link">&para;</a></h5>
 <p>Get the verification time from the verification file.</p>
-<h5 id="_get_model_keyself-any-model_id-str-variant-str">_get_model_key(self: Any, model_id: str, variant: <ast.Subscript object at 0x000001942F00BEB0>) -&gt; str<a class="headerlink" href="#_get_model_keyself-any-model_id-str-variant-str" title="Permanent link">&para;</a></h5>
+<h5 id="_get_model_keyself-any-model_id-str-variant-str">_get_model_key(self: Any, model_id: str, variant: <ast.Subscript object at 0x0000019427A96770>) -&gt; str<a class="headerlink" href="#_get_model_keyself-any-model_id-str-variant-str" title="Permanent link">&para;</a></h5>
 <p>Get a unique key for a model.</p>
-<h5 id="_load_pinned_modelsself-any-">_load_pinned_models(self: Any) -&gt; <ast.Subscript object at 0x000001942EF94040><a class="headerlink" href="#_load_pinned_modelsself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="_load_pinned_modelsself-any-">_load_pinned_models(self: Any) -&gt; <ast.Subscript object at 0x000001942CC89C90><a class="headerlink" href="#_load_pinned_modelsself-any-" title="Permanent link">&para;</a></h5>
 <p>Load pinned models from disk.</p>
 <h5 id="_save_pinned_modelsself-any-none">_save_pinned_models(self: Any) -&gt; None<a class="headerlink" href="#_save_pinned_modelsself-any-none" title="Permanent link">&para;</a></h5>
 <p>Save pinned models to disk.</p>

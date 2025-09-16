@@ -62,7 +62,7 @@ Memory-efficient file handler for large downloads.
 
 
 
-##### open_for_streaming_write(self: Any, file_path: Path, expected_size: <ast.Subscript object at 0x0000019431A8D390>)
+##### open_for_streaming_write(self: Any, file_path: Path, expected_size: <ast.Subscript object at 0x000001942809F670>)
 
 Open file for streaming write with memory optimization.
 
@@ -114,11 +114,11 @@ Memory-efficient streaming reader.
 
 
 
-##### read_chunks(self: Any) -> <ast.Subscript object at 0x0000019431AD5C30>
+##### read_chunks(self: Any) -> <ast.Subscript object at 0x00000194280594E0>
 
 Read file in chunks to minimize memory usage.
 
-##### read_chunk(self: Any) -> <ast.Subscript object at 0x0000019431AD40A0>
+##### read_chunk(self: Any) -> <ast.Subscript object at 0x0000019428059360>
 
 Read a single chunk.
 
@@ -128,7 +128,7 @@ Main memory optimization coordinator for model downloads.
 
 #### Methods
 
-##### __init__(self: Any, max_memory_usage: <ast.Subscript object at 0x000001942F6AD840>, gc_threshold: float, streaming_threshold: int)
+##### __init__(self: Any, max_memory_usage: <ast.Subscript object at 0x00000194281A8610>, gc_threshold: float, streaming_threshold: int)
 
 
 
@@ -157,7 +157,7 @@ Update download progress for memory tracking.
 
 Get current memory statistics.
 
-##### get_download_stats(self: Any) -> <ast.Subscript object at 0x000001942F6AEF80>
+##### get_download_stats(self: Any) -> <ast.Subscript object at 0x00000194281AB790>
 
 Get current download statistics.
 

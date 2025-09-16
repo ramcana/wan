@@ -23,7 +23,7 @@ Manages GitHub branch protection rules with health monitoring integration.
 
 
 
-##### get_current_protection(self: Any, branch: str) -> <ast.Subscript object at 0x0000019430306980>
+##### get_current_protection(self: Any, branch: str) -> <ast.Subscript object at 0x00000194287EE980>
 
 Get current branch protection settings.
 
@@ -35,7 +35,7 @@ Configure branch protection with health monitoring requirements.
 
 Apply branch protection configuration.
 
-##### setup_health_monitoring_protection(self: Any, branches: <ast.Subscript object at 0x000001943035ED10>) -> bool
+##### setup_health_monitoring_protection(self: Any, branches: <ast.Subscript object at 0x0000019428872D10>) -> bool
 
 Set up health monitoring branch protection for specified branches.
 

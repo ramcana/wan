@@ -102,7 +102,7 @@ all scattered configuration files into a single, validated structure.
 
 #### Methods
 
-##### to_dict(self: Any) -> <ast.Subscript object at 0x0000019433CF6A10>
+##### to_dict(self: Any) -> <ast.Subscript object at 0x000001942B3C22C0>
 
 Convert configuration to dictionary
 
@@ -114,7 +114,7 @@ Convert configuration to JSON string
 
 Convert configuration to YAML string
 
-##### from_dict(cls: Any, data: <ast.Subscript object at 0x0000019433CF7820>) -> UnifiedConfig
+##### from_dict(cls: Any, data: <ast.Subscript object at 0x000001942B3C0340>) -> UnifiedConfig
 
 Create configuration from dictionary
 
@@ -126,15 +126,15 @@ Create configuration from JSON string
 
 Create configuration from YAML string
 
-##### from_file(cls: Any, file_path: <ast.Subscript object at 0x00000194301074F0>) -> UnifiedConfig
+##### from_file(cls: Any, file_path: <ast.Subscript object at 0x000001942C871810>) -> UnifiedConfig
 
 Load configuration from file
 
-##### save_to_file(self: Any, file_path: <ast.Subscript object at 0x00000194300645B0>, format: str) -> None
+##### save_to_file(self: Any, file_path: <ast.Subscript object at 0x000001942C870C70>, format: str) -> None
 
 Save configuration to file
 
-##### apply_environment_overrides(self: Any, environment: <ast.Subscript object at 0x000001942F87CB20>) -> UnifiedConfig
+##### apply_environment_overrides(self: Any, environment: <ast.Subscript object at 0x0000019427F26650>) -> UnifiedConfig
 
 Apply environment-specific overrides
 

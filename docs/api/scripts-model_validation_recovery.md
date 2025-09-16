@@ -21,11 +21,11 @@ Handles model validation and recovery operations
 
 
 
-##### validate_model_structure(self: Any, model_type: str) -> <ast.Subscript object at 0x000001942FC328F0>
+##### validate_model_structure(self: Any, model_type: str) -> <ast.Subscript object at 0x000001942CE11C30>
 
 Validate basic model file structure
 
-##### validate_model_functionality(self: Any, model_type: str) -> <ast.Subscript object at 0x000001942FC329B0>
+##### validate_model_functionality(self: Any, model_type: str) -> <ast.Subscript object at 0x000001942CCF6FB0>
 
 Validate model can be loaded and used
 
@@ -33,11 +33,11 @@ Validate model can be loaded and used
 
 Create backup of model before recovery attempts
 
-##### recover_from_backup(self: Any, model_type: str, backup_name: <ast.Subscript object at 0x000001942FC31120>) -> bool
+##### recover_from_backup(self: Any, model_type: str, backup_name: <ast.Subscript object at 0x0000019427F0C070>) -> bool
 
 Recover model from backup
 
-##### repair_model(self: Any, model_type: str) -> <ast.Subscript object at 0x000001942F7AD600>
+##### repair_model(self: Any, model_type: str) -> <ast.Subscript object at 0x0000019427BBDA80>
 
 Attempt to repair a corrupted model
 
@@ -45,11 +45,11 @@ Attempt to repair a corrupted model
 
 Complete model recovery process
 
-##### validate_all_models(self: Any) -> <ast.Subscript object at 0x000001942F7AEF80>
+##### validate_all_models(self: Any) -> <ast.Subscript object at 0x0000019429CB5180>
 
 Validate all available models
 
-##### generate_validation_report(self: Any, results: <ast.Subscript object at 0x000001942F7AFA30>) -> str
+##### generate_validation_report(self: Any, results: <ast.Subscript object at 0x0000019429CB6200>) -> str
 
 Generate human-readable validation report
 

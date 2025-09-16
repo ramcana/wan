@@ -55,23 +55,23 @@ Args:
 Returns:
     True if creation successful, False otherwise
 
-##### _detect_and_migrate(self: Any, config_data: <ast.Subscript object at 0x00000194344D7B20>) -> EnhancedModelConfiguration
+##### _detect_and_migrate(self: Any, config_data: <ast.Subscript object at 0x00000194280EAE60>) -> EnhancedModelConfiguration
 
 Detect configuration format and migrate to current version
 
-##### _load_enhanced_config(self: Any, config_data: <ast.Subscript object at 0x00000194344D6DA0>) -> EnhancedModelConfiguration
+##### _load_enhanced_config(self: Any, config_data: <ast.Subscript object at 0x00000194280E9CF0>) -> EnhancedModelConfiguration
 
 Load existing enhanced configuration
 
-##### _migrate_from_legacy_model_config(self: Any, config_data: <ast.Subscript object at 0x00000194344D69B0>) -> EnhancedModelConfiguration
+##### _migrate_from_legacy_model_config(self: Any, config_data: <ast.Subscript object at 0x00000194280EBF40>) -> EnhancedModelConfiguration
 
 Migrate from legacy model configuration format
 
-##### _migrate_from_basic_config(self: Any, config_data: <ast.Subscript object at 0x00000194344D57B0>) -> EnhancedModelConfiguration
+##### _migrate_from_basic_config(self: Any, config_data: <ast.Subscript object at 0x00000194280E82B0>) -> EnhancedModelConfiguration
 
 Migrate from basic application configuration
 
-##### _create_default_with_data(self: Any, config_data: <ast.Subscript object at 0x00000194344D4760>) -> EnhancedModelConfiguration
+##### _create_default_with_data(self: Any, config_data: <ast.Subscript object at 0x00000194280EA3B0>) -> EnhancedModelConfiguration
 
 Create default configuration with any available data
 

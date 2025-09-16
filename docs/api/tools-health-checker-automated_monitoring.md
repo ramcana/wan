@@ -19,7 +19,7 @@ Automated health monitoring system with continuous improvement tracking.
 
 #### Methods
 
-##### __init__(self: Any, config_file: <ast.Subscript object at 0x0000019432D8F730>)
+##### __init__(self: Any, config_file: <ast.Subscript object at 0x0000019428053730>)
 
 
 
@@ -47,7 +47,7 @@ Run scheduled health check.
 
 Process and send alerts based on health check results.
 
-##### _filter_alert_frequency(self: Any, alerts: <ast.Subscript object at 0x0000019432E1B2E0>) -> <ast.Subscript object at 0x0000019432E1A710>
+##### _filter_alert_frequency(self: Any, alerts: <ast.Subscript object at 0x00000194280CF2E0>) -> <ast.Subscript object at 0x00000194280CE710>
 
 Filter alerts based on frequency limits to avoid spam.
 
@@ -91,7 +91,7 @@ Check if initiative targets are met.
 
 Get current monitoring status.
 
-##### _get_next_scheduled_check(self: Any) -> <ast.Subscript object at 0x0000019430296A70>
+##### _get_next_scheduled_check(self: Any) -> <ast.Subscript object at 0x00000194285DEA70>
 
 Get next scheduled check time.
 

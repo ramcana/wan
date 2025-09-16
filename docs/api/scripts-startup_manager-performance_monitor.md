@@ -27,7 +27,7 @@ Individual timing measurement.
 
 #### Methods
 
-##### finish(self: Any, success: bool, error_message: <ast.Subscript object at 0x0000019430307A60>)
+##### finish(self: Any, success: bool, error_message: <ast.Subscript object at 0x0000019429C69A20>)
 
 Mark the timing as finished.
 
@@ -68,7 +68,7 @@ Features:
 
 #### Methods
 
-##### __init__(self: Any, data_dir: <ast.Subscript object at 0x000001942F035960>, max_sessions: int, resource_sampling_interval: float)
+##### __init__(self: Any, data_dir: <ast.Subscript object at 0x000001942CCF7190>, max_sessions: int, resource_sampling_interval: float)
 
 Initialize performance monitor.
 
@@ -77,7 +77,7 @@ Args:
     max_sessions: Maximum number of sessions to keep in memory
     resource_sampling_interval: Interval for resource sampling in seconds
 
-##### start_session(self: Any, metadata: <ast.Subscript object at 0x000001942F035DB0>) -> str
+##### start_session(self: Any, metadata: <ast.Subscript object at 0x0000019428D66E00>) -> str
 
 Start a new startup session.
 
@@ -94,7 +94,7 @@ Finish the current startup session.
 Args:
     success: Whether the startup was successful
 
-##### start_timing(self: Any, operation: str, metadata: <ast.Subscript object at 0x000001942FC00EB0>) -> str
+##### start_timing(self: Any, operation: str, metadata: <ast.Subscript object at 0x0000019428D67250>) -> str
 
 Start timing an operation.
 
@@ -105,7 +105,7 @@ Args:
 Returns:
     Timing ID
 
-##### finish_timing(self: Any, timing_id: str, success: bool, error_message: <ast.Subscript object at 0x000001942FC000D0>)
+##### finish_timing(self: Any, timing_id: str, success: bool, error_message: <ast.Subscript object at 0x0000019428D65240>)
 
 Finish timing an operation.
 
@@ -114,7 +114,7 @@ Args:
     success: Whether the operation was successful
     error_message: Error message if operation failed
 
-##### time_operation(self: Any, operation: str, metadata: <ast.Subscript object at 0x000001942FC01270>)
+##### time_operation(self: Any, operation: str, metadata: <ast.Subscript object at 0x000001942A290220>)
 
 Context manager for timing operations.
 
@@ -127,7 +127,7 @@ Usage:
         # Do validation work
         pass
 
-##### record_error(self: Any, error_message: str, operation: <ast.Subscript object at 0x000001942FC00970>)
+##### record_error(self: Any, error_message: str, operation: <ast.Subscript object at 0x000001942A291A20>)
 
 Record an error during startup.
 
@@ -145,7 +145,7 @@ Args:
 Returns:
     Performance statistics
 
-##### get_resource_usage_summary(self: Any) -> <ast.Subscript object at 0x0000019434526740>
+##### get_resource_usage_summary(self: Any) -> <ast.Subscript object at 0x000001942CB082E0>
 
 Get resource usage summary for current or last session.
 
@@ -164,7 +164,7 @@ Stop background resource monitoring.
 
 Background loop for resource monitoring.
 
-##### _analyze_trend(self: Any, sessions: <ast.Subscript object at 0x0000019434524A60>) -> str
+##### _analyze_trend(self: Any, sessions: <ast.Subscript object at 0x000001942CB081C0>) -> str
 
 Analyze performance trend from recent sessions.
 
@@ -192,7 +192,7 @@ Context manager for timing operations.
 
 #### Methods
 
-##### __init__(self: Any, monitor: PerformanceMonitor, operation: str, metadata: <ast.Subscript object at 0x0000019433F90DC0>)
+##### __init__(self: Any, monitor: PerformanceMonitor, operation: str, metadata: <ast.Subscript object at 0x000001942A269000>)
 
 
 

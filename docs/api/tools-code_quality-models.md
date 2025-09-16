@@ -49,7 +49,7 @@ Attributes:
 
 #### Methods
 
-##### to_dict(self: Any) -> <ast.Subscript object at 0x000001943013E4D0>
+##### to_dict(self: Any) -> <ast.Subscript object at 0x000001942851CAF0>
 
 Convert issue to dictionary format.
 
@@ -91,7 +91,7 @@ Calculate type hint coverage percentage.
 Returns:
     float: Type hint coverage as a percentage (0-100).
 
-##### to_dict(self: Any) -> <ast.Subscript object at 0x000001942F70F910>
+##### to_dict(self: Any) -> <ast.Subscript object at 0x000001942894C6D0>
 
 Convert metrics to dictionary format.
 
@@ -120,7 +120,7 @@ Attributes:
 
 Add a quality issue to the report.
 
-##### get_issues_by_type(self: Any, issue_type: QualityIssueType) -> <ast.Subscript object at 0x000001942FA78820>
+##### get_issues_by_type(self: Any, issue_type: QualityIssueType) -> <ast.Subscript object at 0x000001942894D270>
 
 Get all issues of a specific type.
 
@@ -130,7 +130,7 @@ Args:
 Returns:
     List[QualityIssue]: List of issues matching the specified type.
 
-##### get_issues_by_file(self: Any, file_path: Path) -> <ast.Subscript object at 0x000001942FA79BA0>
+##### get_issues_by_file(self: Any, file_path: Path) -> <ast.Subscript object at 0x000001942894D4E0>
 
 Get all issues for a specific file.
 
@@ -147,7 +147,7 @@ Calculate overall quality score (0-100).
 Returns:
     float: Quality score from 0 to 100, where 100 is perfect quality.
 
-##### to_dict(self: Any) -> <ast.Subscript object at 0x000001942F6F9450>
+##### to_dict(self: Any) -> <ast.Subscript object at 0x0000019427B5C370>
 
 Convert report to dictionary format.
 
@@ -175,7 +175,7 @@ Attributes:
 
 #### Methods
 
-##### to_dict(self: Any) -> <ast.Subscript object at 0x00000194301319F0>
+##### to_dict(self: Any) -> <ast.Subscript object at 0x0000019427B5D900>
 
 Convert config to dictionary format.
 

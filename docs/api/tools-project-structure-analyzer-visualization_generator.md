@@ -39,19 +39,19 @@ Generate a component dependency diagram.
 
 Generate a complexity heatmap diagram.
 
-##### _get_component_icon(self: Any, purpose: <ast.Subscript object at 0x0000019434645240>) -> str
+##### _get_component_icon(self: Any, purpose: <ast.Subscript object at 0x00000194288F6830>) -> str
 
 Get appropriate icon for component purpose.
 
-##### generate_all_diagrams(self: Any, structure: ProjectStructure, relationships: ComponentRelationshipMap, complexity_report: Any) -> <ast.Subscript object at 0x0000019434645540>
+##### generate_all_diagrams(self: Any, structure: ProjectStructure, relationships: ComponentRelationshipMap, complexity_report: Any) -> <ast.Subscript object at 0x00000194288F7100>
 
 Generate all available diagrams.
 
-##### save_diagrams(self: Any, diagrams: <ast.Subscript object at 0x0000019434644FD0>, output_dir: str)
+##### save_diagrams(self: Any, diagrams: <ast.Subscript object at 0x00000194288F7DF0>, output_dir: str)
 
 Save diagrams to files.
 
-##### _create_diagram_index(self: Any, diagrams: <ast.Subscript object at 0x000001942FC41C90>, output_path: Path)
+##### _create_diagram_index(self: Any, diagrams: <ast.Subscript object at 0x00000194288F6980>, output_path: Path)
 
 Create an index file for all diagrams.
 

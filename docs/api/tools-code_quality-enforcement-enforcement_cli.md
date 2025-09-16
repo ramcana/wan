@@ -16,11 +16,11 @@ Command-line interface for quality enforcement.
 
 #### Methods
 
-##### __init__(self: Any, project_root: <ast.Subscript object at 0x000001942F3339A0>)
+##### __init__(self: Any, project_root: <ast.Subscript object at 0x0000019427BBA1A0>)
 
 Initialize enforcement CLI.
 
-##### setup_hooks(self: Any, config_file: <ast.Subscript object at 0x000001942F3333A0>) -> bool
+##### setup_hooks(self: Any, config_file: <ast.Subscript object at 0x0000019427BB9BA0>) -> bool
 
 Set up pre-commit hooks.
 
@@ -28,7 +28,7 @@ Set up pre-commit hooks.
 
 Set up CI/CD integration.
 
-##### run_checks(self: Any, files: <ast.Subscript object at 0x000001942F313220>) -> bool
+##### run_checks(self: Any, files: <ast.Subscript object at 0x0000019427BB80A0>) -> bool
 
 Run quality checks.
 
@@ -44,7 +44,7 @@ Create quality metrics dashboard.
 
 Generate quality report.
 
-##### _generate_html_report(self: Any, results: <ast.Subscript object at 0x000001942F307550>) -> str
+##### _generate_html_report(self: Any, results: <ast.Subscript object at 0x0000019427BBD4B0>) -> str
 
 Generate HTML quality report.
 

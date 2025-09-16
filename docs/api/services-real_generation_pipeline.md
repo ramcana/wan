@@ -38,11 +38,11 @@ Args:
 
 Create a simple wrapper for pipelines loaded with simplified loader
 
-##### _get_model_path(self: Any, model_type: str) -> <ast.Subscript object at 0x0000019431896800>
+##### _get_model_path(self: Any, model_type: str) -> <ast.Subscript object at 0x000001942CD27AC0>
 
 Get model path for a given model type
 
-##### _create_optimization_config(self: Any, params: GenerationParams) -> <ast.Subscript object at 0x00000194318972E0>
+##### _create_optimization_config(self: Any, params: GenerationParams) -> <ast.Subscript object at 0x000001942CD25840>
 
 Create optimization configuration from generation parameters
 
@@ -50,7 +50,7 @@ Create optimization configuration from generation parameters
 
 Create generation configuration from parameters
 
-##### _parse_resolution(self: Any, resolution: str) -> <ast.Subscript object at 0x000001942EF976D0>
+##### _parse_resolution(self: Any, resolution: str) -> <ast.Subscript object at 0x000001942C52C490>
 
 Parse resolution string to width, height tuple
 
@@ -58,7 +58,7 @@ Parse resolution string to width, height tuple
 
 Basic LoRA fallback prompt enhancement
 
-##### get_lora_status(self: Any) -> <ast.Subscript object at 0x000001942FCA3550>
+##### get_lora_status(self: Any) -> <ast.Subscript object at 0x000001942B36A170>
 
 Get current LoRA status information
 
@@ -66,19 +66,19 @@ Get current LoRA status information
 
 Map pipeline GenerationStage to progress integration GenerationStage
 
-##### _validate_t2v_params(self: Any, prompt: str, params: GenerationParams) -> <ast.Subscript object at 0x0000019431AECDC0>
+##### _validate_t2v_params(self: Any, prompt: str, params: GenerationParams) -> <ast.Subscript object at 0x00000194284B3610>
 
 Validate parameters for T2V generation
 
-##### _validate_i2v_params(self: Any, image_path: str, prompt: str, params: GenerationParams) -> <ast.Subscript object at 0x0000019431AEEC50>
+##### _validate_i2v_params(self: Any, image_path: str, prompt: str, params: GenerationParams) -> <ast.Subscript object at 0x00000194284B3E80>
 
 Validate parameters for I2V generation
 
-##### _validate_ti2v_params(self: Any, image_path: str, prompt: str, params: GenerationParams) -> <ast.Subscript object at 0x0000019431A357E0>
+##### _validate_ti2v_params(self: Any, image_path: str, prompt: str, params: GenerationParams) -> <ast.Subscript object at 0x000001942A11DCF0>
 
 Validate parameters for TI2V generation
 
-##### _validate_lora_params(self: Any, params: GenerationParams) -> <ast.Subscript object at 0x0000019431A34F70>
+##### _validate_lora_params(self: Any, params: GenerationParams) -> <ast.Subscript object at 0x000001942A11FD60>
 
 Validate LoRA parameters
 
@@ -90,7 +90,7 @@ Create error result with recovery suggestions
 
 Setup progress callbacks for WebSocket updates
 
-##### get_generation_stats(self: Any) -> <ast.Subscript object at 0x00000194345006A0>
+##### get_generation_stats(self: Any) -> <ast.Subscript object at 0x0000019428507520>
 
 Get generation statistics
 
@@ -116,7 +116,7 @@ Returns:
 
 Get unique identifier for pipeline wrapper
 
-##### get_applied_loras_status(self: Any, pipeline_wrapper: Any) -> <ast.Subscript object at 0x000001942F0294B0>
+##### get_applied_loras_status(self: Any, pipeline_wrapper: Any) -> <ast.Subscript object at 0x00000194284A6710>
 
 Get status of applied LoRAs
 

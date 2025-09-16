@@ -882,28 +882,28 @@
 <h3 id="maintenancehistorytracker">MaintenanceHistoryTracker<a class="headerlink" href="#maintenancehistorytracker" title="Permanent link">&para;</a></h3>
 <p>Tracks and manages maintenance operation history and metrics.</p>
 <h4 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h4>
-<h5 id="initself-any-storage_path"><strong>init</strong>(self: Any, storage_path: <ast.Subscript object at 0x0000019434076200>)<a class="headerlink" href="#initself-any-storage_path" title="Permanent link">&para;</a></h5>
+<h5 id="initself-any-storage_path"><strong>init</strong>(self: Any, storage_path: <ast.Subscript object at 0x0000019427919F30>)<a class="headerlink" href="#initself-any-storage_path" title="Permanent link">&para;</a></h5>
 <h5 id="record_executionself-any-task-maintenancetask-result-maintenanceresult-none">record_execution(self: Any, task: MaintenanceTask, result: MaintenanceResult) -&gt; None<a class="headerlink" href="#record_executionself-any-task-maintenancetask-result-maintenanceresult-none" title="Permanent link">&para;</a></h5>
 <p>Record a maintenance task execution.</p>
-<h5 id="get_task_historyself-any-task_id-str-limit-int-">get_task_history(self: Any, task_id: str, limit: int) -&gt; <ast.Subscript object at 0x00000194340747F0><a class="headerlink" href="#get_task_historyself-any-task_id-str-limit-int-" title="Permanent link">&para;</a></h5>
+<h5 id="get_task_historyself-any-task_id-str-limit-int-">get_task_history(self: Any, task_id: str, limit: int) -&gt; <ast.Subscript object at 0x000001942791BAC0><a class="headerlink" href="#get_task_historyself-any-task_id-str-limit-int-" title="Permanent link">&para;</a></h5>
 <p>Get execution history for a specific task.</p>
-<h5 id="get_recent_executionself-any-task_id-str-">get_recent_execution(self: Any, task_id: str) -&gt; <ast.Subscript object at 0x0000019434076110><a class="headerlink" href="#get_recent_executionself-any-task_id-str-" title="Permanent link">&para;</a></h5>
+<h5 id="get_recent_executionself-any-task_id-str-">get_recent_execution(self: Any, task_id: str) -&gt; <ast.Subscript object at 0x000001942791B220><a class="headerlink" href="#get_recent_executionself-any-task_id-str-" title="Permanent link">&para;</a></h5>
 <p>Get the most recent execution for a task.</p>
-<h5 id="get_history_by_date_rangeself-any-start_date-datetime-end_date-datetime-">get_history_by_date_range(self: Any, start_date: datetime, end_date: datetime) -&gt; <ast.Subscript object at 0x00000194341F3340><a class="headerlink" href="#get_history_by_date_rangeself-any-start_date-datetime-end_date-datetime-" title="Permanent link">&para;</a></h5>
+<h5 id="get_history_by_date_rangeself-any-start_date-datetime-end_date-datetime-">get_history_by_date_range(self: Any, start_date: datetime, end_date: datetime) -&gt; <ast.Subscript object at 0x0000019427919930><a class="headerlink" href="#get_history_by_date_rangeself-any-start_date-datetime-end_date-datetime-" title="Permanent link">&para;</a></h5>
 <p>Get history records within a date range.</p>
-<h5 id="get_failed_executionsself-any-days-int-">get_failed_executions(self: Any, days: int) -&gt; <ast.Subscript object at 0x00000194341F36A0><a class="headerlink" href="#get_failed_executionsself-any-days-int-" title="Permanent link">&para;</a></h5>
+<h5 id="get_failed_executionsself-any-days-int-">get_failed_executions(self: Any, days: int) -&gt; <ast.Subscript object at 0x0000019428929F00><a class="headerlink" href="#get_failed_executionsself-any-days-int-" title="Permanent link">&para;</a></h5>
 <p>Get failed executions from the last N days.</p>
 <h5 id="get_task_success_rateself-any-task_id-str-days-int-float">get_task_success_rate(self: Any, task_id: str, days: int) -&gt; float<a class="headerlink" href="#get_task_success_rateself-any-task_id-str-days-int-float" title="Permanent link">&para;</a></h5>
 <p>Calculate success rate for a task over the last N days.</p>
-<h5 id="get_average_durationself-any-task_id-str-days-int-">get_average_duration(self: Any, task_id: str, days: int) -&gt; <ast.Subscript object at 0x00000194341F0F70><a class="headerlink" href="#get_average_durationself-any-task_id-str-days-int-" title="Permanent link">&para;</a></h5>
+<h5 id="get_average_durationself-any-task_id-str-days-int-">get_average_duration(self: Any, task_id: str, days: int) -&gt; <ast.Subscript object at 0x0000019428929C60><a class="headerlink" href="#get_average_durationself-any-task_id-str-days-int-" title="Permanent link">&para;</a></h5>
 <p>Get average execution duration for a task.</p>
 <h5 id="get_maintenance_metricsself-any-days-int-maintenancemetrics">get_maintenance_metrics(self: Any, days: int) -&gt; MaintenanceMetrics<a class="headerlink" href="#get_maintenance_metricsself-any-days-int-maintenancemetrics" title="Permanent link">&para;</a></h5>
 <p>Calculate comprehensive maintenance metrics.</p>
-<h5 id="get_task_performance_trendsself-any-task_id-str-days-int-">get_task_performance_trends(self: Any, task_id: str, days: int) -&gt; <ast.Subscript object at 0x0000019431A3A950><a class="headerlink" href="#get_task_performance_trendsself-any-task_id-str-days-int-" title="Permanent link">&para;</a></h5>
+<h5 id="get_task_performance_trendsself-any-task_id-str-days-int-">get_task_performance_trends(self: Any, task_id: str, days: int) -&gt; <ast.Subscript object at 0x000001942C6871C0><a class="headerlink" href="#get_task_performance_trendsself-any-task_id-str-days-int-" title="Permanent link">&para;</a></h5>
 <p>Get performance trends for a task over time.</p>
 <h5 id="cleanup_old_historyself-any-days_to_keep-int-int">cleanup_old_history(self: Any, days_to_keep: int) -&gt; int<a class="headerlink" href="#cleanup_old_historyself-any-days_to_keep-int-int" title="Permanent link">&para;</a></h5>
 <p>Remove history records older than specified days.</p>
-<h5 id="export_historyself-any-output_path-str-task_id-start_date-end_date-none">export_history(self: Any, output_path: str, task_id: <ast.Subscript object at 0x0000019431A3B280>, start_date: <ast.Subscript object at 0x0000019431A3B550>, end_date: <ast.Subscript object at 0x0000019431A3B430>) -&gt; None<a class="headerlink" href="#export_historyself-any-output_path-str-task_id-start_date-end_date-none" title="Permanent link">&para;</a></h5>
+<h5 id="export_historyself-any-output_path-str-task_id-start_date-end_date-none">export_history(self: Any, output_path: str, task_id: <ast.Subscript object at 0x0000019427B63040>, start_date: <ast.Subscript object at 0x0000019427B62410>, end_date: <ast.Subscript object at 0x0000019427B62B90>) -&gt; None<a class="headerlink" href="#export_historyself-any-output_path-str-task_id-start_date-end_date-none" title="Permanent link">&para;</a></h5>
 <p>Export history to a file.</p>
 <h5 id="_load_historyself-any-none">_load_history(self: Any) -&gt; None<a class="headerlink" href="#_load_historyself-any-none" title="Permanent link">&para;</a></h5>
 <p>Load history from storage.</p>
@@ -911,9 +911,9 @@
 <p>Save history to storage.</p>
 <h5 id="_serialize_history_recordself-any-record-maintenancehistory-dict">_serialize_history_record(self: Any, record: MaintenanceHistory) -&gt; Dict<a class="headerlink" href="#_serialize_history_recordself-any-record-maintenancehistory-dict" title="Permanent link">&para;</a></h5>
 <p>Serialize a history record to dictionary.</p>
-<h5 id="_deserialize_history_recordself-any-data-dict-">_deserialize_history_record(self: Any, data: Dict) -&gt; <ast.Subscript object at 0x0000019433CBC370><a class="headerlink" href="#_deserialize_history_recordself-any-data-dict-" title="Permanent link">&para;</a></h5>
+<h5 id="_deserialize_history_recordself-any-data-dict-">_deserialize_history_record(self: Any, data: Dict) -&gt; <ast.Subscript object at 0x0000019427CA7B80><a class="headerlink" href="#_deserialize_history_recordself-any-data-dict-" title="Permanent link">&para;</a></h5>
 <p>Deserialize a history record from dictionary.</p>
-<h5 id="_get_current_git_commitself-any-">_get_current_git_commit(self: Any) -&gt; <ast.Subscript object at 0x0000019433CBD840><a class="headerlink" href="#_get_current_git_commitself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="_get_current_git_commitself-any-">_get_current_git_commit(self: Any) -&gt; <ast.Subscript object at 0x0000019427CA7E20><a class="headerlink" href="#_get_current_git_commitself-any-" title="Permanent link">&para;</a></h5>
 <p>Get current git commit hash.</p>
 
 

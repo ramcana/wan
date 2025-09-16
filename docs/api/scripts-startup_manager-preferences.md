@@ -25,7 +25,7 @@ Manages user preferences, configuration migration, and backup/restore.
 
 #### Methods
 
-##### __init__(self: Any, preferences_dir: <ast.Subscript object at 0x000001942F4023B0>)
+##### __init__(self: Any, preferences_dir: <ast.Subscript object at 0x000001942CBE78E0>)
 
 
 
@@ -45,7 +45,7 @@ Load configuration version information.
 
 Save version information to file.
 
-##### create_backup(self: Any, backup_name: <ast.Subscript object at 0x0000019431BDE260>) -> Path
+##### create_backup(self: Any, backup_name: <ast.Subscript object at 0x000001942C5DD7B0>) -> Path
 
 Create a backup of current configuration and preferences.
 
@@ -53,7 +53,7 @@ Create a backup of current configuration and preferences.
 
 Restore configuration from a backup.
 
-##### list_backups(self: Any) -> <ast.Subscript object at 0x000001942FE399C0>
+##### list_backups(self: Any) -> <ast.Subscript object at 0x0000019428D802B0>
 
 List available backups with their information.
 
@@ -65,7 +65,7 @@ Clean up old backups, keeping only the most recent ones.
 
 Migrate configuration to target version.
 
-##### _migrate_to_2_0_0(self: Any) -> <ast.Subscript object at 0x0000019431B1E890>
+##### _migrate_to_2_0_0(self: Any) -> <ast.Subscript object at 0x000001942C5E6CB0>
 
 Migrate configuration from 1.x to 2.0.0.
 
@@ -77,11 +77,11 @@ Backup a corrupted file for debugging.
 
 Apply user preferences to a startup configuration.
 
-##### preferences(self: Any) -> <ast.Subscript object at 0x000001943434ED70>
+##### preferences(self: Any) -> <ast.Subscript object at 0x00000194285DE7A0>
 
 Get current preferences.
 
-##### version_info(self: Any) -> <ast.Subscript object at 0x000001943434F490>
+##### version_info(self: Any) -> <ast.Subscript object at 0x0000019428D25810>
 
 Get current version information.
 

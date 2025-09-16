@@ -27,7 +27,7 @@ Advanced search indexer for documentation
 
 #### Methods
 
-##### __init__(self: Any, docs_root: Path, index_db_path: <ast.Subscript object at 0x000001943455F220>)
+##### __init__(self: Any, docs_root: Path, index_db_path: <ast.Subscript object at 0x00000194278E7670>)
 
 
 
@@ -35,7 +35,7 @@ Advanced search indexer for documentation
 
 Initialize SQLite database for search index
 
-##### index_documentation(self: Any) -> <ast.Subscript object at 0x000001943451F5B0>
+##### index_documentation(self: Any) -> <ast.Subscript object at 0x000001942796FB50>
 
 Index all documentation files
 
@@ -47,11 +47,11 @@ Check if file should be skipped
 
 Check if file needs to be reindexed
 
-##### _process_document(self: Any, file_path: Path) -> <ast.Subscript object at 0x000001942FC322F0>
+##### _process_document(self: Any, file_path: Path) -> <ast.Subscript object at 0x000001942796C9D0>
 
 Process a documentation file for indexing
 
-##### _extract_metadata(self: Any, content: str) -> <ast.Subscript object at 0x000001942FC324D0>
+##### _extract_metadata(self: Any, content: str) -> <ast.Subscript object at 0x00000194278FD360>
 
 Extract YAML frontmatter metadata
 
@@ -63,11 +63,11 @@ Extract title from first heading
 
 Clean content for search indexing
 
-##### _extract_headings(self: Any, content: str) -> <ast.Subscript object at 0x000001942FBAD2A0>
+##### _extract_headings(self: Any, content: str) -> <ast.Subscript object at 0x000001942888A230>
 
 Extract all headings from content
 
-##### _extract_code_blocks(self: Any, content: str) -> <ast.Subscript object at 0x0000019431B076D0>
+##### _extract_code_blocks(self: Any, content: str) -> <ast.Subscript object at 0x00000194288D0F70>
 
 Extract code blocks from content
 
@@ -83,7 +83,7 @@ Store document in search index
 
 Index individual terms for a document
 
-##### _tokenize_content(self: Any, content: str) -> <ast.Subscript object at 0x0000019434446110>
+##### _tokenize_content(self: Any, content: str) -> <ast.Subscript object at 0x000001942C6D25C0>
 
 Tokenize content into searchable terms
 
@@ -99,11 +99,11 @@ Get total number of indexed documents
 
 Update full-text search index
 
-##### search(self: Any, query: str, category: <ast.Subscript object at 0x0000019434445900>, tags: <ast.Subscript object at 0x0000019434444A00>, limit: int) -> <ast.Subscript object at 0x0000019434444250>
+##### search(self: Any, query: str, category: <ast.Subscript object at 0x000001942CD8A170>, tags: <ast.Subscript object at 0x000001942CD8A260>, limit: int) -> <ast.Subscript object at 0x000001942CCF7010>
 
 Search documentation with advanced filtering
 
-##### _fts_search(self: Any, query: str, category: <ast.Subscript object at 0x0000019434446AD0>, tags: <ast.Subscript object at 0x00000194344475B0>, limit: int) -> <ast.Subscript object at 0x0000019432E5C550>
+##### _fts_search(self: Any, query: str, category: <ast.Subscript object at 0x000001942CCF6C50>, tags: <ast.Subscript object at 0x000001942CCF6B90>, limit: int) -> <ast.Subscript object at 0x00000194279027D0>
 
 Full-text search using SQLite FTS
 
@@ -111,7 +111,7 @@ Full-text search using SQLite FTS
 
 Build FTS query from user input
 
-##### _create_document_from_data(self: Any, data: <ast.Subscript object at 0x0000019432E5C340>) -> SearchDocument
+##### _create_document_from_data(self: Any, data: <ast.Subscript object at 0x0000019427903460>) -> SearchDocument
 
 Create SearchDocument from database row
 
@@ -119,7 +119,7 @@ Create SearchDocument from database row
 
 Calculate relevance score for search result
 
-##### _find_matches(self: Any, document: SearchDocument, query: str) -> <ast.Subscript object at 0x00000194344D9900>
+##### _find_matches(self: Any, document: SearchDocument, query: str) -> <ast.Subscript object at 0x0000019428AAE950>
 
 Find specific matches in document
 
@@ -127,11 +127,11 @@ Find specific matches in document
 
 Generate search result snippet
 
-##### get_search_suggestions(self: Any, partial_query: str, limit: int) -> <ast.Subscript object at 0x000001942F390F40>
+##### get_search_suggestions(self: Any, partial_query: str, limit: int) -> <ast.Subscript object at 0x0000019428A78F10>
 
 Get search suggestions based on partial query
 
-##### get_index_stats(self: Any) -> <ast.Subscript object at 0x000001942F1CAFE0>
+##### get_index_stats(self: Any) -> <ast.Subscript object at 0x0000019428A7A170>
 
 Get search index statistics
 

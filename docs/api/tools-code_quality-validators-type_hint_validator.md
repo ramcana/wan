@@ -20,18 +20,18 @@ Validates type hints for functions and methods.
 
 Initialize validator with configuration.
 
-##### validate_type_hints(self: Any, file_path: Path, tree: ast.AST) -> <ast.Subscript object at 0x00000194340B02B0>
+##### validate_type_hints(self: Any, file_path: Path, tree: ast.AST) -> <ast.Subscript object at 0x0000019428AB6530>
 
 Validate type hints in the given AST.
 
 Returns:
     Tuple of (issues, metrics)
 
-##### _validate_function_type_hints(self: Any, file_path: Path, node: ast.FunctionDef) -> <ast.Subscript object at 0x000001942F3A4D60>
+##### _validate_function_type_hints(self: Any, file_path: Path, node: ast.FunctionDef) -> <ast.Subscript object at 0x0000019428A096F0>
 
 Validate type hints for a specific function.
 
-##### _run_mypy_check(self: Any, file_path: Path) -> <ast.Subscript object at 0x000001942F331480>
+##### _run_mypy_check(self: Any, file_path: Path) -> <ast.Subscript object at 0x0000019428A083A0>
 
 Run mypy type checker on the file.
 
@@ -43,11 +43,11 @@ Parse mypy output line into QualityIssue.
 
 Check if function is void (doesn't return a value).
 
-##### _check_inconsistent_annotations(self: Any, file_path: Path, node: ast.FunctionDef) -> <ast.Subscript object at 0x000001942F3044C0>
+##### _check_inconsistent_annotations(self: Any, file_path: Path, node: ast.FunctionDef) -> <ast.Subscript object at 0x000001942C6D2080>
 
 Check for inconsistent type annotations.
 
-##### _check_complex_annotations(self: Any, file_path: Path, node: ast.FunctionDef) -> <ast.Subscript object at 0x000001942F3DA980>
+##### _check_complex_annotations(self: Any, file_path: Path, node: ast.FunctionDef) -> <ast.Subscript object at 0x000001942C6D3EE0>
 
 Check for overly complex type annotations.
 

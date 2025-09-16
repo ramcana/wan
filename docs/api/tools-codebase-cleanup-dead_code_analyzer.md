@@ -54,11 +54,11 @@ Args:
 Returns:
     DeadCodeReport with all findings and recommendations
 
-##### _get_files_to_analyze(self: Any, include_tests: bool) -> <ast.Subscript object at 0x0000019431ABAC50>
+##### _get_files_to_analyze(self: Any, include_tests: bool) -> <ast.Subscript object at 0x0000019427AD8A00>
 
 Get list of code files to analyze
 
-##### _build_project_map(self: Any, files: <ast.Subscript object at 0x0000019431ABA6B0>) -> <ast.Subscript object at 0x000001942FC36140>
+##### _build_project_map(self: Any, files: <ast.Subscript object at 0x0000019427ADBCD0>) -> <ast.Subscript object at 0x000001942A26FF70>
 
 Build a map of the project structure including:
 - All defined functions, classes, and variables
@@ -73,11 +73,11 @@ Analyze Python file for definitions and usages
 
 Analyze JavaScript/TypeScript file for definitions and usages
 
-##### _find_dead_functions(self: Any, files: <ast.Subscript object at 0x0000019434131F00>, project_map: Dict) -> <ast.Subscript object at 0x000001943448F070>
+##### _find_dead_functions(self: Any, files: <ast.Subscript object at 0x000001942A2597B0>, project_map: Dict) -> <ast.Subscript object at 0x000001942A259240>
 
 Find functions that are never called
 
-##### _find_dead_python_functions(self: Any, file_path: Path, project_map: Dict) -> <ast.Subscript object at 0x000001942F220A90>
+##### _find_dead_python_functions(self: Any, file_path: Path, project_map: Dict) -> <ast.Subscript object at 0x000001942A260220>
 
 Find dead functions in a Python file
 
@@ -85,35 +85,35 @@ Find dead functions in a Python file
 
 Check if function is used elsewhere in the same file
 
-##### _find_dead_classes(self: Any, files: <ast.Subscript object at 0x000001942F02C6D0>, project_map: Dict) -> <ast.Subscript object at 0x000001942F02D600>
+##### _find_dead_classes(self: Any, files: <ast.Subscript object at 0x0000019427B6F310>, project_map: Dict) -> <ast.Subscript object at 0x0000019427B6C4F0>
 
 Find classes that are never instantiated
 
-##### _find_dead_python_classes(self: Any, file_path: Path, project_map: Dict) -> <ast.Subscript object at 0x000001942EFC3C10>
+##### _find_dead_python_classes(self: Any, file_path: Path, project_map: Dict) -> <ast.Subscript object at 0x0000019428927070>
 
 Find dead classes in a Python file
 
-##### _find_unused_imports(self: Any, files: <ast.Subscript object at 0x000001942EFC3AC0>) -> <ast.Subscript object at 0x000001942EFC35E0>
+##### _find_unused_imports(self: Any, files: <ast.Subscript object at 0x00000194289272E0>) -> <ast.Subscript object at 0x00000194289274C0>
 
 Find imports that are never used
 
-##### _find_unused_python_imports(self: Any, file_path: Path) -> <ast.Subscript object at 0x000001942F805030>
+##### _find_unused_python_imports(self: Any, file_path: Path) -> <ast.Subscript object at 0x000001942C653C40>
 
 Find unused imports in a Python file
 
-##### _find_dead_files(self: Any, files: <ast.Subscript object at 0x000001942F805180>, project_map: Dict) -> <ast.Subscript object at 0x000001942F8387F0>
+##### _find_dead_files(self: Any, files: <ast.Subscript object at 0x00000194285215D0>, project_map: Dict) -> <ast.Subscript object at 0x0000019428901A80>
 
 Find files that are never imported or referenced
 
-##### _calculate_potential_lines_removed(self: Any, dead_functions: <ast.Subscript object at 0x000001942F838970>, dead_classes: <ast.Subscript object at 0x000001942F838A30>, unused_imports: <ast.Subscript object at 0x000001942F838AF0>, dead_files: <ast.Subscript object at 0x000001942F838BB0>) -> int
+##### _calculate_potential_lines_removed(self: Any, dead_functions: <ast.Subscript object at 0x0000019428901C00>, dead_classes: <ast.Subscript object at 0x0000019428901CC0>, unused_imports: <ast.Subscript object at 0x0000019428901D80>, dead_files: <ast.Subscript object at 0x0000019428901E40>) -> int
 
 Calculate potential lines of code that could be removed
 
-##### _generate_recommendations(self: Any, dead_functions: <ast.Subscript object at 0x000001942F839810>, dead_classes: <ast.Subscript object at 0x000001942F8398D0>, unused_imports: <ast.Subscript object at 0x000001942F839990>, dead_files: <ast.Subscript object at 0x000001942F839A50>) -> <ast.Subscript object at 0x000001942F83B310>
+##### _generate_recommendations(self: Any, dead_functions: <ast.Subscript object at 0x0000019428902AA0>, dead_classes: <ast.Subscript object at 0x0000019428902B60>, unused_imports: <ast.Subscript object at 0x0000019428902C20>, dead_files: <ast.Subscript object at 0x0000019428902CE0>) -> <ast.Subscript object at 0x00000194283B85E0>
 
 Generate recommendations for handling dead code
 
-##### safe_remove_dead_code(self: Any, report: DeadCodeReport) -> <ast.Subscript object at 0x0000019431C0D030>
+##### safe_remove_dead_code(self: Any, report: DeadCodeReport) -> <ast.Subscript object at 0x00000194283BA2C0>
 
 Safely remove dead code with comprehensive testing
 
@@ -123,23 +123,23 @@ Args:
 Returns:
     Dict mapping operation to result message
 
-##### _remove_unused_imports(self: Any, unused_imports: <ast.Subscript object at 0x0000019431C0D1E0>) -> int
+##### _remove_unused_imports(self: Any, unused_imports: <ast.Subscript object at 0x00000194283BA470>) -> int
 
 Remove unused import statements
 
-##### _remove_dead_functions(self: Any, dead_functions: <ast.Subscript object at 0x0000019431C0E890>) -> int
+##### _remove_dead_functions(self: Any, dead_functions: <ast.Subscript object at 0x00000194283BBB20>) -> int
 
 Remove dead function definitions
 
-##### _remove_dead_classes(self: Any, dead_classes: <ast.Subscript object at 0x0000019431B7D000>) -> int
+##### _remove_dead_classes(self: Any, dead_classes: <ast.Subscript object at 0x00000194282F9EA0>) -> int
 
 Remove dead class definitions
 
-##### _remove_dead_files(self: Any, dead_files: <ast.Subscript object at 0x0000019431B7E4D0>) -> int
+##### _remove_dead_files(self: Any, dead_files: <ast.Subscript object at 0x00000194282FA140>) -> int
 
 Remove dead files
 
-##### create_backup(self: Any, files_to_backup: <ast.Subscript object at 0x0000019431B7E770>) -> str
+##### create_backup(self: Any, files_to_backup: <ast.Subscript object at 0x00000194282FA920>) -> str
 
 Create backup of files before removal
 

@@ -53,7 +53,7 @@ are unavailable, implements compatibility scoring, and manages request queuing.
 
 #### Methods
 
-##### __init__(self: Any, availability_manager: Any, models_dir: <ast.Subscript object at 0x00000194340071C0>)
+##### __init__(self: Any, availability_manager: Any, models_dir: <ast.Subscript object at 0x000001942C855B10>)
 
 Initialize the Intelligent Fallback Manager.
 
@@ -61,11 +61,11 @@ Args:
     availability_manager: ModelAvailabilityManager instance
     models_dir: Directory for storing model metadata
 
-##### _initialize_model_capabilities(self: Any) -> <ast.Subscript object at 0x00000194340050C0>
+##### _initialize_model_capabilities(self: Any) -> <ast.Subscript object at 0x000001942C81F9D0>
 
 Initialize model capabilities database
 
-##### _initialize_compatibility_matrix(self: Any) -> <ast.Subscript object at 0x0000019434004AC0>
+##### _initialize_compatibility_matrix(self: Any) -> <ast.Subscript object at 0x000001942C81F3D0>
 
 Initialize model compatibility scoring matrix
 

@@ -39,7 +39,7 @@ Matches error messages to specific error types using patterns
 
 
 
-##### classify_error(self: Any, error_message: str, exception: <ast.Subscript object at 0x0000019431A3ACE0>) -> ErrorType
+##### classify_error(self: Any, error_message: str, exception: <ast.Subscript object at 0x00000194275B9F30>) -> ErrorType
 
 Classify an error based on its message and exception type
 
@@ -63,7 +63,7 @@ Main recovery engine that handles error classification and recovery strategies
 
 #### Methods
 
-##### __init__(self: Any, config_path: <ast.Subscript object at 0x0000019434304AC0>)
+##### __init__(self: Any, config_path: <ast.Subscript object at 0x000001942755D0C0>)
 
 
 
@@ -75,11 +75,11 @@ Load recovery engine configuration
 
 Save current configuration
 
-##### classify_error(self: Any, error_message: str, exception: <ast.Subscript object at 0x0000019432D7C2E0>, context: <ast.Subscript object at 0x0000019432D7C0A0>) -> StartupError
+##### classify_error(self: Any, error_message: str, exception: <ast.Subscript object at 0x000001942750B6A0>, context: <ast.Subscript object at 0x000001942750B760>) -> StartupError
 
 Classify an error and create a StartupError object
 
-##### _get_suggested_actions(self: Any, error_type: ErrorType) -> <ast.Subscript object at 0x000001942F3C7AF0>
+##### _get_suggested_actions(self: Any, error_type: ErrorType) -> <ast.Subscript object at 0x0000019427509780>
 
 Get human-readable suggested actions for an error type
 
@@ -87,11 +87,11 @@ Get human-readable suggested actions for an error type
 
 Determine if an error type can be automatically fixed
 
-##### _get_error_details(self: Any, error_type: ErrorType, exception: <ast.Subscript object at 0x000001942F3C7820>, context: <ast.Subscript object at 0x000001942F3C74F0>) -> <ast.Subscript object at 0x000001942F436620>
+##### _get_error_details(self: Any, error_type: ErrorType, exception: <ast.Subscript object at 0x0000019427508520>, context: <ast.Subscript object at 0x0000019427509120>) -> <ast.Subscript object at 0x00000194275087C0>
 
 Get detailed information about the error
 
-##### _get_process_using_port(self: Any, port: int) -> <ast.Subscript object at 0x000001942F4357E0>
+##### _get_process_using_port(self: Any, port: int) -> <ast.Subscript object at 0x00000194275CEEC0>
 
 Get information about the process using a specific port
 
@@ -103,11 +103,11 @@ Register all available recovery actions
 
 Register a recovery action for a specific error type
 
-##### get_recovery_actions(self: Any, error_type: ErrorType) -> <ast.Subscript object at 0x000001942F415690>
+##### get_recovery_actions(self: Any, error_type: ErrorType) -> <ast.Subscript object at 0x000001942CB44CD0>
 
 Get available recovery actions for an error type
 
-##### attempt_recovery(self: Any, error: StartupError, context: <ast.Subscript object at 0x000001942F4154E0>) -> RecoveryResult
+##### attempt_recovery(self: Any, error: StartupError, context: <ast.Subscript object at 0x000001942CE045B0>) -> RecoveryResult
 
 Attempt to recover from an error
 
@@ -115,11 +115,11 @@ Attempt to recover from an error
 
 Update success rate for a recovery action
 
-##### _kill_process_on_port(self: Any, error: StartupError, context: <ast.Subscript object at 0x000001942F05EFE0>) -> RecoveryResult
+##### _kill_process_on_port(self: Any, error: StartupError, context: <ast.Subscript object at 0x000001942CE907F0>) -> RecoveryResult
 
 Kill process using a specific port
 
-##### _find_alternative_port(self: Any, error: StartupError, context: <ast.Subscript object at 0x000001943035D690>) -> RecoveryResult
+##### _find_alternative_port(self: Any, error: StartupError, context: <ast.Subscript object at 0x000001942856DAE0>) -> RecoveryResult
 
 Find an alternative available port
 
@@ -127,39 +127,39 @@ Find an alternative available port
 
 Check if a port is available
 
-##### _try_alternative_ports(self: Any, error: StartupError, context: <ast.Subscript object at 0x000001943035E6E0>) -> RecoveryResult
+##### _try_alternative_ports(self: Any, error: StartupError, context: <ast.Subscript object at 0x000001942C5C7220>) -> RecoveryResult
 
 Try ports in safe range for permission issues
 
-##### _check_firewall_exceptions(self: Any, error: StartupError, context: <ast.Subscript object at 0x000001943035E350>) -> RecoveryResult
+##### _check_firewall_exceptions(self: Any, error: StartupError, context: <ast.Subscript object at 0x000001942CE6C6D0>) -> RecoveryResult
 
 Check firewall exceptions and provide guidance
 
-##### _install_missing_dependencies(self: Any, error: StartupError, context: <ast.Subscript object at 0x0000019433FD44C0>) -> RecoveryResult
+##### _install_missing_dependencies(self: Any, error: StartupError, context: <ast.Subscript object at 0x0000019427B66740>) -> RecoveryResult
 
 Install missing dependencies
 
-##### _activate_virtual_environment(self: Any, error: StartupError, context: <ast.Subscript object at 0x0000019433FD7010>) -> RecoveryResult
+##### _activate_virtual_environment(self: Any, error: StartupError, context: <ast.Subscript object at 0x000001942888CB50>) -> RecoveryResult
 
 Activate virtual environment
 
-##### _repair_config_file(self: Any, error: StartupError, context: <ast.Subscript object at 0x0000019431AFE6B0>) -> RecoveryResult
+##### _repair_config_file(self: Any, error: StartupError, context: <ast.Subscript object at 0x000001942888DB70>) -> RecoveryResult
 
 Repair or recreate configuration file
 
-##### _create_virtual_environment(self: Any, error: StartupError, context: <ast.Subscript object at 0x0000019431AFCA90>) -> RecoveryResult
+##### _create_virtual_environment(self: Any, error: StartupError, context: <ast.Subscript object at 0x000001942888F220>) -> RecoveryResult
 
 Create new virtual environment
 
-##### _suggest_firewall_exception(self: Any, error: StartupError, context: <ast.Subscript object at 0x0000019431AFC3A0>) -> RecoveryResult
+##### _suggest_firewall_exception(self: Any, error: StartupError, context: <ast.Subscript object at 0x0000019428D34550>) -> RecoveryResult
 
 Provide firewall exception suggestions
 
-##### _restart_with_different_params(self: Any, error: StartupError, context: <ast.Subscript object at 0x000001942FB37FD0>) -> RecoveryResult
+##### _restart_with_different_params(self: Any, error: StartupError, context: <ast.Subscript object at 0x0000019428D34EB0>) -> RecoveryResult
 
 Restart process with different parameters
 
-##### _increase_timeout(self: Any, error: StartupError, context: <ast.Subscript object at 0x000001942FB36EC0>) -> RecoveryResult
+##### _increase_timeout(self: Any, error: StartupError, context: <ast.Subscript object at 0x0000019428D35870>) -> RecoveryResult
 
 Increase timeout values and retry
 
@@ -173,7 +173,7 @@ Represents a detected failure pattern
 
 
 
-##### add_occurrence(self: Any, error_type: ErrorType, context: <ast.Subscript object at 0x000001942FB36800>)
+##### add_occurrence(self: Any, error_type: ErrorType, context: <ast.Subscript object at 0x0000019428D36D10>)
 
 Add a new occurrence of this failure pattern
 
@@ -185,7 +185,7 @@ Record the result of a recovery attempt
 
 Get success rate for a specific recovery action
 
-##### get_most_successful_actions(self: Any) -> <ast.Subscript object at 0x0000019431B59C90>
+##### get_most_successful_actions(self: Any) -> <ast.Subscript object at 0x0000019428D385E0>
 
 Get recovery actions sorted by success rate for this pattern
 
@@ -199,11 +199,11 @@ Manages fallback configurations when primary recovery methods fail
 
 
 
-##### get_fallback_config(self: Any, error_type: ErrorType) -> <ast.Subscript object at 0x0000019431B58EE0>
+##### get_fallback_config(self: Any, error_type: ErrorType) -> <ast.Subscript object at 0x0000019428D395D0>
 
 Get fallback configuration for an error type
 
-##### apply_fallback_config(self: Any, error_type: ErrorType, base_config: <ast.Subscript object at 0x0000019431B5B850>) -> <ast.Subscript object at 0x0000019431B5AD40>
+##### apply_fallback_config(self: Any, error_type: ErrorType, base_config: <ast.Subscript object at 0x0000019428D397E0>) -> <ast.Subscript object at 0x0000019428D3A770>
 
 Apply fallback configuration to base configuration
 
@@ -217,11 +217,11 @@ Handles intelligent failure detection and learning
 
 
 
-##### detect_failure_pattern(self: Any, error: StartupError, context: <ast.Subscript object at 0x0000019431B59390>) -> <ast.Subscript object at 0x000001943015CFD0>
+##### detect_failure_pattern(self: Any, error: StartupError, context: <ast.Subscript object at 0x0000019428D3B0A0>) -> <ast.Subscript object at 0x0000019428DB4250>
 
 Detect if this error matches an existing failure pattern
 
-##### _create_pattern_signature(self: Any, error: StartupError, context: <ast.Subscript object at 0x000001943015DEA0>) -> str
+##### _create_pattern_signature(self: Any, error: StartupError, context: <ast.Subscript object at 0x0000019428DB4400>) -> str
 
 Create a unique signature for a failure pattern
 
@@ -229,27 +229,27 @@ Create a unique signature for a failure pattern
 
 Extract key words from error message for pattern matching
 
-##### _find_similar_pattern(self: Any, error: StartupError, context: <ast.Subscript object at 0x000001943015F340>) -> <ast.Subscript object at 0x000001942FE354E0>
+##### _find_similar_pattern(self: Any, error: StartupError, context: <ast.Subscript object at 0x0000019428DB5720>) -> <ast.Subscript object at 0x0000019428DB61D0>
 
 Find similar existing patterns
 
-##### _should_create_pattern(self: Any, error: StartupError, context: <ast.Subscript object at 0x000001942FE34880>) -> bool
+##### _should_create_pattern(self: Any, error: StartupError, context: <ast.Subscript object at 0x0000019428DB6380>) -> bool
 
 Determine if we should create a new failure pattern
 
-##### _generate_pattern_description(self: Any, error: StartupError, context: <ast.Subscript object at 0x000001942FE34A00>) -> str
+##### _generate_pattern_description(self: Any, error: StartupError, context: <ast.Subscript object at 0x0000019428DB6920>) -> str
 
 Generate a human-readable description for the pattern
 
-##### prioritize_recovery_actions(self: Any, error: StartupError, context: <ast.Subscript object at 0x000001942FE34160>) -> <ast.Subscript object at 0x000001942FE371F0>
+##### prioritize_recovery_actions(self: Any, error: StartupError, context: <ast.Subscript object at 0x0000019428DB7640>) -> <ast.Subscript object at 0x0000019428400940>
 
 Prioritize recovery actions based on learned patterns and success rates
 
-##### handle_recovery_failure(self: Any, error: StartupError, context: <ast.Subscript object at 0x000001942FE37D90>, failed_actions: <ast.Subscript object at 0x000001942FE37FA0>) -> RecoveryResult
+##### handle_recovery_failure(self: Any, error: StartupError, context: <ast.Subscript object at 0x0000019428400AF0>, failed_actions: <ast.Subscript object at 0x0000019428400C10>) -> RecoveryResult
 
 Handle the case when all primary recovery actions fail
 
-##### _get_manual_intervention_suggestions(self: Any, error_type: ErrorType) -> <ast.Subscript object at 0x000001942FDED630>
+##### _get_manual_intervention_suggestions(self: Any, error_type: ErrorType) -> <ast.Subscript object at 0x00000194284024D0>
 
 Get manual intervention suggestions for an error type
 

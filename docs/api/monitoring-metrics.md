@@ -48,7 +48,7 @@ Collect current performance metrics.
 
 Record HTTP request metrics.
 
-##### record_generation(self: Any, duration: float, success: bool, error_type: <ast.Subscript object at 0x000001942FB6BE50>) -> None
+##### record_generation(self: Any, duration: float, success: bool, error_type: <ast.Subscript object at 0x00000194288F4250>) -> None
 
 Record generation metrics.
 
@@ -60,15 +60,15 @@ Update current queue size.
 
 Update active generation count.
 
-##### get_latest_metrics(self: Any) -> <ast.Subscript object at 0x0000019431BF6B00>
+##### get_latest_metrics(self: Any) -> <ast.Subscript object at 0x00000194280121A0>
 
 Get latest metrics from all categories.
 
-##### get_metrics_history(self: Any, minutes: int) -> <ast.Subscript object at 0x0000019431BA8D30>
+##### get_metrics_history(self: Any, minutes: int) -> <ast.Subscript object at 0x0000019428010730>
 
 Get metrics history for specified time period.
 
-##### get_health_status(self: Any) -> <ast.Subscript object at 0x00000194340E08B0>
+##### get_health_status(self: Any) -> <ast.Subscript object at 0x00000194288F20E0>
 
 Get overall system health status.
 

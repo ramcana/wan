@@ -27,11 +27,11 @@ Metadata for encrypted files.
 
 
 
-##### to_dict(self: Any) -> <ast.Subscript object at 0x00000194344472B0>
+##### to_dict(self: Any) -> <ast.Subscript object at 0x0000019427B89E10>
 
 Convert metadata to dictionary for JSON serialization.
 
-##### from_dict(cls: Any, data: <ast.Subscript object at 0x0000019434447E20>) -> EncryptionMetadata
+##### from_dict(cls: Any, data: <ast.Subscript object at 0x0000019427B89A20>) -> EncryptionMetadata
 
 Create metadata from dictionary.
 
@@ -137,7 +137,7 @@ for model files, with support for selective encryption based on patterns.
 
 #### Methods
 
-##### __init__(self: Any, config: <ast.Subscript object at 0x0000019432DD2920>)
+##### __init__(self: Any, config: <ast.Subscript object at 0x0000019428D985E0>)
 
 Initialize model encryption manager.
 
@@ -154,7 +154,7 @@ Args:
 Returns:
     True if file should be encrypted, False otherwise
 
-##### encrypt_model_directory(self: Any, model_dir: Path) -> <ast.Subscript object at 0x0000019431AD1930>
+##### encrypt_model_directory(self: Any, model_dir: Path) -> <ast.Subscript object at 0x0000019428AC17E0>
 
 Encrypt all files in a model directory that match encryption patterns.
 

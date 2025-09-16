@@ -20,11 +20,11 @@ Validates code style using flake8 and custom rules.
 
 Initialize validator with configuration.
 
-##### validate_style(self: Any, file_path: Path, content: str) -> <ast.Subscript object at 0x000001942F3929E0>
+##### validate_style(self: Any, file_path: Path, content: str) -> <ast.Subscript object at 0x0000019428AC19C0>
 
 Validate code style in the given file.
 
-##### _run_flake8_check(self: Any, file_path: Path) -> <ast.Subscript object at 0x000001942F391450>
+##### _run_flake8_check(self: Any, file_path: Path) -> <ast.Subscript object at 0x0000019428AC3460>
 
 Run flake8 style checker on the file.
 
@@ -44,7 +44,7 @@ Check if error code represents an auto-fixable issue.
 
 Get suggestion for fixing specific error code.
 
-##### _check_custom_style_rules(self: Any, file_path: Path, content: str) -> <ast.Subscript object at 0x000001942F1B5FC0>
+##### _check_custom_style_rules(self: Any, file_path: Path, content: str) -> <ast.Subscript object at 0x000001942A189E70>
 
 Check custom style rules not covered by flake8.
 

@@ -24,7 +24,7 @@ Mock storage backend for testing.
 
 
 
-##### download(self: Any, source_url: str, local_dir: Path, file_specs: <ast.Subscript object at 0x0000019432DFC910>, allow_patterns: <ast.Subscript object at 0x0000019432DFCB50>, progress_callback: <ast.Subscript object at 0x0000019432DFCA00>) -> DownloadResult
+##### download(self: Any, source_url: str, local_dir: Path, file_specs: <ast.Subscript object at 0x000001942CC88400>, allow_patterns: <ast.Subscript object at 0x000001942CC8AA10>, progress_callback: <ast.Subscript object at 0x000001942CC88190>) -> DownloadResult
 
 
 
@@ -32,7 +32,7 @@ Mock storage backend for testing.
 
 
 
-##### estimate_download_size(self: Any, source_url: str, file_specs: <ast.Subscript object at 0x00000194318EDA80>, allow_patterns: <ast.Subscript object at 0x00000194318ED3C0>) -> int
+##### estimate_download_size(self: Any, source_url: str, file_specs: <ast.Subscript object at 0x000001942CC8B970>, allow_patterns: <ast.Subscript object at 0x000001942CC8A800>) -> int
 
 
 

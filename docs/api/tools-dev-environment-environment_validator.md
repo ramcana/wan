@@ -27,31 +27,31 @@ Validates development environment setup and health
 
 #### Methods
 
-##### __init__(self: Any, project_root: <ast.Subscript object at 0x000001942EFBFFA0>)
+##### __init__(self: Any, project_root: <ast.Subscript object at 0x000001942A1BE9E0>)
 
 
 
-##### validate_python_environment(self: Any) -> <ast.Subscript object at 0x000001942F707520>
+##### validate_python_environment(self: Any) -> <ast.Subscript object at 0x00000194274A4AF0>
 
 Validate Python environment
 
-##### validate_nodejs_environment(self: Any) -> <ast.Subscript object at 0x000001942F705C30>
+##### validate_nodejs_environment(self: Any) -> <ast.Subscript object at 0x0000019428DAC670>
 
 Validate Node.js environment
 
-##### validate_project_structure(self: Any) -> <ast.Subscript object at 0x0000019430127310>
+##### validate_project_structure(self: Any) -> <ast.Subscript object at 0x0000019428DACB80>
 
 Validate project structure
 
-##### validate_development_tools(self: Any) -> <ast.Subscript object at 0x0000019430125990>
+##### validate_development_tools(self: Any) -> <ast.Subscript object at 0x000001942A2E6D40>
 
 Validate development tools
 
-##### validate_ports_and_services(self: Any) -> <ast.Subscript object at 0x0000019432D7E380>
+##### validate_ports_and_services(self: Any) -> <ast.Subscript object at 0x000001942A2E74C0>
 
 Validate ports and services
 
-##### validate_gpu_environment(self: Any) -> <ast.Subscript object at 0x0000019432D7EC50>
+##### validate_gpu_environment(self: Any) -> <ast.Subscript object at 0x000001942A2E4FA0>
 
 Validate GPU environment (optional)
 
@@ -59,7 +59,7 @@ Validate GPU environment (optional)
 
 Run complete environment validation
 
-##### _check_python_requirements(self: Any, requirements_file: Path) -> <ast.Subscript object at 0x0000019432E67D30>
+##### _check_python_requirements(self: Any, requirements_file: Path) -> <ast.Subscript object at 0x000001942CB353C0>
 
 Check which Python packages are missing
 

@@ -16,7 +16,7 @@ Manages maintenance tasks including storage, retrieval, and lifecycle management
 
 #### Methods
 
-##### __init__(self: Any, storage_path: <ast.Subscript object at 0x00000194346091B0>)
+##### __init__(self: Any, storage_path: <ast.Subscript object at 0x000001942C81D0F0>)
 
 
 
@@ -28,23 +28,23 @@ Add a new maintenance task.
 
 Remove a maintenance task.
 
-##### get_task(self: Any, task_id: str) -> <ast.Subscript object at 0x000001942F0294B0>
+##### get_task(self: Any, task_id: str) -> <ast.Subscript object at 0x000001942C81F370>
 
 Get a specific task by ID.
 
-##### get_all_tasks(self: Any) -> <ast.Subscript object at 0x000001942F028D90>
+##### get_all_tasks(self: Any) -> <ast.Subscript object at 0x000001942C81FC10>
 
 Get all maintenance tasks.
 
-##### get_tasks_by_category(self: Any, category: TaskCategory) -> <ast.Subscript object at 0x000001942F028460>
+##### get_tasks_by_category(self: Any, category: TaskCategory) -> <ast.Subscript object at 0x000001942C81D2A0>
 
 Get tasks filtered by category.
 
-##### get_tasks_by_priority(self: Any, priority: TaskPriority) -> <ast.Subscript object at 0x000001942F029750>
+##### get_tasks_by_priority(self: Any, priority: TaskPriority) -> <ast.Subscript object at 0x000001942C81ED70>
 
 Get tasks filtered by priority.
 
-##### get_tasks_by_tags(self: Any, tags: <ast.Subscript object at 0x000001942F029BA0>) -> <ast.Subscript object at 0x000001942F028CD0>
+##### get_tasks_by_tags(self: Any, tags: <ast.Subscript object at 0x000001942C81DC00>) -> <ast.Subscript object at 0x0000019428935DE0>
 
 Get tasks that have any of the specified tags.
 
@@ -52,15 +52,15 @@ Get tasks that have any of the specified tags.
 
 Update a task with new values.
 
-##### get_task_dependencies(self: Any, task_id: str) -> <ast.Subscript object at 0x0000019433D2CA00>
+##### get_task_dependencies(self: Any, task_id: str) -> <ast.Subscript object at 0x000001942757B2E0>
 
 Get dependency information for a task.
 
-##### validate_task_dependencies(self: Any, task: MaintenanceTask) -> <ast.Subscript object at 0x0000019433D2CD00>
+##### validate_task_dependencies(self: Any, task: MaintenanceTask) -> <ast.Subscript object at 0x00000194275792A0>
 
 Validate task dependencies and return any issues.
 
-##### get_execution_order(self: Any) -> <ast.Subscript object at 0x0000019434444BB0>
+##### get_execution_order(self: Any) -> <ast.Subscript object at 0x0000019427579B40>
 
 Get tasks in execution order, grouped by dependency level.
 Returns list of lists, where each inner list contains tasks that can run in parallel.
@@ -81,7 +81,7 @@ Save tasks to storage.
 
 Serialize a task to dictionary.
 
-##### _deserialize_task(self: Any, data: Dict) -> <ast.Subscript object at 0x00000194344DB820>
+##### _deserialize_task(self: Any, data: Dict) -> <ast.Subscript object at 0x00000194280531F0>
 
 Deserialize a task from dictionary.
 

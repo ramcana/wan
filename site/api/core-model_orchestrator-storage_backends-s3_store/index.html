@@ -821,7 +821,7 @@
 <h3 id="s3store">S3Store<a class="headerlink" href="#s3store" title="Permanent link">&para;</a></h3>
 <p>S3/MinIO storage backend with parallel downloads and resume capability.</p>
 <h4 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h4>
-<h5 id="initself-any-config-credential_manager"><strong>init</strong>(self: Any, config: <ast.Subscript object at 0x0000019431AFAE00>, credential_manager: <ast.Subscript object at 0x0000019431AFAD40>)<a class="headerlink" href="#initself-any-config-credential_manager" title="Permanent link">&para;</a></h5>
+<h5 id="initself-any-config-credential_manager"><strong>init</strong>(self: Any, config: <ast.Subscript object at 0x00000194287FAE00>, credential_manager: <ast.Subscript object at 0x00000194287FAD40>)<a class="headerlink" href="#initself-any-config-credential_manager" title="Permanent link">&para;</a></h5>
 <p>Initialize S3 store.</p>
 <p>Args:
     config: S3 configuration. If None, will use environment variables.
@@ -830,15 +830,15 @@
 <p>Get or create S3 client (thread-safe).</p>
 <h5 id="can_handleself-any-source_url-str-bool">can_handle(self: Any, source_url: str) -&gt; bool<a class="headerlink" href="#can_handleself-any-source_url-str-bool" title="Permanent link">&para;</a></h5>
 <p>Check if this backend can handle S3 URLs.</p>
-<h5 id="_parse_s3_urlself-any-source_url-str-">_parse_s3_url(self: Any, source_url: str) -&gt; <ast.Subscript object at 0x0000019431B23280><a class="headerlink" href="#_parse_s3_urlself-any-source_url-str-" title="Permanent link">&para;</a></h5>
+<h5 id="_parse_s3_urlself-any-source_url-str-">_parse_s3_url(self: Any, source_url: str) -&gt; <ast.Subscript object at 0x00000194287E7280><a class="headerlink" href="#_parse_s3_urlself-any-source_url-str-" title="Permanent link">&para;</a></h5>
 <p>Parse S3 URL to extract bucket and key prefix.</p>
 <p>Args:
     source_url: URL in format s3://bucket/key/prefix</p>
 <p>Returns:
     Tuple of (bucket, key_prefix)</p>
-<h5 id="_list_objectsself-any-bucket-str-prefix-str-allow_patterns-">_list_objects(self: Any, bucket: str, prefix: str, allow_patterns: <ast.Subscript object at 0x0000019431B23010>) -&gt; <ast.Subscript object at 0x0000019431B21C90><a class="headerlink" href="#_list_objectsself-any-bucket-str-prefix-str-allow_patterns-" title="Permanent link">&para;</a></h5>
+<h5 id="_list_objectsself-any-bucket-str-prefix-str-allow_patterns-">_list_objects(self: Any, bucket: str, prefix: str, allow_patterns: <ast.Subscript object at 0x00000194287E7010>) -&gt; <ast.Subscript object at 0x00000194287E5C90><a class="headerlink" href="#_list_objectsself-any-bucket-str-prefix-str-allow_patterns-" title="Permanent link">&para;</a></h5>
 <p>List objects in S3 bucket with optional pattern filtering.</p>
-<h5 id="_download_file_with_resumeself-any-bucket-str-key-str-local_path-path-expected_size-progress_callback-int">_download_file_with_resume(self: Any, bucket: str, key: str, local_path: Path, expected_size: <ast.Subscript object at 0x0000019431B21930>, progress_callback: <ast.Subscript object at 0x0000019431B21870>) -&gt; int<a class="headerlink" href="#_download_file_with_resumeself-any-bucket-str-key-str-local_path-path-expected_size-progress_callback-int" title="Permanent link">&para;</a></h5>
+<h5 id="_download_file_with_resumeself-any-bucket-str-key-str-local_path-path-expected_size-progress_callback-int">_download_file_with_resume(self: Any, bucket: str, key: str, local_path: Path, expected_size: <ast.Subscript object at 0x00000194287E5930>, progress_callback: <ast.Subscript object at 0x00000194287E5870>) -&gt; int<a class="headerlink" href="#_download_file_with_resumeself-any-bucket-str-key-str-local_path-path-expected_size-progress_callback-int" title="Permanent link">&para;</a></h5>
 <p>Download a single file with resume capability using HTTP Range requests.</p>
 <p>Args:
     bucket: S3 bucket name
@@ -848,7 +848,7 @@
     progress_callback: Optional progress callback</p>
 <p>Returns:
     Number of bytes downloaded</p>
-<h5 id="downloadself-any-source_url-str-local_dir-path-file_specs-allow_patterns-progress_callback-downloadresult">download(self: Any, source_url: str, local_dir: Path, file_specs: <ast.Subscript object at 0x000001942FCF7D60>, allow_patterns: <ast.Subscript object at 0x000001942FCF76D0>, progress_callback: <ast.Subscript object at 0x000001942FCF7EE0>) -&gt; DownloadResult<a class="headerlink" href="#downloadself-any-source_url-str-local_dir-path-file_specs-allow_patterns-progress_callback-downloadresult" title="Permanent link">&para;</a></h5>
+<h5 id="downloadself-any-source_url-str-local_dir-path-file_specs-allow_patterns-progress_callback-downloadresult">download(self: Any, source_url: str, local_dir: Path, file_specs: <ast.Subscript object at 0x00000194284B3580>, allow_patterns: <ast.Subscript object at 0x00000194284B3DC0>, progress_callback: <ast.Subscript object at 0x00000194284B3850>) -&gt; DownloadResult<a class="headerlink" href="#downloadself-any-source_url-str-local_dir-path-file_specs-allow_patterns-progress_callback-downloadresult" title="Permanent link">&para;</a></h5>
 <p>Download files from S3/MinIO with parallel downloads and resume capability.</p>
 <p>Args:
     source_url: S3 URL (s3://bucket/prefix)
@@ -860,7 +860,7 @@
     DownloadResult with download statistics</p>
 <h5 id="verify_availabilityself-any-source_url-str-bool">verify_availability(self: Any, source_url: str) -&gt; bool<a class="headerlink" href="#verify_availabilityself-any-source_url-str-bool" title="Permanent link">&para;</a></h5>
 <p>Verify if the S3 source is available.</p>
-<h5 id="estimate_download_sizeself-any-source_url-str-file_specs-allow_patterns-int">estimate_download_size(self: Any, source_url: str, file_specs: <ast.Subscript object at 0x000001942F7741F0>, allow_patterns: <ast.Subscript object at 0x000001942F774130>) -&gt; int<a class="headerlink" href="#estimate_download_sizeself-any-source_url-str-file_specs-allow_patterns-int" title="Permanent link">&para;</a></h5>
+<h5 id="estimate_download_sizeself-any-source_url-str-file_specs-allow_patterns-int">estimate_download_size(self: Any, source_url: str, file_specs: <ast.Subscript object at 0x00000194284ABEB0>, allow_patterns: <ast.Subscript object at 0x00000194284ABE80>) -&gt; int<a class="headerlink" href="#estimate_download_sizeself-any-source_url-str-file_specs-allow_patterns-int" title="Permanent link">&para;</a></h5>
 <p>Estimate download size from S3 source.</p>
 
 

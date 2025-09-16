@@ -828,13 +828,13 @@
 <h3 id="qualitychecker">QualityChecker<a class="headerlink" href="#qualitychecker" title="Permanent link">&para;</a></h3>
 <p>Main code quality checking engine.</p>
 <h4 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h4>
-<h5 id="initself-any-config"><strong>init</strong>(self: Any, config: <ast.Subscript object at 0x000001942F449480>)<a class="headerlink" href="#initself-any-config" title="Permanent link">&para;</a></h5>
+<h5 id="initself-any-config"><strong>init</strong>(self: Any, config: <ast.Subscript object at 0x000001942A2E6DD0>)<a class="headerlink" href="#initself-any-config" title="Permanent link">&para;</a></h5>
 <p>Initialize quality checker with configuration.</p>
 <h5 id="from_config_filecls-any-config_path-path-qualitychecker">from_config_file(cls: Any, config_path: Path) -&gt; QualityChecker<a class="headerlink" href="#from_config_filecls-any-config_path-path-qualitychecker" title="Permanent link">&para;</a></h5>
 <p>Create quality checker from configuration file.</p>
-<h5 id="_parse_configconfig_data-qualityconfig">_parse_config(config_data: <ast.Subscript object at 0x0000019431A10D00>) -&gt; QualityConfig<a class="headerlink" href="#_parse_configconfig_data-qualityconfig" title="Permanent link">&para;</a></h5>
+<h5 id="_parse_configconfig_data-qualityconfig">_parse_config(config_data: <ast.Subscript object at 0x000001942A2E52A0>) -&gt; QualityConfig<a class="headerlink" href="#_parse_configconfig_data-qualityconfig" title="Permanent link">&para;</a></h5>
 <p>Parse configuration data into QualityConfig object.</p>
-<h5 id="check_qualityself-any-path-path-checks-qualityreport">check_quality(self: Any, path: Path, checks: <ast.Subscript object at 0x0000019431A12950>) -&gt; QualityReport<a class="headerlink" href="#check_qualityself-any-path-path-checks-qualityreport" title="Permanent link">&para;</a></h5>
+<h5 id="check_qualityself-any-path-path-checks-qualityreport">check_quality(self: Any, path: Path, checks: <ast.Subscript object at 0x000001942CB35060>) -&gt; QualityReport<a class="headerlink" href="#check_qualityself-any-path-path-checks-qualityreport" title="Permanent link">&para;</a></h5>
 <p>Perform comprehensive quality check on the given path.</p>
 <p>Args:
     path: Path to check (file or directory)
@@ -848,13 +848,13 @@
     auto_fix_only: Only fix issues marked as auto-fixable</p>
 <p>Returns:
     QualityReport showing what was fixed</p>
-<h5 id="_get_python_filesself-any-path-path-">_get_python_files(self: Any, path: Path) -&gt; <ast.Subscript object at 0x0000019433CBD270><a class="headerlink" href="#_get_python_filesself-any-path-path-" title="Permanent link">&para;</a></h5>
+<h5 id="_get_python_filesself-any-path-path-">_get_python_files(self: Any, path: Path) -&gt; <ast.Subscript object at 0x00000194288F4160><a class="headerlink" href="#_get_python_filesself-any-path-path-" title="Permanent link">&para;</a></h5>
 <p>Get all Python files in the given path.</p>
-<h5 id="_analyze_fileself-any-file_path-path-checks-">_analyze_file(self: Any, file_path: Path, checks: <ast.Subscript object at 0x0000019433CBC9A0>) -&gt; <ast.Subscript object at 0x00000194340D38B0><a class="headerlink" href="#_analyze_fileself-any-file_path-path-checks-" title="Permanent link">&para;</a></h5>
+<h5 id="_analyze_fileself-any-file_path-path-checks-">_analyze_file(self: Any, file_path: Path, checks: <ast.Subscript object at 0x00000194288F5ED0>) -&gt; <ast.Subscript object at 0x00000194288F4D90><a class="headerlink" href="#_analyze_fileself-any-file_path-path-checks-" title="Permanent link">&para;</a></h5>
 <p>Analyze a single file for quality issues.</p>
 <h5 id="_aggregate_metricsself-any-total_metrics-qualitymetrics-file_metrics-qualitymetrics-none">_aggregate_metrics(self: Any, total_metrics: QualityMetrics, file_metrics: QualityMetrics) -&gt; None<a class="headerlink" href="#_aggregate_metricsself-any-total_metrics-qualitymetrics-file_metrics-qualitymetrics-none" title="Permanent link">&para;</a></h5>
 <p>Aggregate file metrics into total metrics.</p>
-<h5 id="_fix_file_issuesself-any-file_path-path-issues-int">_fix_file_issues(self: Any, file_path: Path, issues: <ast.Subscript object at 0x00000194340D1030>) -&gt; int<a class="headerlink" href="#_fix_file_issuesself-any-file_path-path-issues-int" title="Permanent link">&para;</a></h5>
+<h5 id="_fix_file_issuesself-any-file_path-path-issues-int">_fix_file_issues(self: Any, file_path: Path, issues: <ast.Subscript object at 0x000001942A1BD360>) -&gt; int<a class="headerlink" href="#_fix_file_issuesself-any-file_path-path-issues-int" title="Permanent link">&para;</a></h5>
 <p>Fix issues in a specific file.</p>
 <h5 id="generate_reportself-any-report-qualityreport-output_format-str-str">generate_report(self: Any, report: QualityReport, output_format: str) -&gt; str<a class="headerlink" href="#generate_reportself-any-report-qualityreport-output_format-str-str" title="Permanent link">&para;</a></h5>
 <p>Generate formatted report.</p>

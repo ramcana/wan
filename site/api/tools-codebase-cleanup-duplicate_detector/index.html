@@ -929,9 +929,9 @@
 <p>Perform comprehensive duplicate detection scan</p>
 <p>Returns:
     DuplicateReport with all findings and recommendations</p>
-<h5 id="_get_files_to_scanself-any-">_get_files_to_scan(self: Any) -&gt; <ast.Subscript object at 0x00000194319198A0><a class="headerlink" href="#_get_files_to_scanself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="_get_files_to_scanself-any-">_get_files_to_scan(self: Any) -&gt; <ast.Subscript object at 0x0000019427C7AB30><a class="headerlink" href="#_get_files_to_scanself-any-" title="Permanent link">&para;</a></h5>
 <p>Get list of files to scan, excluding patterns</p>
-<h5 id="_calculate_file_hashesself-any-files-">_calculate_file_hashes(self: Any, files: <ast.Subscript object at 0x0000019431919750>) -&gt; <ast.Subscript object at 0x0000019431B8FC40><a class="headerlink" href="#_calculate_file_hashesself-any-files-" title="Permanent link">&para;</a></h5>
+<h5 id="_calculate_file_hashesself-any-files-">_calculate_file_hashes(self: Any, files: <ast.Subscript object at 0x0000019427C7A9E0>) -&gt; <ast.Subscript object at 0x0000019427C0CF10><a class="headerlink" href="#_calculate_file_hashesself-any-files-" title="Permanent link">&para;</a></h5>
 <p>Calculate both file hash and content hash for each file</p>
 <p>Returns:
     Dict mapping file path to (file_hash, content_hash, size)</p>
@@ -943,25 +943,25 @@
 <p>Normalize Python code content</p>
 <h5 id="_normalize_javascript_contentself-any-content-str-str">_normalize_javascript_content(self: Any, content: str) -&gt; str<a class="headerlink" href="#_normalize_javascript_contentself-any-content-str-str" title="Permanent link">&para;</a></h5>
 <p>Normalize JavaScript/TypeScript content</p>
-<h5 id="_find_exact_duplicatesself-any-file_hashes-">_find_exact_duplicates(self: Any, file_hashes: <ast.Subscript object at 0x0000019431B8D780>) -&gt; <ast.Subscript object at 0x000001942F791000><a class="headerlink" href="#_find_exact_duplicatesself-any-file_hashes-" title="Permanent link">&para;</a></h5>
+<h5 id="_find_exact_duplicatesself-any-file_hashes-">_find_exact_duplicates(self: Any, file_hashes: <ast.Subscript object at 0x000001942835EA10>) -&gt; <ast.Subscript object at 0x00000194289A1FC0><a class="headerlink" href="#_find_exact_duplicatesself-any-file_hashes-" title="Permanent link">&para;</a></h5>
 <p>Find files with identical hashes</p>
-<h5 id="_find_near_duplicatesself-any-files-">_find_near_duplicates(self: Any, files: <ast.Subscript object at 0x000001942F790EB0>) -&gt; <ast.Subscript object at 0x000001942F7AF7F0><a class="headerlink" href="#_find_near_duplicatesself-any-files-" title="Permanent link">&para;</a></h5>
+<h5 id="_find_near_duplicatesself-any-files-">_find_near_duplicates(self: Any, files: <ast.Subscript object at 0x00000194289A1DE0>) -&gt; <ast.Subscript object at 0x00000194289A07C0><a class="headerlink" href="#_find_near_duplicatesself-any-files-" title="Permanent link">&para;</a></h5>
 <p>Find near-duplicate files using content similarity</p>
 <h5 id="_calculate_similarityself-any-file1-path-file2-path-float">_calculate_similarity(self: Any, file1: Path, file2: Path) -&gt; float<a class="headerlink" href="#_calculate_similarityself-any-file1-path-file2-path-float" title="Permanent link">&para;</a></h5>
 <p>Calculate similarity between two files</p>
-<h5 id="_combine_duplicate_resultsself-any-exact-near-">_combine_duplicate_results(self: Any, exact: <ast.Subscript object at 0x000001942FC32440>, near: <ast.Subscript object at 0x000001942FC324A0>) -&gt; <ast.Subscript object at 0x000001942FC31A50><a class="headerlink" href="#_combine_duplicate_resultsself-any-exact-near-" title="Permanent link">&para;</a></h5>
+<h5 id="_combine_duplicate_resultsself-any-exact-near-">_combine_duplicate_results(self: Any, exact: <ast.Subscript object at 0x000001942890F790>, near: <ast.Subscript object at 0x000001942890F6D0>) -&gt; <ast.Subscript object at 0x000001942890ECE0><a class="headerlink" href="#_combine_duplicate_resultsself-any-exact-near-" title="Permanent link">&para;</a></h5>
 <p>Combine exact and near-duplicate results, removing overlaps</p>
-<h5 id="_group_duplicatesself-any-duplicates-">_group_duplicates(self: Any, duplicates: <ast.Subscript object at 0x000001942FC31900>) -&gt; <ast.Subscript object at 0x000001942FC310C0><a class="headerlink" href="#_group_duplicatesself-any-duplicates-" title="Permanent link">&para;</a></h5>
+<h5 id="_group_duplicatesself-any-duplicates-">_group_duplicates(self: Any, duplicates: <ast.Subscript object at 0x000001942890EB90>) -&gt; <ast.Subscript object at 0x000001942890E560><a class="headerlink" href="#_group_duplicatesself-any-duplicates-" title="Permanent link">&para;</a></h5>
 <p>Group duplicates by their duplicate_group</p>
-<h5 id="_calculate_potential_savingsself-any-duplicates-int">_calculate_potential_savings(self: Any, duplicates: <ast.Subscript object at 0x000001942FC31150>) -&gt; int<a class="headerlink" href="#_calculate_potential_savingsself-any-duplicates-int" title="Permanent link">&para;</a></h5>
+<h5 id="_calculate_potential_savingsself-any-duplicates-int">_calculate_potential_savings(self: Any, duplicates: <ast.Subscript object at 0x000001942890E350>) -&gt; int<a class="headerlink" href="#_calculate_potential_savingsself-any-duplicates-int" title="Permanent link">&para;</a></h5>
 <p>Calculate potential disk space savings</p>
-<h5 id="_generate_recommendationsself-any-duplicates-">_generate_recommendations(self: Any, duplicates: <ast.Subscript object at 0x000001942FC30430>) -&gt; <ast.Subscript object at 0x000001942FBADC00><a class="headerlink" href="#_generate_recommendationsself-any-duplicates-" title="Permanent link">&para;</a></h5>
+<h5 id="_generate_recommendationsself-any-duplicates-">_generate_recommendations(self: Any, duplicates: <ast.Subscript object at 0x0000019427B61630>) -&gt; <ast.Subscript object at 0x0000019427B62200><a class="headerlink" href="#_generate_recommendationsself-any-duplicates-" title="Permanent link">&para;</a></h5>
 <p>Generate recommendations for handling duplicates</p>
-<h5 id="create_backupself-any-files_to_remove-str">create_backup(self: Any, files_to_remove: <ast.Subscript object at 0x000001942FBADAB0>) -&gt; str<a class="headerlink" href="#create_backupself-any-files_to_remove-str" title="Permanent link">&para;</a></h5>
+<h5 id="create_backupself-any-files_to_remove-str">create_backup(self: Any, files_to_remove: <ast.Subscript object at 0x0000019427B61F60>) -&gt; str<a class="headerlink" href="#create_backupself-any-files_to_remove-str" title="Permanent link">&para;</a></h5>
 <p>Create backup of files before removal</p>
 <p>Returns:
     Path to backup directory</p>
-<h5 id="safe_remove_duplicatesself-any-duplicate_groups-auto_remove_exact-bool-">safe_remove_duplicates(self: Any, duplicate_groups: <ast.Subscript object at 0x000001942FBAC6D0>, auto_remove_exact: bool) -&gt; <ast.Subscript object at 0x000001942FBC1DB0><a class="headerlink" href="#safe_remove_duplicatesself-any-duplicate_groups-auto_remove_exact-bool-" title="Permanent link">&para;</a></h5>
+<h5 id="safe_remove_duplicatesself-any-duplicate_groups-auto_remove_exact-bool-">safe_remove_duplicates(self: Any, duplicate_groups: <ast.Subscript object at 0x0000019427B62EC0>, auto_remove_exact: bool) -&gt; <ast.Subscript object at 0x000001942854B5E0><a class="headerlink" href="#safe_remove_duplicatesself-any-duplicate_groups-auto_remove_exact-bool-" title="Permanent link">&para;</a></h5>
 <p>Safely remove duplicate files with backup</p>
 <p>Args:
     duplicate_groups: Groups of duplicate files

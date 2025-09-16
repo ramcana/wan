@@ -47,7 +47,7 @@ Args:
 Returns:
     Detected model type (T2V-A14B, I2V-A14B, or TI2V-5B)
 
-##### get_model_requirements(model_type: str) -> <ast.Subscript object at 0x000001942FD38D60>
+##### get_model_requirements(model_type: str) -> <ast.Subscript object at 0x000001942CD17790>
 
 Get requirements and capabilities for a model type
 
@@ -57,7 +57,7 @@ Service for enhancing prompts for better generation results
 
 #### Methods
 
-##### enhance_prompt(prompt: str, model_type: str, options: <ast.Subscript object at 0x000001942FD3B910>) -> str
+##### enhance_prompt(prompt: str, model_type: str, options: <ast.Subscript object at 0x000001942CD174C0>) -> str
 
 Enhance prompt based on model type and options
 

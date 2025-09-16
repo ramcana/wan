@@ -1053,7 +1053,7 @@
 <h3 id="notificationchannel">NotificationChannel<a class="headerlink" href="#notificationchannel" title="Permanent link">&para;</a></h3>
 <p>Base class for notification channels</p>
 <h4 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h4>
-<h5 id="initself-any-name-str-config"><strong>init</strong>(self: Any, name: str, config: <ast.Subscript object at 0x0000019433CA9900>)<a class="headerlink" href="#initself-any-name-str-config" title="Permanent link">&para;</a></h5>
+<h5 id="initself-any-name-str-config"><strong>init</strong>(self: Any, name: str, config: <ast.Subscript object at 0x000001942C6D3280>)<a class="headerlink" href="#initself-any-name-str-config" title="Permanent link">&para;</a></h5>
 <h5 id="is_enabledself-any-bool">is_enabled(self: Any) -&gt; bool<a class="headerlink" href="#is_enabledself-any-bool" title="Permanent link">&para;</a></h5>
 <p>Check if this channel is enabled</p>
 <h3 id="consolenotificationchannel">ConsoleNotificationChannel<a class="headerlink" href="#consolenotificationchannel" title="Permanent link">&para;</a></h3>
@@ -1061,12 +1061,12 @@
 <h3 id="emailnotificationchannel">EmailNotificationChannel<a class="headerlink" href="#emailnotificationchannel" title="Permanent link">&para;</a></h3>
 <p>Email notification channel</p>
 <h4 id="methods_1">Methods<a class="headerlink" href="#methods_1" title="Permanent link">&para;</a></h4>
-<h5 id="_create_email_bodyself-any-message-str-severity-severity-metadata-str">_create_email_body(self: Any, message: str, severity: Severity, metadata: <ast.Subscript object at 0x000001942EF9CBB0>) -&gt; str<a class="headerlink" href="#_create_email_bodyself-any-message-str-severity-severity-metadata-str" title="Permanent link">&para;</a></h5>
+<h5 id="_create_email_bodyself-any-message-str-severity-severity-metadata-str">_create_email_body(self: Any, message: str, severity: Severity, metadata: <ast.Subscript object at 0x000001942CE2FC40>) -&gt; str<a class="headerlink" href="#_create_email_bodyself-any-message-str-severity-severity-metadata-str" title="Permanent link">&para;</a></h5>
 <p>Create HTML email body</p>
 <h3 id="slacknotificationchannel">SlackNotificationChannel<a class="headerlink" href="#slacknotificationchannel" title="Permanent link">&para;</a></h3>
 <p>Slack notification channel</p>
 <h4 id="methods_2">Methods<a class="headerlink" href="#methods_2" title="Permanent link">&para;</a></h4>
-<h5 id="_create_slack_messageself-any-message-str-severity-severity-metadata-">_create_slack_message(self: Any, message: str, severity: Severity, metadata: <ast.Subscript object at 0x00000194319D2EF0>) -&gt; <ast.Subscript object at 0x00000194319D0580><a class="headerlink" href="#_create_slack_messageself-any-message-str-severity-severity-metadata-" title="Permanent link">&para;</a></h5>
+<h5 id="_create_slack_messageself-any-message-str-severity-severity-metadata-">_create_slack_message(self: Any, message: str, severity: Severity, metadata: <ast.Subscript object at 0x00000194288F5A20>) -&gt; <ast.Subscript object at 0x00000194288F4A30><a class="headerlink" href="#_create_slack_messageself-any-message-str-severity-severity-metadata-" title="Permanent link">&para;</a></h5>
 <p>Create Slack message payload</p>
 <h3 id="webhooknotificationchannel">WebhookNotificationChannel<a class="headerlink" href="#webhooknotificationchannel" title="Permanent link">&para;</a></h3>
 <p>Generic webhook notification channel</p>
@@ -1075,28 +1075,28 @@
 <h3 id="healthnotifier">HealthNotifier<a class="headerlink" href="#healthnotifier" title="Permanent link">&para;</a></h3>
 <p>Main health notification system that manages multiple channels and alert rules</p>
 <h4 id="methods_3">Methods<a class="headerlink" href="#methods_3" title="Permanent link">&para;</a></h4>
-<h5 id="initself-any-config"><strong>init</strong>(self: Any, config: <ast.Subscript object at 0x000001943455C130>)<a class="headerlink" href="#initself-any-config" title="Permanent link">&para;</a></h5>
+<h5 id="initself-any-config"><strong>init</strong>(self: Any, config: <ast.Subscript object at 0x0000019427B62890>)<a class="headerlink" href="#initself-any-config" title="Permanent link">&para;</a></h5>
 <h5 id="_initialize_channelsself-any">_initialize_channels(self: Any)<a class="headerlink" href="#_initialize_channelsself-any" title="Permanent link">&para;</a></h5>
 <p>Initialize notification channels</p>
-<h5 id="_load_alert_rulesself-any-">_load_alert_rules(self: Any) -&gt; <ast.Subscript object at 0x000001942FA8EBF0><a class="headerlink" href="#_load_alert_rulesself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="_load_alert_rulesself-any-">_load_alert_rules(self: Any) -&gt; <ast.Subscript object at 0x0000019427C798D0><a class="headerlink" href="#_load_alert_rulesself-any-" title="Permanent link">&para;</a></h5>
 <p>Load alert rules configuration</p>
-<h5 id="_should_trigger_alertself-any-rule-report-healthreport-bool">_should_trigger_alert(self: Any, rule: <ast.Subscript object at 0x000001942FA8F100>, report: HealthReport) -&gt; bool<a class="headerlink" href="#_should_trigger_alertself-any-rule-report-healthreport-bool" title="Permanent link">&para;</a></h5>
+<h5 id="_should_trigger_alertself-any-rule-report-healthreport-bool">_should_trigger_alert(self: Any, rule: <ast.Subscript object at 0x0000019428DC9150>, report: HealthReport) -&gt; bool<a class="headerlink" href="#_should_trigger_alertself-any-rule-report-healthreport-bool" title="Permanent link">&para;</a></h5>
 <p>Check if alert rule should trigger</p>
-<h5 id="_create_alert_messageself-any-rule-report-healthreport-str">_create_alert_message(self: Any, rule: <ast.Subscript object at 0x000001942F3079A0>, report: HealthReport) -&gt; str<a class="headerlink" href="#_create_alert_messageself-any-rule-report-healthreport-str" title="Permanent link">&para;</a></h5>
+<h5 id="_create_alert_messageself-any-rule-report-healthreport-str">_create_alert_message(self: Any, rule: <ast.Subscript object at 0x000001942CCB6B60>, report: HealthReport) -&gt; str<a class="headerlink" href="#_create_alert_messageself-any-rule-report-healthreport-str" title="Permanent link">&para;</a></h5>
 <p>Create alert message based on rule and report</p>
-<h5 id="get_notification_historyself-any-limit-int-">get_notification_history(self: Any, limit: int) -&gt; <ast.Subscript object at 0x000001942F330D00><a class="headerlink" href="#get_notification_historyself-any-limit-int-" title="Permanent link">&para;</a></h5>
+<h5 id="get_notification_historyself-any-limit-int-">get_notification_history(self: Any, limit: int) -&gt; <ast.Subscript object at 0x000001942CE22200><a class="headerlink" href="#get_notification_historyself-any-limit-int-" title="Permanent link">&para;</a></h5>
 <p>Get recent notification history</p>
 <h5 id="add_custom_channelself-any-name-str-channel-notificationchannel">add_custom_channel(self: Any, name: str, channel: NotificationChannel)<a class="headerlink" href="#add_custom_channelself-any-name-str-channel-notificationchannel" title="Permanent link">&para;</a></h5>
 <p>Add a custom notification channel</p>
-<h5 id="add_custom_ruleself-any-rule">add_custom_rule(self: Any, rule: <ast.Subscript object at 0x000001942F332FE0>)<a class="headerlink" href="#add_custom_ruleself-any-rule" title="Permanent link">&para;</a></h5>
+<h5 id="add_custom_ruleself-any-rule">add_custom_rule(self: Any, rule: <ast.Subscript object at 0x000001942CE22D10>)<a class="headerlink" href="#add_custom_ruleself-any-rule" title="Permanent link">&para;</a></h5>
 <p>Add a custom alert rule</p>
-<h5 id="test_notificationsself-any-">test_notifications(self: Any) -&gt; <ast.Subscript object at 0x000001942F3311B0><a class="headerlink" href="#test_notificationsself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="test_notificationsself-any-">test_notifications(self: Any) -&gt; <ast.Subscript object at 0x000001942CE22290><a class="headerlink" href="#test_notificationsself-any-" title="Permanent link">&para;</a></h5>
 <p>Test all notification channels</p>
 <h3 id="cipipelineintegration">CIPipelineIntegration<a class="headerlink" href="#cipipelineintegration" title="Permanent link">&para;</a></h3>
 <p>Integration with CI/CD pipelines</p>
 <h4 id="methods_4">Methods<a class="headerlink" href="#methods_4" title="Permanent link">&para;</a></h4>
 <h5 id="initself-any-notifier-healthnotifier"><strong>init</strong>(self: Any, notifier: HealthNotifier)<a class="headerlink" href="#initself-any-notifier-healthnotifier" title="Permanent link">&para;</a></h5>
-<h5 id="create_github_statusself-any-report-healthreport-">create_github_status(self: Any, report: HealthReport) -&gt; <ast.Subscript object at 0x0000019431A008B0><a class="headerlink" href="#create_github_statusself-any-report-healthreport-" title="Permanent link">&para;</a></h5>
+<h5 id="create_github_statusself-any-report-healthreport-">create_github_status(self: Any, report: HealthReport) -&gt; <ast.Subscript object at 0x0000019428470BE0><a class="headerlink" href="#create_github_statusself-any-report-healthreport-" title="Permanent link">&para;</a></h5>
 <p>Create GitHub status check payload</p>
 <h5 id="set_exit_codeself-any-report-healthreport-threshold-float-int">set_exit_code(self: Any, report: HealthReport, threshold: float) -&gt; int<a class="headerlink" href="#set_exit_codeself-any-report-healthreport-threshold-float-int" title="Permanent link">&para;</a></h5>
 <p>Set appropriate exit code for CI/CD</p>

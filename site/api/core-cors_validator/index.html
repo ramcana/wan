@@ -794,11 +794,11 @@ Validates and manages CORS settings for the WAN22 FastAPI backend</p>
 <p>CORS configuration validator and manager</p>
 <h4 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h4>
 <h5 id="initself-any"><strong>init</strong>(self: Any)<a class="headerlink" href="#initself-any" title="Permanent link">&para;</a></h5>
-<h5 id="validate_cors_configurationself-any-app-any-">validate_cors_configuration(self: Any, app: Any) -&gt; <ast.Subscript object at 0x0000019430267B20><a class="headerlink" href="#validate_cors_configurationself-any-app-any-" title="Permanent link">&para;</a></h5>
+<h5 id="validate_cors_configurationself-any-app-any-">validate_cors_configuration(self: Any, app: Any) -&gt; <ast.Subscript object at 0x000001942CBA41F0><a class="headerlink" href="#validate_cors_configurationself-any-app-any-" title="Permanent link">&para;</a></h5>
 <p>Validate CORS middleware configuration</p>
 <p>Returns:
     Tuple[bool, List[str]]: (is_valid, error_messages)</p>
-<h5 id="get_cors_configuration_suggestionsself-any-current_origins-">get_cors_configuration_suggestions(self: Any, current_origins: <ast.Subscript object at 0x0000019430267910>) -&gt; <ast.Subscript object at 0x00000194302647F0><a class="headerlink" href="#get_cors_configuration_suggestionsself-any-current_origins-" title="Permanent link">&para;</a></h5>
+<h5 id="get_cors_configuration_suggestionsself-any-current_origins-">get_cors_configuration_suggestions(self: Any, current_origins: <ast.Subscript object at 0x000001942CBA40D0>) -&gt; <ast.Subscript object at 0x000001942CBA4040><a class="headerlink" href="#get_cors_configuration_suggestionsself-any-current_origins-" title="Permanent link">&para;</a></h5>
 <p>Get suggested CORS configuration</p>
 <p>Args:
     current_origins: Current allowed origins</p>
@@ -810,14 +810,14 @@ Validates and manages CORS settings for the WAN22 FastAPI backend</p>
     origin: Origin URL to validate</p>
 <p>Returns:
     bool: True if valid origin format</p>
-<h5 id="check_cors_errorself-any-request-request-error-exception-">check_cors_error(self: Any, request: Request, error: Exception) -&gt; <ast.Subscript object at 0x00000194302BB130><a class="headerlink" href="#check_cors_errorself-any-request-request-error-exception-" title="Permanent link">&para;</a></h5>
+<h5 id="check_cors_errorself-any-request-request-error-exception-">check_cors_error(self: Any, request: Request, error: Exception) -&gt; <ast.Subscript object at 0x000001942CBA66E0><a class="headerlink" href="#check_cors_errorself-any-request-request-error-exception-" title="Permanent link">&para;</a></h5>
 <p>Check if an error is CORS-related and provide resolution steps</p>
 <p>Args:
     request: FastAPI request object
     error: Exception that occurred</p>
 <p>Returns:
     Dict with CORS error details and resolution steps, or None if not CORS-related</p>
-<h5 id="_get_cors_resolution_stepsself-any-origin-str-method-str-">_get_cors_resolution_steps(self: Any, origin: str, method: str) -&gt; <ast.Subscript object at 0x00000194302B8C70><a class="headerlink" href="#_get_cors_resolution_stepsself-any-origin-str-method-str-" title="Permanent link">&para;</a></h5>
+<h5 id="_get_cors_resolution_stepsself-any-origin-str-method-str-">_get_cors_resolution_steps(self: Any, origin: str, method: str) -&gt; <ast.Subscript object at 0x000001942CBC7070><a class="headerlink" href="#_get_cors_resolution_stepsself-any-origin-str-method-str-" title="Permanent link">&para;</a></h5>
 <p>Get resolution steps for CORS errors</p>
 <p>Args:
     origin: Request origin

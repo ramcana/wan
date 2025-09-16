@@ -35,7 +35,7 @@ Get cache file path for given key.
 
 Check if cache file is still valid.
 
-##### get(self: Any, check_name: str, inputs: Dict, ttl: int) -> <ast.Subscript object at 0x000001942F93A740>
+##### get(self: Any, check_name: str, inputs: Dict, ttl: int) -> <ast.Subscript object at 0x000001942C6D4E50>
 
 Get cached result for health check.
 
@@ -73,7 +73,7 @@ Decorator to profile function execution.
 
 Get performance summary for all profiled functions.
 
-##### generate_optimization_recommendations(self: Any) -> <ast.Subscript object at 0x0000019434253670>
+##### generate_optimization_recommendations(self: Any) -> <ast.Subscript object at 0x000001942757FC10>
 
 Generate optimization recommendations based on profiling data.
 
@@ -99,11 +99,11 @@ Save current analysis state.
 
 Get hash of file content.
 
-##### get_changed_files(self: Any, file_patterns: <ast.Subscript object at 0x0000019434213D60>) -> <ast.Subscript object at 0x0000019434213340>
+##### get_changed_files(self: Any, file_patterns: <ast.Subscript object at 0x000001942757DC60>) -> <ast.Subscript object at 0x000001942757CB80>
 
 Get list of files that have changed since last analysis.
 
-##### should_run_check(self: Any, check_name: str, dependencies: <ast.Subscript object at 0x0000019434211570>) -> bool
+##### should_run_check(self: Any, check_name: str, dependencies: <ast.Subscript object at 0x000001942757C280>) -> bool
 
 Determine if a check should run based on changes.
 
@@ -121,7 +121,7 @@ Lightweight health checker for frequent execution.
 
 
 
-##### lightweight_checks(self: Any) -> <ast.Subscript object at 0x0000019434210EE0>
+##### lightweight_checks(self: Any) -> <ast.Subscript object at 0x0000019427B8B4C0>
 
 List of checks suitable for lightweight mode.
 

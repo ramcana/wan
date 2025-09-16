@@ -1126,7 +1126,7 @@ Handles server process lifecycle, health monitoring, and cleanup.</p>
 <h4 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h4>
 <h5 id="success_resultcls-any-process_info-processinfo-processresult">success_result(cls: Any, process_info: ProcessInfo) -&gt; ProcessResult<a class="headerlink" href="#success_resultcls-any-process_info-processinfo-processresult" title="Permanent link">&para;</a></h5>
 <p>Create a successful process result.</p>
-<h5 id="failure_resultcls-any-error_message-str-details-processresult">failure_result(cls: Any, error_message: str, details: <ast.Subscript object at 0x0000019431A71540>) -&gt; ProcessResult<a class="headerlink" href="#failure_resultcls-any-error_message-str-details-processresult" title="Permanent link">&para;</a></h5>
+<h5 id="failure_resultcls-any-error_message-str-details-processresult">failure_result(cls: Any, error_message: str, details: <ast.Subscript object at 0x000001942CE91720>) -&gt; ProcessResult<a class="headerlink" href="#failure_resultcls-any-error_message-str-details-processresult" title="Permanent link">&para;</a></h5>
 <p>Create a failed process result.</p>
 <h3 id="healthmonitor">HealthMonitor<a class="headerlink" href="#healthmonitor" title="Permanent link">&para;</a></h3>
 <p>Health monitoring for server processes.</p>
@@ -1148,21 +1148,21 @@ Handles server process lifecycle, health monitoring, and cleanup.</p>
 <p>Manages server process lifecycle and health monitoring.</p>
 <h4 id="methods_2">Methods<a class="headerlink" href="#methods_2" title="Permanent link">&para;</a></h4>
 <h5 id="initself-any-config-startupconfig"><strong>init</strong>(self: Any, config: StartupConfig)<a class="headerlink" href="#initself-any-config-startupconfig" title="Permanent link">&para;</a></h5>
-<h5 id="start_backendself-any-port-int-backend_config-processresult">start_backend(self: Any, port: int, backend_config: <ast.Subscript object at 0x000001942F04B670>) -&gt; ProcessResult<a class="headerlink" href="#start_backendself-any-port-int-backend_config-processresult" title="Permanent link">&para;</a></h5>
+<h5 id="start_backendself-any-port-int-backend_config-processresult">start_backend(self: Any, port: int, backend_config: <ast.Subscript object at 0x00000194285AD450>) -&gt; ProcessResult<a class="headerlink" href="#start_backendself-any-port-int-backend_config-processresult" title="Permanent link">&para;</a></h5>
 <p>Start FastAPI backend server.</p>
-<h5 id="start_frontendself-any-port-int-frontend_config-processresult">start_frontend(self: Any, port: int, frontend_config: <ast.Subscript object at 0x000001942F048BE0>) -&gt; ProcessResult<a class="headerlink" href="#start_frontendself-any-port-int-frontend_config-processresult" title="Permanent link">&para;</a></h5>
+<h5 id="start_frontendself-any-port-int-frontend_config-processresult">start_frontend(self: Any, port: int, frontend_config: <ast.Subscript object at 0x000001942856CEB0>) -&gt; ProcessResult<a class="headerlink" href="#start_frontendself-any-port-int-frontend_config-processresult" title="Permanent link">&para;</a></h5>
 <p>Start React frontend development server.</p>
-<h5 id="_detect_package_managerself-any-frontend_dir-path-">_detect_package_manager(self: Any, frontend_dir: Path) -&gt; <ast.Subscript object at 0x000001942F699D80><a class="headerlink" href="#_detect_package_managerself-any-frontend_dir-path-" title="Permanent link">&para;</a></h5>
+<h5 id="_detect_package_managerself-any-frontend_dir-path-">_detect_package_manager(self: Any, frontend_dir: Path) -&gt; <ast.Subscript object at 0x000001942C5C7D30><a class="headerlink" href="#_detect_package_managerself-any-frontend_dir-path-" title="Permanent link">&para;</a></h5>
 <p>Detect which package manager to use (npm or yarn).</p>
 <h5 id="_start_processself-any-process_info-processinfo-processresult">_start_process(self: Any, process_info: ProcessInfo) -&gt; ProcessResult<a class="headerlink" href="#_start_processself-any-process_info-processinfo-processresult" title="Permanent link">&para;</a></h5>
 <p>Start a process with the given configuration.</p>
-<h5 id="get_process_statusself-any-process_name-str-">get_process_status(self: Any, process_name: str) -&gt; <ast.Subscript object at 0x000001942F42EBF0><a class="headerlink" href="#get_process_statusself-any-process_name-str-" title="Permanent link">&para;</a></h5>
+<h5 id="get_process_statusself-any-process_name-str-">get_process_status(self: Any, process_name: str) -&gt; <ast.Subscript object at 0x000001942C5C5CF0><a class="headerlink" href="#get_process_statusself-any-process_name-str-" title="Permanent link">&para;</a></h5>
 <p>Get current status of a process.</p>
 <h5 id="is_process_healthyself-any-process_name-str-bool">is_process_healthy(self: Any, process_name: str) -&gt; bool<a class="headerlink" href="#is_process_healthyself-any-process_name-str-bool" title="Permanent link">&para;</a></h5>
 <p>Check if a process is healthy.</p>
 <h5 id="wait_for_healthself-any-process_name-str-timeout-float-bool">wait_for_health(self: Any, process_name: str, timeout: float) -&gt; bool<a class="headerlink" href="#wait_for_healthself-any-process_name-str-timeout-float-bool" title="Permanent link">&para;</a></h5>
 <p>Wait for a process to become healthy.</p>
-<h5 id="get_all_processesself-any-">get_all_processes(self: Any) -&gt; <ast.Subscript object at 0x000001942F42CF40><a class="headerlink" href="#get_all_processesself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="get_all_processesself-any-">get_all_processes(self: Any) -&gt; <ast.Subscript object at 0x000001942CBE4A60><a class="headerlink" href="#get_all_processesself-any-" title="Permanent link">&para;</a></h5>
 <p>Get information about all managed processes.</p>
 <h5 id="cleanupself-any">cleanup(self: Any)<a class="headerlink" href="#cleanupself-any" title="Permanent link">&para;</a></h5>
 <p>Clean up all processes and monitoring.</p>
@@ -1170,15 +1170,15 @@ Handles server process lifecycle, health monitoring, and cleanup.</p>
 <p>Stop a specific process.</p>
 <h5 id="graceful_shutdownself-any-process_name-str-timeout-float-bool">graceful_shutdown(self: Any, process_name: str, timeout: float) -&gt; bool<a class="headerlink" href="#graceful_shutdownself-any-process_name-str-timeout-float-bool" title="Permanent link">&para;</a></h5>
 <p>Gracefully shutdown a process with SIGTERM/SIGKILL escalation.</p>
-<h5 id="cleanup_zombie_processesself-any-">cleanup_zombie_processes(self: Any) -&gt; <ast.Subscript object at 0x0000019433F72D40><a class="headerlink" href="#cleanup_zombie_processesself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="cleanup_zombie_processesself-any-">cleanup_zombie_processes(self: Any) -&gt; <ast.Subscript object at 0x000001942CE06C20><a class="headerlink" href="#cleanup_zombie_processesself-any-" title="Permanent link">&para;</a></h5>
 <p>Clean up zombie processes and file locks.</p>
 <h5 id="restart_processself-any-process_name-str-max_attempts-int-processresult">restart_process(self: Any, process_name: str, max_attempts: int) -&gt; ProcessResult<a class="headerlink" href="#restart_processself-any-process_name-str-max_attempts-int-processresult" title="Permanent link">&para;</a></h5>
 <p>Restart a process with exponential backoff.</p>
 <h5 id="_restart_generic_processself-any-process_info-processinfo-processresult">_restart_generic_process(self: Any, process_info: ProcessInfo) -&gt; ProcessResult<a class="headerlink" href="#_restart_generic_processself-any-process_info-processinfo-processresult" title="Permanent link">&para;</a></h5>
 <p>Restart a generic process using stored configuration.</p>
-<h5 id="auto_restart_failed_processesself-any-">auto_restart_failed_processes(self: Any) -&gt; <ast.Subscript object at 0x000001942F6C67D0><a class="headerlink" href="#auto_restart_failed_processesself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="auto_restart_failed_processesself-any-">auto_restart_failed_processes(self: Any) -&gt; <ast.Subscript object at 0x000001942CBB66B0><a class="headerlink" href="#auto_restart_failed_processesself-any-" title="Permanent link">&para;</a></h5>
 <p>Automatically restart failed processes that have auto_restart enabled.</p>
-<h5 id="get_process_metricsself-any-process_name-str-">get_process_metrics(self: Any, process_name: str) -&gt; <ast.Subscript object at 0x00000194340F1180><a class="headerlink" href="#get_process_metricsself-any-process_name-str-" title="Permanent link">&para;</a></h5>
+<h5 id="get_process_metricsself-any-process_name-str-">get_process_metrics(self: Any, process_name: str) -&gt; <ast.Subscript object at 0x000001942CBB7EE0><a class="headerlink" href="#get_process_metricsself-any-process_name-str-" title="Permanent link">&para;</a></h5>
 <p>Get detailed metrics for a process.</p>
 <h5 id="set_auto_restartself-any-process_name-str-enabled-bool-bool">set_auto_restart(self: Any, process_name: str, enabled: bool) -&gt; bool<a class="headerlink" href="#set_auto_restartself-any-process_name-str-enabled-bool-bool" title="Permanent link">&para;</a></h5>
 <p>Enable or disable auto-restart for a process.</p>

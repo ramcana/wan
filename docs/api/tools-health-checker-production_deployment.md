@@ -23,7 +23,7 @@ Production health monitoring system with automated reporting and alerting
 
 #### Methods
 
-##### __init__(self: Any, config_path: <ast.Subscript object at 0x000001943192CA00>)
+##### __init__(self: Any, config_path: <ast.Subscript object at 0x000001942CE129E0>)
 
 
 

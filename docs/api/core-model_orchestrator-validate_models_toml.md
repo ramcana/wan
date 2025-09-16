@@ -27,7 +27,7 @@ Comprehensive validator for models.toml manifest files.
 
 Initialize validator with manifest path.
 
-##### validate(self: Any) -> <ast.Subscript object at 0x0000019434171420>
+##### validate(self: Any) -> <ast.Subscript object at 0x0000019427F6A500>
 
 Perform comprehensive validation of the models.toml file.
 
@@ -46,7 +46,7 @@ Validate the models section structure.
 
 Validate a single model entry.
 
-##### _validate_files_section(self: Any, model_id: str, files: <ast.Subscript object at 0x0000019434225240>) -> None
+##### _validate_files_section(self: Any, model_id: str, files: <ast.Subscript object at 0x000001942A1FD870>) -> None
 
 Validate the files section of a model.
 

@@ -35,7 +35,7 @@ Generates navigation structure for documentation
 
 Generate complete navigation structure
 
-##### _discover_pages(self: Any) -> <ast.Subscript object at 0x000001943420EE30>
+##### _discover_pages(self: Any) -> <ast.Subscript object at 0x00000194288D0AC0>
 
 Discover all documentation pages
 
@@ -43,11 +43,11 @@ Discover all documentation pages
 
 Check if file should be skipped
 
-##### _extract_page_info(self: Any, file_path: Path) -> <ast.Subscript object at 0x000001942FE30B50>
+##### _extract_page_info(self: Any, file_path: Path) -> <ast.Subscript object at 0x000001942835F640>
 
 Extract page information for navigation
 
-##### _parse_frontmatter(self: Any, content: str) -> <ast.Subscript object at 0x000001942FE30D00>
+##### _parse_frontmatter(self: Any, content: str) -> <ast.Subscript object at 0x000001942835F0D0>
 
 Parse YAML frontmatter
 
@@ -59,27 +59,27 @@ Extract title from first heading
 
 Infer category from file path
 
-##### _determine_order(self: Any, file_path: Path, metadata: <ast.Subscript object at 0x0000019433CF4C10>) -> int
+##### _determine_order(self: Any, file_path: Path, metadata: <ast.Subscript object at 0x0000019427F10C10>) -> int
 
 Determine page order
 
-##### _organize_by_category(self: Any, pages: <ast.Subscript object at 0x0000019433CF5390>) -> <ast.Subscript object at 0x0000019433CF5240>
+##### _organize_by_category(self: Any, pages: <ast.Subscript object at 0x0000019427F126B0>) -> <ast.Subscript object at 0x0000019427F12CB0>
 
 Organize pages by category
 
-##### _find_home_page(self: Any, pages: <ast.Subscript object at 0x000001942FDC7D60>) -> <ast.Subscript object at 0x000001942FDDC2B0>
+##### _find_home_page(self: Any, pages: <ast.Subscript object at 0x0000019427F11270>) -> <ast.Subscript object at 0x0000019427F11CC0>
 
 Find the home/index page
 
-##### _build_category_navigation(self: Any, category_name: str, pages: <ast.Subscript object at 0x000001942FDDC1C0>) -> <ast.Subscript object at 0x0000019433FF4520>
+##### _build_category_navigation(self: Any, category_name: str, pages: <ast.Subscript object at 0x0000019427F107C0>) -> <ast.Subscript object at 0x000001942C67FA60>
 
 Build navigation for a category
 
-##### _build_hierarchical_structure(self: Any, pages: <ast.Subscript object at 0x0000019433FF4670>, category: str) -> <ast.Subscript object at 0x0000019433FF6770>
+##### _build_hierarchical_structure(self: Any, pages: <ast.Subscript object at 0x000001942C67FAF0>, category: str) -> <ast.Subscript object at 0x000001942C67F160>
 
 Build hierarchical navigation structure
 
-##### _convert_structure_to_navigation(self: Any, structure: <ast.Subscript object at 0x0000019433FF68C0>) -> <ast.Subscript object at 0x0000019431BAA560>
+##### _convert_structure_to_navigation(self: Any, structure: <ast.Subscript object at 0x000001942C67D780>) -> <ast.Subscript object at 0x0000019428888940>
 
 Convert nested structure to NavigationItem list
 
@@ -91,7 +91,7 @@ Format directory name as title
 
 Get order for directory
 
-##### generate_mkdocs_nav(self: Any, root: NavigationItem) -> <ast.Subscript object at 0x0000019431BABD30>
+##### generate_mkdocs_nav(self: Any, root: NavigationItem) -> <ast.Subscript object at 0x000001942888AA70>
 
 Generate MkDocs navigation format
 
@@ -99,19 +99,19 @@ Generate MkDocs navigation format
 
 Convert NavigationItem to MkDocs format
 
-##### generate_sidebar_json(self: Any, root: NavigationItem) -> <ast.Subscript object at 0x0000019431B8FA30>
+##### generate_sidebar_json(self: Any, root: NavigationItem) -> <ast.Subscript object at 0x000001942CCB5360>
 
 Generate sidebar JSON for web interface
 
-##### _convert_to_sidebar_format(self: Any, item: NavigationItem) -> <ast.Subscript object at 0x0000019431B8C5B0>
+##### _convert_to_sidebar_format(self: Any, item: NavigationItem) -> <ast.Subscript object at 0x000001942CCB6C20>
 
 Convert NavigationItem to sidebar JSON format
 
-##### generate_breadcrumb_data(self: Any, current_path: str, root: NavigationItem) -> <ast.Subscript object at 0x000001942FC37670>
+##### generate_breadcrumb_data(self: Any, current_path: str, root: NavigationItem) -> <ast.Subscript object at 0x000001942CCB6B90>
 
 Generate breadcrumb data for a given path
 
-##### _find_path_in_tree(self: Any, target_path: str, root: NavigationItem) -> <ast.Subscript object at 0x0000019432E36B90>
+##### _find_path_in_tree(self: Any, target_path: str, root: NavigationItem) -> <ast.Subscript object at 0x000001942CDD1690>
 
 Find path to target in navigation tree
 

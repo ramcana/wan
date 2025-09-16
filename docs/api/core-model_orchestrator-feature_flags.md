@@ -43,7 +43,7 @@ Raises:
     FileNotFoundError: If config file doesn't exist
     ValueError: If config file is invalid
 
-##### to_dict(self: Any) -> <ast.Subscript object at 0x000001942F76A4A0>
+##### to_dict(self: Any) -> <ast.Subscript object at 0x00000194275CBF10>
 
 Convert feature flags to dictionary.
 
@@ -89,7 +89,7 @@ Determine the current rollout stage based on enabled features.
 Returns:
     String indicating rollout stage: "disabled", "development", "staging", "production"
 
-##### validate_configuration(self: Any) -> <ast.Subscript object at 0x0000019434501DE0>
+##### validate_configuration(self: Any) -> <ast.Subscript object at 0x000001942C856890>
 
 Validate feature flag configuration for consistency.
 
@@ -102,7 +102,7 @@ Manager for feature flag operations and rollout control.
 
 #### Methods
 
-##### __init__(self: Any, config_path: <ast.Subscript object at 0x0000019434501990>)
+##### __init__(self: Any, config_path: <ast.Subscript object at 0x000001942C8571F0>)
 
 Initialize feature flag manager.
 
@@ -146,7 +146,7 @@ Validate current feature flag configuration.
 Returns:
     True if configuration is valid, False if there are issues
 
-##### get_status_report(self: Any) -> <ast.Subscript object at 0x000001942F803DF0>
+##### get_status_report(self: Any) -> <ast.Subscript object at 0x000001942CB70B50>
 
 Get comprehensive status report of feature flags.
 

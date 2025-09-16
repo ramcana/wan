@@ -61,7 +61,7 @@ Save component metadata to disk.
 
 Calculate SHA256 hash of a file.
 
-##### _identify_component_type(self: Any, file_path: str) -> <ast.Subscript object at 0x00000194340BA170>
+##### _identify_component_type(self: Any, file_path: str) -> <ast.Subscript object at 0x000001942832D450>
 
 Identify the component type based on file path patterns.
 
@@ -95,7 +95,7 @@ Args:
 Returns:
     DeduplicationResult with statistics
 
-##### deduplicate_across_models(self: Any, model_paths: <ast.Subscript object at 0x000001942FC8A5F0>) -> DeduplicationResult
+##### deduplicate_across_models(self: Any, model_paths: <ast.Subscript object at 0x00000194282E6B00>) -> DeduplicationResult
 
 Deduplicate components across multiple models.
 
@@ -113,7 +113,7 @@ Args:
     model_id: Identifier for the model
     model_path: Path to the model directory
 
-##### remove_model_reference(self: Any, model_id: str) -> <ast.Subscript object at 0x000001943409DB40>
+##### remove_model_reference(self: Any, model_id: str) -> <ast.Subscript object at 0x00000194283C6050>
 
 Remove references for a model and return list of components that can be cleaned up.
 
@@ -123,7 +123,7 @@ Args:
 Returns:
     List of component keys that have no remaining references
 
-##### cleanup_orphaned_components(self: Any, component_keys: <ast.Subscript object at 0x000001943409DC90>) -> int
+##### cleanup_orphaned_components(self: Any, component_keys: <ast.Subscript object at 0x00000194283C61A0>) -> int
 
 Clean up components that have no remaining references.
 
@@ -133,7 +133,7 @@ Args:
 Returns:
     Number of bytes reclaimed
 
-##### get_component_stats(self: Any) -> <ast.Subscript object at 0x0000019434094670>
+##### get_component_stats(self: Any) -> <ast.Subscript object at 0x000001942C5ACB80>
 
 Get statistics about shared components.
 

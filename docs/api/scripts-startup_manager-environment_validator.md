@@ -33,35 +33,35 @@ Validates Python and Node.js dependencies and environments.
 
 
 
-##### validate_python_environment(self: Any) -> <ast.Subscript object at 0x00000194344D50C0>
+##### validate_python_environment(self: Any) -> <ast.Subscript object at 0x000001942B717E80>
 
 Validate Python version, virtual environment, and dependencies.
 
-##### validate_node_environment(self: Any) -> <ast.Subscript object at 0x00000194344D6C50>
+##### validate_node_environment(self: Any) -> <ast.Subscript object at 0x000001942B714BB0>
 
 Validate Node.js and npm versions and frontend dependencies.
 
-##### _check_python_version(self: Any) -> <ast.Subscript object at 0x00000194344D77F0>
+##### _check_python_version(self: Any) -> <ast.Subscript object at 0x000001942B714A00>
 
 Check if Python version meets minimum requirements.
 
-##### _check_virtual_environment(self: Any) -> <ast.Subscript object at 0x00000194344D6D70>
+##### _check_virtual_environment(self: Any) -> <ast.Subscript object at 0x000001942B701060>
 
 Check if running in a virtual environment.
 
-##### _check_backend_dependencies(self: Any) -> <ast.Subscript object at 0x000001942FBCF1F0>
+##### _check_backend_dependencies(self: Any) -> <ast.Subscript object at 0x000001942B787700>
 
 Check if backend dependencies are installed.
 
-##### _check_node_version(self: Any) -> <ast.Subscript object at 0x000001942FBCD7E0>
+##### _check_node_version(self: Any) -> <ast.Subscript object at 0x0000019429C1A860>
 
 Check Node.js installation and version.
 
-##### _check_npm_version(self: Any) -> <ast.Subscript object at 0x00000194344DB490>
+##### _check_npm_version(self: Any) -> <ast.Subscript object at 0x0000019429C1B9A0>
 
 Check npm installation and version.
 
-##### _check_frontend_dependencies(self: Any) -> <ast.Subscript object at 0x00000194344D8760>
+##### _check_frontend_dependencies(self: Any) -> <ast.Subscript object at 0x0000019427F96260>
 
 Check if frontend dependencies are installed.
 
@@ -79,27 +79,27 @@ Validates and repairs configuration files.
 
 
 
-##### validate_backend_config(self: Any) -> <ast.Subscript object at 0x0000019434447340>
+##### validate_backend_config(self: Any) -> <ast.Subscript object at 0x000001942836CD90>
 
 Validate backend config.json file.
 
-##### validate_frontend_config(self: Any) -> <ast.Subscript object at 0x000001942EFF9D80>
+##### validate_frontend_config(self: Any) -> <ast.Subscript object at 0x000001942836EC20>
 
 Validate frontend configuration files.
 
-##### _validate_package_json(self: Any) -> <ast.Subscript object at 0x000001942EFFB220>
+##### _validate_package_json(self: Any) -> <ast.Subscript object at 0x0000019428051A50>
 
 Validate frontend package.json file.
 
-##### _validate_vite_config(self: Any) -> <ast.Subscript object at 0x000001943455EE90>
+##### _validate_vite_config(self: Any) -> <ast.Subscript object at 0x0000019427B2F4F0>
 
 Validate frontend vite.config.ts file.
 
-##### _validate_backend_config_values(self: Any, config_data: <ast.Subscript object at 0x000001943455D3F0>) -> <ast.Subscript object at 0x000001943455EB00>
+##### _validate_backend_config_values(self: Any, config_data: <ast.Subscript object at 0x0000019427B2C3D0>) -> <ast.Subscript object at 0x0000019429C04C70>
 
 Validate specific backend configuration values.
 
-##### auto_repair_config(self: Any, issues: <ast.Subscript object at 0x000001943455ED40>) -> <ast.Subscript object at 0x00000194344D23E0>
+##### auto_repair_config(self: Any, issues: <ast.Subscript object at 0x0000019429C07D30>) -> <ast.Subscript object at 0x0000019427546B00>
 
 Attempt to automatically repair configuration issues.
 
@@ -115,7 +115,7 @@ Create a default frontend package.json file.
 
 Create a default vite.config.ts file.
 
-##### _add_missing_backend_config_fields(self: Any, missing_fields: <ast.Subscript object at 0x00000194344D34C0>)
+##### _add_missing_backend_config_fields(self: Any, missing_fields: <ast.Subscript object at 0x000001942757F9D0>)
 
 Add missing fields to backend config.json.
 
@@ -141,11 +141,11 @@ Main environment validator that orchestrates all validation checks.
 
 Run all environment validation checks.
 
-##### auto_fix_issues(self: Any, issues: <ast.Subscript object at 0x000001942EF971F0>) -> <ast.Subscript object at 0x000001943032B640>
+##### auto_fix_issues(self: Any, issues: <ast.Subscript object at 0x0000019428CF9C60>) -> <ast.Subscript object at 0x000001942B3386A0>
 
 Attempt to automatically fix issues that are marked as auto-fixable.
 
-##### _collect_system_info(self: Any) -> <ast.Subscript object at 0x0000019430307AF0>
+##### _collect_system_info(self: Any) -> <ast.Subscript object at 0x000001942B33BC10>
 
 Collect system information for debugging and logging.
 

@@ -873,21 +873,21 @@
 <p>Validates and migrates existing config.json for new system.</p>
 <h4 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h4>
 <h5 id="initself-any-config_path-str"><strong>init</strong>(self: Any, config_path: str)<a class="headerlink" href="#initself-any-config_path-str" title="Permanent link">&para;</a></h5>
-<h5 id="load_existing_configself-any-">load_existing_config(self: Any) -&gt; <ast.Subscript object at 0x000001943442FCA0><a class="headerlink" href="#load_existing_configself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="load_existing_configself-any-">load_existing_config(self: Any) -&gt; <ast.Subscript object at 0x0000019427910490><a class="headerlink" href="#load_existing_configself-any-" title="Permanent link">&para;</a></h5>
 <p>Load existing configuration file.</p>
-<h5 id="validate_config_structureself-any-config-bool">validate_config_structure(self: Any, config: <ast.Subscript object at 0x000001943442FA90>) -&gt; bool<a class="headerlink" href="#validate_config_structureself-any-config-bool" title="Permanent link">&para;</a></h5>
+<h5 id="validate_config_structureself-any-config-bool">validate_config_structure(self: Any, config: <ast.Subscript object at 0x00000194278FFA90>) -&gt; bool<a class="headerlink" href="#validate_config_structureself-any-config-bool" title="Permanent link">&para;</a></h5>
 <p>Validate configuration structure against expected schema.</p>
-<h5 id="_validate_sectionself-any-section-schema-section_name-str-bool">_validate_section(self: Any, section: <ast.Subscript object at 0x000001943442EDD0>, schema: <ast.Subscript object at 0x000001943442ECB0>, section_name: str) -&gt; bool<a class="headerlink" href="#_validate_sectionself-any-section-schema-section_name-str-bool" title="Permanent link">&para;</a></h5>
+<h5 id="_validate_sectionself-any-section-schema-section_name-str-bool">_validate_section(self: Any, section: <ast.Subscript object at 0x00000194278FEDD0>, schema: <ast.Subscript object at 0x00000194278FECB0>, section_name: str) -&gt; bool<a class="headerlink" href="#_validate_sectionself-any-section-schema-section_name-str-bool" title="Permanent link">&para;</a></h5>
 <p>Validate a configuration section.</p>
-<h5 id="migrate_configself-any-old_config-">migrate_config(self: Any, old_config: <ast.Subscript object at 0x000001943442DD20>) -&gt; <ast.Subscript object at 0x00000194343B2A70><a class="headerlink" href="#migrate_configself-any-old_config-" title="Permanent link">&para;</a></h5>
+<h5 id="migrate_configself-any-old_config-">migrate_config(self: Any, old_config: <ast.Subscript object at 0x00000194278FDD20>) -&gt; <ast.Subscript object at 0x00000194278FCEE0><a class="headerlink" href="#migrate_configself-any-old_config-" title="Permanent link">&para;</a></h5>
 <p>Migrate old configuration format to new format.</p>
-<h5 id="_set_config_defaultsself-any-config-none">_set_config_defaults(self: Any, config: <ast.Subscript object at 0x00000194343B28C0>) -&gt; None<a class="headerlink" href="#_set_config_defaultsself-any-config-none" title="Permanent link">&para;</a></h5>
+<h5 id="_set_config_defaultsself-any-config-none">_set_config_defaults(self: Any, config: <ast.Subscript object at 0x00000194278FCD30>) -&gt; None<a class="headerlink" href="#_set_config_defaultsself-any-config-none" title="Permanent link">&para;</a></h5>
 <p>Set default values for missing configuration options.</p>
-<h5 id="_handle_special_migrationsself-any-old_config-new_config-none">_handle_special_migrations(self: Any, old_config: <ast.Subscript object at 0x00000194343B1390>, new_config: <ast.Subscript object at 0x00000194343B1270>) -&gt; None<a class="headerlink" href="#_handle_special_migrationsself-any-old_config-new_config-none" title="Permanent link">&para;</a></h5>
+<h5 id="_handle_special_migrationsself-any-old_config-new_config-none">_handle_special_migrations(self: Any, old_config: <ast.Subscript object at 0x00000194278F5390>, new_config: <ast.Subscript object at 0x00000194278F5270>) -&gt; None<a class="headerlink" href="#_handle_special_migrationsself-any-old_config-new_config-none" title="Permanent link">&para;</a></h5>
 <p>Handle special migration cases that don't fit the simple mapping.</p>
-<h5 id="validate_pathsself-any-config-bool">validate_paths(self: Any, config: <ast.Subscript object at 0x0000019434463F10>) -&gt; bool<a class="headerlink" href="#validate_pathsself-any-config-bool" title="Permanent link">&para;</a></h5>
+<h5 id="validate_pathsself-any-config-bool">validate_paths(self: Any, config: <ast.Subscript object at 0x00000194278E3F10>) -&gt; bool<a class="headerlink" href="#validate_pathsself-any-config-bool" title="Permanent link">&para;</a></h5>
 <p>Validate that configured paths exist or can be created.</p>
-<h5 id="validate_model_compatibilityself-any-config-bool">validate_model_compatibility(self: Any, config: <ast.Subscript object at 0x0000019434462DD0>) -&gt; bool<a class="headerlink" href="#validate_model_compatibilityself-any-config-bool" title="Permanent link">&para;</a></h5>
+<h5 id="validate_model_compatibilityself-any-config-bool">validate_model_compatibility(self: Any, config: <ast.Subscript object at 0x00000194278E1F00>) -&gt; bool<a class="headerlink" href="#validate_model_compatibilityself-any-config-bool" title="Permanent link">&para;</a></h5>
 <p>Validate that model settings are compatible with existing models.</p>
 <h5 id="run_validationself-any-configvalidationresult">run_validation(self: Any) -&gt; ConfigValidationResult<a class="headerlink" href="#run_validationself-any-configvalidationresult" title="Permanent link">&para;</a></h5>
 <p>Run complete configuration validation.</p>

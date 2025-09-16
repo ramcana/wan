@@ -963,45 +963,45 @@ for WAN22 documentation based on file organization and metadata.</p>
 <h5 id="initself-any-docs_root-path-config-navigationconfig"><strong>init</strong>(self: Any, docs_root: Path, config: NavigationConfig)<a class="headerlink" href="#initself-any-docs_root-path-config-navigationconfig" title="Permanent link">&para;</a></h5>
 <h5 id="generate_navigationself-any-navigationitem">generate_navigation(self: Any) -&gt; NavigationItem<a class="headerlink" href="#generate_navigationself-any-navigationitem" title="Permanent link">&para;</a></h5>
 <p>Generate complete navigation structure</p>
-<h5 id="_discover_pagesself-any-">_discover_pages(self: Any) -&gt; <ast.Subscript object at 0x000001943420EE30><a class="headerlink" href="#_discover_pagesself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="_discover_pagesself-any-">_discover_pages(self: Any) -&gt; <ast.Subscript object at 0x00000194288D0AC0><a class="headerlink" href="#_discover_pagesself-any-" title="Permanent link">&para;</a></h5>
 <p>Discover all documentation pages</p>
 <h5 id="_should_skip_fileself-any-file_path-path-bool">_should_skip_file(self: Any, file_path: Path) -&gt; bool<a class="headerlink" href="#_should_skip_fileself-any-file_path-path-bool" title="Permanent link">&para;</a></h5>
 <p>Check if file should be skipped</p>
-<h5 id="_extract_page_infoself-any-file_path-path-">_extract_page_info(self: Any, file_path: Path) -&gt; <ast.Subscript object at 0x000001942FE30B50><a class="headerlink" href="#_extract_page_infoself-any-file_path-path-" title="Permanent link">&para;</a></h5>
+<h5 id="_extract_page_infoself-any-file_path-path-">_extract_page_info(self: Any, file_path: Path) -&gt; <ast.Subscript object at 0x000001942835F640><a class="headerlink" href="#_extract_page_infoself-any-file_path-path-" title="Permanent link">&para;</a></h5>
 <p>Extract page information for navigation</p>
-<h5 id="_parse_frontmatterself-any-content-str-">_parse_frontmatter(self: Any, content: str) -&gt; <ast.Subscript object at 0x000001942FE30D00><a class="headerlink" href="#_parse_frontmatterself-any-content-str-" title="Permanent link">&para;</a></h5>
+<h5 id="_parse_frontmatterself-any-content-str-">_parse_frontmatter(self: Any, content: str) -&gt; <ast.Subscript object at 0x000001942835F0D0><a class="headerlink" href="#_parse_frontmatterself-any-content-str-" title="Permanent link">&para;</a></h5>
 <p>Parse YAML frontmatter</p>
 <h5 id="_extract_title_from_contentself-any-content-str-str">_extract_title_from_content(self: Any, content: str) -&gt; str<a class="headerlink" href="#_extract_title_from_contentself-any-content-str-str" title="Permanent link">&para;</a></h5>
 <p>Extract title from first heading</p>
 <h5 id="_infer_categoryself-any-file_path-path-str">_infer_category(self: Any, file_path: Path) -&gt; str<a class="headerlink" href="#_infer_categoryself-any-file_path-path-str" title="Permanent link">&para;</a></h5>
 <p>Infer category from file path</p>
-<h5 id="_determine_orderself-any-file_path-path-metadata-int">_determine_order(self: Any, file_path: Path, metadata: <ast.Subscript object at 0x0000019433CF4C10>) -&gt; int<a class="headerlink" href="#_determine_orderself-any-file_path-path-metadata-int" title="Permanent link">&para;</a></h5>
+<h5 id="_determine_orderself-any-file_path-path-metadata-int">_determine_order(self: Any, file_path: Path, metadata: <ast.Subscript object at 0x0000019427F10C10>) -&gt; int<a class="headerlink" href="#_determine_orderself-any-file_path-path-metadata-int" title="Permanent link">&para;</a></h5>
 <p>Determine page order</p>
-<h5 id="_organize_by_categoryself-any-pages-">_organize_by_category(self: Any, pages: <ast.Subscript object at 0x0000019433CF5390>) -&gt; <ast.Subscript object at 0x0000019433CF5240><a class="headerlink" href="#_organize_by_categoryself-any-pages-" title="Permanent link">&para;</a></h5>
+<h5 id="_organize_by_categoryself-any-pages-">_organize_by_category(self: Any, pages: <ast.Subscript object at 0x0000019427F126B0>) -&gt; <ast.Subscript object at 0x0000019427F12CB0><a class="headerlink" href="#_organize_by_categoryself-any-pages-" title="Permanent link">&para;</a></h5>
 <p>Organize pages by category</p>
-<h5 id="_find_home_pageself-any-pages-">_find_home_page(self: Any, pages: <ast.Subscript object at 0x000001942FDC7D60>) -&gt; <ast.Subscript object at 0x000001942FDDC2B0><a class="headerlink" href="#_find_home_pageself-any-pages-" title="Permanent link">&para;</a></h5>
+<h5 id="_find_home_pageself-any-pages-">_find_home_page(self: Any, pages: <ast.Subscript object at 0x0000019427F11270>) -&gt; <ast.Subscript object at 0x0000019427F11CC0><a class="headerlink" href="#_find_home_pageself-any-pages-" title="Permanent link">&para;</a></h5>
 <p>Find the home/index page</p>
-<h5 id="_build_category_navigationself-any-category_name-str-pages-">_build_category_navigation(self: Any, category_name: str, pages: <ast.Subscript object at 0x000001942FDDC1C0>) -&gt; <ast.Subscript object at 0x0000019433FF4520><a class="headerlink" href="#_build_category_navigationself-any-category_name-str-pages-" title="Permanent link">&para;</a></h5>
+<h5 id="_build_category_navigationself-any-category_name-str-pages-">_build_category_navigation(self: Any, category_name: str, pages: <ast.Subscript object at 0x0000019427F107C0>) -&gt; <ast.Subscript object at 0x000001942C67FA60><a class="headerlink" href="#_build_category_navigationself-any-category_name-str-pages-" title="Permanent link">&para;</a></h5>
 <p>Build navigation for a category</p>
-<h5 id="_build_hierarchical_structureself-any-pages-category-str-">_build_hierarchical_structure(self: Any, pages: <ast.Subscript object at 0x0000019433FF4670>, category: str) -&gt; <ast.Subscript object at 0x0000019433FF6770><a class="headerlink" href="#_build_hierarchical_structureself-any-pages-category-str-" title="Permanent link">&para;</a></h5>
+<h5 id="_build_hierarchical_structureself-any-pages-category-str-">_build_hierarchical_structure(self: Any, pages: <ast.Subscript object at 0x000001942C67FAF0>, category: str) -&gt; <ast.Subscript object at 0x000001942C67F160><a class="headerlink" href="#_build_hierarchical_structureself-any-pages-category-str-" title="Permanent link">&para;</a></h5>
 <p>Build hierarchical navigation structure</p>
-<h5 id="_convert_structure_to_navigationself-any-structure-">_convert_structure_to_navigation(self: Any, structure: <ast.Subscript object at 0x0000019433FF68C0>) -&gt; <ast.Subscript object at 0x0000019431BAA560><a class="headerlink" href="#_convert_structure_to_navigationself-any-structure-" title="Permanent link">&para;</a></h5>
+<h5 id="_convert_structure_to_navigationself-any-structure-">_convert_structure_to_navigation(self: Any, structure: <ast.Subscript object at 0x000001942C67D780>) -&gt; <ast.Subscript object at 0x0000019428888940><a class="headerlink" href="#_convert_structure_to_navigationself-any-structure-" title="Permanent link">&para;</a></h5>
 <p>Convert nested structure to NavigationItem list</p>
 <h5 id="_format_directory_titleself-any-dir_name-str-str">_format_directory_title(self: Any, dir_name: str) -&gt; str<a class="headerlink" href="#_format_directory_titleself-any-dir_name-str-str" title="Permanent link">&para;</a></h5>
 <p>Format directory name as title</p>
 <h5 id="_get_directory_orderself-any-dir_name-str-int">_get_directory_order(self: Any, dir_name: str) -&gt; int<a class="headerlink" href="#_get_directory_orderself-any-dir_name-str-int" title="Permanent link">&para;</a></h5>
 <p>Get order for directory</p>
-<h5 id="generate_mkdocs_navself-any-root-navigationitem-">generate_mkdocs_nav(self: Any, root: NavigationItem) -&gt; <ast.Subscript object at 0x0000019431BABD30><a class="headerlink" href="#generate_mkdocs_navself-any-root-navigationitem-" title="Permanent link">&para;</a></h5>
+<h5 id="generate_mkdocs_navself-any-root-navigationitem-">generate_mkdocs_nav(self: Any, root: NavigationItem) -&gt; <ast.Subscript object at 0x000001942888AA70><a class="headerlink" href="#generate_mkdocs_navself-any-root-navigationitem-" title="Permanent link">&para;</a></h5>
 <p>Generate MkDocs navigation format</p>
 <h5 id="_convert_to_mkdocs_formatself-any-item-navigationitem-any">_convert_to_mkdocs_format(self: Any, item: NavigationItem) -&gt; Any<a class="headerlink" href="#_convert_to_mkdocs_formatself-any-item-navigationitem-any" title="Permanent link">&para;</a></h5>
 <p>Convert NavigationItem to MkDocs format</p>
-<h5 id="generate_sidebar_jsonself-any-root-navigationitem-">generate_sidebar_json(self: Any, root: NavigationItem) -&gt; <ast.Subscript object at 0x0000019431B8FA30><a class="headerlink" href="#generate_sidebar_jsonself-any-root-navigationitem-" title="Permanent link">&para;</a></h5>
+<h5 id="generate_sidebar_jsonself-any-root-navigationitem-">generate_sidebar_json(self: Any, root: NavigationItem) -&gt; <ast.Subscript object at 0x000001942CCB5360><a class="headerlink" href="#generate_sidebar_jsonself-any-root-navigationitem-" title="Permanent link">&para;</a></h5>
 <p>Generate sidebar JSON for web interface</p>
-<h5 id="_convert_to_sidebar_formatself-any-item-navigationitem-">_convert_to_sidebar_format(self: Any, item: NavigationItem) -&gt; <ast.Subscript object at 0x0000019431B8C5B0><a class="headerlink" href="#_convert_to_sidebar_formatself-any-item-navigationitem-" title="Permanent link">&para;</a></h5>
+<h5 id="_convert_to_sidebar_formatself-any-item-navigationitem-">_convert_to_sidebar_format(self: Any, item: NavigationItem) -&gt; <ast.Subscript object at 0x000001942CCB6C20><a class="headerlink" href="#_convert_to_sidebar_formatself-any-item-navigationitem-" title="Permanent link">&para;</a></h5>
 <p>Convert NavigationItem to sidebar JSON format</p>
-<h5 id="generate_breadcrumb_dataself-any-current_path-str-root-navigationitem-">generate_breadcrumb_data(self: Any, current_path: str, root: NavigationItem) -&gt; <ast.Subscript object at 0x000001942FC37670><a class="headerlink" href="#generate_breadcrumb_dataself-any-current_path-str-root-navigationitem-" title="Permanent link">&para;</a></h5>
+<h5 id="generate_breadcrumb_dataself-any-current_path-str-root-navigationitem-">generate_breadcrumb_data(self: Any, current_path: str, root: NavigationItem) -&gt; <ast.Subscript object at 0x000001942CCB6B90><a class="headerlink" href="#generate_breadcrumb_dataself-any-current_path-str-root-navigationitem-" title="Permanent link">&para;</a></h5>
 <p>Generate breadcrumb data for a given path</p>
-<h5 id="_find_path_in_treeself-any-target_path-str-root-navigationitem-">_find_path_in_tree(self: Any, target_path: str, root: NavigationItem) -&gt; <ast.Subscript object at 0x0000019432E36B90><a class="headerlink" href="#_find_path_in_treeself-any-target_path-str-root-navigationitem-" title="Permanent link">&para;</a></h5>
+<h5 id="_find_path_in_treeself-any-target_path-str-root-navigationitem-">_find_path_in_tree(self: Any, target_path: str, root: NavigationItem) -&gt; <ast.Subscript object at 0x000001942CDD1690><a class="headerlink" href="#_find_path_in_treeself-any-target_path-str-root-navigationitem-" title="Permanent link">&para;</a></h5>
 <p>Find path to target in navigation tree</p>
 <h5 id="save_navigation_filesself-any-root-navigationitem-output_dir-path">save_navigation_files(self: Any, root: NavigationItem, output_dir: Path)<a class="headerlink" href="#save_navigation_filesself-any-root-navigationitem-output_dir-path" title="Permanent link">&para;</a></h5>
 <p>Save navigation files in various formats</p>

@@ -32,7 +32,7 @@ tags: [api, core]
 
 
 
-##### get_stats(self: Any) -> <ast.Subscript object at 0x0000019431970B80>
+##### get_stats(self: Any) -> <ast.Subscript object at 0x000001942A1A8460>
 
 
 

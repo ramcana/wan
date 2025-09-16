@@ -19,7 +19,7 @@ Integrates health monitoring with CI/CD pipelines.
 
 #### Methods
 
-##### __init__(self: Any, config_path: <ast.Subscript object at 0x00000194343378B0>)
+##### __init__(self: Any, config_path: <ast.Subscript object at 0x0000019427B63CA0>)
 
 
 
@@ -31,15 +31,15 @@ Load CI health integration configuration.
 
 Run health check optimized for CI environment.
 
-##### evaluate_deployment_gate(self: Any, health_report: Dict, branch: str) -> <ast.Subscript object at 0x00000194340350C0>
+##### evaluate_deployment_gate(self: Any, health_report: Dict, branch: str) -> <ast.Subscript object at 0x0000019427CA57B0>
 
 Evaluate if deployment gate requirements are met.
 
-##### generate_ci_summary(self: Any, health_report: Dict, deployment_gate_result: <ast.Subscript object at 0x0000019434034E50>) -> str
+##### generate_ci_summary(self: Any, health_report: Dict, deployment_gate_result: <ast.Subscript object at 0x0000019427CA6260>) -> str
 
 Generate CI-friendly summary of health check results.
 
-##### set_github_outputs(self: Any, health_report: Dict, deployment_gate_result: <ast.Subscript object at 0x0000019434012AA0>)
+##### set_github_outputs(self: Any, health_report: Dict, deployment_gate_result: <ast.Subscript object at 0x0000019427CA55D0>)
 
 Set GitHub Actions outputs for use in other steps.
 
@@ -51,7 +51,7 @@ Create GitHub status check for health monitoring.
 
 Send notifications for health issues.
 
-##### _send_slack_notification(self: Any, health_report: Dict, critical_issues: <ast.Subscript object at 0x00000194302EC400>, webhook_url: str)
+##### _send_slack_notification(self: Any, health_report: Dict, critical_issues: <ast.Subscript object at 0x000001942CC45E70>, webhook_url: str)
 
 Send Slack notification for critical health issues.
 

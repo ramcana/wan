@@ -39,7 +39,7 @@ Args:
     model_ensurer: Model ensurer for downloading and managing models
     model_registry: Model registry for model specifications
 
-##### get_wan_paths(self: Any, model_id: str, variant: <ast.Subscript object at 0x000001943459FC10>) -> str
+##### get_wan_paths(self: Any, model_id: str, variant: <ast.Subscript object at 0x00000194285AEFE0>) -> str
 
 Get the local path for a WAN model, ensuring it's downloaded.
 
@@ -92,7 +92,7 @@ Args:
 Returns:
     Estimated VRAM usage in GB
 
-##### get_model_capabilities(self: Any, model_id: str) -> <ast.Subscript object at 0x00000194319854B0>
+##### get_model_capabilities(self: Any, model_id: str) -> <ast.Subscript object at 0x000001942C844070>
 
 Get model capabilities and constraints.
 

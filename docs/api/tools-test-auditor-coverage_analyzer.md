@@ -44,7 +44,7 @@ Add file pattern that requires high coverage
 
 Exclude file pattern from coverage requirements
 
-##### check_violations(self: Any, coverage_report: CoverageReport) -> <ast.Subscript object at 0x00000194345E0790>
+##### check_violations(self: Any, coverage_report: CoverageReport) -> <ast.Subscript object at 0x000001942CE20CD0>
 
 Check for threshold violations
 
@@ -66,11 +66,11 @@ Collects coverage data from various sources
 
 
 
-##### collect_coverage_data(self: Any, test_files: <ast.Subscript object at 0x00000194345E0F40>) -> <ast.Subscript object at 0x00000194345E2B00>
+##### collect_coverage_data(self: Any, test_files: <ast.Subscript object at 0x000001942CE23A90>) -> <ast.Subscript object at 0x000001942CE20280>
 
 Collect coverage data by running tests with coverage
 
-##### _run_coverage_tests(self: Any, test_files: <ast.Subscript object at 0x00000194345E3790>, coverage_dir: Path) -> bool
+##### _run_coverage_tests(self: Any, test_files: <ast.Subscript object at 0x000001942CE23730>, coverage_dir: Path) -> bool
 
 Run tests with coverage collection
 
@@ -78,15 +78,15 @@ Run tests with coverage collection
 
 Generate coverage reports in multiple formats
 
-##### _parse_coverage_data(self: Any, coverage_dir: Path) -> <ast.Subscript object at 0x0000019433CBE890>
+##### _parse_coverage_data(self: Any, coverage_dir: Path) -> <ast.Subscript object at 0x0000019428D0E260>
 
 Parse coverage data from generated reports
 
-##### _parse_xml_coverage(self: Any, xml_file: Path) -> <ast.Subscript object at 0x000001943026AC20>
+##### _parse_xml_coverage(self: Any, xml_file: Path) -> <ast.Subscript object at 0x0000019428D0DE70>
 
 Parse XML coverage report
 
-##### _parse_class_coverage(self: Any, class_elem: Any) -> <ast.Subscript object at 0x000001943026BE20>
+##### _parse_class_coverage(self: Any, class_elem: Any) -> <ast.Subscript object at 0x000001942CE28430>
 
 Parse coverage for a single class/file
 
@@ -100,23 +100,23 @@ Analyzes coverage gaps and generates recommendations
 
 
 
-##### analyze_gaps(self: Any, coverage_data: <ast.Subscript object at 0x0000019430268F10>) -> <ast.Subscript object at 0x0000019430269B40>
+##### analyze_gaps(self: Any, coverage_data: <ast.Subscript object at 0x000001942CE28E80>) -> <ast.Subscript object at 0x000001942CE29CF0>
 
 Analyze coverage data to identify gaps
 
-##### _analyze_json_gaps(self: Any, json_data: <ast.Subscript object at 0x00000194302697B0>) -> <ast.Subscript object at 0x000001942EF26980>
+##### _analyze_json_gaps(self: Any, json_data: <ast.Subscript object at 0x000001942CE28670>) -> <ast.Subscript object at 0x000001942CE2BFA0>
 
 Analyze gaps from JSON coverage data
 
-##### _analyze_missing_functions(self: Any, file_path: str, missing_lines: <ast.Subscript object at 0x000001942EF25900>) -> <ast.Subscript object at 0x000001942EF26EC0>
+##### _analyze_missing_functions(self: Any, file_path: str, missing_lines: <ast.Subscript object at 0x000001942CE28460>) -> <ast.Subscript object at 0x000001942CE2A290>
 
 Analyze missing function coverage
 
-##### _analyze_missing_branches(self: Any, file_path: str, missing_branches: List) -> <ast.Subscript object at 0x000001942F2221D0>
+##### _analyze_missing_branches(self: Any, file_path: str, missing_branches: List) -> <ast.Subscript object at 0x00000194285495D0>
 
 Analyze missing branch coverage
 
-##### _analyze_uncovered_blocks(self: Any, file_path: str, missing_lines: <ast.Subscript object at 0x000001942F222FB0>) -> <ast.Subscript object at 0x000001942F222110>
+##### _analyze_uncovered_blocks(self: Any, file_path: str, missing_lines: <ast.Subscript object at 0x00000194285498D0>) -> <ast.Subscript object at 0x00000194285498A0>
 
 Analyze large blocks of uncovered code
 
@@ -138,19 +138,19 @@ Main coverage analyzer that orchestrates all analysis
 
 
 
-##### analyze_coverage(self: Any, test_files: <ast.Subscript object at 0x000001942F223430>) -> CoverageReport
+##### analyze_coverage(self: Any, test_files: <ast.Subscript object at 0x00000194285490F0>) -> CoverageReport
 
 Perform comprehensive coverage analysis
 
-##### _extract_file_coverages(self: Any, coverage_data: <ast.Subscript object at 0x000001943193A860>) -> <ast.Subscript object at 0x0000019431939900>
+##### _extract_file_coverages(self: Any, coverage_data: <ast.Subscript object at 0x000001942CC089A0>) -> <ast.Subscript object at 0x000001942CC09A20>
 
 Extract file coverage information
 
-##### _extract_function_coverage(self: Any, file_path: str, file_data: <ast.Subscript object at 0x000001943193BD60>) -> <ast.Subscript object at 0x0000019432E5E470>
+##### _extract_function_coverage(self: Any, file_path: str, file_data: <ast.Subscript object at 0x000001942CC09A50>) -> <ast.Subscript object at 0x000001942C5F24D0>
 
 Extract function-level coverage information
 
-##### _generate_recommendations(self: Any, file_coverages: <ast.Subscript object at 0x0000019432E5D780>, gaps: <ast.Subscript object at 0x0000019432E5D450>) -> <ast.Subscript object at 0x00000194344A1540>
+##### _generate_recommendations(self: Any, file_coverages: <ast.Subscript object at 0x000001942C5F0820>, gaps: <ast.Subscript object at 0x000001942C5F1390>) -> <ast.Subscript object at 0x0000019427F96650>
 
 Generate actionable recommendations
 

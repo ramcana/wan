@@ -67,7 +67,7 @@ Main integration class that coordinates all model-related WebSocket notification
 
 #### Methods
 
-##### __init__(self: Any, connection_manager: <ast.Subscript object at 0x000001942FC22230>)
+##### __init__(self: Any, connection_manager: <ast.Subscript object at 0x00000194285AC880>)
 
 
 

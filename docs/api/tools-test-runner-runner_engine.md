@@ -42,7 +42,7 @@ Monitors and reports test execution progress
 
 
 
-##### add_progress_callback(self: Any, callback: <ast.Subscript object at 0x0000019433D60B20>)
+##### add_progress_callback(self: Any, callback: <ast.Subscript object at 0x000001942C557E20>)
 
 Add a callback to be called on progress updates
 
@@ -68,7 +68,7 @@ Discovers and categorizes tests based on patterns and file structure
 
 
 
-##### discover_tests(self: Any, category: TestCategory) -> <ast.Subscript object at 0x0000019433C75330>
+##### discover_tests(self: Any, category: TestCategory) -> <ast.Subscript object at 0x000001942C556F20>
 
 Discover test files for a specific category
 
@@ -78,7 +78,7 @@ Args:
 Returns:
     List of test file paths
 
-##### _get_default_patterns(self: Any, category: TestCategory) -> <ast.Subscript object at 0x0000019433C74C40>
+##### _get_default_patterns(self: Any, category: TestCategory) -> <ast.Subscript object at 0x00000194281346D0>
 
 Get default file patterns for a category
 
@@ -86,7 +86,7 @@ Get default file patterns for a category
 
 Check if a file is a valid Python test file
 
-##### categorize_test_file(self: Any, file_path: Path) -> <ast.Subscript object at 0x0000019433D2A830>
+##### categorize_test_file(self: Any, file_path: Path) -> <ast.Subscript object at 0x000001942757D000>
 
 Automatically categorize a test file based on its path and content
 
@@ -100,7 +100,7 @@ Manages test execution timeouts with graceful handling
 
 
 
-##### execute_with_timeout(self: Any, command: <ast.Subscript object at 0x0000019433D2A1D0>, timeout: int, cwd: <ast.Subscript object at 0x0000019433D2A0B0>, env: <ast.Subscript object at 0x0000019433D29FF0>) -> <ast.Subscript object at 0x0000019433D55330>
+##### execute_with_timeout(self: Any, command: <ast.Subscript object at 0x000001942757C1F0>, timeout: int, cwd: <ast.Subscript object at 0x000001942757DBD0>, env: <ast.Subscript object at 0x000001942757E200>) -> <ast.Subscript object at 0x000001942A22A140>
 
 Execute command with timeout handling
 
@@ -131,23 +131,23 @@ Core test execution engine with timeout handling and progress monitoring
 
 Determine the appropriate test runner for a file
 
-##### _parse_pytest_output(self: Any, stdout: str, stderr: str, return_code: int, test_file: Path, context: TestExecutionContext) -> <ast.Subscript object at 0x00000194341E5D80>
+##### _parse_pytest_output(self: Any, stdout: str, stderr: str, return_code: int, test_file: Path, context: TestExecutionContext) -> <ast.Subscript object at 0x000001942CC8A170>
 
 Parse pytest output to extract test results
 
-##### _parse_unittest_output(self: Any, stdout: str, stderr: str, return_code: int, test_file: Path, context: TestExecutionContext) -> <ast.Subscript object at 0x00000194341E6AD0>
+##### _parse_unittest_output(self: Any, stdout: str, stderr: str, return_code: int, test_file: Path, context: TestExecutionContext) -> <ast.Subscript object at 0x000001942CC89D20>
 
 Parse unittest output to extract test results
 
-##### _parse_text_output(self: Any, stdout: str, stderr: str, return_code: int, test_file: Path, context: TestExecutionContext) -> <ast.Subscript object at 0x0000019433C84A60>
+##### _parse_text_output(self: Any, stdout: str, stderr: str, return_code: int, test_file: Path, context: TestExecutionContext) -> <ast.Subscript object at 0x000001942CC8A350>
 
 Parse text output when structured output is not available
 
-##### add_progress_callback(self: Any, callback: <ast.Subscript object at 0x0000019433C84BB0>)
+##### add_progress_callback(self: Any, callback: <ast.Subscript object at 0x000001942CC89F00>)
 
 Add a progress monitoring callback
 
-##### get_current_progress(self: Any) -> <ast.Subscript object at 0x0000019433C85000>
+##### get_current_progress(self: Any) -> <ast.Subscript object at 0x000001942CC8B850>
 
 Get current execution progress
 

@@ -20,7 +20,7 @@ HuggingFace Hub storage backend using huggingface_hub.
 
 #### Methods
 
-##### __init__(self: Any, token: <ast.Subscript object at 0x000001942F777550>, enable_hf_transfer: bool, credential_manager: <ast.Subscript object at 0x000001942F777430>)
+##### __init__(self: Any, token: <ast.Subscript object at 0x0000019428493550>, enable_hf_transfer: bool, credential_manager: <ast.Subscript object at 0x0000019428493430>)
 
 Initialize HuggingFace store.
 
@@ -33,7 +33,7 @@ Args:
 
 Check if this backend can handle HuggingFace URLs.
 
-##### _parse_hf_url(self: Any, source_url: str) -> <ast.Subscript object at 0x000001942F826B30>
+##### _parse_hf_url(self: Any, source_url: str) -> <ast.Subscript object at 0x0000019428491210>
 
 Parse HuggingFace URL to extract repo_id and revision.
 
@@ -43,7 +43,7 @@ Args:
 Returns:
     Tuple of (repo_id, revision)
 
-##### download(self: Any, source_url: str, local_dir: Path, file_specs: <ast.Subscript object at 0x000001942F826740>, allow_patterns: <ast.Subscript object at 0x000001942F826710>, progress_callback: <ast.Subscript object at 0x000001942F8254B0>) -> DownloadResult
+##### download(self: Any, source_url: str, local_dir: Path, file_specs: <ast.Subscript object at 0x00000194284AAA70>, allow_patterns: <ast.Subscript object at 0x00000194284AA9B0>, progress_callback: <ast.Subscript object at 0x00000194284AA890>) -> DownloadResult
 
 Download model from HuggingFace Hub.
 
@@ -61,7 +61,7 @@ Returns:
 
 Verify if the HuggingFace repository is available.
 
-##### estimate_download_size(self: Any, source_url: str, file_specs: <ast.Subscript object at 0x00000194344C31F0>, allow_patterns: <ast.Subscript object at 0x00000194344C32B0>) -> int
+##### estimate_download_size(self: Any, source_url: str, file_specs: <ast.Subscript object at 0x000001942CD13130>, allow_patterns: <ast.Subscript object at 0x000001942CD131F0>) -> int
 
 Estimate download size from HuggingFace repository.
 
@@ -76,14 +76,14 @@ Calculate total size of all files in directory.
 
 Count total number of files in directory.
 
-##### _extract_file_metadata(self: Any, directory: Path) -> <ast.Subscript object at 0x000001942FCA1360>
+##### _extract_file_metadata(self: Any, directory: Path) -> <ast.Subscript object at 0x00000194284A5360>
 
 Extract file metadata from downloaded HuggingFace files.
 
 This attempts to extract ETags and other metadata that can be used
 for integrity verification when SHA256 checksums are not available.
 
-##### get_file_metadata(self: Any, source_url: str, file_path: str) -> <ast.Subscript object at 0x000001942FCA0850>
+##### get_file_metadata(self: Any, source_url: str, file_path: str) -> <ast.Subscript object at 0x00000194284A4850>
 
 Get metadata for a specific file from HuggingFace Hub.
 

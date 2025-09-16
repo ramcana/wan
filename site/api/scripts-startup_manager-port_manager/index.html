@@ -1057,7 +1057,7 @@ with Windows-specific handling for firewall and permission issues.</p>
 <p>Handles Windows-specific issues like firewall blocking and provides intelligent
 port allocation with conflict resolution.</p>
 <h4 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h4>
-<h5 id="initself-any-config_path"><strong>init</strong>(self: Any, config_path: <ast.Subscript object at 0x0000019434077A90>)<a class="headerlink" href="#initself-any-config_path" title="Permanent link">&para;</a></h5>
+<h5 id="initself-any-config_path"><strong>init</strong>(self: Any, config_path: <ast.Subscript object at 0x0000019427FAE3B0>)<a class="headerlink" href="#initself-any-config_path" title="Permanent link">&para;</a></h5>
 <h5 id="check_port_availabilityself-any-port-int-host-str-portcheckresult">check_port_availability(self: Any, port: int, host: str) -&gt; PortCheckResult<a class="headerlink" href="#check_port_availabilityself-any-port-int-host-str-portcheckresult" title="Permanent link">&para;</a></h5>
 <p>Check if a specific port is available for binding.</p>
 <p>Args:
@@ -1065,7 +1065,7 @@ port allocation with conflict resolution.</p>
     host: Host address to check (default: localhost)</p>
 <p>Returns:
     PortCheckResult with status and details</p>
-<h5 id="_get_process_using_portself-any-port-int-">_get_process_using_port(self: Any, port: int) -&gt; <ast.Subscript object at 0x0000019434319E40><a class="headerlink" href="#_get_process_using_portself-any-port-int-" title="Permanent link">&para;</a></h5>
+<h5 id="_get_process_using_portself-any-port-int-">_get_process_using_port(self: Any, port: int) -&gt; <ast.Subscript object at 0x0000019428DDD4B0><a class="headerlink" href="#_get_process_using_portself-any-port-int-" title="Permanent link">&para;</a></h5>
 <p>Get information about the process using a specific port.</p>
 <p>Args:
     port: Port number to check</p>
@@ -1077,26 +1077,26 @@ port allocation with conflict resolution.</p>
     process: Process to check</p>
 <p>Returns:
     True if process can be safely terminated</p>
-<h5 id="find_available_portself-any-start_port-int-max_attempts-int-">find_available_port(self: Any, start_port: int, max_attempts: int) -&gt; <ast.Subscript object at 0x00000194345E2FE0><a class="headerlink" href="#find_available_portself-any-start_port-int-max_attempts-int-" title="Permanent link">&para;</a></h5>
+<h5 id="find_available_portself-any-start_port-int-max_attempts-int-">find_available_port(self: Any, start_port: int, max_attempts: int) -&gt; <ast.Subscript object at 0x0000019428DDE4D0><a class="headerlink" href="#find_available_portself-any-start_port-int-max_attempts-int-" title="Permanent link">&para;</a></h5>
 <p>Find the next available port starting from the given port.</p>
 <p>Args:
     start_port: Starting port number
     max_attempts: Maximum number of ports to try</p>
 <p>Returns:
     Available port number or None if none found</p>
-<h5 id="find_available_ports_in_rangeself-any-port_range-">find_available_ports_in_range(self: Any, port_range: <ast.Subscript object at 0x00000194345E0F10>) -&gt; <ast.Subscript object at 0x00000194345E1780><a class="headerlink" href="#find_available_ports_in_rangeself-any-port_range-" title="Permanent link">&para;</a></h5>
+<h5 id="find_available_ports_in_rangeself-any-port_range-">find_available_ports_in_range(self: Any, port_range: <ast.Subscript object at 0x0000019428DDDF30>) -&gt; <ast.Subscript object at 0x0000019428DDFEE0><a class="headerlink" href="#find_available_ports_in_rangeself-any-port_range-" title="Permanent link">&para;</a></h5>
 <p>Find all available ports in a given range.</p>
 <p>Args:
     port_range: Tuple of (start_port, end_port)</p>
 <p>Returns:
     List of available port numbers</p>
-<h5 id="detect_port_conflictsself-any-required_ports-">detect_port_conflicts(self: Any, required_ports: <ast.Subscript object at 0x00000194345E2E30>) -&gt; <ast.Subscript object at 0x00000194345E18D0><a class="headerlink" href="#detect_port_conflictsself-any-required_ports-" title="Permanent link">&para;</a></h5>
+<h5 id="detect_port_conflictsself-any-required_ports-">detect_port_conflicts(self: Any, required_ports: <ast.Subscript object at 0x0000019428DDEDA0>) -&gt; <ast.Subscript object at 0x0000019427BE0670><a class="headerlink" href="#detect_port_conflictsself-any-required_ports-" title="Permanent link">&para;</a></h5>
 <p>Detect conflicts for required ports.</p>
 <p>Args:
     required_ports: Dictionary of service names to port numbers</p>
 <p>Returns:
     List of detected port conflicts</p>
-<h5 id="check_firewall_exceptionsself-any-ports-">check_firewall_exceptions(self: Any, ports: <ast.Subscript object at 0x00000194345E2C80>) -&gt; <ast.Subscript object at 0x00000194345E12A0><a class="headerlink" href="#check_firewall_exceptionsself-any-ports-" title="Permanent link">&para;</a></h5>
+<h5 id="check_firewall_exceptionsself-any-ports-">check_firewall_exceptions(self: Any, ports: <ast.Subscript object at 0x0000019427BE0EE0>) -&gt; <ast.Subscript object at 0x0000019427BE2770><a class="headerlink" href="#check_firewall_exceptionsself-any-ports-" title="Permanent link">&para;</a></h5>
 <p>Check if ports have firewall exceptions (Windows-specific).</p>
 <p>Args:
     ports: List of port numbers to check</p>
@@ -1109,13 +1109,13 @@ port allocation with conflict resolution.</p>
     service_name: Name for the firewall rule</p>
 <p>Returns:
     Command string to add firewall exception</p>
-<h5 id="allocate_portsself-any-required_ports-portallocation">allocate_ports(self: Any, required_ports: <ast.Subscript object at 0x00000194345E1090>) -&gt; PortAllocation<a class="headerlink" href="#allocate_portsself-any-required_ports-portallocation" title="Permanent link">&para;</a></h5>
+<h5 id="allocate_portsself-any-required_ports-portallocation">allocate_ports(self: Any, required_ports: <ast.Subscript object at 0x0000019427BE34F0>) -&gt; PortAllocation<a class="headerlink" href="#allocate_portsself-any-required_ports-portallocation" title="Permanent link">&para;</a></h5>
 <p>Allocate ports for services, resolving conflicts automatically.</p>
 <p>Args:
     required_ports: Dictionary of service names to preferred port numbers</p>
 <p>Returns:
     PortAllocation with assigned ports and resolution details</p>
-<h5 id="_find_alternative_portself-any-service_name-str-preferred_port-int-">_find_alternative_port(self: Any, service_name: str, preferred_port: int) -&gt; <ast.Subscript object at 0x0000019431B5F100><a class="headerlink" href="#_find_alternative_portself-any-service_name-str-preferred_port-int-" title="Permanent link">&para;</a></h5>
+<h5 id="_find_alternative_portself-any-service_name-str-preferred_port-int-">_find_alternative_port(self: Any, service_name: str, preferred_port: int) -&gt; <ast.Subscript object at 0x0000019429C43970><a class="headerlink" href="#_find_alternative_portself-any-service_name-str-preferred_port-int-" title="Permanent link">&para;</a></h5>
 <p>Find an alternative port for a service.</p>
 <p>Args:
     service_name: Name of the service
@@ -1129,7 +1129,7 @@ port allocation with conflict resolution.</p>
     force: If True, use SIGKILL instead of SIGTERM</p>
 <p>Returns:
     True if process was terminated successfully</p>
-<h5 id="resolve_port_conflictsself-any-conflicts-strategy-conflictresolution-">resolve_port_conflicts(self: Any, conflicts: <ast.Subscript object at 0x00000194341FA4A0>, strategy: ConflictResolution) -&gt; <ast.Subscript object at 0x00000194341F8490><a class="headerlink" href="#resolve_port_conflictsself-any-conflicts-strategy-conflictresolution-" title="Permanent link">&para;</a></h5>
+<h5 id="resolve_port_conflictsself-any-conflicts-strategy-conflictresolution-">resolve_port_conflicts(self: Any, conflicts: <ast.Subscript object at 0x0000019427FBE8F0>, strategy: ConflictResolution) -&gt; <ast.Subscript object at 0x0000019427FBF6D0><a class="headerlink" href="#resolve_port_conflictsself-any-conflicts-strategy-conflictresolution-" title="Permanent link">&para;</a></h5>
 <p>Resolve port conflicts using the specified strategy.</p>
 <p>Args:
     conflicts: List of port conflicts to resolve

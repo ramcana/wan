@@ -1159,13 +1159,13 @@ enhanced model availability system, ensuring operational visibility and proactiv
 <p>Collects metrics from the enhanced model availability system</p>
 <h4 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h4>
 <h5 id="initself-any"><strong>init</strong>(self: Any)<a class="headerlink" href="#initself-any" title="Permanent link">&para;</a></h5>
-<h5 id="record_metricself-any-name-str-metric_type-metrictype-value-float-labels-description-str">record_metric(self: Any, name: str, metric_type: MetricType, value: float, labels: <ast.Subscript object at 0x000001942FDECB20>, description: str)<a class="headerlink" href="#record_metricself-any-name-str-metric_type-metrictype-value-float-labels-description-str" title="Permanent link">&para;</a></h5>
+<h5 id="record_metricself-any-name-str-metric_type-metrictype-value-float-labels-description-str">record_metric(self: Any, name: str, metric_type: MetricType, value: float, labels: <ast.Subscript object at 0x000001942CC89090>, description: str)<a class="headerlink" href="#record_metricself-any-name-str-metric_type-metrictype-value-float-labels-description-str" title="Permanent link">&para;</a></h5>
 <p>Record a metric value</p>
-<h5 id="get_metricself-any-name-str-">get_metric(self: Any, name: str) -&gt; <ast.Subscript object at 0x000001942FE23B50><a class="headerlink" href="#get_metricself-any-name-str-" title="Permanent link">&para;</a></h5>
+<h5 id="get_metricself-any-name-str-">get_metric(self: Any, name: str) -&gt; <ast.Subscript object at 0x000001942CC8B640><a class="headerlink" href="#get_metricself-any-name-str-" title="Permanent link">&para;</a></h5>
 <p>Get current value of a metric</p>
-<h5 id="get_metrics_by_prefixself-any-prefix-str-">get_metrics_by_prefix(self: Any, prefix: str) -&gt; <ast.Subscript object at 0x000001942FE236A0><a class="headerlink" href="#get_metrics_by_prefixself-any-prefix-str-" title="Permanent link">&para;</a></h5>
+<h5 id="get_metrics_by_prefixself-any-prefix-str-">get_metrics_by_prefix(self: Any, prefix: str) -&gt; <ast.Subscript object at 0x000001942CC89DE0><a class="headerlink" href="#get_metrics_by_prefixself-any-prefix-str-" title="Permanent link">&para;</a></h5>
 <p>Get all metrics with a given prefix</p>
-<h5 id="get_metric_historyself-any-name-str-hours-int-">get_metric_history(self: Any, name: str, hours: int) -&gt; <ast.Subscript object at 0x000001942FE3AEF0><a class="headerlink" href="#get_metric_historyself-any-name-str-hours-int-" title="Permanent link">&para;</a></h5>
+<h5 id="get_metric_historyself-any-name-str-hours-int-">get_metric_history(self: Any, name: str, hours: int) -&gt; <ast.Subscript object at 0x000001942CC8A740><a class="headerlink" href="#get_metric_historyself-any-name-str-hours-int-" title="Permanent link">&para;</a></h5>
 <p>Get metric history for the specified time period</p>
 <h3 id="alertmanager">AlertManager<a class="headerlink" href="#alertmanager" title="Permanent link">&para;</a></h3>
 <p>Manages alerts and notifications</p>
@@ -1173,7 +1173,7 @@ enhanced model availability system, ensuring operational visibility and proactiv
 <h5 id="initself-any-metrics_collector-metricscollector"><strong>init</strong>(self: Any, metrics_collector: MetricsCollector)<a class="headerlink" href="#initself-any-metrics_collector-metricscollector" title="Permanent link">&para;</a></h5>
 <h5 id="add_alert_ruleself-any-rule-alertrule">add_alert_rule(self: Any, rule: AlertRule)<a class="headerlink" href="#add_alert_ruleself-any-rule-alertrule" title="Permanent link">&para;</a></h5>
 <p>Add an alert rule</p>
-<h5 id="add_notification_handlerself-any-handler">add_notification_handler(self: Any, handler: <ast.Subscript object at 0x000001942F4479D0>)<a class="headerlink" href="#add_notification_handlerself-any-handler" title="Permanent link">&para;</a></h5>
+<h5 id="add_notification_handlerself-any-handler">add_notification_handler(self: Any, handler: <ast.Subscript object at 0x000001942CC8ADA0>)<a class="headerlink" href="#add_notification_handlerself-any-handler" title="Permanent link">&para;</a></h5>
 <p>Add a notification handler</p>
 <h5 id="check_alertsself-any">check_alerts(self: Any)<a class="headerlink" href="#check_alertsself-any" title="Permanent link">&para;</a></h5>
 <p>Check all alert rules against current metrics</p>
@@ -1205,9 +1205,9 @@ enhanced model availability system, ensuring operational visibility and proactiv
 <p>Setup default alert rules</p>
 <h5 id="_setup_notification_handlersself-any">_setup_notification_handlers(self: Any)<a class="headerlink" href="#_setup_notification_handlersself-any" title="Permanent link">&para;</a></h5>
 <p>Setup notification handlers</p>
-<h5 id="_load_configself-any-">_load_config(self: Any) -&gt; <ast.Subscript object at 0x0000019434529030><a class="headerlink" href="#_load_configself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="_load_configself-any-">_load_config(self: Any) -&gt; <ast.Subscript object at 0x0000019428A9C3A0><a class="headerlink" href="#_load_configself-any-" title="Permanent link">&para;</a></h5>
 <p>Load monitoring configuration</p>
-<h5 id="get_monitoring_statusself-any-">get_monitoring_status(self: Any) -&gt; <ast.Subscript object at 0x0000019434529150><a class="headerlink" href="#get_monitoring_statusself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="get_monitoring_statusself-any-">get_monitoring_status(self: Any) -&gt; <ast.Subscript object at 0x0000019428A9F460><a class="headerlink" href="#get_monitoring_statusself-any-" title="Permanent link">&para;</a></h5>
 <p>Get current monitoring status</p>
 <h5 id="export_metricsself-any-format-str-str">export_metrics(self: Any, format: str) -&gt; str<a class="headerlink" href="#export_metricsself-any-format-str-str" title="Permanent link">&para;</a></h5>
 <p>Export metrics in specified format</p>

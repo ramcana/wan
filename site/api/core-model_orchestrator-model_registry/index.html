@@ -932,7 +932,7 @@ with support for schema versioning and migration guidance.</p>
 <p>Load and parse the TOML manifest file.</p>
 <h5 id="_parse_model_specself-any-model_key-str-model_data-dict-modelspec">_parse_model_spec(self: Any, model_key: str, model_data: dict) -&gt; ModelSpec<a class="headerlink" href="#_parse_model_specself-any-model_key-str-model_data-dict-modelspec" title="Permanent link">&para;</a></h5>
 <p>Parse a single model specification from manifest data.</p>
-<h5 id="specself-any-model_id-str-variant-modelspec">spec(self: Any, model_id: str, variant: <ast.Subscript object at 0x000001942F68BBE0>) -&gt; ModelSpec<a class="headerlink" href="#specself-any-model_id-str-variant-modelspec" title="Permanent link">&para;</a></h5>
+<h5 id="specself-any-model_id-str-variant-modelspec">spec(self: Any, model_id: str, variant: <ast.Subscript object at 0x000001942792DDB0>) -&gt; ModelSpec<a class="headerlink" href="#specself-any-model_id-str-variant-modelspec" title="Permanent link">&para;</a></h5>
 <p>Get the specification for a model.</p>
 <p>Args:
     model_id: Model identifier (can include @version)
@@ -942,19 +942,19 @@ with support for schema versioning and migration guidance.</p>
 <p>Raises:
     ModelNotFoundError: If model is not found
     VariantNotFoundError: If variant is not available</p>
-<h5 id="list_modelsself-any-">list_models(self: Any) -&gt; <ast.Subscript object at 0x000001942FE1D4E0><a class="headerlink" href="#list_modelsself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="list_modelsself-any-">list_models(self: Any) -&gt; <ast.Subscript object at 0x000001942792FCD0><a class="headerlink" href="#list_modelsself-any-" title="Permanent link">&para;</a></h5>
 <p>Get a list of all available model IDs.</p>
-<h5 id="validate_manifestself-any-">validate_manifest(self: Any) -&gt; <ast.Subscript object at 0x000001942FE1E350><a class="headerlink" href="#validate_manifestself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="validate_manifestself-any-">validate_manifest(self: Any) -&gt; <ast.Subscript object at 0x000001942792F280><a class="headerlink" href="#validate_manifestself-any-" title="Permanent link">&para;</a></h5>
 <p>Validate the loaded manifest for consistency and safety.</p>
 <p>Returns:
     List of validation errors (empty if valid)</p>
-<h5 id="_validate_path_safetyself-any-paths-">_validate_path_safety(self: Any, paths: <ast.Subscript object at 0x000001942FE1DBA0>) -&gt; <ast.Subscript object at 0x000001942FE1CDF0><a class="headerlink" href="#_validate_path_safetyself-any-paths-" title="Permanent link">&para;</a></h5>
+<h5 id="_validate_path_safetyself-any-paths-">_validate_path_safety(self: Any, paths: <ast.Subscript object at 0x000001942792F130>) -&gt; <ast.Subscript object at 0x000001942C516B00><a class="headerlink" href="#_validate_path_safetyself-any-paths-" title="Permanent link">&para;</a></h5>
 <p>Validate paths for safety (no directory traversal).</p>
-<h5 id="_validate_case_collisionsself-any-paths-">_validate_case_collisions(self: Any, paths: <ast.Subscript object at 0x000001942FE1CB50>) -&gt; <ast.Subscript object at 0x00000194302C85B0><a class="headerlink" href="#_validate_case_collisionsself-any-paths-" title="Permanent link">&para;</a></h5>
+<h5 id="_validate_case_collisionsself-any-paths-">_validate_case_collisions(self: Any, paths: <ast.Subscript object at 0x000001942C516C20>) -&gt; <ast.Subscript object at 0x000001942CE1E260><a class="headerlink" href="#_validate_case_collisionsself-any-paths-" title="Permanent link">&para;</a></h5>
 <p>Validate for case collisions on case-insensitive file systems.</p>
 <h5 id="get_schema_versionself-any-str">get_schema_version(self: Any) -&gt; str<a class="headerlink" href="#get_schema_versionself-any-str" title="Permanent link">&para;</a></h5>
 <p>Get the schema version of the loaded manifest.</p>
-<h5 id="normalize_model_idmodel_id-str-variant-normalizedmodelid">normalize_model_id(model_id: str, variant: <ast.Subscript object at 0x00000194302CA7D0>) -&gt; NormalizedModelId<a class="headerlink" href="#normalize_model_idmodel_id-str-variant-normalizedmodelid" title="Permanent link">&para;</a></h5>
+<h5 id="normalize_model_idmodel_id-str-variant-normalizedmodelid">normalize_model_id(model_id: str, variant: <ast.Subscript object at 0x000001942CE1C9A0>) -&gt; NormalizedModelId<a class="headerlink" href="#normalize_model_idmodel_id-str-variant-normalizedmodelid" title="Permanent link">&para;</a></h5>
 <p>Normalize a model ID into canonical components.</p>
 <p>Args:
     model_id: Model identifier (may include @version and #variant)

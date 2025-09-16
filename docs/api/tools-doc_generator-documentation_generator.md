@@ -28,11 +28,11 @@ Main class for consolidating existing documentation and generating API docs
 
 #### Methods
 
-##### __init__(self: Any, source_dirs: <ast.Subscript object at 0x0000019434543F10>, output_dir: Path)
+##### __init__(self: Any, source_dirs: <ast.Subscript object at 0x000001942C653A00>, output_dir: Path)
 
 
 
-##### discover_documentation_files(self: Any) -> <ast.Subscript object at 0x0000019434541900>
+##### discover_documentation_files(self: Any) -> <ast.Subscript object at 0x00000194285221D0>
 
 Discover all documentation files in source directories
 
@@ -40,7 +40,7 @@ Discover all documentation files in source directories
 
 Check if file should be excluded from documentation
 
-##### parse_documentation_file(self: Any, file_path: Path) -> <ast.Subscript object at 0x0000019434542D70>
+##### parse_documentation_file(self: Any, file_path: Path) -> <ast.Subscript object at 0x000001942C555630>
 
 Parse a documentation file and extract metadata
 
@@ -48,27 +48,27 @@ Parse a documentation file and extract metadata
 
 Extract title from content or filename
 
-##### _extract_frontmatter(self: Any, content: str) -> <ast.Subscript object at 0x000001942F448BE0>
+##### _extract_frontmatter(self: Any, content: str) -> <ast.Subscript object at 0x000001942C554610>
 
 Extract YAML frontmatter from content
 
-##### _extract_links(self: Any, content: str) -> <ast.Subscript object at 0x000001942F448E20>
+##### _extract_links(self: Any, content: str) -> <ast.Subscript object at 0x000001942C557D90>
 
 Extract markdown links from content
 
-##### _determine_category(self: Any, file_path: Path, metadata: <ast.Subscript object at 0x000001942F4488B0>) -> str
+##### _determine_category(self: Any, file_path: Path, metadata: <ast.Subscript object at 0x000001942C554F70>) -> str
 
 Determine documentation category
 
-##### _extract_tags(self: Any, content: str, metadata: <ast.Subscript object at 0x000001943448C9A0>) -> <ast.Subscript object at 0x000001943448DF60>
+##### _extract_tags(self: Any, content: str, metadata: <ast.Subscript object at 0x000001942C554CD0>) -> <ast.Subscript object at 0x00000194284B2650>
 
 Extract tags from content and metadata
 
-##### generate_api_docs(self: Any, code_dirs: <ast.Subscript object at 0x000001943448D5D0>) -> <ast.Subscript object at 0x000001943448F6A0>
+##### generate_api_docs(self: Any, code_dirs: <ast.Subscript object at 0x00000194284B1A50>) -> <ast.Subscript object at 0x0000019428DDFD60>
 
 Generate API documentation from code annotations
 
-##### _parse_python_file(self: Any, file_path: Path) -> <ast.Subscript object at 0x00000194340D1840>
+##### _parse_python_file(self: Any, file_path: Path) -> <ast.Subscript object at 0x0000019428DDD270>
 
 Parse Python file and extract API documentation
 
@@ -76,15 +76,15 @@ Parse Python file and extract API documentation
 
 Get module name from file path
 
-##### _extract_class_info(self: Any, node: ast.ClassDef) -> <ast.Subscript object at 0x00000194340D02E0>
+##### _extract_class_info(self: Any, node: ast.ClassDef) -> <ast.Subscript object at 0x0000019427FBF4C0>
 
 Extract class information
 
-##### _extract_function_info(self: Any, node: ast.FunctionDef) -> <ast.Subscript object at 0x0000019432D9E050>
+##### _extract_function_info(self: Any, node: ast.FunctionDef) -> <ast.Subscript object at 0x0000019427FBDA50>
 
 Extract function information
 
-##### _extract_constant_info(self: Any, node: ast.Assign) -> <ast.Subscript object at 0x0000019432D9ECE0>
+##### _extract_constant_info(self: Any, node: ast.Assign) -> <ast.Subscript object at 0x0000019427FBF5B0>
 
 Extract constant information
 
@@ -112,7 +112,7 @@ Migrate file to target location with updated content
 
 Build link graph for cross-references
 
-##### _find_broken_links(self: Any) -> <ast.Subscript object at 0x000001942F6C8640>
+##### _find_broken_links(self: Any) -> <ast.Subscript object at 0x0000019427A6B040>
 
 Find broken links in documentation
 

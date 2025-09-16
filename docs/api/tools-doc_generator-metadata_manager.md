@@ -43,15 +43,15 @@ Scan all documentation files and extract metadata
 
 Check if file should be skipped
 
-##### _extract_metadata(self: Any, file_path: Path) -> <ast.Subscript object at 0x000001942FBC2440>
+##### _extract_metadata(self: Any, file_path: Path) -> <ast.Subscript object at 0x0000019427CA69E0>
 
 Extract metadata from a documentation file
 
-##### _parse_frontmatter(self: Any, content: str) -> <ast.Subscript object at 0x000001942FBC1990>
+##### _parse_frontmatter(self: Any, content: str) -> <ast.Subscript object at 0x0000019427CA7EB0>
 
 Parse YAML frontmatter from content
 
-##### _generate_basic_metadata(self: Any, file_path: Path) -> <ast.Subscript object at 0x000001942FBC2E60>
+##### _generate_basic_metadata(self: Any, file_path: Path) -> <ast.Subscript object at 0x0000019427CA7AF0>
 
 Generate basic metadata for files without frontmatter
 
@@ -63,11 +63,11 @@ Generate title from filename
 
 Infer category from file path
 
-##### _infer_tags(self: Any, file_path: Path) -> <ast.Subscript object at 0x000001942F42ED40>
+##### _infer_tags(self: Any, file_path: Path) -> <ast.Subscript object at 0x000001942CC44340>
 
 Infer tags from filename and path
 
-##### _extract_cross_references(self: Any, file_path: Path, relative_path: str) -> <ast.Subscript object at 0x0000019432E3B7C0>
+##### _extract_cross_references(self: Any, file_path: Path, relative_path: str) -> <ast.Subscript object at 0x00000194285C6440>
 
 Extract cross-references from a documentation file
 
@@ -79,7 +79,7 @@ Build complete documentation index
 
 Save documentation index to file
 
-##### load_index(self: Any) -> <ast.Subscript object at 0x0000019432E38430>
+##### load_index(self: Any) -> <ast.Subscript object at 0x000001942C5F3130>
 
 Load documentation index from file
 
@@ -91,15 +91,15 @@ Update metadata for a specific page
 
 Update frontmatter in a documentation file
 
-##### find_broken_references(self: Any) -> <ast.Subscript object at 0x0000019432DE5030>
+##### find_broken_references(self: Any) -> <ast.Subscript object at 0x000001942C5F1420>
 
 Find cross-references that point to non-existent pages
 
-##### suggest_related_pages(self: Any, page_path: str) -> <ast.Subscript object at 0x0000019432DE4730>
+##### suggest_related_pages(self: Any, page_path: str) -> <ast.Subscript object at 0x0000019427C7AD40>
 
 Suggest related pages based on tags and content
 
-##### generate_navigation_menu(self: Any) -> <ast.Subscript object at 0x0000019432DE7610>
+##### generate_navigation_menu(self: Any) -> <ast.Subscript object at 0x0000019427C7A080>
 
 Generate navigation menu structure
 

@@ -857,57 +857,57 @@
 <h4 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h4>
 <h5 id="initself-any-project_root-path"><strong>init</strong>(self: Any, project_root: Path)<a class="headerlink" href="#initself-any-project_root-path" title="Permanent link">&para;</a></h5>
 <p>Initialize CI integration manager.</p>
-<h5 id="setup_github_actionsself-any-config-bool">setup_github_actions(self: Any, config: <ast.Subscript object at 0x000001942FC72530>) -&gt; bool<a class="headerlink" href="#setup_github_actionsself-any-config-bool" title="Permanent link">&para;</a></h5>
+<h5 id="setup_github_actionsself-any-config-bool">setup_github_actions(self: Any, config: <ast.Subscript object at 0x0000019427C7F5B0>) -&gt; bool<a class="headerlink" href="#setup_github_actionsself-any-config-bool" title="Permanent link">&para;</a></h5>
 <p>Set up GitHub Actions workflow for quality enforcement.</p>
 <p>Args:
     config: Optional configuration for the workflow</p>
 <p>Returns:
     True if setup successful</p>
-<h5 id="setup_gitlab_ciself-any-config-bool">setup_gitlab_ci(self: Any, config: <ast.Subscript object at 0x000001942FC716C0>) -&gt; bool<a class="headerlink" href="#setup_gitlab_ciself-any-config-bool" title="Permanent link">&para;</a></h5>
+<h5 id="setup_gitlab_ciself-any-config-bool">setup_gitlab_ci(self: Any, config: <ast.Subscript object at 0x0000019427C7F340>) -&gt; bool<a class="headerlink" href="#setup_gitlab_ciself-any-config-bool" title="Permanent link">&para;</a></h5>
 <p>Set up GitLab CI pipeline for quality enforcement.</p>
 <p>Args:
     config: Optional configuration for the pipeline</p>
 <p>Returns:
     True if setup successful</p>
-<h5 id="setup_jenkinsself-any-config-bool">setup_jenkins(self: Any, config: <ast.Subscript object at 0x000001942FC70B20>) -&gt; bool<a class="headerlink" href="#setup_jenkinsself-any-config-bool" title="Permanent link">&para;</a></h5>
+<h5 id="setup_jenkinsself-any-config-bool">setup_jenkins(self: Any, config: <ast.Subscript object at 0x0000019427C7ED10>) -&gt; bool<a class="headerlink" href="#setup_jenkinsself-any-config-bool" title="Permanent link">&para;</a></h5>
 <p>Set up Jenkins pipeline for quality enforcement.</p>
 <p>Args:
     config: Optional configuration for the pipeline</p>
 <p>Returns:
     True if setup successful</p>
-<h5 id="create_quality_metrics_dashboardself-any-">create_quality_metrics_dashboard(self: Any) -&gt; <ast.Subscript object at 0x0000019430132350><a class="headerlink" href="#create_quality_metrics_dashboardself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="create_quality_metrics_dashboardself-any-">create_quality_metrics_dashboard(self: Any) -&gt; <ast.Subscript object at 0x00000194275814B0><a class="headerlink" href="#create_quality_metrics_dashboardself-any-" title="Permanent link">&para;</a></h5>
 <p>Create quality metrics tracking dashboard configuration.</p>
 <p>Returns:
     Dashboard configuration</p>
-<h5 id="run_quality_checksself-any-files-">run_quality_checks(self: Any, files: <ast.Subscript object at 0x0000019430130700>) -&gt; <ast.Subscript object at 0x00000194318D7940><a class="headerlink" href="#run_quality_checksself-any-files-" title="Permanent link">&para;</a></h5>
+<h5 id="run_quality_checksself-any-files-">run_quality_checks(self: Any, files: <ast.Subscript object at 0x0000019427581300>) -&gt; <ast.Subscript object at 0x000001942750B7C0><a class="headerlink" href="#run_quality_checksself-any-files-" title="Permanent link">&para;</a></h5>
 <p>Run comprehensive quality checks for CI/CD.</p>
 <p>Args:
     files: Optional list of files to check</p>
 <p>Returns:
     Quality check results</p>
-<h5 id="generate_quality_reportself-any-results-str">generate_quality_report(self: Any, results: <ast.Subscript object at 0x00000194318D7AF0>) -&gt; str<a class="headerlink" href="#generate_quality_reportself-any-results-str" title="Permanent link">&para;</a></h5>
+<h5 id="generate_quality_reportself-any-results-str">generate_quality_report(self: Any, results: <ast.Subscript object at 0x000001942750B610>) -&gt; str<a class="headerlink" href="#generate_quality_reportself-any-results-str" title="Permanent link">&para;</a></h5>
 <p>Generate quality report for CI/CD output.</p>
 <p>Args:
     results: Quality check results</p>
 <p>Returns:
     Formatted report string</p>
-<h5 id="update_quality_metricsself-any-results-bool">update_quality_metrics(self: Any, results: <ast.Subscript object at 0x0000019430126C80>) -&gt; bool<a class="headerlink" href="#update_quality_metricsself-any-results-bool" title="Permanent link">&para;</a></h5>
+<h5 id="update_quality_metricsself-any-results-bool">update_quality_metrics(self: Any, results: <ast.Subscript object at 0x000001942CCB70A0>) -&gt; bool<a class="headerlink" href="#update_quality_metricsself-any-results-bool" title="Permanent link">&para;</a></h5>
 <p>Update quality metrics tracking.</p>
 <p>Args:
     results: Quality check results</p>
 <p>Returns:
     True if update successful</p>
-<h5 id="_get_default_github_configself-any-">_get_default_github_config(self: Any) -&gt; <ast.Subscript object at 0x0000019432D7D5D0><a class="headerlink" href="#_get_default_github_configself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="_get_default_github_configself-any-">_get_default_github_config(self: Any) -&gt; <ast.Subscript object at 0x000001942CCE7E80><a class="headerlink" href="#_get_default_github_configself-any-" title="Permanent link">&para;</a></h5>
 <p>Get default GitHub Actions workflow configuration.</p>
-<h5 id="_get_default_gitlab_configself-any-">_get_default_gitlab_config(self: Any) -&gt; <ast.Subscript object at 0x0000019432D7CD90><a class="headerlink" href="#_get_default_gitlab_configself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="_get_default_gitlab_configself-any-">_get_default_gitlab_config(self: Any) -&gt; <ast.Subscript object at 0x000001942CCE7730><a class="headerlink" href="#_get_default_gitlab_configself-any-" title="Permanent link">&para;</a></h5>
 <p>Get default GitLab CI pipeline configuration.</p>
 <h5 id="_get_default_jenkins_configself-any-str">_get_default_jenkins_config(self: Any) -&gt; str<a class="headerlink" href="#_get_default_jenkins_configself-any-str" title="Permanent link">&para;</a></h5>
 <p>Get default Jenkins pipeline configuration.</p>
-<h5 id="_calculate_quality_metricsself-any-checks-">_calculate_quality_metrics(self: Any, checks: <ast.Subscript object at 0x0000019432D7CA60>) -&gt; <ast.Subscript object at 0x0000019432E672B0><a class="headerlink" href="#_calculate_quality_metricsself-any-checks-" title="Permanent link">&para;</a></h5>
+<h5 id="_calculate_quality_metricsself-any-checks-">_calculate_quality_metrics(self: Any, checks: <ast.Subscript object at 0x000001942CCE7310>) -&gt; <ast.Subscript object at 0x000001942CC09BA0><a class="headerlink" href="#_calculate_quality_metricsself-any-checks-" title="Permanent link">&para;</a></h5>
 <p>Calculate overall quality metrics from check results.</p>
 <h5 id="_get_quality_gradeself-any-score-float-str">_get_quality_grade(self: Any, score: float) -&gt; str<a class="headerlink" href="#_get_quality_gradeself-any-score-float-str" title="Permanent link">&para;</a></h5>
 <p>Get quality grade based on score.</p>
-<h5 id="get_ci_statusself-any-">get_ci_status(self: Any) -&gt; <ast.Subscript object at 0x0000019432E661A0><a class="headerlink" href="#get_ci_statusself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="get_ci_statusself-any-">get_ci_status(self: Any) -&gt; <ast.Subscript object at 0x000001942CC089D0><a class="headerlink" href="#get_ci_statusself-any-" title="Permanent link">&para;</a></h5>
 <p>Get status of CI/CD integration.</p>
 
 

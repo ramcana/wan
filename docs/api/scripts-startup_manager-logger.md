@@ -58,7 +58,7 @@ Features:
 
 #### Methods
 
-##### __init__(self: Any, name: str, log_dir: <ast.Subscript object at 0x000001942FBB2920>, console_level: str, file_level: str, json_level: str, max_file_size: int, backup_count: int, cleanup_days: int)
+##### __init__(self: Any, name: str, log_dir: <ast.Subscript object at 0x000001942CE12F80>, console_level: str, file_level: str, json_level: str, max_file_size: int, backup_count: int, cleanup_days: int)
 
 Initialize the logging system.
 
@@ -88,43 +88,43 @@ Setup JSON handler for structured logging.
 
 Clean up log files older than cleanup_days.
 
-##### debug(self: Any, message: str, extra_data: <ast.Subscript object at 0x0000019433D2E140>)
+##### debug(self: Any, message: str, extra_data: <ast.Subscript object at 0x0000019429C8BA00>)
 
 Log debug message.
 
-##### info(self: Any, message: str, extra_data: <ast.Subscript object at 0x000001942F8F8A90>)
+##### info(self: Any, message: str, extra_data: <ast.Subscript object at 0x0000019429C8B4F0>)
 
 Log info message.
 
-##### warning(self: Any, message: str, extra_data: <ast.Subscript object at 0x000001942F8F8280>)
+##### warning(self: Any, message: str, extra_data: <ast.Subscript object at 0x0000019427BB7DF0>)
 
 Log warning message.
 
-##### error(self: Any, message: str, extra_data: <ast.Subscript object at 0x000001942F8F8670>)
+##### error(self: Any, message: str, extra_data: <ast.Subscript object at 0x000001942C622E60>)
 
 Log error message.
 
-##### critical(self: Any, message: str, extra_data: <ast.Subscript object at 0x000001942F8F8460>)
+##### critical(self: Any, message: str, extra_data: <ast.Subscript object at 0x000001942C623970>)
 
 Log critical message.
 
-##### _log(self: Any, level: int, message: str, extra_data: <ast.Subscript object at 0x000001942F873490>)
+##### _log(self: Any, level: int, message: str, extra_data: <ast.Subscript object at 0x000001942C622A40>)
 
 Internal logging method with extra data support.
 
-##### log_startup_phase(self: Any, phase: str, details: <ast.Subscript object at 0x000001942F873430>)
+##### log_startup_phase(self: Any, phase: str, details: <ast.Subscript object at 0x000001942C621DE0>)
 
 Log startup phase with structured data.
 
-##### log_error_with_context(self: Any, error: Exception, context: <ast.Subscript object at 0x000001942F898850>)
+##### log_error_with_context(self: Any, error: Exception, context: <ast.Subscript object at 0x000001942C622320>)
 
 Log error with full context for debugging.
 
-##### log_performance_metric(self: Any, operation: str, duration: float, details: <ast.Subscript object at 0x000001942F898460>)
+##### log_performance_metric(self: Any, operation: str, duration: float, details: <ast.Subscript object at 0x000001942C621B10>)
 
 Log performance metrics.
 
-##### log_system_info(self: Any, info: <ast.Subscript object at 0x000001942F89AF50>)
+##### log_system_info(self: Any, info: <ast.Subscript object at 0x000001942CE2E470>)
 
 Log system information.
 
@@ -132,7 +132,7 @@ Log system information.
 
 Dynamically change console logging level.
 
-##### get_log_files(self: Any) -> <ast.Subscript object at 0x000001942FDCD840>
+##### get_log_files(self: Any) -> <ast.Subscript object at 0x000001942CE2F790>
 
 Get list of current log files.
 

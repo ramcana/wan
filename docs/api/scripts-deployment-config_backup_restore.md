@@ -43,11 +43,11 @@ Manages configuration backups and restores
 
 
 
-##### _get_config_patterns(self: Any) -> <ast.Subscript object at 0x0000019431886E30>
+##### _get_config_patterns(self: Any) -> <ast.Subscript object at 0x000001942C5F1A20>
 
 Get configuration file patterns for different backup types
 
-##### _load_manifests(self: Any) -> <ast.Subscript object at 0x000001942F723B20>
+##### _load_manifests(self: Any) -> <ast.Subscript object at 0x00000194289D2710>
 
 Load backup manifests from storage
 

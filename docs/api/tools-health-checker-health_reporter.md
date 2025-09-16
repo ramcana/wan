@@ -16,7 +16,7 @@ Generates comprehensive health reports with analytics and visualizations
 
 #### Methods
 
-##### __init__(self: Any, config: <ast.Subscript object at 0x0000019431A9D8A0>)
+##### __init__(self: Any, config: <ast.Subscript object at 0x0000019428D0CCA0>)
 
 
 
@@ -47,19 +47,19 @@ Generate Markdown report for documentation
 
 Print a formatted console report
 
-##### generate_dashboard_data(self: Any, report: HealthReport) -> <ast.Subscript object at 0x0000019431A3BAF0>
+##### generate_dashboard_data(self: Any, report: HealthReport) -> <ast.Subscript object at 0x0000019427919150>
 
 Generate data for real-time dashboard
 
-##### analyze_trends(self: Any, history_file: Path) -> <ast.Subscript object at 0x0000019434037370>
+##### analyze_trends(self: Any, history_file: Path) -> <ast.Subscript object at 0x00000194279195D0>
 
 Analyze health trends from historical data
 
-##### _calculate_volatility(self: Any, scores: <ast.Subscript object at 0x00000194340374F0>) -> float
+##### _calculate_volatility(self: Any, scores: <ast.Subscript object at 0x000001942CCF6D70>) -> float
 
 Calculate score volatility (standard deviation)
 
-##### _generate_trend_recommendations(self: Any, analysis: <ast.Subscript object at 0x0000019434037940>) -> <ast.Subscript object at 0x0000019431B62EF0>
+##### _generate_trend_recommendations(self: Any, analysis: <ast.Subscript object at 0x000001942CCF7550>) -> <ast.Subscript object at 0x0000019428D98B20>
 
 Generate recommendations based on trend analysis
 
@@ -107,7 +107,7 @@ Generate JavaScript for charts
 
 Generate table rows for component scores
 
-##### _generate_issues_markdown(self: Any, issues: <ast.Subscript object at 0x000001942F29BEE0>) -> str
+##### _generate_issues_markdown(self: Any, issues: <ast.Subscript object at 0x0000019428120760>) -> str
 
 Generate markdown for issues list
 

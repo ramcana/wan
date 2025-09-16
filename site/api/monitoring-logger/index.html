@@ -885,9 +885,9 @@
 <p>Logger for performance metrics and monitoring.</p>
 <h4 id="methods_1">Methods<a class="headerlink" href="#methods_1" title="Permanent link">&para;</a></h4>
 <h5 id="initself-any"><strong>init</strong>(self: Any)<a class="headerlink" href="#initself-any" title="Permanent link">&para;</a></h5>
-<h5 id="log_requestself-any-method-str-path-str-status_code-int-duration-float-user_id-none">log_request(self: Any, method: str, path: str, status_code: int, duration: float, user_id: <ast.Subscript object at 0x000001942FBF1E70>) -&gt; None<a class="headerlink" href="#log_requestself-any-method-str-path-str-status_code-int-duration-float-user_id-none" title="Permanent link">&para;</a></h5>
+<h5 id="log_requestself-any-method-str-path-str-status_code-int-duration-float-user_id-none">log_request(self: Any, method: str, path: str, status_code: int, duration: float, user_id: <ast.Subscript object at 0x0000019427FEA470>) -&gt; None<a class="headerlink" href="#log_requestself-any-method-str-path-str-status_code-int-duration-float-user_id-none" title="Permanent link">&para;</a></h5>
 <p>Log HTTP request metrics.</p>
-<h5 id="log_generationself-any-task_id-str-model_type-str-duration-float-success-bool-error_type-none">log_generation(self: Any, task_id: str, model_type: str, duration: float, success: bool, error_type: <ast.Subscript object at 0x000001942FBF1F60>) -&gt; None<a class="headerlink" href="#log_generationself-any-task_id-str-model_type-str-duration-float-success-bool-error_type-none" title="Permanent link">&para;</a></h5>
+<h5 id="log_generationself-any-task_id-str-model_type-str-duration-float-success-bool-error_type-none">log_generation(self: Any, task_id: str, model_type: str, duration: float, success: bool, error_type: <ast.Subscript object at 0x0000019427FEBC70>) -&gt; None<a class="headerlink" href="#log_generationself-any-task_id-str-model_type-str-duration-float-success-bool-error_type-none" title="Permanent link">&para;</a></h5>
 <p>Log generation task metrics.</p>
 <h5 id="log_system_metricsself-any-cpu_percent-float-ram_used_gb-float-gpu_percent-float-vram_used_mb-float-none">log_system_metrics(self: Any, cpu_percent: float, ram_used_gb: float, gpu_percent: float, vram_used_mb: float) -&gt; None<a class="headerlink" href="#log_system_metricsself-any-cpu_percent-float-ram_used_gb-float-gpu_percent-float-vram_used_mb-float-none" title="Permanent link">&para;</a></h5>
 <p>Log system resource metrics.</p>
@@ -897,11 +897,11 @@
 <p>Logger for error tracking and monitoring.</p>
 <h4 id="methods_2">Methods<a class="headerlink" href="#methods_2" title="Permanent link">&para;</a></h4>
 <h5 id="initself-any_1"><strong>init</strong>(self: Any)<a class="headerlink" href="#initself-any_1" title="Permanent link">&para;</a></h5>
-<h5 id="log_errorself-any-error-exception-context-user_id-request_id-none">log_error(self: Any, error: Exception, context: <ast.Subscript object at 0x0000019431A06860>, user_id: <ast.Subscript object at 0x0000019431A068C0>, request_id: <ast.Subscript object at 0x0000019431A07B50>) -&gt; None<a class="headerlink" href="#log_errorself-any-error-exception-context-user_id-request_id-none" title="Permanent link">&para;</a></h5>
+<h5 id="log_errorself-any-error-exception-context-user_id-request_id-none">log_error(self: Any, error: Exception, context: <ast.Subscript object at 0x00000194280CA620>, user_id: <ast.Subscript object at 0x00000194280C8AC0>, request_id: <ast.Subscript object at 0x00000194280C85B0>) -&gt; None<a class="headerlink" href="#log_errorself-any-error-exception-context-user_id-request_id-none" title="Permanent link">&para;</a></h5>
 <p>Log error with context information.</p>
-<h5 id="log_validation_errorself-any-field-str-value-any-message-str-request_id-none">log_validation_error(self: Any, field: str, value: Any, message: str, request_id: <ast.Subscript object at 0x0000019431A064A0>) -&gt; None<a class="headerlink" href="#log_validation_errorself-any-field-str-value-any-message-str-request_id-none" title="Permanent link">&para;</a></h5>
+<h5 id="log_validation_errorself-any-field-str-value-any-message-str-request_id-none">log_validation_error(self: Any, field: str, value: Any, message: str, request_id: <ast.Subscript object at 0x00000194280C9B40>) -&gt; None<a class="headerlink" href="#log_validation_errorself-any-field-str-value-any-message-str-request_id-none" title="Permanent link">&para;</a></h5>
 <p>Log validation error.</p>
-<h5 id="log_generation_errorself-any-task_id-str-model_type-str-error-exception-prompt-none">log_generation_error(self: Any, task_id: str, model_type: str, error: Exception, prompt: <ast.Subscript object at 0x0000019431A04D60>) -&gt; None<a class="headerlink" href="#log_generation_errorself-any-task_id-str-model_type-str-error-exception-prompt-none" title="Permanent link">&para;</a></h5>
+<h5 id="log_generation_errorself-any-task_id-str-model_type-str-error-exception-prompt-none">log_generation_error(self: Any, task_id: str, model_type: str, error: Exception, prompt: <ast.Subscript object at 0x00000194280C9450>) -&gt; None<a class="headerlink" href="#log_generation_errorself-any-task_id-str-model_type-str-error-exception-prompt-none" title="Permanent link">&para;</a></h5>
 <p>Log generation-specific error.</p>
 
 

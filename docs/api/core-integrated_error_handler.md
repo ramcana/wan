@@ -28,31 +28,31 @@ GenerationErrorHandler infrastructure for comprehensive error management.
 
 Setup logging configuration for integrated error handling
 
-##### _initialize_fastapi_error_patterns(self: Any) -> <ast.Subscript object at 0x0000019431B1FB80>
+##### _initialize_fastapi_error_patterns(self: Any) -> <ast.Subscript object at 0x000001942811A4D0>
 
 Initialize FastAPI-specific error patterns
 
-##### _initialize_recovery_strategies(self: Any) -> <ast.Subscript object at 0x0000019431AD5060>
+##### _initialize_recovery_strategies(self: Any) -> <ast.Subscript object at 0x0000019427C87970>
 
 Initialize recovery strategies specific to FastAPI integration
 
-##### _enhance_context_for_fastapi(self: Any, context: <ast.Subscript object at 0x0000019431B0FD60>) -> <ast.Subscript object at 0x0000019431B0EF80>
+##### _enhance_context_for_fastapi(self: Any, context: <ast.Subscript object at 0x0000019427C866B0>) -> <ast.Subscript object at 0x0000019427C858D0>
 
 Enhance error context with FastAPI-specific information
 
-##### _enhance_error_for_fastapi(self: Any, user_error: UserFriendlyError, context: <ast.Subscript object at 0x0000019431B0ED70>) -> UserFriendlyError
+##### _enhance_error_for_fastapi(self: Any, user_error: UserFriendlyError, context: <ast.Subscript object at 0x0000019427C856C0>) -> UserFriendlyError
 
 Enhance existing error with FastAPI-specific recovery suggestions
 
-##### _get_fastapi_recovery_suggestions(self: Any, category: ErrorCategory, context: <ast.Subscript object at 0x0000019431B09AB0>) -> <ast.Subscript object at 0x0000019431B08820>
+##### _get_fastapi_recovery_suggestions(self: Any, category: ErrorCategory, context: <ast.Subscript object at 0x0000019427C40400>) -> <ast.Subscript object at 0x0000019427C33130>
 
 Get FastAPI-specific recovery suggestions
 
-##### _handle_error_integrated(self: Any, error: Exception, context: <ast.Subscript object at 0x0000019431B08670>) -> UserFriendlyError
+##### _handle_error_integrated(self: Any, error: Exception, context: <ast.Subscript object at 0x0000019427C32F80>) -> UserFriendlyError
 
 Handle error using integrated fallback implementation
 
-##### _categorize_error_integrated(self: Any, error_message: str, context: <ast.Subscript object at 0x0000019431B134C0>) -> ErrorCategory
+##### _categorize_error_integrated(self: Any, error_message: str, context: <ast.Subscript object at 0x0000019427C31E10>) -> ErrorCategory
 
 Categorize error using integrated patterns
 
@@ -60,27 +60,27 @@ Categorize error using integrated patterns
 
 Determine error severity for integrated handling
 
-##### _generate_error_message_integrated(self: Any, error: Exception, category: ErrorCategory, context: <ast.Subscript object at 0x0000019431A8C130>) -> <ast.Subscript object at 0x0000019431AEB880>
+##### _generate_error_message_integrated(self: Any, error: Exception, category: ErrorCategory, context: <ast.Subscript object at 0x0000019427C1EA40>) -> <ast.Subscript object at 0x0000019427C1E1D0>
 
 Generate user-friendly error message for integrated handling
 
-##### _generate_recovery_suggestions_integrated(self: Any, category: ErrorCategory, error: Exception, context: <ast.Subscript object at 0x00000194300CF310>) -> <ast.Subscript object at 0x00000194300CE530>
+##### _generate_recovery_suggestions_integrated(self: Any, category: ErrorCategory, error: Exception, context: <ast.Subscript object at 0x0000019427C71C60>) -> <ast.Subscript object at 0x0000019427C70E80>
 
 Generate recovery suggestions for integrated handling
 
-##### _format_technical_details_integrated(self: Any, error: Exception, context: <ast.Subscript object at 0x00000194300CE380>) -> str
+##### _format_technical_details_integrated(self: Any, error: Exception, context: <ast.Subscript object at 0x0000019427C70CD0>) -> str
 
 Format technical details for integrated handling
 
-##### get_error_categories(self: Any) -> <ast.Subscript object at 0x000001943007D360>
+##### get_error_categories(self: Any) -> <ast.Subscript object at 0x000001942C65FC70>
 
 Get list of available error categories
 
-##### get_system_status(self: Any) -> <ast.Subscript object at 0x000001943007C250>
+##### get_system_status(self: Any) -> <ast.Subscript object at 0x000001942C65EB60>
 
 Get current system status for error context
 
-##### _is_wan_model_error(self: Any, error: Exception, context: <ast.Subscript object at 0x00000194318AA2F0>) -> bool
+##### _is_wan_model_error(self: Any, error: Exception, context: <ast.Subscript object at 0x0000019428088AC0>) -> bool
 
 Check if this is a WAN model-specific error
 

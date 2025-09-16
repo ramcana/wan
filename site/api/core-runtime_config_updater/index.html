@@ -884,8 +884,8 @@ application restart, with proper validation and rollback mechanisms.</p>
 <h3 id="runtimeconfigurationupdater">RuntimeConfigurationUpdater<a class="headerlink" href="#runtimeconfigurationupdater" title="Permanent link">&para;</a></h3>
 <p>Manages runtime configuration updates without application restart</p>
 <h4 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h4>
-<h5 id="initself-any-config_manager"><strong>init</strong>(self: Any, config_manager: <ast.Subscript object at 0x0000019432DCF670>)<a class="headerlink" href="#initself-any-config_manager" title="Permanent link">&para;</a></h5>
-<h5 id="start_monitoringself-any-watch_paths-none">start_monitoring(self: Any, watch_paths: <ast.Subscript object at 0x0000019432DCE9E0>) -&gt; None<a class="headerlink" href="#start_monitoringself-any-watch_paths-none" title="Permanent link">&para;</a></h5>
+<h5 id="initself-any-config_manager"><strong>init</strong>(self: Any, config_manager: <ast.Subscript object at 0x000001942A18FBE0>)<a class="headerlink" href="#initself-any-config_manager" title="Permanent link">&para;</a></h5>
+<h5 id="start_monitoringself-any-watch_paths-none">start_monitoring(self: Any, watch_paths: <ast.Subscript object at 0x000001942A18EF50>) -&gt; None<a class="headerlink" href="#start_monitoringself-any-watch_paths-none" title="Permanent link">&para;</a></h5>
 <p>Start monitoring configuration files for changes</p>
 <p>Args:
     watch_paths: List of paths to monitor, defaults to config file directory</p>
@@ -898,7 +898,7 @@ application restart, with proper validation and rollback mechanisms.</p>
     callback: Async function to call on updates</p>
 <h5 id="remove_update_callbackself-any-section-str-callback-callable-none">remove_update_callback(self: Any, section: str, callback: Callable) -&gt; None<a class="headerlink" href="#remove_update_callbackself-any-section-str-callback-callable-none" title="Permanent link">&para;</a></h5>
 <p>Remove configuration update callback</p>
-<h5 id="get_rollback_historyself-any-">get_rollback_history(self: Any) -&gt; <ast.Subscript object at 0x0000019431B043D0><a class="headerlink" href="#get_rollback_historyself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="get_rollback_historyself-any-">get_rollback_history(self: Any) -&gt; <ast.Subscript object at 0x000001942880C940><a class="headerlink" href="#get_rollback_historyself-any-" title="Permanent link">&para;</a></h5>
 <p>Get list of available rollback points</p>
 <h5 id="_create_rollback_pointself-any-none">_create_rollback_point(self: Any) -&gt; None<a class="headerlink" href="#_create_rollback_pointself-any-none" title="Permanent link">&para;</a></h5>
 <p>Create a rollback point with current configuration</p>

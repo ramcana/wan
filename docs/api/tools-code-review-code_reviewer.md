@@ -43,19 +43,19 @@ Main code review and refactoring assistance system
 
 
 
-##### _load_config(self: Any) -> <ast.Subscript object at 0x000001942FA78610>
+##### _load_config(self: Any) -> <ast.Subscript object at 0x000001942C83E8C0>
 
 Load code review configuration
 
-##### review_file(self: Any, file_path: str) -> <ast.Subscript object at 0x000001942F70D5D0>
+##### review_file(self: Any, file_path: str) -> <ast.Subscript object at 0x000001942C83D270>
 
 Review a single file and return issues
 
-##### review_project(self: Any, include_patterns: <ast.Subscript object at 0x000001942F70D720>) -> <ast.Subscript object at 0x000001942F70E860>
+##### review_project(self: Any, include_patterns: <ast.Subscript object at 0x000001942C83D120>) -> <ast.Subscript object at 0x0000019427F97160>
 
 Review entire project
 
-##### _generate_refactoring_recommendations(self: Any, file_path: str, issues: <ast.Subscript object at 0x000001942F70F1C0>) -> <ast.Subscript object at 0x000001942F6FBE80>
+##### _generate_refactoring_recommendations(self: Any, file_path: str, issues: <ast.Subscript object at 0x0000019427F97430>) -> <ast.Subscript object at 0x0000019428D3BD30>
 
 Generate refactoring recommendations based on issues
 
@@ -63,11 +63,11 @@ Generate refactoring recommendations based on issues
 
 Update technical debt tracking based on current issues
 
-##### _calculate_priority_score(self: Any, issues: <ast.Subscript object at 0x000001942F6DDCC0>) -> float
+##### _calculate_priority_score(self: Any, issues: <ast.Subscript object at 0x000001942CC8A3E0>) -> float
 
 Calculate priority score for technical debt
 
-##### _generate_summary(self: Any) -> <ast.Subscript object at 0x000001942F6DE5F0>
+##### _generate_summary(self: Any) -> <ast.Subscript object at 0x000001942CC8AFB0>
 
 Generate review summary
 
@@ -81,7 +81,7 @@ Analyzes code complexity
 
 #### Methods
 
-##### analyze(self: Any, file_path: str, tree: ast.AST, content: str) -> <ast.Subscript object at 0x000001942F6C6590>
+##### analyze(self: Any, file_path: str, tree: ast.AST, content: str) -> <ast.Subscript object at 0x000001942B33EB30>
 
 
 
@@ -95,7 +95,7 @@ Analyzes code maintainability
 
 #### Methods
 
-##### analyze(self: Any, file_path: str, tree: ast.AST, content: str) -> <ast.Subscript object at 0x000001942F92AEF0>
+##### analyze(self: Any, file_path: str, tree: ast.AST, content: str) -> <ast.Subscript object at 0x0000019427AD9BD0>
 
 
 
@@ -105,7 +105,7 @@ Analyzes potential performance issues
 
 #### Methods
 
-##### analyze(self: Any, file_path: str, tree: ast.AST, content: str) -> <ast.Subscript object at 0x000001942F92B190>
+##### analyze(self: Any, file_path: str, tree: ast.AST, content: str) -> <ast.Subscript object at 0x0000019427AD83D0>
 
 
 
@@ -119,7 +119,7 @@ Analyzes potential security issues
 
 #### Methods
 
-##### analyze(self: Any, file_path: str, tree: ast.AST, content: str) -> <ast.Subscript object at 0x000001942F220A60>
+##### analyze(self: Any, file_path: str, tree: ast.AST, content: str) -> <ast.Subscript object at 0x0000019427AD97E0>
 
 
 

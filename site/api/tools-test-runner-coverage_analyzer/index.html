@@ -1192,9 +1192,9 @@
 <p>Complete coverage report</p>
 <h4 id="methods_2">Methods<a class="headerlink" href="#methods_2" title="Permanent link">&para;</a></h4>
 <h5 id="uncovered_linesself-any-int">uncovered_lines(self: Any) -&gt; int<a class="headerlink" href="#uncovered_linesself-any-int" title="Permanent link">&para;</a></h5>
-<h5 id="files_with_low_coverageself-any-">files_with_low_coverage(self: Any) -&gt; <ast.Subscript object at 0x0000019430151660><a class="headerlink" href="#files_with_low_coverageself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="files_with_low_coverageself-any-">files_with_low_coverage(self: Any) -&gt; <ast.Subscript object at 0x0000019429095FC0><a class="headerlink" href="#files_with_low_coverageself-any-" title="Permanent link">&para;</a></h5>
 <p>Get files below the coverage threshold</p>
-<h5 id="fully_covered_filesself-any-">fully_covered_files(self: Any) -&gt; <ast.Subscript object at 0x00000194301512A0><a class="headerlink" href="#fully_covered_filesself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="fully_covered_filesself-any-">fully_covered_files(self: Any) -&gt; <ast.Subscript object at 0x0000019429095C00><a class="headerlink" href="#fully_covered_filesself-any-" title="Permanent link">&para;</a></h5>
 <p>Get files with 100% coverage</p>
 <h3 id="coveragetrend">CoverageTrend<a class="headerlink" href="#coveragetrend" title="Permanent link">&para;</a></h3>
 <p>Coverage trend analysis over time</p>
@@ -1206,42 +1206,42 @@
 <h4 id="methods_4">Methods<a class="headerlink" href="#methods_4" title="Permanent link">&para;</a></h4>
 <h5 id="add_reportself-any-timestamp-datetime-coverage-float">add_report(self: Any, timestamp: datetime, coverage: float)<a class="headerlink" href="#add_reportself-any-timestamp-datetime-coverage-float" title="Permanent link">&para;</a></h5>
 <p>Add a coverage report to history</p>
-<h5 id="get_trendself-any-">get_trend(self: Any) -&gt; <ast.Subscript object at 0x0000019430156AA0><a class="headerlink" href="#get_trendself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="get_trendself-any-">get_trend(self: Any) -&gt; <ast.Subscript object at 0x0000019429013400><a class="headerlink" href="#get_trendself-any-" title="Permanent link">&para;</a></h5>
 <p>Calculate coverage trend</p>
 <h3 id="coveragethresholdvalidator">CoverageThresholdValidator<a class="headerlink" href="#coveragethresholdvalidator" title="Permanent link">&para;</a></h3>
 <p>Validates coverage against thresholds and policies</p>
 <h4 id="methods_5">Methods<a class="headerlink" href="#methods_5" title="Permanent link">&para;</a></h4>
 <h5 id="initself-any-config-testconfig"><strong>init</strong>(self: Any, config: TestConfig)<a class="headerlink" href="#initself-any-config-testconfig" title="Permanent link">&para;</a></h5>
-<h5 id="validate_coverageself-any-report-coveragereport-">validate_coverage(self: Any, report: CoverageReport) -&gt; <ast.Subscript object at 0x0000019430154070><a class="headerlink" href="#validate_coverageself-any-report-coveragereport-" title="Permanent link">&para;</a></h5>
+<h5 id="validate_coverageself-any-report-coveragereport-">validate_coverage(self: Any, report: CoverageReport) -&gt; <ast.Subscript object at 0x00000194290109D0><a class="headerlink" href="#validate_coverageself-any-report-coveragereport-" title="Permanent link">&para;</a></h5>
 <p>Validate coverage report against all thresholds</p>
 <p>Returns:
     Dictionary with validation results</p>
-<h5 id="_generate_recommendationsself-any-report-coveragereport-">_generate_recommendations(self: Any, report: CoverageReport) -&gt; <ast.Subscript object at 0x000001943015C370><a class="headerlink" href="#_generate_recommendationsself-any-report-coveragereport-" title="Permanent link">&para;</a></h5>
+<h5 id="_generate_recommendationsself-any-report-coveragereport-">_generate_recommendations(self: Any, report: CoverageReport) -&gt; <ast.Subscript object at 0x0000019429029030><a class="headerlink" href="#_generate_recommendationsself-any-report-coveragereport-" title="Permanent link">&para;</a></h5>
 <p>Generate actionable recommendations for improving coverage</p>
 <h3 id="coverageanalyzer">CoverageAnalyzer<a class="headerlink" href="#coverageanalyzer" title="Permanent link">&para;</a></h3>
 <p>Main coverage analyzer with measurement, reporting, and trend analysis</p>
 <h4 id="methods_6">Methods<a class="headerlink" href="#methods_6" title="Permanent link">&para;</a></h4>
 <h5 id="initself-any-config-testconfig_1"><strong>init</strong>(self: Any, config: TestConfig)<a class="headerlink" href="#initself-any-config-testconfig_1" title="Permanent link">&para;</a></h5>
-<h5 id="measure_coverageself-any-test_categories-source_dirs-coveragereport">measure_coverage(self: Any, test_categories: <ast.Subscript object at 0x000001942F45FB80>, source_dirs: <ast.Subscript object at 0x000001942F45FAC0>) -&gt; CoverageReport<a class="headerlink" href="#measure_coverageself-any-test_categories-source_dirs-coveragereport" title="Permanent link">&para;</a></h5>
+<h5 id="measure_coverageself-any-test_categories-source_dirs-coveragereport">measure_coverage(self: Any, test_categories: <ast.Subscript object at 0x0000019429028520>, source_dirs: <ast.Subscript object at 0x0000019429028460>) -&gt; CoverageReport<a class="headerlink" href="#measure_coverageself-any-test_categories-source_dirs-coveragereport" title="Permanent link">&para;</a></h5>
 <p>Measure code coverage for specified test categories</p>
 <p>Args:
     test_categories: Categories of tests to run for coverage
     source_dirs: Source directories to measure coverage for</p>
 <p>Returns:
     CoverageReport with detailed coverage information</p>
-<h5 id="_get_default_source_dirsself-any-">_get_default_source_dirs(self: Any) -&gt; <ast.Subscript object at 0x000001942F45E290><a class="headerlink" href="#_get_default_source_dirsself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="_get_default_source_dirsself-any-">_get_default_source_dirs(self: Any) -&gt; <ast.Subscript object at 0x000001942898EBF0><a class="headerlink" href="#_get_default_source_dirsself-any-" title="Permanent link">&para;</a></h5>
 <p>Get default source directories to measure coverage for</p>
-<h5 id="_run_tests_with_coverageself-any-test_categories-source_dirs-">_run_tests_with_coverage(self: Any, test_categories: <ast.Subscript object at 0x000001942F45E140>, source_dirs: <ast.Subscript object at 0x000001942F45E080>) -&gt; <ast.Subscript object at 0x000001942F3CF6A0><a class="headerlink" href="#_run_tests_with_coverageself-any-test_categories-source_dirs-" title="Permanent link">&para;</a></h5>
+<h5 id="_run_tests_with_coverageself-any-test_categories-source_dirs-">_run_tests_with_coverage(self: Any, test_categories: <ast.Subscript object at 0x000001942898EAA0>, source_dirs: <ast.Subscript object at 0x000001942898E9E0>) -&gt; <ast.Subscript object at 0x000001942898C040><a class="headerlink" href="#_run_tests_with_coverageself-any-test_categories-source_dirs-" title="Permanent link">&para;</a></h5>
 <p>Run tests with coverage measurement</p>
-<h5 id="_parse_coverage_dataself-any-coverage_data-test_categories-coveragereport">_parse_coverage_data(self: Any, coverage_data: <ast.Subscript object at 0x000001942F3CF460>, test_categories: <ast.Subscript object at 0x000001942F3CF3D0>) -&gt; CoverageReport<a class="headerlink" href="#_parse_coverage_dataself-any-coverage_data-test_categories-coveragereport" title="Permanent link">&para;</a></h5>
+<h5 id="_parse_coverage_dataself-any-coverage_data-test_categories-coveragereport">_parse_coverage_data(self: Any, coverage_data: <ast.Subscript object at 0x00000194289ABDC0>, test_categories: <ast.Subscript object at 0x00000194289ABD30>) -&gt; CoverageReport<a class="headerlink" href="#_parse_coverage_dataself-any-coverage_data-test_categories-coveragereport" title="Permanent link">&para;</a></h5>
 <p>Parse coverage data from XML and JSON reports</p>
-<h5 id="_parse_json_coverageself-any-json_file-path-test_categories-coveragereport">_parse_json_coverage(self: Any, json_file: Path, test_categories: <ast.Subscript object at 0x00000194341E5360>) -&gt; CoverageReport<a class="headerlink" href="#_parse_json_coverageself-any-json_file-path-test_categories-coveragereport" title="Permanent link">&para;</a></h5>
+<h5 id="_parse_json_coverageself-any-json_file-path-test_categories-coveragereport">_parse_json_coverage(self: Any, json_file: Path, test_categories: <ast.Subscript object at 0x0000019428949CC0>) -&gt; CoverageReport<a class="headerlink" href="#_parse_json_coverageself-any-json_file-path-test_categories-coveragereport" title="Permanent link">&para;</a></h5>
 <p>Parse JSON coverage report</p>
-<h5 id="_parse_xml_coverageself-any-xml_file-path-test_categories-coveragereport">_parse_xml_coverage(self: Any, xml_file: Path, test_categories: <ast.Subscript object at 0x00000194341730A0>) -&gt; CoverageReport<a class="headerlink" href="#_parse_xml_coverageself-any-xml_file-path-test_categories-coveragereport" title="Permanent link">&para;</a></h5>
+<h5 id="_parse_xml_coverageself-any-xml_file-path-test_categories-coveragereport">_parse_xml_coverage(self: Any, xml_file: Path, test_categories: <ast.Subscript object at 0x00000194289AF9A0>) -&gt; CoverageReport<a class="headerlink" href="#_parse_xml_coverageself-any-xml_file-path-test_categories-coveragereport" title="Permanent link">&para;</a></h5>
 <p>Parse XML coverage report (fallback)</p>
-<h5 id="validate_coverage_thresholdsself-any-report-coveragereport-">validate_coverage_thresholds(self: Any, report: CoverageReport) -&gt; <ast.Subscript object at 0x0000019434541030><a class="headerlink" href="#validate_coverage_thresholdsself-any-report-coveragereport-" title="Permanent link">&para;</a></h5>
+<h5 id="validate_coverage_thresholdsself-any-report-coveragereport-">validate_coverage_thresholds(self: Any, report: CoverageReport) -&gt; <ast.Subscript object at 0x000001942832AE30><a class="headerlink" href="#validate_coverage_thresholdsself-any-report-coveragereport-" title="Permanent link">&para;</a></h5>
 <p>Validate coverage report against configured thresholds</p>
-<h5 id="get_coverage_trendself-any-">get_coverage_trend(self: Any) -&gt; <ast.Subscript object at 0x000001942EFC0FA0><a class="headerlink" href="#get_coverage_trendself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="get_coverage_trendself-any-">get_coverage_trend(self: Any) -&gt; <ast.Subscript object at 0x000001942832AB60><a class="headerlink" href="#get_coverage_trendself-any-" title="Permanent link">&para;</a></h5>
 <p>Get coverage trend analysis</p>
 <h5 id="generate_coverage_reportself-any-report-coveragereport-output_path-path-format_type-str-path">generate_coverage_report(self: Any, report: CoverageReport, output_path: Path, format_type: str) -&gt; Path<a class="headerlink" href="#generate_coverage_reportself-any-report-coveragereport-output_path-path-format_type-str-path" title="Permanent link">&para;</a></h5>
 <p>Generate formatted coverage report</p>

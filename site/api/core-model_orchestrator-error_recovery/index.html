@@ -1013,7 +1013,7 @@
 <h3 id="errorrecoverymanager">ErrorRecoveryManager<a class="headerlink" href="#errorrecoverymanager" title="Permanent link">&para;</a></h3>
 <p>Manages error recovery strategies and retry logic.</p>
 <h4 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h4>
-<h5 id="initself-any-config"><strong>init</strong>(self: Any, config: <ast.Subscript object at 0x0000019434673FA0>)<a class="headerlink" href="#initself-any-config" title="Permanent link">&para;</a></h5>
+<h5 id="initself-any-config"><strong>init</strong>(self: Any, config: <ast.Subscript object at 0x000001942CE750C0>)<a class="headerlink" href="#initself-any-config" title="Permanent link">&para;</a></h5>
 <h5 id="get_failure_categoryself-any-error-exception-failurecategory">get_failure_category(self: Any, error: Exception) -&gt; FailureCategory<a class="headerlink" href="#get_failure_categoryself-any-error-exception-failurecategory" title="Permanent link">&para;</a></h5>
 <p>Determine the failure category for an error.</p>
 <h5 id="get_retry_configself-any-error-exception-retryconfig">get_retry_config(self: Any, error: Exception) -&gt; RetryConfig<a class="headerlink" href="#get_retry_configself-any-error-exception-retryconfig" title="Permanent link">&para;</a></h5>
@@ -1024,7 +1024,7 @@
 <p>Determine if an operation should be retried.</p>
 <h5 id="recovery_contextself-any-operation-str">recovery_context(self: Any, operation: str)<a class="headerlink" href="#recovery_contextself-any-operation-str" title="Permanent link">&para;</a></h5>
 <p>Create a recovery context for an operation.</p>
-<h5 id="retry_with_recoveryself-any-func-context-recoverycontext-t">retry_with_recovery(self: Any, func: <ast.Subscript object at 0x000001943448CD00>, context: RecoveryContext) -&gt; T<a class="headerlink" href="#retry_with_recoveryself-any-func-context-recoverycontext-t" title="Permanent link">&para;</a></h5>
+<h5 id="retry_with_recoveryself-any-func-context-recoverycontext-t">retry_with_recovery(self: Any, func: <ast.Subscript object at 0x000001942CE23520>, context: RecoveryContext) -&gt; T<a class="headerlink" href="#retry_with_recoveryself-any-func-context-recoverycontext-t" title="Permanent link">&para;</a></h5>
 <p>Execute a function with retry logic and error recovery.</p>
 <h5 id="_apply_recovery_strategyself-any-error-exception-context-recoverycontext">_apply_recovery_strategy(self: Any, error: Exception, context: RecoveryContext)<a class="headerlink" href="#_apply_recovery_strategyself-any-error-exception-context-recoverycontext" title="Permanent link">&para;</a></h5>
 <p>Apply recovery strategies based on the error type.</p>

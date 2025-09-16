@@ -63,7 +63,7 @@ Get HTTP session for the current thread.
 
 Update session statistics.
 
-##### get_stats(self: Any) -> <ast.Subscript object at 0x000001942FB6DC00>
+##### get_stats(self: Any) -> <ast.Subscript object at 0x0000019428D7C8B0>
 
 Get connection pool statistics.
 
@@ -106,32 +106,32 @@ queue management, and comprehensive performance optimization.
 
 #### Methods
 
-##### __init__(self: Any, max_concurrent_downloads: int, max_concurrent_files_per_model: int, max_bandwidth_bps: <ast.Subscript object at 0x000001942FC20D60>, connection_pool_size: int, chunk_size: int, enable_resume: bool, enable_adaptive_chunking: bool, enable_compression: bool, queue_timeout: float)
+##### __init__(self: Any, max_concurrent_downloads: int, max_concurrent_files_per_model: int, max_bandwidth_bps: <ast.Subscript object at 0x000001942A1077C0>, connection_pool_size: int, chunk_size: int, enable_resume: bool, enable_adaptive_chunking: bool, enable_compression: bool, queue_timeout: float)
 
 
 
-##### add_download_task(self: Any, model_id: str, file_path: str, source_url: str, local_path: Path, size: int, priority: DownloadPriority, progress_callback: <ast.Subscript object at 0x000001942F8153F0>) -> str
+##### add_download_task(self: Any, model_id: str, file_path: str, source_url: str, local_path: Path, size: int, priority: DownloadPriority, progress_callback: <ast.Subscript object at 0x00000194288234F0>) -> str
 
 Add a download task to the queue.
 
 Returns:
     Task ID for tracking the download
 
-##### queue_model_download(self: Any, model_id: str, file_specs: <ast.Subscript object at 0x000001942F8140D0>, source_url: str, local_dir: Path, priority: DownloadPriority, progress_callback: <ast.Subscript object at 0x000001942F767EB0>) -> str
+##### queue_model_download(self: Any, model_id: str, file_specs: <ast.Subscript object at 0x000001942880D5A0>, source_url: str, local_dir: Path, priority: DownloadPriority, progress_callback: <ast.Subscript object at 0x000001942880EBF0>) -> str
 
 Queue a complete model download with optimized parallel file handling.
 
 Returns:
     Queue ID for tracking the model download
 
-##### download_model_parallel(self: Any, model_id: str, file_specs: <ast.Subscript object at 0x000001942F7A13F0>, source_url: str, local_dir: Path, progress_callback: <ast.Subscript object at 0x000001942F7A1270>) -> <ast.Subscript object at 0x000001942F7A0BB0>
+##### download_model_parallel(self: Any, model_id: str, file_specs: <ast.Subscript object at 0x0000019428847A90>, source_url: str, local_dir: Path, progress_callback: <ast.Subscript object at 0x0000019428847DF0>) -> <ast.Subscript object at 0x0000019428844F70>
 
 Download all files for a model in parallel with enhanced performance optimization.
 
 Returns:
     Dictionary with download results and comprehensive statistics
 
-##### wait_for_model_completion(self: Any, queue_id: str, timeout: <ast.Subscript object at 0x000001942F8035E0>) -> <ast.Subscript object at 0x000001942F802620>
+##### wait_for_model_completion(self: Any, queue_id: str, timeout: <ast.Subscript object at 0x00000194288478E0>) -> <ast.Subscript object at 0x0000019428844100>
 
 Wait for a queued model download to complete.
 
@@ -142,7 +142,7 @@ Returns:
 
 Determine download priority for a file based on type and size.
 
-##### _collect_download_results(self: Any, queue_id: str) -> <ast.Subscript object at 0x000001942F827070>
+##### _collect_download_results(self: Any, queue_id: str) -> <ast.Subscript object at 0x000001942A13E050>
 
 Collect comprehensive download results for a model.
 
@@ -154,7 +154,7 @@ Enhanced background worker that processes model download queues.
 
 Process downloads for a specific model with optimized concurrency.
 
-##### _handle_task_completion(self: Any, task: DownloadTask, queue_id: str, success: bool, error: <ast.Subscript object at 0x0000019434319120>)
+##### _handle_task_completion(self: Any, task: DownloadTask, queue_id: str, success: bool, error: <ast.Subscript object at 0x000001942CDC89D0>)
 
 Handle completion of a download task.
 
@@ -181,7 +181,7 @@ Optimized download method with advanced performance features.
 Returns:
     True if download succeeded, False otherwise
 
-##### _prepare_headers(self: Any, task: DownloadTask, resume_pos: int) -> <ast.Subscript object at 0x000001942F3A1E10>
+##### _prepare_headers(self: Any, task: DownloadTask, resume_pos: int) -> <ast.Subscript object at 0x0000019428A78100>
 
 Prepare optimized HTTP headers for download.
 
@@ -201,11 +201,11 @@ Fallback download method without connection pooling.
 
 Notify progress callbacks for a model.
 
-##### get_download_stats(self: Any) -> <ast.Subscript object at 0x00000194340BB910>
+##### get_download_stats(self: Any) -> <ast.Subscript object at 0x000001942A16D930>
 
 Get comprehensive download statistics.
 
-##### get_model_queue_status(self: Any, queue_id: str) -> <ast.Subscript object at 0x00000194340A1390>
+##### get_model_queue_status(self: Any, queue_id: str) -> <ast.Subscript object at 0x000001942A16C520>
 
 Get status of a specific model download queue.
 

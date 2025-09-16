@@ -36,43 +36,43 @@ Performs statistical analysis to identify flaky tests
 
 
 
-##### analyze_test_flakiness(self: Any, executions: <ast.Subscript object at 0x000001942F8996F0>) -> <ast.Subscript object at 0x0000019434043850>
+##### analyze_test_flakiness(self: Any, executions: <ast.Subscript object at 0x000001942CE6D870>) -> <ast.Subscript object at 0x000001942CE6DD80>
 
 Analyze test executions to identify flaky patterns
 
-##### _analyze_single_test(self: Any, test_id: str, executions: <ast.Subscript object at 0x0000019434043FA0>) -> FlakyTestPattern
+##### _analyze_single_test(self: Any, test_id: str, executions: <ast.Subscript object at 0x000001942CE6FE50>) -> FlakyTestPattern
 
 Analyze flakiness for a single test
 
-##### _calculate_flakiness_score(self: Any, executions: <ast.Subscript object at 0x000001942FE38550>) -> float
+##### _calculate_flakiness_score(self: Any, executions: <ast.Subscript object at 0x000001942CE6D210>) -> float
 
 Calculate flakiness score based on execution patterns
 
-##### _analyze_error_patterns(self: Any, executions: <ast.Subscript object at 0x000001942FE392A0>) -> <ast.Subscript object at 0x000001942FE3A800>
+##### _analyze_error_patterns(self: Any, executions: <ast.Subscript object at 0x000001942C5F2C20>) -> <ast.Subscript object at 0x000001942CE2DBD0>
 
 Analyze common error patterns
 
-##### _analyze_failure_patterns(self: Any, executions: <ast.Subscript object at 0x000001942FE3A590>) -> <ast.Subscript object at 0x000001942F4023B0>
+##### _analyze_failure_patterns(self: Any, executions: <ast.Subscript object at 0x000001942CE2E3E0>) -> <ast.Subscript object at 0x0000019427B2F9D0>
 
 Analyze patterns in test failures
 
-##### _analyze_time_patterns(self: Any, executions: <ast.Subscript object at 0x000001942F401960>) -> <ast.Subscript object at 0x000001942F401C90>
+##### _analyze_time_patterns(self: Any, executions: <ast.Subscript object at 0x0000019427B2CB50>) -> <ast.Subscript object at 0x0000019427B2ECB0>
 
 Analyze time-based failure patterns
 
-##### _analyze_environment_patterns(self: Any, executions: <ast.Subscript object at 0x000001942F400850>) -> <ast.Subscript object at 0x000001942F401360>
+##### _analyze_environment_patterns(self: Any, executions: <ast.Subscript object at 0x0000019427B2D570>) -> <ast.Subscript object at 0x0000019427B2E320>
 
 Analyze environment-based failure patterns
 
-##### _analyze_duration_patterns(self: Any, executions: <ast.Subscript object at 0x000001942F400E20>) -> <ast.Subscript object at 0x000001943188BF40>
+##### _analyze_duration_patterns(self: Any, executions: <ast.Subscript object at 0x0000019427B2F820>) -> <ast.Subscript object at 0x000001942A2E7460>
 
 Analyze duration-based patterns
 
-##### _analyze_sequence_patterns(self: Any, executions: <ast.Subscript object at 0x000001943188BE50>) -> <ast.Subscript object at 0x000001943188A740>
+##### _analyze_sequence_patterns(self: Any, executions: <ast.Subscript object at 0x000001942A2E7310>) -> <ast.Subscript object at 0x000001942CC897B0>
 
 Analyze sequential failure patterns
 
-##### _calculate_confidence(self: Any, executions: <ast.Subscript object at 0x000001943188A980>, flakiness_score: float) -> float
+##### _calculate_confidence(self: Any, executions: <ast.Subscript object at 0x000001942CC8AA70>, flakiness_score: float) -> float
 
 Calculate confidence in flakiness assessment
 
@@ -94,11 +94,11 @@ Initialize flaky test tracking database
 
 Record a single test execution
 
-##### record_test_executions(self: Any, executions: <ast.Subscript object at 0x000001942FBCEC50>)
+##### record_test_executions(self: Any, executions: <ast.Subscript object at 0x000001942CC8AA10>)
 
 Record multiple test executions
 
-##### get_test_executions(self: Any, test_id: str, days: int) -> <ast.Subscript object at 0x0000019432DFF0A0>
+##### get_test_executions(self: Any, test_id: str, days: int) -> <ast.Subscript object at 0x0000019427ADA830>
 
 Get test executions from the database
 
@@ -106,7 +106,7 @@ Get test executions from the database
 
 Update or insert flaky test pattern
 
-##### get_flaky_patterns(self: Any, min_flakiness: float) -> <ast.Subscript object at 0x0000019432DFCE80>
+##### get_flaky_patterns(self: Any, min_flakiness: float) -> <ast.Subscript object at 0x0000019427ADA8F0>
 
 Get flaky test patterns from database
 
@@ -120,15 +120,15 @@ Generates recommendations for fixing flaky tests
 
 
 
-##### generate_recommendations(self: Any, patterns: <ast.Subscript object at 0x0000019431BA9C30>) -> <ast.Subscript object at 0x0000019431BA9930>
+##### generate_recommendations(self: Any, patterns: <ast.Subscript object at 0x00000194281205E0>) -> <ast.Subscript object at 0x0000019428122FE0>
 
 Generate recommendations for fixing flaky tests
 
-##### _analyze_pattern_for_recommendations(self: Any, pattern: FlakyTestPattern) -> <ast.Subscript object at 0x0000019431BAA6B0>
+##### _analyze_pattern_for_recommendations(self: Any, pattern: FlakyTestPattern) -> <ast.Subscript object at 0x0000019428122DA0>
 
 Analyze a single flaky pattern to generate recommendations
 
-##### _analyze_failure_patterns_for_recommendations(self: Any, pattern: FlakyTestPattern) -> <ast.Subscript object at 0x0000019431A02440>
+##### _analyze_failure_patterns_for_recommendations(self: Any, pattern: FlakyTestPattern) -> <ast.Subscript object at 0x0000019427A6BFA0>
 
 Generate recommendations based on failure patterns
 
@@ -146,7 +146,7 @@ Manages quarantine decisions for flaky tests
 
 
 
-##### evaluate_quarantine_decisions(self: Any, patterns: <ast.Subscript object at 0x0000019431A03CA0>) -> <ast.Subscript object at 0x0000019431A03490>
+##### evaluate_quarantine_decisions(self: Any, patterns: <ast.Subscript object at 0x0000019429CB7220>) -> <ast.Subscript object at 0x0000019429CB6FE0>
 
 Evaluate which tests should be quarantined
 
@@ -172,7 +172,7 @@ Main system that orchestrates flaky test detection and management
 
 
 
-##### run_flaky_test_analysis(self: Any, days: int) -> <ast.Subscript object at 0x0000019431B48D30>
+##### run_flaky_test_analysis(self: Any, days: int) -> <ast.Subscript object at 0x000001942836DC60>
 
 Run comprehensive flaky test analysis
 
@@ -180,19 +180,19 @@ Run comprehensive flaky test analysis
 
 Record test run results from pytest output
 
-##### _parse_test_results(self: Any, results_file: Path) -> <ast.Subscript object at 0x00000194344B9D80>
+##### _parse_test_results(self: Any, results_file: Path) -> <ast.Subscript object at 0x00000194282EFAF0>
 
 Parse test results from file
 
-##### _get_current_commit(self: Any) -> <ast.Subscript object at 0x00000194344BA620>
+##### _get_current_commit(self: Any) -> <ast.Subscript object at 0x00000194282EF520>
 
 Get current git commit hash
 
-##### _get_current_branch(self: Any) -> <ast.Subscript object at 0x00000194344D8C40>
+##### _get_current_branch(self: Any) -> <ast.Subscript object at 0x00000194282EDAE0>
 
 Get current git branch
 
-##### save_analysis_report(self: Any, analysis_result: <ast.Subscript object at 0x00000194344D9930>, output_path: Path)
+##### save_analysis_report(self: Any, analysis_result: <ast.Subscript object at 0x00000194282EE110>, output_path: Path)
 
 Save flaky test analysis report
 

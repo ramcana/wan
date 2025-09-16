@@ -31,7 +31,7 @@ Enhanced service for providing comprehensive model health monitoring.
 
 
 
-##### to_dict(self: Any, response: OrchestratorHealthResponse) -> <ast.Subscript object at 0x000001942FE21960>
+##### to_dict(self: Any, response: OrchestratorHealthResponse) -> <ast.Subscript object at 0x000001942A247CA0>
 
 Convert health response to dictionary for JSON serialization.
 

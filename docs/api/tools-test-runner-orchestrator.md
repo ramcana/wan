@@ -66,23 +66,23 @@ Main orchestrator for test suite execution with category management and parallel
 
 #### Methods
 
-##### __init__(self: Any, config_path: <ast.Subscript object at 0x000001942FD81F90>)
+##### __init__(self: Any, config_path: <ast.Subscript object at 0x000001942B749F90>)
 
 Initialize the test orchestrator
 
-##### _calculate_overall_summary(self: Any, category_results: <ast.Subscript object at 0x000001943015C940>, total_duration: float, categories_run: <ast.Subscript object at 0x000001943015F0A0>) -> TestSummary
+##### _calculate_overall_summary(self: Any, category_results: <ast.Subscript object at 0x000001942902A620>, total_duration: float, categories_run: <ast.Subscript object at 0x000001942902A7A0>) -> TestSummary
 
 Calculate overall test suite summary from category results
 
-##### _get_config_summary(self: Any) -> <ast.Subscript object at 0x00000194300FF940>
+##### _get_config_summary(self: Any) -> <ast.Subscript object at 0x00000194290100A0>
 
 Get summary of configuration used for this run
 
-##### _get_environment_info(self: Any) -> <ast.Subscript object at 0x00000194300FE350>
+##### _get_environment_info(self: Any) -> <ast.Subscript object at 0x000001942B784730>
 
 Get environment information for the test run
 
-##### get_results(self: Any, suite_id: str) -> <ast.Subscript object at 0x00000194300FCE80>
+##### get_results(self: Any, suite_id: str) -> <ast.Subscript object at 0x000001942B7843D0>
 
 Retrieve cached test results by suite ID
 

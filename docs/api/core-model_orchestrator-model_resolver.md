@@ -20,7 +20,7 @@ Represents a path validation issue.
 
 #### Methods
 
-##### __init__(self: Any, issue_type: str, message: str, suggestion: <ast.Subscript object at 0x000001942F386DA0>)
+##### __init__(self: Any, issue_type: str, message: str, suggestion: <ast.Subscript object at 0x0000019428062C80>)
 
 
 
@@ -55,7 +55,7 @@ Raises:
 
 Detect if running under Windows Subsystem for Linux.
 
-##### local_dir(self: Any, model_id: str, variant: <ast.Subscript object at 0x000001942F3841F0>) -> str
+##### local_dir(self: Any, model_id: str, variant: <ast.Subscript object at 0x00000194280600D0>) -> str
 
 Get the local directory path for a model.
 
@@ -69,7 +69,7 @@ Returns:
 Raises:
     ModelOrchestratorError: If model_id is invalid or path issues exist
 
-##### temp_dir(self: Any, model_id: str, variant: <ast.Subscript object at 0x000001942F38C580>) -> str
+##### temp_dir(self: Any, model_id: str, variant: <ast.Subscript object at 0x0000019427FE8460>) -> str
 
 Get a temporary directory path for atomic downloads.
 
@@ -86,7 +86,7 @@ Returns:
 Raises:
     ModelOrchestratorError: If path cannot be created
 
-##### validate_path_constraints(self: Any, path: str) -> <ast.Subscript object at 0x000001942FC43BB0>
+##### validate_path_constraints(self: Any, path: str) -> <ast.Subscript object at 0x000001942CBE2EC0>
 
 Validate path against platform-specific constraints.
 

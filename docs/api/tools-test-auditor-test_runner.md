@@ -86,11 +86,11 @@ Collects test coverage information
 
 
 
-##### setup_coverage(self: Any, test_file: Path, temp_dir: Path) -> <ast.Subscript object at 0x000001942F3913F0>
+##### setup_coverage(self: Any, test_file: Path, temp_dir: Path) -> <ast.Subscript object at 0x0000019427EFDE70>
 
 Setup coverage collection for test execution
 
-##### collect_coverage_data(self: Any, temp_dir: Path) -> <ast.Subscript object at 0x000001942F393CA0>
+##### collect_coverage_data(self: Any, temp_dir: Path) -> <ast.Subscript object at 0x000001942C8BA2C0>
 
 Collect coverage data from test execution
 
@@ -112,7 +112,7 @@ Execute a single test file with full monitoring
 
 Execute single test attempt
 
-##### _parse_test_counts(self: Any, stdout: str, temp_dir: Path) -> <ast.Subscript object at 0x000001942F6C4EE0>
+##### _parse_test_counts(self: Any, stdout: str, temp_dir: Path) -> <ast.Subscript object at 0x0000019428119AB0>
 
 Parse test counts from pytest output
 
@@ -122,11 +122,11 @@ Runs tests in parallel with resource management
 
 #### Methods
 
-##### __init__(self: Any, max_workers: <ast.Subscript object at 0x000001942F6C5A80>)
+##### __init__(self: Any, max_workers: <ast.Subscript object at 0x000001942811B610>)
 
 
 
-##### run_tests_parallel(self: Any, test_files: <ast.Subscript object at 0x000001942F6C6A70>, project_root: Path) -> TestSuiteExecutionReport
+##### run_tests_parallel(self: Any, test_files: <ast.Subscript object at 0x000001942811A260>, project_root: Path) -> TestSuiteExecutionReport
 
 Run tests in parallel
 
@@ -134,15 +134,15 @@ Run tests in parallel
 
 Run single test (for process pool)
 
-##### _generate_performance_summary(self: Any, results: <ast.Subscript object at 0x000001942FB481C0>) -> <ast.Subscript object at 0x000001942FB4BDF0>
+##### _generate_performance_summary(self: Any, results: <ast.Subscript object at 0x0000019427FDC250>) -> <ast.Subscript object at 0x0000019427FDDD80>
 
 Generate performance summary
 
-##### _generate_retry_summary(self: Any, results: <ast.Subscript object at 0x000001942FB4BCA0>) -> <ast.Subscript object at 0x000001942FB48880>
+##### _generate_retry_summary(self: Any, results: <ast.Subscript object at 0x0000019427FDDFF0>) -> <ast.Subscript object at 0x0000019427FDD960>
 
 Generate retry summary
 
-##### _generate_timeout_summary(self: Any, results: <ast.Subscript object at 0x000001942FB48700>) -> <ast.Subscript object at 0x000001942FB4B8B0>
+##### _generate_timeout_summary(self: Any, results: <ast.Subscript object at 0x0000019427FDD570>) -> <ast.Subscript object at 0x0000019427FDD3F0>
 
 Generate timeout summary
 

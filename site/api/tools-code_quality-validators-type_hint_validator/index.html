@@ -821,21 +821,21 @@
 <h4 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h4>
 <h5 id="initself-any-config-qualityconfig"><strong>init</strong>(self: Any, config: QualityConfig)<a class="headerlink" href="#initself-any-config-qualityconfig" title="Permanent link">&para;</a></h5>
 <p>Initialize validator with configuration.</p>
-<h5 id="validate_type_hintsself-any-file_path-path-tree-astast-">validate_type_hints(self: Any, file_path: Path, tree: ast.AST) -&gt; <ast.Subscript object at 0x00000194340B02B0><a class="headerlink" href="#validate_type_hintsself-any-file_path-path-tree-astast-" title="Permanent link">&para;</a></h5>
+<h5 id="validate_type_hintsself-any-file_path-path-tree-astast-">validate_type_hints(self: Any, file_path: Path, tree: ast.AST) -&gt; <ast.Subscript object at 0x0000019428AB6530><a class="headerlink" href="#validate_type_hintsself-any-file_path-path-tree-astast-" title="Permanent link">&para;</a></h5>
 <p>Validate type hints in the given AST.</p>
 <p>Returns:
     Tuple of (issues, metrics)</p>
-<h5 id="_validate_function_type_hintsself-any-file_path-path-node-astfunctiondef-">_validate_function_type_hints(self: Any, file_path: Path, node: ast.FunctionDef) -&gt; <ast.Subscript object at 0x000001942F3A4D60><a class="headerlink" href="#_validate_function_type_hintsself-any-file_path-path-node-astfunctiondef-" title="Permanent link">&para;</a></h5>
+<h5 id="_validate_function_type_hintsself-any-file_path-path-node-astfunctiondef-">_validate_function_type_hints(self: Any, file_path: Path, node: ast.FunctionDef) -&gt; <ast.Subscript object at 0x0000019428A096F0><a class="headerlink" href="#_validate_function_type_hintsself-any-file_path-path-node-astfunctiondef-" title="Permanent link">&para;</a></h5>
 <p>Validate type hints for a specific function.</p>
-<h5 id="_run_mypy_checkself-any-file_path-path-">_run_mypy_check(self: Any, file_path: Path) -&gt; <ast.Subscript object at 0x000001942F331480><a class="headerlink" href="#_run_mypy_checkself-any-file_path-path-" title="Permanent link">&para;</a></h5>
+<h5 id="_run_mypy_checkself-any-file_path-path-">_run_mypy_check(self: Any, file_path: Path) -&gt; <ast.Subscript object at 0x0000019428A083A0><a class="headerlink" href="#_run_mypy_checkself-any-file_path-path-" title="Permanent link">&para;</a></h5>
 <p>Run mypy type checker on the file.</p>
 <h5 id="_parse_mypy_outputself-any-file_path-path-line-str-qualityissue">_parse_mypy_output(self: Any, file_path: Path, line: str) -&gt; QualityIssue<a class="headerlink" href="#_parse_mypy_outputself-any-file_path-path-line-str-qualityissue" title="Permanent link">&para;</a></h5>
 <p>Parse mypy output line into QualityIssue.</p>
 <h5 id="_is_void_functionself-any-node-astfunctiondef-bool">_is_void_function(self: Any, node: ast.FunctionDef) -&gt; bool<a class="headerlink" href="#_is_void_functionself-any-node-astfunctiondef-bool" title="Permanent link">&para;</a></h5>
 <p>Check if function is void (doesn't return a value).</p>
-<h5 id="_check_inconsistent_annotationsself-any-file_path-path-node-astfunctiondef-">_check_inconsistent_annotations(self: Any, file_path: Path, node: ast.FunctionDef) -&gt; <ast.Subscript object at 0x000001942F3044C0><a class="headerlink" href="#_check_inconsistent_annotationsself-any-file_path-path-node-astfunctiondef-" title="Permanent link">&para;</a></h5>
+<h5 id="_check_inconsistent_annotationsself-any-file_path-path-node-astfunctiondef-">_check_inconsistent_annotations(self: Any, file_path: Path, node: ast.FunctionDef) -&gt; <ast.Subscript object at 0x000001942C6D2080><a class="headerlink" href="#_check_inconsistent_annotationsself-any-file_path-path-node-astfunctiondef-" title="Permanent link">&para;</a></h5>
 <p>Check for inconsistent type annotations.</p>
-<h5 id="_check_complex_annotationsself-any-file_path-path-node-astfunctiondef-">_check_complex_annotations(self: Any, file_path: Path, node: ast.FunctionDef) -&gt; <ast.Subscript object at 0x000001942F3DA980><a class="headerlink" href="#_check_complex_annotationsself-any-file_path-path-node-astfunctiondef-" title="Permanent link">&para;</a></h5>
+<h5 id="_check_complex_annotationsself-any-file_path-path-node-astfunctiondef-">_check_complex_annotations(self: Any, file_path: Path, node: ast.FunctionDef) -&gt; <ast.Subscript object at 0x000001942C6D3EE0><a class="headerlink" href="#_check_complex_annotationsself-any-file_path-path-node-astfunctiondef-" title="Permanent link">&para;</a></h5>
 <p>Check for overly complex type annotations.</p>
 <h5 id="_is_complex_annotationself-any-annotation-astast-bool">_is_complex_annotation(self: Any, annotation: ast.AST) -&gt; bool<a class="headerlink" href="#_is_complex_annotationself-any-annotation-astast-bool" title="Permanent link">&para;</a></h5>
 <p>Check if type annotation is overly complex.</p>

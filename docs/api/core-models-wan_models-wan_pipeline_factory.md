@@ -32,7 +32,7 @@ tags: [api, core]
 
 #### Methods
 
-##### get_pipeline_class(model_type: <ast.Subscript object at 0x0000019431A10F40>) -> <ast.Subscript object at 0x0000019431A10970>
+##### get_pipeline_class(model_type: <ast.Subscript object at 0x000001942A194610>) -> <ast.Subscript object at 0x000001942A1DFF40>
 
 
 

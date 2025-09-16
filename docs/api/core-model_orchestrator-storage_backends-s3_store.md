@@ -20,7 +20,7 @@ S3/MinIO storage backend with parallel downloads and resume capability.
 
 #### Methods
 
-##### __init__(self: Any, config: <ast.Subscript object at 0x0000019431AFAE00>, credential_manager: <ast.Subscript object at 0x0000019431AFAD40>)
+##### __init__(self: Any, config: <ast.Subscript object at 0x00000194287FAE00>, credential_manager: <ast.Subscript object at 0x00000194287FAD40>)
 
 Initialize S3 store.
 
@@ -36,7 +36,7 @@ Get or create S3 client (thread-safe).
 
 Check if this backend can handle S3 URLs.
 
-##### _parse_s3_url(self: Any, source_url: str) -> <ast.Subscript object at 0x0000019431B23280>
+##### _parse_s3_url(self: Any, source_url: str) -> <ast.Subscript object at 0x00000194287E7280>
 
 Parse S3 URL to extract bucket and key prefix.
 
@@ -46,11 +46,11 @@ Args:
 Returns:
     Tuple of (bucket, key_prefix)
 
-##### _list_objects(self: Any, bucket: str, prefix: str, allow_patterns: <ast.Subscript object at 0x0000019431B23010>) -> <ast.Subscript object at 0x0000019431B21C90>
+##### _list_objects(self: Any, bucket: str, prefix: str, allow_patterns: <ast.Subscript object at 0x00000194287E7010>) -> <ast.Subscript object at 0x00000194287E5C90>
 
 List objects in S3 bucket with optional pattern filtering.
 
-##### _download_file_with_resume(self: Any, bucket: str, key: str, local_path: Path, expected_size: <ast.Subscript object at 0x0000019431B21930>, progress_callback: <ast.Subscript object at 0x0000019431B21870>) -> int
+##### _download_file_with_resume(self: Any, bucket: str, key: str, local_path: Path, expected_size: <ast.Subscript object at 0x00000194287E5930>, progress_callback: <ast.Subscript object at 0x00000194287E5870>) -> int
 
 Download a single file with resume capability using HTTP Range requests.
 
@@ -64,7 +64,7 @@ Args:
 Returns:
     Number of bytes downloaded
 
-##### download(self: Any, source_url: str, local_dir: Path, file_specs: <ast.Subscript object at 0x000001942FCF7D60>, allow_patterns: <ast.Subscript object at 0x000001942FCF76D0>, progress_callback: <ast.Subscript object at 0x000001942FCF7EE0>) -> DownloadResult
+##### download(self: Any, source_url: str, local_dir: Path, file_specs: <ast.Subscript object at 0x00000194284B3580>, allow_patterns: <ast.Subscript object at 0x00000194284B3DC0>, progress_callback: <ast.Subscript object at 0x00000194284B3850>) -> DownloadResult
 
 Download files from S3/MinIO with parallel downloads and resume capability.
 
@@ -82,7 +82,7 @@ Returns:
 
 Verify if the S3 source is available.
 
-##### estimate_download_size(self: Any, source_url: str, file_specs: <ast.Subscript object at 0x000001942F7741F0>, allow_patterns: <ast.Subscript object at 0x000001942F774130>) -> int
+##### estimate_download_size(self: Any, source_url: str, file_specs: <ast.Subscript object at 0x00000194284ABEB0>, allow_patterns: <ast.Subscript object at 0x00000194284ABE80>) -> int
 
 Estimate download size from S3 source.
 

@@ -16,11 +16,11 @@ tags: [api, core]
 
 #### Methods
 
-##### __init__(self: Any, arg: <ast.Subscript object at 0x00000194345015A0>)
+##### __init__(self: Any, arg: <ast.Subscript object at 0x000001942A1BCF10>)
 
 
 
-##### ensure(self: Any, model_id: str, variant: <ast.Subscript object at 0x0000019431985780>)
+##### ensure(self: Any, model_id: str, variant: <ast.Subscript object at 0x000001942A1BEBF0>)
 
 
 

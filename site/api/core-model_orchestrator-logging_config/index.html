@@ -1005,7 +1005,7 @@
 <h5 id="initself-any-include_extra-bool"><strong>init</strong>(self: Any, include_extra: bool)<a class="headerlink" href="#initself-any-include_extra-bool" title="Permanent link">&para;</a></h5>
 <h5 id="formatself-any-record-logginglogrecord-str">format(self: Any, record: logging.LogRecord) -&gt; str<a class="headerlink" href="#formatself-any-record-logginglogrecord-str" title="Permanent link">&para;</a></h5>
 <p>Format log record as structured JSON.</p>
-<h5 id="formattimeself-any-record-logginglogrecord-datefmt-str">formatTime(self: Any, record: logging.LogRecord, datefmt: <ast.Subscript object at 0x0000019431929750>) -&gt; str<a class="headerlink" href="#formattimeself-any-record-logginglogrecord-datefmt-str" title="Permanent link">&para;</a></h5>
+<h5 id="formattimeself-any-record-logginglogrecord-datefmt-str">formatTime(self: Any, record: logging.LogRecord, datefmt: <ast.Subscript object at 0x000001942CBC1930>) -&gt; str<a class="headerlink" href="#formattimeself-any-record-logginglogrecord-datefmt-str" title="Permanent link">&para;</a></h5>
 <p>Format timestamp in ISO format.</p>
 <h5 id="_is_sensitive_fieldself-any-field_name-str-bool">_is_sensitive_field(self: Any, field_name: str) -&gt; bool<a class="headerlink" href="#_is_sensitive_fieldself-any-field_name-str-bool" title="Permanent link">&para;</a></h5>
 <p>Check if a field contains sensitive information.</p>
@@ -1020,14 +1020,14 @@
 <p>Centralized logger configuration for the Model Orchestrator.</p>
 <h4 id="methods_2">Methods<a class="headerlink" href="#methods_2" title="Permanent link">&para;</a></h4>
 <h5 id="initself-any-name-str"><strong>init</strong>(self: Any, name: str)<a class="headerlink" href="#initself-any-name-str" title="Permanent link">&para;</a></h5>
-<h5 id="configureself-any-level-str-structured-bool-output_file-logginglogger">configure(self: Any, level: str, structured: bool, output_file: <ast.Subscript object at 0x000001942F29BC70>) -&gt; logging.Logger<a class="headerlink" href="#configureself-any-level-str-structured-bool-output_file-logginglogger" title="Permanent link">&para;</a></h5>
+<h5 id="configureself-any-level-str-structured-bool-output_file-logginglogger">configure(self: Any, level: str, structured: bool, output_file: <ast.Subscript object at 0x000001942CBC0940>) -&gt; logging.Logger<a class="headerlink" href="#configureself-any-level-str-structured-bool-output_file-logginglogger" title="Permanent link">&para;</a></h5>
 <p>Configure the logger with structured output.</p>
-<h5 id="get_loggerself-any-name-logginglogger">get_logger(self: Any, name: <ast.Subscript object at 0x00000194345E0460>) -&gt; logging.Logger<a class="headerlink" href="#get_loggerself-any-name-logginglogger" title="Permanent link">&para;</a></h5>
+<h5 id="get_loggerself-any-name-logginglogger">get_logger(self: Any, name: <ast.Subscript object at 0x000001942CB0B7C0>) -&gt; logging.Logger<a class="headerlink" href="#get_loggerself-any-name-logginglogger" title="Permanent link">&para;</a></h5>
 <p>Get a logger instance.</p>
 <h3 id="logcontext">LogContext<a class="headerlink" href="#logcontext" title="Permanent link">&para;</a></h3>
 <p>Context manager for setting correlation ID and additional context.</p>
 <h4 id="methods_3">Methods<a class="headerlink" href="#methods_3" title="Permanent link">&para;</a></h4>
-<h5 id="initself-any-correlation_id"><strong>init</strong>(self: Any, correlation_id: <ast.Subscript object at 0x00000194345E2740>)<a class="headerlink" href="#initself-any-correlation_id" title="Permanent link">&para;</a></h5>
+<h5 id="initself-any-correlation_id"><strong>init</strong>(self: Any, correlation_id: <ast.Subscript object at 0x000001942CB0B3A0>)<a class="headerlink" href="#initself-any-correlation_id" title="Permanent link">&para;</a></h5>
 <h5 id="enterself-any"><strong>enter</strong>(self: Any)<a class="headerlink" href="#enterself-any" title="Permanent link">&para;</a></h5>
 <h5 id="exitself-any-exc_type-any-exc_val-any-exc_tb-any"><strong>exit</strong>(self: Any, exc_type: Any, exc_val: Any, exc_tb: Any)<a class="headerlink" href="#exitself-any-exc_type-any-exc_val-any-exc_tb-any" title="Permanent link">&para;</a></h5>
 <h5 id="logself-any-level-str-message-str">log(self: Any, level: str, message: str)<a class="headerlink" href="#logself-any-level-str-message-str" title="Permanent link">&para;</a></h5>
@@ -1035,10 +1035,10 @@
 <h3 id="performancetimer">PerformanceTimer<a class="headerlink" href="#performancetimer" title="Permanent link">&para;</a></h3>
 <p>Context manager for measuring and logging operation performance.</p>
 <h4 id="methods_4">Methods<a class="headerlink" href="#methods_4" title="Permanent link">&para;</a></h4>
-<h5 id="initself-any-operation-str-logger"><strong>init</strong>(self: Any, operation: str, logger: <ast.Subscript object at 0x000001942FC01ED0>)<a class="headerlink" href="#initself-any-operation-str-logger" title="Permanent link">&para;</a></h5>
+<h5 id="initself-any-operation-str-logger"><strong>init</strong>(self: Any, operation: str, logger: <ast.Subscript object at 0x0000019427B919C0>)<a class="headerlink" href="#initself-any-operation-str-logger" title="Permanent link">&para;</a></h5>
 <h5 id="enterself-any_1"><strong>enter</strong>(self: Any)<a class="headerlink" href="#enterself-any_1" title="Permanent link">&para;</a></h5>
 <h5 id="exitself-any-exc_type-any-exc_val-any-exc_tb-any_1"><strong>exit</strong>(self: Any, exc_type: Any, exc_val: Any, exc_tb: Any)<a class="headerlink" href="#exitself-any-exc_type-any-exc_val-any-exc_tb-any_1" title="Permanent link">&para;</a></h5>
-<h5 id="durationself-any-">duration(self: Any) -&gt; <ast.Subscript object at 0x000001943460A2F0><a class="headerlink" href="#durationself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="durationself-any-">duration(self: Any) -&gt; <ast.Subscript object at 0x0000019427B91360><a class="headerlink" href="#durationself-any-" title="Permanent link">&para;</a></h5>
 <p>Get the duration of the operation if completed.</p>
 
 

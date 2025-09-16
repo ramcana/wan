@@ -24,15 +24,15 @@ Checks the health of project documentation
 
 Check documentation health
 
-##### _discover_documentation(self: Any) -> <ast.Subscript object at 0x000001942FA99A20>
+##### _discover_documentation(self: Any) -> <ast.Subscript object at 0x000001942CE11FC0>
 
 Discover documentation files
 
-##### _check_essential_documentation(self: Any) -> <ast.Subscript object at 0x000001942FA9A5F0>
+##### _check_essential_documentation(self: Any) -> <ast.Subscript object at 0x000001942CE11B70>
 
 Check for essential documentation files
 
-##### _check_broken_links(self: Any, doc_files: <ast.Subscript object at 0x000001942FA99D80>) -> <ast.Subscript object at 0x000001942FA9AD70>
+##### _check_broken_links(self: Any, doc_files: <ast.Subscript object at 0x000001942CE11CC0>) -> <ast.Subscript object at 0x000001942CE294B0>
 
 Check for broken links in documentation
 
@@ -40,15 +40,15 @@ Check for broken links in documentation
 
 Check if a link is broken
 
-##### _check_documentation_freshness(self: Any, doc_files: <ast.Subscript object at 0x000001942F6C5B10>) -> <ast.Subscript object at 0x000001942F6C5720>
+##### _check_documentation_freshness(self: Any, doc_files: <ast.Subscript object at 0x000001942CE2B730>) -> <ast.Subscript object at 0x000001942CE2AFB0>
 
 Check for potentially outdated documentation
 
-##### _check_scattered_documentation(self: Any) -> <ast.Subscript object at 0x000001942F6C7280>
+##### _check_scattered_documentation(self: Any) -> <ast.Subscript object at 0x000001942CE2A770>
 
 Check for documentation files outside the docs directory
 
-##### _calculate_documentation_score(self: Any, metrics: <ast.Subscript object at 0x000001942F6C4D60>, issues: <ast.Subscript object at 0x000001942F6C65C0>) -> float
+##### _calculate_documentation_score(self: Any, metrics: <ast.Subscript object at 0x000001942CE2A3B0>, issues: <ast.Subscript object at 0x000001942CE29FC0>) -> float
 
 Calculate documentation health score
 

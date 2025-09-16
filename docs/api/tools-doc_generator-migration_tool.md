@@ -27,7 +27,7 @@ Tool for migrating scattered documentation to unified structure
 
 
 
-##### discover_scattered_docs(self: Any) -> <ast.Subscript object at 0x0000019431B94FD0>
+##### discover_scattered_docs(self: Any) -> <ast.Subscript object at 0x0000019428879540>
 
 Discover all documentation files that need migration
 
@@ -35,7 +35,7 @@ Discover all documentation files that need migration
 
 Determine if a file is documentation based on name and content
 
-##### categorize_file(self: Any, file_path: Path) -> <ast.Subscript object at 0x000001943413B880>
+##### categorize_file(self: Any, file_path: Path) -> <ast.Subscript object at 0x000001942B2F5270>
 
 Categorize a file and determine its target location
 
@@ -47,7 +47,7 @@ Check if filename matches pattern (simple glob-like matching)
 
 Generate a clean target filename
 
-##### _default_categorization(self: Any, file_path: Path) -> <ast.Subscript object at 0x0000019434139630>
+##### _default_categorization(self: Any, file_path: Path) -> <ast.Subscript object at 0x0000019428D73EB0>
 
 Default categorization for files that don't match rules
 
@@ -63,7 +63,7 @@ Generate metadata for migrated file
 
 Extract a readable title from filename
 
-##### _generate_tags(self: Any, source_path: Path, category: str) -> <ast.Subscript object at 0x0000019431BDCFA0>
+##### _generate_tags(self: Any, source_path: Path, category: str) -> <ast.Subscript object at 0x0000019427B623E0>
 
 Generate tags based on filename and category
 

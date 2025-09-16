@@ -40,7 +40,7 @@ and automatically attempts recovery using existing infrastructure
 
 
 
-##### _initialize_recovery_strategies(self: Any) -> <ast.Subscript object at 0x0000019430122E30>
+##### _initialize_recovery_strategies(self: Any) -> <ast.Subscript object at 0x000001942C5F76D0>
 
 Initialize recovery strategies for different failure types
 
@@ -64,7 +64,7 @@ Check if we're in cooldown period for a failure type
 
 Get remaining cooldown time in seconds
 
-##### get_recovery_statistics(self: Any) -> <ast.Subscript object at 0x0000019431B350C0>
+##### get_recovery_statistics(self: Any) -> <ast.Subscript object at 0x0000019427CA6530>
 
 Get statistics about recovery attempts
 

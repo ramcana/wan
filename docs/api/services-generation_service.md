@@ -35,11 +35,11 @@ Enhanced VRAM monitoring and management for generation tasks
 
 
 
-##### get_current_vram_usage(self: Any) -> <ast.Subscript object at 0x0000019434444E80>
+##### get_current_vram_usage(self: Any) -> <ast.Subscript object at 0x0000019427578790>
 
 Get current VRAM usage statistics with multi-GPU support
 
-##### check_vram_availability(self: Any, required_gb: float) -> <ast.Subscript object at 0x00000194344440D0>
+##### check_vram_availability(self: Any, required_gb: float) -> <ast.Subscript object at 0x00000194284927D0>
 
 Check VRAM availability with structured suggestions
 

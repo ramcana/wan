@@ -20,22 +20,22 @@ Analyzes code complexity and provides refactoring recommendations.
 
 Initialize analyzer with configuration.
 
-##### analyze_complexity(self: Any, file_path: Path, tree: ast.AST) -> <ast.Subscript object at 0x000001943451CF10>
+##### analyze_complexity(self: Any, file_path: Path, tree: ast.AST) -> <ast.Subscript object at 0x000001942CCE4670>
 
 Analyze complexity in the given AST.
 
 Returns:
     Tuple of (issues, metrics)
 
-##### _analyze_module_complexity(self: Any, file_path: Path, tree: ast.AST) -> <ast.Subscript object at 0x0000019432E65E70>
+##### _analyze_module_complexity(self: Any, file_path: Path, tree: ast.AST) -> <ast.Subscript object at 0x000001942CE21B70>
 
 Analyze module-level complexity.
 
-##### _analyze_function_complexity(self: Any, file_path: Path, node: ast.FunctionDef) -> <ast.Subscript object at 0x000001942F02B3A0>
+##### _analyze_function_complexity(self: Any, file_path: Path, node: ast.FunctionDef) -> <ast.Subscript object at 0x000001942CD88400>
 
 Analyze complexity of a specific function.
 
-##### _analyze_class_complexity(self: Any, file_path: Path, node: ast.ClassDef) -> <ast.Subscript object at 0x0000019434138E50>
+##### _analyze_class_complexity(self: Any, file_path: Path, node: ast.ClassDef) -> <ast.Subscript object at 0x000001942806D150>
 
 Analyze complexity of a specific class.
 
@@ -51,7 +51,7 @@ Calculate maximum nesting depth in a function.
 
 Calculate maintainability index (0-100, higher is better).
 
-##### _calculate_halstead_metrics(self: Any, tree: ast.AST) -> <ast.Subscript object at 0x000001943193A080>
+##### _calculate_halstead_metrics(self: Any, tree: ast.AST) -> <ast.Subscript object at 0x0000019427509090>
 
 Calculate simplified Halstead operators and operands count.
 

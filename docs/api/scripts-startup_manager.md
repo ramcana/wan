@@ -23,7 +23,7 @@ Main startup manager orchestrator
 
 
 
-##### run_startup_sequence(self: Any, backend_port: <ast.Subscript object at 0x000001943451C5E0>, frontend_port: <ast.Subscript object at 0x000001943451E620>) -> bool
+##### run_startup_sequence(self: Any, backend_port: <ast.Subscript object at 0x0000019427F99150>, frontend_port: <ast.Subscript object at 0x0000019427F99090>) -> bool
 
 Run the complete startup sequence
 
@@ -31,19 +31,19 @@ Run the complete startup sequence
 
 Validate the development environment
 
-##### _manage_ports(self: Any, backend_port: <ast.Subscript object at 0x0000019433F919F0>, frontend_port: <ast.Subscript object at 0x0000019433F91930>) -> <ast.Subscript object at 0x00000194340F2B30>
+##### _manage_ports(self: Any, backend_port: <ast.Subscript object at 0x0000019427F39600>, frontend_port: <ast.Subscript object at 0x0000019427F39630>) -> <ast.Subscript object at 0x0000019427F3B010>
 
 Manage port allocation and conflicts
 
-##### _start_processes(self: Any, ports: <ast.Subscript object at 0x00000194340F2A70>) -> bool
+##### _start_processes(self: Any, ports: <ast.Subscript object at 0x000001942A269270>) -> bool
 
 Start the server processes
 
-##### _verify_health(self: Any, ports: <ast.Subscript object at 0x0000019433FD6FE0>) -> bool
+##### _verify_health(self: Any, ports: <ast.Subscript object at 0x000001942A269A80>) -> bool
 
 Verify server health
 
-##### _display_success_summary(self: Any, ports: <ast.Subscript object at 0x00000194346456F0>, stats: <ast.Subscript object at 0x0000019434647DC0>, optimization_suggestions: <ast.Subscript object at 0x0000019434647EE0>)
+##### _display_success_summary(self: Any, ports: <ast.Subscript object at 0x0000019428CF9DB0>, stats: <ast.Subscript object at 0x0000019428CF9C90>, optimization_suggestions: <ast.Subscript object at 0x0000019428CF9BD0>)
 
 Display startup success summary with performance metrics and optimization suggestions
 

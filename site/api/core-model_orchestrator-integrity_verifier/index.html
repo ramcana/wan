@@ -894,11 +894,11 @@ for handling various integrity failure scenarios.</p>
 2. HuggingFace ETag verification (fallback)
 3. Size-only verification (last resort)</p>
 <h4 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h4>
-<h5 id="initself-any-retry_config"><strong>init</strong>(self: Any, retry_config: <ast.Subscript object at 0x000001943459CA30>)<a class="headerlink" href="#initself-any-retry_config" title="Permanent link">&para;</a></h5>
+<h5 id="initself-any-retry_config"><strong>init</strong>(self: Any, retry_config: <ast.Subscript object at 0x000001942CC466E0>)<a class="headerlink" href="#initself-any-retry_config" title="Permanent link">&para;</a></h5>
 <p>Initialize the integrity verifier.</p>
 <p>Args:
     retry_config: Configuration for retry logic on verification failures</p>
-<h5 id="verify_model_integrityself-any-spec-modelspec-model_dir-path-hf_metadata-manifest_signature-public_key-integrityverificationresult">verify_model_integrity(self: Any, spec: ModelSpec, model_dir: Path, hf_metadata: <ast.Subscript object at 0x000001943459C040>, manifest_signature: <ast.Subscript object at 0x000001943459D870>, public_key: <ast.Subscript object at 0x000001943459DA20>) -&gt; IntegrityVerificationResult<a class="headerlink" href="#verify_model_integrityself-any-spec-modelspec-model_dir-path-hf_metadata-manifest_signature-public_key-integrityverificationresult" title="Permanent link">&para;</a></h5>
+<h5 id="verify_model_integrityself-any-spec-modelspec-model_dir-path-hf_metadata-manifest_signature-public_key-integrityverificationresult">verify_model_integrity(self: Any, spec: ModelSpec, model_dir: Path, hf_metadata: <ast.Subscript object at 0x000001942CC46230>, manifest_signature: <ast.Subscript object at 0x000001942CC46200>, public_key: <ast.Subscript object at 0x000001942CC46E90>) -&gt; IntegrityVerificationResult<a class="headerlink" href="#verify_model_integrityself-any-spec-modelspec-model_dir-path-hf_metadata-manifest_signature-public_key-integrityverificationresult" title="Permanent link">&para;</a></h5>
 <p>Perform comprehensive integrity verification for a model.</p>
 <p>Args:
     spec: Model specification with file requirements
@@ -908,7 +908,7 @@ for handling various integrity failure scenarios.</p>
     public_key: Optional public key for signature verification</p>
 <p>Returns:
     IntegrityVerificationResult with detailed verification results</p>
-<h5 id="_verify_single_fileself-any-file_spec-filespec-file_path-path-hf_metadata-fileverificationresult">_verify_single_file(self: Any, file_spec: FileSpec, file_path: Path, hf_metadata: <ast.Subscript object at 0x00000194319C4550>) -&gt; FileVerificationResult<a class="headerlink" href="#_verify_single_fileself-any-file_spec-filespec-file_path-path-hf_metadata-fileverificationresult" title="Permanent link">&para;</a></h5>
+<h5 id="_verify_single_fileself-any-file_spec-filespec-file_path-path-hf_metadata-fileverificationresult">_verify_single_file(self: Any, file_spec: FileSpec, file_path: Path, hf_metadata: <ast.Subscript object at 0x000001942CE6D3F0>) -&gt; FileVerificationResult<a class="headerlink" href="#_verify_single_fileself-any-file_spec-filespec-file_path-path-hf_metadata-fileverificationresult" title="Permanent link">&para;</a></h5>
 <p>Verify a single file using the best available method.</p>
 <p>Args:
     file_spec: File specification with expected values
@@ -934,7 +934,7 @@ for multipart uploads. This implementation handles simple cases.</p>
 <p>Create a canonical string representation of model spec for signing.</p>
 <p>This ensures consistent signature verification across different
 serialization formats and field ordering.</p>
-<h5 id="extract_hf_metadata_from_downloadself-any-downloaded_files-hf_cache_dir-">extract_hf_metadata_from_download(self: Any, downloaded_files: <ast.Subscript object at 0x000001942FC41ED0>, hf_cache_dir: <ast.Subscript object at 0x000001942FC41F90>) -&gt; <ast.Subscript object at 0x000001942FC43DC0><a class="headerlink" href="#extract_hf_metadata_from_downloadself-any-downloaded_files-hf_cache_dir-" title="Permanent link">&para;</a></h5>
+<h5 id="extract_hf_metadata_from_downloadself-any-downloaded_files-hf_cache_dir-">extract_hf_metadata_from_download(self: Any, downloaded_files: <ast.Subscript object at 0x000001942C8463B0>, hf_cache_dir: <ast.Subscript object at 0x000001942C8465C0>) -&gt; <ast.Subscript object at 0x000001942C846EC0><a class="headerlink" href="#extract_hf_metadata_from_downloadself-any-downloaded_files-hf_cache_dir-" title="Permanent link">&para;</a></h5>
 <p>Extract HuggingFace metadata from downloaded files.</p>
 <p>This method attempts to extract ETag and other metadata from
 HuggingFace cache files or HTTP headers if available.</p>

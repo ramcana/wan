@@ -917,7 +917,7 @@ reference tracking to prevent premature deletion.</p>
 <p>Save component metadata to disk.</p>
 <h5 id="_calculate_file_hashself-any-file_path-path-str">_calculate_file_hash(self: Any, file_path: Path) -&gt; str<a class="headerlink" href="#_calculate_file_hashself-any-file_path-path-str" title="Permanent link">&para;</a></h5>
 <p>Calculate SHA256 hash of a file.</p>
-<h5 id="_identify_component_typeself-any-file_path-str-">_identify_component_type(self: Any, file_path: str) -&gt; <ast.Subscript object at 0x00000194340BA170><a class="headerlink" href="#_identify_component_typeself-any-file_path-str-" title="Permanent link">&para;</a></h5>
+<h5 id="_identify_component_typeself-any-file_path-str-">_identify_component_type(self: Any, file_path: str) -&gt; <ast.Subscript object at 0x000001942832D450><a class="headerlink" href="#_identify_component_typeself-any-file_path-str-" title="Permanent link">&para;</a></h5>
 <p>Identify the component type based on file path patterns.</p>
 <h5 id="_get_component_keyself-any-component_type-str-content_hash-str-str">_get_component_key(self: Any, component_type: str, content_hash: str) -&gt; str<a class="headerlink" href="#_get_component_keyself-any-component_type-str-content_hash-str-str" title="Permanent link">&para;</a></h5>
 <p>Generate a unique key for a component.</p>
@@ -937,7 +937,7 @@ reference tracking to prevent premature deletion.</p>
     model_path: Path to the model directory</p>
 <p>Returns:
     DeduplicationResult with statistics</p>
-<h5 id="deduplicate_across_modelsself-any-model_paths-deduplicationresult">deduplicate_across_models(self: Any, model_paths: <ast.Subscript object at 0x000001942FC8A5F0>) -&gt; DeduplicationResult<a class="headerlink" href="#deduplicate_across_modelsself-any-model_paths-deduplicationresult" title="Permanent link">&para;</a></h5>
+<h5 id="deduplicate_across_modelsself-any-model_paths-deduplicationresult">deduplicate_across_models(self: Any, model_paths: <ast.Subscript object at 0x00000194282E6B00>) -&gt; DeduplicationResult<a class="headerlink" href="#deduplicate_across_modelsself-any-model_paths-deduplicationresult" title="Permanent link">&para;</a></h5>
 <p>Deduplicate components across multiple models.</p>
 <p>Args:
     model_paths: Dictionary mapping model_id to model directory path</p>
@@ -948,19 +948,19 @@ reference tracking to prevent premature deletion.</p>
 <p>Args:
     model_id: Identifier for the model
     model_path: Path to the model directory</p>
-<h5 id="remove_model_referenceself-any-model_id-str-">remove_model_reference(self: Any, model_id: str) -&gt; <ast.Subscript object at 0x000001943409DB40><a class="headerlink" href="#remove_model_referenceself-any-model_id-str-" title="Permanent link">&para;</a></h5>
+<h5 id="remove_model_referenceself-any-model_id-str-">remove_model_reference(self: Any, model_id: str) -&gt; <ast.Subscript object at 0x00000194283C6050><a class="headerlink" href="#remove_model_referenceself-any-model_id-str-" title="Permanent link">&para;</a></h5>
 <p>Remove references for a model and return list of components that can be cleaned up.</p>
 <p>Args:
     model_id: Identifier for the model being removed</p>
 <p>Returns:
     List of component keys that have no remaining references</p>
-<h5 id="cleanup_orphaned_componentsself-any-component_keys-int">cleanup_orphaned_components(self: Any, component_keys: <ast.Subscript object at 0x000001943409DC90>) -&gt; int<a class="headerlink" href="#cleanup_orphaned_componentsself-any-component_keys-int" title="Permanent link">&para;</a></h5>
+<h5 id="cleanup_orphaned_componentsself-any-component_keys-int">cleanup_orphaned_components(self: Any, component_keys: <ast.Subscript object at 0x00000194283C61A0>) -&gt; int<a class="headerlink" href="#cleanup_orphaned_componentsself-any-component_keys-int" title="Permanent link">&para;</a></h5>
 <p>Clean up components that have no remaining references.</p>
 <p>Args:
     component_keys: List of component keys to clean up</p>
 <p>Returns:
     Number of bytes reclaimed</p>
-<h5 id="get_component_statsself-any-">get_component_stats(self: Any) -&gt; <ast.Subscript object at 0x0000019434094670><a class="headerlink" href="#get_component_statsself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="get_component_statsself-any-">get_component_stats(self: Any) -&gt; <ast.Subscript object at 0x000001942C5ACB80><a class="headerlink" href="#get_component_statsself-any-" title="Permanent link">&para;</a></h5>
 <p>Get statistics about shared components.</p>
 
 

@@ -37,11 +37,11 @@ Uses a sophisticated scoring system that considers:
 
 #### Methods
 
-##### __init__(self: Any, config: <ast.Subscript object at 0x0000019431B040D0>)
+##### __init__(self: Any, config: <ast.Subscript object at 0x000001942C6634F0>)
 
 
 
-##### get_priority_score(self: Any, task: MaintenanceTask, history: <ast.Subscript object at 0x000001942FBAD690>) -> float
+##### get_priority_score(self: Any, task: MaintenanceTask, history: <ast.Subscript object at 0x000001942C6633A0>) -> float
 
 Calculate comprehensive priority score for a task.
 
@@ -51,7 +51,7 @@ Returns a score from 0-100 where higher scores indicate higher priority.
 
 Analyze the potential impact of completing a task.
 
-##### analyze_effort(self: Any, task: MaintenanceTask, history: <ast.Subscript object at 0x00000194341D1510>) -> EffortAnalysis
+##### analyze_effort(self: Any, task: MaintenanceTask, history: <ast.Subscript object at 0x000001942C6D2380>) -> EffortAnalysis
 
 Analyze the effort required to complete a task.
 
@@ -59,7 +59,7 @@ Analyze the effort required to complete a task.
 
 Calculate urgency score based on timing and dependencies.
 
-##### get_recommended_execution_order(self: Any, tasks: <ast.Subscript object at 0x000001942F1C9F90>, history_map: <ast.Subscript object at 0x000001942F1CAC50>) -> <ast.Subscript object at 0x000001942F1CBD90>
+##### get_recommended_execution_order(self: Any, tasks: <ast.Subscript object at 0x000001942CCB60E0>, history_map: <ast.Subscript object at 0x000001942CCB6920>) -> <ast.Subscript object at 0x000001942CCB40A0>
 
 Get tasks in recommended execution order based on priority scores.
 
@@ -71,7 +71,7 @@ Convert effort analysis to a score (higher score = less effort).
 
 Get priority level adjustment multiplier.
 
-##### _analyze_config_impact(self: Any, config: Dict) -> <ast.Subscript object at 0x000001943451FFD0>
+##### _analyze_config_impact(self: Any, config: Dict) -> <ast.Subscript object at 0x000001942CCF7490>
 
 Analyze task configuration to determine impact adjustments.
 

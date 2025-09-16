@@ -941,8 +941,8 @@
 <h3 id="modelensurer">ModelEnsurer<a class="headerlink" href="#modelensurer" title="Permanent link">&para;</a></h3>
 <p>Orchestrates atomic model downloads with preflight checks.</p>
 <h4 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h4>
-<h5 id="initself-any-registry-modelregistry-resolver-modelresolver-lock_manager-lockmanager-storage_backends-safety_margin_bytes-int-negative_cache_ttl-float-retry_config-enable_deduplication-bool"><strong>init</strong>(self: Any, registry: ModelRegistry, resolver: ModelResolver, lock_manager: LockManager, storage_backends: <ast.Subscript object at 0x00000194344A3190>, safety_margin_bytes: int, negative_cache_ttl: float, retry_config: <ast.Subscript object at 0x00000194302C9930>, enable_deduplication: bool)<a class="headerlink" href="#initself-any-registry-modelregistry-resolver-modelresolver-lock_manager-lockmanager-storage_backends-safety_margin_bytes-int-negative_cache_ttl-float-retry_config-enable_deduplication-bool" title="Permanent link">&para;</a></h5>
-<h5 id="ensureself-any-model_id-str-variant-str">ensure(self: Any, model_id: str, variant: <ast.BinOp object at 0x0000019431B04E80>) -&gt; str<a class="headerlink" href="#ensureself-any-model_id-str-variant-str" title="Permanent link">&para;</a></h5>
+<h5 id="initself-any-registry-modelregistry-resolver-modelresolver-lock_manager-lockmanager-storage_backends-safety_margin_bytes-int-negative_cache_ttl-float-retry_config-enable_deduplication-bool"><strong>init</strong>(self: Any, registry: ModelRegistry, resolver: ModelResolver, lock_manager: LockManager, storage_backends: <ast.Subscript object at 0x000001942A26DD50>, safety_margin_bytes: int, negative_cache_ttl: float, retry_config: <ast.Subscript object at 0x000001942A26DBD0>, enable_deduplication: bool)<a class="headerlink" href="#initself-any-registry-modelregistry-resolver-modelresolver-lock_manager-lockmanager-storage_backends-safety_margin_bytes-int-negative_cache_ttl-float-retry_config-enable_deduplication-bool" title="Permanent link">&para;</a></h5>
+<h5 id="ensureself-any-model_id-str-variant-str">ensure(self: Any, model_id: str, variant: <ast.BinOp object at 0x0000019427B931C0>) -&gt; str<a class="headerlink" href="#ensureself-any-model_id-str-variant-str" title="Permanent link">&para;</a></h5>
 <p>Ensure a model is available locally, downloading if necessary.</p>
 <p>Args:
     model_id: The model identifier
@@ -951,7 +951,7 @@
     str: Path to the ensured model directory</p>
 <p>Raises:
     ModelOrchestratorError: If model cannot be ensured</p>
-<h5 id="get_model_statusself-any-model_id-str-variant-modelstatusinfo">get_model_status(self: Any, model_id: str, variant: <ast.BinOp object at 0x00000194302DA470>) -&gt; ModelStatusInfo<a class="headerlink" href="#get_model_statusself-any-model_id-str-variant-modelstatusinfo" title="Permanent link">&para;</a></h5>
+<h5 id="get_model_statusself-any-model_id-str-variant-modelstatusinfo">get_model_status(self: Any, model_id: str, variant: <ast.BinOp object at 0x000001942CD269B0>) -&gt; ModelStatusInfo<a class="headerlink" href="#get_model_statusself-any-model_id-str-variant-modelstatusinfo" title="Permanent link">&para;</a></h5>
 <p>Get the current status of a model.</p>
 <p>Args:
     model_id: The model identifier
@@ -974,7 +974,7 @@
 <p>Mark a source as failed in the cache.</p>
 <h5 id="cleanup_failed_downloadsself-any">cleanup_failed_downloads(self: Any)<a class="headerlink" href="#cleanup_failed_downloadsself-any" title="Permanent link">&para;</a></h5>
 <p>Clean up any failed download artifacts.</p>
-<h5 id="get_download_progressself-any-operation_id-str-">get_download_progress(self: Any, operation_id: str) -&gt; <ast.Subscript object at 0x000001943007D150><a class="headerlink" href="#get_download_progressself-any-operation_id-str-" title="Permanent link">&para;</a></h5>
+<h5 id="get_download_progressself-any-operation_id-str-">get_download_progress(self: Any, operation_id: str) -&gt; <ast.Subscript object at 0x000001942C52C2B0><a class="headerlink" href="#get_download_progressself-any-operation_id-str-" title="Permanent link">&para;</a></h5>
 <p>Get progress information for an ongoing download.</p>
 <h2 id="constants">Constants<a class="headerlink" href="#constants" title="Permanent link">&para;</a></h2>
 <h3 id="not_present">NOT_PRESENT<a class="headerlink" href="#not_present" title="Permanent link">&para;</a></h3>

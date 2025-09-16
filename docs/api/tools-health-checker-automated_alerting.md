@@ -35,7 +35,7 @@ Automated alerting system with escalation and rate limiting
 
 #### Methods
 
-##### __init__(self: Any, config_path: <ast.Subscript object at 0x00000194302CBA60>)
+##### __init__(self: Any, config_path: <ast.Subscript object at 0x0000019428137EE0>)
 
 
 
@@ -43,19 +43,19 @@ Automated alerting system with escalation and rate limiting
 
 Set up logging for alerting system
 
-##### _load_alert_rules(self: Any) -> <ast.Subscript object at 0x000001943026BD90>
+##### _load_alert_rules(self: Any) -> <ast.Subscript object at 0x0000019428160250>
 
 Load alert rules from configuration
 
-##### _create_default_alert_rules(self: Any) -> <ast.Subscript object at 0x000001943026ABF0>
+##### _create_default_alert_rules(self: Any) -> <ast.Subscript object at 0x0000019428133070>
 
 Create default alert rules
 
-##### _load_escalation_policies(self: Any) -> <ast.Subscript object at 0x0000019430269AE0>
+##### _load_escalation_policies(self: Any) -> <ast.Subscript object at 0x0000019428131F60>
 
 Load escalation policies from configuration
 
-##### _create_default_escalation_policies(self: Any) -> <ast.Subscript object at 0x0000019430268DC0>
+##### _create_default_escalation_policies(self: Any) -> <ast.Subscript object at 0x0000019428131240>
 
 Create default escalation policies
 
@@ -63,11 +63,11 @@ Create default escalation policies
 
 Check if alert should be triggered based on rate limiting
 
-##### _create_alert_message(self: Any, rule: AlertRule, health_report: HealthReport, history: AlertHistory) -> <ast.Subscript object at 0x000001942EFFA320>
+##### _create_alert_message(self: Any, rule: AlertRule, health_report: HealthReport, history: AlertHistory) -> <ast.Subscript object at 0x0000019428400EE0>
 
 Create alert message with relevant information
 
-##### _get_escalation_policy(self: Any, alert_level: AlertLevel) -> <ast.Subscript object at 0x0000019431B5E2F0>
+##### _get_escalation_policy(self: Any, alert_level: AlertLevel) -> <ast.Subscript object at 0x000001942C6662C0>
 
 Get appropriate escalation policy for alert level
 
@@ -79,7 +79,7 @@ Acknowledge an alert to stop escalation
 
 Mark an alert as resolved
 
-##### get_active_alerts(self: Any) -> <ast.Subscript object at 0x0000019431B59750>
+##### get_active_alerts(self: Any) -> <ast.Subscript object at 0x000001942C629B70>
 
 Get list of active (unresolved) alerts
 

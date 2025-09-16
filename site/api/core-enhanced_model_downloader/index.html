@@ -985,7 +985,7 @@ and advanced download management features for WAN2.2 models.</p>
 <h3 id="downloaderror">DownloadError<a class="headerlink" href="#downloaderror" title="Permanent link">&para;</a></h3>
 <p>Custom exception for download errors</p>
 <h4 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h4>
-<h5 id="initself-any-message-str-error_type-str-retry_after"><strong>init</strong>(self: Any, message: str, error_type: str, retry_after: <ast.Subscript object at 0x00000194318D2CE0>)<a class="headerlink" href="#initself-any-message-str-error_type-str-retry_after" title="Permanent link">&para;</a></h5>
+<h5 id="initself-any-message-str-error_type-str-retry_after"><strong>init</strong>(self: Any, message: str, error_type: str, retry_after: <ast.Subscript object at 0x00000194280CECE0>)<a class="headerlink" href="#initself-any-message-str-error_type-str-retry_after" title="Permanent link">&para;</a></h5>
 <h3 id="downloadprogress">DownloadProgress<a class="headerlink" href="#downloadprogress" title="Permanent link">&para;</a></h3>
 <p>Enhanced download progress tracking</p>
 <h3 id="downloadresult">DownloadResult<a class="headerlink" href="#downloadresult" title="Permanent link">&para;</a></h3>
@@ -998,18 +998,18 @@ and advanced download management features for WAN2.2 models.</p>
 <p>Enhanced model downloader with intelligent retry mechanisms,
 exponential backoff, partial download recovery, and bandwidth management.</p>
 <h4 id="methods_1">Methods<a class="headerlink" href="#methods_1" title="Permanent link">&para;</a></h4>
-<h5 id="initself-any-base_downloader-any-models_dir"><strong>init</strong>(self: Any, base_downloader: Any, models_dir: <ast.Subscript object at 0x0000019431926470>)<a class="headerlink" href="#initself-any-base_downloader-any-models_dir" title="Permanent link">&para;</a></h5>
+<h5 id="initself-any-base_downloader-any-models_dir"><strong>init</strong>(self: Any, base_downloader: Any, models_dir: <ast.Subscript object at 0x0000019428042470>)<a class="headerlink" href="#initself-any-base_downloader-any-models_dir" title="Permanent link">&para;</a></h5>
 <p>Initialize the enhanced model downloader.</p>
 <p>Args:
     base_downloader: Optional existing ModelDownloader instance
     models_dir: Directory for storing models</p>
-<h5 id="add_progress_callbackself-any-callback">add_progress_callback(self: Any, callback: <ast.Subscript object at 0x00000194318ECBB0>)<a class="headerlink" href="#add_progress_callbackself-any-callback" title="Permanent link">&para;</a></h5>
+<h5 id="add_progress_callbackself-any-callback">add_progress_callback(self: Any, callback: <ast.Subscript object at 0x000001942809F3D0>)<a class="headerlink" href="#add_progress_callbackself-any-callback" title="Permanent link">&para;</a></h5>
 <p>Add a progress callback function</p>
-<h5 id="remove_progress_callbackself-any-callback">remove_progress_callback(self: Any, callback: <ast.Subscript object at 0x00000194318EC850>)<a class="headerlink" href="#remove_progress_callbackself-any-callback" title="Permanent link">&para;</a></h5>
+<h5 id="remove_progress_callbackself-any-callback">remove_progress_callback(self: Any, callback: <ast.Subscript object at 0x000001942809F070>)<a class="headerlink" href="#remove_progress_callbackself-any-callback" title="Permanent link">&para;</a></h5>
 <p>Remove a progress callback function</p>
 <h5 id="_calculate_chunk_sizeself-any-current_speed_mbps-float-int">_calculate_chunk_size(self: Any, current_speed_mbps: float) -&gt; int<a class="headerlink" href="#_calculate_chunk_sizeself-any-current_speed_mbps-float-int" title="Permanent link">&para;</a></h5>
 <p>Calculate optimal chunk size based on current speed</p>
-<h5 id="set_bandwidth_limitself-any-limit_mbps-bool">set_bandwidth_limit(self: Any, limit_mbps: <ast.Subscript object at 0x00000194300ACA60>) -&gt; bool<a class="headerlink" href="#set_bandwidth_limitself-any-limit_mbps-bool" title="Permanent link">&para;</a></h5>
+<h5 id="set_bandwidth_limitself-any-limit_mbps-bool">set_bandwidth_limit(self: Any, limit_mbps: <ast.Subscript object at 0x000001942C6B7370>) -&gt; bool<a class="headerlink" href="#set_bandwidth_limitself-any-limit_mbps-bool" title="Permanent link">&para;</a></h5>
 <p>Set bandwidth limit for downloads.</p>
 <p>Args:
     limit_mbps: Maximum download speed in Mbps, None for unlimited</p>

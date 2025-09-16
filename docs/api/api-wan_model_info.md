@@ -42,15 +42,15 @@ WAN Model Information and Capabilities API implementation
 
 
 
-##### _get_fallback_model_config(self: Any, model_type: str) -> <ast.Subscript object at 0x000001942F79B580>
+##### _get_fallback_model_config(self: Any, model_type: str) -> <ast.Subscript object at 0x0000019428D10E20>
 
 Get fallback model configuration
 
-##### _get_fallback_model_info(self: Any, model_type: str) -> <ast.Subscript object at 0x000001942F79AF20>
+##### _get_fallback_model_info(self: Any, model_type: str) -> <ast.Subscript object at 0x0000019428D114B0>
 
 Get fallback model information
 
-##### _determine_model_capabilities(self: Any, model_type: str, config: <ast.Subscript object at 0x000001942F79ABC0>, info: <ast.Subscript object at 0x000001942F79AD70>) -> <ast.Subscript object at 0x000001942F7746A0>
+##### _determine_model_capabilities(self: Any, model_type: str, config: <ast.Subscript object at 0x0000019428D116C0>, info: <ast.Subscript object at 0x0000019428D117E0>) -> <ast.Subscript object at 0x0000019428D13EB0>
 
 Determine model capabilities based on type and configuration
 
@@ -58,11 +58,11 @@ Determine model capabilities based on type and configuration
 
 Generate comparison recommendation
 
-##### _define_model_use_cases(self: Any, model_a: str, model_b: str, perf_a: WANModelPerformanceMetrics, perf_b: WANModelPerformanceMetrics) -> <ast.Subscript object at 0x000001942FD02FB0>
+##### _define_model_use_cases(self: Any, model_a: str, model_b: str, perf_a: WANModelPerformanceMetrics, perf_b: WANModelPerformanceMetrics) -> <ast.Subscript object at 0x00000194274A5CF0>
 
 Define use cases for each model
 
-##### _identify_trade_offs(self: Any, model_a: str, model_b: str, perf_a: WANModelPerformanceMetrics, perf_b: WANModelPerformanceMetrics) -> <ast.Subscript object at 0x00000194344D18A0>
+##### _identify_trade_offs(self: Any, model_a: str, model_b: str, perf_a: WANModelPerformanceMetrics, perf_b: WANModelPerformanceMetrics) -> <ast.Subscript object at 0x00000194274A7370>
 
 Identify trade-offs between models
 

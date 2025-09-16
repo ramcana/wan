@@ -957,7 +957,7 @@ Tracks generation performance, resource usage, and provides optimization recomme
 <h3 id="performancemonitor">PerformanceMonitor<a class="headerlink" href="#performancemonitor" title="Permanent link">&para;</a></h3>
 <p>Monitors and analyzes system and generation performance.</p>
 <h4 id="methods_1">Methods<a class="headerlink" href="#methods_1" title="Permanent link">&para;</a></h4>
-<h5 id="initself-any-config"><strong>init</strong>(self: Any, config: <ast.Subscript object at 0x0000019434503DF0>)<a class="headerlink" href="#initself-any-config" title="Permanent link">&para;</a></h5>
+<h5 id="initself-any-config"><strong>init</strong>(self: Any, config: <ast.Subscript object at 0x00000194284683A0>)<a class="headerlink" href="#initself-any-config" title="Permanent link">&para;</a></h5>
 <h5 id="_init_gpu_monitoringself-any">_init_gpu_monitoring(self: Any)<a class="headerlink" href="#_init_gpu_monitoringself-any" title="Permanent link">&para;</a></h5>
 <p>Initialize GPU monitoring if available.</p>
 <h5 id="start_monitoringself-any">start_monitoring(self: Any)<a class="headerlink" href="#start_monitoringself-any" title="Permanent link">&para;</a></h5>
@@ -974,21 +974,21 @@ Tracks generation performance, resource usage, and provides optimization recomme
 <p>Start monitoring a generation task.</p>
 <h5 id="update_task_metricsself-any-task_id-str">update_task_metrics(self: Any, task_id: str)<a class="headerlink" href="#update_task_metricsself-any-task_id-str" title="Permanent link">&para;</a></h5>
 <p>Update metrics for an active task.</p>
-<h5 id="complete_task_monitoringself-any-task_id-str-success-bool-error_category-">complete_task_monitoring(self: Any, task_id: str, success: bool, error_category: <ast.Subscript object at 0x0000019431A074F0>) -&gt; <ast.Subscript object at 0x0000019431A04BB0><a class="headerlink" href="#complete_task_monitoringself-any-task_id-str-success-bool-error_category-" title="Permanent link">&para;</a></h5>
+<h5 id="complete_task_monitoringself-any-task_id-str-success-bool-error_category-">complete_task_monitoring(self: Any, task_id: str, success: bool, error_category: <ast.Subscript object at 0x000001942C88A920>) -&gt; <ast.Subscript object at 0x000001942CD542E0><a class="headerlink" href="#complete_task_monitoringself-any-task_id-str-success-bool-error_category-" title="Permanent link">&para;</a></h5>
 <p>Complete monitoring for a task and calculate final metrics.</p>
 <h5 id="_calculate_resource_usageself-any-metrics-performancemetrics">_calculate_resource_usage(self: Any, metrics: PerformanceMetrics)<a class="headerlink" href="#_calculate_resource_usageself-any-metrics-performancemetrics" title="Permanent link">&para;</a></h5>
 <p>Calculate resource usage for a task from system snapshots.</p>
 <h5 id="get_performance_analysisself-any-time_window_hours-int-performanceanalysis">get_performance_analysis(self: Any, time_window_hours: int) -&gt; PerformanceAnalysis<a class="headerlink" href="#get_performance_analysisself-any-time_window_hours-int-performanceanalysis" title="Permanent link">&para;</a></h5>
 <p>Analyze performance over a time window.</p>
-<h5 id="_analyze_bottlenecksself-any-metrics-">_analyze_bottlenecks(self: Any, metrics: <ast.Subscript object at 0x000001942EF27460>) -&gt; <ast.Subscript object at 0x00000194318ECF10><a class="headerlink" href="#_analyze_bottlenecksself-any-metrics-" title="Permanent link">&para;</a></h5>
+<h5 id="_analyze_bottlenecksself-any-metrics-">_analyze_bottlenecks(self: Any, metrics: <ast.Subscript object at 0x000001942CDC86D0>) -&gt; <ast.Subscript object at 0x000001942CC8A4D0><a class="headerlink" href="#_analyze_bottlenecksself-any-metrics-" title="Permanent link">&para;</a></h5>
 <p>Analyze system bottlenecks from metrics.</p>
-<h5 id="_generate_optimization_recommendationsself-any-metrics-bottlenecks-">_generate_optimization_recommendations(self: Any, metrics: <ast.Subscript object at 0x00000194318ECFA0>, bottlenecks: <ast.Subscript object at 0x00000194318EEFE0>) -&gt; <ast.Subscript object at 0x000001942FD79F60><a class="headerlink" href="#_generate_optimization_recommendationsself-any-metrics-bottlenecks-" title="Permanent link">&para;</a></h5>
+<h5 id="_generate_optimization_recommendationsself-any-metrics-bottlenecks-">_generate_optimization_recommendations(self: Any, metrics: <ast.Subscript object at 0x000001942CBC6410>, bottlenecks: <ast.Subscript object at 0x000001942CBC6350>) -&gt; <ast.Subscript object at 0x000001942842D6F0><a class="headerlink" href="#_generate_optimization_recommendationsself-any-metrics-bottlenecks-" title="Permanent link">&para;</a></h5>
 <p>Generate optimization recommendations based on analysis.</p>
-<h5 id="_calculate_resource_efficiencyself-any-metrics-float">_calculate_resource_efficiency(self: Any, metrics: <ast.Subscript object at 0x000001942FD79E10>) -&gt; float<a class="headerlink" href="#_calculate_resource_efficiencyself-any-metrics-float" title="Permanent link">&para;</a></h5>
+<h5 id="_calculate_resource_efficiencyself-any-metrics-float">_calculate_resource_efficiency(self: Any, metrics: <ast.Subscript object at 0x000001942842D840>) -&gt; float<a class="headerlink" href="#_calculate_resource_efficiencyself-any-metrics-float" title="Permanent link">&para;</a></h5>
 <p>Calculate overall resource efficiency score (0-1).</p>
-<h5 id="_calculate_performance_trendsself-any-metrics-">_calculate_performance_trends(self: Any, metrics: <ast.Subscript object at 0x000001942EFBDAB0>) -&gt; <ast.Subscript object at 0x0000019434509120><a class="headerlink" href="#_calculate_performance_trendsself-any-metrics-" title="Permanent link">&para;</a></h5>
+<h5 id="_calculate_performance_trendsself-any-metrics-">_calculate_performance_trends(self: Any, metrics: <ast.Subscript object at 0x000001942842F670>) -&gt; <ast.Subscript object at 0x00000194283F5690><a class="headerlink" href="#_calculate_performance_trendsself-any-metrics-" title="Permanent link">&para;</a></h5>
 <p>Calculate performance trends over time.</p>
-<h5 id="get_current_system_statusself-any-">get_current_system_status(self: Any) -&gt; <ast.Subscript object at 0x0000019434509C90><a class="headerlink" href="#get_current_system_statusself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="get_current_system_statusself-any-">get_current_system_status(self: Any) -&gt; <ast.Subscript object at 0x00000194283F6200><a class="headerlink" href="#get_current_system_statusself-any-" title="Permanent link">&para;</a></h5>
 <p>Get current system performance status.</p>
 <h5 id="export_metricsself-any-filepath-str-time_window_hours-int">export_metrics(self: Any, filepath: str, time_window_hours: int)<a class="headerlink" href="#export_metricsself-any-filepath-str-time_window_hours-int" title="Permanent link">&para;</a></h5>
 <p>Export performance metrics to JSON file.</p>

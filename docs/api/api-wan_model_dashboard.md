@@ -33,11 +33,11 @@ WAN Model Dashboard Integration
 
 
 
-##### _generate_model_cards_html(self: Any, model_summaries: <ast.Subscript object at 0x0000019434169990>) -> str
+##### _generate_model_cards_html(self: Any, model_summaries: <ast.Subscript object at 0x000001942CD45A80>) -> str
 
 Generate HTML for model cards
 
-##### _generate_alerts_html(self: Any, alerts: <ast.Subscript object at 0x0000019434168880>) -> str
+##### _generate_alerts_html(self: Any, alerts: <ast.Subscript object at 0x000001942CD45C90>) -> str
 
 Generate HTML for alerts
 

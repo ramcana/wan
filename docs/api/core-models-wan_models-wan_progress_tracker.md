@@ -25,7 +25,7 @@ Replace with a NVML/WS-backed implementation later if needed.
 
 
 
-##### on_update(self: Any, cb: <ast.Subscript object at 0x000001942FCDB250>) -> None
+##### on_update(self: Any, cb: <ast.Subscript object at 0x0000019428D7D5D0>) -> None
 
 
 
@@ -33,15 +33,15 @@ Replace with a NVML/WS-backed implementation later if needed.
 
 
 
-##### start(self: Any, task_id: str, message: <ast.Subscript object at 0x00000194319C4AF0>) -> ProgressUpdate
+##### start(self: Any, task_id: str, message: <ast.Subscript object at 0x0000019428D7CAF0>) -> ProgressUpdate
 
 
 
-##### update(self: Any, task_id: str, pct: <ast.Subscript object at 0x00000194319C41F0>, message: <ast.Subscript object at 0x00000194319C4130>, eta_seconds: <ast.Subscript object at 0x00000194319C4070>) -> ProgressUpdate
+##### update(self: Any, task_id: str, pct: <ast.Subscript object at 0x0000019428D7C0A0>, message: <ast.Subscript object at 0x0000019428D7C1C0>, eta_seconds: <ast.Subscript object at 0x0000019428D7C0D0>) -> ProgressUpdate
 
 
 
-##### complete(self: Any, task_id: str, message: <ast.Subscript object at 0x0000019431972F80>) -> ProgressUpdate
+##### complete(self: Any, task_id: str, message: <ast.Subscript object at 0x000001942A1AAF80>) -> ProgressUpdate
 
 
 
@@ -49,7 +49,7 @@ Replace with a NVML/WS-backed implementation later if needed.
 
 
 
-##### get(self: Any, task_id: str) -> <ast.Subscript object at 0x0000019431972200>
+##### get(self: Any, task_id: str) -> <ast.Subscript object at 0x000001942A1A9060>
 
 
 

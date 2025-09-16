@@ -1236,33 +1236,33 @@
 Provides adapter methods to convert between existing model interfaces and FastAPI requirements</p>
 <h4 id="methods_1">Methods<a class="headerlink" href="#methods_1" title="Permanent link">&para;</a></h4>
 <h5 id="initself-any"><strong>init</strong>(self: Any)<a class="headerlink" href="#initself-any" title="Permanent link">&para;</a></h5>
-<h5 id="_get_recommended_hardware_profileself-any-model_type-str-available_vram_gb-float-">_get_recommended_hardware_profile(self: Any, model_type: str, available_vram_gb: float) -&gt; <ast.Subscript object at 0x000001942EF964A0><a class="headerlink" href="#_get_recommended_hardware_profileself-any-model_type-str-available_vram_gb-float-" title="Permanent link">&para;</a></h5>
+<h5 id="_get_recommended_hardware_profileself-any-model_type-str-available_vram_gb-float-">_get_recommended_hardware_profile(self: Any, model_type: str, available_vram_gb: float) -&gt; <ast.Subscript object at 0x000001942CB8A110><a class="headerlink" href="#_get_recommended_hardware_profileself-any-model_type-str-available_vram_gb-float-" title="Permanent link">&para;</a></h5>
 <p>Get recommended hardware profile for given VRAM</p>
-<h5 id="replace_placeholder_model_mappingsself-any-">replace_placeholder_model_mappings(self: Any) -&gt; <ast.Subscript object at 0x000001942EF9C730><a class="headerlink" href="#replace_placeholder_model_mappingsself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="replace_placeholder_model_mappingsself-any-">replace_placeholder_model_mappings(self: Any) -&gt; <ast.Subscript object at 0x000001942CB05FF0><a class="headerlink" href="#replace_placeholder_model_mappingsself-any-" title="Permanent link">&para;</a></h5>
 <p>Replace placeholder model mappings with real WAN model references</p>
 <p>Returns:
     Dictionary mapping old placeholder references to new WAN implementations</p>
-<h5 id="get_model_implementation_infoself-any-model_type-str-">get_model_implementation_info(self: Any, model_type: str) -&gt; <ast.Subscript object at 0x000001942EF9D570><a class="headerlink" href="#get_model_implementation_infoself-any-model_type-str-" title="Permanent link">&para;</a></h5>
+<h5 id="get_model_implementation_infoself-any-model_type-str-">get_model_implementation_info(self: Any, model_type: str) -&gt; <ast.Subscript object at 0x000001942CB043A0><a class="headerlink" href="#get_model_implementation_infoself-any-model_type-str-" title="Permanent link">&para;</a></h5>
 <p>Get information about model implementation (real vs placeholder)</p>
 <p>Args:
     model_type: Model type to check</p>
 <p>Returns:
     Dictionary with implementation information</p>
-<h5 id="get_model_status_from_existing_systemself-any-">get_model_status_from_existing_system(self: Any) -&gt; <ast.Subscript object at 0x000001943459CC10><a class="headerlink" href="#get_model_status_from_existing_systemself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="get_model_status_from_existing_systemself-any-">get_model_status_from_existing_system(self: Any) -&gt; <ast.Subscript object at 0x000001942C8ABFD0><a class="headerlink" href="#get_model_status_from_existing_systemself-any-" title="Permanent link">&para;</a></h5>
 <p>Get model status for all supported models from existing system</p>
 <h5 id="_get_model_type_enumself-any-model_type-str-modeltype">_get_model_type_enum(self: Any, model_type: str) -&gt; ModelType<a class="headerlink" href="#_get_model_type_enumself-any-model_type-str-modeltype" title="Permanent link">&para;</a></h5>
 <p>Convert model type string to enum</p>
 <h5 id="_estimate_model_vram_usageself-any-model_type-str-float">_estimate_model_vram_usage(self: Any, model_type: str) -&gt; float<a class="headerlink" href="#_estimate_model_vram_usageself-any-model_type-str-float" title="Permanent link">&para;</a></h5>
 <p>Estimate VRAM usage for a model type in MB</p>
-<h5 id="get_hardware_profileself-any-">get_hardware_profile(self: Any) -&gt; <ast.Subscript object at 0x000001943459EAD0><a class="headerlink" href="#get_hardware_profileself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="get_hardware_profileself-any-">get_hardware_profile(self: Any) -&gt; <ast.Subscript object at 0x000001942C889540><a class="headerlink" href="#get_hardware_profileself-any-" title="Permanent link">&para;</a></h5>
 <p>Get the detected hardware profile</p>
 <h5 id="is_initializedself-any-bool">is_initialized(self: Any) -&gt; bool<a class="headerlink" href="#is_initializedself-any-bool" title="Permanent link">&para;</a></h5>
 <p>Check if the bridge is initialized</p>
-<h5 id="get_download_progressself-any-model_type-str-">get_download_progress(self: Any, model_type: str) -&gt; <ast.Subscript object at 0x000001942F33F490><a class="headerlink" href="#get_download_progressself-any-model_type-str-" title="Permanent link">&para;</a></h5>
+<h5 id="get_download_progressself-any-model_type-str-">get_download_progress(self: Any, model_type: str) -&gt; <ast.Subscript object at 0x0000019428ADD9C0><a class="headerlink" href="#get_download_progressself-any-model_type-str-" title="Permanent link">&para;</a></h5>
 <p>Get current download progress for a specific model</p>
-<h5 id="get_all_download_progressself-any-">get_all_download_progress(self: Any) -&gt; <ast.Subscript object at 0x000001942F33F520><a class="headerlink" href="#get_all_download_progressself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="get_all_download_progressself-any-">get_all_download_progress(self: Any) -&gt; <ast.Subscript object at 0x0000019428ADDDB0><a class="headerlink" href="#get_all_download_progressself-any-" title="Permanent link">&para;</a></h5>
 <p>Get download progress for all models</p>
-<h5 id="get_integration_statusself-any-">get_integration_status(self: Any) -&gt; <ast.Subscript object at 0x000001942F33F820><a class="headerlink" href="#get_integration_statusself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="get_integration_statusself-any-">get_integration_status(self: Any) -&gt; <ast.Subscript object at 0x0000019428ADEA40><a class="headerlink" href="#get_integration_statusself-any-" title="Permanent link">&para;</a></h5>
 <p>Get comprehensive integration status</p>
 <h5 id="set_hardware_optimizerself-any-optimizer-any">set_hardware_optimizer(self: Any, optimizer: Any)<a class="headerlink" href="#set_hardware_optimizerself-any-optimizer-any" title="Permanent link">&para;</a></h5>
 <p>Set the hardware optimizer for model optimization</p>
@@ -1270,13 +1270,13 @@ Provides adapter methods to convert between existing model interfaces and FastAP
 <p>Schedule hardware detection to run asynchronously</p>
 <h5 id="_sync_hardware_detectionself-any">_sync_hardware_detection(self: Any)<a class="headerlink" href="#_sync_hardware_detectionself-any" title="Permanent link">&para;</a></h5>
 <p>Synchronous hardware detection fallback</p>
-<h5 id="get_lora_statusself-any-model_type-">get_lora_status(self: Any, model_type: <ast.Subscript object at 0x000001942FDC97E0>) -&gt; <ast.Subscript object at 0x000001942FE5B790><a class="headerlink" href="#get_lora_statusself-any-model_type-" title="Permanent link">&para;</a></h5>
+<h5 id="get_lora_statusself-any-model_type-">get_lora_status(self: Any, model_type: <ast.Subscript object at 0x0000019428AAD8D0>) -&gt; <ast.Subscript object at 0x0000019428AAF8B0><a class="headerlink" href="#get_lora_statusself-any-model_type-" title="Permanent link">&para;</a></h5>
 <p>Get LoRA status information for models</p>
 <p>Args:
     model_type: Optional specific model type to check</p>
 <p>Returns:
     Dictionary with LoRA status information</p>
-<h5 id="get_lora_memory_impactself-any-lora_name-str-">get_lora_memory_impact(self: Any, lora_name: str) -&gt; <ast.Subscript object at 0x000001942FE3EDD0><a class="headerlink" href="#get_lora_memory_impactself-any-lora_name-str-" title="Permanent link">&para;</a></h5>
+<h5 id="get_lora_memory_impactself-any-lora_name-str-">get_lora_memory_impact(self: Any, lora_name: str) -&gt; <ast.Subscript object at 0x0000019428AB5F60><a class="headerlink" href="#get_lora_memory_impactself-any-lora_name-str-" title="Permanent link">&para;</a></h5>
 <p>Get memory impact estimation for a LoRA</p>
 <p>Args:
     lora_name: Name of LoRA to analyze</p>

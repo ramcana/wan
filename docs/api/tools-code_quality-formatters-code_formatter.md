@@ -20,7 +20,7 @@ Handles code formatting checking and fixing.
 
 Initialize formatter with configuration.
 
-##### check_formatting(self: Any, file_path: Path, content: str) -> <ast.Subscript object at 0x000001942F1DADA0>
+##### check_formatting(self: Any, file_path: Path, content: str) -> <ast.Subscript object at 0x000001942A18ADA0>
 
 Check formatting issues in the given file.
 
@@ -32,15 +32,15 @@ Fix formatting issues in the given file.
 
 Fix import issues in the given file.
 
-##### _check_black_formatting(self: Any, file_path: Path, content: str) -> <ast.Subscript object at 0x000001942F1CA560>
+##### _check_black_formatting(self: Any, file_path: Path, content: str) -> <ast.Subscript object at 0x000001942A172560>
 
 Check formatting with black.
 
-##### _check_isort_formatting(self: Any, file_path: Path, content: str) -> <ast.Subscript object at 0x000001942F1C9360>
+##### _check_isort_formatting(self: Any, file_path: Path, content: str) -> <ast.Subscript object at 0x000001942A171360>
 
 Check import sorting with isort.
 
-##### _check_basic_formatting(self: Any, file_path: Path, content: str) -> <ast.Subscript object at 0x000001942F1B6BF0>
+##### _check_basic_formatting(self: Any, file_path: Path, content: str) -> <ast.Subscript object at 0x0000019427BBCA00>
 
 Check basic formatting rules.
 

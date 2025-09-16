@@ -1185,7 +1185,7 @@ resource usage monitoring, and trend analysis for the startup process.</p>
 <h3 id="timingmetric">TimingMetric<a class="headerlink" href="#timingmetric" title="Permanent link">&para;</a></h3>
 <p>Individual timing measurement.</p>
 <h4 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h4>
-<h5 id="finishself-any-success-bool-error_message">finish(self: Any, success: bool, error_message: <ast.Subscript object at 0x0000019430307A60>)<a class="headerlink" href="#finishself-any-success-bool-error_message" title="Permanent link">&para;</a></h5>
+<h5 id="finishself-any-success-bool-error_message">finish(self: Any, success: bool, error_message: <ast.Subscript object at 0x0000019429C69A20>)<a class="headerlink" href="#finishself-any-success-bool-error_message" title="Permanent link">&para;</a></h5>
 <p>Mark the timing as finished.</p>
 <h3 id="resourcesnapshot">ResourceSnapshot<a class="headerlink" href="#resourcesnapshot" title="Permanent link">&para;</a></h3>
 <p>System resource usage snapshot.</p>
@@ -1208,13 +1208,13 @@ resource usage monitoring, and trend analysis for the startup process.</p>
 - Historical data storage and analysis
 - Performance optimization suggestions</p>
 <h4 id="methods_3">Methods<a class="headerlink" href="#methods_3" title="Permanent link">&para;</a></h4>
-<h5 id="initself-any-data_dir-max_sessions-int-resource_sampling_interval-float"><strong>init</strong>(self: Any, data_dir: <ast.Subscript object at 0x000001942F035960>, max_sessions: int, resource_sampling_interval: float)<a class="headerlink" href="#initself-any-data_dir-max_sessions-int-resource_sampling_interval-float" title="Permanent link">&para;</a></h5>
+<h5 id="initself-any-data_dir-max_sessions-int-resource_sampling_interval-float"><strong>init</strong>(self: Any, data_dir: <ast.Subscript object at 0x000001942CCF7190>, max_sessions: int, resource_sampling_interval: float)<a class="headerlink" href="#initself-any-data_dir-max_sessions-int-resource_sampling_interval-float" title="Permanent link">&para;</a></h5>
 <p>Initialize performance monitor.</p>
 <p>Args:
     data_dir: Directory to store performance data
     max_sessions: Maximum number of sessions to keep in memory
     resource_sampling_interval: Interval for resource sampling in seconds</p>
-<h5 id="start_sessionself-any-metadata-str">start_session(self: Any, metadata: <ast.Subscript object at 0x000001942F035DB0>) -&gt; str<a class="headerlink" href="#start_sessionself-any-metadata-str" title="Permanent link">&para;</a></h5>
+<h5 id="start_sessionself-any-metadata-str">start_session(self: Any, metadata: <ast.Subscript object at 0x0000019428D66E00>) -&gt; str<a class="headerlink" href="#start_sessionself-any-metadata-str" title="Permanent link">&para;</a></h5>
 <p>Start a new startup session.</p>
 <p>Args:
     metadata: Optional metadata for the session</p>
@@ -1224,20 +1224,20 @@ resource usage monitoring, and trend analysis for the startup process.</p>
 <p>Finish the current startup session.</p>
 <p>Args:
     success: Whether the startup was successful</p>
-<h5 id="start_timingself-any-operation-str-metadata-str">start_timing(self: Any, operation: str, metadata: <ast.Subscript object at 0x000001942FC00EB0>) -&gt; str<a class="headerlink" href="#start_timingself-any-operation-str-metadata-str" title="Permanent link">&para;</a></h5>
+<h5 id="start_timingself-any-operation-str-metadata-str">start_timing(self: Any, operation: str, metadata: <ast.Subscript object at 0x0000019428D67250>) -&gt; str<a class="headerlink" href="#start_timingself-any-operation-str-metadata-str" title="Permanent link">&para;</a></h5>
 <p>Start timing an operation.</p>
 <p>Args:
     operation: Name of the operation
     metadata: Optional metadata for the timing</p>
 <p>Returns:
     Timing ID</p>
-<h5 id="finish_timingself-any-timing_id-str-success-bool-error_message">finish_timing(self: Any, timing_id: str, success: bool, error_message: <ast.Subscript object at 0x000001942FC000D0>)<a class="headerlink" href="#finish_timingself-any-timing_id-str-success-bool-error_message" title="Permanent link">&para;</a></h5>
+<h5 id="finish_timingself-any-timing_id-str-success-bool-error_message">finish_timing(self: Any, timing_id: str, success: bool, error_message: <ast.Subscript object at 0x0000019428D65240>)<a class="headerlink" href="#finish_timingself-any-timing_id-str-success-bool-error_message" title="Permanent link">&para;</a></h5>
 <p>Finish timing an operation.</p>
 <p>Args:
     timing_id: ID returned from start_timing
     success: Whether the operation was successful
     error_message: Error message if operation failed</p>
-<h5 id="time_operationself-any-operation-str-metadata">time_operation(self: Any, operation: str, metadata: <ast.Subscript object at 0x000001942FC01270>)<a class="headerlink" href="#time_operationself-any-operation-str-metadata" title="Permanent link">&para;</a></h5>
+<h5 id="time_operationself-any-operation-str-metadata">time_operation(self: Any, operation: str, metadata: <ast.Subscript object at 0x000001942A290220>)<a class="headerlink" href="#time_operationself-any-operation-str-metadata" title="Permanent link">&para;</a></h5>
 <p>Context manager for timing operations.</p>
 <p>Args:
     operation: Name of the operation
@@ -1246,7 +1246,7 @@ resource usage monitoring, and trend analysis for the startup process.</p>
     with monitor.time_operation("environment_validation"):
         # Do validation work
         pass</p>
-<h5 id="record_errorself-any-error_message-str-operation">record_error(self: Any, error_message: str, operation: <ast.Subscript object at 0x000001942FC00970>)<a class="headerlink" href="#record_errorself-any-error_message-str-operation" title="Permanent link">&para;</a></h5>
+<h5 id="record_errorself-any-error_message-str-operation">record_error(self: Any, error_message: str, operation: <ast.Subscript object at 0x000001942A291A20>)<a class="headerlink" href="#record_errorself-any-error_message-str-operation" title="Permanent link">&para;</a></h5>
 <p>Record an error during startup.</p>
 <p>Args:
     error_message: Error message
@@ -1257,7 +1257,7 @@ resource usage monitoring, and trend analysis for the startup process.</p>
     days: Number of days to include in statistics</p>
 <p>Returns:
     Performance statistics</p>
-<h5 id="get_resource_usage_summaryself-any-">get_resource_usage_summary(self: Any) -&gt; <ast.Subscript object at 0x0000019434526740><a class="headerlink" href="#get_resource_usage_summaryself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="get_resource_usage_summaryself-any-">get_resource_usage_summary(self: Any) -&gt; <ast.Subscript object at 0x000001942CB082E0><a class="headerlink" href="#get_resource_usage_summaryself-any-" title="Permanent link">&para;</a></h5>
 <p>Get resource usage summary for current or last session.</p>
 <p>Returns:
     Resource usage summary</p>
@@ -1267,7 +1267,7 @@ resource usage monitoring, and trend analysis for the startup process.</p>
 <p>Stop background resource monitoring.</p>
 <h5 id="_resource_monitor_loopself-any">_resource_monitor_loop(self: Any)<a class="headerlink" href="#_resource_monitor_loopself-any" title="Permanent link">&para;</a></h5>
 <p>Background loop for resource monitoring.</p>
-<h5 id="_analyze_trendself-any-sessions-str">_analyze_trend(self: Any, sessions: <ast.Subscript object at 0x0000019434524A60>) -&gt; str<a class="headerlink" href="#_analyze_trendself-any-sessions-str" title="Permanent link">&para;</a></h5>
+<h5 id="_analyze_trendself-any-sessions-str">_analyze_trend(self: Any, sessions: <ast.Subscript object at 0x000001942CB081C0>) -&gt; str<a class="headerlink" href="#_analyze_trendself-any-sessions-str" title="Permanent link">&para;</a></h5>
 <p>Analyze performance trend from recent sessions.</p>
 <p>Args:
     sessions: List of recent sessions</p>
@@ -1282,7 +1282,7 @@ resource usage monitoring, and trend analysis for the startup process.</p>
 <h3 id="timingcontext">TimingContext<a class="headerlink" href="#timingcontext" title="Permanent link">&para;</a></h3>
 <p>Context manager for timing operations.</p>
 <h4 id="methods_4">Methods<a class="headerlink" href="#methods_4" title="Permanent link">&para;</a></h4>
-<h5 id="initself-any-monitor-performancemonitor-operation-str-metadata"><strong>init</strong>(self: Any, monitor: PerformanceMonitor, operation: str, metadata: <ast.Subscript object at 0x0000019433F90DC0>)<a class="headerlink" href="#initself-any-monitor-performancemonitor-operation-str-metadata" title="Permanent link">&para;</a></h5>
+<h5 id="initself-any-monitor-performancemonitor-operation-str-metadata"><strong>init</strong>(self: Any, monitor: PerformanceMonitor, operation: str, metadata: <ast.Subscript object at 0x000001942A269000>)<a class="headerlink" href="#initself-any-monitor-performancemonitor-operation-str-metadata" title="Permanent link">&para;</a></h5>
 <h5 id="enterself-any"><strong>enter</strong>(self: Any)<a class="headerlink" href="#enterself-any" title="Permanent link">&para;</a></h5>
 <h5 id="exitself-any-exc_type-any-exc_val-any-exc_tb-any"><strong>exit</strong>(self: Any, exc_type: Any, exc_val: Any, exc_tb: Any)<a class="headerlink" href="#exitself-any-exc_type-any-exc_val-any-exc_tb-any" title="Permanent link">&para;</a></h5>
 <h2 id="constants">Constants<a class="headerlink" href="#constants" title="Permanent link">&para;</a></h2>

@@ -32,11 +32,11 @@ Discovers and categorizes test files across the project
 
 
 
-##### discover_test_files(self: Any) -> <ast.Subscript object at 0x000001942FB33CA0>
+##### discover_test_files(self: Any) -> <ast.Subscript object at 0x00000194285DF310>
 
 Discover all test files in the project
 
-##### _scan_directory(self: Any, directory: Path) -> <ast.Subscript object at 0x00000194341386A0>
+##### _scan_directory(self: Any, directory: Path) -> <ast.Subscript object at 0x00000194285DC9D0>
 
 Recursively scan directory for test files
 
@@ -50,24 +50,24 @@ Analyzes test dependencies, imports, and fixtures
 
 
 
-##### analyze_dependencies(self: Any, test_file: Path) -> <ast.Subscript object at 0x0000019434139420>
+##### analyze_dependencies(self: Any, test_file: Path) -> <ast.Subscript object at 0x00000194285DC700>
 
 Analyze test file dependencies
 Returns: (imports, missing_imports, fixtures_used, missing_fixtures)
 
-##### _extract_imports(self: Any, tree: ast.AST) -> <ast.Subscript object at 0x000001943413A7A0>
+##### _extract_imports(self: Any, tree: ast.AST) -> <ast.Subscript object at 0x000001942C6348B0>
 
 Extract all import statements from AST
 
-##### _extract_fixtures(self: Any, tree: ast.AST) -> <ast.Subscript object at 0x0000019434139090>
+##### _extract_fixtures(self: Any, tree: ast.AST) -> <ast.Subscript object at 0x000001942C6367A0>
 
 Extract pytest fixtures used in test functions
 
-##### _check_missing_imports(self: Any, imports: <ast.Subscript object at 0x000001943413BA30>, test_file: Path) -> <ast.Subscript object at 0x0000019432E3B160>
+##### _check_missing_imports(self: Any, imports: <ast.Subscript object at 0x000001942C6342E0>, test_file: Path) -> <ast.Subscript object at 0x000001942C635000>
 
 Check for imports that cannot be resolved
 
-##### _check_missing_fixtures(self: Any, fixtures: <ast.Subscript object at 0x0000019432E3A050>, test_file: Path) -> <ast.Subscript object at 0x0000019432E39AB0>
+##### _check_missing_fixtures(self: Any, fixtures: <ast.Subscript object at 0x000001942C636260>, test_file: Path) -> <ast.Subscript object at 0x0000019429CAE530>
 
 Check for fixtures that are not defined
 
@@ -81,12 +81,12 @@ Profiles test execution performance to identify slow tests
 
 
 
-##### profile_test_file(self: Any, test_file: Path) -> <ast.Subscript object at 0x0000019432E38D00>
+##### profile_test_file(self: Any, test_file: Path) -> <ast.Subscript object at 0x0000019429CAFE80>
 
 Profile a single test file
 Returns: (execution_time, slow_tests, timed_out)
 
-##### _parse_slow_tests(self: Any, pytest_output: str) -> <ast.Subscript object at 0x0000019433D03BE0>
+##### _parse_slow_tests(self: Any, pytest_output: str) -> <ast.Subscript object at 0x0000019429CAD990>
 
 Parse pytest output to identify slow tests
 
@@ -108,11 +108,11 @@ Perform comprehensive audit of the entire test suite
 
 Analyze a single test file comprehensively
 
-##### _check_syntax(self: Any, test_file: Path) -> <ast.Subscript object at 0x000001942F24AB30>
+##### _check_syntax(self: Any, test_file: Path) -> <ast.Subscript object at 0x0000019429C25420>
 
 Check file for syntax errors
 
-##### _analyze_test_structure(self: Any, test_file: Path) -> <ast.Subscript object at 0x00000194346704C0>
+##### _analyze_test_structure(self: Any, test_file: Path) -> <ast.Subscript object at 0x0000019427F3AF50>
 
 Analyze test file structure and identify issues
 
@@ -120,11 +120,11 @@ Analyze test file structure and identify issues
 
 Check if function contains assertions
 
-##### _run_tests(self: Any, test_file: Path) -> <ast.Subscript object at 0x000001942EFC2650>
+##### _run_tests(self: Any, test_file: Path) -> <ast.Subscript object at 0x000001942C623280>
 
 Run tests and return pass/fail/skip counts
 
-##### _generate_recommendations(self: Any, file_analyses: <ast.Subscript object at 0x000001942EFC0AC0>) -> <ast.Subscript object at 0x0000019432E5F8B0>
+##### _generate_recommendations(self: Any, file_analyses: <ast.Subscript object at 0x000001942C620910>) -> <ast.Subscript object at 0x0000019428473F40>
 
 Generate actionable recommendations based on analysis
 

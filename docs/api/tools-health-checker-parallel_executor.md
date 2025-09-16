@@ -55,23 +55,23 @@ Resolves task dependencies for parallel execution.
 
 #### Methods
 
-##### __init__(self: Any, tasks: <ast.Subscript object at 0x000001942F75FA00>)
+##### __init__(self: Any, tasks: <ast.Subscript object at 0x000001942CC8A110>)
 
 
 
-##### _build_dependency_graph(self: Any) -> <ast.Subscript object at 0x000001942F6D4850>
+##### _build_dependency_graph(self: Any) -> <ast.Subscript object at 0x000001942CC88AF0>
 
 Build dependency graph from tasks.
 
-##### _topological_sort(self: Any) -> <ast.Subscript object at 0x000001942FB49090>
+##### _topological_sort(self: Any) -> <ast.Subscript object at 0x000001942CC89720>
 
 Perform topological sort to determine execution order.
 
-##### get_execution_levels(self: Any) -> <ast.Subscript object at 0x000001942FB4A830>
+##### get_execution_levels(self: Any) -> <ast.Subscript object at 0x0000019427F974C0>
 
 Get tasks grouped by execution level (parallel groups).
 
-##### validate_dependencies(self: Any) -> <ast.Subscript object at 0x000001942FB48700>
+##### validate_dependencies(self: Any) -> <ast.Subscript object at 0x0000019427F94E50>
 
 Validate that all dependencies exist and there are no cycles.
 
@@ -81,23 +81,23 @@ Executes health checks in parallel with resource management.
 
 #### Methods
 
-##### __init__(self: Any, max_workers: <ast.Subscript object at 0x000001942FB48F10>, use_processes: bool)
+##### __init__(self: Any, max_workers: <ast.Subscript object at 0x0000019427F945B0>, use_processes: bool)
 
 
 
-##### execute_tasks(self: Any, tasks: <ast.Subscript object at 0x000001942FB4AE60>) -> <ast.Subscript object at 0x000001942F6B37F0>
+##### execute_tasks(self: Any, tasks: <ast.Subscript object at 0x0000019427F945E0>) -> <ast.Subscript object at 0x0000019427F975E0>
 
 Execute health check tasks in parallel.
 
-##### _execute_level(self: Any, task_names: <ast.Subscript object at 0x000001942F6B31F0>, all_tasks: <ast.Subscript object at 0x000001942F6B26B0>)
+##### _execute_level(self: Any, task_names: <ast.Subscript object at 0x0000019427F97DF0>, all_tasks: <ast.Subscript object at 0x0000019427F96DD0>)
 
 Execute a single level of tasks in parallel.
 
-##### _execute_with_threads(self: Any, tasks: <ast.Subscript object at 0x000001942F6B3A30>, max_workers: int)
+##### _execute_with_threads(self: Any, tasks: <ast.Subscript object at 0x000001942854B2B0>, max_workers: int)
 
 Execute tasks using thread pool.
 
-##### _execute_with_processes(self: Any, tasks: <ast.Subscript object at 0x000001942EFC2E60>, max_workers: int)
+##### _execute_with_processes(self: Any, tasks: <ast.Subscript object at 0x0000019428549120>, max_workers: int)
 
 Execute tasks using process pool.
 

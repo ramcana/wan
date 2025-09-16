@@ -51,7 +51,7 @@ performance monitoring, corruption detection, and automated health checks.
 
 #### Methods
 
-##### __init__(self: Any, models_dir: <ast.Subscript object at 0x00000194345E3EB0>, config: <ast.Subscript object at 0x00000194345E0BB0>)
+##### __init__(self: Any, models_dir: <ast.Subscript object at 0x0000019428AC0E20>, config: <ast.Subscript object at 0x0000019428AC1BA0>)
 
 Initialize the model health monitor.
 
@@ -59,11 +59,11 @@ Args:
     models_dir: Directory containing models
     config: Health check configuration
 
-##### add_health_callback(self: Any, callback: <ast.Subscript object at 0x000001942F220D30>)
+##### add_health_callback(self: Any, callback: <ast.Subscript object at 0x0000019428AC2800>)
 
 Add a callback for health check results
 
-##### add_corruption_callback(self: Any, callback: <ast.Subscript object at 0x000001942F220250>)
+##### add_corruption_callback(self: Any, callback: <ast.Subscript object at 0x0000019428AC3D90>)
 
 Add a callback for corruption detection
 
@@ -75,7 +75,7 @@ Get the path to a model directory
 
 Detect model type from ID
 
-##### _calculate_trend_slope(self: Any, values: <ast.Subscript object at 0x00000194343B05B0>) -> float
+##### _calculate_trend_slope(self: Any, values: <ast.Subscript object at 0x0000019427B6C250>) -> float
 
 Calculate trend slope using simple linear regression
 

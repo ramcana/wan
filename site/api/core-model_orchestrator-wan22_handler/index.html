@@ -969,7 +969,7 @@
 <p>Cache for text embeddings to avoid recomputation.</p>
 <h4 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h4>
 <h5 id="post_initself-any"><strong>post_init</strong>(self: Any)<a class="headerlink" href="#post_initself-any" title="Permanent link">&para;</a></h5>
-<h5 id="getself-any-text-str-">get(self: Any, text: str) -&gt; <ast.Subscript object at 0x000001942FCA1F30><a class="headerlink" href="#getself-any-text-str-" title="Permanent link">&para;</a></h5>
+<h5 id="getself-any-text-str-">get(self: Any, text: str) -&gt; <ast.Subscript object at 0x00000194284A5F30><a class="headerlink" href="#getself-any-text-str-" title="Permanent link">&para;</a></h5>
 <p>Get cached embedding for text.</p>
 <h5 id="putself-any-text-str-embedding-torchtensor-none">put(self: Any, text: str, embedding: torch.Tensor) -&gt; None<a class="headerlink" href="#putself-any-text-str-embedding-torchtensor-none" title="Permanent link">&para;</a></h5>
 <p>Cache embedding for text.</p>
@@ -985,43 +985,43 @@
     model_dir: Path to model directory</p>
 <h5 id="_parse_componentsself-any-none">_parse_components(self: Any) -&gt; None<a class="headerlink" href="#_parse_componentsself-any-none" title="Permanent link">&para;</a></h5>
 <p>Parse model components from file specifications.</p>
-<h5 id="get_required_shardsself-any-component_type-str-variant-">get_required_shards(self: Any, component_type: str, variant: <ast.Subscript object at 0x000001942FD41DB0>) -&gt; <ast.Subscript object at 0x000001942FD41240><a class="headerlink" href="#get_required_shardsself-any-component_type-str-variant-" title="Permanent link">&para;</a></h5>
+<h5 id="get_required_shardsself-any-component_type-str-variant-">get_required_shards(self: Any, component_type: str, variant: <ast.Subscript object at 0x0000019428496B60>) -&gt; <ast.Subscript object at 0x00000194284960E0><a class="headerlink" href="#get_required_shardsself-any-component_type-str-variant-" title="Permanent link">&para;</a></h5>
 <p>Get required shards for a component based on variant and usage.</p>
 <p>Args:
     component_type: Type of component (unet, text_encoder, etc.)
     variant: Model variant (fp16, bf16, etc.)</p>
 <p>Returns:
     List of required shards for selective downloading</p>
-<h5 id="parse_shard_indexself-any-index_file_path-path-">parse_shard_index(self: Any, index_file_path: Path) -&gt; <ast.Subscript object at 0x000001942FCF6080><a class="headerlink" href="#parse_shard_indexself-any-index_file_path-path-" title="Permanent link">&para;</a></h5>
+<h5 id="parse_shard_indexself-any-index_file_path-path-">parse_shard_index(self: Any, index_file_path: Path) -&gt; <ast.Subscript object at 0x00000194284B2080><a class="headerlink" href="#parse_shard_indexself-any-index_file_path-path-" title="Permanent link">&para;</a></h5>
 <p>Parse a shard index file to determine required shards.</p>
 <p>Args:
     index_file_path: Path to the index.json file</p>
 <p>Returns:
     Parsed index data with shard information</p>
-<h5 id="validate_input_for_model_typeself-any-inputs-none">validate_input_for_model_type(self: Any, inputs: <ast.Subscript object at 0x000001942FCF5ED0>) -&gt; None<a class="headerlink" href="#validate_input_for_model_typeself-any-inputs-none" title="Permanent link">&para;</a></h5>
+<h5 id="validate_input_for_model_typeself-any-inputs-none">validate_input_for_model_type(self: Any, inputs: <ast.Subscript object at 0x00000194284B1ED0>) -&gt; None<a class="headerlink" href="#validate_input_for_model_typeself-any-inputs-none" title="Permanent link">&para;</a></h5>
 <p>Validate inputs based on model type requirements.</p>
 <p>Args:
     inputs: Input dictionary to validate</p>
 <p>Raises:
     InvalidInputError: If inputs are invalid for model type</p>
-<h5 id="preprocess_image_inputself-any-image-target_size-torchtensor">preprocess_image_input(self: Any, image: <ast.Subscript object at 0x000001942FCF4AF0>, target_size: <ast.Subscript object at 0x000001942FCF4910>) -&gt; torch.Tensor<a class="headerlink" href="#preprocess_image_inputself-any-image-target_size-torchtensor" title="Permanent link">&para;</a></h5>
+<h5 id="preprocess_image_inputself-any-image-target_size-torchtensor">preprocess_image_input(self: Any, image: <ast.Subscript object at 0x00000194284B0AF0>, target_size: <ast.Subscript object at 0x00000194284B0910>) -&gt; torch.Tensor<a class="headerlink" href="#preprocess_image_inputself-any-image-target_size-torchtensor" title="Permanent link">&para;</a></h5>
 <p>Preprocess image input for i2v/ti2v models.</p>
 <p>Args:
     image: Input image in various formats
     target_size: Target size for resizing (width, height)</p>
 <p>Returns:
     Preprocessed image tensor</p>
-<h5 id="get_cached_text_embeddingself-any-text-str-">get_cached_text_embedding(self: Any, text: str) -&gt; <ast.Subscript object at 0x000001942FD3AE90><a class="headerlink" href="#get_cached_text_embeddingself-any-text-str-" title="Permanent link">&para;</a></h5>
+<h5 id="get_cached_text_embeddingself-any-text-str-">get_cached_text_embedding(self: Any, text: str) -&gt; <ast.Subscript object at 0x00000194284CAE90><a class="headerlink" href="#get_cached_text_embeddingself-any-text-str-" title="Permanent link">&para;</a></h5>
 <p>Get cached text embedding if available.</p>
 <h5 id="cache_text_embeddingself-any-text-str-embedding-torchtensor-none">cache_text_embedding(self: Any, text: str, embedding: torch.Tensor) -&gt; None<a class="headerlink" href="#cache_text_embeddingself-any-text-str-embedding-torchtensor-none" title="Permanent link">&para;</a></h5>
 <p>Cache text embedding for future use.</p>
-<h5 id="get_vae_configself-any-variant-">get_vae_config(self: Any, variant: <ast.Subscript object at 0x000001942FD3A9B0>) -&gt; <ast.Subscript object at 0x000001942FD39030><a class="headerlink" href="#get_vae_configself-any-variant-" title="Permanent link">&para;</a></h5>
+<h5 id="get_vae_configself-any-variant-">get_vae_config(self: Any, variant: <ast.Subscript object at 0x00000194284CA9B0>) -&gt; <ast.Subscript object at 0x00000194284C9030><a class="headerlink" href="#get_vae_configself-any-variant-" title="Permanent link">&para;</a></h5>
 <p>Get VAE configuration optimized for memory usage.</p>
 <p>Args:
     variant: Model variant (affects memory optimization)</p>
 <p>Returns:
     VAE configuration dictionary</p>
-<h5 id="estimate_memory_usageself-any-inputs-variant-">estimate_memory_usage(self: Any, inputs: <ast.Subscript object at 0x000001942FD38E80>, variant: <ast.Subscript object at 0x000001942FD38D60>) -&gt; <ast.Subscript object at 0x000001942EF97040><a class="headerlink" href="#estimate_memory_usageself-any-inputs-variant-" title="Permanent link">&para;</a></h5>
+<h5 id="estimate_memory_usageself-any-inputs-variant-">estimate_memory_usage(self: Any, inputs: <ast.Subscript object at 0x00000194284C8E80>, variant: <ast.Subscript object at 0x00000194284C8D60>) -&gt; <ast.Subscript object at 0x000001942A11E560><a class="headerlink" href="#estimate_memory_usageself-any-inputs-variant-" title="Permanent link">&para;</a></h5>
 <p>Estimate memory usage for given inputs and variant.</p>
 <p>Args:
     inputs: Input parameters (frames, resolution, etc.)
@@ -1042,13 +1042,13 @@
     Production variant name</p>
 <h5 id="is_development_variantself-any-variant-str-bool">is_development_variant(self: Any, variant: str) -&gt; bool<a class="headerlink" href="#is_development_variantself-any-variant-str-bool" title="Permanent link">&para;</a></h5>
 <p>Check if variant is a development variant.</p>
-<h5 id="validate_component_completenessself-any-component_type-str-">validate_component_completeness(self: Any, component_type: str) -&gt; <ast.Subscript object at 0x0000019431894190><a class="headerlink" href="#validate_component_completenessself-any-component_type-str-" title="Permanent link">&para;</a></h5>
+<h5 id="validate_component_completenessself-any-component_type-str-">validate_component_completeness(self: Any, component_type: str) -&gt; <ast.Subscript object at 0x0000019427BD8970><a class="headerlink" href="#validate_component_completenessself-any-component_type-str-" title="Permanent link">&para;</a></h5>
 <p>Validate that all required files for a component are present.</p>
 <p>Args:
     component_type: Type of component to validate</p>
 <p>Returns:
     Tuple of (is_complete, missing_files)</p>
-<h5 id="get_component_filesself-any-component_type-str-include_optional-bool-">get_component_files(self: Any, component_type: str, include_optional: bool) -&gt; <ast.Subscript object at 0x00000194318960B0><a class="headerlink" href="#get_component_filesself-any-component_type-str-include_optional-bool-" title="Permanent link">&para;</a></h5>
+<h5 id="get_component_filesself-any-component_type-str-include_optional-bool-">get_component_files(self: Any, component_type: str, include_optional: bool) -&gt; <ast.Subscript object at 0x0000019427BD91E0><a class="headerlink" href="#get_component_filesself-any-component_type-str-include_optional-bool-" title="Permanent link">&para;</a></h5>
 <p>Get files for a specific component.</p>
 <p>Args:
     component_type: Type of component

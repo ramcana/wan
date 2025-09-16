@@ -44,11 +44,11 @@ Analyze current configuration state.
 
 Analyze current code quality state.
 
-##### _identify_critical_areas(self: Any, baseline_data: Dict, current_state: Dict) -> <ast.Subscript object at 0x0000019434237730>
+##### _identify_critical_areas(self: Any, baseline_data: Dict, current_state: Dict) -> <ast.Subscript object at 0x000001942890C730>
 
 Identify critical areas needing improvement.
 
-##### _generate_baseline_recommendations(self: Any, critical_areas: <ast.Subscript object at 0x00000194342375E0>) -> <ast.Subscript object at 0x0000019434234280>
+##### _generate_baseline_recommendations(self: Any, critical_areas: <ast.Subscript object at 0x000001942890D2D0>) -> <ast.Subscript object at 0x000001942890F640>
 
 Generate recommendations based on critical areas.
 
@@ -62,7 +62,7 @@ This addresses the second sub-task: "Create health improvement roadmap based on 
 
 Create improvement initiative for a critical area.
 
-##### _create_improvement_milestones(self: Any, initiatives: <ast.Subscript object at 0x00000194341DDE70>) -> <ast.Subscript object at 0x00000194341DD390>
+##### _create_improvement_milestones(self: Any, initiatives: <ast.Subscript object at 0x000001942C8BB010>) -> <ast.Subscript object at 0x0000019429CB7CD0>
 
 Create improvement milestones based on initiatives.
 

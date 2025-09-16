@@ -23,7 +23,7 @@ Comprehensive test runner for Model Orchestrator.
 
 
 
-##### run_test_suite(self: Any, suite_name: str, test_path: str, markers: <ast.Subscript object at 0x000001942F7A3B20>) -> Dict
+##### run_test_suite(self: Any, suite_name: str, test_path: str, markers: <ast.Subscript object at 0x000001942A11C430>) -> Dict
 
 Run a specific test suite and return results.
 
@@ -31,7 +31,7 @@ Run a specific test suite and return results.
 
 Run all test suites.
 
-##### generate_report(self: Any, output_file: <ast.Subscript object at 0x0000019431984670>) -> str
+##### generate_report(self: Any, output_file: <ast.Subscript object at 0x0000019427BBEB90>) -> str
 
 Generate comprehensive test report.
 

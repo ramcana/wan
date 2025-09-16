@@ -19,11 +19,11 @@ Manages runtime configuration updates without application restart
 
 #### Methods
 
-##### __init__(self: Any, config_manager: <ast.Subscript object at 0x0000019432DCF670>)
+##### __init__(self: Any, config_manager: <ast.Subscript object at 0x000001942A18FBE0>)
 
 
 
-##### start_monitoring(self: Any, watch_paths: <ast.Subscript object at 0x0000019432DCE9E0>) -> None
+##### start_monitoring(self: Any, watch_paths: <ast.Subscript object at 0x000001942A18EF50>) -> None
 
 Start monitoring configuration files for changes
 
@@ -46,7 +46,7 @@ Args:
 
 Remove configuration update callback
 
-##### get_rollback_history(self: Any) -> <ast.Subscript object at 0x0000019431B043D0>
+##### get_rollback_history(self: Any) -> <ast.Subscript object at 0x000001942880C940>
 
 Get list of available rollback points
 

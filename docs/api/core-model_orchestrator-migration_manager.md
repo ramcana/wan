@@ -52,7 +52,7 @@ Args:
     legacy_models_dir: Legacy models directory path
     orchestrator_models_root: New orchestrator models root path
 
-##### map_legacy_path(self: Any, legacy_model_name: str) -> <ast.Subscript object at 0x0000019430320910>
+##### map_legacy_path(self: Any, legacy_model_name: str) -> <ast.Subscript object at 0x000001942C5AEBF0>
 
 Map a legacy model name to the new orchestrator path.
 
@@ -104,7 +104,7 @@ Returns:
 Raises:
     MigrationError: If config cannot be loaded or parsed
 
-##### generate_manifest_from_legacy(self: Any, legacy_config: LegacyConfig) -> <ast.Subscript object at 0x0000019431B13EE0>
+##### generate_manifest_from_legacy(self: Any, legacy_config: LegacyConfig) -> <ast.Subscript object at 0x000001942C53CE50>
 
 Generate a models.toml manifest structure from legacy configuration.
 
@@ -114,7 +114,7 @@ Args:
 Returns:
     Dictionary representing the new manifest structure
 
-##### scan_legacy_model_files(self: Any, models_dir: str, model_name: str) -> <ast.Subscript object at 0x0000019431B101F0>
+##### scan_legacy_model_files(self: Any, models_dir: str, model_name: str) -> <ast.Subscript object at 0x000001942C553700>
 
 Scan legacy model directory to generate file specifications.
 
@@ -125,11 +125,11 @@ Args:
 Returns:
     List of file specifications
 
-##### _determine_component_type(self: Any, file_path: str) -> <ast.Subscript object at 0x00000194300CCB80>
+##### _determine_component_type(self: Any, file_path: str) -> <ast.Subscript object at 0x000001942C552D10>
 
 Determine the component type based on file path.
 
-##### write_manifest(self: Any, manifest_data: <ast.Subscript object at 0x00000194300CCC70>, output_path: str) -> None
+##### write_manifest(self: Any, manifest_data: <ast.Subscript object at 0x000001942C5538E0>, output_path: str) -> None
 
 Write manifest data to a TOML file.
 
@@ -140,7 +140,7 @@ Args:
 Raises:
     MigrationError: If writing fails
 
-##### migrate_configuration(self: Any, legacy_config_path: str, output_manifest_path: str, legacy_models_dir: <ast.Subscript object at 0x00000194300CC1F0>, backup: bool, scan_files: bool) -> MigrationResult
+##### migrate_configuration(self: Any, legacy_config_path: str, output_manifest_path: str, legacy_models_dir: <ast.Subscript object at 0x000001942C5C2920>, backup: bool, scan_files: bool) -> MigrationResult
 
 Perform complete configuration migration.
 
@@ -164,7 +164,7 @@ Validator for model manifest files and configurations.
 
 Initialize the manifest validator.
 
-##### validate_manifest_file(self: Any, manifest_path: str) -> <ast.Subscript object at 0x000001942FD78DF0>
+##### validate_manifest_file(self: Any, manifest_path: str) -> <ast.Subscript object at 0x000001942C5C0A30>
 
 Validate a manifest file for correctness and completeness.
 
@@ -174,15 +174,15 @@ Args:
 Returns:
     List of validation errors (empty if valid)
 
-##### _validate_manifest_structure(self: Any, manifest_path: str) -> <ast.Subscript object at 0x000001942FD79990>
+##### _validate_manifest_structure(self: Any, manifest_path: str) -> <ast.Subscript object at 0x000001942A1BDB10>
 
 Validate manifest structure and content.
 
-##### _validate_model_structure(self: Any, model_id: str, model_data: <ast.Subscript object at 0x000001942FD79660>) -> <ast.Subscript object at 0x0000019434047970>
+##### _validate_model_structure(self: Any, model_id: str, model_data: <ast.Subscript object at 0x000001942A1BD720>) -> <ast.Subscript object at 0x000001942A18E800>
 
 Validate individual model structure.
 
-##### validate_configuration_compatibility(self: Any, manifest_path: str, legacy_config_path: <ast.Subscript object at 0x0000019434045690>) -> <ast.Subscript object at 0x0000019434046830>
+##### validate_configuration_compatibility(self: Any, manifest_path: str, legacy_config_path: <ast.Subscript object at 0x000001942A18FBB0>) -> <ast.Subscript object at 0x000001942A18DDE0>
 
 Validate compatibility between new manifest and legacy configuration.
 
@@ -203,7 +203,7 @@ Manager for rolling back migrations and configurations.
 
 Initialize the rollback manager.
 
-##### create_rollback_point(self: Any, config_paths: <ast.Subscript object at 0x0000019434045F90>, rollback_dir: str) -> str
+##### create_rollback_point(self: Any, config_paths: <ast.Subscript object at 0x000001942A1A9B70>, rollback_dir: str) -> str
 
 Create a rollback point by backing up current configurations.
 
@@ -225,7 +225,7 @@ Args:
 Returns:
     True if rollback was successful
 
-##### list_rollback_points(self: Any, rollback_dir: str) -> <ast.Subscript object at 0x000001942F6B2DA0>
+##### list_rollback_points(self: Any, rollback_dir: str) -> <ast.Subscript object at 0x000001942C590820>
 
 List available rollback points.
 

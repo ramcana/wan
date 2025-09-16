@@ -98,7 +98,7 @@ Test path safety validation.
 
 #### Methods
 
-##### create_temp_manifest_with_paths(self: Any, file_paths: <ast.Subscript object at 0x000001942F842CB0>) -> str
+##### create_temp_manifest_with_paths(self: Any, file_paths: <ast.Subscript object at 0x0000019427BC2920>) -> str
 
 Create a temporary manifest with specified file paths.
 

@@ -28,7 +28,7 @@ Individual quality metric data point.
 
 #### Methods
 
-##### to_dict(self: Any) -> <ast.Subscript object at 0x000001942F3BE740>
+##### to_dict(self: Any) -> <ast.Subscript object at 0x00000194288F7D90>
 
 Convert to dictionary for serialization.
 
@@ -38,7 +38,7 @@ Quality trend analysis for a metric.
 
 #### Methods
 
-##### to_dict(self: Any) -> <ast.Subscript object at 0x000001942F3BCD60>
+##### to_dict(self: Any) -> <ast.Subscript object at 0x00000194280E91E0>
 
 Convert to dictionary for serialization.
 
@@ -48,7 +48,7 @@ Quality alert for regressions or maintenance needs.
 
 #### Methods
 
-##### to_dict(self: Any) -> <ast.Subscript object at 0x000001942F3BCEB0>
+##### to_dict(self: Any) -> <ast.Subscript object at 0x00000194280E9BD0>
 
 Convert to dictionary for serialization.
 
@@ -58,7 +58,7 @@ Quality threshold configuration.
 
 #### Methods
 
-##### to_dict(self: Any) -> <ast.Subscript object at 0x000001942F3BCD00>
+##### to_dict(self: Any) -> <ast.Subscript object at 0x00000194280EA350>
 
 Convert to dictionary for serialization.
 
@@ -68,7 +68,7 @@ Automated quality improvement recommendation.
 
 #### Methods
 
-##### to_dict(self: Any) -> <ast.Subscript object at 0x00000194318D6D10>
+##### to_dict(self: Any) -> <ast.Subscript object at 0x0000019427B60310>
 
 Convert to dictionary for serialization.
 
@@ -78,7 +78,7 @@ Quality monitoring dashboard data.
 
 #### Methods
 
-##### to_dict(self: Any) -> <ast.Subscript object at 0x00000194318DE5F0>
+##### to_dict(self: Any) -> <ast.Subscript object at 0x0000019427B60AF0>
 
 Convert to dictionary for serialization.
 

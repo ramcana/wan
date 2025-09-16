@@ -812,22 +812,22 @@ with CI/CD pipelines and deployment gates.</p>
 <h3 id="cihealthintegration">CIHealthIntegration<a class="headerlink" href="#cihealthintegration" title="Permanent link">&para;</a></h3>
 <p>Integrates health monitoring with CI/CD pipelines.</p>
 <h4 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h4>
-<h5 id="initself-any-config_path"><strong>init</strong>(self: Any, config_path: <ast.Subscript object at 0x00000194343378B0>)<a class="headerlink" href="#initself-any-config_path" title="Permanent link">&para;</a></h5>
+<h5 id="initself-any-config_path"><strong>init</strong>(self: Any, config_path: <ast.Subscript object at 0x0000019427B63CA0>)<a class="headerlink" href="#initself-any-config_path" title="Permanent link">&para;</a></h5>
 <h5 id="load_configself-any">load_config(self: Any)<a class="headerlink" href="#load_configself-any" title="Permanent link">&para;</a></h5>
 <p>Load CI health integration configuration.</p>
 <h5 id="run_health_check_for_ciself-any-comprehensive-bool-deployment_gate-bool-dict">run_health_check_for_ci(self: Any, comprehensive: bool, deployment_gate: bool) -&gt; Dict<a class="headerlink" href="#run_health_check_for_ciself-any-comprehensive-bool-deployment_gate-bool-dict" title="Permanent link">&para;</a></h5>
 <p>Run health check optimized for CI environment.</p>
-<h5 id="evaluate_deployment_gateself-any-health_report-dict-branch-str-">evaluate_deployment_gate(self: Any, health_report: Dict, branch: str) -&gt; <ast.Subscript object at 0x00000194340350C0><a class="headerlink" href="#evaluate_deployment_gateself-any-health_report-dict-branch-str-" title="Permanent link">&para;</a></h5>
+<h5 id="evaluate_deployment_gateself-any-health_report-dict-branch-str-">evaluate_deployment_gate(self: Any, health_report: Dict, branch: str) -&gt; <ast.Subscript object at 0x0000019427CA57B0><a class="headerlink" href="#evaluate_deployment_gateself-any-health_report-dict-branch-str-" title="Permanent link">&para;</a></h5>
 <p>Evaluate if deployment gate requirements are met.</p>
-<h5 id="generate_ci_summaryself-any-health_report-dict-deployment_gate_result-str">generate_ci_summary(self: Any, health_report: Dict, deployment_gate_result: <ast.Subscript object at 0x0000019434034E50>) -&gt; str<a class="headerlink" href="#generate_ci_summaryself-any-health_report-dict-deployment_gate_result-str" title="Permanent link">&para;</a></h5>
+<h5 id="generate_ci_summaryself-any-health_report-dict-deployment_gate_result-str">generate_ci_summary(self: Any, health_report: Dict, deployment_gate_result: <ast.Subscript object at 0x0000019427CA6260>) -&gt; str<a class="headerlink" href="#generate_ci_summaryself-any-health_report-dict-deployment_gate_result-str" title="Permanent link">&para;</a></h5>
 <p>Generate CI-friendly summary of health check results.</p>
-<h5 id="set_github_outputsself-any-health_report-dict-deployment_gate_result">set_github_outputs(self: Any, health_report: Dict, deployment_gate_result: <ast.Subscript object at 0x0000019434012AA0>)<a class="headerlink" href="#set_github_outputsself-any-health_report-dict-deployment_gate_result" title="Permanent link">&para;</a></h5>
+<h5 id="set_github_outputsself-any-health_report-dict-deployment_gate_result">set_github_outputs(self: Any, health_report: Dict, deployment_gate_result: <ast.Subscript object at 0x0000019427CA55D0>)<a class="headerlink" href="#set_github_outputsself-any-health_report-dict-deployment_gate_result" title="Permanent link">&para;</a></h5>
 <p>Set GitHub Actions outputs for use in other steps.</p>
 <h5 id="create_status_checkself-any-health_report-dict-context-str-bool">create_status_check(self: Any, health_report: Dict, context: str) -&gt; bool<a class="headerlink" href="#create_status_checkself-any-health_report-dict-context-str-bool" title="Permanent link">&para;</a></h5>
 <p>Create GitHub status check for health monitoring.</p>
 <h5 id="notify_health_issuesself-any-health_report-dict">notify_health_issues(self: Any, health_report: Dict)<a class="headerlink" href="#notify_health_issuesself-any-health_report-dict" title="Permanent link">&para;</a></h5>
 <p>Send notifications for health issues.</p>
-<h5 id="_send_slack_notificationself-any-health_report-dict-critical_issues-webhook_url-str">_send_slack_notification(self: Any, health_report: Dict, critical_issues: <ast.Subscript object at 0x00000194302EC400>, webhook_url: str)<a class="headerlink" href="#_send_slack_notificationself-any-health_report-dict-critical_issues-webhook_url-str" title="Permanent link">&para;</a></h5>
+<h5 id="_send_slack_notificationself-any-health_report-dict-critical_issues-webhook_url-str">_send_slack_notification(self: Any, health_report: Dict, critical_issues: <ast.Subscript object at 0x000001942CC45E70>, webhook_url: str)<a class="headerlink" href="#_send_slack_notificationself-any-health_report-dict-critical_issues-webhook_url-str" title="Permanent link">&para;</a></h5>
 <p>Send Slack notification for critical health issues.</p>
 
 

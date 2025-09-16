@@ -91,7 +91,7 @@ Load configuration from file
 
 Save configuration to file
 
-##### is_feature_enabled(self: Any, flag: <ast.Subscript object at 0x00000194319B4E20>, user_id: <ast.Subscript object at 0x00000194319B4D00>) -> bool
+##### is_feature_enabled(self: Any, flag: <ast.Subscript object at 0x000001942CBC36D0>, user_id: <ast.Subscript object at 0x000001942CBC36A0>) -> bool
 
 Check if a feature flag is enabled for a user or globally
 
@@ -115,27 +115,27 @@ Validate admin policies
 
 Apply admin policy constraints to user preferences
 
-##### _needs_migration(self: Any, config_data: <ast.Subscript object at 0x00000194319FCC40>) -> bool
+##### _needs_migration(self: Any, config_data: <ast.Subscript object at 0x000001942CBE3580>) -> bool
 
 Check if configuration needs migration
 
-##### _migrate_configuration(self: Any, config_data: <ast.Subscript object at 0x00000194319FC790>) -> <ast.Subscript object at 0x00000194319FC0A0>
+##### _migrate_configuration(self: Any, config_data: <ast.Subscript object at 0x000001942CBE30D0>) -> <ast.Subscript object at 0x000001942CBE29E0>
 
 Migrate configuration to current schema version
 
-##### _migrate_from_unversioned(self: Any, config_data: <ast.Subscript object at 0x0000019431A07F70>) -> <ast.Subscript object at 0x0000019431A076D0>
+##### _migrate_from_unversioned(self: Any, config_data: <ast.Subscript object at 0x000001942CBE2920>) -> <ast.Subscript object at 0x000001942CBE2050>
 
 Migrate from unversioned configuration
 
-##### _serialize_config(self: Any, config: EnhancedModelConfiguration) -> <ast.Subscript object at 0x0000019431A06B90>
+##### _serialize_config(self: Any, config: EnhancedModelConfiguration) -> <ast.Subscript object at 0x000001942CBE1510>
 
 Serialize configuration to dictionary
 
-##### _deserialize_config(self: Any, config_data: <ast.Subscript object at 0x0000019431A069E0>) -> EnhancedModelConfiguration
+##### _deserialize_config(self: Any, config_data: <ast.Subscript object at 0x000001942CBE1360>) -> EnhancedModelConfiguration
 
 Deserialize configuration from dictionary
 
-##### _dict_to_dataclass(self: Any, data: <ast.Subscript object at 0x000001943197DBA0>, dataclass_type: Any)
+##### _dict_to_dataclass(self: Any, data: <ast.Subscript object at 0x000001942CB48520>, dataclass_type: Any)
 
 Convert dictionary to dataclass instance
 

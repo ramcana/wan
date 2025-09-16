@@ -19,7 +19,7 @@ Interactive setup wizard for new developers
 
 #### Methods
 
-##### __init__(self: Any, project_root: <ast.Subscript object at 0x000001943455DDB0>, developer_name: <ast.Subscript object at 0x000001943455DE70>)
+##### __init__(self: Any, project_root: <ast.Subscript object at 0x000001942CAF99C0>, developer_name: <ast.Subscript object at 0x000001942CAF9900>)
 
 
 

@@ -20,7 +20,7 @@ Manages pre-commit hooks for code quality enforcement.
 
 Initialize hook manager.
 
-##### install_hooks(self: Any, config: <ast.Subscript object at 0x0000019431A3B490>) -> bool
+##### install_hooks(self: Any, config: <ast.Subscript object at 0x000001942A1B41C0>) -> bool
 
 Install pre-commit hooks for quality enforcement.
 
@@ -34,7 +34,7 @@ Returns:
 
 Uninstall pre-commit hooks.
 
-##### run_hooks(self: Any, files: <ast.Subscript object at 0x0000019431A39930>) -> <ast.Subscript object at 0x0000019431A383D0>
+##### run_hooks(self: Any, files: <ast.Subscript object at 0x0000019427B2E620>) -> <ast.Subscript object at 0x0000019427B2D0C0>
 
 Run pre-commit hooks manually.
 
@@ -48,15 +48,15 @@ Returns:
 
 Update pre-commit hooks to latest versions.
 
-##### validate_config(self: Any) -> <ast.Subscript object at 0x0000019431A536A0>
+##### validate_config(self: Any) -> <ast.Subscript object at 0x0000019427B50580>
 
 Validate pre-commit configuration.
 
-##### _get_default_config(self: Any) -> <ast.Subscript object at 0x0000019431A52320>
+##### _get_default_config(self: Any) -> <ast.Subscript object at 0x0000019427B171C0>
 
 Get default pre-commit configuration.
 
-##### _write_pre_commit_config(self: Any, config: <ast.Subscript object at 0x0000019431A52170>) -> None
+##### _write_pre_commit_config(self: Any, config: <ast.Subscript object at 0x0000019427B17010>) -> None
 
 Write pre-commit configuration to file.
 
@@ -72,11 +72,11 @@ Install manual Git hooks when pre-commit is not available.
 
 Remove manual Git hooks.
 
-##### _run_manual_hooks(self: Any, files: <ast.Subscript object at 0x0000019431A50220>) -> <ast.Subscript object at 0x000001942F8422C0>
+##### _run_manual_hooks(self: Any, files: <ast.Subscript object at 0x0000019427B150C0>) -> <ast.Subscript object at 0x00000194275828C0>
 
 Run manual quality checks.
 
-##### get_hook_status(self: Any) -> <ast.Subscript object at 0x000001942FC73B50>
+##### get_hook_status(self: Any) -> <ast.Subscript object at 0x0000019427BBAFE0>
 
 Get status of pre-commit hooks.
 

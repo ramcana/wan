@@ -30,7 +30,7 @@ functionality without consuming excessive GPU resources.
 
 #### Methods
 
-##### __init__(self: Any, device: <ast.Subscript object at 0x0000019434376F50>, timeout: float)
+##### __init__(self: Any, device: <ast.Subscript object at 0x00000194280B5450>, timeout: float)
 
 
 
@@ -89,7 +89,7 @@ Run minimal I2V inference test.
 
 Run minimal TI2V inference test with dual conditioning.
 
-##### _get_gpu_memory_used(self: Any) -> <ast.Subscript object at 0x000001942F341DE0>
+##### _get_gpu_memory_used(self: Any) -> <ast.Subscript object at 0x0000019427C1EF50>
 
 Get current GPU memory usage in bytes.
 
@@ -105,7 +105,7 @@ Clear expired cache entries.
 
 Clear all cached health check results.
 
-##### get_system_health(self: Any) -> <ast.Subscript object at 0x00000194340C6020>
+##### get_system_health(self: Any) -> <ast.Subscript object at 0x0000019428088490>
 
 Get overall system health information.
 

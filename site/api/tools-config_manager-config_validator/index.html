@@ -1007,13 +1007,13 @@ including schema validation, dependency checking, and consistency validation.</p
 <h4 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h4>
 <h5 id="has_errorsself-any-bool">has_errors(self: Any) -&gt; bool<a class="headerlink" href="#has_errorsself-any-bool" title="Permanent link">&para;</a></h5>
 <p>Check if there are any errors or critical issues</p>
-<h5 id="get_issues_by_severityself-any-severity-validationseverity-">get_issues_by_severity(self: Any, severity: ValidationSeverity) -&gt; <ast.Subscript object at 0x0000019433CC3B20><a class="headerlink" href="#get_issues_by_severityself-any-severity-validationseverity-" title="Permanent link">&para;</a></h5>
+<h5 id="get_issues_by_severityself-any-severity-validationseverity-">get_issues_by_severity(self: Any, severity: ValidationSeverity) -&gt; <ast.Subscript object at 0x000001942C57C640><a class="headerlink" href="#get_issues_by_severityself-any-severity-validationseverity-" title="Permanent link">&para;</a></h5>
 <p>Get issues filtered by severity</p>
 <h3 id="configurationvalidator">ConfigurationValidator<a class="headerlink" href="#configurationvalidator" title="Permanent link">&para;</a></h3>
 <p>Comprehensive configuration validation system</p>
 <h4 id="methods_1">Methods<a class="headerlink" href="#methods_1" title="Permanent link">&para;</a></h4>
-<h5 id="initself-any-schema_path"><strong>init</strong>(self: Any, schema_path: <ast.Subscript object at 0x0000019433CC3910>)<a class="headerlink" href="#initself-any-schema_path" title="Permanent link">&para;</a></h5>
-<h5 id="_load_schemaself-any-">_load_schema(self: Any) -&gt; <ast.Subscript object at 0x0000019433CC21D0><a class="headerlink" href="#_load_schemaself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="initself-any-schema_path"><strong>init</strong>(self: Any, schema_path: <ast.Subscript object at 0x000001942C57C430>)<a class="headerlink" href="#initself-any-schema_path" title="Permanent link">&para;</a></h5>
+<h5 id="_load_schemaself-any-">_load_schema(self: Any) -&gt; <ast.Subscript object at 0x000001942C52F3D0><a class="headerlink" href="#_load_schemaself-any-" title="Permanent link">&para;</a></h5>
 <p>Load the configuration schema</p>
 <h5 id="validate_configself-any-config-unifiedconfig-validationresult">validate_config(self: Any, config: UnifiedConfig) -&gt; ValidationResult<a class="headerlink" href="#validate_configself-any-config-unifiedconfig-validationresult" title="Permanent link">&para;</a></h5>
 <p>Perform comprehensive validation of a configuration</p>
@@ -1021,27 +1021,27 @@ including schema validation, dependency checking, and consistency validation.</p
     config: Configuration to validate</p>
 <p>Returns:
     Validation result with any issues found</p>
-<h5 id="_validate_schemaself-any-config_dict-">_validate_schema(self: Any, config_dict: <ast.Subscript object at 0x0000019433C73430>) -&gt; <ast.Subscript object at 0x0000019433C725F0><a class="headerlink" href="#_validate_schemaself-any-config_dict-" title="Permanent link">&para;</a></h5>
+<h5 id="_validate_schemaself-any-config_dict-">_validate_schema(self: Any, config_dict: <ast.Subscript object at 0x0000019428D0FF10>) -&gt; <ast.Subscript object at 0x0000019428D0F0D0><a class="headerlink" href="#_validate_schemaself-any-config_dict-" title="Permanent link">&para;</a></h5>
 <p>Validate configuration against JSON schema</p>
 <h5 id="_generate_schema_fix_suggestionself-any-error-jsonschemavalidationerror-str">_generate_schema_fix_suggestion(self: Any, error: jsonschema.ValidationError) -&gt; str<a class="headerlink" href="#_generate_schema_fix_suggestionself-any-error-jsonschemavalidationerror-str" title="Permanent link">&para;</a></h5>
 <p>Generate fix suggestion for schema validation errors</p>
-<h5 id="_validate_port_rangesself-any-config-unifiedconfig-">_validate_port_ranges(self: Any, config: UnifiedConfig) -&gt; <ast.Subscript object at 0x0000019430106F80><a class="headerlink" href="#_validate_port_rangesself-any-config-unifiedconfig-" title="Permanent link">&para;</a></h5>
+<h5 id="_validate_port_rangesself-any-config-unifiedconfig-">_validate_port_ranges(self: Any, config: UnifiedConfig) -&gt; <ast.Subscript object at 0x0000019428D726E0><a class="headerlink" href="#_validate_port_rangesself-any-config-unifiedconfig-" title="Permanent link">&para;</a></h5>
 <p>Validate port number ranges and conflicts</p>
-<h5 id="_validate_file_pathsself-any-config-unifiedconfig-">_validate_file_paths(self: Any, config: UnifiedConfig) -&gt; <ast.Subscript object at 0x0000019430105150><a class="headerlink" href="#_validate_file_pathsself-any-config-unifiedconfig-" title="Permanent link">&para;</a></h5>
+<h5 id="_validate_file_pathsself-any-config-unifiedconfig-">_validate_file_paths(self: Any, config: UnifiedConfig) -&gt; <ast.Subscript object at 0x0000019428D70910><a class="headerlink" href="#_validate_file_pathsself-any-config-unifiedconfig-" title="Permanent link">&para;</a></h5>
 <p>Validate file and directory paths</p>
-<h5 id="_validate_memory_limitsself-any-config-unifiedconfig-">_validate_memory_limits(self: Any, config: UnifiedConfig) -&gt; <ast.Subscript object at 0x00000194300CEC20><a class="headerlink" href="#_validate_memory_limitsself-any-config-unifiedconfig-" title="Permanent link">&para;</a></h5>
+<h5 id="_validate_memory_limitsself-any-config-unifiedconfig-">_validate_memory_limits(self: Any, config: UnifiedConfig) -&gt; <ast.Subscript object at 0x0000019428D43700><a class="headerlink" href="#_validate_memory_limitsself-any-config-unifiedconfig-" title="Permanent link">&para;</a></h5>
 <p>Validate memory and VRAM limits</p>
-<h5 id="_validate_timeout_valuesself-any-config-unifiedconfig-">_validate_timeout_values(self: Any, config: UnifiedConfig) -&gt; <ast.Subscript object at 0x0000019430065270><a class="headerlink" href="#_validate_timeout_valuesself-any-config-unifiedconfig-" title="Permanent link">&para;</a></h5>
+<h5 id="_validate_timeout_valuesself-any-config-unifiedconfig-">_validate_timeout_values(self: Any, config: UnifiedConfig) -&gt; <ast.Subscript object at 0x000001942B395D50><a class="headerlink" href="#_validate_timeout_valuesself-any-config-unifiedconfig-" title="Permanent link">&para;</a></h5>
 <p>Validate timeout and duration values</p>
-<h5 id="_validate_dependency_consistencyself-any-config-unifiedconfig-">_validate_dependency_consistency(self: Any, config: UnifiedConfig) -&gt; <ast.Subscript object at 0x00000194300E40D0><a class="headerlink" href="#_validate_dependency_consistencyself-any-config-unifiedconfig-" title="Permanent link">&para;</a></h5>
+<h5 id="_validate_dependency_consistencyself-any-config-unifiedconfig-">_validate_dependency_consistency(self: Any, config: UnifiedConfig) -&gt; <ast.Subscript object at 0x000001942B302D10><a class="headerlink" href="#_validate_dependency_consistencyself-any-config-unifiedconfig-" title="Permanent link">&para;</a></h5>
 <p>Validate consistency between dependent settings</p>
-<h5 id="_validate_environment_consistencyself-any-config-unifiedconfig-">_validate_environment_consistency(self: Any, config: UnifiedConfig) -&gt; <ast.Subscript object at 0x000001942FAC3CA0><a class="headerlink" href="#_validate_environment_consistencyself-any-config-unifiedconfig-" title="Permanent link">&para;</a></h5>
+<h5 id="_validate_environment_consistencyself-any-config-unifiedconfig-">_validate_environment_consistency(self: Any, config: UnifiedConfig) -&gt; <ast.Subscript object at 0x000001942B2F47C0><a class="headerlink" href="#_validate_environment_consistencyself-any-config-unifiedconfig-" title="Permanent link">&para;</a></h5>
 <p>Validate environment-specific consistency</p>
-<h5 id="_validate_security_settingsself-any-config-unifiedconfig-">_validate_security_settings(self: Any, config: UnifiedConfig) -&gt; <ast.Subscript object at 0x000001942FB4BAF0><a class="headerlink" href="#_validate_security_settingsself-any-config-unifiedconfig-" title="Permanent link">&para;</a></h5>
+<h5 id="_validate_security_settingsself-any-config-unifiedconfig-">_validate_security_settings(self: Any, config: UnifiedConfig) -&gt; <ast.Subscript object at 0x000001942B334F40><a class="headerlink" href="#_validate_security_settingsself-any-config-unifiedconfig-" title="Permanent link">&para;</a></h5>
 <p>Validate security-related settings</p>
-<h5 id="_validate_performance_settingsself-any-config-unifiedconfig-">_validate_performance_settings(self: Any, config: UnifiedConfig) -&gt; <ast.Subscript object at 0x000001942F8C4220><a class="headerlink" href="#_validate_performance_settingsself-any-config-unifiedconfig-" title="Permanent link">&para;</a></h5>
+<h5 id="_validate_performance_settingsself-any-config-unifiedconfig-">_validate_performance_settings(self: Any, config: UnifiedConfig) -&gt; <ast.Subscript object at 0x000001942C59CD00><a class="headerlink" href="#_validate_performance_settingsself-any-config-unifiedconfig-" title="Permanent link">&para;</a></h5>
 <p>Validate performance-related settings</p>
-<h5 id="validate_config_fileself-any-config_path-validationresult">validate_config_file(self: Any, config_path: <ast.Subscript object at 0x000001942F8C4370>) -&gt; ValidationResult<a class="headerlink" href="#validate_config_fileself-any-config_path-validationresult" title="Permanent link">&para;</a></h5>
+<h5 id="validate_config_fileself-any-config_path-validationresult">validate_config_file(self: Any, config_path: <ast.Subscript object at 0x000001942C59CE50>) -&gt; ValidationResult<a class="headerlink" href="#validate_config_fileself-any-config_path-validationresult" title="Permanent link">&para;</a></h5>
 <p>Validate a configuration file</p>
 <p>Args:
     config_path: Path to configuration file</p>

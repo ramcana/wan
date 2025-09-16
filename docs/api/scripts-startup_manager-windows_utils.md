@@ -21,7 +21,7 @@ Manages Windows permissions and UAC elevation
 
 Check if the current process is running with administrator privileges
 
-##### request_elevation(script_path: str, args: <ast.Subscript object at 0x0000019433F91A20>) -> bool
+##### request_elevation(script_path: str, args: <ast.Subscript object at 0x000001942A2AB430>) -> bool
 
 Request UAC elevation for the current script
 
@@ -79,7 +79,7 @@ Manages Windows Registry operations for startup configuration
 
 #### Methods
 
-##### get_startup_entry(app_name: str) -> <ast.Subscript object at 0x000001942FB2B6A0>
+##### get_startup_entry(app_name: str) -> <ast.Subscript object at 0x000001942A260070>
 
 Get a startup entry from the Windows Registry
 
@@ -97,11 +97,11 @@ Provides Windows system information
 
 #### Methods
 
-##### get_windows_version() -> <ast.Subscript object at 0x00000194345416F0>
+##### get_windows_version() -> <ast.Subscript object at 0x000001942CE3E620>
 
 Get Windows version information
 
-##### get_defender_status() -> <ast.Subscript object at 0x0000019434210730>
+##### get_defender_status() -> <ast.Subscript object at 0x00000194275CF760>
 
 Get Windows Defender status
 
@@ -119,7 +119,7 @@ Windows-specific optimizations for the startup manager
 
 
 
-##### optimize_for_development(self: Any, ports: <ast.Subscript object at 0x0000019434211360>) -> <ast.Subscript object at 0x0000019430306F50>
+##### optimize_for_development(self: Any, ports: <ast.Subscript object at 0x00000194275CDD20>) -> <ast.Subscript object at 0x00000194275C5B70>
 
 Apply Windows optimizations for development environment
 

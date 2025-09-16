@@ -24,35 +24,35 @@ Validates and migrates existing config.json for new system.
 
 
 
-##### load_existing_config(self: Any) -> <ast.Subscript object at 0x000001943442FCA0>
+##### load_existing_config(self: Any) -> <ast.Subscript object at 0x0000019427910490>
 
 Load existing configuration file.
 
-##### validate_config_structure(self: Any, config: <ast.Subscript object at 0x000001943442FA90>) -> bool
+##### validate_config_structure(self: Any, config: <ast.Subscript object at 0x00000194278FFA90>) -> bool
 
 Validate configuration structure against expected schema.
 
-##### _validate_section(self: Any, section: <ast.Subscript object at 0x000001943442EDD0>, schema: <ast.Subscript object at 0x000001943442ECB0>, section_name: str) -> bool
+##### _validate_section(self: Any, section: <ast.Subscript object at 0x00000194278FEDD0>, schema: <ast.Subscript object at 0x00000194278FECB0>, section_name: str) -> bool
 
 Validate a configuration section.
 
-##### migrate_config(self: Any, old_config: <ast.Subscript object at 0x000001943442DD20>) -> <ast.Subscript object at 0x00000194343B2A70>
+##### migrate_config(self: Any, old_config: <ast.Subscript object at 0x00000194278FDD20>) -> <ast.Subscript object at 0x00000194278FCEE0>
 
 Migrate old configuration format to new format.
 
-##### _set_config_defaults(self: Any, config: <ast.Subscript object at 0x00000194343B28C0>) -> None
+##### _set_config_defaults(self: Any, config: <ast.Subscript object at 0x00000194278FCD30>) -> None
 
 Set default values for missing configuration options.
 
-##### _handle_special_migrations(self: Any, old_config: <ast.Subscript object at 0x00000194343B1390>, new_config: <ast.Subscript object at 0x00000194343B1270>) -> None
+##### _handle_special_migrations(self: Any, old_config: <ast.Subscript object at 0x00000194278F5390>, new_config: <ast.Subscript object at 0x00000194278F5270>) -> None
 
 Handle special migration cases that don't fit the simple mapping.
 
-##### validate_paths(self: Any, config: <ast.Subscript object at 0x0000019434463F10>) -> bool
+##### validate_paths(self: Any, config: <ast.Subscript object at 0x00000194278E3F10>) -> bool
 
 Validate that configured paths exist or can be created.
 
-##### validate_model_compatibility(self: Any, config: <ast.Subscript object at 0x0000019434462DD0>) -> bool
+##### validate_model_compatibility(self: Any, config: <ast.Subscript object at 0x00000194278E1F00>) -> bool
 
 Validate that model settings are compatible with existing models.
 

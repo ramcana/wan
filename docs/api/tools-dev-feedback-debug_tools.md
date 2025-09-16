@@ -48,11 +48,11 @@ Comprehensive debugging tools
 
 #### Methods
 
-##### __init__(self: Any, project_root: <ast.Subscript object at 0x0000019433D59AB0>)
+##### __init__(self: Any, project_root: <ast.Subscript object at 0x0000019428D9ADD0>)
 
 
 
-##### _load_error_patterns(self: Any) -> <ast.Subscript object at 0x0000019430323DC0>
+##### _load_error_patterns(self: Any) -> <ast.Subscript object at 0x0000019428D7F370>
 
 Load common error patterns for analysis
 
@@ -64,11 +64,11 @@ Enable comprehensive debug logging
 
 Disable debug logging
 
-##### start_debug_session(self: Any, session_id: <ast.Subscript object at 0x000001942F92B430>) -> str
+##### start_debug_session(self: Any, session_id: <ast.Subscript object at 0x0000019428D7FA30>) -> str
 
 Start a new debug session
 
-##### end_debug_session(self: Any) -> <ast.Subscript object at 0x00000194344A0100>
+##### end_debug_session(self: Any) -> <ast.Subscript object at 0x0000019427B88160>
 
 End the current debug session
 
@@ -76,7 +76,7 @@ End the current debug session
 
 Add log entry to current session
 
-##### analyze_logs(self: Any, session_id: <ast.Subscript object at 0x00000194344A2140>) -> <ast.Subscript object at 0x00000194318AAC80>
+##### analyze_logs(self: Any, session_id: <ast.Subscript object at 0x0000019427B8A2C0>) -> <ast.Subscript object at 0x0000019428D3AB00>
 
 Analyze logs for patterns and issues
 
@@ -84,19 +84,19 @@ Analyze logs for patterns and issues
 
 Decorator to profile function execution time
 
-##### get_performance_report(self: Any) -> <ast.Subscript object at 0x00000194318A90F0>
+##### get_performance_report(self: Any) -> <ast.Subscript object at 0x00000194280C9D50>
 
 Get performance analysis report
 
-##### export_debug_report(self: Any, output_file: Path, session_id: <ast.Subscript object at 0x00000194318AA710>)
+##### export_debug_report(self: Any, output_file: Path, session_id: <ast.Subscript object at 0x00000194280C9F00>)
 
 Export comprehensive debug report
 
-##### _get_system_info(self: Any) -> <ast.Subscript object at 0x0000019431A9EB90>
+##### _get_system_info(self: Any) -> <ast.Subscript object at 0x00000194280C9E70>
 
 Get system information for debug report
 
-##### _get_installed_packages(self: Any) -> <ast.Subscript object at 0x0000019431A9D600>
+##### _get_installed_packages(self: Any) -> <ast.Subscript object at 0x00000194280C8370>
 
 Get list of installed Python packages
 
@@ -104,11 +104,11 @@ Get list of installed Python packages
 
 Clear accumulated log entries
 
-##### get_recent_errors(self: Any, count: int) -> <ast.Subscript object at 0x0000019431A9F370>
+##### get_recent_errors(self: Any, count: int) -> <ast.Subscript object at 0x00000194280CB3D0>
 
 Get recent error log entries
 
-##### search_logs(self: Any, query: str, level: <ast.Subscript object at 0x0000019431A9C250>) -> <ast.Subscript object at 0x0000019431A9C9A0>
+##### search_logs(self: Any, query: str, level: <ast.Subscript object at 0x00000194280C9FF0>) -> <ast.Subscript object at 0x00000194280C85E0>
 
 Search log entries by message content
 

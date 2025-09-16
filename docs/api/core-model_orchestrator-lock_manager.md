@@ -45,7 +45,7 @@ Raises:
 
 Context manager for safe lock acquisition and release.
 
-##### _acquire_lock(self: Any, model_id: str, timeout: float) -> <ast.Subscript object at 0x000001942EF9E8F0>
+##### _acquire_lock(self: Any, model_id: str, timeout: float) -> <ast.Subscript object at 0x000001942CDD9F30>
 
 Acquire a file lock with timeout and retry logic.
 

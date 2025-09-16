@@ -36,7 +36,7 @@ Manages disk space through configurable retention policies.
 
 #### Methods
 
-##### __init__(self: Any, registry: ModelRegistry, resolver: ModelResolver, config: <ast.Subscript object at 0x00000194340B0AF0>, component_deduplicator: Any)
+##### __init__(self: Any, registry: ModelRegistry, resolver: ModelResolver, config: <ast.Subscript object at 0x000001942CB41A50>, component_deduplicator: Any)
 
 
 
@@ -44,15 +44,15 @@ Manages disk space through configurable retention policies.
 
 Perform garbage collection with configurable policies.
 
-##### pin_model(self: Any, model_id: str, variant: <ast.Subscript object at 0x00000194340B3BB0>) -> None
+##### pin_model(self: Any, model_id: str, variant: <ast.Subscript object at 0x000001942CB43160>) -> None
 
 Pin a model to protect it from garbage collection.
 
-##### unpin_model(self: Any, model_id: str, variant: <ast.Subscript object at 0x00000194340B0BE0>) -> None
+##### unpin_model(self: Any, model_id: str, variant: <ast.Subscript object at 0x00000194278F5C30>) -> None
 
 Unpin a model to allow garbage collection.
 
-##### is_pinned(self: Any, model_id: str, variant: <ast.Subscript object at 0x00000194340B35B0>) -> bool
+##### is_pinned(self: Any, model_id: str, variant: <ast.Subscript object at 0x00000194278F6680>) -> bool
 
 Check if a model is pinned.
 
@@ -64,7 +64,7 @@ Get current disk usage information.
 
 Estimate how much space could be reclaimed by garbage collection.
 
-##### should_trigger_gc(self: Any) -> <ast.Subscript object at 0x00000194319A3940>
+##### should_trigger_gc(self: Any) -> <ast.Subscript object at 0x00000194278F5000>
 
 Check if garbage collection should be triggered automatically.
 
@@ -72,19 +72,19 @@ Check if garbage collection should be triggered automatically.
 
 Perform the actual garbage collection.
 
-##### _discover_models(self: Any) -> <ast.Subscript object at 0x00000194344785B0>
+##### _discover_models(self: Any) -> <ast.Subscript object at 0x0000019427ADB250>
 
 Discover all models in the models directory.
 
-##### _analyze_model_directory(self: Any, model_dir: Path) -> <ast.Subscript object at 0x00000194302698D0>
+##### _analyze_model_directory(self: Any, model_dir: Path) -> <ast.Subscript object at 0x0000019427ADA590>
 
 Analyze a model directory to extract information.
 
-##### _select_removal_candidates(self: Any, models: <ast.Subscript object at 0x000001943026BFA0>, dry_run: bool) -> <ast.Subscript object at 0x0000019430269AE0>
+##### _select_removal_candidates(self: Any, models: <ast.Subscript object at 0x0000019427ADAB30>, dry_run: bool) -> <ast.Subscript object at 0x00000194281044C0>
 
 Select models for removal based on configured policies.
 
-##### _auto_pin_recent_models(self: Any, models: <ast.Subscript object at 0x00000194302693F0>) -> None
+##### _auto_pin_recent_models(self: Any, models: <ast.Subscript object at 0x0000019428104820>) -> None
 
 Automatically pin recently accessed models.
 
@@ -100,15 +100,15 @@ Calculate the total size of a directory.
 
 Get the last access time for a model directory.
 
-##### _get_verification_time(self: Any, model_dir: Path) -> <ast.Subscript object at 0x000001942F00B370>
+##### _get_verification_time(self: Any, model_dir: Path) -> <ast.Subscript object at 0x0000019427A95A20>
 
 Get the verification time from the verification file.
 
-##### _get_model_key(self: Any, model_id: str, variant: <ast.Subscript object at 0x000001942F00BEB0>) -> str
+##### _get_model_key(self: Any, model_id: str, variant: <ast.Subscript object at 0x0000019427A96770>) -> str
 
 Get a unique key for a model.
 
-##### _load_pinned_models(self: Any) -> <ast.Subscript object at 0x000001942EF94040>
+##### _load_pinned_models(self: Any) -> <ast.Subscript object at 0x000001942CC89C90>
 
 Load pinned models from disk.
 

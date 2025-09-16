@@ -41,15 +41,15 @@ with sophisticated error categorization and multi-strategy recovery
 
 #### Methods
 
-##### __init__(self: Any, base_recovery_system: <ast.Subscript object at 0x0000019431A35ED0>, model_availability_manager: <ast.Subscript object at 0x0000019431A35E10>, intelligent_fallback_manager: <ast.Subscript object at 0x0000019431A35D50>, model_health_monitor: <ast.Subscript object at 0x0000019431A35C90>, enhanced_downloader: <ast.Subscript object at 0x0000019431A35BD0>, websocket_manager: <ast.Subscript object at 0x0000019431A35B10>)
+##### __init__(self: Any, base_recovery_system: <ast.Subscript object at 0x000001942CBC0850>, model_availability_manager: <ast.Subscript object at 0x000001942CBC0790>, intelligent_fallback_manager: <ast.Subscript object at 0x000001942CBC06D0>, model_health_monitor: <ast.Subscript object at 0x000001942CBC0610>, enhanced_downloader: <ast.Subscript object at 0x000001942CBC0550>, websocket_manager: <ast.Subscript object at 0x000001942CBC0490>)
 
 
 
-##### _initialize_strategy_mapping(self: Any) -> <ast.Subscript object at 0x00000194319FEE30>
+##### _initialize_strategy_mapping(self: Any) -> <ast.Subscript object at 0x000001942CB897B0>
 
 Initialize recovery strategy mapping for different failure types
 
-##### _initialize_error_messages(self: Any) -> <ast.Subscript object at 0x0000019431A06470>
+##### _initialize_error_messages(self: Any) -> <ast.Subscript object at 0x000001942CBE0DF0>
 
 Initialize user-friendly error messages and actionable steps
 
@@ -61,11 +61,11 @@ Convert enhanced failure type to base failure type
 
 Update success rate metrics for recovery strategies
 
-##### _determine_failure_type(self: Any, error: Exception, context: <ast.Subscript object at 0x000001942FB9F2B0>) -> EnhancedFailureType
+##### _determine_failure_type(self: Any, error: Exception, context: <ast.Subscript object at 0x0000019428321C30>) -> EnhancedFailureType
 
 Determine the enhanced failure type based on error and context
 
-##### _determine_error_severity(self: Any, failure_type: EnhancedFailureType, error: Exception, context: <ast.Subscript object at 0x000001942FBCD8D0>) -> ErrorSeverity
+##### _determine_error_severity(self: Any, failure_type: EnhancedFailureType, error: Exception, context: <ast.Subscript object at 0x00000194283D8250>) -> ErrorSeverity
 
 Determine error severity based on failure type and context
 

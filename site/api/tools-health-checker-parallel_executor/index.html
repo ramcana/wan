@@ -1056,26 +1056,26 @@ for health checks to improve performance in CI/CD environments.</p>
 <h3 id="dependencyresolver">DependencyResolver<a class="headerlink" href="#dependencyresolver" title="Permanent link">&para;</a></h3>
 <p>Resolves task dependencies for parallel execution.</p>
 <h4 id="methods_2">Methods<a class="headerlink" href="#methods_2" title="Permanent link">&para;</a></h4>
-<h5 id="initself-any-tasks"><strong>init</strong>(self: Any, tasks: <ast.Subscript object at 0x000001942F75FA00>)<a class="headerlink" href="#initself-any-tasks" title="Permanent link">&para;</a></h5>
-<h5 id="_build_dependency_graphself-any-">_build_dependency_graph(self: Any) -&gt; <ast.Subscript object at 0x000001942F6D4850><a class="headerlink" href="#_build_dependency_graphself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="initself-any-tasks"><strong>init</strong>(self: Any, tasks: <ast.Subscript object at 0x000001942CC8A110>)<a class="headerlink" href="#initself-any-tasks" title="Permanent link">&para;</a></h5>
+<h5 id="_build_dependency_graphself-any-">_build_dependency_graph(self: Any) -&gt; <ast.Subscript object at 0x000001942CC88AF0><a class="headerlink" href="#_build_dependency_graphself-any-" title="Permanent link">&para;</a></h5>
 <p>Build dependency graph from tasks.</p>
-<h5 id="_topological_sortself-any-">_topological_sort(self: Any) -&gt; <ast.Subscript object at 0x000001942FB49090><a class="headerlink" href="#_topological_sortself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="_topological_sortself-any-">_topological_sort(self: Any) -&gt; <ast.Subscript object at 0x000001942CC89720><a class="headerlink" href="#_topological_sortself-any-" title="Permanent link">&para;</a></h5>
 <p>Perform topological sort to determine execution order.</p>
-<h5 id="get_execution_levelsself-any-">get_execution_levels(self: Any) -&gt; <ast.Subscript object at 0x000001942FB4A830><a class="headerlink" href="#get_execution_levelsself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="get_execution_levelsself-any-">get_execution_levels(self: Any) -&gt; <ast.Subscript object at 0x0000019427F974C0><a class="headerlink" href="#get_execution_levelsself-any-" title="Permanent link">&para;</a></h5>
 <p>Get tasks grouped by execution level (parallel groups).</p>
-<h5 id="validate_dependenciesself-any-">validate_dependencies(self: Any) -&gt; <ast.Subscript object at 0x000001942FB48700><a class="headerlink" href="#validate_dependenciesself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="validate_dependenciesself-any-">validate_dependencies(self: Any) -&gt; <ast.Subscript object at 0x0000019427F94E50><a class="headerlink" href="#validate_dependenciesself-any-" title="Permanent link">&para;</a></h5>
 <p>Validate that all dependencies exist and there are no cycles.</p>
 <h3 id="parallelhealthexecutor">ParallelHealthExecutor<a class="headerlink" href="#parallelhealthexecutor" title="Permanent link">&para;</a></h3>
 <p>Executes health checks in parallel with resource management.</p>
 <h4 id="methods_3">Methods<a class="headerlink" href="#methods_3" title="Permanent link">&para;</a></h4>
-<h5 id="initself-any-max_workers-use_processes-bool"><strong>init</strong>(self: Any, max_workers: <ast.Subscript object at 0x000001942FB48F10>, use_processes: bool)<a class="headerlink" href="#initself-any-max_workers-use_processes-bool" title="Permanent link">&para;</a></h5>
-<h5 id="execute_tasksself-any-tasks-">execute_tasks(self: Any, tasks: <ast.Subscript object at 0x000001942FB4AE60>) -&gt; <ast.Subscript object at 0x000001942F6B37F0><a class="headerlink" href="#execute_tasksself-any-tasks-" title="Permanent link">&para;</a></h5>
+<h5 id="initself-any-max_workers-use_processes-bool"><strong>init</strong>(self: Any, max_workers: <ast.Subscript object at 0x0000019427F945B0>, use_processes: bool)<a class="headerlink" href="#initself-any-max_workers-use_processes-bool" title="Permanent link">&para;</a></h5>
+<h5 id="execute_tasksself-any-tasks-">execute_tasks(self: Any, tasks: <ast.Subscript object at 0x0000019427F945E0>) -&gt; <ast.Subscript object at 0x0000019427F975E0><a class="headerlink" href="#execute_tasksself-any-tasks-" title="Permanent link">&para;</a></h5>
 <p>Execute health check tasks in parallel.</p>
-<h5 id="_execute_levelself-any-task_names-all_tasks">_execute_level(self: Any, task_names: <ast.Subscript object at 0x000001942F6B31F0>, all_tasks: <ast.Subscript object at 0x000001942F6B26B0>)<a class="headerlink" href="#_execute_levelself-any-task_names-all_tasks" title="Permanent link">&para;</a></h5>
+<h5 id="_execute_levelself-any-task_names-all_tasks">_execute_level(self: Any, task_names: <ast.Subscript object at 0x0000019427F97DF0>, all_tasks: <ast.Subscript object at 0x0000019427F96DD0>)<a class="headerlink" href="#_execute_levelself-any-task_names-all_tasks" title="Permanent link">&para;</a></h5>
 <p>Execute a single level of tasks in parallel.</p>
-<h5 id="_execute_with_threadsself-any-tasks-max_workers-int">_execute_with_threads(self: Any, tasks: <ast.Subscript object at 0x000001942F6B3A30>, max_workers: int)<a class="headerlink" href="#_execute_with_threadsself-any-tasks-max_workers-int" title="Permanent link">&para;</a></h5>
+<h5 id="_execute_with_threadsself-any-tasks-max_workers-int">_execute_with_threads(self: Any, tasks: <ast.Subscript object at 0x000001942854B2B0>, max_workers: int)<a class="headerlink" href="#_execute_with_threadsself-any-tasks-max_workers-int" title="Permanent link">&para;</a></h5>
 <p>Execute tasks using thread pool.</p>
-<h5 id="_execute_with_processesself-any-tasks-max_workers-int">_execute_with_processes(self: Any, tasks: <ast.Subscript object at 0x000001942EFC2E60>, max_workers: int)<a class="headerlink" href="#_execute_with_processesself-any-tasks-max_workers-int" title="Permanent link">&para;</a></h5>
+<h5 id="_execute_with_processesself-any-tasks-max_workers-int">_execute_with_processes(self: Any, tasks: <ast.Subscript object at 0x0000019428549120>, max_workers: int)<a class="headerlink" href="#_execute_with_processesself-any-tasks-max_workers-int" title="Permanent link">&para;</a></h5>
 <p>Execute tasks using process pool.</p>
 <h5 id="_execute_single_taskself-any-task-healthchecktask-taskresult">_execute_single_task(self: Any, task: HealthCheckTask) -&gt; TaskResult<a class="headerlink" href="#_execute_single_taskself-any-task-healthchecktask-taskresult" title="Permanent link">&para;</a></h5>
 <p>Execute a single health check task.</p>

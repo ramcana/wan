@@ -882,28 +882,28 @@
 <h3 id="maintenancetaskmanager">MaintenanceTaskManager<a class="headerlink" href="#maintenancetaskmanager" title="Permanent link">&para;</a></h3>
 <p>Manages maintenance tasks including storage, retrieval, and lifecycle management.</p>
 <h4 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h4>
-<h5 id="initself-any-storage_path"><strong>init</strong>(self: Any, storage_path: <ast.Subscript object at 0x00000194346091B0>)<a class="headerlink" href="#initself-any-storage_path" title="Permanent link">&para;</a></h5>
+<h5 id="initself-any-storage_path"><strong>init</strong>(self: Any, storage_path: <ast.Subscript object at 0x000001942C81D0F0>)<a class="headerlink" href="#initself-any-storage_path" title="Permanent link">&para;</a></h5>
 <h5 id="add_taskself-any-task-maintenancetask-none">add_task(self: Any, task: MaintenanceTask) -&gt; None<a class="headerlink" href="#add_taskself-any-task-maintenancetask-none" title="Permanent link">&para;</a></h5>
 <p>Add a new maintenance task.</p>
 <h5 id="remove_taskself-any-task_id-str-bool">remove_task(self: Any, task_id: str) -&gt; bool<a class="headerlink" href="#remove_taskself-any-task_id-str-bool" title="Permanent link">&para;</a></h5>
 <p>Remove a maintenance task.</p>
-<h5 id="get_taskself-any-task_id-str-">get_task(self: Any, task_id: str) -&gt; <ast.Subscript object at 0x000001942F0294B0><a class="headerlink" href="#get_taskself-any-task_id-str-" title="Permanent link">&para;</a></h5>
+<h5 id="get_taskself-any-task_id-str-">get_task(self: Any, task_id: str) -&gt; <ast.Subscript object at 0x000001942C81F370><a class="headerlink" href="#get_taskself-any-task_id-str-" title="Permanent link">&para;</a></h5>
 <p>Get a specific task by ID.</p>
-<h5 id="get_all_tasksself-any-">get_all_tasks(self: Any) -&gt; <ast.Subscript object at 0x000001942F028D90><a class="headerlink" href="#get_all_tasksself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="get_all_tasksself-any-">get_all_tasks(self: Any) -&gt; <ast.Subscript object at 0x000001942C81FC10><a class="headerlink" href="#get_all_tasksself-any-" title="Permanent link">&para;</a></h5>
 <p>Get all maintenance tasks.</p>
-<h5 id="get_tasks_by_categoryself-any-category-taskcategory-">get_tasks_by_category(self: Any, category: TaskCategory) -&gt; <ast.Subscript object at 0x000001942F028460><a class="headerlink" href="#get_tasks_by_categoryself-any-category-taskcategory-" title="Permanent link">&para;</a></h5>
+<h5 id="get_tasks_by_categoryself-any-category-taskcategory-">get_tasks_by_category(self: Any, category: TaskCategory) -&gt; <ast.Subscript object at 0x000001942C81D2A0><a class="headerlink" href="#get_tasks_by_categoryself-any-category-taskcategory-" title="Permanent link">&para;</a></h5>
 <p>Get tasks filtered by category.</p>
-<h5 id="get_tasks_by_priorityself-any-priority-taskpriority-">get_tasks_by_priority(self: Any, priority: TaskPriority) -&gt; <ast.Subscript object at 0x000001942F029750><a class="headerlink" href="#get_tasks_by_priorityself-any-priority-taskpriority-" title="Permanent link">&para;</a></h5>
+<h5 id="get_tasks_by_priorityself-any-priority-taskpriority-">get_tasks_by_priority(self: Any, priority: TaskPriority) -&gt; <ast.Subscript object at 0x000001942C81ED70><a class="headerlink" href="#get_tasks_by_priorityself-any-priority-taskpriority-" title="Permanent link">&para;</a></h5>
 <p>Get tasks filtered by priority.</p>
-<h5 id="get_tasks_by_tagsself-any-tags-">get_tasks_by_tags(self: Any, tags: <ast.Subscript object at 0x000001942F029BA0>) -&gt; <ast.Subscript object at 0x000001942F028CD0><a class="headerlink" href="#get_tasks_by_tagsself-any-tags-" title="Permanent link">&para;</a></h5>
+<h5 id="get_tasks_by_tagsself-any-tags-">get_tasks_by_tags(self: Any, tags: <ast.Subscript object at 0x000001942C81DC00>) -&gt; <ast.Subscript object at 0x0000019428935DE0><a class="headerlink" href="#get_tasks_by_tagsself-any-tags-" title="Permanent link">&para;</a></h5>
 <p>Get tasks that have any of the specified tags.</p>
 <h5 id="update_taskself-any-task_id-str-updates-dict-bool">update_task(self: Any, task_id: str, updates: Dict) -&gt; bool<a class="headerlink" href="#update_taskself-any-task_id-str-updates-dict-bool" title="Permanent link">&para;</a></h5>
 <p>Update a task with new values.</p>
-<h5 id="get_task_dependenciesself-any-task_id-str-">get_task_dependencies(self: Any, task_id: str) -&gt; <ast.Subscript object at 0x0000019433D2CA00><a class="headerlink" href="#get_task_dependenciesself-any-task_id-str-" title="Permanent link">&para;</a></h5>
+<h5 id="get_task_dependenciesself-any-task_id-str-">get_task_dependencies(self: Any, task_id: str) -&gt; <ast.Subscript object at 0x000001942757B2E0><a class="headerlink" href="#get_task_dependenciesself-any-task_id-str-" title="Permanent link">&para;</a></h5>
 <p>Get dependency information for a task.</p>
-<h5 id="validate_task_dependenciesself-any-task-maintenancetask-">validate_task_dependencies(self: Any, task: MaintenanceTask) -&gt; <ast.Subscript object at 0x0000019433D2CD00><a class="headerlink" href="#validate_task_dependenciesself-any-task-maintenancetask-" title="Permanent link">&para;</a></h5>
+<h5 id="validate_task_dependenciesself-any-task-maintenancetask-">validate_task_dependencies(self: Any, task: MaintenanceTask) -&gt; <ast.Subscript object at 0x00000194275792A0><a class="headerlink" href="#validate_task_dependenciesself-any-task-maintenancetask-" title="Permanent link">&para;</a></h5>
 <p>Validate task dependencies and return any issues.</p>
-<h5 id="get_execution_orderself-any-">get_execution_order(self: Any) -&gt; <ast.Subscript object at 0x0000019434444BB0><a class="headerlink" href="#get_execution_orderself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="get_execution_orderself-any-">get_execution_order(self: Any) -&gt; <ast.Subscript object at 0x0000019427579B40><a class="headerlink" href="#get_execution_orderself-any-" title="Permanent link">&para;</a></h5>
 <p>Get tasks in execution order, grouped by dependency level.
 Returns list of lists, where each inner list contains tasks that can run in parallel.</p>
 <h5 id="create_default_tasksself-any-none">create_default_tasks(self: Any) -&gt; None<a class="headerlink" href="#create_default_tasksself-any-none" title="Permanent link">&para;</a></h5>
@@ -914,7 +914,7 @@ Returns list of lists, where each inner list contains tasks that can run in para
 <p>Save tasks to storage.</p>
 <h5 id="_serialize_taskself-any-task-maintenancetask-dict">_serialize_task(self: Any, task: MaintenanceTask) -&gt; Dict<a class="headerlink" href="#_serialize_taskself-any-task-maintenancetask-dict" title="Permanent link">&para;</a></h5>
 <p>Serialize a task to dictionary.</p>
-<h5 id="_deserialize_taskself-any-data-dict-">_deserialize_task(self: Any, data: Dict) -&gt; <ast.Subscript object at 0x00000194344DB820><a class="headerlink" href="#_deserialize_taskself-any-data-dict-" title="Permanent link">&para;</a></h5>
+<h5 id="_deserialize_taskself-any-data-dict-">_deserialize_task(self: Any, data: Dict) -&gt; <ast.Subscript object at 0x00000194280531F0><a class="headerlink" href="#_deserialize_taskself-any-data-dict-" title="Permanent link">&para;</a></h5>
 <p>Deserialize a task from dictionary.</p>
 
 

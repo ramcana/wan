@@ -40,7 +40,7 @@ Perform complete project complexity analysis.
 
 Check if directory should be ignored.
 
-##### _analyze_file_complexity(self: Any, file_path: Path) -> <ast.Subscript object at 0x0000019434604FD0>
+##### _analyze_file_complexity(self: Any, file_path: Path) -> <ast.Subscript object at 0x00000194280C9600>
 
 Analyze complexity of a single Python file.
 
@@ -76,31 +76,31 @@ Calculate overall complexity score for a file.
 
 Determine if a file needs better documentation.
 
-##### _identify_file_issues(self: Any, lines: int, cyclomatic: int, functions: int, classes: int, doc_ratio: float) -> <ast.Subscript object at 0x000001943455F8B0>
+##### _identify_file_issues(self: Any, lines: int, cyclomatic: int, functions: int, classes: int, doc_ratio: float) -> <ast.Subscript object at 0x000001942CAFA800>
 
 Identify specific issues with a file.
 
-##### _analyze_component_complexity(self: Any, component_path: str, files: <ast.Subscript object at 0x000001943455C9A0>) -> ComponentComplexity
+##### _analyze_component_complexity(self: Any, component_path: str, files: <ast.Subscript object at 0x000001942CAFA6E0>) -> ComponentComplexity
 
 Analyze complexity of a component (directory).
 
-##### _generate_component_recommendations(self: Any, files: <ast.Subscript object at 0x00000194344BB100>, doc_coverage: float, avg_complexity: float) -> <ast.Subscript object at 0x00000194344B9D50>
+##### _generate_component_recommendations(self: Any, files: <ast.Subscript object at 0x000001942CB77730>, doc_coverage: float, avg_complexity: float) -> <ast.Subscript object at 0x000001942CB76380>
 
 Generate recommendations for improving a component.
 
-##### _identify_high_priority_areas(self: Any, components: <ast.Subscript object at 0x00000194344D13C0>) -> <ast.Subscript object at 0x00000194344D0A60>
+##### _identify_high_priority_areas(self: Any, components: <ast.Subscript object at 0x000001942CBC1990>) -> <ast.Subscript object at 0x000001942CBC10F0>
 
 Identify components that need immediate attention.
 
-##### _identify_documentation_gaps(self: Any, components: <ast.Subscript object at 0x00000194344D0910>) -> <ast.Subscript object at 0x00000194344D0340>
+##### _identify_documentation_gaps(self: Any, components: <ast.Subscript object at 0x000001942CBC0F40>) -> <ast.Subscript object at 0x000001942CBC09D0>
 
 Identify areas with poor documentation.
 
-##### _identify_complexity_hotspots(self: Any, components: <ast.Subscript object at 0x00000194344D0190>) -> <ast.Subscript object at 0x00000194343D8BB0>
+##### _identify_complexity_hotspots(self: Any, components: <ast.Subscript object at 0x000001942CBC07C0>) -> <ast.Subscript object at 0x000001942850CFD0>
 
 Identify the most complex areas of the codebase.
 
-##### _generate_recommendations(self: Any, components: <ast.Subscript object at 0x00000194343D90F0>) -> <ast.Subscript object at 0x000001942FB7C160>
+##### _generate_recommendations(self: Any, components: <ast.Subscript object at 0x000001942850D570>) -> <ast.Subscript object at 0x00000194280C0790>
 
 Generate overall project recommendations.
 

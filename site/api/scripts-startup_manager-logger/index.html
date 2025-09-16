@@ -1068,7 +1068,7 @@ and different verbosity levels for debugging and troubleshooting.</p>
 - Structured logging for programmatic analysis
 - Different verbosity levels</p>
 <h4 id="methods_2">Methods<a class="headerlink" href="#methods_2" title="Permanent link">&para;</a></h4>
-<h5 id="initself-any-name-str-log_dir-console_level-str-file_level-str-json_level-str-max_file_size-int-backup_count-int-cleanup_days-int"><strong>init</strong>(self: Any, name: str, log_dir: <ast.Subscript object at 0x000001942FBB2920>, console_level: str, file_level: str, json_level: str, max_file_size: int, backup_count: int, cleanup_days: int)<a class="headerlink" href="#initself-any-name-str-log_dir-console_level-str-file_level-str-json_level-str-max_file_size-int-backup_count-int-cleanup_days-int" title="Permanent link">&para;</a></h5>
+<h5 id="initself-any-name-str-log_dir-console_level-str-file_level-str-json_level-str-max_file_size-int-backup_count-int-cleanup_days-int"><strong>init</strong>(self: Any, name: str, log_dir: <ast.Subscript object at 0x000001942CE12F80>, console_level: str, file_level: str, json_level: str, max_file_size: int, backup_count: int, cleanup_days: int)<a class="headerlink" href="#initself-any-name-str-log_dir-console_level-str-file_level-str-json_level-str-max_file_size-int-backup_count-int-cleanup_days-int" title="Permanent link">&para;</a></h5>
 <p>Initialize the logging system.</p>
 <p>Args:
     name: Logger name
@@ -1087,29 +1087,29 @@ and different verbosity levels for debugging and troubleshooting.</p>
 <p>Setup JSON handler for structured logging.</p>
 <h5 id="_cleanup_old_logsself-any">_cleanup_old_logs(self: Any)<a class="headerlink" href="#_cleanup_old_logsself-any" title="Permanent link">&para;</a></h5>
 <p>Clean up log files older than cleanup_days.</p>
-<h5 id="debugself-any-message-str-extra_data">debug(self: Any, message: str, extra_data: <ast.Subscript object at 0x0000019433D2E140>)<a class="headerlink" href="#debugself-any-message-str-extra_data" title="Permanent link">&para;</a></h5>
+<h5 id="debugself-any-message-str-extra_data">debug(self: Any, message: str, extra_data: <ast.Subscript object at 0x0000019429C8BA00>)<a class="headerlink" href="#debugself-any-message-str-extra_data" title="Permanent link">&para;</a></h5>
 <p>Log debug message.</p>
-<h5 id="infoself-any-message-str-extra_data">info(self: Any, message: str, extra_data: <ast.Subscript object at 0x000001942F8F8A90>)<a class="headerlink" href="#infoself-any-message-str-extra_data" title="Permanent link">&para;</a></h5>
+<h5 id="infoself-any-message-str-extra_data">info(self: Any, message: str, extra_data: <ast.Subscript object at 0x0000019429C8B4F0>)<a class="headerlink" href="#infoself-any-message-str-extra_data" title="Permanent link">&para;</a></h5>
 <p>Log info message.</p>
-<h5 id="warningself-any-message-str-extra_data">warning(self: Any, message: str, extra_data: <ast.Subscript object at 0x000001942F8F8280>)<a class="headerlink" href="#warningself-any-message-str-extra_data" title="Permanent link">&para;</a></h5>
+<h5 id="warningself-any-message-str-extra_data">warning(self: Any, message: str, extra_data: <ast.Subscript object at 0x0000019427BB7DF0>)<a class="headerlink" href="#warningself-any-message-str-extra_data" title="Permanent link">&para;</a></h5>
 <p>Log warning message.</p>
-<h5 id="errorself-any-message-str-extra_data">error(self: Any, message: str, extra_data: <ast.Subscript object at 0x000001942F8F8670>)<a class="headerlink" href="#errorself-any-message-str-extra_data" title="Permanent link">&para;</a></h5>
+<h5 id="errorself-any-message-str-extra_data">error(self: Any, message: str, extra_data: <ast.Subscript object at 0x000001942C622E60>)<a class="headerlink" href="#errorself-any-message-str-extra_data" title="Permanent link">&para;</a></h5>
 <p>Log error message.</p>
-<h5 id="criticalself-any-message-str-extra_data">critical(self: Any, message: str, extra_data: <ast.Subscript object at 0x000001942F8F8460>)<a class="headerlink" href="#criticalself-any-message-str-extra_data" title="Permanent link">&para;</a></h5>
+<h5 id="criticalself-any-message-str-extra_data">critical(self: Any, message: str, extra_data: <ast.Subscript object at 0x000001942C623970>)<a class="headerlink" href="#criticalself-any-message-str-extra_data" title="Permanent link">&para;</a></h5>
 <p>Log critical message.</p>
-<h5 id="_logself-any-level-int-message-str-extra_data">_log(self: Any, level: int, message: str, extra_data: <ast.Subscript object at 0x000001942F873490>)<a class="headerlink" href="#_logself-any-level-int-message-str-extra_data" title="Permanent link">&para;</a></h5>
+<h5 id="_logself-any-level-int-message-str-extra_data">_log(self: Any, level: int, message: str, extra_data: <ast.Subscript object at 0x000001942C622A40>)<a class="headerlink" href="#_logself-any-level-int-message-str-extra_data" title="Permanent link">&para;</a></h5>
 <p>Internal logging method with extra data support.</p>
-<h5 id="log_startup_phaseself-any-phase-str-details">log_startup_phase(self: Any, phase: str, details: <ast.Subscript object at 0x000001942F873430>)<a class="headerlink" href="#log_startup_phaseself-any-phase-str-details" title="Permanent link">&para;</a></h5>
+<h5 id="log_startup_phaseself-any-phase-str-details">log_startup_phase(self: Any, phase: str, details: <ast.Subscript object at 0x000001942C621DE0>)<a class="headerlink" href="#log_startup_phaseself-any-phase-str-details" title="Permanent link">&para;</a></h5>
 <p>Log startup phase with structured data.</p>
-<h5 id="log_error_with_contextself-any-error-exception-context">log_error_with_context(self: Any, error: Exception, context: <ast.Subscript object at 0x000001942F898850>)<a class="headerlink" href="#log_error_with_contextself-any-error-exception-context" title="Permanent link">&para;</a></h5>
+<h5 id="log_error_with_contextself-any-error-exception-context">log_error_with_context(self: Any, error: Exception, context: <ast.Subscript object at 0x000001942C622320>)<a class="headerlink" href="#log_error_with_contextself-any-error-exception-context" title="Permanent link">&para;</a></h5>
 <p>Log error with full context for debugging.</p>
-<h5 id="log_performance_metricself-any-operation-str-duration-float-details">log_performance_metric(self: Any, operation: str, duration: float, details: <ast.Subscript object at 0x000001942F898460>)<a class="headerlink" href="#log_performance_metricself-any-operation-str-duration-float-details" title="Permanent link">&para;</a></h5>
+<h5 id="log_performance_metricself-any-operation-str-duration-float-details">log_performance_metric(self: Any, operation: str, duration: float, details: <ast.Subscript object at 0x000001942C621B10>)<a class="headerlink" href="#log_performance_metricself-any-operation-str-duration-float-details" title="Permanent link">&para;</a></h5>
 <p>Log performance metrics.</p>
-<h5 id="log_system_infoself-any-info">log_system_info(self: Any, info: <ast.Subscript object at 0x000001942F89AF50>)<a class="headerlink" href="#log_system_infoself-any-info" title="Permanent link">&para;</a></h5>
+<h5 id="log_system_infoself-any-info">log_system_info(self: Any, info: <ast.Subscript object at 0x000001942CE2E470>)<a class="headerlink" href="#log_system_infoself-any-info" title="Permanent link">&para;</a></h5>
 <p>Log system information.</p>
 <h5 id="set_console_levelself-any-level-str">set_console_level(self: Any, level: str)<a class="headerlink" href="#set_console_levelself-any-level-str" title="Permanent link">&para;</a></h5>
 <p>Dynamically change console logging level.</p>
-<h5 id="get_log_filesself-any-">get_log_files(self: Any) -&gt; <ast.Subscript object at 0x000001942FDCD840><a class="headerlink" href="#get_log_filesself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="get_log_filesself-any-">get_log_files(self: Any) -&gt; <ast.Subscript object at 0x000001942CE2F790><a class="headerlink" href="#get_log_filesself-any-" title="Permanent link">&para;</a></h5>
 <p>Get list of current log files.</p>
 <h2 id="constants">Constants<a class="headerlink" href="#constants" title="Permanent link">&para;</a></h2>
 <h3 id="debug">DEBUG<a class="headerlink" href="#debug" title="Permanent link">&para;</a></h3>

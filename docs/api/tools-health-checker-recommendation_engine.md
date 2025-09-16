@@ -24,7 +24,7 @@ Base class for recommendation rules
 
 Check if this rule applies to the given health report
 
-##### generate_recommendation(self: Any, report: HealthReport) -> <ast.Subscript object at 0x000001942FA91660>
+##### generate_recommendation(self: Any, report: HealthReport) -> <ast.Subscript object at 0x0000019427F0D570>
 
 Generate recommendation based on health report
 
@@ -42,7 +42,7 @@ Recommendations for test suite improvements
 
 
 
-##### generate_recommendation(self: Any, report: HealthReport) -> <ast.Subscript object at 0x000001942FA79810>
+##### generate_recommendation(self: Any, report: HealthReport) -> <ast.Subscript object at 0x0000019427F7F0A0>
 
 
 
@@ -60,7 +60,7 @@ Recommendations for documentation improvements
 
 
 
-##### generate_recommendation(self: Any, report: HealthReport) -> <ast.Subscript object at 0x000001942FB307F0>
+##### generate_recommendation(self: Any, report: HealthReport) -> <ast.Subscript object at 0x0000019427F5C700>
 
 
 
@@ -78,7 +78,7 @@ Recommendations for configuration improvements
 
 
 
-##### generate_recommendation(self: Any, report: HealthReport) -> <ast.Subscript object at 0x0000019431A5A1A0>
+##### generate_recommendation(self: Any, report: HealthReport) -> <ast.Subscript object at 0x000001942A1620B0>
 
 
 
@@ -96,7 +96,7 @@ Recommendations for code quality improvements
 
 
 
-##### generate_recommendation(self: Any, report: HealthReport) -> <ast.Subscript object at 0x00000194319EB220>
+##### generate_recommendation(self: Any, report: HealthReport) -> <ast.Subscript object at 0x0000019429C43130>
 
 
 
@@ -114,7 +114,7 @@ Recommendations for addressing critical issues
 
 
 
-##### generate_recommendation(self: Any, report: HealthReport) -> <ast.Subscript object at 0x00000194319E9330>
+##### generate_recommendation(self: Any, report: HealthReport) -> <ast.Subscript object at 0x0000019429C41240>
 
 
 
@@ -132,7 +132,7 @@ Recommendations based on health trends
 
 
 
-##### generate_recommendation(self: Any, report: HealthReport) -> <ast.Subscript object at 0x0000019431A72140>
+##### generate_recommendation(self: Any, report: HealthReport) -> <ast.Subscript object at 0x0000019429CB6050>
 
 
 
@@ -142,11 +142,11 @@ Main recommendation engine that generates actionable improvement suggestions
 
 #### Methods
 
-##### __init__(self: Any, config: <ast.Subscript object at 0x0000019431A71F60>)
+##### __init__(self: Any, config: <ast.Subscript object at 0x0000019429CB5E70>)
 
 
 
-##### generate_recommendations(self: Any, report: HealthReport) -> <ast.Subscript object at 0x0000019432DE51E0>
+##### generate_recommendations(self: Any, report: HealthReport) -> <ast.Subscript object at 0x0000019429C8BD00>
 
 Generate prioritized recommendations based on health report
 
@@ -156,7 +156,7 @@ Args:
 Returns:
     List of recommendations sorted by priority
 
-##### prioritize_recommendations(self: Any, recommendations: <ast.Subscript object at 0x0000019434630160>) -> <ast.Subscript object at 0x0000019434633820>
+##### prioritize_recommendations(self: Any, recommendations: <ast.Subscript object at 0x0000019429C8B250>) -> <ast.Subscript object at 0x0000019429C8AB30>
 
 Re-prioritize recommendations based on additional criteria
 
@@ -179,11 +179,11 @@ Args:
     status: Current status (not_started, in_progress, completed, cancelled)
     notes: Optional progress notes
 
-##### get_recommendation_progress(self: Any, recommendation_id: str) -> <ast.Subscript object at 0x0000019431AE7B50>
+##### get_recommendation_progress(self: Any, recommendation_id: str) -> <ast.Subscript object at 0x0000019427BBEC20>
 
 Get progress information for a recommendation
 
-##### generate_implementation_plan(self: Any, recommendations: <ast.Subscript object at 0x000001942F8400D0>) -> <ast.Subscript object at 0x000001942F7AE2F0>
+##### generate_implementation_plan(self: Any, recommendations: <ast.Subscript object at 0x0000019427B92830>) -> <ast.Subscript object at 0x0000019427FDFB80>
 
 Generate an implementation plan for recommendations
 
@@ -193,15 +193,15 @@ Args:
 Returns:
     Implementation plan with phases and timelines
 
-##### _estimate_total_duration(self: Any, phases: <ast.Subscript object at 0x000001942F7AD360>) -> str
+##### _estimate_total_duration(self: Any, phases: <ast.Subscript object at 0x0000019427FDFD30>) -> str
 
 Estimate total implementation duration
 
-##### _define_success_metrics(self: Any, recommendations: <ast.Subscript object at 0x000001942F830460>) -> <ast.Subscript object at 0x000001942F831720>
+##### _define_success_metrics(self: Any, recommendations: <ast.Subscript object at 0x000001942C8E0370>) -> <ast.Subscript object at 0x000001942C8E1630>
 
 Define success metrics for implementation plan
 
-##### _recommendation_to_dict(self: Any, recommendation: Recommendation) -> <ast.Subscript object at 0x000001942F831EA0>
+##### _recommendation_to_dict(self: Any, recommendation: Recommendation) -> <ast.Subscript object at 0x000001942C8E1DB0>
 
 Convert recommendation to dictionary format
 
@@ -209,11 +209,11 @@ Convert recommendation to dictionary format
 
 Add a custom recommendation rule
 
-##### get_recommendation_history(self: Any, limit: int) -> <ast.Subscript object at 0x000001942F8326E0>
+##### get_recommendation_history(self: Any, limit: int) -> <ast.Subscript object at 0x000001942C8E25F0>
 
 Get recent recommendation history
 
-##### export_recommendations(self: Any, recommendations: <ast.Subscript object at 0x000001942F8328F0>, format_type: str) -> str
+##### export_recommendations(self: Any, recommendations: <ast.Subscript object at 0x000001942C8E2800>, format_type: str) -> str
 
 Export recommendations in specified format
 
@@ -224,11 +224,11 @@ Args:
 Returns:
     Formatted string representation
 
-##### _export_markdown(self: Any, recommendations: <ast.Subscript object at 0x000001942F833370>) -> str
+##### _export_markdown(self: Any, recommendations: <ast.Subscript object at 0x000001942C8E3280>) -> str
 
 Export recommendations as Markdown
 
-##### _export_csv(self: Any, recommendations: <ast.Subscript object at 0x000001942FC64760>) -> str
+##### _export_csv(self: Any, recommendations: <ast.Subscript object at 0x000001942C8B8670>) -> str
 
 Export recommendations as CSV
 

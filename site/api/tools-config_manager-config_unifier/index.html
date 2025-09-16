@@ -958,13 +958,13 @@
 <p>Handles migration of scattered configuration files to unified system</p>
 <h4 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h4>
 <h5 id="initself-any-project_root-path"><strong>init</strong>(self: Any, project_root: Path)<a class="headerlink" href="#initself-any-project_root-path" title="Permanent link">&para;</a></h5>
-<h5 id="discover_config_filesself-any-">discover_config_files(self: Any) -&gt; <ast.Subscript object at 0x00000194300CC250><a class="headerlink" href="#discover_config_filesself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="discover_config_filesself-any-">discover_config_files(self: Any) -&gt; <ast.Subscript object at 0x0000019428D40D30><a class="headerlink" href="#discover_config_filesself-any-" title="Permanent link">&para;</a></h5>
 <p>Discover all configuration files in the project</p>
 <p>Returns:
     List of discovered configuration sources</p>
 <h5 id="_should_skip_fileself-any-file_path-path-bool">_should_skip_file(self: Any, file_path: Path) -&gt; bool<a class="headerlink" href="#_should_skip_fileself-any-file_path-path-bool" title="Permanent link">&para;</a></h5>
 <p>Check if a file should be skipped during discovery</p>
-<h5 id="_analyze_config_fileself-any-file_path-path-">_analyze_config_file(self: Any, file_path: Path) -&gt; <ast.Subscript object at 0x00000194300E4970><a class="headerlink" href="#_analyze_config_fileself-any-file_path-path-" title="Permanent link">&para;</a></h5>
+<h5 id="_analyze_config_fileself-any-file_path-path-">_analyze_config_file(self: Any, file_path: Path) -&gt; <ast.Subscript object at 0x000001942B3020B0><a class="headerlink" href="#_analyze_config_fileself-any-file_path-path-" title="Permanent link">&para;</a></h5>
 <p>Analyze a configuration file and extract its content</p>
 <p>Args:
     file_path: Path to the configuration file</p>
@@ -972,13 +972,13 @@
     ConfigSource object or None if file cannot be parsed</p>
 <h5 id="_detect_formatself-any-file_path-path-str">_detect_format(self: Any, file_path: Path) -&gt; str<a class="headerlink" href="#_detect_formatself-any-file_path-path-str" title="Permanent link">&para;</a></h5>
 <p>Detect the format of a configuration file</p>
-<h5 id="_parse_env_fileself-any-file_path-path-">_parse_env_file(self: Any, file_path: Path) -&gt; <ast.Subscript object at 0x000001942FA9B7C0><a class="headerlink" href="#_parse_env_fileself-any-file_path-path-" title="Permanent link">&para;</a></h5>
+<h5 id="_parse_env_fileself-any-file_path-path-">_parse_env_file(self: Any, file_path: Path) -&gt; <ast.Subscript object at 0x000001942B3002E0><a class="headerlink" href="#_parse_env_fileself-any-file_path-path-" title="Permanent link">&para;</a></h5>
 <p>Parse environment file into dictionary</p>
-<h5 id="_categorize_configself-any-file_path-path-content-">_categorize_config(self: Any, file_path: Path, content: <ast.Subscript object at 0x000001942FA9B5B0>) -&gt; <ast.Subscript object at 0x000001942FA99DE0><a class="headerlink" href="#_categorize_configself-any-file_path-path-content-" title="Permanent link">&para;</a></h5>
+<h5 id="_categorize_configself-any-file_path-path-content-">_categorize_config(self: Any, file_path: Path, content: <ast.Subscript object at 0x000001942B3000D0>) -&gt; <ast.Subscript object at 0x000001942B2F68C0><a class="headerlink" href="#_categorize_configself-any-file_path-path-content-" title="Permanent link">&para;</a></h5>
 <p>Categorize a configuration file based on path and content</p>
 <p>Returns:
     Tuple of (category, confidence_score)</p>
-<h5 id="migrate_to_unified_configself-any-sources-output_path-path-create_backup-bool-migrationreport">migrate_to_unified_config(self: Any, sources: <ast.Subscript object at 0x000001942FA99C30>, output_path: Path, create_backup: bool) -&gt; MigrationReport<a class="headerlink" href="#migrate_to_unified_configself-any-sources-output_path-path-create_backup-bool-migrationreport" title="Permanent link">&para;</a></h5>
+<h5 id="migrate_to_unified_configself-any-sources-output_path-path-create_backup-bool-migrationreport">migrate_to_unified_config(self: Any, sources: <ast.Subscript object at 0x000001942B2F6710>, output_path: Path, create_backup: bool) -&gt; MigrationReport<a class="headerlink" href="#migrate_to_unified_configself-any-sources-output_path-path-create_backup-bool-migrationreport" title="Permanent link">&para;</a></h5>
 <p>Migrate discovered configuration sources to unified configuration</p>
 <p>Args:
     sources: List of configuration sources to migrate (auto-discover if None)
@@ -986,16 +986,16 @@
     create_backup: Whether to create backups of original files</p>
 <p>Returns:
     Migration report with results and any errors</p>
-<h5 id="_create_backupself-any-sources-path">_create_backup(self: Any, sources: <ast.Subscript object at 0x000001942FAC1990>) -&gt; Path<a class="headerlink" href="#_create_backupself-any-sources-path" title="Permanent link">&para;</a></h5>
+<h5 id="_create_backupself-any-sources-path">_create_backup(self: Any, sources: <ast.Subscript object at 0x000001942B3BA470>) -&gt; Path<a class="headerlink" href="#_create_backupself-any-sources-path" title="Permanent link">&para;</a></h5>
 <p>Create backup of original configuration files</p>
-<h5 id="_merge_configurationsself-any-sources-report-migrationreport-unifiedconfig">_merge_configurations(self: Any, sources: <ast.Subscript object at 0x000001942FAC01F0>, report: MigrationReport) -&gt; UnifiedConfig<a class="headerlink" href="#_merge_configurationsself-any-sources-report-migrationreport-unifiedconfig" title="Permanent link">&para;</a></h5>
+<h5 id="_merge_configurationsself-any-sources-report-migrationreport-unifiedconfig">_merge_configurations(self: Any, sources: <ast.Subscript object at 0x000001942B3B8CD0>, report: MigrationReport) -&gt; UnifiedConfig<a class="headerlink" href="#_merge_configurationsself-any-sources-report-migrationreport-unifiedconfig" title="Permanent link">&para;</a></h5>
 <p>Merge multiple configuration sources into a unified configuration</p>
 <p>Args:
     sources: List of configuration sources to merge
     report: Migration report to update with results</p>
 <p>Returns:
     Unified configuration object</p>
-<h5 id="_merge_categoryself-any-unified_config-unifiedconfig-category-str-sources-report-migrationreport">_merge_category(self: Any, unified_config: UnifiedConfig, category: str, sources: <ast.Subscript object at 0x000001942FADF130>, report: MigrationReport)<a class="headerlink" href="#_merge_categoryself-any-unified_config-unifiedconfig-category-str-sources-report-migrationreport" title="Permanent link">&para;</a></h5>
+<h5 id="_merge_categoryself-any-unified_config-unifiedconfig-category-str-sources-report-migrationreport">_merge_category(self: Any, unified_config: UnifiedConfig, category: str, sources: <ast.Subscript object at 0x0000019427F3A950>, report: MigrationReport)<a class="headerlink" href="#_merge_categoryself-any-unified_config-unifiedconfig-category-str-sources-report-migrationreport" title="Permanent link">&para;</a></h5>
 <p>Merge sources for a specific category into the unified configuration</p>
 <h5 id="_merge_backend_configself-any-unified_config-unifiedconfig-source-configsource">_merge_backend_config(self: Any, unified_config: UnifiedConfig, source: ConfigSource)<a class="headerlink" href="#_merge_backend_configself-any-unified_config-unifiedconfig-source-configsource" title="Permanent link">&para;</a></h5>
 <p>Merge backend configuration source</p>
@@ -1019,15 +1019,15 @@
     backup_path: Path to the backup directory</p>
 <p>Returns:
     True if rollback was successful, False otherwise</p>
-<h5 id="generate_migration_previewself-any-sources-">generate_migration_preview(self: Any, sources: <ast.Subscript object at 0x00000194300770A0>) -&gt; <ast.Subscript object at 0x0000019433D385B0><a class="headerlink" href="#generate_migration_previewself-any-sources-" title="Permanent link">&para;</a></h5>
+<h5 id="generate_migration_previewself-any-sources-">generate_migration_preview(self: Any, sources: <ast.Subscript object at 0x0000019428D4FB80>) -&gt; <ast.Subscript object at 0x0000019428DA5090><a class="headerlink" href="#generate_migration_previewself-any-sources-" title="Permanent link">&para;</a></h5>
 <p>Generate a preview of what would be migrated without actually doing it</p>
 <p>Args:
     sources: List of configuration sources (auto-discover if None)</p>
 <p>Returns:
     Dictionary with migration preview information</p>
-<h5 id="_detect_conflictsself-any-sources-preview">_detect_conflicts(self: Any, sources: <ast.Subscript object at 0x0000019433D38760>, preview: <ast.Subscript object at 0x0000019433D38820>)<a class="headerlink" href="#_detect_conflictsself-any-sources-preview" title="Permanent link">&para;</a></h5>
+<h5 id="_detect_conflictsself-any-sources-preview">_detect_conflicts(self: Any, sources: <ast.Subscript object at 0x0000019428DA5240>, preview: <ast.Subscript object at 0x0000019428DA5300>)<a class="headerlink" href="#_detect_conflictsself-any-sources-preview" title="Permanent link">&para;</a></h5>
 <p>Detect potential conflicts in configuration migration</p>
-<h5 id="_generate_recommendationsself-any-sources-preview">_generate_recommendations(self: Any, sources: <ast.Subscript object at 0x0000019433D39600>, preview: <ast.Subscript object at 0x0000019433D396C0>)<a class="headerlink" href="#_generate_recommendationsself-any-sources-preview" title="Permanent link">&para;</a></h5>
+<h5 id="_generate_recommendationsself-any-sources-preview">_generate_recommendations(self: Any, sources: <ast.Subscript object at 0x0000019428DA60E0>, preview: <ast.Subscript object at 0x0000019428DA61A0>)<a class="headerlink" href="#_generate_recommendationsself-any-sources-preview" title="Permanent link">&para;</a></h5>
 <p>Generate recommendations for configuration migration</p>
 
 

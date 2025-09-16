@@ -1089,7 +1089,7 @@ in logs and supports presigned URLs and temporary access tokens.</p>
     mask_char: Character to use for masking</p>
 <p>Returns:
     Text with sensitive information masked</p>
-<h5 id="mask_dictcls-any-data-mask_char-str-">mask_dict(cls: Any, data: <ast.Subscript object at 0x000001942F7A2A10>, mask_char: str) -&gt; <ast.Subscript object at 0x000001942F800850><a class="headerlink" href="#mask_dictcls-any-data-mask_char-str-" title="Permanent link">&para;</a></h5>
+<h5 id="mask_dictcls-any-data-mask_char-str-">mask_dict(cls: Any, data: <ast.Subscript object at 0x000001942C592F20>, mask_char: str) -&gt; <ast.Subscript object at 0x000001942C524D60><a class="headerlink" href="#mask_dictcls-any-data-mask_char-str-" title="Permanent link">&para;</a></h5>
 <p>Mask sensitive information in a dictionary.</p>
 <p>Args:
     data: Dictionary that may contain sensitive information
@@ -1103,7 +1103,7 @@ in logs and supports presigned URLs and temporary access tokens.</p>
 <h3 id="credentialstore">CredentialStore<a class="headerlink" href="#credentialstore" title="Permanent link">&para;</a></h3>
 <p>Secure credential storage using system keyring with fallbacks.</p>
 <h4 id="methods_1">Methods<a class="headerlink" href="#methods_1" title="Permanent link">&para;</a></h4>
-<h5 id="initself-any-config"><strong>init</strong>(self: Any, config: <ast.Subscript object at 0x000001942F7FF3D0>)<a class="headerlink" href="#initself-any-config" title="Permanent link">&para;</a></h5>
+<h5 id="initself-any-config"><strong>init</strong>(self: Any, config: <ast.Subscript object at 0x000001942C5578E0>)<a class="headerlink" href="#initself-any-config" title="Permanent link">&para;</a></h5>
 <p>Initialize credential store.</p>
 <p>Args:
     config: Credential configuration</p>
@@ -1115,7 +1115,7 @@ in logs and supports presigned URLs and temporary access tokens.</p>
     username: Username for keyring storage</p>
 <p>Returns:
     True if stored successfully, False otherwise</p>
-<h5 id="get_credentialself-any-key-str-username-str-">get_credential(self: Any, key: str, username: str) -&gt; <ast.Subscript object at 0x000001942F825780><a class="headerlink" href="#get_credentialself-any-key-str-username-str-" title="Permanent link">&para;</a></h5>
+<h5 id="get_credentialself-any-key-str-username-str-">get_credential(self: Any, key: str, username: str) -&gt; <ast.Subscript object at 0x0000019428D7E9B0><a class="headerlink" href="#get_credentialself-any-key-str-username-str-" title="Permanent link">&para;</a></h5>
 <p>Retrieve a credential.</p>
 <p>Args:
     key: Credential identifier
@@ -1129,7 +1129,7 @@ in logs and supports presigned URLs and temporary access tokens.</p>
     username: Username for keyring storage</p>
 <p>Returns:
     True if deleted successfully, False otherwise</p>
-<h5 id="list_credentialsself-any-">list_credentials(self: Any) -&gt; <ast.Subscript object at 0x0000019431970910><a class="headerlink" href="#list_credentialsself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="list_credentialsself-any-">list_credentials(self: Any) -&gt; <ast.Subscript object at 0x0000019428360670><a class="headerlink" href="#list_credentialsself-any-" title="Permanent link">&para;</a></h5>
 <p>List available credential keys.</p>
 <p>Returns:
     List of credential keys</p>
@@ -1137,20 +1137,20 @@ in logs and supports presigned URLs and temporary access tokens.</p>
 <p>Get or generate encryption key for credential file.</p>
 <h5 id="_store_in_fileself-any-key-str-value-str-username-str-bool">_store_in_file(self: Any, key: str, value: str, username: str) -&gt; bool<a class="headerlink" href="#_store_in_fileself-any-key-str-value-str-username-str-bool" title="Permanent link">&para;</a></h5>
 <p>Store credential in encrypted file.</p>
-<h5 id="_get_from_fileself-any-key-str-username-str-">_get_from_file(self: Any, key: str, username: str) -&gt; <ast.Subscript object at 0x000001942F768EE0><a class="headerlink" href="#_get_from_fileself-any-key-str-username-str-" title="Permanent link">&para;</a></h5>
+<h5 id="_get_from_fileself-any-key-str-username-str-">_get_from_file(self: Any, key: str, username: str) -&gt; <ast.Subscript object at 0x000001942C551C90><a class="headerlink" href="#_get_from_fileself-any-key-str-username-str-" title="Permanent link">&para;</a></h5>
 <p>Get credential from encrypted file.</p>
 <h5 id="_delete_from_fileself-any-key-str-username-str-bool">_delete_from_file(self: Any, key: str, username: str) -&gt; bool<a class="headerlink" href="#_delete_from_fileself-any-key-str-username-str-bool" title="Permanent link">&para;</a></h5>
 <p>Delete credential from encrypted file.</p>
-<h5 id="_list_from_fileself-any-">_list_from_file(self: Any) -&gt; <ast.Subscript object at 0x0000019434095090><a class="headerlink" href="#_list_from_fileself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="_list_from_fileself-any-">_list_from_file(self: Any) -&gt; <ast.Subscript object at 0x000001942C53E560><a class="headerlink" href="#_list_from_fileself-any-" title="Permanent link">&para;</a></h5>
 <p>List credentials from encrypted file.</p>
 <h3 id="presignedurlmanager">PresignedURLManager<a class="headerlink" href="#presignedurlmanager" title="Permanent link">&para;</a></h3>
 <p>Manager for handling presigned URLs and temporary access tokens.</p>
 <h4 id="methods_2">Methods<a class="headerlink" href="#methods_2" title="Permanent link">&para;</a></h4>
-<h5 id="initself-any-credential_store"><strong>init</strong>(self: Any, credential_store: <ast.Subscript object at 0x0000019434094E80>)<a class="headerlink" href="#initself-any-credential_store" title="Permanent link">&para;</a></h5>
+<h5 id="initself-any-credential_store"><strong>init</strong>(self: Any, credential_store: <ast.Subscript object at 0x000001942C53E350>)<a class="headerlink" href="#initself-any-credential_store" title="Permanent link">&para;</a></h5>
 <p>Initialize presigned URL manager.</p>
 <p>Args:
     credential_store: Credential store for caching tokens</p>
-<h5 id="generate_presigned_urlself-any-base_url-str-credentials-expiration_seconds-int-method-str-str">generate_presigned_url(self: Any, base_url: str, credentials: <ast.Subscript object at 0x0000019434094A90>, expiration_seconds: int, method: str) -&gt; str<a class="headerlink" href="#generate_presigned_urlself-any-base_url-str-credentials-expiration_seconds-int-method-str-str" title="Permanent link">&para;</a></h5>
+<h5 id="generate_presigned_urlself-any-base_url-str-credentials-expiration_seconds-int-method-str-str">generate_presigned_url(self: Any, base_url: str, credentials: <ast.Subscript object at 0x000001942C5E9DE0>, expiration_seconds: int, method: str) -&gt; str<a class="headerlink" href="#generate_presigned_urlself-any-base_url-str-credentials-expiration_seconds-int-method-str-str" title="Permanent link">&para;</a></h5>
 <p>Generate a presigned URL for temporary access.</p>
 <p>Args:
     base_url: Base URL to sign
@@ -1165,7 +1165,7 @@ in logs and supports presigned URLs and temporary access tokens.</p>
     url: Presigned URL to check</p>
 <p>Returns:
     True if expired, False otherwise</p>
-<h5 id="refresh_url_if_neededself-any-url-str-credentials-str">refresh_url_if_needed(self: Any, url: str, credentials: <ast.Subscript object at 0x000001942F816CE0>) -&gt; str<a class="headerlink" href="#refresh_url_if_neededself-any-url-str-credentials-str" title="Permanent link">&para;</a></h5>
+<h5 id="refresh_url_if_neededself-any-url-str-credentials-str">refresh_url_if_needed(self: Any, url: str, credentials: <ast.Subscript object at 0x000001942C52F1F0>) -&gt; str<a class="headerlink" href="#refresh_url_if_neededself-any-url-str-credentials-str" title="Permanent link">&para;</a></h5>
 <p>Refresh a presigned URL if it's expired or about to expire.</p>
 <p>Args:
     url: Current presigned URL
@@ -1179,23 +1179,23 @@ in logs and supports presigned URLs and temporary access tokens.</p>
 <p>This class provides a high-level interface for secure credential management,
 including storage, retrieval, masking, and presigned URL handling.</p>
 <h4 id="methods_3">Methods<a class="headerlink" href="#methods_3" title="Permanent link">&para;</a></h4>
-<h5 id="initself-any-config_1"><strong>init</strong>(self: Any, config: <ast.Subscript object at 0x000001942FBED1E0>)<a class="headerlink" href="#initself-any-config_1" title="Permanent link">&para;</a></h5>
+<h5 id="initself-any-config_1"><strong>init</strong>(self: Any, config: <ast.Subscript object at 0x000001942B3D27A0>)<a class="headerlink" href="#initself-any-config_1" title="Permanent link">&para;</a></h5>
 <p>Initialize secure credential manager.</p>
 <p>Args:
     config: Credential configuration</p>
-<h5 id="get_credentials_for_sourceself-any-source_url-str-">get_credentials_for_source(self: Any, source_url: str) -&gt; <ast.Subscript object at 0x000001942FBEC310><a class="headerlink" href="#get_credentials_for_sourceself-any-source_url-str-" title="Permanent link">&para;</a></h5>
+<h5 id="get_credentials_for_sourceself-any-source_url-str-">get_credentials_for_source(self: Any, source_url: str) -&gt; <ast.Subscript object at 0x000001942B3D3BB0><a class="headerlink" href="#get_credentials_for_sourceself-any-source_url-str-" title="Permanent link">&para;</a></h5>
 <p>Get credentials for a specific source URL.</p>
 <p>Args:
     source_url: Source URL to get credentials for</p>
 <p>Returns:
     Dictionary of credentials</p>
-<h5 id="mask_sensitive_infoself-any-data-">mask_sensitive_info(self: Any, data: <ast.Subscript object at 0x000001942FBEDD80>) -&gt; <ast.Subscript object at 0x000001942FC0C0D0><a class="headerlink" href="#mask_sensitive_infoself-any-data-" title="Permanent link">&para;</a></h5>
+<h5 id="mask_sensitive_infoself-any-data-">mask_sensitive_info(self: Any, data: <ast.Subscript object at 0x000001942B3D3DC0>) -&gt; <ast.Subscript object at 0x000001942B3685E0><a class="headerlink" href="#mask_sensitive_infoself-any-data-" title="Permanent link">&para;</a></h5>
 <p>Mask sensitive information for logging.</p>
 <p>Args:
     data: Data to mask (string or dictionary)</p>
 <p>Returns:
     Data with sensitive information masked</p>
-<h5 id="setup_credentialsself-any-credentials-bool">setup_credentials(self: Any, credentials: <ast.Subscript object at 0x000001942FC0C340>) -&gt; bool<a class="headerlink" href="#setup_credentialsself-any-credentials-bool" title="Permanent link">&para;</a></h5>
+<h5 id="setup_credentialsself-any-credentials-bool">setup_credentials(self: Any, credentials: <ast.Subscript object at 0x000001942B368850>) -&gt; bool<a class="headerlink" href="#setup_credentialsself-any-credentials-bool" title="Permanent link">&para;</a></h5>
 <p>Set up multiple credentials at once.</p>
 <p>Args:
     credentials: Dictionary of credential key-value pairs</p>

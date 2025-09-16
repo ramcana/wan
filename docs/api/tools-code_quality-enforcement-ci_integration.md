@@ -20,7 +20,7 @@ Manages CI/CD integration for code quality enforcement.
 
 Initialize CI integration manager.
 
-##### setup_github_actions(self: Any, config: <ast.Subscript object at 0x000001942FC72530>) -> bool
+##### setup_github_actions(self: Any, config: <ast.Subscript object at 0x0000019427C7F5B0>) -> bool
 
 Set up GitHub Actions workflow for quality enforcement.
 
@@ -30,7 +30,7 @@ Args:
 Returns:
     True if setup successful
 
-##### setup_gitlab_ci(self: Any, config: <ast.Subscript object at 0x000001942FC716C0>) -> bool
+##### setup_gitlab_ci(self: Any, config: <ast.Subscript object at 0x0000019427C7F340>) -> bool
 
 Set up GitLab CI pipeline for quality enforcement.
 
@@ -40,7 +40,7 @@ Args:
 Returns:
     True if setup successful
 
-##### setup_jenkins(self: Any, config: <ast.Subscript object at 0x000001942FC70B20>) -> bool
+##### setup_jenkins(self: Any, config: <ast.Subscript object at 0x0000019427C7ED10>) -> bool
 
 Set up Jenkins pipeline for quality enforcement.
 
@@ -50,14 +50,14 @@ Args:
 Returns:
     True if setup successful
 
-##### create_quality_metrics_dashboard(self: Any) -> <ast.Subscript object at 0x0000019430132350>
+##### create_quality_metrics_dashboard(self: Any) -> <ast.Subscript object at 0x00000194275814B0>
 
 Create quality metrics tracking dashboard configuration.
 
 Returns:
     Dashboard configuration
 
-##### run_quality_checks(self: Any, files: <ast.Subscript object at 0x0000019430130700>) -> <ast.Subscript object at 0x00000194318D7940>
+##### run_quality_checks(self: Any, files: <ast.Subscript object at 0x0000019427581300>) -> <ast.Subscript object at 0x000001942750B7C0>
 
 Run comprehensive quality checks for CI/CD.
 
@@ -67,7 +67,7 @@ Args:
 Returns:
     Quality check results
 
-##### generate_quality_report(self: Any, results: <ast.Subscript object at 0x00000194318D7AF0>) -> str
+##### generate_quality_report(self: Any, results: <ast.Subscript object at 0x000001942750B610>) -> str
 
 Generate quality report for CI/CD output.
 
@@ -77,7 +77,7 @@ Args:
 Returns:
     Formatted report string
 
-##### update_quality_metrics(self: Any, results: <ast.Subscript object at 0x0000019430126C80>) -> bool
+##### update_quality_metrics(self: Any, results: <ast.Subscript object at 0x000001942CCB70A0>) -> bool
 
 Update quality metrics tracking.
 
@@ -87,11 +87,11 @@ Args:
 Returns:
     True if update successful
 
-##### _get_default_github_config(self: Any) -> <ast.Subscript object at 0x0000019432D7D5D0>
+##### _get_default_github_config(self: Any) -> <ast.Subscript object at 0x000001942CCE7E80>
 
 Get default GitHub Actions workflow configuration.
 
-##### _get_default_gitlab_config(self: Any) -> <ast.Subscript object at 0x0000019432D7CD90>
+##### _get_default_gitlab_config(self: Any) -> <ast.Subscript object at 0x000001942CCE7730>
 
 Get default GitLab CI pipeline configuration.
 
@@ -99,7 +99,7 @@ Get default GitLab CI pipeline configuration.
 
 Get default Jenkins pipeline configuration.
 
-##### _calculate_quality_metrics(self: Any, checks: <ast.Subscript object at 0x0000019432D7CA60>) -> <ast.Subscript object at 0x0000019432E672B0>
+##### _calculate_quality_metrics(self: Any, checks: <ast.Subscript object at 0x000001942CCE7310>) -> <ast.Subscript object at 0x000001942CC09BA0>
 
 Calculate overall quality metrics from check results.
 
@@ -107,7 +107,7 @@ Calculate overall quality metrics from check results.
 
 Get quality grade based on score.
 
-##### get_ci_status(self: Any) -> <ast.Subscript object at 0x0000019432E661A0>
+##### get_ci_status(self: Any) -> <ast.Subscript object at 0x000001942CC089D0>
 
 Get status of CI/CD integration.
 

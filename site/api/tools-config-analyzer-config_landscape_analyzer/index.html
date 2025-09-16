@@ -1009,31 +1009,31 @@
 <p>Analyzes the configuration landscape of a project.</p>
 <h4 id="methods_1">Methods<a class="headerlink" href="#methods_1" title="Permanent link">&para;</a></h4>
 <h5 id="initself-any-project_root-path"><strong>init</strong>(self: Any, project_root: Path)<a class="headerlink" href="#initself-any-project_root-path" title="Permanent link">&para;</a></h5>
-<h5 id="scan_projectself-any-">scan_project(self: Any) -&gt; <ast.Subscript object at 0x0000019431B37040><a class="headerlink" href="#scan_projectself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="scan_projectself-any-">scan_project(self: Any) -&gt; <ast.Subscript object at 0x0000019427F1FAF0><a class="headerlink" href="#scan_projectself-any-" title="Permanent link">&para;</a></h5>
 <p>Scan the project for all configuration files.</p>
 <h5 id="_is_config_fileself-any-file_path-path-bool">_is_config_file(self: Any, file_path: Path) -&gt; bool<a class="headerlink" href="#_is_config_fileself-any-file_path-path-bool" title="Permanent link">&para;</a></h5>
 <p>Determine if a file is a configuration file.</p>
-<h5 id="_analyze_config_fileself-any-file_path-path-relative_path-path-">_analyze_config_file(self: Any, file_path: Path, relative_path: Path) -&gt; <ast.Subscript object at 0x0000019431B35780><a class="headerlink" href="#_analyze_config_fileself-any-file_path-path-relative_path-path-" title="Permanent link">&para;</a></h5>
+<h5 id="_analyze_config_fileself-any-file_path-path-relative_path-path-">_analyze_config_file(self: Any, file_path: Path, relative_path: Path) -&gt; <ast.Subscript object at 0x0000019427F1E230><a class="headerlink" href="#_analyze_config_fileself-any-file_path-path-relative_path-path-" title="Permanent link">&para;</a></h5>
 <p>Analyze a single configuration file.</p>
 <h5 id="_determine_file_typeself-any-file_path-path-str">_determine_file_type(self: Any, file_path: Path) -&gt; str<a class="headerlink" href="#_determine_file_typeself-any-file_path-path-str" title="Permanent link">&para;</a></h5>
 <p>Determine the configuration file type.</p>
-<h5 id="_load_config_contentself-any-file_path-path-file_type-str-">_load_config_content(self: Any, file_path: Path, file_type: str) -&gt; <ast.Subscript object at 0x0000019431A9F580><a class="headerlink" href="#_load_config_contentself-any-file_path-path-file_type-str-" title="Permanent link">&para;</a></h5>
+<h5 id="_load_config_contentself-any-file_path-path-file_type-str-">_load_config_content(self: Any, file_path: Path, file_type: str) -&gt; <ast.Subscript object at 0x0000019427F1C070><a class="headerlink" href="#_load_config_contentself-any-file_path-path-file_type-str-" title="Permanent link">&para;</a></h5>
 <p>Load configuration file content.</p>
-<h5 id="_parse_env_fileself-any-content-str-">_parse_env_file(self: Any, content: str) -&gt; <ast.Subscript object at 0x0000019431A9C160><a class="headerlink" href="#_parse_env_fileself-any-content-str-" title="Permanent link">&para;</a></h5>
+<h5 id="_parse_env_fileself-any-content-str-">_parse_env_file(self: Any, content: str) -&gt; <ast.Subscript object at 0x0000019427F13700><a class="headerlink" href="#_parse_env_fileself-any-content-str-" title="Permanent link">&para;</a></h5>
 <p>Parse environment file content.</p>
-<h5 id="_extract_settingsself-any-content-prefix-str-">_extract_settings(self: Any, content: <ast.Subscript object at 0x000001943028BF70>, prefix: str) -&gt; <ast.Subscript object at 0x000001943028B3D0><a class="headerlink" href="#_extract_settingsself-any-content-prefix-str-" title="Permanent link">&para;</a></h5>
+<h5 id="_extract_settingsself-any-content-prefix-str-">_extract_settings(self: Any, content: <ast.Subscript object at 0x0000019427F12B90>, prefix: str) -&gt; <ast.Subscript object at 0x000001942C6D3220><a class="headerlink" href="#_extract_settingsself-any-content-prefix-str-" title="Permanent link">&para;</a></h5>
 <p>Extract all setting keys from configuration content.</p>
-<h5 id="analyze_dependenciesself-any-">analyze_dependencies(self: Any) -&gt; <ast.Subscript object at 0x00000194302893F0><a class="headerlink" href="#analyze_dependenciesself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="analyze_dependenciesself-any-">analyze_dependencies(self: Any) -&gt; <ast.Subscript object at 0x000001942A1B5CF0><a class="headerlink" href="#analyze_dependenciesself-any-" title="Permanent link">&para;</a></h5>
 <p>Analyze dependencies between configuration files.</p>
-<h5 id="detect_conflictsself-any-">detect_conflicts(self: Any) -&gt; <ast.Subscript object at 0x000001942F393B20><a class="headerlink" href="#detect_conflictsself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="detect_conflictsself-any-">detect_conflicts(self: Any) -&gt; <ast.Subscript object at 0x00000194281528F0><a class="headerlink" href="#detect_conflictsself-any-" title="Permanent link">&para;</a></h5>
 <p>Detect conflicts between configuration settings.</p>
-<h5 id="_determine_conflict_severityself-any-setting_name-str-values-str">_determine_conflict_severity(self: Any, setting_name: str, values: <ast.Subscript object at 0x000001942F393C40>) -&gt; str<a class="headerlink" href="#_determine_conflict_severityself-any-setting_name-str-values-str" title="Permanent link">&para;</a></h5>
+<h5 id="_determine_conflict_severityself-any-setting_name-str-values-str">_determine_conflict_severity(self: Any, setting_name: str, values: <ast.Subscript object at 0x0000019428152740>) -&gt; str<a class="headerlink" href="#_determine_conflict_severityself-any-setting_name-str-values-str" title="Permanent link">&para;</a></h5>
 <p>Determine the severity of a configuration conflict.</p>
-<h5 id="find_duplicate_settingsself-any-">find_duplicate_settings(self: Any) -&gt; <ast.Subscript object at 0x00000194340B30D0><a class="headerlink" href="#find_duplicate_settingsself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="find_duplicate_settingsself-any-">find_duplicate_settings(self: Any) -&gt; <ast.Subscript object at 0x00000194281515D0><a class="headerlink" href="#find_duplicate_settingsself-any-" title="Permanent link">&para;</a></h5>
 <p>Find duplicate settings across configuration files.</p>
-<h5 id="generate_recommendationsself-any-">generate_recommendations(self: Any) -&gt; <ast.Subscript object at 0x00000194302A2E00><a class="headerlink" href="#generate_recommendationsself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="generate_recommendationsself-any-">generate_recommendations(self: Any) -&gt; <ast.Subscript object at 0x000001942818DB10><a class="headerlink" href="#generate_recommendationsself-any-" title="Permanent link">&para;</a></h5>
 <p>Generate recommendations for configuration consolidation.</p>
-<h5 id="create_migration_planself-any-">create_migration_plan(self: Any) -&gt; <ast.Subscript object at 0x0000019434136C50><a class="headerlink" href="#create_migration_planself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="create_migration_planself-any-">create_migration_plan(self: Any) -&gt; <ast.Subscript object at 0x00000194279B9DB0><a class="headerlink" href="#create_migration_planself-any-" title="Permanent link">&para;</a></h5>
 <p>Create a migration plan for configuration consolidation.</p>
 <h5 id="_suggest_target_sectionself-any-config_file-configfile-str">_suggest_target_section(self: Any, config_file: ConfigFile) -&gt; str<a class="headerlink" href="#_suggest_target_sectionself-any-config_file-configfile-str" title="Permanent link">&para;</a></h5>
 <p>Suggest which section of unified config this file should map to.</p>

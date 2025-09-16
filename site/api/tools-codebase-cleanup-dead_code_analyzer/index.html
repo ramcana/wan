@@ -1001,9 +1001,9 @@
     include_tests: Whether to include test files in analysis</p>
 <p>Returns:
     DeadCodeReport with all findings and recommendations</p>
-<h5 id="_get_files_to_analyzeself-any-include_tests-bool-">_get_files_to_analyze(self: Any, include_tests: bool) -&gt; <ast.Subscript object at 0x0000019431ABAC50><a class="headerlink" href="#_get_files_to_analyzeself-any-include_tests-bool-" title="Permanent link">&para;</a></h5>
+<h5 id="_get_files_to_analyzeself-any-include_tests-bool-">_get_files_to_analyze(self: Any, include_tests: bool) -&gt; <ast.Subscript object at 0x0000019427AD8A00><a class="headerlink" href="#_get_files_to_analyzeself-any-include_tests-bool-" title="Permanent link">&para;</a></h5>
 <p>Get list of code files to analyze</p>
-<h5 id="_build_project_mapself-any-files-">_build_project_map(self: Any, files: <ast.Subscript object at 0x0000019431ABA6B0>) -&gt; <ast.Subscript object at 0x000001942FC36140><a class="headerlink" href="#_build_project_mapself-any-files-" title="Permanent link">&para;</a></h5>
+<h5 id="_build_project_mapself-any-files-">_build_project_map(self: Any, files: <ast.Subscript object at 0x0000019427ADBCD0>) -&gt; <ast.Subscript object at 0x000001942A26FF70><a class="headerlink" href="#_build_project_mapself-any-files-" title="Permanent link">&para;</a></h5>
 <p>Build a map of the project structure including:
 - All defined functions, classes, and variables
 - All usage references
@@ -1012,41 +1012,41 @@
 <p>Analyze Python file for definitions and usages</p>
 <h5 id="_analyze_javascript_fileself-any-file_path-path-project_map-dict">_analyze_javascript_file(self: Any, file_path: Path, project_map: Dict)<a class="headerlink" href="#_analyze_javascript_fileself-any-file_path-path-project_map-dict" title="Permanent link">&para;</a></h5>
 <p>Analyze JavaScript/TypeScript file for definitions and usages</p>
-<h5 id="_find_dead_functionsself-any-files-project_map-dict-">_find_dead_functions(self: Any, files: <ast.Subscript object at 0x0000019434131F00>, project_map: Dict) -&gt; <ast.Subscript object at 0x000001943448F070><a class="headerlink" href="#_find_dead_functionsself-any-files-project_map-dict-" title="Permanent link">&para;</a></h5>
+<h5 id="_find_dead_functionsself-any-files-project_map-dict-">_find_dead_functions(self: Any, files: <ast.Subscript object at 0x000001942A2597B0>, project_map: Dict) -&gt; <ast.Subscript object at 0x000001942A259240><a class="headerlink" href="#_find_dead_functionsself-any-files-project_map-dict-" title="Permanent link">&para;</a></h5>
 <p>Find functions that are never called</p>
-<h5 id="_find_dead_python_functionsself-any-file_path-path-project_map-dict-">_find_dead_python_functions(self: Any, file_path: Path, project_map: Dict) -&gt; <ast.Subscript object at 0x000001942F220A90><a class="headerlink" href="#_find_dead_python_functionsself-any-file_path-path-project_map-dict-" title="Permanent link">&para;</a></h5>
+<h5 id="_find_dead_python_functionsself-any-file_path-path-project_map-dict-">_find_dead_python_functions(self: Any, file_path: Path, project_map: Dict) -&gt; <ast.Subscript object at 0x000001942A260220><a class="headerlink" href="#_find_dead_python_functionsself-any-file_path-path-project_map-dict-" title="Permanent link">&para;</a></h5>
 <p>Find dead functions in a Python file</p>
 <h5 id="_check_same_file_usageself-any-tree-astast-func_name-str-func_node-astfunctiondef-bool">_check_same_file_usage(self: Any, tree: ast.AST, func_name: str, func_node: ast.FunctionDef) -&gt; bool<a class="headerlink" href="#_check_same_file_usageself-any-tree-astast-func_name-str-func_node-astfunctiondef-bool" title="Permanent link">&para;</a></h5>
 <p>Check if function is used elsewhere in the same file</p>
-<h5 id="_find_dead_classesself-any-files-project_map-dict-">_find_dead_classes(self: Any, files: <ast.Subscript object at 0x000001942F02C6D0>, project_map: Dict) -&gt; <ast.Subscript object at 0x000001942F02D600><a class="headerlink" href="#_find_dead_classesself-any-files-project_map-dict-" title="Permanent link">&para;</a></h5>
+<h5 id="_find_dead_classesself-any-files-project_map-dict-">_find_dead_classes(self: Any, files: <ast.Subscript object at 0x0000019427B6F310>, project_map: Dict) -&gt; <ast.Subscript object at 0x0000019427B6C4F0><a class="headerlink" href="#_find_dead_classesself-any-files-project_map-dict-" title="Permanent link">&para;</a></h5>
 <p>Find classes that are never instantiated</p>
-<h5 id="_find_dead_python_classesself-any-file_path-path-project_map-dict-">_find_dead_python_classes(self: Any, file_path: Path, project_map: Dict) -&gt; <ast.Subscript object at 0x000001942EFC3C10><a class="headerlink" href="#_find_dead_python_classesself-any-file_path-path-project_map-dict-" title="Permanent link">&para;</a></h5>
+<h5 id="_find_dead_python_classesself-any-file_path-path-project_map-dict-">_find_dead_python_classes(self: Any, file_path: Path, project_map: Dict) -&gt; <ast.Subscript object at 0x0000019428927070><a class="headerlink" href="#_find_dead_python_classesself-any-file_path-path-project_map-dict-" title="Permanent link">&para;</a></h5>
 <p>Find dead classes in a Python file</p>
-<h5 id="_find_unused_importsself-any-files-">_find_unused_imports(self: Any, files: <ast.Subscript object at 0x000001942EFC3AC0>) -&gt; <ast.Subscript object at 0x000001942EFC35E0><a class="headerlink" href="#_find_unused_importsself-any-files-" title="Permanent link">&para;</a></h5>
+<h5 id="_find_unused_importsself-any-files-">_find_unused_imports(self: Any, files: <ast.Subscript object at 0x00000194289272E0>) -&gt; <ast.Subscript object at 0x00000194289274C0><a class="headerlink" href="#_find_unused_importsself-any-files-" title="Permanent link">&para;</a></h5>
 <p>Find imports that are never used</p>
-<h5 id="_find_unused_python_importsself-any-file_path-path-">_find_unused_python_imports(self: Any, file_path: Path) -&gt; <ast.Subscript object at 0x000001942F805030><a class="headerlink" href="#_find_unused_python_importsself-any-file_path-path-" title="Permanent link">&para;</a></h5>
+<h5 id="_find_unused_python_importsself-any-file_path-path-">_find_unused_python_imports(self: Any, file_path: Path) -&gt; <ast.Subscript object at 0x000001942C653C40><a class="headerlink" href="#_find_unused_python_importsself-any-file_path-path-" title="Permanent link">&para;</a></h5>
 <p>Find unused imports in a Python file</p>
-<h5 id="_find_dead_filesself-any-files-project_map-dict-">_find_dead_files(self: Any, files: <ast.Subscript object at 0x000001942F805180>, project_map: Dict) -&gt; <ast.Subscript object at 0x000001942F8387F0><a class="headerlink" href="#_find_dead_filesself-any-files-project_map-dict-" title="Permanent link">&para;</a></h5>
+<h5 id="_find_dead_filesself-any-files-project_map-dict-">_find_dead_files(self: Any, files: <ast.Subscript object at 0x00000194285215D0>, project_map: Dict) -&gt; <ast.Subscript object at 0x0000019428901A80><a class="headerlink" href="#_find_dead_filesself-any-files-project_map-dict-" title="Permanent link">&para;</a></h5>
 <p>Find files that are never imported or referenced</p>
-<h5 id="_calculate_potential_lines_removedself-any-dead_functions-dead_classes-unused_imports-dead_files-int">_calculate_potential_lines_removed(self: Any, dead_functions: <ast.Subscript object at 0x000001942F838970>, dead_classes: <ast.Subscript object at 0x000001942F838A30>, unused_imports: <ast.Subscript object at 0x000001942F838AF0>, dead_files: <ast.Subscript object at 0x000001942F838BB0>) -&gt; int<a class="headerlink" href="#_calculate_potential_lines_removedself-any-dead_functions-dead_classes-unused_imports-dead_files-int" title="Permanent link">&para;</a></h5>
+<h5 id="_calculate_potential_lines_removedself-any-dead_functions-dead_classes-unused_imports-dead_files-int">_calculate_potential_lines_removed(self: Any, dead_functions: <ast.Subscript object at 0x0000019428901C00>, dead_classes: <ast.Subscript object at 0x0000019428901CC0>, unused_imports: <ast.Subscript object at 0x0000019428901D80>, dead_files: <ast.Subscript object at 0x0000019428901E40>) -&gt; int<a class="headerlink" href="#_calculate_potential_lines_removedself-any-dead_functions-dead_classes-unused_imports-dead_files-int" title="Permanent link">&para;</a></h5>
 <p>Calculate potential lines of code that could be removed</p>
-<h5 id="_generate_recommendationsself-any-dead_functions-dead_classes-unused_imports-dead_files-">_generate_recommendations(self: Any, dead_functions: <ast.Subscript object at 0x000001942F839810>, dead_classes: <ast.Subscript object at 0x000001942F8398D0>, unused_imports: <ast.Subscript object at 0x000001942F839990>, dead_files: <ast.Subscript object at 0x000001942F839A50>) -&gt; <ast.Subscript object at 0x000001942F83B310><a class="headerlink" href="#_generate_recommendationsself-any-dead_functions-dead_classes-unused_imports-dead_files-" title="Permanent link">&para;</a></h5>
+<h5 id="_generate_recommendationsself-any-dead_functions-dead_classes-unused_imports-dead_files-">_generate_recommendations(self: Any, dead_functions: <ast.Subscript object at 0x0000019428902AA0>, dead_classes: <ast.Subscript object at 0x0000019428902B60>, unused_imports: <ast.Subscript object at 0x0000019428902C20>, dead_files: <ast.Subscript object at 0x0000019428902CE0>) -&gt; <ast.Subscript object at 0x00000194283B85E0><a class="headerlink" href="#_generate_recommendationsself-any-dead_functions-dead_classes-unused_imports-dead_files-" title="Permanent link">&para;</a></h5>
 <p>Generate recommendations for handling dead code</p>
-<h5 id="safe_remove_dead_codeself-any-report-deadcodereport-">safe_remove_dead_code(self: Any, report: DeadCodeReport) -&gt; <ast.Subscript object at 0x0000019431C0D030><a class="headerlink" href="#safe_remove_dead_codeself-any-report-deadcodereport-" title="Permanent link">&para;</a></h5>
+<h5 id="safe_remove_dead_codeself-any-report-deadcodereport-">safe_remove_dead_code(self: Any, report: DeadCodeReport) -&gt; <ast.Subscript object at 0x00000194283BA2C0><a class="headerlink" href="#safe_remove_dead_codeself-any-report-deadcodereport-" title="Permanent link">&para;</a></h5>
 <p>Safely remove dead code with comprehensive testing</p>
 <p>Args:
     report: DeadCodeReport from analysis</p>
 <p>Returns:
     Dict mapping operation to result message</p>
-<h5 id="_remove_unused_importsself-any-unused_imports-int">_remove_unused_imports(self: Any, unused_imports: <ast.Subscript object at 0x0000019431C0D1E0>) -&gt; int<a class="headerlink" href="#_remove_unused_importsself-any-unused_imports-int" title="Permanent link">&para;</a></h5>
+<h5 id="_remove_unused_importsself-any-unused_imports-int">_remove_unused_imports(self: Any, unused_imports: <ast.Subscript object at 0x00000194283BA470>) -&gt; int<a class="headerlink" href="#_remove_unused_importsself-any-unused_imports-int" title="Permanent link">&para;</a></h5>
 <p>Remove unused import statements</p>
-<h5 id="_remove_dead_functionsself-any-dead_functions-int">_remove_dead_functions(self: Any, dead_functions: <ast.Subscript object at 0x0000019431C0E890>) -&gt; int<a class="headerlink" href="#_remove_dead_functionsself-any-dead_functions-int" title="Permanent link">&para;</a></h5>
+<h5 id="_remove_dead_functionsself-any-dead_functions-int">_remove_dead_functions(self: Any, dead_functions: <ast.Subscript object at 0x00000194283BBB20>) -&gt; int<a class="headerlink" href="#_remove_dead_functionsself-any-dead_functions-int" title="Permanent link">&para;</a></h5>
 <p>Remove dead function definitions</p>
-<h5 id="_remove_dead_classesself-any-dead_classes-int">_remove_dead_classes(self: Any, dead_classes: <ast.Subscript object at 0x0000019431B7D000>) -&gt; int<a class="headerlink" href="#_remove_dead_classesself-any-dead_classes-int" title="Permanent link">&para;</a></h5>
+<h5 id="_remove_dead_classesself-any-dead_classes-int">_remove_dead_classes(self: Any, dead_classes: <ast.Subscript object at 0x00000194282F9EA0>) -&gt; int<a class="headerlink" href="#_remove_dead_classesself-any-dead_classes-int" title="Permanent link">&para;</a></h5>
 <p>Remove dead class definitions</p>
-<h5 id="_remove_dead_filesself-any-dead_files-int">_remove_dead_files(self: Any, dead_files: <ast.Subscript object at 0x0000019431B7E4D0>) -&gt; int<a class="headerlink" href="#_remove_dead_filesself-any-dead_files-int" title="Permanent link">&para;</a></h5>
+<h5 id="_remove_dead_filesself-any-dead_files-int">_remove_dead_files(self: Any, dead_files: <ast.Subscript object at 0x00000194282FA140>) -&gt; int<a class="headerlink" href="#_remove_dead_filesself-any-dead_files-int" title="Permanent link">&para;</a></h5>
 <p>Remove dead files</p>
-<h5 id="create_backupself-any-files_to_backup-str">create_backup(self: Any, files_to_backup: <ast.Subscript object at 0x0000019431B7E770>) -&gt; str<a class="headerlink" href="#create_backupself-any-files_to_backup-str" title="Permanent link">&para;</a></h5>
+<h5 id="create_backupself-any-files_to_backup-str">create_backup(self: Any, files_to_backup: <ast.Subscript object at 0x00000194282FA920>) -&gt; str<a class="headerlink" href="#create_backupself-any-files_to_backup-str" title="Permanent link">&para;</a></h5>
 <p>Create backup of files before removal</p>
 <h5 id="save_reportself-any-report-deadcodereport-output_path-str-none">save_report(self: Any, report: DeadCodeReport, output_path: str) -&gt; None<a class="headerlink" href="#save_reportself-any-report-deadcodereport-output_path-str-none" title="Permanent link">&para;</a></h5>
 <p>Save dead code analysis report to file</p>

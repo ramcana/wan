@@ -16,7 +16,7 @@ Main code quality checking engine.
 
 #### Methods
 
-##### __init__(self: Any, config: <ast.Subscript object at 0x000001942F449480>)
+##### __init__(self: Any, config: <ast.Subscript object at 0x000001942A2E6DD0>)
 
 Initialize quality checker with configuration.
 
@@ -24,11 +24,11 @@ Initialize quality checker with configuration.
 
 Create quality checker from configuration file.
 
-##### _parse_config(config_data: <ast.Subscript object at 0x0000019431A10D00>) -> QualityConfig
+##### _parse_config(config_data: <ast.Subscript object at 0x000001942A2E52A0>) -> QualityConfig
 
 Parse configuration data into QualityConfig object.
 
-##### check_quality(self: Any, path: Path, checks: <ast.Subscript object at 0x0000019431A12950>) -> QualityReport
+##### check_quality(self: Any, path: Path, checks: <ast.Subscript object at 0x000001942CB35060>) -> QualityReport
 
 Perform comprehensive quality check on the given path.
 
@@ -50,11 +50,11 @@ Args:
 Returns:
     QualityReport showing what was fixed
 
-##### _get_python_files(self: Any, path: Path) -> <ast.Subscript object at 0x0000019433CBD270>
+##### _get_python_files(self: Any, path: Path) -> <ast.Subscript object at 0x00000194288F4160>
 
 Get all Python files in the given path.
 
-##### _analyze_file(self: Any, file_path: Path, checks: <ast.Subscript object at 0x0000019433CBC9A0>) -> <ast.Subscript object at 0x00000194340D38B0>
+##### _analyze_file(self: Any, file_path: Path, checks: <ast.Subscript object at 0x00000194288F5ED0>) -> <ast.Subscript object at 0x00000194288F4D90>
 
 Analyze a single file for quality issues.
 
@@ -62,7 +62,7 @@ Analyze a single file for quality issues.
 
 Aggregate file metrics into total metrics.
 
-##### _fix_file_issues(self: Any, file_path: Path, issues: <ast.Subscript object at 0x00000194340D1030>) -> int
+##### _fix_file_issues(self: Any, file_path: Path, issues: <ast.Subscript object at 0x000001942A1BD360>) -> int
 
 Fix issues in a specific file.
 

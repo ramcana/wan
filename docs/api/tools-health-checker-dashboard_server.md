@@ -16,7 +16,7 @@ Real-time health monitoring dashboard
 
 #### Methods
 
-##### __init__(self: Any, config: <ast.Subscript object at 0x0000019431BA9FC0>)
+##### __init__(self: Any, config: <ast.Subscript object at 0x00000194283E22F0>)
 
 
 

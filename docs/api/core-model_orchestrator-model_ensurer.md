@@ -32,11 +32,11 @@ Orchestrates atomic model downloads with preflight checks.
 
 #### Methods
 
-##### __init__(self: Any, registry: ModelRegistry, resolver: ModelResolver, lock_manager: LockManager, storage_backends: <ast.Subscript object at 0x00000194344A3190>, safety_margin_bytes: int, negative_cache_ttl: float, retry_config: <ast.Subscript object at 0x00000194302C9930>, enable_deduplication: bool)
+##### __init__(self: Any, registry: ModelRegistry, resolver: ModelResolver, lock_manager: LockManager, storage_backends: <ast.Subscript object at 0x000001942A26DD50>, safety_margin_bytes: int, negative_cache_ttl: float, retry_config: <ast.Subscript object at 0x000001942A26DBD0>, enable_deduplication: bool)
 
 
 
-##### ensure(self: Any, model_id: str, variant: <ast.BinOp object at 0x0000019431B04E80>) -> str
+##### ensure(self: Any, model_id: str, variant: <ast.BinOp object at 0x0000019427B931C0>) -> str
 
 Ensure a model is available locally, downloading if necessary.
 
@@ -50,7 +50,7 @@ Returns:
 Raises:
     ModelOrchestratorError: If model cannot be ensured
 
-##### get_model_status(self: Any, model_id: str, variant: <ast.BinOp object at 0x00000194302DA470>) -> ModelStatusInfo
+##### get_model_status(self: Any, model_id: str, variant: <ast.BinOp object at 0x000001942CD269B0>) -> ModelStatusInfo
 
 Get the current status of a model.
 
@@ -93,7 +93,7 @@ Mark a source as failed in the cache.
 
 Clean up any failed download artifacts.
 
-##### get_download_progress(self: Any, operation_id: str) -> <ast.Subscript object at 0x000001943007D150>
+##### get_download_progress(self: Any, operation_id: str) -> <ast.Subscript object at 0x000001942C52C2B0>
 
 Get progress information for an ongoing download.
 

@@ -1313,7 +1313,7 @@
 <p>Get HTTP session for the current thread.</p>
 <h5 id="update_statsself-any-thread_id-int-bytes_downloaded-int-error-bool">update_stats(self: Any, thread_id: int, bytes_downloaded: int, error: bool)<a class="headerlink" href="#update_statsself-any-thread_id-int-bytes_downloaded-int-error-bool" title="Permanent link">&para;</a></h5>
 <p>Update session statistics.</p>
-<h5 id="get_statsself-any-">get_stats(self: Any) -&gt; <ast.Subscript object at 0x000001942FB6DC00><a class="headerlink" href="#get_statsself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="get_statsself-any-">get_stats(self: Any) -&gt; <ast.Subscript object at 0x0000019428D7C8B0><a class="headerlink" href="#get_statsself-any-" title="Permanent link">&para;</a></h5>
 <p>Get connection pool statistics.</p>
 <h5 id="cleanup_stale_sessionsself-any-max_age-float">cleanup_stale_sessions(self: Any, max_age: float)<a class="headerlink" href="#cleanup_stale_sessionsself-any-max_age-float" title="Permanent link">&para;</a></h5>
 <p>Clean up stale sessions that haven't been used recently.</p>
@@ -1335,32 +1335,32 @@
 <p>Advanced download manager with parallel downloads, bandwidth limiting,
 queue management, and comprehensive performance optimization.</p>
 <h4 id="methods_5">Methods<a class="headerlink" href="#methods_5" title="Permanent link">&para;</a></h4>
-<h5 id="initself-any-max_concurrent_downloads-int-max_concurrent_files_per_model-int-max_bandwidth_bps-connection_pool_size-int-chunk_size-int-enable_resume-bool-enable_adaptive_chunking-bool-enable_compression-bool-queue_timeout-float"><strong>init</strong>(self: Any, max_concurrent_downloads: int, max_concurrent_files_per_model: int, max_bandwidth_bps: <ast.Subscript object at 0x000001942FC20D60>, connection_pool_size: int, chunk_size: int, enable_resume: bool, enable_adaptive_chunking: bool, enable_compression: bool, queue_timeout: float)<a class="headerlink" href="#initself-any-max_concurrent_downloads-int-max_concurrent_files_per_model-int-max_bandwidth_bps-connection_pool_size-int-chunk_size-int-enable_resume-bool-enable_adaptive_chunking-bool-enable_compression-bool-queue_timeout-float" title="Permanent link">&para;</a></h5>
-<h5 id="add_download_taskself-any-model_id-str-file_path-str-source_url-str-local_path-path-size-int-priority-downloadpriority-progress_callback-str">add_download_task(self: Any, model_id: str, file_path: str, source_url: str, local_path: Path, size: int, priority: DownloadPriority, progress_callback: <ast.Subscript object at 0x000001942F8153F0>) -&gt; str<a class="headerlink" href="#add_download_taskself-any-model_id-str-file_path-str-source_url-str-local_path-path-size-int-priority-downloadpriority-progress_callback-str" title="Permanent link">&para;</a></h5>
+<h5 id="initself-any-max_concurrent_downloads-int-max_concurrent_files_per_model-int-max_bandwidth_bps-connection_pool_size-int-chunk_size-int-enable_resume-bool-enable_adaptive_chunking-bool-enable_compression-bool-queue_timeout-float"><strong>init</strong>(self: Any, max_concurrent_downloads: int, max_concurrent_files_per_model: int, max_bandwidth_bps: <ast.Subscript object at 0x000001942A1077C0>, connection_pool_size: int, chunk_size: int, enable_resume: bool, enable_adaptive_chunking: bool, enable_compression: bool, queue_timeout: float)<a class="headerlink" href="#initself-any-max_concurrent_downloads-int-max_concurrent_files_per_model-int-max_bandwidth_bps-connection_pool_size-int-chunk_size-int-enable_resume-bool-enable_adaptive_chunking-bool-enable_compression-bool-queue_timeout-float" title="Permanent link">&para;</a></h5>
+<h5 id="add_download_taskself-any-model_id-str-file_path-str-source_url-str-local_path-path-size-int-priority-downloadpriority-progress_callback-str">add_download_task(self: Any, model_id: str, file_path: str, source_url: str, local_path: Path, size: int, priority: DownloadPriority, progress_callback: <ast.Subscript object at 0x00000194288234F0>) -&gt; str<a class="headerlink" href="#add_download_taskself-any-model_id-str-file_path-str-source_url-str-local_path-path-size-int-priority-downloadpriority-progress_callback-str" title="Permanent link">&para;</a></h5>
 <p>Add a download task to the queue.</p>
 <p>Returns:
     Task ID for tracking the download</p>
-<h5 id="queue_model_downloadself-any-model_id-str-file_specs-source_url-str-local_dir-path-priority-downloadpriority-progress_callback-str">queue_model_download(self: Any, model_id: str, file_specs: <ast.Subscript object at 0x000001942F8140D0>, source_url: str, local_dir: Path, priority: DownloadPriority, progress_callback: <ast.Subscript object at 0x000001942F767EB0>) -&gt; str<a class="headerlink" href="#queue_model_downloadself-any-model_id-str-file_specs-source_url-str-local_dir-path-priority-downloadpriority-progress_callback-str" title="Permanent link">&para;</a></h5>
+<h5 id="queue_model_downloadself-any-model_id-str-file_specs-source_url-str-local_dir-path-priority-downloadpriority-progress_callback-str">queue_model_download(self: Any, model_id: str, file_specs: <ast.Subscript object at 0x000001942880D5A0>, source_url: str, local_dir: Path, priority: DownloadPriority, progress_callback: <ast.Subscript object at 0x000001942880EBF0>) -&gt; str<a class="headerlink" href="#queue_model_downloadself-any-model_id-str-file_specs-source_url-str-local_dir-path-priority-downloadpriority-progress_callback-str" title="Permanent link">&para;</a></h5>
 <p>Queue a complete model download with optimized parallel file handling.</p>
 <p>Returns:
     Queue ID for tracking the model download</p>
-<h5 id="download_model_parallelself-any-model_id-str-file_specs-source_url-str-local_dir-path-progress_callback-">download_model_parallel(self: Any, model_id: str, file_specs: <ast.Subscript object at 0x000001942F7A13F0>, source_url: str, local_dir: Path, progress_callback: <ast.Subscript object at 0x000001942F7A1270>) -&gt; <ast.Subscript object at 0x000001942F7A0BB0><a class="headerlink" href="#download_model_parallelself-any-model_id-str-file_specs-source_url-str-local_dir-path-progress_callback-" title="Permanent link">&para;</a></h5>
+<h5 id="download_model_parallelself-any-model_id-str-file_specs-source_url-str-local_dir-path-progress_callback-">download_model_parallel(self: Any, model_id: str, file_specs: <ast.Subscript object at 0x0000019428847A90>, source_url: str, local_dir: Path, progress_callback: <ast.Subscript object at 0x0000019428847DF0>) -&gt; <ast.Subscript object at 0x0000019428844F70><a class="headerlink" href="#download_model_parallelself-any-model_id-str-file_specs-source_url-str-local_dir-path-progress_callback-" title="Permanent link">&para;</a></h5>
 <p>Download all files for a model in parallel with enhanced performance optimization.</p>
 <p>Returns:
     Dictionary with download results and comprehensive statistics</p>
-<h5 id="wait_for_model_completionself-any-queue_id-str-timeout-">wait_for_model_completion(self: Any, queue_id: str, timeout: <ast.Subscript object at 0x000001942F8035E0>) -&gt; <ast.Subscript object at 0x000001942F802620><a class="headerlink" href="#wait_for_model_completionself-any-queue_id-str-timeout-" title="Permanent link">&para;</a></h5>
+<h5 id="wait_for_model_completionself-any-queue_id-str-timeout-">wait_for_model_completion(self: Any, queue_id: str, timeout: <ast.Subscript object at 0x00000194288478E0>) -&gt; <ast.Subscript object at 0x0000019428844100><a class="headerlink" href="#wait_for_model_completionself-any-queue_id-str-timeout-" title="Permanent link">&para;</a></h5>
 <p>Wait for a queued model download to complete.</p>
 <p>Returns:
     Dictionary with download results and statistics</p>
 <h5 id="_determine_file_priorityself-any-file_spec-any-downloadpriority">_determine_file_priority(self: Any, file_spec: Any) -&gt; DownloadPriority<a class="headerlink" href="#_determine_file_priorityself-any-file_spec-any-downloadpriority" title="Permanent link">&para;</a></h5>
 <p>Determine download priority for a file based on type and size.</p>
-<h5 id="_collect_download_resultsself-any-queue_id-str-">_collect_download_results(self: Any, queue_id: str) -&gt; <ast.Subscript object at 0x000001942F827070><a class="headerlink" href="#_collect_download_resultsself-any-queue_id-str-" title="Permanent link">&para;</a></h5>
+<h5 id="_collect_download_resultsself-any-queue_id-str-">_collect_download_results(self: Any, queue_id: str) -&gt; <ast.Subscript object at 0x000001942A13E050><a class="headerlink" href="#_collect_download_resultsself-any-queue_id-str-" title="Permanent link">&para;</a></h5>
 <p>Collect comprehensive download results for a model.</p>
 <h5 id="_queue_workerself-any">_queue_worker(self: Any)<a class="headerlink" href="#_queue_workerself-any" title="Permanent link">&para;</a></h5>
 <p>Enhanced background worker that processes model download queues.</p>
 <h5 id="_process_model_queueself-any-model_queue-modeldownloadqueue">_process_model_queue(self: Any, model_queue: ModelDownloadQueue)<a class="headerlink" href="#_process_model_queueself-any-model_queue-modeldownloadqueue" title="Permanent link">&para;</a></h5>
 <p>Process downloads for a specific model with optimized concurrency.</p>
-<h5 id="_handle_task_completionself-any-task-downloadtask-queue_id-str-success-bool-error">_handle_task_completion(self: Any, task: DownloadTask, queue_id: str, success: bool, error: <ast.Subscript object at 0x0000019434319120>)<a class="headerlink" href="#_handle_task_completionself-any-task-downloadtask-queue_id-str-success-bool-error" title="Permanent link">&para;</a></h5>
+<h5 id="_handle_task_completionself-any-task-downloadtask-queue_id-str-success-bool-error">_handle_task_completion(self: Any, task: DownloadTask, queue_id: str, success: bool, error: <ast.Subscript object at 0x000001942CDC89D0>)<a class="headerlink" href="#_handle_task_completionself-any-task-downloadtask-queue_id-str-success-bool-error" title="Permanent link">&para;</a></h5>
 <p>Handle completion of a download task.</p>
 <h5 id="_apply_adaptive_chunkingself-any-task-downloadtask">_apply_adaptive_chunking(self: Any, task: DownloadTask)<a class="headerlink" href="#_apply_adaptive_chunkingself-any-task-downloadtask" title="Permanent link">&para;</a></h5>
 <p>Apply adaptive chunk sizing based on file size and network conditions.</p>
@@ -1374,7 +1374,7 @@ queue management, and comprehensive performance optimization.</p>
 <p>Optimized download method with advanced performance features.</p>
 <p>Returns:
     True if download succeeded, False otherwise</p>
-<h5 id="_prepare_headersself-any-task-downloadtask-resume_pos-int-">_prepare_headers(self: Any, task: DownloadTask, resume_pos: int) -&gt; <ast.Subscript object at 0x000001942F3A1E10><a class="headerlink" href="#_prepare_headersself-any-task-downloadtask-resume_pos-int-" title="Permanent link">&para;</a></h5>
+<h5 id="_prepare_headersself-any-task-downloadtask-resume_pos-int-">_prepare_headers(self: Any, task: DownloadTask, resume_pos: int) -&gt; <ast.Subscript object at 0x0000019428A78100><a class="headerlink" href="#_prepare_headersself-any-task-downloadtask-resume_pos-int-" title="Permanent link">&para;</a></h5>
 <p>Prepare optimized HTTP headers for download.</p>
 <h5 id="_download_file_freshself-any-task-downloadtask-progress-downloadprogress-bool">_download_file_fresh(self: Any, task: DownloadTask, progress: DownloadProgress) -&gt; bool<a class="headerlink" href="#_download_file_freshself-any-task-downloadtask-progress-downloadprogress-bool" title="Permanent link">&para;</a></h5>
 <p>Download file from the beginning (used when resume fails).</p>
@@ -1384,9 +1384,9 @@ queue management, and comprehensive performance optimization.</p>
 <p>Fallback download method without connection pooling.</p>
 <h5 id="_notify_progressself-any-progress-downloadprogress">_notify_progress(self: Any, progress: DownloadProgress)<a class="headerlink" href="#_notify_progressself-any-progress-downloadprogress" title="Permanent link">&para;</a></h5>
 <p>Notify progress callbacks for a model.</p>
-<h5 id="get_download_statsself-any-">get_download_stats(self: Any) -&gt; <ast.Subscript object at 0x00000194340BB910><a class="headerlink" href="#get_download_statsself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="get_download_statsself-any-">get_download_stats(self: Any) -&gt; <ast.Subscript object at 0x000001942A16D930><a class="headerlink" href="#get_download_statsself-any-" title="Permanent link">&para;</a></h5>
 <p>Get comprehensive download statistics.</p>
-<h5 id="get_model_queue_statusself-any-queue_id-str-">get_model_queue_status(self: Any, queue_id: str) -&gt; <ast.Subscript object at 0x00000194340A1390><a class="headerlink" href="#get_model_queue_statusself-any-queue_id-str-" title="Permanent link">&para;</a></h5>
+<h5 id="get_model_queue_statusself-any-queue_id-str-">get_model_queue_status(self: Any, queue_id: str) -&gt; <ast.Subscript object at 0x000001942A16C520><a class="headerlink" href="#get_model_queue_statusself-any-queue_id-str-" title="Permanent link">&para;</a></h5>
 <p>Get status of a specific model download queue.</p>
 <h5 id="cancel_model_downloadself-any-queue_id-str-bool">cancel_model_download(self: Any, queue_id: str) -&gt; bool<a class="headerlink" href="#cancel_model_downloadself-any-queue_id-str-bool" title="Permanent link">&para;</a></h5>
 <p>Cancel a model download queue.</p>

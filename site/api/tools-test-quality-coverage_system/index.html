@@ -1169,13 +1169,13 @@ with actionable recommendations, and tracks coverage trends over time.</p>
 <p>Initialize the trends database</p>
 <h5 id="record_coverageself-any-report-coveragereport-int">record_coverage(self: Any, report: CoverageReport) -&gt; int<a class="headerlink" href="#record_coverageself-any-report-coveragereport-int" title="Permanent link">&para;</a></h5>
 <p>Record coverage data point</p>
-<h5 id="get_trendsself-any-days-int-">get_trends(self: Any, days: int) -&gt; <ast.Subscript object at 0x0000019431B1C460><a class="headerlink" href="#get_trendsself-any-days-int-" title="Permanent link">&para;</a></h5>
+<h5 id="get_trendsself-any-days-int-">get_trends(self: Any, days: int) -&gt; <ast.Subscript object at 0x000001942CBAEF80><a class="headerlink" href="#get_trendsself-any-days-int-" title="Permanent link">&para;</a></h5>
 <p>Get coverage trends for the last N days</p>
-<h5 id="get_file_trendsself-any-file_path-str-days-int-">get_file_trends(self: Any, file_path: str, days: int) -&gt; <ast.Subscript object at 0x0000019431B1FEB0><a class="headerlink" href="#get_file_trendsself-any-file_path-str-days-int-" title="Permanent link">&para;</a></h5>
+<h5 id="get_file_trendsself-any-file_path-str-days-int-">get_file_trends(self: Any, file_path: str, days: int) -&gt; <ast.Subscript object at 0x000001942CBAE290><a class="headerlink" href="#get_file_trendsself-any-file_path-str-days-int-" title="Permanent link">&para;</a></h5>
 <p>Get coverage trends for a specific file</p>
-<h5 id="_get_current_commitself-any-">_get_current_commit(self: Any) -&gt; <ast.Subscript object at 0x0000019431B1E920><a class="headerlink" href="#_get_current_commitself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="_get_current_commitself-any-">_get_current_commit(self: Any) -&gt; <ast.Subscript object at 0x000001942CBAFBE0><a class="headerlink" href="#_get_current_commitself-any-" title="Permanent link">&para;</a></h5>
 <p>Get current git commit hash</p>
-<h5 id="_get_current_branchself-any-">_get_current_branch(self: Any) -&gt; <ast.Subscript object at 0x000001942F75C070><a class="headerlink" href="#_get_current_branchself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="_get_current_branchself-any-">_get_current_branch(self: Any) -&gt; <ast.Subscript object at 0x000001942CBAF880><a class="headerlink" href="#_get_current_branchself-any-" title="Permanent link">&para;</a></h5>
 <p>Get current git branch</p>
 <h3 id="newcodecoverageanalyzer">NewCodeCoverageAnalyzer<a class="headerlink" href="#newcodecoverageanalyzer" title="Permanent link">&para;</a></h3>
 <p>Analyzes coverage for new/changed code</p>
@@ -1183,11 +1183,11 @@ with actionable recommendations, and tracks coverage trends over time.</p>
 <h5 id="initself-any-project_root-path_1"><strong>init</strong>(self: Any, project_root: Path)<a class="headerlink" href="#initself-any-project_root-path_1" title="Permanent link">&para;</a></h5>
 <h5 id="set_new_code_thresholdself-any-threshold-float">set_new_code_threshold(self: Any, threshold: float)<a class="headerlink" href="#set_new_code_thresholdself-any-threshold-float" title="Permanent link">&para;</a></h5>
 <p>Set coverage threshold for new code</p>
-<h5 id="analyze_new_code_coverageself-any-report-coveragereport-base_branch-str-">analyze_new_code_coverage(self: Any, report: CoverageReport, base_branch: str) -&gt; <ast.Subscript object at 0x000001942F75EBF0><a class="headerlink" href="#analyze_new_code_coverageself-any-report-coveragereport-base_branch-str-" title="Permanent link">&para;</a></h5>
+<h5 id="analyze_new_code_coverageself-any-report-coveragereport-base_branch-str-">analyze_new_code_coverage(self: Any, report: CoverageReport, base_branch: str) -&gt; <ast.Subscript object at 0x000001942CAF8AC0><a class="headerlink" href="#analyze_new_code_coverageself-any-report-coveragereport-base_branch-str-" title="Permanent link">&para;</a></h5>
 <p>Analyze coverage for new/changed code compared to base branch</p>
-<h5 id="_get_changed_filesself-any-base_branch-str-">_get_changed_files(self: Any, base_branch: str) -&gt; <ast.Subscript object at 0x000001942F75D990><a class="headerlink" href="#_get_changed_filesself-any-base_branch-str-" title="Permanent link">&para;</a></h5>
+<h5 id="_get_changed_filesself-any-base_branch-str-">_get_changed_files(self: Any, base_branch: str) -&gt; <ast.Subscript object at 0x0000019429CBA080><a class="headerlink" href="#_get_changed_filesself-any-base_branch-str-" title="Permanent link">&para;</a></h5>
 <p>Get list of files changed compared to base branch</p>
-<h5 id="_get_new_linesself-any-file_path-str-base_branch-str-">_get_new_lines(self: Any, file_path: str, base_branch: str) -&gt; <ast.Subscript object at 0x0000019431B60520><a class="headerlink" href="#_get_new_linesself-any-file_path-str-base_branch-str-" title="Permanent link">&para;</a></h5>
+<h5 id="_get_new_linesself-any-file_path-str-base_branch-str-">_get_new_lines(self: Any, file_path: str, base_branch: str) -&gt; <ast.Subscript object at 0x00000194287F97E0><a class="headerlink" href="#_get_new_linesself-any-file_path-str-base_branch-str-" title="Permanent link">&para;</a></h5>
 <p>Get line numbers of new/changed lines in a file</p>
 <h3 id="coveragethresholdenforcer">CoverageThresholdEnforcer<a class="headerlink" href="#coveragethresholdenforcer" title="Permanent link">&para;</a></h3>
 <p>Enforces coverage thresholds for new code</p>
@@ -1203,35 +1203,35 @@ with actionable recommendations, and tracks coverage trends over time.</p>
 <p>Generates detailed coverage reports with actionable recommendations</p>
 <h4 id="methods_3">Methods<a class="headerlink" href="#methods_3" title="Permanent link">&para;</a></h4>
 <h5 id="initself-any-project_root-path_3"><strong>init</strong>(self: Any, project_root: Path)<a class="headerlink" href="#initself-any-project_root-path_3" title="Permanent link">&para;</a></h5>
-<h5 id="generate_detailed_reportself-any-report-coveragereport-threshold_result-coveragethresholdresult-">generate_detailed_report(self: Any, report: CoverageReport, threshold_result: CoverageThresholdResult) -&gt; <ast.Subscript object at 0x0000019431BDF340><a class="headerlink" href="#generate_detailed_reportself-any-report-coveragereport-threshold_result-coveragethresholdresult-" title="Permanent link">&para;</a></h5>
+<h5 id="generate_detailed_reportself-any-report-coveragereport-threshold_result-coveragethresholdresult-">generate_detailed_report(self: Any, report: CoverageReport, threshold_result: CoverageThresholdResult) -&gt; <ast.Subscript object at 0x00000194288C5D50><a class="headerlink" href="#generate_detailed_reportself-any-report-coveragereport-threshold_result-coveragethresholdresult-" title="Permanent link">&para;</a></h5>
 <p>Generate comprehensive coverage report</p>
-<h5 id="_generate_summaryself-any-report-coveragereport-">_generate_summary(self: Any, report: CoverageReport) -&gt; <ast.Subscript object at 0x0000019431BDE110><a class="headerlink" href="#_generate_summaryself-any-report-coveragereport-" title="Permanent link">&para;</a></h5>
+<h5 id="_generate_summaryself-any-report-coveragereport-">_generate_summary(self: Any, report: CoverageReport) -&gt; <ast.Subscript object at 0x00000194288C6E90><a class="headerlink" href="#_generate_summaryself-any-report-coveragereport-" title="Permanent link">&para;</a></h5>
 <p>Generate coverage summary</p>
-<h5 id="_generate_file_analysisself-any-report-coveragereport-">_generate_file_analysis(self: Any, report: CoverageReport) -&gt; <ast.Subscript object at 0x0000019431BDE0B0><a class="headerlink" href="#_generate_file_analysisself-any-report-coveragereport-" title="Permanent link">&para;</a></h5>
+<h5 id="_generate_file_analysisself-any-report-coveragereport-">_generate_file_analysis(self: Any, report: CoverageReport) -&gt; <ast.Subscript object at 0x00000194288A7E50><a class="headerlink" href="#_generate_file_analysisself-any-report-coveragereport-" title="Permanent link">&para;</a></h5>
 <p>Generate per-file analysis</p>
-<h5 id="_generate_gap_analysisself-any-report-coveragereport-">_generate_gap_analysis(self: Any, report: CoverageReport) -&gt; <ast.Subscript object at 0x0000019431BDFB80><a class="headerlink" href="#_generate_gap_analysisself-any-report-coveragereport-" title="Permanent link">&para;</a></h5>
+<h5 id="_generate_gap_analysisself-any-report-coveragereport-">_generate_gap_analysis(self: Any, report: CoverageReport) -&gt; <ast.Subscript object at 0x000001942C5A8CD0><a class="headerlink" href="#_generate_gap_analysisself-any-report-coveragereport-" title="Permanent link">&para;</a></h5>
 <p>Generate coverage gap analysis</p>
-<h5 id="_generate_detailed_recommendationsself-any-report-coveragereport-threshold_result-coveragethresholdresult-">_generate_detailed_recommendations(self: Any, report: CoverageReport, threshold_result: CoverageThresholdResult) -&gt; <ast.Subscript object at 0x000001942FE0EF80><a class="headerlink" href="#_generate_detailed_recommendationsself-any-report-coveragereport-threshold_result-coveragethresholdresult-" title="Permanent link">&para;</a></h5>
+<h5 id="_generate_detailed_recommendationsself-any-report-coveragereport-threshold_result-coveragethresholdresult-">_generate_detailed_recommendations(self: Any, report: CoverageReport, threshold_result: CoverageThresholdResult) -&gt; <ast.Subscript object at 0x000001942C5AAB60><a class="headerlink" href="#_generate_detailed_recommendationsself-any-report-coveragereport-threshold_result-coveragethresholdresult-" title="Permanent link">&para;</a></h5>
 <p>Generate detailed, prioritized recommendations</p>
-<h5 id="_generate_trend_analysisself-any-">_generate_trend_analysis(self: Any) -&gt; <ast.Subscript object at 0x000001942FE0DD80><a class="headerlink" href="#_generate_trend_analysisself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="_generate_trend_analysisself-any-">_generate_trend_analysis(self: Any) -&gt; <ast.Subscript object at 0x000001942C555AE0><a class="headerlink" href="#_generate_trend_analysisself-any-" title="Permanent link">&para;</a></h5>
 <p>Generate coverage trend analysis</p>
-<h5 id="_generate_actionable_itemsself-any-report-coveragereport-threshold_result-coveragethresholdresult-">_generate_actionable_items(self: Any, report: CoverageReport, threshold_result: CoverageThresholdResult) -&gt; <ast.Subscript object at 0x0000019434211BD0><a class="headerlink" href="#_generate_actionable_itemsself-any-report-coveragereport-threshold_result-coveragethresholdresult-" title="Permanent link">&para;</a></h5>
+<h5 id="_generate_actionable_itemsself-any-report-coveragereport-threshold_result-coveragethresholdresult-">_generate_actionable_items(self: Any, report: CoverageReport, threshold_result: CoverageThresholdResult) -&gt; <ast.Subscript object at 0x000001942C5579D0><a class="headerlink" href="#_generate_actionable_itemsself-any-report-coveragereport-threshold_result-coveragethresholdresult-" title="Permanent link">&para;</a></h5>
 <p>Generate specific actionable items</p>
-<h5 id="_group_missing_linesself-any-missing_lines-">_group_missing_lines(self: Any, missing_lines: <ast.Subscript object at 0x0000019434212D40>) -&gt; <ast.Subscript object at 0x0000019434211090><a class="headerlink" href="#_group_missing_linesself-any-missing_lines-" title="Permanent link">&para;</a></h5>
+<h5 id="_group_missing_linesself-any-missing_lines-">_group_missing_lines(self: Any, missing_lines: <ast.Subscript object at 0x000001942C557AF0>) -&gt; <ast.Subscript object at 0x000001942C554340><a class="headerlink" href="#_group_missing_linesself-any-missing_lines-" title="Permanent link">&para;</a></h5>
 <p>Group consecutive missing lines into ranges</p>
-<h5 id="_analyze_function_coverageself-any-file_cov-filecoverage-">_analyze_function_coverage(self: Any, file_cov: FileCoverage) -&gt; <ast.Subscript object at 0x0000019434210760><a class="headerlink" href="#_analyze_function_coverageself-any-file_cov-filecoverage-" title="Permanent link">&para;</a></h5>
+<h5 id="_analyze_function_coverageself-any-file_cov-filecoverage-">_analyze_function_coverage(self: Any, file_cov: FileCoverage) -&gt; <ast.Subscript object at 0x0000019428934670><a class="headerlink" href="#_analyze_function_coverageself-any-file_cov-filecoverage-" title="Permanent link">&para;</a></h5>
 <p>Analyze function-level coverage</p>
 <h5 id="_determine_file_priorityself-any-file_cov-filecoverage-str">_determine_file_priority(self: Any, file_cov: FileCoverage) -&gt; str<a class="headerlink" href="#_determine_file_priorityself-any-file_cov-filecoverage-str" title="Permanent link">&para;</a></h5>
 <p>Determine priority level for file coverage improvement</p>
-<h5 id="_generate_file_recommendationsself-any-file_cov-filecoverage-">_generate_file_recommendations(self: Any, file_cov: FileCoverage) -&gt; <ast.Subscript object at 0x000001942F9387C0><a class="headerlink" href="#_generate_file_recommendationsself-any-file_cov-filecoverage-" title="Permanent link">&para;</a></h5>
+<h5 id="_generate_file_recommendationsself-any-file_cov-filecoverage-">_generate_file_recommendations(self: Any, file_cov: FileCoverage) -&gt; <ast.Subscript object at 0x0000019428937460><a class="headerlink" href="#_generate_file_recommendationsself-any-file_cov-filecoverage-" title="Permanent link">&para;</a></h5>
 <p>Generate specific recommendations for a file</p>
 <h3 id="comprehensivecoveragesystem">ComprehensiveCoverageSystem<a class="headerlink" href="#comprehensivecoveragesystem" title="Permanent link">&para;</a></h3>
 <p>Main system that orchestrates all coverage analysis components</p>
 <h4 id="methods_4">Methods<a class="headerlink" href="#methods_4" title="Permanent link">&para;</a></h4>
 <h5 id="initself-any-project_root-path_4"><strong>init</strong>(self: Any, project_root: Path)<a class="headerlink" href="#initself-any-project_root-path_4" title="Permanent link">&para;</a></h5>
-<h5 id="run_comprehensive_analysisself-any-test_files-base_branch-str-">run_comprehensive_analysis(self: Any, test_files: <ast.Subscript object at 0x000001942F9395A0>, base_branch: str) -&gt; <ast.Subscript object at 0x000001942F939990><a class="headerlink" href="#run_comprehensive_analysisself-any-test_files-base_branch-str-" title="Permanent link">&para;</a></h5>
+<h5 id="run_comprehensive_analysisself-any-test_files-base_branch-str-">run_comprehensive_analysis(self: Any, test_files: <ast.Subscript object at 0x00000194289366E0>, base_branch: str) -&gt; <ast.Subscript object at 0x00000194288F2110><a class="headerlink" href="#run_comprehensive_analysisself-any-test_files-base_branch-str-" title="Permanent link">&para;</a></h5>
 <p>Run complete coverage analysis with all features</p>
-<h5 id="save_reportself-any-analysis_result-output_path-path">save_report(self: Any, analysis_result: <ast.Subscript object at 0x000001942F939750>, output_path: Path)<a class="headerlink" href="#save_reportself-any-analysis_result-output_path-path" title="Permanent link">&para;</a></h5>
+<h5 id="save_reportself-any-analysis_result-output_path-path">save_report(self: Any, analysis_result: <ast.Subscript object at 0x00000194288F2440>, output_path: Path)<a class="headerlink" href="#save_reportself-any-analysis_result-output_path-path" title="Permanent link">&para;</a></h5>
 <p>Save comprehensive analysis report</p>
 
 

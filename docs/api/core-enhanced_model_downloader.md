@@ -22,7 +22,7 @@ Custom exception for download errors
 
 #### Methods
 
-##### __init__(self: Any, message: str, error_type: str, retry_after: <ast.Subscript object at 0x00000194318D2CE0>)
+##### __init__(self: Any, message: str, error_type: str, retry_after: <ast.Subscript object at 0x00000194280CECE0>)
 
 
 
@@ -49,7 +49,7 @@ exponential backoff, partial download recovery, and bandwidth management.
 
 #### Methods
 
-##### __init__(self: Any, base_downloader: Any, models_dir: <ast.Subscript object at 0x0000019431926470>)
+##### __init__(self: Any, base_downloader: Any, models_dir: <ast.Subscript object at 0x0000019428042470>)
 
 Initialize the enhanced model downloader.
 
@@ -57,11 +57,11 @@ Args:
     base_downloader: Optional existing ModelDownloader instance
     models_dir: Directory for storing models
 
-##### add_progress_callback(self: Any, callback: <ast.Subscript object at 0x00000194318ECBB0>)
+##### add_progress_callback(self: Any, callback: <ast.Subscript object at 0x000001942809F3D0>)
 
 Add a progress callback function
 
-##### remove_progress_callback(self: Any, callback: <ast.Subscript object at 0x00000194318EC850>)
+##### remove_progress_callback(self: Any, callback: <ast.Subscript object at 0x000001942809F070>)
 
 Remove a progress callback function
 
@@ -69,7 +69,7 @@ Remove a progress callback function
 
 Calculate optimal chunk size based on current speed
 
-##### set_bandwidth_limit(self: Any, limit_mbps: <ast.Subscript object at 0x00000194300ACA60>) -> bool
+##### set_bandwidth_limit(self: Any, limit_mbps: <ast.Subscript object at 0x000001942C6B7370>) -> bool
 
 Set bandwidth limit for downloads.
 

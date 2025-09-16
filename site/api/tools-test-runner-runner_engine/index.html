@@ -1117,7 +1117,7 @@
 <p>Monitors and reports test execution progress</p>
 <h4 id="methods_1">Methods<a class="headerlink" href="#methods_1" title="Permanent link">&para;</a></h4>
 <h5 id="initself-any"><strong>init</strong>(self: Any)<a class="headerlink" href="#initself-any" title="Permanent link">&para;</a></h5>
-<h5 id="add_progress_callbackself-any-callback">add_progress_callback(self: Any, callback: <ast.Subscript object at 0x0000019433D60B20>)<a class="headerlink" href="#add_progress_callbackself-any-callback" title="Permanent link">&para;</a></h5>
+<h5 id="add_progress_callbackself-any-callback">add_progress_callback(self: Any, callback: <ast.Subscript object at 0x000001942C557E20>)<a class="headerlink" href="#add_progress_callbackself-any-callback" title="Permanent link">&para;</a></h5>
 <p>Add a callback to be called on progress updates</p>
 <h5 id="update_progressself-any-progress-executionprogress">update_progress(self: Any, progress: ExecutionProgress)<a class="headerlink" href="#update_progressself-any-progress-executionprogress" title="Permanent link">&para;</a></h5>
 <p>Update current progress and notify callbacks</p>
@@ -1129,23 +1129,23 @@
 <p>Discovers and categorizes tests based on patterns and file structure</p>
 <h4 id="methods_2">Methods<a class="headerlink" href="#methods_2" title="Permanent link">&para;</a></h4>
 <h5 id="initself-any-config-testconfig"><strong>init</strong>(self: Any, config: TestConfig)<a class="headerlink" href="#initself-any-config-testconfig" title="Permanent link">&para;</a></h5>
-<h5 id="discover_testsself-any-category-testcategory-">discover_tests(self: Any, category: TestCategory) -&gt; <ast.Subscript object at 0x0000019433C75330><a class="headerlink" href="#discover_testsself-any-category-testcategory-" title="Permanent link">&para;</a></h5>
+<h5 id="discover_testsself-any-category-testcategory-">discover_tests(self: Any, category: TestCategory) -&gt; <ast.Subscript object at 0x000001942C556F20><a class="headerlink" href="#discover_testsself-any-category-testcategory-" title="Permanent link">&para;</a></h5>
 <p>Discover test files for a specific category</p>
 <p>Args:
     category: Test category to discover tests for</p>
 <p>Returns:
     List of test file paths</p>
-<h5 id="_get_default_patternsself-any-category-testcategory-">_get_default_patterns(self: Any, category: TestCategory) -&gt; <ast.Subscript object at 0x0000019433C74C40><a class="headerlink" href="#_get_default_patternsself-any-category-testcategory-" title="Permanent link">&para;</a></h5>
+<h5 id="_get_default_patternsself-any-category-testcategory-">_get_default_patterns(self: Any, category: TestCategory) -&gt; <ast.Subscript object at 0x00000194281346D0><a class="headerlink" href="#_get_default_patternsself-any-category-testcategory-" title="Permanent link">&para;</a></h5>
 <p>Get default file patterns for a category</p>
 <h5 id="_is_valid_test_fileself-any-file_path-path-bool">_is_valid_test_file(self: Any, file_path: Path) -&gt; bool<a class="headerlink" href="#_is_valid_test_fileself-any-file_path-path-bool" title="Permanent link">&para;</a></h5>
 <p>Check if a file is a valid Python test file</p>
-<h5 id="categorize_test_fileself-any-file_path-path-">categorize_test_file(self: Any, file_path: Path) -&gt; <ast.Subscript object at 0x0000019433D2A830><a class="headerlink" href="#categorize_test_fileself-any-file_path-path-" title="Permanent link">&para;</a></h5>
+<h5 id="categorize_test_fileself-any-file_path-path-">categorize_test_file(self: Any, file_path: Path) -&gt; <ast.Subscript object at 0x000001942757D000><a class="headerlink" href="#categorize_test_fileself-any-file_path-path-" title="Permanent link">&para;</a></h5>
 <p>Automatically categorize a test file based on its path and content</p>
 <h3 id="timeoutmanager">TimeoutManager<a class="headerlink" href="#timeoutmanager" title="Permanent link">&para;</a></h3>
 <p>Manages test execution timeouts with graceful handling</p>
 <h4 id="methods_3">Methods<a class="headerlink" href="#methods_3" title="Permanent link">&para;</a></h4>
 <h5 id="initself-any_1"><strong>init</strong>(self: Any)<a class="headerlink" href="#initself-any_1" title="Permanent link">&para;</a></h5>
-<h5 id="execute_with_timeoutself-any-command-timeout-int-cwd-env-">execute_with_timeout(self: Any, command: <ast.Subscript object at 0x0000019433D2A1D0>, timeout: int, cwd: <ast.Subscript object at 0x0000019433D2A0B0>, env: <ast.Subscript object at 0x0000019433D29FF0>) -&gt; <ast.Subscript object at 0x0000019433D55330><a class="headerlink" href="#execute_with_timeoutself-any-command-timeout-int-cwd-env-" title="Permanent link">&para;</a></h5>
+<h5 id="execute_with_timeoutself-any-command-timeout-int-cwd-env-">execute_with_timeout(self: Any, command: <ast.Subscript object at 0x000001942757C1F0>, timeout: int, cwd: <ast.Subscript object at 0x000001942757DBD0>, env: <ast.Subscript object at 0x000001942757E200>) -&gt; <ast.Subscript object at 0x000001942A22A140><a class="headerlink" href="#execute_with_timeoutself-any-command-timeout-int-cwd-env-" title="Permanent link">&para;</a></h5>
 <p>Execute command with timeout handling</p>
 <p>Args:
     command: Command to execute
@@ -1162,15 +1162,15 @@
 <h5 id="initself-any-config-testconfig_1"><strong>init</strong>(self: Any, config: TestConfig)<a class="headerlink" href="#initself-any-config-testconfig_1" title="Permanent link">&para;</a></h5>
 <h5 id="_determine_test_runnerself-any-test_file-path-testdiscoverymethod">_determine_test_runner(self: Any, test_file: Path) -&gt; TestDiscoveryMethod<a class="headerlink" href="#_determine_test_runnerself-any-test_file-path-testdiscoverymethod" title="Permanent link">&para;</a></h5>
 <p>Determine the appropriate test runner for a file</p>
-<h5 id="_parse_pytest_outputself-any-stdout-str-stderr-str-return_code-int-test_file-path-context-testexecutioncontext-">_parse_pytest_output(self: Any, stdout: str, stderr: str, return_code: int, test_file: Path, context: TestExecutionContext) -&gt; <ast.Subscript object at 0x00000194341E5D80><a class="headerlink" href="#_parse_pytest_outputself-any-stdout-str-stderr-str-return_code-int-test_file-path-context-testexecutioncontext-" title="Permanent link">&para;</a></h5>
+<h5 id="_parse_pytest_outputself-any-stdout-str-stderr-str-return_code-int-test_file-path-context-testexecutioncontext-">_parse_pytest_output(self: Any, stdout: str, stderr: str, return_code: int, test_file: Path, context: TestExecutionContext) -&gt; <ast.Subscript object at 0x000001942CC8A170><a class="headerlink" href="#_parse_pytest_outputself-any-stdout-str-stderr-str-return_code-int-test_file-path-context-testexecutioncontext-" title="Permanent link">&para;</a></h5>
 <p>Parse pytest output to extract test results</p>
-<h5 id="_parse_unittest_outputself-any-stdout-str-stderr-str-return_code-int-test_file-path-context-testexecutioncontext-">_parse_unittest_output(self: Any, stdout: str, stderr: str, return_code: int, test_file: Path, context: TestExecutionContext) -&gt; <ast.Subscript object at 0x00000194341E6AD0><a class="headerlink" href="#_parse_unittest_outputself-any-stdout-str-stderr-str-return_code-int-test_file-path-context-testexecutioncontext-" title="Permanent link">&para;</a></h5>
+<h5 id="_parse_unittest_outputself-any-stdout-str-stderr-str-return_code-int-test_file-path-context-testexecutioncontext-">_parse_unittest_output(self: Any, stdout: str, stderr: str, return_code: int, test_file: Path, context: TestExecutionContext) -&gt; <ast.Subscript object at 0x000001942CC89D20><a class="headerlink" href="#_parse_unittest_outputself-any-stdout-str-stderr-str-return_code-int-test_file-path-context-testexecutioncontext-" title="Permanent link">&para;</a></h5>
 <p>Parse unittest output to extract test results</p>
-<h5 id="_parse_text_outputself-any-stdout-str-stderr-str-return_code-int-test_file-path-context-testexecutioncontext-">_parse_text_output(self: Any, stdout: str, stderr: str, return_code: int, test_file: Path, context: TestExecutionContext) -&gt; <ast.Subscript object at 0x0000019433C84A60><a class="headerlink" href="#_parse_text_outputself-any-stdout-str-stderr-str-return_code-int-test_file-path-context-testexecutioncontext-" title="Permanent link">&para;</a></h5>
+<h5 id="_parse_text_outputself-any-stdout-str-stderr-str-return_code-int-test_file-path-context-testexecutioncontext-">_parse_text_output(self: Any, stdout: str, stderr: str, return_code: int, test_file: Path, context: TestExecutionContext) -&gt; <ast.Subscript object at 0x000001942CC8A350><a class="headerlink" href="#_parse_text_outputself-any-stdout-str-stderr-str-return_code-int-test_file-path-context-testexecutioncontext-" title="Permanent link">&para;</a></h5>
 <p>Parse text output when structured output is not available</p>
-<h5 id="add_progress_callbackself-any-callback_1">add_progress_callback(self: Any, callback: <ast.Subscript object at 0x0000019433C84BB0>)<a class="headerlink" href="#add_progress_callbackself-any-callback_1" title="Permanent link">&para;</a></h5>
+<h5 id="add_progress_callbackself-any-callback_1">add_progress_callback(self: Any, callback: <ast.Subscript object at 0x000001942CC89F00>)<a class="headerlink" href="#add_progress_callbackself-any-callback_1" title="Permanent link">&para;</a></h5>
 <p>Add a progress monitoring callback</p>
-<h5 id="get_current_progressself-any-">get_current_progress(self: Any) -&gt; <ast.Subscript object at 0x0000019433C85000><a class="headerlink" href="#get_current_progressself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="get_current_progressself-any-">get_current_progress(self: Any) -&gt; <ast.Subscript object at 0x000001942CC8B850><a class="headerlink" href="#get_current_progressself-any-" title="Permanent link">&para;</a></h5>
 <p>Get current execution progress</p>
 <h2 id="constants">Constants<a class="headerlink" href="#constants" title="Permanent link">&para;</a></h2>
 <h3 id="pytest">PYTEST<a class="headerlink" href="#pytest" title="Permanent link">&para;</a></h3>

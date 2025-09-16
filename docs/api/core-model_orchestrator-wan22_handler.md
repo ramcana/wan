@@ -36,7 +36,7 @@ Cache for text embeddings to avoid recomputation.
 
 
 
-##### get(self: Any, text: str) -> <ast.Subscript object at 0x000001942FCA1F30>
+##### get(self: Any, text: str) -> <ast.Subscript object at 0x00000194284A5F30>
 
 Get cached embedding for text.
 
@@ -66,7 +66,7 @@ Args:
 
 Parse model components from file specifications.
 
-##### get_required_shards(self: Any, component_type: str, variant: <ast.Subscript object at 0x000001942FD41DB0>) -> <ast.Subscript object at 0x000001942FD41240>
+##### get_required_shards(self: Any, component_type: str, variant: <ast.Subscript object at 0x0000019428496B60>) -> <ast.Subscript object at 0x00000194284960E0>
 
 Get required shards for a component based on variant and usage.
 
@@ -77,7 +77,7 @@ Args:
 Returns:
     List of required shards for selective downloading
 
-##### parse_shard_index(self: Any, index_file_path: Path) -> <ast.Subscript object at 0x000001942FCF6080>
+##### parse_shard_index(self: Any, index_file_path: Path) -> <ast.Subscript object at 0x00000194284B2080>
 
 Parse a shard index file to determine required shards.
 
@@ -87,7 +87,7 @@ Args:
 Returns:
     Parsed index data with shard information
 
-##### validate_input_for_model_type(self: Any, inputs: <ast.Subscript object at 0x000001942FCF5ED0>) -> None
+##### validate_input_for_model_type(self: Any, inputs: <ast.Subscript object at 0x00000194284B1ED0>) -> None
 
 Validate inputs based on model type requirements.
 
@@ -97,7 +97,7 @@ Args:
 Raises:
     InvalidInputError: If inputs are invalid for model type
 
-##### preprocess_image_input(self: Any, image: <ast.Subscript object at 0x000001942FCF4AF0>, target_size: <ast.Subscript object at 0x000001942FCF4910>) -> torch.Tensor
+##### preprocess_image_input(self: Any, image: <ast.Subscript object at 0x00000194284B0AF0>, target_size: <ast.Subscript object at 0x00000194284B0910>) -> torch.Tensor
 
 Preprocess image input for i2v/ti2v models.
 
@@ -108,7 +108,7 @@ Args:
 Returns:
     Preprocessed image tensor
 
-##### get_cached_text_embedding(self: Any, text: str) -> <ast.Subscript object at 0x000001942FD3AE90>
+##### get_cached_text_embedding(self: Any, text: str) -> <ast.Subscript object at 0x00000194284CAE90>
 
 Get cached text embedding if available.
 
@@ -116,7 +116,7 @@ Get cached text embedding if available.
 
 Cache text embedding for future use.
 
-##### get_vae_config(self: Any, variant: <ast.Subscript object at 0x000001942FD3A9B0>) -> <ast.Subscript object at 0x000001942FD39030>
+##### get_vae_config(self: Any, variant: <ast.Subscript object at 0x00000194284CA9B0>) -> <ast.Subscript object at 0x00000194284C9030>
 
 Get VAE configuration optimized for memory usage.
 
@@ -126,7 +126,7 @@ Args:
 Returns:
     VAE configuration dictionary
 
-##### estimate_memory_usage(self: Any, inputs: <ast.Subscript object at 0x000001942FD38E80>, variant: <ast.Subscript object at 0x000001942FD38D60>) -> <ast.Subscript object at 0x000001942EF97040>
+##### estimate_memory_usage(self: Any, inputs: <ast.Subscript object at 0x00000194284C8E80>, variant: <ast.Subscript object at 0x00000194284C8D60>) -> <ast.Subscript object at 0x000001942A11E560>
 
 Estimate memory usage for given inputs and variant.
 
@@ -161,7 +161,7 @@ Returns:
 
 Check if variant is a development variant.
 
-##### validate_component_completeness(self: Any, component_type: str) -> <ast.Subscript object at 0x0000019431894190>
+##### validate_component_completeness(self: Any, component_type: str) -> <ast.Subscript object at 0x0000019427BD8970>
 
 Validate that all required files for a component are present.
 
@@ -171,7 +171,7 @@ Args:
 Returns:
     Tuple of (is_complete, missing_files)
 
-##### get_component_files(self: Any, component_type: str, include_optional: bool) -> <ast.Subscript object at 0x00000194318960B0>
+##### get_component_files(self: Any, component_type: str, include_optional: bool) -> <ast.Subscript object at 0x0000019427BD91E0>
 
 Get files for a specific component.
 

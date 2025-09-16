@@ -37,11 +37,11 @@ Calculate summary statistics.
 
 Add a validation issue to the report.
 
-##### get_issues_by_severity(self: Any, severity: str) -> <ast.Subscript object at 0x000001942F018F40>
+##### get_issues_by_severity(self: Any, severity: str) -> <ast.Subscript object at 0x0000019427B9CE80>
 
 Get issues filtered by severity.
 
-##### get_issues_by_category(self: Any, category: str) -> <ast.Subscript object at 0x000001942F018B50>
+##### get_issues_by_category(self: Any, category: str) -> <ast.Subscript object at 0x0000019427B9CA90>
 
 Get issues filtered by category.
 
@@ -65,27 +65,27 @@ Args:
 Returns:
     ValidationReport with schema validation results
 
-##### _validate_top_level_structure(self: Any, data: <ast.Subscript object at 0x000001942EFA23B0>, report: ValidationReport) -> None
+##### _validate_top_level_structure(self: Any, data: <ast.Subscript object at 0x0000019427B8E2F0>, report: ValidationReport) -> None
 
 Validate top-level manifest structure.
 
-##### _validate_schema_version(self: Any, data: <ast.Subscript object at 0x000001942EFA1BA0>, report: ValidationReport) -> None
+##### _validate_schema_version(self: Any, data: <ast.Subscript object at 0x0000019427B8DAE0>, report: ValidationReport) -> None
 
 Validate schema version.
 
-##### _validate_models_section(self: Any, models: <ast.Subscript object at 0x000001942EFA0DF0>, report: ValidationReport) -> None
+##### _validate_models_section(self: Any, models: <ast.Subscript object at 0x0000019427B8CD30>, report: ValidationReport) -> None
 
 Validate models section.
 
-##### _validate_model_entry(self: Any, model_id: str, model_data: <ast.Subscript object at 0x000001942EFA04F0>, report: ValidationReport) -> None
+##### _validate_model_entry(self: Any, model_id: str, model_data: <ast.Subscript object at 0x0000019427B8C430>, report: ValidationReport) -> None
 
 Validate individual model entry.
 
-##### _validate_files_section(self: Any, files: <ast.Subscript object at 0x00000194300A9CC0>, report: ValidationReport, context: str) -> None
+##### _validate_files_section(self: Any, files: <ast.Subscript object at 0x000001942C888580>, report: ValidationReport, context: str) -> None
 
 Validate files section.
 
-##### _validate_sources_section(self: Any, sources: <ast.Subscript object at 0x000001943459DE10>, report: ValidationReport, context: str) -> None
+##### _validate_sources_section(self: Any, sources: <ast.Subscript object at 0x0000019429C28040>, report: ValidationReport, context: str) -> None
 
 Validate sources section.
 

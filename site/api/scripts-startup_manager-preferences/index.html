@@ -887,7 +887,7 @@ Handles persistent user preferences, configuration migration, and backup/restore
 <h3 id="preferencemanager">PreferenceManager<a class="headerlink" href="#preferencemanager" title="Permanent link">&para;</a></h3>
 <p>Manages user preferences, configuration migration, and backup/restore.</p>
 <h4 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h4>
-<h5 id="initself-any-preferences_dir"><strong>init</strong>(self: Any, preferences_dir: <ast.Subscript object at 0x000001942F4023B0>)<a class="headerlink" href="#initself-any-preferences_dir" title="Permanent link">&para;</a></h5>
+<h5 id="initself-any-preferences_dir"><strong>init</strong>(self: Any, preferences_dir: <ast.Subscript object at 0x000001942CBE78E0>)<a class="headerlink" href="#initself-any-preferences_dir" title="Permanent link">&para;</a></h5>
 <h5 id="load_preferencesself-any-userpreferences">load_preferences(self: Any) -&gt; UserPreferences<a class="headerlink" href="#load_preferencesself-any-userpreferences" title="Permanent link">&para;</a></h5>
 <p>Load user preferences from file or create defaults.</p>
 <h5 id="save_preferencesself-any-none">save_preferences(self: Any) -&gt; None<a class="headerlink" href="#save_preferencesself-any-none" title="Permanent link">&para;</a></h5>
@@ -896,25 +896,25 @@ Handles persistent user preferences, configuration migration, and backup/restore
 <p>Load configuration version information.</p>
 <h5 id="save_version_infoself-any-none">save_version_info(self: Any) -&gt; None<a class="headerlink" href="#save_version_infoself-any-none" title="Permanent link">&para;</a></h5>
 <p>Save version information to file.</p>
-<h5 id="create_backupself-any-backup_name-path">create_backup(self: Any, backup_name: <ast.Subscript object at 0x0000019431BDE260>) -&gt; Path<a class="headerlink" href="#create_backupself-any-backup_name-path" title="Permanent link">&para;</a></h5>
+<h5 id="create_backupself-any-backup_name-path">create_backup(self: Any, backup_name: <ast.Subscript object at 0x000001942C5DD7B0>) -&gt; Path<a class="headerlink" href="#create_backupself-any-backup_name-path" title="Permanent link">&para;</a></h5>
 <p>Create a backup of current configuration and preferences.</p>
 <h5 id="restore_backupself-any-backup_name-str-bool">restore_backup(self: Any, backup_name: str) -&gt; bool<a class="headerlink" href="#restore_backupself-any-backup_name-str-bool" title="Permanent link">&para;</a></h5>
 <p>Restore configuration from a backup.</p>
-<h5 id="list_backupsself-any-">list_backups(self: Any) -&gt; <ast.Subscript object at 0x000001942FE399C0><a class="headerlink" href="#list_backupsself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="list_backupsself-any-">list_backups(self: Any) -&gt; <ast.Subscript object at 0x0000019428D802B0><a class="headerlink" href="#list_backupsself-any-" title="Permanent link">&para;</a></h5>
 <p>List available backups with their information.</p>
 <h5 id="cleanup_old_backupsself-any-keep_count-int-int">cleanup_old_backups(self: Any, keep_count: int) -&gt; int<a class="headerlink" href="#cleanup_old_backupsself-any-keep_count-int-int" title="Permanent link">&para;</a></h5>
 <p>Clean up old backups, keeping only the most recent ones.</p>
 <h5 id="migrate_configurationself-any-target_version-str-bool">migrate_configuration(self: Any, target_version: str) -&gt; bool<a class="headerlink" href="#migrate_configurationself-any-target_version-str-bool" title="Permanent link">&para;</a></h5>
 <p>Migrate configuration to target version.</p>
-<h5 id="_migrate_to_2_0_0self-any-">_migrate_to_2_0_0(self: Any) -&gt; <ast.Subscript object at 0x0000019431B1E890><a class="headerlink" href="#_migrate_to_2_0_0self-any-" title="Permanent link">&para;</a></h5>
+<h5 id="_migrate_to_2_0_0self-any-">_migrate_to_2_0_0(self: Any) -&gt; <ast.Subscript object at 0x000001942C5E6CB0><a class="headerlink" href="#_migrate_to_2_0_0self-any-" title="Permanent link">&para;</a></h5>
 <p>Migrate configuration from 1.x to 2.0.0.</p>
 <h5 id="_backup_corrupted_fileself-any-file_path-path-backup_name-str-none">_backup_corrupted_file(self: Any, file_path: Path, backup_name: str) -&gt; None<a class="headerlink" href="#_backup_corrupted_fileself-any-file_path-path-backup_name-str-none" title="Permanent link">&para;</a></h5>
 <p>Backup a corrupted file for debugging.</p>
 <h5 id="apply_preferences_to_configself-any-config-startupconfig-startupconfig">apply_preferences_to_config(self: Any, config: StartupConfig) -&gt; StartupConfig<a class="headerlink" href="#apply_preferences_to_configself-any-config-startupconfig-startupconfig" title="Permanent link">&para;</a></h5>
 <p>Apply user preferences to a startup configuration.</p>
-<h5 id="preferencesself-any-">preferences(self: Any) -&gt; <ast.Subscript object at 0x000001943434ED70><a class="headerlink" href="#preferencesself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="preferencesself-any-">preferences(self: Any) -&gt; <ast.Subscript object at 0x00000194285DE7A0><a class="headerlink" href="#preferencesself-any-" title="Permanent link">&para;</a></h5>
 <p>Get current preferences.</p>
-<h5 id="version_infoself-any-">version_info(self: Any) -&gt; <ast.Subscript object at 0x000001943434F490><a class="headerlink" href="#version_infoself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="version_infoself-any-">version_info(self: Any) -&gt; <ast.Subscript object at 0x0000019428D25810><a class="headerlink" href="#version_infoself-any-" title="Permanent link">&para;</a></h5>
 <p>Get current version information.</p>
 
 

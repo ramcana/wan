@@ -24,7 +24,7 @@ Abstract base class for storage backends.
 
 Check if this backend can handle the given source URL.
 
-##### download(self: Any, source_url: str, local_dir: Path, file_specs: <ast.Subscript object at 0x000001942FCF7EE0>, allow_patterns: <ast.Subscript object at 0x000001942FCF7E20>, progress_callback: <ast.Subscript object at 0x000001942FCF7D00>) -> DownloadResult
+##### download(self: Any, source_url: str, local_dir: Path, file_specs: <ast.Subscript object at 0x00000194284B3E20>, allow_patterns: <ast.Subscript object at 0x00000194284B3D60>, progress_callback: <ast.Subscript object at 0x00000194284B3C40>) -> DownloadResult
 
 Download files from source to local directory.
 
@@ -32,7 +32,7 @@ Download files from source to local directory.
 
 Verify if the source is available.
 
-##### estimate_download_size(self: Any, source_url: str, file_specs: <ast.Subscript object at 0x000001942FCF76D0>, allow_patterns: <ast.Subscript object at 0x000001942FCF7610>) -> int
+##### estimate_download_size(self: Any, source_url: str, file_specs: <ast.Subscript object at 0x00000194284B3610>, allow_patterns: <ast.Subscript object at 0x00000194284B3550>) -> int
 
 Estimate the total download size in bytes.
 

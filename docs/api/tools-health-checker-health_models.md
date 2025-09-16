@@ -40,15 +40,15 @@ Comprehensive project health report
 
 #### Methods
 
-##### get_issues_by_severity(self: Any, severity: Severity) -> <ast.Subscript object at 0x0000019431A9F280>
+##### get_issues_by_severity(self: Any, severity: Severity) -> <ast.Subscript object at 0x0000019428D0C820>
 
 Get all issues of a specific severity
 
-##### get_issues_by_category(self: Any, category: HealthCategory) -> <ast.Subscript object at 0x0000019431A9CE80>
+##### get_issues_by_category(self: Any, category: HealthCategory) -> <ast.Subscript object at 0x0000019428D0CA00>
 
 Get all issues in a specific category
 
-##### get_critical_issues(self: Any) -> <ast.Subscript object at 0x0000019431A9CE20>
+##### get_critical_issues(self: Any) -> <ast.Subscript object at 0x000001942C800880>
 
 Get all critical issues
 

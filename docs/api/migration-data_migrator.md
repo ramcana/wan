@@ -24,11 +24,11 @@ Handles migration of existing Gradio outputs to new SQLite system.
 
 Create backup of existing outputs before migration.
 
-##### scan_gradio_outputs(self: Any) -> <ast.Subscript object at 0x000001942F8A4970>
+##### scan_gradio_outputs(self: Any) -> <ast.Subscript object at 0x0000019427A21A20>
 
 Scan existing Gradio outputs directory for video files and metadata.
 
-##### _extract_metadata(self: Any, video_path: Path) -> <ast.Subscript object at 0x000001942F8A5750>
+##### _extract_metadata(self: Any, video_path: Path) -> <ast.Subscript object at 0x0000019427A22FE0>
 
 Extract metadata from video file and associated files.
 
@@ -48,11 +48,11 @@ Get video resolution using OpenCV.
 
 Get video duration in seconds using OpenCV.
 
-##### migrate_to_sqlite(self: Any, outputs: <ast.Subscript object at 0x0000019430100D90>) -> <ast.Subscript object at 0x0000019433D54A00>
+##### migrate_to_sqlite(self: Any, outputs: <ast.Subscript object at 0x000001942A1FC970>) -> <ast.Subscript object at 0x000001942809C4F0>
 
 Migrate video metadata to SQLite database.
 
-##### _generate_thumbnail(self: Any, video_path: Path) -> <ast.Subscript object at 0x0000019433D57760>
+##### _generate_thumbnail(self: Any, video_path: Path) -> <ast.Subscript object at 0x000001942809F6D0>
 
 Generate thumbnail for migrated video.
 

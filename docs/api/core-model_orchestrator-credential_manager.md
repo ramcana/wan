@@ -35,7 +35,7 @@ Args:
 Returns:
     Text with sensitive information masked
 
-##### mask_dict(cls: Any, data: <ast.Subscript object at 0x000001942F7A2A10>, mask_char: str) -> <ast.Subscript object at 0x000001942F800850>
+##### mask_dict(cls: Any, data: <ast.Subscript object at 0x000001942C592F20>, mask_char: str) -> <ast.Subscript object at 0x000001942C524D60>
 
 Mask sensitive information in a dictionary.
 
@@ -60,7 +60,7 @@ Secure credential storage using system keyring with fallbacks.
 
 #### Methods
 
-##### __init__(self: Any, config: <ast.Subscript object at 0x000001942F7FF3D0>)
+##### __init__(self: Any, config: <ast.Subscript object at 0x000001942C5578E0>)
 
 Initialize credential store.
 
@@ -79,7 +79,7 @@ Args:
 Returns:
     True if stored successfully, False otherwise
 
-##### get_credential(self: Any, key: str, username: str) -> <ast.Subscript object at 0x000001942F825780>
+##### get_credential(self: Any, key: str, username: str) -> <ast.Subscript object at 0x0000019428D7E9B0>
 
 Retrieve a credential.
 
@@ -101,7 +101,7 @@ Args:
 Returns:
     True if deleted successfully, False otherwise
 
-##### list_credentials(self: Any) -> <ast.Subscript object at 0x0000019431970910>
+##### list_credentials(self: Any) -> <ast.Subscript object at 0x0000019428360670>
 
 List available credential keys.
 
@@ -116,7 +116,7 @@ Get or generate encryption key for credential file.
 
 Store credential in encrypted file.
 
-##### _get_from_file(self: Any, key: str, username: str) -> <ast.Subscript object at 0x000001942F768EE0>
+##### _get_from_file(self: Any, key: str, username: str) -> <ast.Subscript object at 0x000001942C551C90>
 
 Get credential from encrypted file.
 
@@ -124,7 +124,7 @@ Get credential from encrypted file.
 
 Delete credential from encrypted file.
 
-##### _list_from_file(self: Any) -> <ast.Subscript object at 0x0000019434095090>
+##### _list_from_file(self: Any) -> <ast.Subscript object at 0x000001942C53E560>
 
 List credentials from encrypted file.
 
@@ -134,14 +134,14 @@ Manager for handling presigned URLs and temporary access tokens.
 
 #### Methods
 
-##### __init__(self: Any, credential_store: <ast.Subscript object at 0x0000019434094E80>)
+##### __init__(self: Any, credential_store: <ast.Subscript object at 0x000001942C53E350>)
 
 Initialize presigned URL manager.
 
 Args:
     credential_store: Credential store for caching tokens
 
-##### generate_presigned_url(self: Any, base_url: str, credentials: <ast.Subscript object at 0x0000019434094A90>, expiration_seconds: int, method: str) -> str
+##### generate_presigned_url(self: Any, base_url: str, credentials: <ast.Subscript object at 0x000001942C5E9DE0>, expiration_seconds: int, method: str) -> str
 
 Generate a presigned URL for temporary access.
 
@@ -164,7 +164,7 @@ Args:
 Returns:
     True if expired, False otherwise
 
-##### refresh_url_if_needed(self: Any, url: str, credentials: <ast.Subscript object at 0x000001942F816CE0>) -> str
+##### refresh_url_if_needed(self: Any, url: str, credentials: <ast.Subscript object at 0x000001942C52F1F0>) -> str
 
 Refresh a presigned URL if it's expired or about to expire.
 
@@ -188,14 +188,14 @@ including storage, retrieval, masking, and presigned URL handling.
 
 #### Methods
 
-##### __init__(self: Any, config: <ast.Subscript object at 0x000001942FBED1E0>)
+##### __init__(self: Any, config: <ast.Subscript object at 0x000001942B3D27A0>)
 
 Initialize secure credential manager.
 
 Args:
     config: Credential configuration
 
-##### get_credentials_for_source(self: Any, source_url: str) -> <ast.Subscript object at 0x000001942FBEC310>
+##### get_credentials_for_source(self: Any, source_url: str) -> <ast.Subscript object at 0x000001942B3D3BB0>
 
 Get credentials for a specific source URL.
 
@@ -205,7 +205,7 @@ Args:
 Returns:
     Dictionary of credentials
 
-##### mask_sensitive_info(self: Any, data: <ast.Subscript object at 0x000001942FBEDD80>) -> <ast.Subscript object at 0x000001942FC0C0D0>
+##### mask_sensitive_info(self: Any, data: <ast.Subscript object at 0x000001942B3D3DC0>) -> <ast.Subscript object at 0x000001942B3685E0>
 
 Mask sensitive information for logging.
 
@@ -215,7 +215,7 @@ Args:
 Returns:
     Data with sensitive information masked
 
-##### setup_credentials(self: Any, credentials: <ast.Subscript object at 0x000001942FC0C340>) -> bool
+##### setup_credentials(self: Any, credentials: <ast.Subscript object at 0x000001942B368850>) -> bool
 
 Set up multiple credentials at once.
 

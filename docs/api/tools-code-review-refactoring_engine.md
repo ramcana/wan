@@ -35,31 +35,31 @@ Main refactoring recommendation engine
 
 
 
-##### _load_refactoring_patterns(self: Any) -> <ast.Subscript object at 0x000001942F386AA0>
+##### _load_refactoring_patterns(self: Any) -> <ast.Subscript object at 0x0000019427B5F370>
 
 Load refactoring patterns from configuration
 
-##### analyze_file(self: Any, file_path: str) -> <ast.Subscript object at 0x00000194344D6110>
+##### analyze_file(self: Any, file_path: str) -> <ast.Subscript object at 0x0000019427B5DE10>
 
 Analyze a file and generate refactoring suggestions
 
-##### _analyze_methods(self: Any, file_path: str, tree: ast.AST, lines: <ast.Subscript object at 0x00000194344D52D0>) -> <ast.Subscript object at 0x00000194340B86A0>
+##### _analyze_methods(self: Any, file_path: str, tree: ast.AST, lines: <ast.Subscript object at 0x0000019427B5DBD0>) -> <ast.Subscript object at 0x0000019428D9B010>
 
 Analyze methods for refactoring opportunities
 
-##### _analyze_classes(self: Any, file_path: str, tree: ast.AST, lines: <ast.Subscript object at 0x00000194340B85E0>) -> <ast.Subscript object at 0x000001943448E350>
+##### _analyze_classes(self: Any, file_path: str, tree: ast.AST, lines: <ast.Subscript object at 0x0000019427A941C0>) -> <ast.Subscript object at 0x000001942C7FFEB0>
 
 Analyze classes for refactoring opportunities
 
-##### _analyze_conditionals(self: Any, file_path: str, tree: ast.AST, lines: <ast.Subscript object at 0x000001943448C040>) -> <ast.Subscript object at 0x000001943448D570>
+##### _analyze_conditionals(self: Any, file_path: str, tree: ast.AST, lines: <ast.Subscript object at 0x000001942C7FEDA0>) -> <ast.Subscript object at 0x000001942C7FE320>
 
 Analyze conditional statements for refactoring opportunities
 
-##### _analyze_naming(self: Any, file_path: str, tree: ast.AST, lines: <ast.Subscript object at 0x000001943448C580>) -> <ast.Subscript object at 0x0000019431ADF8B0>
+##### _analyze_naming(self: Any, file_path: str, tree: ast.AST, lines: <ast.Subscript object at 0x00000194283DB010>) -> <ast.Subscript object at 0x00000194283D96C0>
 
 Analyze naming for improvement opportunities
 
-##### _analyze_imports(self: Any, file_path: str, tree: ast.AST, lines: <ast.Subscript object at 0x0000019431ADE530>) -> <ast.Subscript object at 0x000001942FC6A860>
+##### _analyze_imports(self: Any, file_path: str, tree: ast.AST, lines: <ast.Subscript object at 0x00000194283D87F0>) -> <ast.Subscript object at 0x000001942C52CFA0>
 
 Analyze imports for optimization opportunities
 
@@ -91,23 +91,23 @@ Check if a name is poorly chosen
 
 Suggest a better name
 
-##### _get_node_code(self: Any, node: ast.AST, lines: <ast.Subscript object at 0x0000019433D2F640>) -> str
+##### _get_node_code(self: Any, node: ast.AST, lines: <ast.Subscript object at 0x000001942CBC74F0>) -> str
 
 Extract code for a given AST node
 
-##### _generate_extract_method_suggestion(self: Any, node: ast.FunctionDef, lines: <ast.Subscript object at 0x00000194340D3B20>) -> str
+##### _generate_extract_method_suggestion(self: Any, node: ast.FunctionDef, lines: <ast.Subscript object at 0x000001942CBC6F80>) -> str
 
 Generate extract method refactoring suggestion
 
-##### _generate_complexity_reduction_suggestion(self: Any, node: ast.FunctionDef, lines: <ast.Subscript object at 0x00000194340D3AF0>) -> str
+##### _generate_complexity_reduction_suggestion(self: Any, node: ast.FunctionDef, lines: <ast.Subscript object at 0x000001942CBC7AC0>) -> str
 
 Generate complexity reduction suggestion
 
-##### _generate_extract_class_suggestion(self: Any, node: ast.ClassDef, lines: <ast.Subscript object at 0x00000194340D05B0>) -> str
+##### _generate_extract_class_suggestion(self: Any, node: ast.ClassDef, lines: <ast.Subscript object at 0x000001942CBC51E0>) -> str
 
 Generate extract class refactoring suggestion
 
-##### _generate_conditional_simplification(self: Any, node: ast.If, lines: <ast.Subscript object at 0x00000194302C83D0>) -> str
+##### _generate_conditional_simplification(self: Any, node: ast.If, lines: <ast.Subscript object at 0x000001942CD5FA00>) -> str
 
 Generate conditional simplification suggestion
 

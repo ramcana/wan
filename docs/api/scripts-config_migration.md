@@ -21,31 +21,31 @@ Handles configuration migration from existing systems.
 
 
 
-##### load_existing_configs(self: Any) -> <ast.Subscript object at 0x0000019431A38CA0>
+##### load_existing_configs(self: Any) -> <ast.Subscript object at 0x0000019428987130>
 
 Load all existing configuration files.
 
-##### create_default_config(self: Any) -> <ast.Subscript object at 0x0000019431A36080>
+##### create_default_config(self: Any) -> <ast.Subscript object at 0x000001942A148070>
 
 Create default configuration structure.
 
-##### merge_wan22_config(self: Any, configs: <ast.Subscript object at 0x00000194318AA470>) -> None
+##### merge_wan22_config(self: Any, configs: <ast.Subscript object at 0x0000019427FE9060>) -> None
 
 Merge WAN2.2 configuration settings.
 
-##### merge_local_install_config(self: Any, configs: <ast.Subscript object at 0x00000194318AA6B0>) -> None
+##### merge_local_install_config(self: Any, configs: <ast.Subscript object at 0x00000194280625F0>) -> None
 
 Merge local installation configuration settings.
 
-##### merge_model_config(self: Any, configs: <ast.Subscript object at 0x0000019431B11660>) -> None
+##### merge_model_config(self: Any, configs: <ast.Subscript object at 0x00000194280590C0>) -> None
 
 Merge model-specific configuration settings.
 
-##### merge_fastapi_config(self: Any, configs: <ast.Subscript object at 0x000001942F369060>) -> None
+##### merge_fastapi_config(self: Any, configs: <ast.Subscript object at 0x000001942805B580>) -> None
 
 Merge existing FastAPI configuration settings.
 
-##### validate_merged_config(self: Any) -> <ast.Subscript object at 0x00000194302DB5B0>
+##### validate_merged_config(self: Any) -> <ast.Subscript object at 0x0000019427F7FB20>
 
 Validate the merged configuration and return any issues.
 

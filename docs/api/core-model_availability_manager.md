@@ -48,7 +48,7 @@ EnhancedModelDownloader, and ModelHealthMonitor.
 
 #### Methods
 
-##### __init__(self: Any, model_manager: <ast.Subscript object at 0x000001942FE3B760>, downloader: <ast.Subscript object at 0x000001942FE3B6A0>, health_monitor: <ast.Subscript object at 0x000001942FE3B5E0>, models_dir: <ast.Subscript object at 0x000001942FE3B520>)
+##### __init__(self: Any, model_manager: <ast.Subscript object at 0x000001942CDDB790>, downloader: <ast.Subscript object at 0x0000019427A6AFE0>, health_monitor: <ast.Subscript object at 0x0000019427A6ADD0>, models_dir: <ast.Subscript object at 0x0000019427A6AAD0>)
 
 Initialize the Model Availability Manager.
 

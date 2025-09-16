@@ -65,7 +65,7 @@ Load debt items from database
 
 Add a new technical debt item
 
-##### update_debt_item(self: Any, item_id: str, updates: <ast.Subscript object at 0x000001942F91FFD0>) -> bool
+##### update_debt_item(self: Any, item_id: str, updates: <ast.Subscript object at 0x000001942C67E740>) -> bool
 
 Update an existing debt item
 
@@ -73,23 +73,23 @@ Update an existing debt item
 
 Mark a debt item as resolved
 
-##### get_debt_item(self: Any, item_id: str) -> <ast.Subscript object at 0x0000019432D9CD60>
+##### get_debt_item(self: Any, item_id: str) -> <ast.Subscript object at 0x000001942C6DA4D0>
 
 Get a debt item by ID
 
-##### get_debt_items_by_file(self: Any, file_path: str) -> <ast.Subscript object at 0x0000019432D9F280>
+##### get_debt_items_by_file(self: Any, file_path: str) -> <ast.Subscript object at 0x000001942C6DA0E0>
 
 Get all debt items for a specific file
 
-##### get_debt_items_by_category(self: Any, category: DebtCategory) -> <ast.Subscript object at 0x0000019432D9CC10>
+##### get_debt_items_by_category(self: Any, category: DebtCategory) -> <ast.Subscript object at 0x000001942C6D9CF0>
 
 Get all debt items in a specific category
 
-##### get_debt_items_by_severity(self: Any, severity: DebtSeverity) -> <ast.Subscript object at 0x0000019432D9C490>
+##### get_debt_items_by_severity(self: Any, severity: DebtSeverity) -> <ast.Subscript object at 0x000001942C6D9900>
 
 Get all debt items with specific severity
 
-##### get_prioritized_debt_items(self: Any, limit: int) -> <ast.Subscript object at 0x0000019432D9C3D0>
+##### get_prioritized_debt_items(self: Any, limit: int) -> <ast.Subscript object at 0x000001942C6D92D0>
 
 Get debt items sorted by priority score
 
@@ -97,7 +97,7 @@ Get debt items sorted by priority score
 
 Calculate comprehensive debt metrics
 
-##### generate_recommendations(self: Any) -> <ast.Subscript object at 0x0000019432DAD240>
+##### generate_recommendations(self: Any) -> <ast.Subscript object at 0x0000019428DDF130>
 
 Generate recommendations for addressing technical debt
 
@@ -121,7 +121,7 @@ Log debt item action to history
 
 Analyze debt trend over time
 
-##### export_debt_report(self: Any, output_path: str) -> <ast.Subscript object at 0x000001942EFC17B0>
+##### export_debt_report(self: Any, output_path: str) -> <ast.Subscript object at 0x00000194285C57E0>
 
 Export comprehensive debt report
 

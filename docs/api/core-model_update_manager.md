@@ -53,7 +53,7 @@ update detection, safe update processes, rollback capability, and scheduling.
 
 #### Methods
 
-##### __init__(self: Any, models_dir: <ast.Subscript object at 0x0000019430122AA0>, downloader: Any, health_monitor: Any)
+##### __init__(self: Any, models_dir: <ast.Subscript object at 0x000001942754A980>, downloader: Any, health_monitor: Any)
 
 Initialize the model update manager.
 
@@ -62,15 +62,15 @@ Args:
     downloader: Enhanced model downloader instance
     health_monitor: Model health monitor instance
 
-##### add_update_callback(self: Any, callback: <ast.Subscript object at 0x0000019430287820>)
+##### add_update_callback(self: Any, callback: <ast.Subscript object at 0x000001942CE64E20>)
 
 Add a callback for update progress
 
-##### add_notification_callback(self: Any, callback: <ast.Subscript object at 0x0000019430287760>)
+##### add_notification_callback(self: Any, callback: <ast.Subscript object at 0x000001942CE64AC0>)
 
 Add a callback for update notifications
 
-##### _get_installed_models(self: Any) -> <ast.Subscript object at 0x000001942F29B460>
+##### _get_installed_models(self: Any) -> <ast.Subscript object at 0x000001942CEC84F0>
 
 Get list of installed models
 
@@ -78,7 +78,7 @@ Get list of installed models
 
 Check if an update is available
 
-##### _parse_version(self: Any, version: str) -> <ast.Subscript object at 0x000001943197C910>
+##### _parse_version(self: Any, version: str) -> <ast.Subscript object at 0x000001942CB73820>
 
 Parse semantic version string
 

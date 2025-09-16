@@ -24,15 +24,15 @@ Checks code quality metrics and issues
 
 Check code quality health
 
-##### _discover_python_files(self: Any) -> <ast.Subscript object at 0x0000019430089C60>
+##### _discover_python_files(self: Any) -> <ast.Subscript object at 0x0000019427A224D0>
 
 Discover Python files in the project
 
-##### _check_syntax_errors(self: Any, python_files: <ast.Subscript object at 0x0000019430089B10>) -> <ast.Subscript object at 0x0000019430088D30>
+##### _check_syntax_errors(self: Any, python_files: <ast.Subscript object at 0x0000019427A22260>) -> <ast.Subscript object at 0x0000019427A200D0>
 
 Check for syntax errors in Python files
 
-##### _check_code_complexity(self: Any, python_files: <ast.Subscript object at 0x0000019430088B20>) -> <ast.Subscript object at 0x000001943010F850>
+##### _check_code_complexity(self: Any, python_files: <ast.Subscript object at 0x0000019427A21900>) -> <ast.Subscript object at 0x0000019427A21B40>
 
 Check for high complexity functions
 
@@ -40,23 +40,23 @@ Check for high complexity functions
 
 Calculate cyclomatic complexity of a function
 
-##### _check_code_smells(self: Any, python_files: <ast.Subscript object at 0x000001943010C880>) -> <ast.Subscript object at 0x00000194300DEF20>
+##### _check_code_smells(self: Any, python_files: <ast.Subscript object at 0x0000019428122500>) -> <ast.Subscript object at 0x0000019428123610>
 
 Check for common code smells
 
-##### _check_import_organization(self: Any, python_files: <ast.Subscript object at 0x00000194300DED10>) -> <ast.Subscript object at 0x0000019431B72F80>
+##### _check_import_organization(self: Any, python_files: <ast.Subscript object at 0x0000019428123E80>) -> <ast.Subscript object at 0x0000019427AD8D00>
 
 Check import organization issues
 
-##### _check_todo_comments(self: Any, python_files: <ast.Subscript object at 0x0000019431BEAA70>) -> <ast.Subscript object at 0x0000019431BE99C0>
+##### _check_todo_comments(self: Any, python_files: <ast.Subscript object at 0x0000019427AD9F90>) -> <ast.Subscript object at 0x0000019427AD9780>
 
 Check for TODO/FIXME comments
 
-##### _run_external_quality_tools(self: Any) -> <ast.Subscript object at 0x0000019431B961A0>
+##### _run_external_quality_tools(self: Any) -> <ast.Subscript object at 0x0000019427ADA8F0>
 
 Run external code quality tools if available
 
-##### _calculate_code_quality_score(self: Any, metrics: <ast.Subscript object at 0x0000019431B96140>, issues: <ast.Subscript object at 0x0000019431B97A90>) -> float
+##### _calculate_code_quality_score(self: Any, metrics: <ast.Subscript object at 0x0000019427AD9300>, issues: <ast.Subscript object at 0x0000019427ADB4F0>) -> float
 
 Calculate code quality score
 

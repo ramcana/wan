@@ -20,11 +20,11 @@ Main performance validation orchestrator
 
 
 
-##### _load_config(self: Any, config_path: str) -> <ast.Subscript object at 0x0000019433D28E50>
+##### _load_config(self: Any, config_path: str) -> <ast.Subscript object at 0x000001942750A500>
 
 Load performance validation configuration
 
-##### _analyze_bundle_size(self: Any) -> <ast.Subscript object at 0x00000194319EB310>
+##### _analyze_bundle_size(self: Any) -> <ast.Subscript object at 0x00000194275CD750>
 
 Analyze frontend bundle size
 

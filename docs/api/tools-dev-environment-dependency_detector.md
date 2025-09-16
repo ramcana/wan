@@ -27,7 +27,7 @@ Detects and validates development dependencies
 
 #### Methods
 
-##### __init__(self: Any, project_root: <ast.Subscript object at 0x0000019434263430>)
+##### __init__(self: Any, project_root: <ast.Subscript object at 0x0000019427BBAB30>)
 
 
 
@@ -35,15 +35,15 @@ Detects and validates development dependencies
 
 Get system information
 
-##### detect_python_dependencies(self: Any) -> <ast.Subscript object at 0x0000019434251870>
+##### detect_python_dependencies(self: Any) -> <ast.Subscript object at 0x0000019427B87760>
 
 Detect Python dependencies
 
-##### detect_nodejs_dependencies(self: Any) -> <ast.Subscript object at 0x0000019434213DF0>
+##### detect_nodejs_dependencies(self: Any) -> <ast.Subscript object at 0x0000019427B84E50>
 
 Detect Node.js dependencies
 
-##### detect_system_dependencies(self: Any) -> <ast.Subscript object at 0x0000019434213220>
+##### detect_system_dependencies(self: Any) -> <ast.Subscript object at 0x0000019427B85870>
 
 Detect system-level dependencies
 
@@ -51,11 +51,11 @@ Detect system-level dependencies
 
 Check if a Python package is installed
 
-##### get_all_dependencies(self: Any) -> <ast.Subscript object at 0x0000019434212110>
+##### get_all_dependencies(self: Any) -> <ast.Subscript object at 0x0000019427B2FCD0>
 
 Get all dependencies categorized by type
 
-##### get_missing_dependencies(self: Any) -> <ast.Subscript object at 0x0000019434211840>
+##### get_missing_dependencies(self: Any) -> <ast.Subscript object at 0x0000019427B2FA00>
 
 Get only missing dependencies
 

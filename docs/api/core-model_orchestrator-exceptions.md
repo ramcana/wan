@@ -20,7 +20,7 @@ Base exception for all Model Orchestrator errors.
 
 #### Methods
 
-##### __init__(self: Any, message: str, error_code: ErrorCode, details: <ast.Subscript object at 0x00000194340978B0>)
+##### __init__(self: Any, message: str, error_code: ErrorCode, details: <ast.Subscript object at 0x0000019428A9DC60>)
 
 
 
@@ -30,7 +30,7 @@ Raised when a requested model is not found in the manifest.
 
 #### Methods
 
-##### __init__(self: Any, model_id: str, available_models: <ast.Subscript object at 0x0000019434097460>)
+##### __init__(self: Any, model_id: str, available_models: <ast.Subscript object at 0x0000019428A9EE30>)
 
 
 
@@ -40,7 +40,7 @@ Raised when a requested variant is not available for a model.
 
 #### Methods
 
-##### __init__(self: Any, model_id: str, variant: str, available_variants: <ast.Subscript object at 0x0000019434097160>)
+##### __init__(self: Any, model_id: str, variant: str, available_variants: <ast.Subscript object at 0x0000019428A9FD60>)
 
 
 
@@ -60,7 +60,7 @@ Raised when manifest validation fails.
 
 #### Methods
 
-##### __init__(self: Any, errors: <ast.Subscript object at 0x0000019434096110>)
+##### __init__(self: Any, errors: <ast.Subscript object at 0x0000019428A9F6D0>)
 
 
 
@@ -70,7 +70,7 @@ Raised when manifest schema version is incompatible.
 
 #### Methods
 
-##### __init__(self: Any, found_version: str, supported_versions: <ast.Subscript object at 0x0000019434115930>)
+##### __init__(self: Any, found_version: str, supported_versions: <ast.Subscript object at 0x0000019427B6C6A0>)
 
 
 
@@ -80,7 +80,7 @@ Raised when a lock cannot be acquired within the specified timeout.
 
 #### Methods
 
-##### __init__(self: Any, message: str, model_id: <ast.Subscript object at 0x0000019434114C40>, timeout: <ast.Subscript object at 0x0000019434114E50>)
+##### __init__(self: Any, message: str, model_id: <ast.Subscript object at 0x0000019427B6CEE0>, timeout: <ast.Subscript object at 0x0000019427B6D090>)
 
 
 
@@ -90,7 +90,7 @@ Raised when a lock operation fails.
 
 #### Methods
 
-##### __init__(self: Any, message: str, model_id: <ast.Subscript object at 0x0000019434114B80>)
+##### __init__(self: Any, message: str, model_id: <ast.Subscript object at 0x0000019427B6C070>)
 
 
 
@@ -130,7 +130,7 @@ Raised when a download is incomplete.
 
 #### Methods
 
-##### __init__(self: Any, message: str, missing_files: <ast.Subscript object at 0x0000019434116DA0>)
+##### __init__(self: Any, message: str, missing_files: <ast.Subscript object at 0x0000019427B6E8C0>)
 
 
 
@@ -140,7 +140,7 @@ Raised when comprehensive integrity verification fails.
 
 #### Methods
 
-##### __init__(self: Any, message: str, failed_files: <ast.Subscript object at 0x0000019434272EC0>, missing_files: <ast.Subscript object at 0x0000019434272FE0>)
+##### __init__(self: Any, message: str, failed_files: <ast.Subscript object at 0x0000019427B6CCA0>, missing_files: <ast.Subscript object at 0x0000019427B6CA00>)
 
 
 
@@ -150,7 +150,7 @@ Raised when manifest signature verification fails.
 
 #### Methods
 
-##### __init__(self: Any, message: str, model_id: <ast.Subscript object at 0x0000019434273460>)
+##### __init__(self: Any, message: str, model_id: <ast.Subscript object at 0x0000019427B6D270>)
 
 
 
@@ -160,7 +160,7 @@ Raised when model validation fails.
 
 #### Methods
 
-##### __init__(self: Any, message: str, model_id: <ast.Subscript object at 0x0000019434273AF0>)
+##### __init__(self: Any, message: str, model_id: <ast.Subscript object at 0x0000019427B6EA70>)
 
 
 
@@ -170,7 +170,7 @@ Raised when input validation fails for a model type.
 
 #### Methods
 
-##### __init__(self: Any, message: str, model_type: <ast.Subscript object at 0x0000019434273FA0>, input_data: <ast.Subscript object at 0x0000019434272D70>)
+##### __init__(self: Any, message: str, model_type: <ast.Subscript object at 0x000001942CE6E860>, input_data: <ast.Subscript object at 0x000001942CE6C520>)
 
 
 
@@ -180,7 +180,7 @@ Raised when configuration migration fails.
 
 #### Methods
 
-##### __init__(self: Any, message: str, details: <ast.Subscript object at 0x000001942FBE2530>)
+##### __init__(self: Any, message: str, details: <ast.Subscript object at 0x000001942CE6C4F0>)
 
 
 
@@ -190,7 +190,7 @@ Raised when validation fails.
 
 #### Methods
 
-##### __init__(self: Any, message: str, details: <ast.Subscript object at 0x000001942FBE20E0>)
+##### __init__(self: Any, message: str, details: <ast.Subscript object at 0x000001942CE6E9B0>)
 
 
 

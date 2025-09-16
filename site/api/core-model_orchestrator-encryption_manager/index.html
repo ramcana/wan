@@ -1004,9 +1004,9 @@ that contain sensitive information or require additional security measures.</p>
 <p>Metadata for encrypted files.</p>
 <h4 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h4>
 <h5 id="initself-any-algorithm-str-key_id-str-salt-bytes-nonce-bytes-tag-bytes-original_size-int-original_hash-str-encrypted_at-str"><strong>init</strong>(self: Any, algorithm: str, key_id: str, salt: bytes, nonce: bytes, tag: bytes, original_size: int, original_hash: str, encrypted_at: str)<a class="headerlink" href="#initself-any-algorithm-str-key_id-str-salt-bytes-nonce-bytes-tag-bytes-original_size-int-original_hash-str-encrypted_at-str" title="Permanent link">&para;</a></h5>
-<h5 id="to_dictself-any-">to_dict(self: Any) -&gt; <ast.Subscript object at 0x00000194344472B0><a class="headerlink" href="#to_dictself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="to_dictself-any-">to_dict(self: Any) -&gt; <ast.Subscript object at 0x0000019427B89E10><a class="headerlink" href="#to_dictself-any-" title="Permanent link">&para;</a></h5>
 <p>Convert metadata to dictionary for JSON serialization.</p>
-<h5 id="from_dictcls-any-data-encryptionmetadata">from_dict(cls: Any, data: <ast.Subscript object at 0x0000019434447E20>) -&gt; EncryptionMetadata<a class="headerlink" href="#from_dictcls-any-data-encryptionmetadata" title="Permanent link">&para;</a></h5>
+<h5 id="from_dictcls-any-data-encryptionmetadata">from_dict(cls: Any, data: <ast.Subscript object at 0x0000019427B89A20>) -&gt; EncryptionMetadata<a class="headerlink" href="#from_dictcls-any-data-encryptionmetadata" title="Permanent link">&para;</a></h5>
 <p>Create metadata from dictionary.</p>
 <h3 id="keymanager">KeyManager<a class="headerlink" href="#keymanager" title="Permanent link">&para;</a></h3>
 <p>Manages encryption keys with rotation support.</p>
@@ -1068,7 +1068,7 @@ that contain sensitive information or require additional security measures.</p>
 <p>This class provides high-level encryption and decryption operations
 for model files, with support for selective encryption based on patterns.</p>
 <h4 id="methods_3">Methods<a class="headerlink" href="#methods_3" title="Permanent link">&para;</a></h4>
-<h5 id="initself-any-config"><strong>init</strong>(self: Any, config: <ast.Subscript object at 0x0000019432DD2920>)<a class="headerlink" href="#initself-any-config" title="Permanent link">&para;</a></h5>
+<h5 id="initself-any-config"><strong>init</strong>(self: Any, config: <ast.Subscript object at 0x0000019428D985E0>)<a class="headerlink" href="#initself-any-config" title="Permanent link">&para;</a></h5>
 <p>Initialize model encryption manager.</p>
 <p>Args:
     config: Encryption configuration</p>
@@ -1078,7 +1078,7 @@ for model files, with support for selective encryption based on patterns.</p>
     file_path: Path to the file</p>
 <p>Returns:
     True if file should be encrypted, False otherwise</p>
-<h5 id="encrypt_model_directoryself-any-model_dir-path-">encrypt_model_directory(self: Any, model_dir: Path) -&gt; <ast.Subscript object at 0x0000019431AD1930><a class="headerlink" href="#encrypt_model_directoryself-any-model_dir-path-" title="Permanent link">&para;</a></h5>
+<h5 id="encrypt_model_directoryself-any-model_dir-path-">encrypt_model_directory(self: Any, model_dir: Path) -&gt; <ast.Subscript object at 0x0000019428AC17E0><a class="headerlink" href="#encrypt_model_directoryself-any-model_dir-path-" title="Permanent link">&para;</a></h5>
 <p>Encrypt all files in a model directory that match encryption patterns.</p>
 <p>Args:
     model_dir: Path to model directory</p>

@@ -1089,7 +1089,7 @@ capabilities for health checks to ensure fast execution in CI/CD environments.</
 <p>Get cache file path for given key.</p>
 <h5 id="_is_cache_validself-any-cache_file-path-ttl-int-bool">_is_cache_valid(self: Any, cache_file: Path, ttl: int) -&gt; bool<a class="headerlink" href="#_is_cache_validself-any-cache_file-path-ttl-int-bool" title="Permanent link">&para;</a></h5>
 <p>Check if cache file is still valid.</p>
-<h5 id="getself-any-check_name-str-inputs-dict-ttl-int-">get(self: Any, check_name: str, inputs: Dict, ttl: int) -&gt; <ast.Subscript object at 0x000001942F93A740><a class="headerlink" href="#getself-any-check_name-str-inputs-dict-ttl-int-" title="Permanent link">&para;</a></h5>
+<h5 id="getself-any-check_name-str-inputs-dict-ttl-int-">get(self: Any, check_name: str, inputs: Dict, ttl: int) -&gt; <ast.Subscript object at 0x000001942C6D4E50><a class="headerlink" href="#getself-any-check_name-str-inputs-dict-ttl-int-" title="Permanent link">&para;</a></h5>
 <p>Get cached result for health check.</p>
 <h5 id="setself-any-check_name-str-inputs-dict-result-any">set(self: Any, check_name: str, inputs: Dict, result: Any)<a class="headerlink" href="#setself-any-check_name-str-inputs-dict-result-any" title="Permanent link">&para;</a></h5>
 <p>Cache result for health check.</p>
@@ -1107,7 +1107,7 @@ capabilities for health checks to ensure fast execution in CI/CD environments.</
 <p>Decorator to profile function execution.</p>
 <h5 id="get_performance_summaryself-any-dict">get_performance_summary(self: Any) -&gt; Dict<a class="headerlink" href="#get_performance_summaryself-any-dict" title="Permanent link">&para;</a></h5>
 <p>Get performance summary for all profiled functions.</p>
-<h5 id="generate_optimization_recommendationsself-any-">generate_optimization_recommendations(self: Any) -&gt; <ast.Subscript object at 0x0000019434253670><a class="headerlink" href="#generate_optimization_recommendationsself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="generate_optimization_recommendationsself-any-">generate_optimization_recommendations(self: Any) -&gt; <ast.Subscript object at 0x000001942757FC10><a class="headerlink" href="#generate_optimization_recommendationsself-any-" title="Permanent link">&para;</a></h5>
 <p>Generate optimization recommendations based on profiling data.</p>
 <h3 id="incrementalanalyzer">IncrementalAnalyzer<a class="headerlink" href="#incrementalanalyzer" title="Permanent link">&para;</a></h3>
 <p>Incremental analysis system for large codebases.</p>
@@ -1119,9 +1119,9 @@ capabilities for health checks to ensure fast execution in CI/CD environments.</
 <p>Save current analysis state.</p>
 <h5 id="get_file_hashself-any-file_path-path-str">get_file_hash(self: Any, file_path: Path) -&gt; str<a class="headerlink" href="#get_file_hashself-any-file_path-path-str" title="Permanent link">&para;</a></h5>
 <p>Get hash of file content.</p>
-<h5 id="get_changed_filesself-any-file_patterns-">get_changed_files(self: Any, file_patterns: <ast.Subscript object at 0x0000019434213D60>) -&gt; <ast.Subscript object at 0x0000019434213340><a class="headerlink" href="#get_changed_filesself-any-file_patterns-" title="Permanent link">&para;</a></h5>
+<h5 id="get_changed_filesself-any-file_patterns-">get_changed_files(self: Any, file_patterns: <ast.Subscript object at 0x000001942757DC60>) -&gt; <ast.Subscript object at 0x000001942757CB80><a class="headerlink" href="#get_changed_filesself-any-file_patterns-" title="Permanent link">&para;</a></h5>
 <p>Get list of files that have changed since last analysis.</p>
-<h5 id="should_run_checkself-any-check_name-str-dependencies-bool">should_run_check(self: Any, check_name: str, dependencies: <ast.Subscript object at 0x0000019434211570>) -&gt; bool<a class="headerlink" href="#should_run_checkself-any-check_name-str-dependencies-bool" title="Permanent link">&para;</a></h5>
+<h5 id="should_run_checkself-any-check_name-str-dependencies-bool">should_run_check(self: Any, check_name: str, dependencies: <ast.Subscript object at 0x000001942757C280>) -&gt; bool<a class="headerlink" href="#should_run_checkself-any-check_name-str-dependencies-bool" title="Permanent link">&para;</a></h5>
 <p>Determine if a check should run based on changes.</p>
 <h5 id="finalize_analysisself-any">finalize_analysis(self: Any)<a class="headerlink" href="#finalize_analysisself-any" title="Permanent link">&para;</a></h5>
 <p>Finalize analysis and save state.</p>
@@ -1129,7 +1129,7 @@ capabilities for health checks to ensure fast execution in CI/CD environments.</
 <p>Lightweight health checker for frequent execution.</p>
 <h4 id="methods_3">Methods<a class="headerlink" href="#methods_3" title="Permanent link">&para;</a></h4>
 <h5 id="initself-any-cache-healthcheckcache-profiler-performanceprofiler"><strong>init</strong>(self: Any, cache: HealthCheckCache, profiler: PerformanceProfiler)<a class="headerlink" href="#initself-any-cache-healthcheckcache-profiler-performanceprofiler" title="Permanent link">&para;</a></h5>
-<h5 id="lightweight_checksself-any-">lightweight_checks(self: Any) -&gt; <ast.Subscript object at 0x0000019434210EE0><a class="headerlink" href="#lightweight_checksself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="lightweight_checksself-any-">lightweight_checks(self: Any) -&gt; <ast.Subscript object at 0x0000019427B8B4C0><a class="headerlink" href="#lightweight_checksself-any-" title="Permanent link">&para;</a></h5>
 <p>List of checks suitable for lightweight mode.</p>
 <h5 id="run_lightweight_health_checkself-any-dict">run_lightweight_health_check(self: Any) -&gt; Dict<a class="headerlink" href="#run_lightweight_health_checkself-any-dict" title="Permanent link">&para;</a></h5>
 <p>Run lightweight health check with minimal overhead.</p>

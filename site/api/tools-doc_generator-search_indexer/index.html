@@ -996,26 +996,26 @@ tag-based filtering, and content categorization.</p>
 <h3 id="searchindexer">SearchIndexer<a class="headerlink" href="#searchindexer" title="Permanent link">&para;</a></h3>
 <p>Advanced search indexer for documentation</p>
 <h4 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h4>
-<h5 id="initself-any-docs_root-path-index_db_path"><strong>init</strong>(self: Any, docs_root: Path, index_db_path: <ast.Subscript object at 0x000001943455F220>)<a class="headerlink" href="#initself-any-docs_root-path-index_db_path" title="Permanent link">&para;</a></h5>
+<h5 id="initself-any-docs_root-path-index_db_path"><strong>init</strong>(self: Any, docs_root: Path, index_db_path: <ast.Subscript object at 0x00000194278E7670>)<a class="headerlink" href="#initself-any-docs_root-path-index_db_path" title="Permanent link">&para;</a></h5>
 <h5 id="_init_databaseself-any">_init_database(self: Any)<a class="headerlink" href="#_init_databaseself-any" title="Permanent link">&para;</a></h5>
 <p>Initialize SQLite database for search index</p>
-<h5 id="index_documentationself-any-">index_documentation(self: Any) -&gt; <ast.Subscript object at 0x000001943451F5B0><a class="headerlink" href="#index_documentationself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="index_documentationself-any-">index_documentation(self: Any) -&gt; <ast.Subscript object at 0x000001942796FB50><a class="headerlink" href="#index_documentationself-any-" title="Permanent link">&para;</a></h5>
 <p>Index all documentation files</p>
 <h5 id="_should_skip_fileself-any-file_path-path-bool">_should_skip_file(self: Any, file_path: Path) -&gt; bool<a class="headerlink" href="#_should_skip_fileself-any-file_path-path-bool" title="Permanent link">&para;</a></h5>
 <p>Check if file should be skipped</p>
 <h5 id="_needs_reindexingself-any-file_path-path-bool">_needs_reindexing(self: Any, file_path: Path) -&gt; bool<a class="headerlink" href="#_needs_reindexingself-any-file_path-path-bool" title="Permanent link">&para;</a></h5>
 <p>Check if file needs to be reindexed</p>
-<h5 id="_process_documentself-any-file_path-path-">_process_document(self: Any, file_path: Path) -&gt; <ast.Subscript object at 0x000001942FC322F0><a class="headerlink" href="#_process_documentself-any-file_path-path-" title="Permanent link">&para;</a></h5>
+<h5 id="_process_documentself-any-file_path-path-">_process_document(self: Any, file_path: Path) -&gt; <ast.Subscript object at 0x000001942796C9D0><a class="headerlink" href="#_process_documentself-any-file_path-path-" title="Permanent link">&para;</a></h5>
 <p>Process a documentation file for indexing</p>
-<h5 id="_extract_metadataself-any-content-str-">_extract_metadata(self: Any, content: str) -&gt; <ast.Subscript object at 0x000001942FC324D0><a class="headerlink" href="#_extract_metadataself-any-content-str-" title="Permanent link">&para;</a></h5>
+<h5 id="_extract_metadataself-any-content-str-">_extract_metadata(self: Any, content: str) -&gt; <ast.Subscript object at 0x00000194278FD360><a class="headerlink" href="#_extract_metadataself-any-content-str-" title="Permanent link">&para;</a></h5>
 <p>Extract YAML frontmatter metadata</p>
 <h5 id="_extract_title_from_contentself-any-content-str-str">_extract_title_from_content(self: Any, content: str) -&gt; str<a class="headerlink" href="#_extract_title_from_contentself-any-content-str-str" title="Permanent link">&para;</a></h5>
 <p>Extract title from first heading</p>
 <h5 id="_clean_content_for_indexingself-any-content-str-str">_clean_content_for_indexing(self: Any, content: str) -&gt; str<a class="headerlink" href="#_clean_content_for_indexingself-any-content-str-str" title="Permanent link">&para;</a></h5>
 <p>Clean content for search indexing</p>
-<h5 id="_extract_headingsself-any-content-str-">_extract_headings(self: Any, content: str) -&gt; <ast.Subscript object at 0x000001942FBAD2A0><a class="headerlink" href="#_extract_headingsself-any-content-str-" title="Permanent link">&para;</a></h5>
+<h5 id="_extract_headingsself-any-content-str-">_extract_headings(self: Any, content: str) -&gt; <ast.Subscript object at 0x000001942888A230><a class="headerlink" href="#_extract_headingsself-any-content-str-" title="Permanent link">&para;</a></h5>
 <p>Extract all headings from content</p>
-<h5 id="_extract_code_blocksself-any-content-str-">_extract_code_blocks(self: Any, content: str) -&gt; <ast.Subscript object at 0x0000019431B076D0><a class="headerlink" href="#_extract_code_blocksself-any-content-str-" title="Permanent link">&para;</a></h5>
+<h5 id="_extract_code_blocksself-any-content-str-">_extract_code_blocks(self: Any, content: str) -&gt; <ast.Subscript object at 0x00000194288D0F70><a class="headerlink" href="#_extract_code_blocksself-any-content-str-" title="Permanent link">&para;</a></h5>
 <p>Extract code blocks from content</p>
 <h5 id="_generate_document_idself-any-relative_path-str-str">_generate_document_id(self: Any, relative_path: str) -&gt; str<a class="headerlink" href="#_generate_document_idself-any-relative_path-str-str" title="Permanent link">&para;</a></h5>
 <p>Generate unique document ID</p>
@@ -1023,7 +1023,7 @@ tag-based filtering, and content categorization.</p>
 <p>Store document in search index</p>
 <h5 id="_index_document_termsself-any-conn-sqlite3connection-document-searchdocument">_index_document_terms(self: Any, conn: sqlite3.Connection, document: SearchDocument)<a class="headerlink" href="#_index_document_termsself-any-conn-sqlite3connection-document-searchdocument" title="Permanent link">&para;</a></h5>
 <p>Index individual terms for a document</p>
-<h5 id="_tokenize_contentself-any-content-str-">_tokenize_content(self: Any, content: str) -&gt; <ast.Subscript object at 0x0000019434446110><a class="headerlink" href="#_tokenize_contentself-any-content-str-" title="Permanent link">&para;</a></h5>
+<h5 id="_tokenize_contentself-any-content-str-">_tokenize_content(self: Any, content: str) -&gt; <ast.Subscript object at 0x000001942C6D25C0><a class="headerlink" href="#_tokenize_contentself-any-content-str-" title="Permanent link">&para;</a></h5>
 <p>Tokenize content into searchable terms</p>
 <h5 id="_document_existsself-any-doc_id-str-bool">_document_exists(self: Any, doc_id: str) -&gt; bool<a class="headerlink" href="#_document_existsself-any-doc_id-str-bool" title="Permanent link">&para;</a></h5>
 <p>Check if document already exists in index</p>
@@ -1031,23 +1031,23 @@ tag-based filtering, and content categorization.</p>
 <p>Get total number of indexed documents</p>
 <h5 id="_update_fts_indexself-any">_update_fts_index(self: Any)<a class="headerlink" href="#_update_fts_indexself-any" title="Permanent link">&para;</a></h5>
 <p>Update full-text search index</p>
-<h5 id="searchself-any-query-str-category-tags-limit-int-">search(self: Any, query: str, category: <ast.Subscript object at 0x0000019434445900>, tags: <ast.Subscript object at 0x0000019434444A00>, limit: int) -&gt; <ast.Subscript object at 0x0000019434444250><a class="headerlink" href="#searchself-any-query-str-category-tags-limit-int-" title="Permanent link">&para;</a></h5>
+<h5 id="searchself-any-query-str-category-tags-limit-int-">search(self: Any, query: str, category: <ast.Subscript object at 0x000001942CD8A170>, tags: <ast.Subscript object at 0x000001942CD8A260>, limit: int) -&gt; <ast.Subscript object at 0x000001942CCF7010><a class="headerlink" href="#searchself-any-query-str-category-tags-limit-int-" title="Permanent link">&para;</a></h5>
 <p>Search documentation with advanced filtering</p>
-<h5 id="_fts_searchself-any-query-str-category-tags-limit-int-">_fts_search(self: Any, query: str, category: <ast.Subscript object at 0x0000019434446AD0>, tags: <ast.Subscript object at 0x00000194344475B0>, limit: int) -&gt; <ast.Subscript object at 0x0000019432E5C550><a class="headerlink" href="#_fts_searchself-any-query-str-category-tags-limit-int-" title="Permanent link">&para;</a></h5>
+<h5 id="_fts_searchself-any-query-str-category-tags-limit-int-">_fts_search(self: Any, query: str, category: <ast.Subscript object at 0x000001942CCF6C50>, tags: <ast.Subscript object at 0x000001942CCF6B90>, limit: int) -&gt; <ast.Subscript object at 0x00000194279027D0><a class="headerlink" href="#_fts_searchself-any-query-str-category-tags-limit-int-" title="Permanent link">&para;</a></h5>
 <p>Full-text search using SQLite FTS</p>
 <h5 id="_build_fts_queryself-any-query-str-str">_build_fts_query(self: Any, query: str) -&gt; str<a class="headerlink" href="#_build_fts_queryself-any-query-str-str" title="Permanent link">&para;</a></h5>
 <p>Build FTS query from user input</p>
-<h5 id="_create_document_from_dataself-any-data-searchdocument">_create_document_from_data(self: Any, data: <ast.Subscript object at 0x0000019432E5C340>) -&gt; SearchDocument<a class="headerlink" href="#_create_document_from_dataself-any-data-searchdocument" title="Permanent link">&para;</a></h5>
+<h5 id="_create_document_from_dataself-any-data-searchdocument">_create_document_from_data(self: Any, data: <ast.Subscript object at 0x0000019427903460>) -&gt; SearchDocument<a class="headerlink" href="#_create_document_from_dataself-any-data-searchdocument" title="Permanent link">&para;</a></h5>
 <p>Create SearchDocument from database row</p>
 <h5 id="_calculate_relevance_scoreself-any-document-searchdocument-query-str-float">_calculate_relevance_score(self: Any, document: SearchDocument, query: str) -&gt; float<a class="headerlink" href="#_calculate_relevance_scoreself-any-document-searchdocument-query-str-float" title="Permanent link">&para;</a></h5>
 <p>Calculate relevance score for search result</p>
-<h5 id="_find_matchesself-any-document-searchdocument-query-str-">_find_matches(self: Any, document: SearchDocument, query: str) -&gt; <ast.Subscript object at 0x00000194344D9900><a class="headerlink" href="#_find_matchesself-any-document-searchdocument-query-str-" title="Permanent link">&para;</a></h5>
+<h5 id="_find_matchesself-any-document-searchdocument-query-str-">_find_matches(self: Any, document: SearchDocument, query: str) -&gt; <ast.Subscript object at 0x0000019428AAE950><a class="headerlink" href="#_find_matchesself-any-document-searchdocument-query-str-" title="Permanent link">&para;</a></h5>
 <p>Find specific matches in document</p>
 <h5 id="_generate_snippetself-any-document-searchdocument-query-str-max_length-int-str">_generate_snippet(self: Any, document: SearchDocument, query: str, max_length: int) -&gt; str<a class="headerlink" href="#_generate_snippetself-any-document-searchdocument-query-str-max_length-int-str" title="Permanent link">&para;</a></h5>
 <p>Generate search result snippet</p>
-<h5 id="get_search_suggestionsself-any-partial_query-str-limit-int-">get_search_suggestions(self: Any, partial_query: str, limit: int) -&gt; <ast.Subscript object at 0x000001942F390F40><a class="headerlink" href="#get_search_suggestionsself-any-partial_query-str-limit-int-" title="Permanent link">&para;</a></h5>
+<h5 id="get_search_suggestionsself-any-partial_query-str-limit-int-">get_search_suggestions(self: Any, partial_query: str, limit: int) -&gt; <ast.Subscript object at 0x0000019428A78F10><a class="headerlink" href="#get_search_suggestionsself-any-partial_query-str-limit-int-" title="Permanent link">&para;</a></h5>
 <p>Get search suggestions based on partial query</p>
-<h5 id="get_index_statsself-any-">get_index_stats(self: Any) -&gt; <ast.Subscript object at 0x000001942F1CAFE0><a class="headerlink" href="#get_index_statsself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="get_index_statsself-any-">get_index_stats(self: Any) -&gt; <ast.Subscript object at 0x0000019428A7A170><a class="headerlink" href="#get_index_statsself-any-" title="Permanent link">&para;</a></h5>
 <p>Get search index statistics</p>
 
 

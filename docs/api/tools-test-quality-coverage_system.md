@@ -44,19 +44,19 @@ Initialize the trends database
 
 Record coverage data point
 
-##### get_trends(self: Any, days: int) -> <ast.Subscript object at 0x0000019431B1C460>
+##### get_trends(self: Any, days: int) -> <ast.Subscript object at 0x000001942CBAEF80>
 
 Get coverage trends for the last N days
 
-##### get_file_trends(self: Any, file_path: str, days: int) -> <ast.Subscript object at 0x0000019431B1FEB0>
+##### get_file_trends(self: Any, file_path: str, days: int) -> <ast.Subscript object at 0x000001942CBAE290>
 
 Get coverage trends for a specific file
 
-##### _get_current_commit(self: Any) -> <ast.Subscript object at 0x0000019431B1E920>
+##### _get_current_commit(self: Any) -> <ast.Subscript object at 0x000001942CBAFBE0>
 
 Get current git commit hash
 
-##### _get_current_branch(self: Any) -> <ast.Subscript object at 0x000001942F75C070>
+##### _get_current_branch(self: Any) -> <ast.Subscript object at 0x000001942CBAF880>
 
 Get current git branch
 
@@ -74,15 +74,15 @@ Analyzes coverage for new/changed code
 
 Set coverage threshold for new code
 
-##### analyze_new_code_coverage(self: Any, report: CoverageReport, base_branch: str) -> <ast.Subscript object at 0x000001942F75EBF0>
+##### analyze_new_code_coverage(self: Any, report: CoverageReport, base_branch: str) -> <ast.Subscript object at 0x000001942CAF8AC0>
 
 Analyze coverage for new/changed code compared to base branch
 
-##### _get_changed_files(self: Any, base_branch: str) -> <ast.Subscript object at 0x000001942F75D990>
+##### _get_changed_files(self: Any, base_branch: str) -> <ast.Subscript object at 0x0000019429CBA080>
 
 Get list of files changed compared to base branch
 
-##### _get_new_lines(self: Any, file_path: str, base_branch: str) -> <ast.Subscript object at 0x0000019431B60520>
+##### _get_new_lines(self: Any, file_path: str, base_branch: str) -> <ast.Subscript object at 0x00000194287F97E0>
 
 Get line numbers of new/changed lines in a file
 
@@ -118,39 +118,39 @@ Generates detailed coverage reports with actionable recommendations
 
 
 
-##### generate_detailed_report(self: Any, report: CoverageReport, threshold_result: CoverageThresholdResult) -> <ast.Subscript object at 0x0000019431BDF340>
+##### generate_detailed_report(self: Any, report: CoverageReport, threshold_result: CoverageThresholdResult) -> <ast.Subscript object at 0x00000194288C5D50>
 
 Generate comprehensive coverage report
 
-##### _generate_summary(self: Any, report: CoverageReport) -> <ast.Subscript object at 0x0000019431BDE110>
+##### _generate_summary(self: Any, report: CoverageReport) -> <ast.Subscript object at 0x00000194288C6E90>
 
 Generate coverage summary
 
-##### _generate_file_analysis(self: Any, report: CoverageReport) -> <ast.Subscript object at 0x0000019431BDE0B0>
+##### _generate_file_analysis(self: Any, report: CoverageReport) -> <ast.Subscript object at 0x00000194288A7E50>
 
 Generate per-file analysis
 
-##### _generate_gap_analysis(self: Any, report: CoverageReport) -> <ast.Subscript object at 0x0000019431BDFB80>
+##### _generate_gap_analysis(self: Any, report: CoverageReport) -> <ast.Subscript object at 0x000001942C5A8CD0>
 
 Generate coverage gap analysis
 
-##### _generate_detailed_recommendations(self: Any, report: CoverageReport, threshold_result: CoverageThresholdResult) -> <ast.Subscript object at 0x000001942FE0EF80>
+##### _generate_detailed_recommendations(self: Any, report: CoverageReport, threshold_result: CoverageThresholdResult) -> <ast.Subscript object at 0x000001942C5AAB60>
 
 Generate detailed, prioritized recommendations
 
-##### _generate_trend_analysis(self: Any) -> <ast.Subscript object at 0x000001942FE0DD80>
+##### _generate_trend_analysis(self: Any) -> <ast.Subscript object at 0x000001942C555AE0>
 
 Generate coverage trend analysis
 
-##### _generate_actionable_items(self: Any, report: CoverageReport, threshold_result: CoverageThresholdResult) -> <ast.Subscript object at 0x0000019434211BD0>
+##### _generate_actionable_items(self: Any, report: CoverageReport, threshold_result: CoverageThresholdResult) -> <ast.Subscript object at 0x000001942C5579D0>
 
 Generate specific actionable items
 
-##### _group_missing_lines(self: Any, missing_lines: <ast.Subscript object at 0x0000019434212D40>) -> <ast.Subscript object at 0x0000019434211090>
+##### _group_missing_lines(self: Any, missing_lines: <ast.Subscript object at 0x000001942C557AF0>) -> <ast.Subscript object at 0x000001942C554340>
 
 Group consecutive missing lines into ranges
 
-##### _analyze_function_coverage(self: Any, file_cov: FileCoverage) -> <ast.Subscript object at 0x0000019434210760>
+##### _analyze_function_coverage(self: Any, file_cov: FileCoverage) -> <ast.Subscript object at 0x0000019428934670>
 
 Analyze function-level coverage
 
@@ -158,7 +158,7 @@ Analyze function-level coverage
 
 Determine priority level for file coverage improvement
 
-##### _generate_file_recommendations(self: Any, file_cov: FileCoverage) -> <ast.Subscript object at 0x000001942F9387C0>
+##### _generate_file_recommendations(self: Any, file_cov: FileCoverage) -> <ast.Subscript object at 0x0000019428937460>
 
 Generate specific recommendations for a file
 
@@ -172,11 +172,11 @@ Main system that orchestrates all coverage analysis components
 
 
 
-##### run_comprehensive_analysis(self: Any, test_files: <ast.Subscript object at 0x000001942F9395A0>, base_branch: str) -> <ast.Subscript object at 0x000001942F939990>
+##### run_comprehensive_analysis(self: Any, test_files: <ast.Subscript object at 0x00000194289366E0>, base_branch: str) -> <ast.Subscript object at 0x00000194288F2110>
 
 Run complete coverage analysis with all features
 
-##### save_report(self: Any, analysis_result: <ast.Subscript object at 0x000001942F939750>, output_path: Path)
+##### save_report(self: Any, analysis_result: <ast.Subscript object at 0x00000194288F2440>, output_path: Path)
 
 Save comprehensive analysis report
 

@@ -24,7 +24,7 @@ Simulates various network failure scenarios.
 
 Set the probability of failure (0.0 to 1.0).
 
-##### set_failure_types(self: Any, failure_types: <ast.Subscript object at 0x000001942FDF0370>)
+##### set_failure_types(self: Any, failure_types: <ast.Subscript object at 0x000001942C644250>)
 
 Set the types of failures to inject.
 

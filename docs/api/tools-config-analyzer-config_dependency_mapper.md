@@ -24,7 +24,7 @@ Maps configuration dependencies for consolidation planning.
 
 
 
-##### analyze_core_configs(self: Any) -> <ast.Subscript object at 0x00000194302C1270>
+##### analyze_core_configs(self: Any) -> <ast.Subscript object at 0x00000194281DD270>
 
 Analyze core configuration files and their relationships.
 
@@ -32,35 +32,35 @@ Analyze core configuration files and their relationships.
 
 Analyze a single configuration file.
 
-##### _load_file_content(self: Any, file_path: Path) -> <ast.Subscript object at 0x00000194302EE2F0>
+##### _load_file_content(self: Any, file_path: Path) -> <ast.Subscript object at 0x00000194281962F0>
 
 Load configuration file content.
 
-##### _parse_env_file(self: Any, content: str) -> <ast.Subscript object at 0x00000194302ED7B0>
+##### _parse_env_file(self: Any, content: str) -> <ast.Subscript object at 0x00000194281957B0>
 
 Parse environment file content.
 
-##### _count_settings(self: Any, content: <ast.Subscript object at 0x00000194302ED600>) -> int
+##### _count_settings(self: Any, content: <ast.Subscript object at 0x0000019428195600>) -> int
 
 Count total settings in configuration.
 
-##### _extract_key_settings(self: Any, content: <ast.Subscript object at 0x00000194302ECD30>) -> <ast.Subscript object at 0x00000194302EC130>
+##### _extract_key_settings(self: Any, content: <ast.Subscript object at 0x0000019428194D30>) -> <ast.Subscript object at 0x000001942818D180>
 
 Extract key configuration settings.
 
-##### _find_dependencies(self: Any, file_path: str, content: <ast.Subscript object at 0x00000194302A3F40>) -> <ast.Subscript object at 0x00000194302A0850>
+##### _find_dependencies(self: Any, file_path: str, content: <ast.Subscript object at 0x000001942818E050>) -> <ast.Subscript object at 0x000001942818C9D0>
 
 Find files that this configuration depends on.
 
-##### _find_usage(self: Any, file_path: str) -> <ast.Subscript object at 0x0000019434137940>
+##### _find_usage(self: Any, file_path: str) -> <ast.Subscript object at 0x00000194279B95A0>
 
 Find components that use this configuration file.
 
-##### generate_consolidation_plan(self: Any) -> <ast.Subscript object at 0x0000019434076B60>
+##### generate_consolidation_plan(self: Any) -> <ast.Subscript object at 0x00000194279D6AA0>
 
 Generate a consolidation plan based on the analysis.
 
-##### generate_report(self: Any) -> <ast.Subscript object at 0x00000194340754E0>
+##### generate_report(self: Any) -> <ast.Subscript object at 0x00000194279D53C0>
 
 Generate comprehensive dependency mapping report.
 

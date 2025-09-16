@@ -48,7 +48,7 @@ Watch configuration files and provide hot-reloading
 
 #### Methods
 
-##### __init__(self: Any, project_root: <ast.Subscript object at 0x000001942F6FA0E0>)
+##### __init__(self: Any, project_root: <ast.Subscript object at 0x000001942A28B9A0>)
 
 
 
@@ -72,15 +72,15 @@ Handle configuration file change with debouncing
 
 Process configuration change after debouncing
 
-##### _validate_config(self: Any, file_path: Path, content: Any) -> <ast.Subscript object at 0x0000019433CBDCC0>
+##### _validate_config(self: Any, file_path: Path, content: Any) -> <ast.Subscript object at 0x0000019428120F70>
 
 Validate configuration content
 
-##### _validate_unified_config(self: Any, config: <ast.Subscript object at 0x0000019433CBE950>) -> <ast.Subscript object at 0x0000019433CBF5E0>
+##### _validate_unified_config(self: Any, config: <ast.Subscript object at 0x00000194281238E0>) -> <ast.Subscript object at 0x0000019428122F80>
 
 Validate unified configuration
 
-##### _validate_package_json(self: Any, config: <ast.Subscript object at 0x0000019433CBCDF0>) -> <ast.Subscript object at 0x0000019433CBE020>
+##### _validate_package_json(self: Any, config: <ast.Subscript object at 0x0000019428121630>) -> <ast.Subscript object at 0x0000019428120370>
 
 Validate package.json
 
@@ -100,7 +100,7 @@ Check if service should be reloaded for the changed file
 
 Reload a service
 
-##### register_change_handler(self: Any, handler: <ast.Subscript object at 0x00000194319C7D60>)
+##### register_change_handler(self: Any, handler: <ast.Subscript object at 0x0000019428927E20>)
 
 Register a configuration change handler
 
@@ -108,11 +108,11 @@ Register a configuration change handler
 
 Register a service for automatic reloading
 
-##### get_config(self: Any, file_path: str) -> <ast.Subscript object at 0x00000194319C6080>
+##### get_config(self: Any, file_path: str) -> <ast.Subscript object at 0x0000019428925E10>
 
 Get cached configuration content
 
-##### get_all_configs(self: Any) -> <ast.Subscript object at 0x00000194319C6AA0>
+##### get_all_configs(self: Any) -> <ast.Subscript object at 0x0000019428925B70>
 
 Get all cached configurations
 

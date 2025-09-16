@@ -38,7 +38,7 @@ Structured representation of a startup error
 
 Post-initialization to set default recovery actions
 
-##### _get_default_recovery_actions(self: Any) -> <ast.Subscript object at 0x000001943405FD30>
+##### _get_default_recovery_actions(self: Any) -> <ast.Subscript object at 0x0000019429CD8F10>
 
 Get default recovery actions based on error category
 
@@ -76,7 +76,7 @@ Classifies errors and creates structured error objects
 
 
 
-##### classify_error(self: Any, error: Exception, context: <ast.Subscript object at 0x000001942F3BCEB0>) -> StartupError
+##### classify_error(self: Any, error: Exception, context: <ast.Subscript object at 0x000001942808C160>) -> StartupError
 
 Classify an error and create a structured error object
 
@@ -84,7 +84,7 @@ Classify an error and create a structured error object
 
 Determine error severity based on type and category
 
-##### _extract_details(self: Any, error: Exception, context: <ast.Subscript object at 0x0000019430268EE0>) -> str
+##### _extract_details(self: Any, error: Exception, context: <ast.Subscript object at 0x000001942C6DB250>) -> str
 
 Extract user-friendly details from error and context
 
@@ -96,7 +96,7 @@ Format technical details for debugging
 
 Generate a unique error code
 
-##### _get_context_specific_actions(self: Any, error: StartupError, context: <ast.Subscript object at 0x00000194302697E0>) -> <ast.Subscript object at 0x000001943188B730>
+##### _get_context_specific_actions(self: Any, error: StartupError, context: <ast.Subscript object at 0x000001942886D330>) -> <ast.Subscript object at 0x000001942886E4A0>
 
 Get recovery actions specific to the context
 
@@ -118,7 +118,7 @@ Manages the display of errors and user interaction
 
 
 
-##### handle_error(self: Any, error: Exception, context: <ast.Subscript object at 0x000001943188ABC0>) -> bool
+##### handle_error(self: Any, error: Exception, context: <ast.Subscript object at 0x000001942886ED40>) -> bool
 
 Handle an error with full user interaction
 
@@ -154,11 +154,11 @@ Enhanced recovery options with better user interaction
 
 Display message when no recovery options are available
 
-##### _display_recovery_options_table(self: Any, actions: <ast.Subscript object at 0x00000194318D6890>)
+##### _display_recovery_options_table(self: Any, actions: <ast.Subscript object at 0x0000019427EFD630>)
 
 Display recovery options in a formatted table
 
-##### _offer_auto_recovery(self: Any, auto_actions: <ast.Subscript object at 0x00000194318D5510>) -> bool
+##### _offer_auto_recovery(self: Any, auto_actions: <ast.Subscript object at 0x0000019427EFFFD0>) -> bool
 
 Offer to run all automatic actions
 
@@ -170,11 +170,11 @@ Interactive recovery action selection with enhanced UX
 
 Execute a single recovery action with enhanced feedback
 
-##### _execute_all_actions(self: Any, actions: <ast.Subscript object at 0x000001942F221DE0>) -> bool
+##### _execute_all_actions(self: Any, actions: <ast.Subscript object at 0x00000194288B0280>) -> bool
 
 Execute all recovery actions in sequence
 
-##### _display_batch_recovery_summary(self: Any, success_count: int, total_count: int, failed_actions: <ast.Subscript object at 0x0000019432DFC9D0>)
+##### _display_batch_recovery_summary(self: Any, success_count: int, total_count: int, failed_actions: <ast.Subscript object at 0x0000019428908610>)
 
 Display summary of batch recovery execution
 
@@ -220,15 +220,15 @@ Provides context-sensitive help and troubleshooting guidance
 
 
 
-##### get_help_for_error(self: Any, error: StartupError) -> <ast.Subscript object at 0x00000194341F1AE0>
+##### get_help_for_error(self: Any, error: StartupError) -> <ast.Subscript object at 0x000001942B744B50>
 
 Get help content for a specific error
 
-##### get_troubleshooting_steps(self: Any, category: ErrorCategory) -> <ast.Subscript object at 0x00000194341F19F0>
+##### get_troubleshooting_steps(self: Any, category: ErrorCategory) -> <ast.Subscript object at 0x000001942B746080>
 
 Get detailed troubleshooting steps for an error category
 
-##### get_error_examples(self: Any, category: ErrorCategory) -> <ast.Subscript object at 0x00000194341F3D00>
+##### get_error_examples(self: Any, category: ErrorCategory) -> <ast.Subscript object at 0x000001942A1622F0>
 
 Get examples of common errors in a category
 

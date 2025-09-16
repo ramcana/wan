@@ -37,7 +37,7 @@ Analyze individual component health.
 
 Analyze issues by category and severity.
 
-##### _calculate_avg_severity(self: Any, issues: <ast.Subscript object at 0x000001943192E260>) -> float
+##### _calculate_avg_severity(self: Any, issues: <ast.Subscript object at 0x0000019429C9E6E0>) -> float
 
 Calculate average severity score for issues.
 
@@ -45,7 +45,7 @@ Calculate average severity score for issues.
 
 Analyze performance metrics.
 
-##### _identify_performance_bottlenecks(self: Any, report: HealthReport) -> <ast.Subscript object at 0x0000019431905FC0>
+##### _identify_performance_bottlenecks(self: Any, report: HealthReport) -> <ast.Subscript object at 0x0000019429C1E440>
 
 Identify potential performance bottlenecks.
 
@@ -57,19 +57,19 @@ Generate comprehensive baseline report.
 
 Sub-task 2: Create health improvement roadmap based on current issues.
 
-##### _identify_improvement_opportunities(self: Any, baseline_report: Dict) -> <ast.Subscript object at 0x00000194318907F0>
+##### _identify_improvement_opportunities(self: Any, baseline_report: Dict) -> <ast.Subscript object at 0x000001942C687370>
 
 Identify improvement opportunities from baseline analysis.
 
-##### _prioritize_improvements(self: Any, opportunities: <ast.Subscript object at 0x00000194318906A0>) -> <ast.Subscript object at 0x00000194318EA560>
+##### _prioritize_improvements(self: Any, opportunities: <ast.Subscript object at 0x000001942C687A30>) -> <ast.Subscript object at 0x0000019428401180>
 
 Prioritize improvements based on impact and effort.
 
-##### _create_improvement_initiatives(self: Any, prioritized_improvements: <ast.Subscript object at 0x00000194318EA410>) -> <ast.Subscript object at 0x0000019432D8D5D0>
+##### _create_improvement_initiatives(self: Any, prioritized_improvements: <ast.Subscript object at 0x0000019428400B80>) -> <ast.Subscript object at 0x00000194284AEE30>
 
 Create improvement initiatives from prioritized opportunities.
 
-##### _generate_improvement_timeline(self: Any, initiatives: <ast.Subscript object at 0x0000019432D8D4B0>) -> Dict
+##### _generate_improvement_timeline(self: Any, initiatives: <ast.Subscript object at 0x00000194284AE560>) -> Dict
 
 Generate timeline for improvement initiatives.
 

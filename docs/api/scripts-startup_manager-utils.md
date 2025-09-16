@@ -16,7 +16,7 @@ Utility class for detecting system information and capabilities.
 
 #### Methods
 
-##### get_system_info() -> <ast.Subscript object at 0x0000019434647070>
+##### get_system_info() -> <ast.Subscript object at 0x0000019428353100>
 
 Get comprehensive system information.
 
@@ -28,19 +28,19 @@ Check if running on Windows.
 
 Check if running with administrator privileges.
 
-##### get_virtual_env_info() -> <ast.Subscript object at 0x0000019434646530>
+##### get_virtual_env_info() -> <ast.Subscript object at 0x0000019427B66080>
 
 Get information about the current virtual environment.
 
-##### check_python_version(min_version: <ast.Subscript object at 0x0000019434647B50>) -> <ast.Subscript object at 0x0000019434459390>
+##### check_python_version(min_version: <ast.Subscript object at 0x0000019427B65F00>) -> <ast.Subscript object at 0x0000019427B65540>
 
 Check if Python version meets minimum requirements.
 
-##### check_command_available(command: str) -> <ast.Subscript object at 0x000001943445B910>
+##### check_command_available(command: str) -> <ast.Subscript object at 0x0000019427B64670>
 
 Check if a command is available in the system PATH.
 
-##### check_node_environment() -> <ast.Subscript object at 0x0000019434458820>
+##### check_node_environment() -> <ast.Subscript object at 0x0000019427B13F70>
 
 Check Node.js and npm availability and versions.
 
@@ -50,7 +50,7 @@ Utility class for managing project paths and file operations.
 
 #### Methods
 
-##### __init__(self: Any, project_root: <ast.Subscript object at 0x0000019434458880>)
+##### __init__(self: Any, project_root: <ast.Subscript object at 0x0000019427B13D30>)
 
 
 
@@ -78,11 +78,11 @@ Get path to logs directory, creating if necessary.
 
 Get path to configuration file.
 
-##### validate_project_structure(self: Any) -> <ast.Subscript object at 0x000001942FA6F8E0>
+##### validate_project_structure(self: Any) -> <ast.Subscript object at 0x00000194275C74F0>
 
 Validate that required project directories and files exist.
 
-##### create_directory_structure(self: Any) -> <ast.Subscript object at 0x0000019431B400D0>
+##### create_directory_structure(self: Any) -> <ast.Subscript object at 0x00000194275C6B00>
 
 Create missing directories for the project.
 

@@ -28,7 +28,7 @@ Individual maintenance operation record.
 
 #### Methods
 
-##### to_dict(self: Any) -> <ast.Subscript object at 0x0000019432D7CAF0>
+##### to_dict(self: Any) -> <ast.Subscript object at 0x000001942CC0BC70>
 
 Convert to dictionary for serialization.
 
@@ -38,7 +38,7 @@ Analysis of maintenance operation impact.
 
 #### Methods
 
-##### to_dict(self: Any) -> <ast.Subscript object at 0x0000019432D7F790>
+##### to_dict(self: Any) -> <ast.Subscript object at 0x000001942CC08CD0>
 
 Convert to dictionary for serialization.
 
@@ -48,7 +48,7 @@ Maintenance recommendation based on project analysis.
 
 #### Methods
 
-##### to_dict(self: Any) -> <ast.Subscript object at 0x0000019432E390F0>
+##### to_dict(self: Any) -> <ast.Subscript object at 0x0000019427F38760>
 
 Convert to dictionary for serialization.
 
@@ -58,7 +58,7 @@ Maintenance scheduling optimization analysis.
 
 #### Methods
 
-##### to_dict(self: Any) -> <ast.Subscript object at 0x0000019432E39840>
+##### to_dict(self: Any) -> <ast.Subscript object at 0x000001942C859090>
 
 Convert to dictionary for serialization.
 
@@ -68,7 +68,7 @@ Comprehensive maintenance report.
 
 #### Methods
 
-##### to_dict(self: Any) -> <ast.Subscript object at 0x0000019432E394B0>
+##### to_dict(self: Any) -> <ast.Subscript object at 0x000001942C85A110>
 
 Convert to dictionary for serialization.
 
@@ -82,7 +82,7 @@ Audit trail for maintenance operations.
 
 #### Methods
 
-##### to_dict(self: Any) -> <ast.Subscript object at 0x0000019431B61150>
+##### to_dict(self: Any) -> <ast.Subscript object at 0x000001942C85A8C0>
 
 Convert to dictionary for serialization.
 

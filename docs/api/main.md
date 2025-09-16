@@ -21,15 +21,15 @@ Manages application configuration loading and validation
 
 
 
-##### _load_config(self: Any) -> <ast.Subscript object at 0x000001942EF991B0>
+##### _load_config(self: Any) -> <ast.Subscript object at 0x0000019427B7A800>
 
 Load configuration from JSON file with fallback to defaults
 
-##### _get_default_config(self: Any) -> <ast.Subscript object at 0x000001942EF95480>
+##### _get_default_config(self: Any) -> <ast.Subscript object at 0x0000019427B6D4B0>
 
 Return default configuration
 
-##### _save_config(self: Any, config: <ast.Subscript object at 0x000001942EF952D0>)
+##### _save_config(self: Any, config: <ast.Subscript object at 0x0000019427B6D300>)
 
 Save configuration to JSON file
 
@@ -41,11 +41,11 @@ Validate configuration values and fix any issues
 
 Create required directories if they don't exist
 
-##### get_config(self: Any) -> <ast.Subscript object at 0x000001942EFCC5B0>
+##### get_config(self: Any) -> <ast.Subscript object at 0x0000019427BD85E0>
 
 Get the loaded configuration
 
-##### update_config(self: Any, updates: <ast.Subscript object at 0x000001942EFCC400>)
+##### update_config(self: Any, updates: <ast.Subscript object at 0x0000019427BD8430>)
 
 Update configuration with new values
 
@@ -87,11 +87,11 @@ Cleanup temporary files
 
 Cleanup system optimizer
 
-##### get_optimization_status(self: Any) -> <ast.Subscript object at 0x000001942F0112D0>
+##### get_optimization_status(self: Any) -> <ast.Subscript object at 0x0000019428A39300>
 
 Get current optimization status for UI display
 
-##### get_system_optimizer(self: Any) -> <ast.Subscript object at 0x000001942F011540>
+##### get_system_optimizer(self: Any) -> <ast.Subscript object at 0x0000019428A39570>
 
 Get the system optimizer instance
 

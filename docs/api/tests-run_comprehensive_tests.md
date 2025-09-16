@@ -20,7 +20,7 @@ Runner for comprehensive integration tests
 
 
 
-##### run_test_suite(self: Any, test_file: str, suite_name: str) -> <ast.Subscript object at 0x000001942F29BF70>
+##### run_test_suite(self: Any, test_file: str, suite_name: str) -> <ast.Subscript object at 0x000001942A16EE30>
 
 Run a specific test suite and capture results
 

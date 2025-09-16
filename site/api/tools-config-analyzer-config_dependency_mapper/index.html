@@ -839,25 +839,25 @@
 <p>Maps configuration dependencies for consolidation planning.</p>
 <h4 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h4>
 <h5 id="initself-any-project_root-path"><strong>init</strong>(self: Any, project_root: Path)<a class="headerlink" href="#initself-any-project_root-path" title="Permanent link">&para;</a></h5>
-<h5 id="analyze_core_configsself-any-">analyze_core_configs(self: Any) -&gt; <ast.Subscript object at 0x00000194302C1270><a class="headerlink" href="#analyze_core_configsself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="analyze_core_configsself-any-">analyze_core_configs(self: Any) -&gt; <ast.Subscript object at 0x00000194281DD270><a class="headerlink" href="#analyze_core_configsself-any-" title="Permanent link">&para;</a></h5>
 <p>Analyze core configuration files and their relationships.</p>
 <h5 id="_analyze_config_fileself-any-file_path-str-purpose-str-component-str-priority-str-configmapping">_analyze_config_file(self: Any, file_path: str, purpose: str, component: str, priority: str) -&gt; ConfigMapping<a class="headerlink" href="#_analyze_config_fileself-any-file_path-str-purpose-str-component-str-priority-str-configmapping" title="Permanent link">&para;</a></h5>
 <p>Analyze a single configuration file.</p>
-<h5 id="_load_file_contentself-any-file_path-path-">_load_file_content(self: Any, file_path: Path) -&gt; <ast.Subscript object at 0x00000194302EE2F0><a class="headerlink" href="#_load_file_contentself-any-file_path-path-" title="Permanent link">&para;</a></h5>
+<h5 id="_load_file_contentself-any-file_path-path-">_load_file_content(self: Any, file_path: Path) -&gt; <ast.Subscript object at 0x00000194281962F0><a class="headerlink" href="#_load_file_contentself-any-file_path-path-" title="Permanent link">&para;</a></h5>
 <p>Load configuration file content.</p>
-<h5 id="_parse_env_fileself-any-content-str-">_parse_env_file(self: Any, content: str) -&gt; <ast.Subscript object at 0x00000194302ED7B0><a class="headerlink" href="#_parse_env_fileself-any-content-str-" title="Permanent link">&para;</a></h5>
+<h5 id="_parse_env_fileself-any-content-str-">_parse_env_file(self: Any, content: str) -&gt; <ast.Subscript object at 0x00000194281957B0><a class="headerlink" href="#_parse_env_fileself-any-content-str-" title="Permanent link">&para;</a></h5>
 <p>Parse environment file content.</p>
-<h5 id="_count_settingsself-any-content-int">_count_settings(self: Any, content: <ast.Subscript object at 0x00000194302ED600>) -&gt; int<a class="headerlink" href="#_count_settingsself-any-content-int" title="Permanent link">&para;</a></h5>
+<h5 id="_count_settingsself-any-content-int">_count_settings(self: Any, content: <ast.Subscript object at 0x0000019428195600>) -&gt; int<a class="headerlink" href="#_count_settingsself-any-content-int" title="Permanent link">&para;</a></h5>
 <p>Count total settings in configuration.</p>
-<h5 id="_extract_key_settingsself-any-content-">_extract_key_settings(self: Any, content: <ast.Subscript object at 0x00000194302ECD30>) -&gt; <ast.Subscript object at 0x00000194302EC130><a class="headerlink" href="#_extract_key_settingsself-any-content-" title="Permanent link">&para;</a></h5>
+<h5 id="_extract_key_settingsself-any-content-">_extract_key_settings(self: Any, content: <ast.Subscript object at 0x0000019428194D30>) -&gt; <ast.Subscript object at 0x000001942818D180><a class="headerlink" href="#_extract_key_settingsself-any-content-" title="Permanent link">&para;</a></h5>
 <p>Extract key configuration settings.</p>
-<h5 id="_find_dependenciesself-any-file_path-str-content-">_find_dependencies(self: Any, file_path: str, content: <ast.Subscript object at 0x00000194302A3F40>) -&gt; <ast.Subscript object at 0x00000194302A0850><a class="headerlink" href="#_find_dependenciesself-any-file_path-str-content-" title="Permanent link">&para;</a></h5>
+<h5 id="_find_dependenciesself-any-file_path-str-content-">_find_dependencies(self: Any, file_path: str, content: <ast.Subscript object at 0x000001942818E050>) -&gt; <ast.Subscript object at 0x000001942818C9D0><a class="headerlink" href="#_find_dependenciesself-any-file_path-str-content-" title="Permanent link">&para;</a></h5>
 <p>Find files that this configuration depends on.</p>
-<h5 id="_find_usageself-any-file_path-str-">_find_usage(self: Any, file_path: str) -&gt; <ast.Subscript object at 0x0000019434137940><a class="headerlink" href="#_find_usageself-any-file_path-str-" title="Permanent link">&para;</a></h5>
+<h5 id="_find_usageself-any-file_path-str-">_find_usage(self: Any, file_path: str) -&gt; <ast.Subscript object at 0x00000194279B95A0><a class="headerlink" href="#_find_usageself-any-file_path-str-" title="Permanent link">&para;</a></h5>
 <p>Find components that use this configuration file.</p>
-<h5 id="generate_consolidation_planself-any-">generate_consolidation_plan(self: Any) -&gt; <ast.Subscript object at 0x0000019434076B60><a class="headerlink" href="#generate_consolidation_planself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="generate_consolidation_planself-any-">generate_consolidation_plan(self: Any) -&gt; <ast.Subscript object at 0x00000194279D6AA0><a class="headerlink" href="#generate_consolidation_planself-any-" title="Permanent link">&para;</a></h5>
 <p>Generate a consolidation plan based on the analysis.</p>
-<h5 id="generate_reportself-any-">generate_report(self: Any) -&gt; <ast.Subscript object at 0x00000194340754E0><a class="headerlink" href="#generate_reportself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="generate_reportself-any-">generate_report(self: Any) -&gt; <ast.Subscript object at 0x00000194279D53C0><a class="headerlink" href="#generate_reportself-any-" title="Permanent link">&para;</a></h5>
 <p>Generate comprehensive dependency mapping report.</p>
 
 

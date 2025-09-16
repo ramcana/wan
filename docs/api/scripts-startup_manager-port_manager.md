@@ -46,7 +46,7 @@ port allocation with conflict resolution.
 
 #### Methods
 
-##### __init__(self: Any, config_path: <ast.Subscript object at 0x0000019434077A90>)
+##### __init__(self: Any, config_path: <ast.Subscript object at 0x0000019427FAE3B0>)
 
 
 
@@ -61,7 +61,7 @@ Args:
 Returns:
     PortCheckResult with status and details
 
-##### _get_process_using_port(self: Any, port: int) -> <ast.Subscript object at 0x0000019434319E40>
+##### _get_process_using_port(self: Any, port: int) -> <ast.Subscript object at 0x0000019428DDD4B0>
 
 Get information about the process using a specific port.
 
@@ -81,7 +81,7 @@ Args:
 Returns:
     True if process can be safely terminated
 
-##### find_available_port(self: Any, start_port: int, max_attempts: int) -> <ast.Subscript object at 0x00000194345E2FE0>
+##### find_available_port(self: Any, start_port: int, max_attempts: int) -> <ast.Subscript object at 0x0000019428DDE4D0>
 
 Find the next available port starting from the given port.
 
@@ -92,7 +92,7 @@ Args:
 Returns:
     Available port number or None if none found
 
-##### find_available_ports_in_range(self: Any, port_range: <ast.Subscript object at 0x00000194345E0F10>) -> <ast.Subscript object at 0x00000194345E1780>
+##### find_available_ports_in_range(self: Any, port_range: <ast.Subscript object at 0x0000019428DDDF30>) -> <ast.Subscript object at 0x0000019428DDFEE0>
 
 Find all available ports in a given range.
 
@@ -102,7 +102,7 @@ Args:
 Returns:
     List of available port numbers
 
-##### detect_port_conflicts(self: Any, required_ports: <ast.Subscript object at 0x00000194345E2E30>) -> <ast.Subscript object at 0x00000194345E18D0>
+##### detect_port_conflicts(self: Any, required_ports: <ast.Subscript object at 0x0000019428DDEDA0>) -> <ast.Subscript object at 0x0000019427BE0670>
 
 Detect conflicts for required ports.
 
@@ -112,7 +112,7 @@ Args:
 Returns:
     List of detected port conflicts
 
-##### check_firewall_exceptions(self: Any, ports: <ast.Subscript object at 0x00000194345E2C80>) -> <ast.Subscript object at 0x00000194345E12A0>
+##### check_firewall_exceptions(self: Any, ports: <ast.Subscript object at 0x0000019427BE0EE0>) -> <ast.Subscript object at 0x0000019427BE2770>
 
 Check if ports have firewall exceptions (Windows-specific).
 
@@ -133,7 +133,7 @@ Args:
 Returns:
     Command string to add firewall exception
 
-##### allocate_ports(self: Any, required_ports: <ast.Subscript object at 0x00000194345E1090>) -> PortAllocation
+##### allocate_ports(self: Any, required_ports: <ast.Subscript object at 0x0000019427BE34F0>) -> PortAllocation
 
 Allocate ports for services, resolving conflicts automatically.
 
@@ -143,7 +143,7 @@ Args:
 Returns:
     PortAllocation with assigned ports and resolution details
 
-##### _find_alternative_port(self: Any, service_name: str, preferred_port: int) -> <ast.Subscript object at 0x0000019431B5F100>
+##### _find_alternative_port(self: Any, service_name: str, preferred_port: int) -> <ast.Subscript object at 0x0000019429C43970>
 
 Find an alternative port for a service.
 
@@ -165,7 +165,7 @@ Args:
 Returns:
     True if process was terminated successfully
 
-##### resolve_port_conflicts(self: Any, conflicts: <ast.Subscript object at 0x00000194341FA4A0>, strategy: ConflictResolution) -> <ast.Subscript object at 0x00000194341F8490>
+##### resolve_port_conflicts(self: Any, conflicts: <ast.Subscript object at 0x0000019427FBE8F0>, strategy: ConflictResolution) -> <ast.Subscript object at 0x0000019427FBF6D0>
 
 Resolve port conflicts using the specified strategy.
 

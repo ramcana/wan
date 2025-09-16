@@ -821,15 +821,15 @@
 <h4 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h4>
 <h5 id="initself-any-config-qualityconfig"><strong>init</strong>(self: Any, config: QualityConfig)<a class="headerlink" href="#initself-any-config-qualityconfig" title="Permanent link">&para;</a></h5>
 <p>Initialize analyzer with configuration.</p>
-<h5 id="analyze_complexityself-any-file_path-path-tree-astast-">analyze_complexity(self: Any, file_path: Path, tree: ast.AST) -&gt; <ast.Subscript object at 0x000001943451CF10><a class="headerlink" href="#analyze_complexityself-any-file_path-path-tree-astast-" title="Permanent link">&para;</a></h5>
+<h5 id="analyze_complexityself-any-file_path-path-tree-astast-">analyze_complexity(self: Any, file_path: Path, tree: ast.AST) -&gt; <ast.Subscript object at 0x000001942CCE4670><a class="headerlink" href="#analyze_complexityself-any-file_path-path-tree-astast-" title="Permanent link">&para;</a></h5>
 <p>Analyze complexity in the given AST.</p>
 <p>Returns:
     Tuple of (issues, metrics)</p>
-<h5 id="_analyze_module_complexityself-any-file_path-path-tree-astast-">_analyze_module_complexity(self: Any, file_path: Path, tree: ast.AST) -&gt; <ast.Subscript object at 0x0000019432E65E70><a class="headerlink" href="#_analyze_module_complexityself-any-file_path-path-tree-astast-" title="Permanent link">&para;</a></h5>
+<h5 id="_analyze_module_complexityself-any-file_path-path-tree-astast-">_analyze_module_complexity(self: Any, file_path: Path, tree: ast.AST) -&gt; <ast.Subscript object at 0x000001942CE21B70><a class="headerlink" href="#_analyze_module_complexityself-any-file_path-path-tree-astast-" title="Permanent link">&para;</a></h5>
 <p>Analyze module-level complexity.</p>
-<h5 id="_analyze_function_complexityself-any-file_path-path-node-astfunctiondef-">_analyze_function_complexity(self: Any, file_path: Path, node: ast.FunctionDef) -&gt; <ast.Subscript object at 0x000001942F02B3A0><a class="headerlink" href="#_analyze_function_complexityself-any-file_path-path-node-astfunctiondef-" title="Permanent link">&para;</a></h5>
+<h5 id="_analyze_function_complexityself-any-file_path-path-node-astfunctiondef-">_analyze_function_complexity(self: Any, file_path: Path, node: ast.FunctionDef) -&gt; <ast.Subscript object at 0x000001942CD88400><a class="headerlink" href="#_analyze_function_complexityself-any-file_path-path-node-astfunctiondef-" title="Permanent link">&para;</a></h5>
 <p>Analyze complexity of a specific function.</p>
-<h5 id="_analyze_class_complexityself-any-file_path-path-node-astclassdef-">_analyze_class_complexity(self: Any, file_path: Path, node: ast.ClassDef) -&gt; <ast.Subscript object at 0x0000019434138E50><a class="headerlink" href="#_analyze_class_complexityself-any-file_path-path-node-astclassdef-" title="Permanent link">&para;</a></h5>
+<h5 id="_analyze_class_complexityself-any-file_path-path-node-astclassdef-">_analyze_class_complexity(self: Any, file_path: Path, node: ast.ClassDef) -&gt; <ast.Subscript object at 0x000001942806D150><a class="headerlink" href="#_analyze_class_complexityself-any-file_path-path-node-astclassdef-" title="Permanent link">&para;</a></h5>
 <p>Analyze complexity of a specific class.</p>
 <h5 id="_calculate_cyclomatic_complexityself-any-node-astast-int">_calculate_cyclomatic_complexity(self: Any, node: ast.AST) -&gt; int<a class="headerlink" href="#_calculate_cyclomatic_complexityself-any-node-astast-int" title="Permanent link">&para;</a></h5>
 <p>Calculate cyclomatic complexity for a function or method.</p>
@@ -837,7 +837,7 @@
 <p>Calculate maximum nesting depth in a function.</p>
 <h5 id="_calculate_maintainability_indexself-any-file_path-path-tree-astast-avg_complexity-float-float">_calculate_maintainability_index(self: Any, file_path: Path, tree: ast.AST, avg_complexity: float) -&gt; float<a class="headerlink" href="#_calculate_maintainability_indexself-any-file_path-path-tree-astast-avg_complexity-float-float" title="Permanent link">&para;</a></h5>
 <p>Calculate maintainability index (0-100, higher is better).</p>
-<h5 id="_calculate_halstead_metricsself-any-tree-astast-">_calculate_halstead_metrics(self: Any, tree: ast.AST) -&gt; <ast.Subscript object at 0x000001943193A080><a class="headerlink" href="#_calculate_halstead_metricsself-any-tree-astast-" title="Permanent link">&para;</a></h5>
+<h5 id="_calculate_halstead_metricsself-any-tree-astast-">_calculate_halstead_metrics(self: Any, tree: ast.AST) -&gt; <ast.Subscript object at 0x0000019427509090><a class="headerlink" href="#_calculate_halstead_metricsself-any-tree-astast-" title="Permanent link">&para;</a></h5>
 <p>Calculate simplified Halstead operators and operands count.</p>
 <h5 id="_get_complexity_reduction_suggestionself-any-node-astfunctiondef-complexity-int-str">_get_complexity_reduction_suggestion(self: Any, node: ast.FunctionDef, complexity: int) -&gt; str<a class="headerlink" href="#_get_complexity_reduction_suggestionself-any-node-astfunctiondef-complexity-int-str" title="Permanent link">&para;</a></h5>
 <p>Get specific suggestion for reducing function complexity.</p>

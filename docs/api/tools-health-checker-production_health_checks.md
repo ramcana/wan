@@ -23,7 +23,7 @@ Production-specific health checks for system validation
 
 #### Methods
 
-##### __init__(self: Any, config: <ast.Subscript object at 0x00000194319D71C0>)
+##### __init__(self: Any, config: <ast.Subscript object at 0x0000019429C6B1C0>)
 
 
 

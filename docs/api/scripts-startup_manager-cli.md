@@ -42,7 +42,7 @@ Setup console styles and themes
 
 Display the startup manager banner
 
-##### create_progress_context(self: Any, description: str, total: <ast.Subscript object at 0x000001942F8394B0>)
+##### create_progress_context(self: Any, description: str, total: <ast.Subscript object at 0x000001942C519FF0>)
 
 Create a progress context manager
 
@@ -66,7 +66,7 @@ Print message only in debug mode
 
 Get user confirmation for actions
 
-##### prompt_choice(self: Any, message: str, choices: <ast.Subscript object at 0x00000194319452A0>, default: str) -> str
+##### prompt_choice(self: Any, message: str, choices: <ast.Subscript object at 0x000001942C4F5DE0>, default: str) -> str
 
 Prompt user for a choice from a list
 
@@ -74,11 +74,11 @@ Prompt user for a choice from a list
 
 Prompt user for a number
 
-##### display_table(self: Any, title: str, headers: <ast.Subscript object at 0x0000019431922FB0>, rows: <ast.Subscript object at 0x0000019431922EF0>)
+##### display_table(self: Any, title: str, headers: <ast.Subscript object at 0x000001942C5DFAF0>, rows: <ast.Subscript object at 0x000001942C5DFA30>)
 
 Display a formatted table
 
-##### display_key_value_pairs(self: Any, title: str, pairs: <ast.Subscript object at 0x0000019431917070>)
+##### display_key_value_pairs(self: Any, title: str, pairs: <ast.Subscript object at 0x000001942C5BFBB0>)
 
 Display key-value pairs in a formatted way
 

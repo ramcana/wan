@@ -23,7 +23,7 @@ Command-line interface for test auditor
 
 
 
-##### run(self: Any, args: <ast.Subscript object at 0x000001942F33DD20>) -> int
+##### run(self: Any, args: <ast.Subscript object at 0x0000019427B2FF40>) -> int
 
 Run the CLI with given arguments
 
@@ -51,7 +51,7 @@ Show performance analysis
 
 Show file analysis
 
-##### _load_or_run_audit(self: Any, report_file: <ast.Subscript object at 0x000001943455CF40>) -> TestSuiteAuditReport
+##### _load_or_run_audit(self: Any, report_file: <ast.Subscript object at 0x000001942A2E6FB0>) -> TestSuiteAuditReport
 
 Load existing report or run new audit
 

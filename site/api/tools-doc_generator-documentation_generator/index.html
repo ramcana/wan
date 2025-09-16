@@ -995,34 +995,34 @@
 <h3 id="documentationgenerator">DocumentationGenerator<a class="headerlink" href="#documentationgenerator" title="Permanent link">&para;</a></h3>
 <p>Main class for consolidating existing documentation and generating API docs</p>
 <h4 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h4>
-<h5 id="initself-any-source_dirs-output_dir-path"><strong>init</strong>(self: Any, source_dirs: <ast.Subscript object at 0x0000019434543F10>, output_dir: Path)<a class="headerlink" href="#initself-any-source_dirs-output_dir-path" title="Permanent link">&para;</a></h5>
-<h5 id="discover_documentation_filesself-any-">discover_documentation_files(self: Any) -&gt; <ast.Subscript object at 0x0000019434541900><a class="headerlink" href="#discover_documentation_filesself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="initself-any-source_dirs-output_dir-path"><strong>init</strong>(self: Any, source_dirs: <ast.Subscript object at 0x000001942C653A00>, output_dir: Path)<a class="headerlink" href="#initself-any-source_dirs-output_dir-path" title="Permanent link">&para;</a></h5>
+<h5 id="discover_documentation_filesself-any-">discover_documentation_files(self: Any) -&gt; <ast.Subscript object at 0x00000194285221D0><a class="headerlink" href="#discover_documentation_filesself-any-" title="Permanent link">&para;</a></h5>
 <p>Discover all documentation files in source directories</p>
 <h5 id="_should_exclude_fileself-any-file_path-path-bool">_should_exclude_file(self: Any, file_path: Path) -&gt; bool<a class="headerlink" href="#_should_exclude_fileself-any-file_path-path-bool" title="Permanent link">&para;</a></h5>
 <p>Check if file should be excluded from documentation</p>
-<h5 id="parse_documentation_fileself-any-file_path-path-">parse_documentation_file(self: Any, file_path: Path) -&gt; <ast.Subscript object at 0x0000019434542D70><a class="headerlink" href="#parse_documentation_fileself-any-file_path-path-" title="Permanent link">&para;</a></h5>
+<h5 id="parse_documentation_fileself-any-file_path-path-">parse_documentation_file(self: Any, file_path: Path) -&gt; <ast.Subscript object at 0x000001942C555630><a class="headerlink" href="#parse_documentation_fileself-any-file_path-path-" title="Permanent link">&para;</a></h5>
 <p>Parse a documentation file and extract metadata</p>
 <h5 id="_extract_titleself-any-content-str-file_path-path-str">_extract_title(self: Any, content: str, file_path: Path) -&gt; str<a class="headerlink" href="#_extract_titleself-any-content-str-file_path-path-str" title="Permanent link">&para;</a></h5>
 <p>Extract title from content or filename</p>
-<h5 id="_extract_frontmatterself-any-content-str-">_extract_frontmatter(self: Any, content: str) -&gt; <ast.Subscript object at 0x000001942F448BE0><a class="headerlink" href="#_extract_frontmatterself-any-content-str-" title="Permanent link">&para;</a></h5>
+<h5 id="_extract_frontmatterself-any-content-str-">_extract_frontmatter(self: Any, content: str) -&gt; <ast.Subscript object at 0x000001942C554610><a class="headerlink" href="#_extract_frontmatterself-any-content-str-" title="Permanent link">&para;</a></h5>
 <p>Extract YAML frontmatter from content</p>
-<h5 id="_extract_linksself-any-content-str-">_extract_links(self: Any, content: str) -&gt; <ast.Subscript object at 0x000001942F448E20><a class="headerlink" href="#_extract_linksself-any-content-str-" title="Permanent link">&para;</a></h5>
+<h5 id="_extract_linksself-any-content-str-">_extract_links(self: Any, content: str) -&gt; <ast.Subscript object at 0x000001942C557D90><a class="headerlink" href="#_extract_linksself-any-content-str-" title="Permanent link">&para;</a></h5>
 <p>Extract markdown links from content</p>
-<h5 id="_determine_categoryself-any-file_path-path-metadata-str">_determine_category(self: Any, file_path: Path, metadata: <ast.Subscript object at 0x000001942F4488B0>) -&gt; str<a class="headerlink" href="#_determine_categoryself-any-file_path-path-metadata-str" title="Permanent link">&para;</a></h5>
+<h5 id="_determine_categoryself-any-file_path-path-metadata-str">_determine_category(self: Any, file_path: Path, metadata: <ast.Subscript object at 0x000001942C554F70>) -&gt; str<a class="headerlink" href="#_determine_categoryself-any-file_path-path-metadata-str" title="Permanent link">&para;</a></h5>
 <p>Determine documentation category</p>
-<h5 id="_extract_tagsself-any-content-str-metadata-">_extract_tags(self: Any, content: str, metadata: <ast.Subscript object at 0x000001943448C9A0>) -&gt; <ast.Subscript object at 0x000001943448DF60><a class="headerlink" href="#_extract_tagsself-any-content-str-metadata-" title="Permanent link">&para;</a></h5>
+<h5 id="_extract_tagsself-any-content-str-metadata-">_extract_tags(self: Any, content: str, metadata: <ast.Subscript object at 0x000001942C554CD0>) -&gt; <ast.Subscript object at 0x00000194284B2650><a class="headerlink" href="#_extract_tagsself-any-content-str-metadata-" title="Permanent link">&para;</a></h5>
 <p>Extract tags from content and metadata</p>
-<h5 id="generate_api_docsself-any-code_dirs-">generate_api_docs(self: Any, code_dirs: <ast.Subscript object at 0x000001943448D5D0>) -&gt; <ast.Subscript object at 0x000001943448F6A0><a class="headerlink" href="#generate_api_docsself-any-code_dirs-" title="Permanent link">&para;</a></h5>
+<h5 id="generate_api_docsself-any-code_dirs-">generate_api_docs(self: Any, code_dirs: <ast.Subscript object at 0x00000194284B1A50>) -&gt; <ast.Subscript object at 0x0000019428DDFD60><a class="headerlink" href="#generate_api_docsself-any-code_dirs-" title="Permanent link">&para;</a></h5>
 <p>Generate API documentation from code annotations</p>
-<h5 id="_parse_python_fileself-any-file_path-path-">_parse_python_file(self: Any, file_path: Path) -&gt; <ast.Subscript object at 0x00000194340D1840><a class="headerlink" href="#_parse_python_fileself-any-file_path-path-" title="Permanent link">&para;</a></h5>
+<h5 id="_parse_python_fileself-any-file_path-path-">_parse_python_file(self: Any, file_path: Path) -&gt; <ast.Subscript object at 0x0000019428DDD270><a class="headerlink" href="#_parse_python_fileself-any-file_path-path-" title="Permanent link">&para;</a></h5>
 <p>Parse Python file and extract API documentation</p>
 <h5 id="_get_module_nameself-any-file_path-path-str">_get_module_name(self: Any, file_path: Path) -&gt; str<a class="headerlink" href="#_get_module_nameself-any-file_path-path-str" title="Permanent link">&para;</a></h5>
 <p>Get module name from file path</p>
-<h5 id="_extract_class_infoself-any-node-astclassdef-">_extract_class_info(self: Any, node: ast.ClassDef) -&gt; <ast.Subscript object at 0x00000194340D02E0><a class="headerlink" href="#_extract_class_infoself-any-node-astclassdef-" title="Permanent link">&para;</a></h5>
+<h5 id="_extract_class_infoself-any-node-astclassdef-">_extract_class_info(self: Any, node: ast.ClassDef) -&gt; <ast.Subscript object at 0x0000019427FBF4C0><a class="headerlink" href="#_extract_class_infoself-any-node-astclassdef-" title="Permanent link">&para;</a></h5>
 <p>Extract class information</p>
-<h5 id="_extract_function_infoself-any-node-astfunctiondef-">_extract_function_info(self: Any, node: ast.FunctionDef) -&gt; <ast.Subscript object at 0x0000019432D9E050><a class="headerlink" href="#_extract_function_infoself-any-node-astfunctiondef-" title="Permanent link">&para;</a></h5>
+<h5 id="_extract_function_infoself-any-node-astfunctiondef-">_extract_function_info(self: Any, node: ast.FunctionDef) -&gt; <ast.Subscript object at 0x0000019427FBDA50><a class="headerlink" href="#_extract_function_infoself-any-node-astfunctiondef-" title="Permanent link">&para;</a></h5>
 <p>Extract function information</p>
-<h5 id="_extract_constant_infoself-any-node-astassign-">_extract_constant_info(self: Any, node: ast.Assign) -&gt; <ast.Subscript object at 0x0000019432D9ECE0><a class="headerlink" href="#_extract_constant_infoself-any-node-astassign-" title="Permanent link">&para;</a></h5>
+<h5 id="_extract_constant_infoself-any-node-astassign-">_extract_constant_info(self: Any, node: ast.Assign) -&gt; <ast.Subscript object at 0x0000019427FBF5B0><a class="headerlink" href="#_extract_constant_infoself-any-node-astassign-" title="Permanent link">&para;</a></h5>
 <p>Extract constant information</p>
 <h5 id="_get_nameself-any-node-astast-str">_get_name(self: Any, node: ast.AST) -&gt; str<a class="headerlink" href="#_get_nameself-any-node-astast-str" title="Permanent link">&para;</a></h5>
 <p>Get name from AST node</p>
@@ -1036,7 +1036,7 @@
 <p>Migrate file to target location with updated content</p>
 <h5 id="_build_link_graphself-any">_build_link_graph(self: Any)<a class="headerlink" href="#_build_link_graphself-any" title="Permanent link">&para;</a></h5>
 <p>Build link graph for cross-references</p>
-<h5 id="_find_broken_linksself-any-">_find_broken_links(self: Any) -&gt; <ast.Subscript object at 0x000001942F6C8640><a class="headerlink" href="#_find_broken_linksself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="_find_broken_linksself-any-">_find_broken_links(self: Any) -&gt; <ast.Subscript object at 0x0000019427A6B040><a class="headerlink" href="#_find_broken_linksself-any-" title="Permanent link">&para;</a></h5>
 <p>Find broken links in documentation</p>
 <h5 id="generate_indexself-any-str">generate_index(self: Any) -&gt; str<a class="headerlink" href="#generate_indexself-any-str" title="Permanent link">&para;</a></h5>
 <p>Generate main documentation index</p>

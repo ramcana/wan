@@ -24,7 +24,7 @@ Custom formatter that outputs structured JSON logs.
 
 Format log record as structured JSON.
 
-##### formatTime(self: Any, record: logging.LogRecord, datefmt: <ast.Subscript object at 0x0000019431929750>) -> str
+##### formatTime(self: Any, record: logging.LogRecord, datefmt: <ast.Subscript object at 0x000001942CBC1930>) -> str
 
 Format timestamp in ISO format.
 
@@ -56,11 +56,11 @@ Centralized logger configuration for the Model Orchestrator.
 
 
 
-##### configure(self: Any, level: str, structured: bool, output_file: <ast.Subscript object at 0x000001942F29BC70>) -> logging.Logger
+##### configure(self: Any, level: str, structured: bool, output_file: <ast.Subscript object at 0x000001942CBC0940>) -> logging.Logger
 
 Configure the logger with structured output.
 
-##### get_logger(self: Any, name: <ast.Subscript object at 0x00000194345E0460>) -> logging.Logger
+##### get_logger(self: Any, name: <ast.Subscript object at 0x000001942CB0B7C0>) -> logging.Logger
 
 Get a logger instance.
 
@@ -70,7 +70,7 @@ Context manager for setting correlation ID and additional context.
 
 #### Methods
 
-##### __init__(self: Any, correlation_id: <ast.Subscript object at 0x00000194345E2740>)
+##### __init__(self: Any, correlation_id: <ast.Subscript object at 0x000001942CB0B3A0>)
 
 
 
@@ -92,7 +92,7 @@ Context manager for measuring and logging operation performance.
 
 #### Methods
 
-##### __init__(self: Any, operation: str, logger: <ast.Subscript object at 0x000001942FC01ED0>)
+##### __init__(self: Any, operation: str, logger: <ast.Subscript object at 0x0000019427B919C0>)
 
 
 
@@ -104,7 +104,7 @@ Context manager for measuring and logging operation performance.
 
 
 
-##### duration(self: Any) -> <ast.Subscript object at 0x000001943460A2F0>
+##### duration(self: Any) -> <ast.Subscript object at 0x0000019427B91360>
 
 Get the duration of the operation if completed.
 

@@ -32,7 +32,7 @@ Manages error recovery strategies and retry logic.
 
 #### Methods
 
-##### __init__(self: Any, config: <ast.Subscript object at 0x0000019434673FA0>)
+##### __init__(self: Any, config: <ast.Subscript object at 0x000001942CE750C0>)
 
 
 
@@ -56,7 +56,7 @@ Determine if an operation should be retried.
 
 Create a recovery context for an operation.
 
-##### retry_with_recovery(self: Any, func: <ast.Subscript object at 0x000001943448CD00>, context: RecoveryContext) -> T
+##### retry_with_recovery(self: Any, func: <ast.Subscript object at 0x000001942CE23520>, context: RecoveryContext) -> T
 
 Execute a function with retry logic and error recovery.
 

@@ -62,7 +62,7 @@ Load and parse the TOML manifest file.
 
 Parse a single model specification from manifest data.
 
-##### spec(self: Any, model_id: str, variant: <ast.Subscript object at 0x000001942F68BBE0>) -> ModelSpec
+##### spec(self: Any, model_id: str, variant: <ast.Subscript object at 0x000001942792DDB0>) -> ModelSpec
 
 Get the specification for a model.
 
@@ -77,22 +77,22 @@ Raises:
     ModelNotFoundError: If model is not found
     VariantNotFoundError: If variant is not available
 
-##### list_models(self: Any) -> <ast.Subscript object at 0x000001942FE1D4E0>
+##### list_models(self: Any) -> <ast.Subscript object at 0x000001942792FCD0>
 
 Get a list of all available model IDs.
 
-##### validate_manifest(self: Any) -> <ast.Subscript object at 0x000001942FE1E350>
+##### validate_manifest(self: Any) -> <ast.Subscript object at 0x000001942792F280>
 
 Validate the loaded manifest for consistency and safety.
 
 Returns:
     List of validation errors (empty if valid)
 
-##### _validate_path_safety(self: Any, paths: <ast.Subscript object at 0x000001942FE1DBA0>) -> <ast.Subscript object at 0x000001942FE1CDF0>
+##### _validate_path_safety(self: Any, paths: <ast.Subscript object at 0x000001942792F130>) -> <ast.Subscript object at 0x000001942C516B00>
 
 Validate paths for safety (no directory traversal).
 
-##### _validate_case_collisions(self: Any, paths: <ast.Subscript object at 0x000001942FE1CB50>) -> <ast.Subscript object at 0x00000194302C85B0>
+##### _validate_case_collisions(self: Any, paths: <ast.Subscript object at 0x000001942C516C20>) -> <ast.Subscript object at 0x000001942CE1E260>
 
 Validate for case collisions on case-insensitive file systems.
 
@@ -100,7 +100,7 @@ Validate for case collisions on case-insensitive file systems.
 
 Get the schema version of the loaded manifest.
 
-##### normalize_model_id(model_id: str, variant: <ast.Subscript object at 0x00000194302CA7D0>) -> NormalizedModelId
+##### normalize_model_id(model_id: str, variant: <ast.Subscript object at 0x000001942CE1C9A0>) -> NormalizedModelId
 
 Normalize a model ID into canonical components.
 

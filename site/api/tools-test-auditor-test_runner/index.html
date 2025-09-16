@@ -1134,9 +1134,9 @@
 <p>Collects test coverage information</p>
 <h4 id="methods_3">Methods<a class="headerlink" href="#methods_3" title="Permanent link">&para;</a></h4>
 <h5 id="initself-any_3"><strong>init</strong>(self: Any)<a class="headerlink" href="#initself-any_3" title="Permanent link">&para;</a></h5>
-<h5 id="setup_coverageself-any-test_file-path-temp_dir-path-">setup_coverage(self: Any, test_file: Path, temp_dir: Path) -&gt; <ast.Subscript object at 0x000001942F3913F0><a class="headerlink" href="#setup_coverageself-any-test_file-path-temp_dir-path-" title="Permanent link">&para;</a></h5>
+<h5 id="setup_coverageself-any-test_file-path-temp_dir-path-">setup_coverage(self: Any, test_file: Path, temp_dir: Path) -&gt; <ast.Subscript object at 0x0000019427EFDE70><a class="headerlink" href="#setup_coverageself-any-test_file-path-temp_dir-path-" title="Permanent link">&para;</a></h5>
 <p>Setup coverage collection for test execution</p>
-<h5 id="collect_coverage_dataself-any-temp_dir-path-">collect_coverage_data(self: Any, temp_dir: Path) -&gt; <ast.Subscript object at 0x000001942F393CA0><a class="headerlink" href="#collect_coverage_dataself-any-temp_dir-path-" title="Permanent link">&para;</a></h5>
+<h5 id="collect_coverage_dataself-any-temp_dir-path-">collect_coverage_data(self: Any, temp_dir: Path) -&gt; <ast.Subscript object at 0x000001942C8BA2C0><a class="headerlink" href="#collect_coverage_dataself-any-temp_dir-path-" title="Permanent link">&para;</a></h5>
 <p>Collect coverage data from test execution</p>
 <h3 id="testexecutor">TestExecutor<a class="headerlink" href="#testexecutor" title="Permanent link">&para;</a></h3>
 <p>Executes individual test files with full isolation and monitoring</p>
@@ -1146,21 +1146,21 @@
 <p>Execute a single test file with full monitoring</p>
 <h5 id="_execute_single_attemptself-any-test_file-path-project_root-path-attempt-int-testexecutionresult">_execute_single_attempt(self: Any, test_file: Path, project_root: Path, attempt: int) -&gt; TestExecutionResult<a class="headerlink" href="#_execute_single_attemptself-any-test_file-path-project_root-path-attempt-int-testexecutionresult" title="Permanent link">&para;</a></h5>
 <p>Execute single test attempt</p>
-<h5 id="_parse_test_countsself-any-stdout-str-temp_dir-path-">_parse_test_counts(self: Any, stdout: str, temp_dir: Path) -&gt; <ast.Subscript object at 0x000001942F6C4EE0><a class="headerlink" href="#_parse_test_countsself-any-stdout-str-temp_dir-path-" title="Permanent link">&para;</a></h5>
+<h5 id="_parse_test_countsself-any-stdout-str-temp_dir-path-">_parse_test_counts(self: Any, stdout: str, temp_dir: Path) -&gt; <ast.Subscript object at 0x0000019428119AB0><a class="headerlink" href="#_parse_test_countsself-any-stdout-str-temp_dir-path-" title="Permanent link">&para;</a></h5>
 <p>Parse test counts from pytest output</p>
 <h3 id="paralleltestrunner">ParallelTestRunner<a class="headerlink" href="#paralleltestrunner" title="Permanent link">&para;</a></h3>
 <p>Runs tests in parallel with resource management</p>
 <h4 id="methods_5">Methods<a class="headerlink" href="#methods_5" title="Permanent link">&para;</a></h4>
-<h5 id="initself-any-max_workers"><strong>init</strong>(self: Any, max_workers: <ast.Subscript object at 0x000001942F6C5A80>)<a class="headerlink" href="#initself-any-max_workers" title="Permanent link">&para;</a></h5>
-<h5 id="run_tests_parallelself-any-test_files-project_root-path-testsuiteexecutionreport">run_tests_parallel(self: Any, test_files: <ast.Subscript object at 0x000001942F6C6A70>, project_root: Path) -&gt; TestSuiteExecutionReport<a class="headerlink" href="#run_tests_parallelself-any-test_files-project_root-path-testsuiteexecutionreport" title="Permanent link">&para;</a></h5>
+<h5 id="initself-any-max_workers"><strong>init</strong>(self: Any, max_workers: <ast.Subscript object at 0x000001942811B610>)<a class="headerlink" href="#initself-any-max_workers" title="Permanent link">&para;</a></h5>
+<h5 id="run_tests_parallelself-any-test_files-project_root-path-testsuiteexecutionreport">run_tests_parallel(self: Any, test_files: <ast.Subscript object at 0x000001942811A260>, project_root: Path) -&gt; TestSuiteExecutionReport<a class="headerlink" href="#run_tests_parallelself-any-test_files-project_root-path-testsuiteexecutionreport" title="Permanent link">&para;</a></h5>
 <p>Run tests in parallel</p>
 <h5 id="_run_single_testself-any-test_file-path-project_root-path-testexecutionresult">_run_single_test(self: Any, test_file: Path, project_root: Path) -&gt; TestExecutionResult<a class="headerlink" href="#_run_single_testself-any-test_file-path-project_root-path-testexecutionresult" title="Permanent link">&para;</a></h5>
 <p>Run single test (for process pool)</p>
-<h5 id="_generate_performance_summaryself-any-results-">_generate_performance_summary(self: Any, results: <ast.Subscript object at 0x000001942FB481C0>) -&gt; <ast.Subscript object at 0x000001942FB4BDF0><a class="headerlink" href="#_generate_performance_summaryself-any-results-" title="Permanent link">&para;</a></h5>
+<h5 id="_generate_performance_summaryself-any-results-">_generate_performance_summary(self: Any, results: <ast.Subscript object at 0x0000019427FDC250>) -&gt; <ast.Subscript object at 0x0000019427FDDD80><a class="headerlink" href="#_generate_performance_summaryself-any-results-" title="Permanent link">&para;</a></h5>
 <p>Generate performance summary</p>
-<h5 id="_generate_retry_summaryself-any-results-">_generate_retry_summary(self: Any, results: <ast.Subscript object at 0x000001942FB4BCA0>) -&gt; <ast.Subscript object at 0x000001942FB48880><a class="headerlink" href="#_generate_retry_summaryself-any-results-" title="Permanent link">&para;</a></h5>
+<h5 id="_generate_retry_summaryself-any-results-">_generate_retry_summary(self: Any, results: <ast.Subscript object at 0x0000019427FDDFF0>) -&gt; <ast.Subscript object at 0x0000019427FDD960><a class="headerlink" href="#_generate_retry_summaryself-any-results-" title="Permanent link">&para;</a></h5>
 <p>Generate retry summary</p>
-<h5 id="_generate_timeout_summaryself-any-results-">_generate_timeout_summary(self: Any, results: <ast.Subscript object at 0x000001942FB48700>) -&gt; <ast.Subscript object at 0x000001942FB4B8B0><a class="headerlink" href="#_generate_timeout_summaryself-any-results-" title="Permanent link">&para;</a></h5>
+<h5 id="_generate_timeout_summaryself-any-results-">_generate_timeout_summary(self: Any, results: <ast.Subscript object at 0x0000019427FDD570>) -&gt; <ast.Subscript object at 0x0000019427FDD3F0><a class="headerlink" href="#_generate_timeout_summaryself-any-results-" title="Permanent link">&para;</a></h5>
 <p>Generate timeout summary</p>
 
 

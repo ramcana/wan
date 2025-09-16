@@ -931,35 +931,35 @@ between documentation pages.</p>
 <p>Scan all documentation files and extract metadata</p>
 <h5 id="_should_skip_fileself-any-file_path-path-bool">_should_skip_file(self: Any, file_path: Path) -&gt; bool<a class="headerlink" href="#_should_skip_fileself-any-file_path-path-bool" title="Permanent link">&para;</a></h5>
 <p>Check if file should be skipped</p>
-<h5 id="_extract_metadataself-any-file_path-path-">_extract_metadata(self: Any, file_path: Path) -&gt; <ast.Subscript object at 0x000001942FBC2440><a class="headerlink" href="#_extract_metadataself-any-file_path-path-" title="Permanent link">&para;</a></h5>
+<h5 id="_extract_metadataself-any-file_path-path-">_extract_metadata(self: Any, file_path: Path) -&gt; <ast.Subscript object at 0x0000019427CA69E0><a class="headerlink" href="#_extract_metadataself-any-file_path-path-" title="Permanent link">&para;</a></h5>
 <p>Extract metadata from a documentation file</p>
-<h5 id="_parse_frontmatterself-any-content-str-">_parse_frontmatter(self: Any, content: str) -&gt; <ast.Subscript object at 0x000001942FBC1990><a class="headerlink" href="#_parse_frontmatterself-any-content-str-" title="Permanent link">&para;</a></h5>
+<h5 id="_parse_frontmatterself-any-content-str-">_parse_frontmatter(self: Any, content: str) -&gt; <ast.Subscript object at 0x0000019427CA7EB0><a class="headerlink" href="#_parse_frontmatterself-any-content-str-" title="Permanent link">&para;</a></h5>
 <p>Parse YAML frontmatter from content</p>
-<h5 id="_generate_basic_metadataself-any-file_path-path-">_generate_basic_metadata(self: Any, file_path: Path) -&gt; <ast.Subscript object at 0x000001942FBC2E60><a class="headerlink" href="#_generate_basic_metadataself-any-file_path-path-" title="Permanent link">&para;</a></h5>
+<h5 id="_generate_basic_metadataself-any-file_path-path-">_generate_basic_metadata(self: Any, file_path: Path) -&gt; <ast.Subscript object at 0x0000019427CA7AF0><a class="headerlink" href="#_generate_basic_metadataself-any-file_path-path-" title="Permanent link">&para;</a></h5>
 <p>Generate basic metadata for files without frontmatter</p>
 <h5 id="_generate_titleself-any-file_path-path-str">_generate_title(self: Any, file_path: Path) -&gt; str<a class="headerlink" href="#_generate_titleself-any-file_path-path-str" title="Permanent link">&para;</a></h5>
 <p>Generate title from filename</p>
 <h5 id="_infer_categoryself-any-file_path-path-str">_infer_category(self: Any, file_path: Path) -&gt; str<a class="headerlink" href="#_infer_categoryself-any-file_path-path-str" title="Permanent link">&para;</a></h5>
 <p>Infer category from file path</p>
-<h5 id="_infer_tagsself-any-file_path-path-">_infer_tags(self: Any, file_path: Path) -&gt; <ast.Subscript object at 0x000001942F42ED40><a class="headerlink" href="#_infer_tagsself-any-file_path-path-" title="Permanent link">&para;</a></h5>
+<h5 id="_infer_tagsself-any-file_path-path-">_infer_tags(self: Any, file_path: Path) -&gt; <ast.Subscript object at 0x000001942CC44340><a class="headerlink" href="#_infer_tagsself-any-file_path-path-" title="Permanent link">&para;</a></h5>
 <p>Infer tags from filename and path</p>
-<h5 id="_extract_cross_referencesself-any-file_path-path-relative_path-str-">_extract_cross_references(self: Any, file_path: Path, relative_path: str) -&gt; <ast.Subscript object at 0x0000019432E3B7C0><a class="headerlink" href="#_extract_cross_referencesself-any-file_path-path-relative_path-str-" title="Permanent link">&para;</a></h5>
+<h5 id="_extract_cross_referencesself-any-file_path-path-relative_path-str-">_extract_cross_references(self: Any, file_path: Path, relative_path: str) -&gt; <ast.Subscript object at 0x00000194285C6440><a class="headerlink" href="#_extract_cross_referencesself-any-file_path-path-relative_path-str-" title="Permanent link">&para;</a></h5>
 <p>Extract cross-references from a documentation file</p>
 <h5 id="_build_indexself-any-documentationindex">_build_index(self: Any) -&gt; DocumentationIndex<a class="headerlink" href="#_build_indexself-any-documentationindex" title="Permanent link">&para;</a></h5>
 <p>Build complete documentation index</p>
 <h5 id="save_indexself-any-index-documentationindex">save_index(self: Any, index: DocumentationIndex)<a class="headerlink" href="#save_indexself-any-index-documentationindex" title="Permanent link">&para;</a></h5>
 <p>Save documentation index to file</p>
-<h5 id="load_indexself-any-">load_index(self: Any) -&gt; <ast.Subscript object at 0x0000019432E38430><a class="headerlink" href="#load_indexself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="load_indexself-any-">load_index(self: Any) -&gt; <ast.Subscript object at 0x000001942C5F3130><a class="headerlink" href="#load_indexself-any-" title="Permanent link">&para;</a></h5>
 <p>Load documentation index from file</p>
 <h5 id="update_page_metadataself-any-page_path-str-metadata-documentmetadata">update_page_metadata(self: Any, page_path: str, metadata: DocumentMetadata)<a class="headerlink" href="#update_page_metadataself-any-page_path-str-metadata-documentmetadata" title="Permanent link">&para;</a></h5>
 <p>Update metadata for a specific page</p>
 <h5 id="_update_file_frontmatterself-any-file_path-path-metadata-documentmetadata">_update_file_frontmatter(self: Any, file_path: Path, metadata: DocumentMetadata)<a class="headerlink" href="#_update_file_frontmatterself-any-file_path-path-metadata-documentmetadata" title="Permanent link">&para;</a></h5>
 <p>Update frontmatter in a documentation file</p>
-<h5 id="find_broken_referencesself-any-">find_broken_references(self: Any) -&gt; <ast.Subscript object at 0x0000019432DE5030><a class="headerlink" href="#find_broken_referencesself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="find_broken_referencesself-any-">find_broken_references(self: Any) -&gt; <ast.Subscript object at 0x000001942C5F1420><a class="headerlink" href="#find_broken_referencesself-any-" title="Permanent link">&para;</a></h5>
 <p>Find cross-references that point to non-existent pages</p>
-<h5 id="suggest_related_pagesself-any-page_path-str-">suggest_related_pages(self: Any, page_path: str) -&gt; <ast.Subscript object at 0x0000019432DE4730><a class="headerlink" href="#suggest_related_pagesself-any-page_path-str-" title="Permanent link">&para;</a></h5>
+<h5 id="suggest_related_pagesself-any-page_path-str-">suggest_related_pages(self: Any, page_path: str) -&gt; <ast.Subscript object at 0x0000019427C7AD40><a class="headerlink" href="#suggest_related_pagesself-any-page_path-str-" title="Permanent link">&para;</a></h5>
 <p>Suggest related pages based on tags and content</p>
-<h5 id="generate_navigation_menuself-any-">generate_navigation_menu(self: Any) -&gt; <ast.Subscript object at 0x0000019432DE7610><a class="headerlink" href="#generate_navigation_menuself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="generate_navigation_menuself-any-">generate_navigation_menu(self: Any) -&gt; <ast.Subscript object at 0x0000019427C7A080><a class="headerlink" href="#generate_navigation_menuself-any-" title="Permanent link">&para;</a></h5>
 <p>Generate navigation menu structure</p>
 
 

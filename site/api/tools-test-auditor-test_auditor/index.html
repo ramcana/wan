@@ -1032,33 +1032,33 @@
 <p>Discovers and categorizes test files across the project</p>
 <h4 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h4>
 <h5 id="initself-any-project_root-path"><strong>init</strong>(self: Any, project_root: Path)<a class="headerlink" href="#initself-any-project_root-path" title="Permanent link">&para;</a></h5>
-<h5 id="discover_test_filesself-any-">discover_test_files(self: Any) -&gt; <ast.Subscript object at 0x000001942FB33CA0><a class="headerlink" href="#discover_test_filesself-any-" title="Permanent link">&para;</a></h5>
+<h5 id="discover_test_filesself-any-">discover_test_files(self: Any) -&gt; <ast.Subscript object at 0x00000194285DF310><a class="headerlink" href="#discover_test_filesself-any-" title="Permanent link">&para;</a></h5>
 <p>Discover all test files in the project</p>
-<h5 id="_scan_directoryself-any-directory-path-">_scan_directory(self: Any, directory: Path) -&gt; <ast.Subscript object at 0x00000194341386A0><a class="headerlink" href="#_scan_directoryself-any-directory-path-" title="Permanent link">&para;</a></h5>
+<h5 id="_scan_directoryself-any-directory-path-">_scan_directory(self: Any, directory: Path) -&gt; <ast.Subscript object at 0x00000194285DC9D0><a class="headerlink" href="#_scan_directoryself-any-directory-path-" title="Permanent link">&para;</a></h5>
 <p>Recursively scan directory for test files</p>
 <h3 id="testdependencyanalyzer">TestDependencyAnalyzer<a class="headerlink" href="#testdependencyanalyzer" title="Permanent link">&para;</a></h3>
 <p>Analyzes test dependencies, imports, and fixtures</p>
 <h4 id="methods_1">Methods<a class="headerlink" href="#methods_1" title="Permanent link">&para;</a></h4>
 <h5 id="initself-any"><strong>init</strong>(self: Any)<a class="headerlink" href="#initself-any" title="Permanent link">&para;</a></h5>
-<h5 id="analyze_dependenciesself-any-test_file-path-">analyze_dependencies(self: Any, test_file: Path) -&gt; <ast.Subscript object at 0x0000019434139420><a class="headerlink" href="#analyze_dependenciesself-any-test_file-path-" title="Permanent link">&para;</a></h5>
+<h5 id="analyze_dependenciesself-any-test_file-path-">analyze_dependencies(self: Any, test_file: Path) -&gt; <ast.Subscript object at 0x00000194285DC700><a class="headerlink" href="#analyze_dependenciesself-any-test_file-path-" title="Permanent link">&para;</a></h5>
 <p>Analyze test file dependencies
 Returns: (imports, missing_imports, fixtures_used, missing_fixtures)</p>
-<h5 id="_extract_importsself-any-tree-astast-">_extract_imports(self: Any, tree: ast.AST) -&gt; <ast.Subscript object at 0x000001943413A7A0><a class="headerlink" href="#_extract_importsself-any-tree-astast-" title="Permanent link">&para;</a></h5>
+<h5 id="_extract_importsself-any-tree-astast-">_extract_imports(self: Any, tree: ast.AST) -&gt; <ast.Subscript object at 0x000001942C6348B0><a class="headerlink" href="#_extract_importsself-any-tree-astast-" title="Permanent link">&para;</a></h5>
 <p>Extract all import statements from AST</p>
-<h5 id="_extract_fixturesself-any-tree-astast-">_extract_fixtures(self: Any, tree: ast.AST) -&gt; <ast.Subscript object at 0x0000019434139090><a class="headerlink" href="#_extract_fixturesself-any-tree-astast-" title="Permanent link">&para;</a></h5>
+<h5 id="_extract_fixturesself-any-tree-astast-">_extract_fixtures(self: Any, tree: ast.AST) -&gt; <ast.Subscript object at 0x000001942C6367A0><a class="headerlink" href="#_extract_fixturesself-any-tree-astast-" title="Permanent link">&para;</a></h5>
 <p>Extract pytest fixtures used in test functions</p>
-<h5 id="_check_missing_importsself-any-imports-test_file-path-">_check_missing_imports(self: Any, imports: <ast.Subscript object at 0x000001943413BA30>, test_file: Path) -&gt; <ast.Subscript object at 0x0000019432E3B160><a class="headerlink" href="#_check_missing_importsself-any-imports-test_file-path-" title="Permanent link">&para;</a></h5>
+<h5 id="_check_missing_importsself-any-imports-test_file-path-">_check_missing_imports(self: Any, imports: <ast.Subscript object at 0x000001942C6342E0>, test_file: Path) -&gt; <ast.Subscript object at 0x000001942C635000><a class="headerlink" href="#_check_missing_importsself-any-imports-test_file-path-" title="Permanent link">&para;</a></h5>
 <p>Check for imports that cannot be resolved</p>
-<h5 id="_check_missing_fixturesself-any-fixtures-test_file-path-">_check_missing_fixtures(self: Any, fixtures: <ast.Subscript object at 0x0000019432E3A050>, test_file: Path) -&gt; <ast.Subscript object at 0x0000019432E39AB0><a class="headerlink" href="#_check_missing_fixturesself-any-fixtures-test_file-path-" title="Permanent link">&para;</a></h5>
+<h5 id="_check_missing_fixturesself-any-fixtures-test_file-path-">_check_missing_fixtures(self: Any, fixtures: <ast.Subscript object at 0x000001942C636260>, test_file: Path) -&gt; <ast.Subscript object at 0x0000019429CAE530><a class="headerlink" href="#_check_missing_fixturesself-any-fixtures-test_file-path-" title="Permanent link">&para;</a></h5>
 <p>Check for fixtures that are not defined</p>
 <h3 id="testperformanceprofiler">TestPerformanceProfiler<a class="headerlink" href="#testperformanceprofiler" title="Permanent link">&para;</a></h3>
 <p>Profiles test execution performance to identify slow tests</p>
 <h4 id="methods_2">Methods<a class="headerlink" href="#methods_2" title="Permanent link">&para;</a></h4>
 <h5 id="initself-any-timeout_seconds-int"><strong>init</strong>(self: Any, timeout_seconds: int)<a class="headerlink" href="#initself-any-timeout_seconds-int" title="Permanent link">&para;</a></h5>
-<h5 id="profile_test_fileself-any-test_file-path-">profile_test_file(self: Any, test_file: Path) -&gt; <ast.Subscript object at 0x0000019432E38D00><a class="headerlink" href="#profile_test_fileself-any-test_file-path-" title="Permanent link">&para;</a></h5>
+<h5 id="profile_test_fileself-any-test_file-path-">profile_test_file(self: Any, test_file: Path) -&gt; <ast.Subscript object at 0x0000019429CAFE80><a class="headerlink" href="#profile_test_fileself-any-test_file-path-" title="Permanent link">&para;</a></h5>
 <p>Profile a single test file
 Returns: (execution_time, slow_tests, timed_out)</p>
-<h5 id="_parse_slow_testsself-any-pytest_output-str-">_parse_slow_tests(self: Any, pytest_output: str) -&gt; <ast.Subscript object at 0x0000019433D03BE0><a class="headerlink" href="#_parse_slow_testsself-any-pytest_output-str-" title="Permanent link">&para;</a></h5>
+<h5 id="_parse_slow_testsself-any-pytest_output-str-">_parse_slow_tests(self: Any, pytest_output: str) -&gt; <ast.Subscript object at 0x0000019429CAD990><a class="headerlink" href="#_parse_slow_testsself-any-pytest_output-str-" title="Permanent link">&para;</a></h5>
 <p>Parse pytest output to identify slow tests</p>
 <h3 id="testauditor">TestAuditor<a class="headerlink" href="#testauditor" title="Permanent link">&para;</a></h3>
 <p>Main test auditor that orchestrates all analysis components</p>
@@ -1068,15 +1068,15 @@ Returns: (execution_time, slow_tests, timed_out)</p>
 <p>Perform comprehensive audit of the entire test suite</p>
 <h5 id="_analyze_test_fileself-any-test_file-path-testfileanalysis">_analyze_test_file(self: Any, test_file: Path) -&gt; TestFileAnalysis<a class="headerlink" href="#_analyze_test_fileself-any-test_file-path-testfileanalysis" title="Permanent link">&para;</a></h5>
 <p>Analyze a single test file comprehensively</p>
-<h5 id="_check_syntaxself-any-test_file-path-">_check_syntax(self: Any, test_file: Path) -&gt; <ast.Subscript object at 0x000001942F24AB30><a class="headerlink" href="#_check_syntaxself-any-test_file-path-" title="Permanent link">&para;</a></h5>
+<h5 id="_check_syntaxself-any-test_file-path-">_check_syntax(self: Any, test_file: Path) -&gt; <ast.Subscript object at 0x0000019429C25420><a class="headerlink" href="#_check_syntaxself-any-test_file-path-" title="Permanent link">&para;</a></h5>
 <p>Check file for syntax errors</p>
-<h5 id="_analyze_test_structureself-any-test_file-path-">_analyze_test_structure(self: Any, test_file: Path) -&gt; <ast.Subscript object at 0x00000194346704C0><a class="headerlink" href="#_analyze_test_structureself-any-test_file-path-" title="Permanent link">&para;</a></h5>
+<h5 id="_analyze_test_structureself-any-test_file-path-">_analyze_test_structure(self: Any, test_file: Path) -&gt; <ast.Subscript object at 0x0000019427F3AF50><a class="headerlink" href="#_analyze_test_structureself-any-test_file-path-" title="Permanent link">&para;</a></h5>
 <p>Analyze test file structure and identify issues</p>
 <h5 id="_has_assertionsself-any-func_node-astfunctiondef-bool">_has_assertions(self: Any, func_node: ast.FunctionDef) -&gt; bool<a class="headerlink" href="#_has_assertionsself-any-func_node-astfunctiondef-bool" title="Permanent link">&para;</a></h5>
 <p>Check if function contains assertions</p>
-<h5 id="_run_testsself-any-test_file-path-">_run_tests(self: Any, test_file: Path) -&gt; <ast.Subscript object at 0x000001942EFC2650><a class="headerlink" href="#_run_testsself-any-test_file-path-" title="Permanent link">&para;</a></h5>
+<h5 id="_run_testsself-any-test_file-path-">_run_tests(self: Any, test_file: Path) -&gt; <ast.Subscript object at 0x000001942C623280><a class="headerlink" href="#_run_testsself-any-test_file-path-" title="Permanent link">&para;</a></h5>
 <p>Run tests and return pass/fail/skip counts</p>
-<h5 id="_generate_recommendationsself-any-file_analyses-">_generate_recommendations(self: Any, file_analyses: <ast.Subscript object at 0x000001942EFC0AC0>) -&gt; <ast.Subscript object at 0x0000019432E5F8B0><a class="headerlink" href="#_generate_recommendationsself-any-file_analyses-" title="Permanent link">&para;</a></h5>
+<h5 id="_generate_recommendationsself-any-file_analyses-">_generate_recommendations(self: Any, file_analyses: <ast.Subscript object at 0x000001942C620910>) -&gt; <ast.Subscript object at 0x0000019428473F40><a class="headerlink" href="#_generate_recommendationsself-any-file_analyses-" title="Permanent link">&para;</a></h5>
 <p>Generate actionable recommendations based on analysis</p>
 
 

@@ -28,7 +28,7 @@ Analyzes project directory structure and identifies components.
 
 #### Methods
 
-##### __init__(self: Any, root_path: str, ignore_patterns: <ast.Subscript object at 0x0000019433F99330>)
+##### __init__(self: Any, root_path: str, ignore_patterns: <ast.Subscript object at 0x0000019427F12E60>)
 
 Initialize the analyzer with project root path.
 
@@ -44,7 +44,7 @@ Check if a file or directory should be ignored.
 
 Analyze a single file and determine its characteristics.
 
-##### _analyze_directory(self: Any, dir_path: Path, files: <ast.Subscript object at 0x0000019433F73EE0>) -> DirectoryInfo
+##### _analyze_directory(self: Any, dir_path: Path, files: <ast.Subscript object at 0x000001942CDDBF10>) -> DirectoryInfo
 
 Analyze a directory and determine its characteristics.
 
@@ -64,19 +64,19 @@ Determine if a file is a test file.
 
 Determine if a file is a script.
 
-##### _determine_file_purpose(self: Any, name: str, extension: str, path: str) -> <ast.Subscript object at 0x00000194340F38E0>
+##### _determine_file_purpose(self: Any, name: str, extension: str, path: str) -> <ast.Subscript object at 0x000001942791A380>
 
 Determine the purpose of a file based on its characteristics.
 
-##### _determine_directory_purpose(self: Any, name: str, path: str, files: <ast.Subscript object at 0x000001942FBB1D20>, is_package: bool) -> <ast.Subscript object at 0x000001942F3B6350>
+##### _determine_directory_purpose(self: Any, name: str, path: str, files: <ast.Subscript object at 0x000001942791B970>, is_package: bool) -> <ast.Subscript object at 0x0000019428929BA0>
 
 Determine the purpose of a directory.
 
-##### _identify_entry_points(self: Any, files: <ast.Subscript object at 0x000001942F3B53C0>) -> <ast.Subscript object at 0x000001942F3B5A80>
+##### _identify_entry_points(self: Any, files: <ast.Subscript object at 0x000001942892B7C0>) -> <ast.Subscript object at 0x0000019428928D60>
 
 Identify potential application entry points.
 
-##### _identify_main_components(self: Any, directories: <ast.Subscript object at 0x000001942F3B72E0>) -> <ast.Subscript object at 0x000001942F3B6680>
+##### _identify_main_components(self: Any, directories: <ast.Subscript object at 0x000001942892A290>) -> <ast.Subscript object at 0x000001942892B100>
 
 Identify the main components of the project.
 

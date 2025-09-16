@@ -16,7 +16,7 @@ Configuration adapter for existing config.json structure with FastAPI
 
 #### Methods
 
-##### __init__(self: Any, config_path: <ast.Subscript object at 0x00000194343B35E0>)
+##### __init__(self: Any, config_path: <ast.Subscript object at 0x000001942A2C3A00>)
 
 
 
@@ -28,15 +28,15 @@ Load configuration from config.json file
 
 Create default configuration structure
 
-##### get_config(self: Any, section: <ast.Subscript object at 0x000001943442C070>) -> <ast.Subscript object at 0x0000019434371570>
+##### get_config(self: Any, section: <ast.Subscript object at 0x000001942A2C0D00>) -> <ast.Subscript object at 0x000001942A2C0940>
 
 Get configuration data
 
-##### get_model_paths(self: Any) -> <ast.Subscript object at 0x0000019434371B10>
+##### get_model_paths(self: Any) -> <ast.Subscript object at 0x00000194278E27A0>
 
 Get model path configuration
 
-##### get_optimization_settings(self: Any) -> <ast.Subscript object at 0x000001942EFF44F0>
+##### get_optimization_settings(self: Any) -> <ast.Subscript object at 0x00000194278E2D10>
 
 Get optimization settings
 
@@ -48,15 +48,15 @@ Update optimization setting at runtime
 
 Save configuration to file
 
-##### validate_configuration(self: Any) -> <ast.Subscript object at 0x0000019434639BD0>
+##### validate_configuration(self: Any) -> <ast.Subscript object at 0x000001942A1FE860>
 
 Validate current configuration
 
-##### get_runtime_config_for_generation(self: Any, model_type: str) -> <ast.Subscript object at 0x000001943463A4A0>
+##### get_runtime_config_for_generation(self: Any, model_type: str) -> <ast.Subscript object at 0x000001942A1FD630>
 
 Get runtime configuration for model generation
 
-##### get_config_summary(self: Any) -> <ast.Subscript object at 0x000001942F04D840>
+##### get_config_summary(self: Any) -> <ast.Subscript object at 0x000001942A216AA0>
 
 Get configuration summary
 

@@ -22,11 +22,11 @@ Comprehensive metrics collection for integration testing
 
 
 
-##### record_test_result(self: Any, test_name: str, success: bool, duration: float, details: <ast.Subscript object at 0x000001942F417EB0>)
+##### record_test_result(self: Any, test_name: str, success: bool, duration: float, details: <ast.Subscript object at 0x00000194288AF400>)
 
 Record individual test results
 
-##### get_summary_report(self: Any) -> <ast.Subscript object at 0x000001942F4170D0>
+##### get_summary_report(self: Any) -> <ast.Subscript object at 0x00000194288AE620>
 
 Generate comprehensive test summary report
 

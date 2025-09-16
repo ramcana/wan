@@ -35,7 +35,7 @@ Monitors and analyzes system and generation performance.
 
 #### Methods
 
-##### __init__(self: Any, config: <ast.Subscript object at 0x0000019434503DF0>)
+##### __init__(self: Any, config: <ast.Subscript object at 0x00000194284683A0>)
 
 
 
@@ -71,7 +71,7 @@ Start monitoring a generation task.
 
 Update metrics for an active task.
 
-##### complete_task_monitoring(self: Any, task_id: str, success: bool, error_category: <ast.Subscript object at 0x0000019431A074F0>) -> <ast.Subscript object at 0x0000019431A04BB0>
+##### complete_task_monitoring(self: Any, task_id: str, success: bool, error_category: <ast.Subscript object at 0x000001942C88A920>) -> <ast.Subscript object at 0x000001942CD542E0>
 
 Complete monitoring for a task and calculate final metrics.
 
@@ -83,23 +83,23 @@ Calculate resource usage for a task from system snapshots.
 
 Analyze performance over a time window.
 
-##### _analyze_bottlenecks(self: Any, metrics: <ast.Subscript object at 0x000001942EF27460>) -> <ast.Subscript object at 0x00000194318ECF10>
+##### _analyze_bottlenecks(self: Any, metrics: <ast.Subscript object at 0x000001942CDC86D0>) -> <ast.Subscript object at 0x000001942CC8A4D0>
 
 Analyze system bottlenecks from metrics.
 
-##### _generate_optimization_recommendations(self: Any, metrics: <ast.Subscript object at 0x00000194318ECFA0>, bottlenecks: <ast.Subscript object at 0x00000194318EEFE0>) -> <ast.Subscript object at 0x000001942FD79F60>
+##### _generate_optimization_recommendations(self: Any, metrics: <ast.Subscript object at 0x000001942CBC6410>, bottlenecks: <ast.Subscript object at 0x000001942CBC6350>) -> <ast.Subscript object at 0x000001942842D6F0>
 
 Generate optimization recommendations based on analysis.
 
-##### _calculate_resource_efficiency(self: Any, metrics: <ast.Subscript object at 0x000001942FD79E10>) -> float
+##### _calculate_resource_efficiency(self: Any, metrics: <ast.Subscript object at 0x000001942842D840>) -> float
 
 Calculate overall resource efficiency score (0-1).
 
-##### _calculate_performance_trends(self: Any, metrics: <ast.Subscript object at 0x000001942EFBDAB0>) -> <ast.Subscript object at 0x0000019434509120>
+##### _calculate_performance_trends(self: Any, metrics: <ast.Subscript object at 0x000001942842F670>) -> <ast.Subscript object at 0x00000194283F5690>
 
 Calculate performance trends over time.
 
-##### get_current_system_status(self: Any) -> <ast.Subscript object at 0x0000019434509C90>
+##### get_current_system_status(self: Any) -> <ast.Subscript object at 0x00000194283F6200>
 
 Get current system performance status.
 

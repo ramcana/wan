@@ -20,7 +20,7 @@ tags: [api, core]
 
 
 
-##### apply(self: Any, pipeline: Any) -> <ast.Subscript object at 0x0000019434501720>
+##### apply(self: Any, pipeline: Any) -> <ast.Subscript object at 0x00000194284715D0>
 
 Stub optimizer: log and return safe defaults.
 

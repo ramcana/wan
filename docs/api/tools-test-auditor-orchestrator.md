@@ -61,23 +61,23 @@ Generates actionable plans to improve test suite health
 
 #### Methods
 
-##### generate_action_plan(self: Any, analysis: ComprehensiveTestAnalysis) -> <ast.Subscript object at 0x0000019434132740>
+##### generate_action_plan(self: Any, analysis: ComprehensiveTestAnalysis) -> <ast.Subscript object at 0x000001942CE3BE50>
 
 Generate prioritized action plan
 
-##### _generate_critical_actions(self: Any, analysis: ComprehensiveTestAnalysis) -> <ast.Subscript object at 0x0000019434130460>
+##### _generate_critical_actions(self: Any, analysis: ComprehensiveTestAnalysis) -> <ast.Subscript object at 0x000001942CE397B0>
 
 Generate critical actions that must be addressed immediately
 
-##### _generate_high_priority_actions(self: Any, analysis: ComprehensiveTestAnalysis) -> <ast.Subscript object at 0x0000019434130FD0>
+##### _generate_high_priority_actions(self: Any, analysis: ComprehensiveTestAnalysis) -> <ast.Subscript object at 0x000001942CE99180>
 
 Generate high priority actions
 
-##### _generate_medium_priority_actions(self: Any, analysis: ComprehensiveTestAnalysis) -> <ast.Subscript object at 0x0000019431B8E770>
+##### _generate_medium_priority_actions(self: Any, analysis: ComprehensiveTestAnalysis) -> <ast.Subscript object at 0x000001942CE9B2B0>
 
 Generate medium priority actions
 
-##### _generate_long_term_actions(self: Any, analysis: ComprehensiveTestAnalysis) -> <ast.Subscript object at 0x0000019431B8DD50>
+##### _generate_long_term_actions(self: Any, analysis: ComprehensiveTestAnalysis) -> <ast.Subscript object at 0x000001942CE9A8F0>
 
 Generate long-term improvement actions
 
@@ -95,15 +95,15 @@ Main orchestrator for comprehensive test suite analysis
 
 Run complete test suite analysis
 
-##### _generate_analysis_summary(self: Any, audit_report: TestSuiteAuditReport, execution_report: TestSuiteExecutionReport, coverage_report: CoverageReport, total_time: float) -> <ast.Subscript object at 0x000001942FA8DC30>
+##### _generate_analysis_summary(self: Any, audit_report: TestSuiteAuditReport, execution_report: TestSuiteExecutionReport, coverage_report: CoverageReport, total_time: float) -> <ast.Subscript object at 0x0000019427B86FE0>
 
 Generate comprehensive analysis summary
 
-##### _calculate_test_distribution(self: Any, audit_report: TestSuiteAuditReport) -> <ast.Subscript object at 0x000001942FA8CB50>
+##### _calculate_test_distribution(self: Any, audit_report: TestSuiteAuditReport) -> <ast.Subscript object at 0x0000019427B871C0>
 
 Calculate distribution of tests across categories
 
-##### _generate_comprehensive_recommendations(self: Any, audit_report: TestSuiteAuditReport, execution_report: TestSuiteExecutionReport, coverage_report: CoverageReport) -> <ast.Subscript object at 0x000001942FA8EEC0>
+##### _generate_comprehensive_recommendations(self: Any, audit_report: TestSuiteAuditReport, execution_report: TestSuiteExecutionReport, coverage_report: CoverageReport) -> <ast.Subscript object at 0x0000019427B85300>
 
 Generate comprehensive recommendations combining all analyses
 

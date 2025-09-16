@@ -36,7 +36,7 @@ Add a file to serve.
 
 Add a random file of specified size.
 
-##### set_bandwidth_limit(self: Any, bytes_per_second: <ast.Subscript object at 0x0000019431915240>)
+##### set_bandwidth_limit(self: Any, bytes_per_second: <ast.Subscript object at 0x0000019427C49120>)
 
 Set bandwidth limit for testing.
 
@@ -48,7 +48,7 @@ Set artificial latency for testing.
 
 Set error rate for testing (0.0 to 1.0).
 
-##### get_stats(self: Any) -> <ast.Subscript object at 0x00000194319146D0>
+##### get_stats(self: Any) -> <ast.Subscript object at 0x0000019427C485B0>
 
 Get server statistics.
 
@@ -58,7 +58,7 @@ Comprehensive performance benchmarking suite for the model orchestrator.
 
 #### Methods
 
-##### __init__(self: Any, temp_dir: <ast.Subscript object at 0x0000019431914490>)
+##### __init__(self: Any, temp_dir: <ast.Subscript object at 0x0000019427C48370>)
 
 
 
@@ -74,43 +74,43 @@ Clean up benchmark environment.
 
 Prepare test files for benchmarking.
 
-##### run_all_benchmarks(self: Any) -> <ast.Subscript object at 0x000001943193B5B0>
+##### run_all_benchmarks(self: Any) -> <ast.Subscript object at 0x0000019427C47490>
 
 Run all performance benchmarks.
 
-##### _benchmark_concurrent_downloads(self: Any) -> <ast.Subscript object at 0x00000194318B05E0>
+##### _benchmark_concurrent_downloads(self: Any) -> <ast.Subscript object at 0x0000019427C344C0>
 
 Benchmark concurrent download performance.
 
-##### _benchmark_bandwidth_limiting(self: Any) -> <ast.Subscript object at 0x000001943007E260>
+##### _benchmark_bandwidth_limiting(self: Any) -> <ast.Subscript object at 0x000001942C517CD0>
 
 Benchmark bandwidth limiting effectiveness.
 
-##### _benchmark_adaptive_chunking(self: Any) -> <ast.Subscript object at 0x000001942F3AB460>
+##### _benchmark_adaptive_chunking(self: Any) -> <ast.Subscript object at 0x00000194280CD240>
 
 Benchmark adaptive chunking performance.
 
-##### _benchmark_memory_optimization(self: Any) -> <ast.Subscript object at 0x000001942F387E20>
+##### _benchmark_memory_optimization(self: Any) -> <ast.Subscript object at 0x0000019428063D30>
 
 Benchmark memory optimization features.
 
-##### _benchmark_connection_pooling(self: Any) -> <ast.Subscript object at 0x000001942F38DB70>
+##### _benchmark_connection_pooling(self: Any) -> <ast.Subscript object at 0x0000019427FE9A80>
 
 Benchmark connection pooling effectiveness.
 
-##### _benchmark_queue_management(self: Any) -> <ast.Subscript object at 0x00000194318E6FB0>
+##### _benchmark_queue_management(self: Any) -> <ast.Subscript object at 0x0000019427CB2E90>
 
 Benchmark download queue management.
 
-##### _benchmark_error_recovery(self: Any) -> <ast.Subscript object at 0x0000019430081780>
+##### _benchmark_error_recovery(self: Any) -> <ast.Subscript object at 0x0000019428151660>
 
 Benchmark error recovery and retry mechanisms.
 
-##### _benchmark_scalability(self: Any) -> <ast.Subscript object at 0x0000019430060370>
+##### _benchmark_scalability(self: Any) -> <ast.Subscript object at 0x000001942818C250>
 
 Benchmark scalability with increasing load.
 
-##### _simulate_download_time(self: Any, file_specs: <ast.Subscript object at 0x00000194300604C0>, concurrency: int) -> float
+##### _simulate_download_time(self: Any, file_specs: <ast.Subscript object at 0x000001942818C3A0>, concurrency: int) -> float
 
 Simulate realistic download time based on file specs and concurrency.
 

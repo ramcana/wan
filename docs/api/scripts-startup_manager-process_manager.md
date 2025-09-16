@@ -29,7 +29,7 @@ Result of a process operation.
 
 Create a successful process result.
 
-##### failure_result(cls: Any, error_message: str, details: <ast.Subscript object at 0x0000019431A71540>) -> ProcessResult
+##### failure_result(cls: Any, error_message: str, details: <ast.Subscript object at 0x000001942CE91720>) -> ProcessResult
 
 Create a failed process result.
 
@@ -77,15 +77,15 @@ Manages server process lifecycle and health monitoring.
 
 
 
-##### start_backend(self: Any, port: int, backend_config: <ast.Subscript object at 0x000001942F04B670>) -> ProcessResult
+##### start_backend(self: Any, port: int, backend_config: <ast.Subscript object at 0x00000194285AD450>) -> ProcessResult
 
 Start FastAPI backend server.
 
-##### start_frontend(self: Any, port: int, frontend_config: <ast.Subscript object at 0x000001942F048BE0>) -> ProcessResult
+##### start_frontend(self: Any, port: int, frontend_config: <ast.Subscript object at 0x000001942856CEB0>) -> ProcessResult
 
 Start React frontend development server.
 
-##### _detect_package_manager(self: Any, frontend_dir: Path) -> <ast.Subscript object at 0x000001942F699D80>
+##### _detect_package_manager(self: Any, frontend_dir: Path) -> <ast.Subscript object at 0x000001942C5C7D30>
 
 Detect which package manager to use (npm or yarn).
 
@@ -93,7 +93,7 @@ Detect which package manager to use (npm or yarn).
 
 Start a process with the given configuration.
 
-##### get_process_status(self: Any, process_name: str) -> <ast.Subscript object at 0x000001942F42EBF0>
+##### get_process_status(self: Any, process_name: str) -> <ast.Subscript object at 0x000001942C5C5CF0>
 
 Get current status of a process.
 
@@ -105,7 +105,7 @@ Check if a process is healthy.
 
 Wait for a process to become healthy.
 
-##### get_all_processes(self: Any) -> <ast.Subscript object at 0x000001942F42CF40>
+##### get_all_processes(self: Any) -> <ast.Subscript object at 0x000001942CBE4A60>
 
 Get information about all managed processes.
 
@@ -121,7 +121,7 @@ Stop a specific process.
 
 Gracefully shutdown a process with SIGTERM/SIGKILL escalation.
 
-##### cleanup_zombie_processes(self: Any) -> <ast.Subscript object at 0x0000019433F72D40>
+##### cleanup_zombie_processes(self: Any) -> <ast.Subscript object at 0x000001942CE06C20>
 
 Clean up zombie processes and file locks.
 
@@ -133,11 +133,11 @@ Restart a process with exponential backoff.
 
 Restart a generic process using stored configuration.
 
-##### auto_restart_failed_processes(self: Any) -> <ast.Subscript object at 0x000001942F6C67D0>
+##### auto_restart_failed_processes(self: Any) -> <ast.Subscript object at 0x000001942CBB66B0>
 
 Automatically restart failed processes that have auto_restart enabled.
 
-##### get_process_metrics(self: Any, process_name: str) -> <ast.Subscript object at 0x00000194340F1180>
+##### get_process_metrics(self: Any, process_name: str) -> <ast.Subscript object at 0x000001942CBB7EE0>
 
 Get detailed metrics for a process.
 
