@@ -234,6 +234,13 @@ except ImportError as e:
     logger.warning(f"Could not import V1 generation router: {e}")
 
 try:
+    from api.v1.endpoints.queue import router as v1_queue_router
+    app.include_router(v1_queue_router, prefix="/api/v1")
+    logger.info("V1 Queue API router included")
+except ImportError as e:
+    logger.warning(f"Could not import V1 queue router: {e}")
+
+try:
     from backend.api.v2.router import router as v2_router
     app.include_router(v2_router)
     logger.info("V2 API router included")

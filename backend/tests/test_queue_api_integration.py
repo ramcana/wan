@@ -13,8 +13,8 @@ from sqlalchemy.orm import sessionmaker
 # Add parent directory to path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from backend.main import app
-from backend.database import Base, get_db, GenerationTaskDB, TaskStatusEnum, ModelTypeEnum
+from backend.app import app
+from backend.repositories.database import Base, get_db, GenerationTaskDB, TaskStatusEnum, ModelTypeEnum
 from datetime import datetime
 
 def test_queue_api_endpoints():
