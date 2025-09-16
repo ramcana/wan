@@ -454,8 +454,15 @@ jobs:
             
             # Determine color based on health score
             COLOR=$(python -c "try:\n    health_score = float('$HEALTH_SCORE')\n    if health_score >= 90:\n        print('brightgreen')\n    elif health_score >= 80:\n        print('green')\n    elif health_score >= 70:\n        print('yellow')\n    elif health_score >= 60:\n        print('orange')\n    else:\n        print('red')\nexcept:\n    print('green')")
-            
-            echo "{\n  \"schemaVersion\": 1,\n  \"label\": \"health\",\n  \"message\": \"${HEALTH_SCORE}%\",\n  \"color\": \"${COLOR}\"\n}" > .github/badges/health.json
+
+            cat <<EOF > .github/badges/health.json
+{
+  "schemaVersion": 1,
+  "label": "health",
+  "message": "${HEALTH_SCORE}%",
+  "color": "${COLOR}"
+}
+EOF
           fi
 
           # Create coverage badge data
@@ -468,7 +475,14 @@ jobs:
           if [ -n "$COVERAGE" ]; then
             COLOR=$(python -c "try:\n    coverage = float('$COVERAGE')\n    if coverage >= 90:\n        print('brightgreen')\n    elif coverage >= 80:\n        print('green')\n    elif coverage >= 70:\n        print('yellow')\n    else:\n        print('red')\nexcept:\n    print('green')")
 
-            echo "{\n  \"schemaVersion\": 1,\n  \"label\": \"coverage\",\n  \"message\": \"${COVERAGE}%\",\n  \"color\": \"${COLOR}\"\n}" > .github/badges/coverage.json
+            cat <<EOF > .github/badges/coverage.json
+{
+  "schemaVersion": 1,
+  "label": "coverage",
+  "message": "${COVERAGE}%",
+  "color": "${COLOR}"
+}
+EOF
           fi
 
       - name: Display badge files
