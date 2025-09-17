@@ -152,7 +152,22 @@ jobs:
           HEALTH_SCORE="${{ steps.health-check.outputs.health-score }}"
 
           # Determine badge color based on health score using Python for floating point comparison
-          COLOR=$(python -c "try: health_score = float('$HEALTH_SCORE'); print('brightgreen' if health_score >= 90 else 'green' if health_score >= 80 else 'yellow' if health_score >= 70 else 'orange' if health_score >= 60 else 'red'); except: print('green')")
+          COLOR=$(python -c "
+          try:
+              health_score = float('$HEALTH_SCORE')
+          except:
+              health_score = 85.0
+          if health_score >= 90:
+              print('brightgreen')
+          elif health_score >= 80:
+              print('green')
+          elif health_score >= 70:
+              print('yellow')
+          elif health_score >= 60:
+              print('orange')
+          else:
+              print('red')
+          ")
 
           # Create badge JSON
           echo '{
@@ -441,7 +456,22 @@ jobs:
             fi
             
             # Determine color based on health score
-            COLOR=$(python -c "try: health_score = float('$HEALTH_SCORE'); print('brightgreen' if health_score >= 90 else 'green' if health_score >= 80 else 'yellow' if health_score >= 70 else 'orange' if health_score >= 60 else 'red'); except: print('green')")
+            COLOR=$(python -c "
+            try:
+                health_score = float('$HEALTH_SCORE')
+            except:
+                health_score = 85.0
+            if health_score >= 90:
+                print('brightgreen')
+            elif health_score >= 80:
+                print('green')
+            elif health_score >= 70:
+                print('yellow')
+            elif health_score >= 60:
+                print('orange')
+            else:
+                print('red')
+            ")
 
             echo "{\"schemaVersion\": 1, \"label\": \"health\", \"message\": \"${HEALTH_SCORE}%\", \"color\": \"${COLOR}\"}" > .github/badges/health.json
           fi
@@ -454,7 +484,20 @@ jobs:
           fi
           
           if [ -n "$COVERAGE" ]; then
-            COLOR=$(python -c "try: coverage = float('$COVERAGE'); print('brightgreen' if coverage >= 90 else 'green' if coverage >= 80 else 'yellow' if coverage >= 70 else 'red'); except: print('green')")
+            COLOR=$(python -c "
+            try:
+                coverage = float('$COVERAGE')
+            except:
+                coverage = 75.0
+            if coverage >= 90:
+                print('brightgreen')
+            elif coverage >= 80:
+                print('green')
+            elif coverage >= 70:
+                print('yellow')
+            else:
+                print('red')
+            ")
 
             echo "{\"schemaVersion\": 1, \"label\": \"coverage\", \"message\": \"${COVERAGE}%\", \"color\": \"${COLOR}\"}" > .github/badges/coverage.json
           fi
