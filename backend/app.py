@@ -13,10 +13,12 @@ from pathlib import Path
 from fastapi import FastAPI, HTTPException, Form, File, UploadFile, WebSocket, WebSocketDisconnect, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
 import uvicorn
 import logging
 from datetime import datetime
+import uuid
 from typing import Dict, List, Optional, Set
 import psutil
 import platform
@@ -25,6 +27,12 @@ import json
 # Add current directory to Python path for relative imports
 current_dir = Path(__file__).parent
 sys.path.insert(0, str(current_dir))
+
+# Import security components
+from backend.core.security_config import security_settings
+from backend.api.v1.endpoints import auth, video
+from backend.middleware.auth_middleware import AuthMiddleware
+from backend.services.auth_service import AuthService
 
 # Import fallback recovery system
 from backend.core.fallback_recovery_system import (
@@ -108,11 +116,89 @@ manager = ConnectionManager()
 # Create FastAPI app
 app = FastAPI(
     title="WAN22 Video Generation API",
-    description="AI Video Generation System API",
+    description="Secure AI Video Generation System API",
     version="2.2.0",
     docs_url="/docs",
     redoc_url="/redoc"
 )
+
+# Initialize security services
+auth_service = AuthService(
+    secret_key=security_settings.SECRET_KEY,
+    algorithm=security_settings.ALGORITHM
+)
+
+# Security Middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=security_settings.CORS_ORIGINS,
+    allow_credentials=security_settings.CORS_CREDENTIALS,
+    allow_methods=security_settings.CORS_METHODS,
+    allow_headers=security_settings.CORS_HEADERS,
+)
+
+
+@app.middleware("http")
+async def security_headers_middleware(request: Request, call_next):
+    """Add security headers to all responses"""
+    
+    # Add request ID for tracking
+    request.state.request_id = str(uuid.uuid4())
+    
+    response = await call_next(request)
+    
+    # Security headers
+    response.headers["X-Content-Type-Options"] = "nosniff"
+    response.headers["X-Frame-Options"] = "DENY"
+    response.headers["X-XSS-Protection"] = "1; mode=block"
+    response.headers["Strict-Transport-Security"] = "max-age=31536000; includeSubDomains"
+    response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
+    response.headers["X-Request-ID"] = request.state.request_id
+    
+    return response
+
+
+@app.middleware("http")
+async def request_logging_middleware(request: Request, call_next):
+    """Log requests for security monitoring"""
+    start_time = time.time()
+    
+    # Log request
+    logger.info(f"Request: {request.method} {request.url} - {request.client.host}")
+    
+    response = await call_next(request)
+    
+    # Log response
+    process_time = time.time() - start_time
+    logger.info(f"Response: {response.status_code} - {process_time:.4f}s")
+    
+    return response
+
+
+# Exception handlers
+@app.exception_handler(429)
+async def rate_limit_handler(request: Request, exc):
+    return JSONResponse(
+        status_code=429,
+        content={
+            "error": "Rate limit exceeded",
+            "message": "Too many requests. Please try again later.",
+            "request_id": getattr(request.state, 'request_id', None)
+        }
+    )
+
+
+@app.exception_handler(401)
+async def auth_exception_handler(request: Request, exc):
+    return JSONResponse(
+        status_code=401,
+        content={
+            "error": "Authentication failed",
+            "message": "Invalid or expired credentials",
+            "request_id": getattr(request.state, 'request_id', None)
+        }
+    )
+
 
 # Initialize database on startup
 @app.on_event("startup")
@@ -198,93 +284,19 @@ try:
 except ImportError as e:
     logger.warning(f"Could not import configuration router: {e}")
 
-try:
-    from api.enhanced_model_management import router as model_mgmt_router
-    app.include_router(model_mgmt_router)
-    logger.info("Enhanced model management API router included")
-except ImportError as e:
-    logger.warning(f"Could not import model management router: {e}")
+# Include security routers
+app.include_router(auth.router, prefix="/api/v1/auth", tags=["authentication"])
+app.include_router(video.router, prefix="/api/v1/video", tags=["video"])
 
-try:
-    from api.enhanced_generation import router as enhanced_gen_router
-    app.include_router(enhanced_gen_router)
-    logger.info("Enhanced generation API router included")
-except ImportError as e:
-    logger.warning(f"Could not import enhanced generation router: {e}")
 
-try:
-    from api.wan_model_info import router as wan_model_info_router
-    app.include_router(wan_model_info_router)
-    logger.info("WAN Model Information API router included")
-except ImportError as e:
-    logger.warning(f"Could not import WAN model info router: {e}")
-
-try:
-    from api.wan_model_dashboard import router as wan_dashboard_router
-    app.include_router(wan_dashboard_router)
-    logger.info("WAN Model Dashboard API router included")
-except ImportError as e:
-    logger.warning(f"Could not import WAN dashboard router: {e}")
-
-try:
-    from api.v1.endpoints.generation import router as v1_generation_router
-    app.include_router(v1_generation_router, prefix="/api/v1")
-    logger.info("V1 Generation API router included")
-except ImportError as e:
-    logger.warning(f"Could not import V1 generation router: {e}")
-
-try:
-    from api.v1.endpoints.queue import router as v1_queue_router
-    app.include_router(v1_queue_router, prefix="/api/v1")
-    logger.info("V1 Queue API router included")
-except ImportError as e:
-    logger.warning(f"Could not import V1 queue router: {e}")
-
-try:
-    from backend.api.v2.router import router as v2_router
-    app.include_router(v2_router)
-    logger.info("V2 API router included")
-except ImportError as e:
-    logger.warning(f"Could not import V2 router: {e}")
-
-# Configure CORS with enhanced validation
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
-# Add request logging middleware with CORS error detection
-@app.middleware("http")
-async def log_requests_and_cors_errors(request, call_next):
-    origin = request.headers.get('origin', 'unknown')
-    logger.info(f"Request: {request.method} {request.url} from origin: {origin}")
-    
-    if request.method == "POST" and "generation/submit" in str(request.url):
-        logger.info(f"Generation request headers: {dict(request.headers)}")
-    
-    try:
-        response = await call_next(request)
-        return response
-    except Exception as e:
-        # Check if this is a CORS-related error
-        cors_error_info = get_cors_error_info(request, e)
-        if cors_error_info:
-            logger.error(f"CORS error detected: {cors_error_info}")
-            # Generate helpful CORS error response
-            cors_response = generate_cors_error_response(origin, request.method)
-            raise HTTPException(status_code=400, detail=cors_response)
-        else:
-            # Re-raise non-CORS errors
-            raise
-
-# Health check endpoint
 @app.get("/health")
 async def health_check():
     """Health check endpoint"""
-    return {"status": "healthy", "service": "wan22-backend"}
+    return {
+        "status": "healthy",
+        "timestamp": time.time(),
+        "version": "2.2.0"
+    }
 
 @app.get("/api/health")
 async def api_health_check():

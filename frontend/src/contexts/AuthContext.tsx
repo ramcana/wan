@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  ReactNode,
+} from "react";
 
 interface User {
   id: string;
@@ -15,7 +21,11 @@ interface AuthContextType {
   isAuthenticated: boolean;
   login: (username: string, password: string) => Promise<boolean>;
   logout: () => void;
-  register: (username: string, email: string, password: string) => Promise<boolean>;
+  register: (
+    username: string,
+    email: string,
+    password: string
+  ) => Promise<boolean>;
   refreshAccessToken: () => Promise<boolean>;
   updateProfile: (userData: Partial<User>) => Promise<boolean>;
 }
@@ -33,9 +43,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   // Initialize auth state from localStorage
   useEffect(() => {
-    const storedUser = localStorage.getItem('user');
-    const storedAccessToken = localStorage.getItem('accessToken');
-    const storedRefreshToken = localStorage.getItem('refreshToken');
+    const storedUser = localStorage.getItem("user");
+    const storedAccessToken = localStorage.getItem("accessToken");
+    const storedRefreshToken = localStorage.getItem("refreshToken");
 
     if (storedUser && storedAccessToken) {
       setUser(JSON.parse(storedUser));
@@ -45,26 +55,33 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   }, []);
 
   // Save auth state to localStorage
-  const saveAuthState = (userData: User | null, access: string | null, refresh: string | null) => {
+  const saveAuthState = (
+    userData: User | null,
+    access: string | null,
+    refresh: string | null
+  ) => {
     if (userData && access) {
-      localStorage.setItem('user', JSON.stringify(userData));
-      localStorage.setItem('accessToken', access);
+      localStorage.setItem("user", JSON.stringify(userData));
+      localStorage.setItem("accessToken", access);
       if (refresh) {
-        localStorage.setItem('refreshToken', refresh);
+        localStorage.setItem("refreshToken", refresh);
       }
     } else {
-      localStorage.removeItem('user');
-      localStorage.removeItem('accessToken');
-      localStorage.removeItem('refreshToken');
+      localStorage.removeItem("user");
+      localStorage.removeItem("accessToken");
+      localStorage.removeItem("refreshToken");
     }
   };
 
-  const login = async (username: string, password: string): Promise<boolean> => {
+  const login = async (
+    username: string,
+    password: string
+  ): Promise<boolean> => {
     try {
-      const response = await fetch('/api/v1/auth/login', {
-        method: 'POST',
+      const response = await fetch("/api/v1/auth/login", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ username, password }),
       });
@@ -79,7 +96,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       }
       return false;
     } catch (error) {
-      console.error('Login error:', error);
+      console.error("Login error:", error);
       return false;
     }
   };
@@ -91,12 +108,16 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     saveAuthState(null, null, null);
   };
 
-  const register = async (username: string, email: string, password: string): Promise<boolean> => {
+  const register = async (
+    username: string,
+    email: string,
+    password: string
+  ): Promise<boolean> => {
     try {
-      const response = await fetch('/api/v1/auth/register', {
-        method: 'POST',
+      const response = await fetch("/api/v1/auth/register", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ username, email, password }),
       });
@@ -111,7 +132,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       }
       return false;
     } catch (error) {
-      console.error('Registration error:', error);
+      console.error("Registration error:", error);
       return false;
     }
   };
@@ -120,10 +141,10 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     if (!refreshToken) return false;
 
     try {
-      const response = await fetch('/api/v1/auth/refresh', {
-        method: 'POST',
+      const response = await fetch("/api/v1/auth/refresh", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ refresh_token: refreshToken }),
       });
@@ -139,7 +160,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         return false;
       }
     } catch (error) {
-      console.error('Token refresh error:', error);
+      console.error("Token refresh error:", error);
       logout();
       return false;
     }
@@ -149,11 +170,11 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     if (!accessToken) return false;
 
     try {
-      const response = await fetch('/api/v1/auth/profile', {
-        method: 'PUT',
+      const response = await fetch("/api/v1/auth/profile", {
+        method: "PUT",
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${accessToken}`,
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
         },
         body: JSON.stringify(userData),
       });
@@ -166,7 +187,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       }
       return false;
     } catch (error) {
-      console.error('Profile update error:', error);
+      console.error("Profile update error:", error);
       return false;
     }
   };
@@ -189,7 +210,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 export const useAuth = (): AuthContextType => {
   const context = useContext(AuthContext);
   if (context === undefined) {
-    throw new Error('useAuth must be used within an AuthProvider');
+    throw new Error("useAuth must be used within an AuthProvider");
   }
   return context;
 };
