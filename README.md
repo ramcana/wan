@@ -1,4 +1,4 @@
-# WAN2.2 Video Generation System
+# WAN2.2 Video Generation System (Under Construction)
 
 A modern, functionally organized video generation system with FastAPI backend and React frontend.
 
@@ -267,3 +267,4 @@ For detailed information about the intelligent startup system:
 ## Support
 
 [Support information]
+
