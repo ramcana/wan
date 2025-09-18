@@ -157,7 +157,7 @@ security:
   firewall_auto_exception: false
   trusted_port_range:
   - 8000
-  - 9000
+  - 8010
 performance:
   enabled: true
   metrics_interval: 60
