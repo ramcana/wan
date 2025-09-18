@@ -30,9 +30,9 @@ The WAN22 Video Generation System is a comprehensive AI-powered video generation
 
 The system provides a comprehensive REST API. When running locally, you can access:
 
-- **API Documentation**: http://127.0.0.1:9000/docs
-- **System Health**: http://127.0.0.1:9000/health
-- **Dashboard**: http://127.0.0.1:9000/api/v1/dashboard/html
+- **API Documentation**: http://127.0.0.1:8000/docs
+- **System Health**: http://127.0.0.1:8000/health
+- **Dashboard**: http://127.0.0.1:8000/api/v1/dashboard/html
 
 ## Support
 

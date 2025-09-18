@@ -1,9 +1,9 @@
 // Service Worker for Wan2.2 React Frontend
 // Provides offline functionality and request queuing
 
-const CACHE_NAME = 'wan22-v1';
-const STATIC_CACHE_NAME = 'wan22-static-v1';
-const DYNAMIC_CACHE_NAME = 'wan22-dynamic-v1';
+const CACHE_NAME = 'wan22-v2'; // Updated cache version
+const STATIC_CACHE_NAME = 'wan22-static-v2'; // Updated cache version
+const DYNAMIC_CACHE_NAME = 'wan22-dynamic-v2'; // Updated cache version
 
 // Files to cache immediately
 const STATIC_ASSETS = [
@@ -55,6 +55,7 @@ self.addEventListener('activate', (event) => {
       caches.keys().then((cacheNames) => {
         return Promise.all(
           cacheNames.map((cacheName) => {
+            // Delete all old caches
             if (cacheName !== STATIC_CACHE_NAME && cacheName !== DYNAMIC_CACHE_NAME) {
               console.log('Service Worker: Deleting old cache:', cacheName);
               return caches.delete(cacheName);
@@ -74,6 +75,12 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   const { request } = event;
   const url = new URL(request.url);
+  
+  // Skip service worker for API requests to localhost:8000 (old configuration)
+  if (url.origin.includes('localhost:8000')) {
+    console.log('Service Worker: Skipping request to old port 8000');
+    return;
+  }
   
   // Handle different types of requests with fallback
   try {
@@ -259,15 +266,9 @@ async function handleMutationRequest(request) {
       if (streamError.message.includes('body stream already read') || 
           streamError.message.includes('stream')) {
         try {
-          // Try to recreate the request using ReadableStream APIs
-          if (typeof ReadableStream !== 'undefined' && typeof TextEncoder !== 'undefined') {
-            // For consumed streams, we can't read the body, so use null
-            requestBody = null;
-            console.log('Service Worker: Using null body due to consumed stream');
-          } else {
-            // Fallback for older browsers
-            requestBody = null;
-          }
+          // For consumed streams, we can't read the body, so use null
+          requestBody = null;
+          console.log('Service Worker: Using null body due to consumed stream');
         } catch (recreationError) {
           console.log('Service Worker: Request recreation failed, using null body:', recreationError);
           requestBody = null;

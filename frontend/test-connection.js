@@ -1,5 +1,5 @@
 // Simple test to verify frontend-backend connection
-const API_BASE = 'http://localhost:9000';
+const API_BASE = import.meta?.env?.VITE_API_URL || 'http://localhost:8000';
 
 async function testConnection() {
   console.log('Testing backend connection...');

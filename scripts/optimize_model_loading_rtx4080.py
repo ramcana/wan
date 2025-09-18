@@ -221,7 +221,7 @@ start "WAN Frontend" npm run dev
 
 echo.
 echo ✅ Both servers starting with RTX 4080 optimizations!
-echo Backend: http://localhost:9000
+echo Backend: http://localhost:8000
 echo Frontend: http://localhost:3000
 echo.
 echo Press any key to exit...

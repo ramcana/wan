@@ -27,7 +27,10 @@ class SecuritySettings:
         self.ALLOWED_IMAGE_EXTENSIONS: List[str] = [".jpg", ".jpeg", ".png", ".webp"]
 
         # Security Headers
-        self.CORS_ORIGINS: List[str] = ["http://localhost:3000"]
+        self.CORS_ORIGINS: List[str] = [
+            "http://localhost:3000",
+            "http://127.0.0.1:8080",
+        ]
         self.CORS_CREDENTIALS: bool = True
         self.CORS_METHODS: List[str] = ["GET", "POST", "PUT", "DELETE"]
         self.CORS_HEADERS: List[str] = ["*"]

@@ -22,14 +22,18 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  test: {
-    globals: true,
-    environment: "jsdom",
-    setupFiles: ["./src/test-setup.ts"],
-  },
   server: {
-    port: 3000,
+    host: '127.0.0.1', // Use IPv4 localhost explicitly
+    port: 8080, // Use a commonly available port
+    strictPort: true,
     cors: true,
+    proxy: {
+      '/api': {
+        target: process.env.VITE_API_URL || 'http://localhost:8000',
+        changeOrigin: true,
+        secure: false,
+      }
+    }
   },
   optimizeDeps: {
     include: [

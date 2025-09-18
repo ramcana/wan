@@ -8,7 +8,7 @@ import requests
 import json
 import time
 
-BASE_URL = "http://localhost:9000"
+BASE_URL = "http://localhost:8000"
 
 def test_generation_json():
     """Test generation endpoint with JSON payload"""

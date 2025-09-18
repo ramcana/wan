@@ -12,7 +12,7 @@ from datetime import datetime
 
 async def test_backend_health():
     """Quick backend health check"""
-    base_url = "http://localhost:9000"
+    base_url = "http://localhost:8000"
     
     try:
         async with aiohttp.ClientSession() as session:
@@ -31,7 +31,7 @@ async def test_backend_health():
 
 async def submit_single_frame():
     """Submit ultra-minimal single frame generation"""
-    base_url = "http://localhost:9000"
+    base_url = "http://localhost:8000"
     
     # Ultra minimal parameters for fastest test
     test_data = {
@@ -72,7 +72,7 @@ async def submit_single_frame():
 
 async def monitor_quick_generation(task_id):
     """Monitor with focus on key progress points"""
-    base_url = "http://localhost:9000"
+    base_url = "http://localhost:8000"
     
     print(f"\n🔍 Monitoring Task: {task_id}")
     

@@ -30,7 +30,7 @@ class Phase1Validator:
     """Validates Phase 1 MVP requirements"""
     
     def __init__(self):
-        self.backend_url = "http://localhost:9000"
+        self.backend_url = "http://localhost:8000"
         self.frontend_url = "http://localhost:3000"
         self.validation_results = {}
     

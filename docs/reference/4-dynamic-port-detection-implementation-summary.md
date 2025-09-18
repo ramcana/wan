@@ -33,10 +33,10 @@ Successfully implemented comprehensive dynamic port detection and health check f
 
 **Response Schema**:
 
-```json
+```
 {
   "status": "ok",
-  "port": 9000,
+  "port": 8000,
   "timestamp": "2025-08-27T17:23:06.057483Z",
   "api_version": "2.2.0",
   "system": "operational",
@@ -52,11 +52,11 @@ Successfully implemented comprehensive dynamic port detection and health check f
     "allowed_origins": ["http://localhost:3000", "http://localhost:3001"],
     "websocket_available": true,
     "request_origin": "http://localhost:3000",
-    "host_header": "localhost:9000"
+    "host_header": "localhost:8000"
   },
   "server_info": {
-    "configured_port": 9000,
-    "detected_port": 9000,
+    "configured_port": 8000,
+    "detected_port": 8000,
     "environment": "development"
   }
 }
@@ -69,7 +69,7 @@ Successfully implemented comprehensive dynamic port detection and health check f
 **Implementation**:
 
 - `ConnectivityValidator` class for port detection logic
-- Tests multiple common ports (9000, 8000, 8080, 3001) in sequence
+- Tests multiple common ports (8000, 8000, 8080, 3001) in sequence
 - Implements proper timeout handling (5 seconds per port)
 - Provides detailed logging with timestamps
 - Returns comprehensive port detection results
@@ -116,7 +116,7 @@ Successfully implemented comprehensive dynamic port detection and health check f
 **Logging Format**:
 
 ```
-🌐 [2025-08-27T17:23:06.057Z] API Request: GET http://localhost:9000/api/v1/system/health
+🌐 [2025-08-27T17:23:06.057Z] API Request: GET http://localhost:8000/api/v1/system/health
 ✅ [2025-08-27T17:23:06.060Z] API Response: 200 GET /system/health
 ```
 
@@ -178,7 +178,7 @@ Successfully implemented comprehensive dynamic port detection and health check f
 **Demo Results**:
 
 ```
-✅ Backend found on port 9000
+✅ Backend found on port 8000
 ✅ Health endpoint working correctly
 ✅ Schema compliance verified
 ✅ Configuration validation passed
@@ -232,7 +232,7 @@ Successfully implemented comprehensive dynamic port detection and health check f
 
 ### Port Detection Algorithm
 
-1. Test ports in order: 9000, 8000, 8080, 3001
+1. Test ports in order: 8000, 8000, 8080, 3001
 2. 5-second timeout per port test
 3. Validate response schema and health status
 4. Return first healthy backend found

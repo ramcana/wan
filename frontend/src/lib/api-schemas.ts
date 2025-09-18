@@ -10,7 +10,7 @@ export enum TaskStatus {
 }
 
 // Generation Request Schema
-export const GenerationFormDataSchema = z.object({
+export const GenerationFormSchema = z.object({
   prompt: z.string().min(1, "Prompt is required"),
   model_type: z.enum(['t2v', 'i2v', 'ti2v']),
   num_frames: z.number().min(1).max(240).default(120),
@@ -24,7 +24,57 @@ export const GenerationFormDataSchema = z.object({
   video_file: z.any().optional(), // File input
 })
 
-export type GenerationFormData = z.infer<typeof GenerationFormDataSchema>
+export type GenerationFormData = z.infer<typeof GenerationFormSchema>
+
+// Image Upload Validation
+export const ImageUploadSchema = z.object({
+  type: z.string().refine(
+    (type) => ['image/jpeg', 'image/png', 'image/webp'].includes(type),
+    { message: 'Only JPEG, PNG, and WebP images are supported' }
+  ),
+  size: z.number().max(10 * 1024 * 1024, 'File size must be less than 10MB'), // 10MB
+})
+
+export type ImageUpload = z.infer<typeof ImageUploadSchema>
+
+export function validateImageUpload(file: File): void {
+  const result = ImageUploadSchema.safeParse({
+    type: file.type,
+    size: file.size,
+  });
+  
+  if (!result.success) {
+    throw new Error(result.error.errors[0].message);
+  }
+}
+
+// LoRA Upload Validation
+export const LoRAUploadSchema = z.object({
+  file: z.object({
+    type: z.string().refine(
+      (type) => ['.safetensors', '.pt', '.pth', '.bin'].some(ext => type.endsWith(ext)),
+      { message: 'Only .safetensors, .pt, .pth, and .bin files are supported' }
+    ),
+    size: z.number().max(500 * 1024 * 1024, 'File size must be less than 500MB'), // 500MB
+  }),
+  name: z.string().max(100, 'Name must be less than 100 characters').optional(),
+})
+
+export type LoRAUpload = z.infer<typeof LoRAUploadSchema>
+
+export function validateLoRAUpload(data: { file: File; name?: string }): void {
+  const result = LoRAUploadSchema.safeParse({
+    file: {
+      type: data.file.name,
+      size: data.file.size,
+    },
+    name: data.name,
+  });
+  
+  if (!result.success) {
+    throw new Error(result.error.errors[0].message);
+  }
+}
 
 // Generation Response Schema
 export const GenerationResponseSchema = z.object({
@@ -68,12 +118,36 @@ export const QueueStatusSchema = z.object({
 
 export type QueueStatus = z.infer<typeof QueueStatusSchema>
 
-// System Health Schema
+// System Health Schema - Updated to match actual backend response
 export const SystemHealthSchema = z.object({
-  status: z.enum(['healthy', 'degraded', 'unhealthy']),
-  backend_online: z.boolean(),
-  database_connected: z.boolean(),
-  gpu_available: z.boolean(),
+  status: z.string(), // Changed from enum to string to accept "ok"
+  port: z.number().optional(), // Added missing field
+  timestamp: z.string().optional(), // Added missing field
+  api_version: z.string().optional(), // Added missing field
+  system: z.string().optional(), // Added missing field
+  service: z.string().optional(), // Added missing field
+  endpoints: z.object({
+    health: z.string(),
+    docs: z.string(),
+    websocket: z.string(),
+    api_base: z.string(),
+  }).optional(), // Added missing field
+  connectivity: z.object({
+    cors_enabled: z.boolean().optional(),
+    allowed_origins: z.array(z.string()).optional(),
+    websocket_available: z.boolean().optional(),
+    request_origin: z.string().optional(),
+    host_header: z.string().optional(),
+  }).optional(), // Added missing field
+  server_info: z.object({
+    configured_port: z.number().optional(),
+    detected_port: z.number().optional(),
+    environment: z.string().optional(),
+  }).optional(), // Added missing field
+  // Made these fields optional since they're not in the actual response
+  backend_online: z.boolean().optional(),
+  database_connected: z.boolean().optional(),
+  gpu_available: z.boolean().optional(),
   memory_usage: z.number().optional(),
   gpu_memory_usage: z.number().optional(),
   active_tasks: z.number().optional(),
@@ -135,3 +209,62 @@ export const PromptEnhanceResponseSchema = z.object({
 })
 
 export type PromptEnhanceResponse = z.infer<typeof PromptEnhanceResponseSchema>
+
+// LoRA API Response Schemas
+export const LoRAInfoSchema = z.object({
+  name: z.string(),
+  filename: z.string(),
+  path: z.string(),
+  size_mb: z.number(),
+  is_loaded: z.boolean(),
+  is_applied: z.boolean(),
+  created_at: z.string(),
+  last_used: z.string().optional(),
+  compatible_models: z.array(z.string()),
+  description: z.string().optional(),
+})
+
+export type LoRAInfo = z.infer<typeof LoRAInfoSchema>
+
+export const LoRAListResponseSchema = z.object({
+  loras: z.array(LoRAInfoSchema),
+  total_count: z.number(),
+  total_size_mb: z.number(),
+})
+
+export type LoRAListResponse = z.infer<typeof LoRAListResponseSchema>
+
+export const LoRAUploadResponseSchema = z.object({
+  name: z.string(),
+  filename: z.string(),
+  path: z.string(),
+  size_mb: z.number(),
+  message: z.string(),
+})
+
+export type LoRAUploadResponse = z.infer<typeof LoRAUploadResponseSchema>
+
+export const LoRAStatusResponseSchema = z.object({
+  name: z.string(),
+  is_loaded: z.boolean(),
+  is_applied: z.boolean(),
+  memory_usage_mb: z.number().optional(),
+})
+
+export type LoRAStatusResponse = z.infer<typeof LoRAStatusResponseSchema>
+
+export const LoRAPreviewResponseSchema = z.object({
+  task_id: z.string(),
+  preview_url: z.string(),
+  estimated_time: z.number(),
+})
+
+export type LoRAPreviewResponse = z.infer<typeof LoRAPreviewResponseSchema>
+
+export const LoRAMemoryImpactResponseSchema = z.object({
+  name: z.string(),
+  estimated_vram_increase_mb: z.number(),
+  compatible_with_current_setup: z.boolean(),
+})
+
+export type LoRAMemoryImpactResponse = z.infer<typeof LoRAMemoryImpactResponseSchema>

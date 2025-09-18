@@ -681,7 +681,7 @@ class RecoveryEngine:
             range(original_port + 1, original_port + 10),  # Try next 9 ports
             range(8080, 8090),  # Common alternative range
             range(3001, 3010),  # Frontend alternative range
-            range(9000, 9010)   # Another common range
+            range(8000, 9010)   # Another common range
         ]
         
         for port_range in port_ranges:
@@ -1033,7 +1033,7 @@ class FallbackConfiguration:
     def __init__(self):
         self.fallback_configs = {
             ErrorType.PORT_CONFLICT: {
-                "safe_port_ranges": [(8080, 8090), (9000, 9010), (3001, 3010)],
+                "safe_port_ranges": [(8080, 8090), (8000, 9010), (3001, 3010)],
                 "alternative_hosts": ["127.0.0.1", "0.0.0.0"],
                 "reduced_functionality": True
             },

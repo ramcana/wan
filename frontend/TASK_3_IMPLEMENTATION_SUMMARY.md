@@ -98,7 +98,7 @@ Successfully implemented Task 3 from the frontend-backend connectivity fix speci
 server: {
   proxy: {
     '/api': {
-      target: process.env.VITE_API_URL || 'http://localhost:9000',
+      target: process.env.VITE_API_URL || 'http://localhost:8000',
       changeOrigin: true,
       secure: false,
       configure: (proxy, options) => {

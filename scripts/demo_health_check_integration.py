@@ -9,14 +9,13 @@ import json
 import time
 from datetime import datetime
 import requests
-import subprocess
 import sys
-import os
 from pathlib import Path
 
 # Add backend to path
 backend_dir = Path(__file__).parent / "backend"
 sys.path.insert(0, str(backend_dir))
+
 
 async def test_health_endpoint():
     """Test the health endpoint functionality"""
@@ -24,7 +23,7 @@ async def test_health_endpoint():
     print("=" * 50)
     
     # Test different ports
-    ports_to_test = [9000, 8000, 8080]
+    ports_to_test = [8000, 8000, 8080]
     
     for port in ports_to_test:
         print(f"\n📡 Testing port {port}...")
@@ -40,20 +39,32 @@ async def test_health_endpoint():
                 health_data = response.json()
                 print(f"✅ Port {port} - Backend is healthy!")
                 print(f"   Response time: {response_time:.1f}ms")
-                print(f"   Detected port: {health_data.get('port', 'unknown')}")
-                print(f"   API version: {health_data.get('api_version', 'unknown')}")
-                print(f"   Service: {health_data.get('service', 'unknown')}")
-                print(f"   CORS enabled: {health_data.get('connectivity', {}).get('cors_enabled', False)}")
-                print(f"   Allowed origins: {health_data.get('connectivity', {}).get('allowed_origins', [])}")
+                print(f"   Detected port: "
+                      f"{health_data.get('port', 'unknown')}")
+                print(f"   API version: "
+                      f"{health_data.get('api_version', 'unknown')}")
+                print(f"   Service: "
+                      f"{health_data.get('service', 'unknown')}")
+                print(f"   CORS enabled: "
+                      f"{health_data.get('connectivity', {}).get('cors_enabled', False)}")
+                print(f"   Allowed origins: "
+                      f"{health_data.get('connectivity', {}).get('allowed_origins', [])}")
                 
                 # Verify schema compliance
-                required_fields = ['status', 'port', 'timestamp', 'api_version', 'connectivity', 'endpoints', 'server_info']
-                missing_fields = [field for field in required_fields if field not in health_data]
+                required_fields = [
+                    'status', 'port', 'timestamp', 'api_version',
+                    'connectivity', 'endpoints', 'server_info'
+                ]
+                missing_fields = [
+                    field for field in required_fields
+                    if field not in health_data
+                ]
                 
                 if missing_fields:
                     print(f"   ⚠️  Missing fields: {missing_fields}")
                 else:
-                    print("   ✅ Schema compliance: All required fields present")
+                    print("   ✅ Schema compliance: "
+                      "All required fields present")
                 
                 return port, health_data
                 
@@ -75,7 +86,7 @@ def test_port_detection_logic():
     print("\n🔍 Testing Port Detection Logic")
     print("=" * 50)
     
-    ports_to_test = [9000, 8000, 8080, 3001]
+    ports_to_test = [8000, 8000, 8080, 3001]
     
     for port in ports_to_test:
         print(f"\n🔍 [{datetime.now().isoformat()}] Testing port {port}...")
@@ -108,8 +119,8 @@ def test_port_detection_logic():
     
     print(f"\n🚨 [{datetime.now().isoformat()}] No healthy backend found on any tested port")
     return {
-        'detectedPort': 9000,
-        'baseUrl': 'http://localhost:9000',
+        'detectedPort': 8000,
+        'baseUrl': 'http://localhost:8000',
         'isHealthy': False,
         'responseTime': 0
     }
@@ -214,7 +225,7 @@ async def main():
         print(f"✅ Schema compliance verified")
     else:
         print("❌ No backend found")
-        print("💡 Start the backend server with: python backend/start_server.py --port 9000")
+        print("💡 Start the backend server with: python backend/start_server.py --port 8000")
     
     print(f"\nPort detection result:")
     print(f"  Detected port: {detected_config['detectedPort']}")

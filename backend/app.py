@@ -307,7 +307,7 @@ async def api_health_check():
 async def system_health_check(request: Request):
     """Enhanced system health check endpoint with port and connectivity information"""
     # Get the current server port from environment or default
-    server_port = int(os.environ.get("PORT", "9000"))
+    server_port = int(os.environ.get("PORT", "8000"))
     
     # Try to detect actual running port from the request
     actual_port = server_port

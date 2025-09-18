@@ -21,7 +21,7 @@ describe('Task 3: Port Configuration and Cache Issues Integration', () => {
     expect(apiUrl).toBeDefined();
     
     // Test that the default is correct
-    expect(apiUrl || 'http://localhost:9000').toBe('http://localhost:9000');
+    expect(apiUrl || 'http://localhost:8000').toBe('http://localhost:8000');
   });
 
   it('should handle localStorage operations for cache management', () => {
@@ -33,7 +33,7 @@ describe('Task 3: Port Configuration and Cache Issues Integration', () => {
     expect(localStorage.getItem(storageKey)).toBe(testUrl);
     
     // Test URL change detection
-    const currentUrl = 'http://localhost:9000';
+    const currentUrl = 'http://localhost:8000';
     const storedUrl = localStorage.getItem(storageKey);
     
     expect(storedUrl).toBe(testUrl);
@@ -58,7 +58,7 @@ describe('Task 3: Port Configuration and Cache Issues Integration', () => {
 
   it('should handle URL parsing for port extraction', () => {
     const testUrls = [
-      { url: 'http://localhost:9000', expectedPort: 9000 },
+      { url: 'http://localhost:8000', expectedPort: 8000 },
       { url: 'http://localhost:8080', expectedPort: 8080 },
       { url: 'https://example.com', expectedPort: 443 },
       { url: 'http://example.com', expectedPort: 80 },
@@ -88,7 +88,7 @@ describe('Task 3: Port Configuration and Cache Issues Integration', () => {
 
   it('should handle configuration state management', () => {
     const config = {
-      apiUrl: import.meta.env.VITE_API_URL || 'http://localhost:9000',
+      apiUrl: import.meta.env.VITE_API_URL || 'http://localhost:8000',
       devMode: import.meta.env.DEV || false,
       lastUpdated: new Date(),
     };
@@ -102,7 +102,7 @@ describe('Task 3: Port Configuration and Cache Issues Integration', () => {
     // Test that proxy configuration would be valid
     const proxyConfig = {
       '/api': {
-        target: process.env.VITE_API_URL || 'http://localhost:9000',
+        target: process.env.VITE_API_URL || 'http://localhost:8000',
         changeOrigin: true,
         secure: false,
       },

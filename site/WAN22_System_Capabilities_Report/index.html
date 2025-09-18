@@ -1338,7 +1338,7 @@
 <h1 id="wan22-video-generation-system-capabilities-report">WAN22 Video Generation System - Capabilities Report<a class="headerlink" href="#wan22-video-generation-system-capabilities-report" title="Permanent link">&para;</a></h1>
 <p><strong>Generated:</strong> December 15, 2024<br />
 <strong>System Status:</strong> ✅ Operational<br />
-<strong>Server:</strong> http://127.0.0.1:9000</p>
+<strong>Server:</strong> http://127.0.0.1:8000</p>
 <h2 id="executive-summary">Executive Summary<a class="headerlink" href="#executive-summary" title="Permanent link">&para;</a></h2>
 <p>The WAN22 Video Generation System is now fully operational with comprehensive API endpoints, model orchestration, and hardware optimization capabilities. The system successfully integrates three distinct WAN 2.2 model variants optimized for different video generation tasks.</p>
 <h2 id="system-architecture">System Architecture<a class="headerlink" href="#system-architecture" title="Permanent link">&para;</a></h2>
@@ -1548,7 +1548,7 @@
   <span class="n">fps</span> <span class="p">=</span> <span class="n">24</span>
 <span class="p">}</span> <span class="p">|</span> <span class="nb">ConvertTo-Json</span>
 
-<span class="nb">Invoke-RestMethod</span> <span class="n">-Uri</span> <span class="s2">&quot;http://127.0.0.1:9000/api/v1/generation/submit&quot;</span> <span class="n">-Method</span> <span class="n">Post</span> <span class="n">-ContentType</span> <span class="s2">&quot;application/json&quot;</span> <span class="n">-Body</span> <span class="nv">$body</span>
+<span class="nb">Invoke-RestMethod</span> <span class="n">-Uri</span> <span class="s2">&quot;http://127.0.0.1:8000/api/v1/generation/submit&quot;</span> <span class="n">-Method</span> <span class="n">Post</span> <span class="n">-ContentType</span> <span class="s2">&quot;application/json&quot;</span> <span class="n">-Body</span> <span class="nv">$body</span>
 </code></pre></div>
 <h3 id="enhanced-generation-with-optimizations">Enhanced Generation with Optimizations<a class="headerlink" href="#enhanced-generation-with-optimizations" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nv">$body</span> <span class="p">=</span> <span class="p">@{</span>
@@ -1559,7 +1559,7 @@
   <span class="n">enable_optimization</span> <span class="p">=</span> <span class="nv">$true</span>
 <span class="p">}</span> <span class="p">|</span> <span class="nb">ConvertTo-Json</span>
 
-<span class="nb">Invoke-RestMethod</span> <span class="n">-Uri</span> <span class="s2">&quot;http://127.0.0.1:9000/api/v1/generation/enhanced/submit&quot;</span> <span class="n">-Method</span> <span class="n">Post</span> <span class="n">-ContentType</span> <span class="s2">&quot;application/json&quot;</span> <span class="n">-Body</span> <span class="nv">$body</span>
+<span class="nb">Invoke-RestMethod</span> <span class="n">-Uri</span> <span class="s2">&quot;http://127.0.0.1:8000/api/v1/generation/enhanced/submit&quot;</span> <span class="n">-Method</span> <span class="n">Post</span> <span class="n">-ContentType</span> <span class="s2">&quot;application/json&quot;</span> <span class="n">-Body</span> <span class="nv">$body</span>
 </code></pre></div>
 <h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
 <ol>
@@ -1571,10 +1571,10 @@
 </ol>
 <h2 id="support-documentation">Support &amp; Documentation<a class="headerlink" href="#support-documentation" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>API Documentation:</strong> http://127.0.0.1:9000/docs</li>
-<li><strong>System Health:</strong> http://127.0.0.1:9000/health</li>
-<li><strong>Dashboard:</strong> http://127.0.0.1:9000/api/v1/dashboard/html</li>
-<li><strong>Performance Metrics:</strong> http://127.0.0.1:9000/api/v1/performance/status</li>
+<li><strong>API Documentation:</strong> http://127.0.0.1:8000/docs</li>
+<li><strong>System Health:</strong> http://127.0.0.1:8000/health</li>
+<li><strong>Dashboard:</strong> http://127.0.0.1:8000/api/v1/dashboard/html</li>
+<li><strong>Performance Metrics:</strong> http://127.0.0.1:8000/api/v1/performance/status</li>
 </ul>
 <hr />
 <p><strong>System Status:</strong> ✅ Ready for Production<br />

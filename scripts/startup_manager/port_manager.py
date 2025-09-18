@@ -80,7 +80,7 @@ class PortManager:
         self.safe_port_ranges = [
             (8000, 8099),  # Common development ports
             (3000, 3099),  # Frontend development ports
-            (9000, 9099),  # Alternative range
+            (8000, 9099),  # Alternative range
         ]
         self.allocated_ports: Dict[str, int] = {}
         self.config_path = config_path

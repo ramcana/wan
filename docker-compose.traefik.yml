@@ -1,0 +1,40 @@
+version: "3.8"
+
+services:
+  # Traefik reverse proxy
+  traefik:
+    image: traefik:v2.10
+    container_name: wan22-traefik
+    command:
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--providers.file.directory=/etc/traefik/dynamic"
+      - "--providers.file.watch=true"
+      - "--entrypoints.web.address=:80"
+      - "--log.level=DEBUG"
+    ports:
+      - "80:80"
+      - "8080:8080" # Traefik dashboard
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./traefik/traefik.yml:/etc/traefik/traefik.yml:ro
+      - ./traefik/dynamic_conf.yml:/etc/traefik/dynamic/dynamic_conf.yml:ro
+    networks:
+      - wan22-network
+    restart: unless-stopped
+
+  # Update the main app to not expose ports directly
+  wan22-app:
+    ports: []
+    expose:
+      - "8000"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.wan22-app.rule=Host(`app.localhost`)"
+      - "traefik.http.routers.wan22-app.entrypoints=web"
+      - "traefik.http.services.wan22-app.loadbalancer.server.port=8000"
+
+networks:
+  wan22-network:
+    external: true

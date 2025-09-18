@@ -121,5 +121,5 @@ Models now show as "available" instead of failing with the attribute error.
 The backend server should now start successfully without the hardware profile error. You can run:
 
 ```bash
-python backend/start_server.py --host 127.0.0.1 --port 9000
+python backend/start_server.py --host 127.0.0.1 --port 8000
 ```

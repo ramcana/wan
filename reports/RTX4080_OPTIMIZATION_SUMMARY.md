@@ -87,7 +87,7 @@ start_optimized_rtx4080.bat
 ```batch
 # Backend
 cd backend
-python start_server.py --host 127.0.0.1 --port 9000
+python start_server.py --host 127.0.0.1 --port 8000
 
 # Frontend (in new terminal)
 cd frontend
@@ -98,9 +98,9 @@ npm run dev
 
 ### Performance Monitoring
 
-- **Backend API**: http://127.0.0.1:9000/api/v1/performance/status
+- **Backend API**: http://127.0.0.1:8000/api/v1/performance/status
 - **Frontend**: http://localhost:3000
-- **API Docs**: http://127.0.0.1:9000/docs
+- **API Docs**: http://127.0.0.1:8000/docs
 
 ### VRAM Monitoring
 

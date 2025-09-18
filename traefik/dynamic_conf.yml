@@ -1,0 +1,28 @@
+# Dynamic configuration for Traefik
+
+http:
+  routers:
+    wan22-frontend:
+      rule: "Host(`app.localhost`)"
+      service: wan22-frontend-service
+      entryPoints:
+        - web
+      
+    wan22-api:
+      rule: "Host(`app.localhost`) && PathPrefix(`/api`)"
+      service: wan22-backend-service
+      entryPoints:
+        - web
+
+  services:
+    wan22-frontend-service:
+      loadBalancer:
+        servers:
+          - url: "http://wan22-app:8000"
+        passHostHeader: true
+        
+    wan22-backend-service:
+      loadBalancer:
+        servers:
+          - url: "http://wan22-app:8000"
+        passHostHeader: true

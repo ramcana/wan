@@ -6,7 +6,7 @@ Working generation test - test the endpoints that should work
 import requests
 import json
 
-BASE_URL = "http://localhost:9000"
+BASE_URL = "http://localhost:8000"
 
 def test_working_endpoints():
     """Test endpoints that should work regardless of model status"""

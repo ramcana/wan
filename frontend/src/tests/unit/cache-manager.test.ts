@@ -4,7 +4,7 @@
  */
 
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { CacheManager } from '../../lib/cache-manager';
+import { cacheManager } from '@/lib/cache-manager';
 
 // Mock navigator.serviceWorker
 const mockServiceWorker = {
@@ -85,12 +85,12 @@ Object.defineProperty(global, 'window', {
 // Mock import.meta.env
 vi.mock('import.meta', () => ({
   env: {
-    VITE_API_URL: 'http://localhost:9000',
+    VITE_API_URL: 'http://localhost:8000',
   },
 }));
 
 describe('CacheManager', () => {
-  let cacheManager: CacheManager;
+  let cacheManagerInstance: any;
 
   beforeEach(() => {
     // Reset all mocks
@@ -111,7 +111,7 @@ describe('CacheManager', () => {
     mockCaches.delete.mockResolvedValue(true);
     
     // Get fresh instance
-    cacheManager = CacheManager.getInstance();
+    cacheManagerInstance = cacheManager;
   });
 
   afterEach(() => {
@@ -123,20 +123,20 @@ describe('CacheManager', () => {
       // Setup: stored URL is different from current
       mockLocalStorage.getItem.mockReturnValue('http://localhost:8000');
       
-      const result = await cacheManager.checkAndClearCacheOnUrlChange();
+      const result = await cacheManagerInstance.checkAndClearCacheOnUrlChange();
       
       expect(result).toBe(true);
       expect(mockCaches.keys).toHaveBeenCalled();
       expect(mockCaches.delete).toHaveBeenCalledWith('cache1');
       expect(mockCaches.delete).toHaveBeenCalledWith('cache2');
-      expect(mockLocalStorage.setItem).toHaveBeenCalledWith('wan22_api_url', 'http://localhost:9000');
+      expect(mockLocalStorage.setItem).toHaveBeenCalledWith('wan22_api_url', 'http://localhost:8000');
     });
 
     it('should not clear caches when API URL is unchanged', async () => {
       // Setup: stored URL is same as current
-      mockLocalStorage.getItem.mockReturnValue('http://localhost:9000');
+      mockLocalStorage.getItem.mockReturnValue('http://localhost:8000');
       
-      const result = await cacheManager.checkAndClearCacheOnUrlChange();
+      const result = await cacheManagerInstance.checkAndClearCacheOnUrlChange();
       
       expect(result).toBe(false);
       expect(mockCaches.keys).not.toHaveBeenCalled();
@@ -146,16 +146,16 @@ describe('CacheManager', () => {
       // Setup: no stored URL
       mockLocalStorage.getItem.mockReturnValue(null);
       
-      const result = await cacheManager.checkAndClearCacheOnUrlChange();
+      const result = await cacheManagerInstance.checkAndClearCacheOnUrlChange();
       
       expect(result).toBe(false);
-      expect(mockLocalStorage.setItem).toHaveBeenCalledWith('wan22_api_url', 'http://localhost:9000');
+      expect(mockLocalStorage.setItem).toHaveBeenCalledWith('wan22_api_url', 'http://localhost:8000');
     });
   });
 
   describe('clearServiceWorkerCache', () => {
     it('should clear service worker cache successfully', async () => {
-      const result = await cacheManager.clearServiceWorkerCache();
+      const result = await cacheManagerInstance.clearServiceWorkerCache();
       
       expect(result).toBe(true);
       expect(mockServiceWorker.getRegistrations).toHaveBeenCalled();
@@ -171,7 +171,7 @@ describe('CacheManager', () => {
         writable: true,
       });
       
-      const result = await cacheManager.clearServiceWorkerCache();
+      const result = await cacheManagerInstance.clearServiceWorkerCache();
       
       expect(result).toBe(false);
     });
@@ -179,7 +179,7 @@ describe('CacheManager', () => {
     it('should handle service worker errors', async () => {
       mockServiceWorker.getRegistrations.mockRejectedValue(new Error('Service worker error'));
       
-      const result = await cacheManager.clearServiceWorkerCache();
+      const result = await cacheManagerInstance.clearServiceWorkerCache();
       
       expect(result).toBe(false);
     });
@@ -187,7 +187,7 @@ describe('CacheManager', () => {
 
   describe('clearBrowserCache', () => {
     it('should clear browser cache successfully', async () => {
-      const result = await cacheManager.clearBrowserCache();
+      const result = await cacheManagerInstance.clearBrowserCache();
       
       expect(result).toBe(true);
       expect(mockCaches.keys).toHaveBeenCalled();
@@ -199,7 +199,7 @@ describe('CacheManager', () => {
     it('should handle cache API errors', async () => {
       mockCaches.keys.mockRejectedValue(new Error('Cache error'));
       
-      const result = await cacheManager.clearBrowserCache();
+      const result = await cacheManagerInstance.clearBrowserCache();
       
       expect(result).toBe(false);
     });
@@ -207,7 +207,7 @@ describe('CacheManager', () => {
 
   describe('unregisterServiceWorkers', () => {
     it('should unregister all service workers', async () => {
-      const result = await cacheManager.unregisterServiceWorkers();
+      const result = await cacheManagerInstance.unregisterServiceWorkers();
       
       expect(result).toBe(true);
       expect(mockServiceWorker.getRegistrations).toHaveBeenCalled();
@@ -217,7 +217,7 @@ describe('CacheManager', () => {
     it('should handle unregistration errors', async () => {
       mockRegistration.unregister.mockRejectedValue(new Error('Unregister error'));
       
-      const result = await cacheManager.unregisterServiceWorkers();
+      const result = await cacheManagerInstance.unregisterServiceWorkers();
       
       expect(result).toBe(false);
     });
@@ -225,7 +225,7 @@ describe('CacheManager', () => {
 
   describe('clearAllCaches', () => {
     it('should clear all caches successfully', async () => {
-      const result = await cacheManager.clearAllCaches();
+      const result = await cacheManagerInstance.clearAllCaches();
       
       expect(result).toBe(true);
       expect(mockServiceWorker.getRegistrations).toHaveBeenCalled();
@@ -236,7 +236,7 @@ describe('CacheManager', () => {
       // Make service worker clearing fail
       mockServiceWorker.getRegistrations.mockRejectedValue(new Error('SW error'));
       
-      const result = await cacheManager.clearAllCaches();
+      const result = await cacheManagerInstance.clearAllCaches();
       
       expect(result).toBe(false);
     });
@@ -246,7 +246,7 @@ describe('CacheManager', () => {
     it('should update API URL and clear caches', async () => {
       const newUrl = 'http://localhost:8080';
       
-      const result = await cacheManager.updateApiUrl(newUrl);
+      const result = await cacheManagerInstance.updateApiUrl(newUrl);
       
       expect(result).toBe(true);
       expect(mockLocalStorage.setItem).toHaveBeenCalledWith('wan22_api_url', newUrl);
@@ -254,9 +254,9 @@ describe('CacheManager', () => {
     });
 
     it('should not clear caches if URL is unchanged', async () => {
-      const currentUrl = cacheManager.getCurrentApiUrl();
+      const currentUrl = cacheManagerInstance.getCurrentApiUrl();
       
-      const result = await cacheManager.updateApiUrl(currentUrl);
+      const result = await cacheManagerInstance.updateApiUrl(currentUrl);
       
       expect(result).toBe(false);
       expect(mockCaches.keys).not.toHaveBeenCalled();
@@ -265,7 +265,7 @@ describe('CacheManager', () => {
 
   describe('forceReload', () => {
     it('should force reload the application', () => {
-      cacheManager.forceReload();
+      cacheManagerInstance.forceReload();
       
       expect(mockLocation.reload).toHaveBeenCalled();
     });
@@ -275,7 +275,7 @@ describe('CacheManager', () => {
     it('should initialize and check for URL changes', async () => {
       mockLocalStorage.getItem.mockReturnValue('http://localhost:8000');
       
-      await cacheManager.initialize();
+      await cacheManagerInstance.initialize();
       
       expect(mockLocalStorage.getItem).toHaveBeenCalledWith('wan22_api_url');
       expect(mockCaches.keys).toHaveBeenCalled();
@@ -287,7 +287,7 @@ describe('CacheManager', () => {
       });
       
       // Should not throw
-      await expect(cacheManager.initialize()).resolves.toBeUndefined();
+      await expect(cacheManagerInstance.initialize()).resolves.toBeUndefined();
     });
   });
 });

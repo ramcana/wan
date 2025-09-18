@@ -24,29 +24,33 @@ export function useStartupValidation() {
   // Run startup validation
   const runValidation = useCallback(async () => {
     try {
-      console.log(`🚀 [${new Date().toISOString()}] Starting application initialization...`);
+      console.log(`🚀 [${new Date().toISOString()}] Starting application initialization...`)
       
       setState(prev => ({
         ...prev,
         isInitializing: true,
         error: null,
-      }));
+      }))
 
       // Step 1: Initialize port detection
-      await initializePortDetection();
+      console.log('Initializing port detection...')
+      await initializePortDetection()
+      console.log('Port detection completed')
 
       // Step 2: Run comprehensive startup validation
-      const validationResult = await validateStartup();
+      console.log('Running startup validation...')
+      const validationResult = await validateStartup()
+      console.log('Startup validation completed:', validationResult)
 
       setState({
         isInitializing: false,
         isValidated: validationResult.isValid,
         validationResult,
         error: null,
-      });
+      })
 
       if (validationResult.isValid) {
-        console.log(`✅ [${new Date().toISOString()}] Application initialization completed successfully`);
+        console.log(`✅ [${new Date().toISOString()}] Application initialization completed successfully`)
       } else {
         console.warn(
           `⚠️ [${new Date().toISOString()}] Application initialization completed with issues:`,
@@ -54,19 +58,19 @@ export function useStartupValidation() {
             errors: validationResult.errors,
             warnings: validationResult.warnings,
           },
-        );
+        )
       }
 
     } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : 'Unknown error during startup validation';
-      console.error(`❌ [${new Date().toISOString()}] Application initialization failed:`, error);
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error during startup validation'
+      console.error(`❌ [${new Date().toISOString()}] Application initialization failed:`, error)
       
       setState({
         isInitializing: false,
         isValidated: false,
         validationResult: null,
         error: errorMessage,
-      });
+      })
     }
   }, []);
 

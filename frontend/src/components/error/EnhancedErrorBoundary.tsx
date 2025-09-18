@@ -1,9 +1,9 @@
-import React, { Component, ReactNode } from 'react';
-import { AlertTriangle, RefreshCw, Home, Bug } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { ConnectionStatus } from '@/components/ui/connection-status';
+import React, { Component, ReactNode } from "react";
+import { AlertTriangle, RefreshCw, Home, Bug } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ConnectionStatus } from "@/components/ui/connection-status";
 
 interface Props {
   children: ReactNode;
@@ -25,7 +25,7 @@ export class EnhancedErrorBoundary extends Component<Props, State> {
       hasError: false,
       error: null,
       errorInfo: null,
-      errorId: '',
+      errorId: "",
     };
   }
 
@@ -44,8 +44,8 @@ export class EnhancedErrorBoundary extends Component<Props, State> {
     });
 
     // Log error for debugging
-    console.error('ErrorBoundary caught an error:', error, errorInfo);
-    
+    console.error("ErrorBoundary caught an error:", error, errorInfo);
+
     // Report error to monitoring service if available
     if (window.errorReporter) {
       window.errorReporter.reportError(error, {
@@ -61,7 +61,7 @@ export class EnhancedErrorBoundary extends Component<Props, State> {
       hasError: false,
       error: null,
       errorInfo: null,
-      errorId: '',
+      errorId: "",
     });
   };
 
@@ -70,7 +70,7 @@ export class EnhancedErrorBoundary extends Component<Props, State> {
   };
 
   handleGoHome = () => {
-    window.location.href = '/';
+    window.location.href = "/";
   };
 
   render() {
@@ -79,9 +79,10 @@ export class EnhancedErrorBoundary extends Component<Props, State> {
         return this.props.fallback;
       }
 
-      const isApiError = this.state.error?.message?.includes('API') || 
-                        this.state.error?.message?.includes('fetch') ||
-                        this.state.error?.message?.includes('network');
+      const isApiError =
+        this.state.error?.message?.includes("API") ||
+        this.state.error?.message?.includes("fetch") ||
+        this.state.error?.message?.includes("network");
 
       return (
         <div className="min-h-screen bg-background flex items-center justify-center p-4">
@@ -96,7 +97,9 @@ export class EnhancedErrorBoundary extends Component<Props, State> {
               {/* Connection Status */}
               {(this.props.showConnectionStatus || isApiError) && (
                 <div>
-                  <h4 className="text-sm font-medium mb-2">Connection Status</h4>
+                  <h4 className="text-sm font-medium mb-2">
+                    Connection Status
+                  </h4>
                   <ConnectionStatus showDetails={true} />
                 </div>
               )}
@@ -107,7 +110,10 @@ export class EnhancedErrorBoundary extends Component<Props, State> {
                 <AlertTitle>Error Details</AlertTitle>
                 <AlertDescription>
                   <div className="space-y-2">
-                    <p>{this.state.error?.message || 'An unexpected error occurred'}</p>
+                    <p>
+                      {this.state.error?.message ||
+                        "An unexpected error occurred"}
+                    </p>
                     <details className="text-xs">
                       <summary className="cursor-pointer hover:underline">
                         Technical Details (Error ID: {this.state.errorId})
@@ -126,7 +132,13 @@ export class EnhancedErrorBoundary extends Component<Props, State> {
                 <AlertDescription>
                   <ul className="list-disc list-inside space-y-1 text-sm">
                     {isApiError && (
-                      <li>Check if the backend server is running on port 9000</li>
+                      <li>
+                        Check if the backend server is running on the correct
+                        port (configured as{" "}
+                        {import.meta.env.VITE_API_URL ||
+                          "http://localhost:8000"}
+                        )
+                      </li>
                     )}
                     <li>Try refreshing the page</li>
                     <li>Clear browser cache and cookies</li>
@@ -155,20 +167,24 @@ export class EnhancedErrorBoundary extends Component<Props, State> {
               </div>
 
               {/* Development Info */}
-              {import.meta.env.VITE_DEV_MODE === 'true' && (
+              {import.meta.env.VITE_DEV_MODE === "true" && (
                 <details className="text-xs text-muted-foreground">
                   <summary className="cursor-pointer hover:underline">
                     Development Information
                   </summary>
                   <pre className="mt-2 p-2 bg-muted rounded overflow-auto">
-                    {JSON.stringify({
-                      error: this.state.error?.message,
-                      stack: this.state.error?.stack,
-                      componentStack: this.state.errorInfo?.componentStack,
-                      timestamp: new Date().toISOString(),
-                      userAgent: navigator.userAgent,
-                      url: window.location.href,
-                    }, null, 2)}
+                    {JSON.stringify(
+                      {
+                        error: this.state.error?.message,
+                        stack: this.state.error?.stack,
+                        componentStack: this.state.errorInfo?.componentStack,
+                        timestamp: new Date().toISOString(),
+                        userAgent: navigator.userAgent,
+                        url: window.location.href,
+                      },
+                      null,
+                      2
+                    )}
                   </pre>
                 </details>
               )}

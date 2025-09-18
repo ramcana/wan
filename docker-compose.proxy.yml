@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+  # Nginx reverse proxy
+  nginx:
+    image: nginx:alpine
+    container_name: wan22-nginx-proxy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/app.conf:/etc/nginx/nginx.conf:ro
+      - ./frontend/dist:/var/www/html:ro
+      - ./ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - wan22-app
+    networks:
+      - wan22-network
+    restart: unless-stopped
+
+  # Update the main app to not expose ports directly
+  wan22-app:
+    ports: []
+    expose:
+      - "8000"
+
+networks:
+  wan22-network:
+    external: true

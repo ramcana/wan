@@ -8,7 +8,7 @@ console.log('=== Task 3: Port Configuration and Cache Issues Demo ===');
 // Test 1: Environment variable access
 console.log('\n1. Testing environment variable access:');
 try {
-  const apiUrl = import.meta?.env?.VITE_API_URL || 'http://localhost:9000';
+  const apiUrl = import.meta?.env?.VITE_API_URL || 'http://localhost:8000';
   console.log('✓ API URL:', apiUrl);
   
   const devMode = import.meta?.env?.DEV || false;
@@ -66,7 +66,7 @@ try {
   console.log('✓ Retrieved value:', retrieved);
   
   // Test URL change detection
-  const currentUrl = 'http://localhost:9000';
+  const currentUrl = 'http://localhost:8000';
   const hasChanged = retrieved !== currentUrl;
   console.log('✓ URL change detected:', hasChanged);
   
@@ -80,7 +80,7 @@ try {
 // Test 5: URL parsing for port extraction
 console.log('\n5. Testing URL parsing:');
 const testUrls = [
-  'http://localhost:9000',
+  'http://localhost:8000',
   'http://localhost:8080',
   'https://example.com',
   'http://example.com'
@@ -101,7 +101,7 @@ console.log('\n6. Testing proxy configuration format:');
 try {
   const proxyConfig = {
     '/api': {
-      target: 'http://localhost:9000',
+      target: 'http://localhost:8000',
       changeOrigin: true,
       secure: false,
     }
@@ -116,9 +116,9 @@ try {
 console.log('\n7. Testing configuration state management:');
 try {
   const config = {
-    apiUrl: 'http://localhost:9000',
+    apiUrl: 'http://localhost:8000',
     devMode: true,
-    backendPort: 9000,
+    backendPort: 8000,
     frontendPort: 3000,
     lastUpdated: new Date()
   };
@@ -126,7 +126,7 @@ try {
   console.log('✓ Configuration state created:', config);
   
   // Test port extraction
-  const extractedPort = parseInt(new URL(config.apiUrl).port) || 9000;
+  const extractedPort = parseInt(new URL(config.apiUrl).port) || 8000;
   console.log('✓ Extracted port from URL:', extractedPort);
 } catch (error) {
   console.log('✗ Configuration state management failed:', error.message);
@@ -196,7 +196,7 @@ window.task3Demo = {
     
     const storageKey = 'wan22_api_url';
     const oldUrl = localStorage.getItem(storageKey) || 'http://localhost:8000';
-    const newUrl = 'http://localhost:9000';
+    const newUrl = 'http://localhost:8000';
     
     console.log('Old URL:', oldUrl);
     console.log('New URL:', newUrl);

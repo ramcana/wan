@@ -10,7 +10,7 @@ import time
 import sys
 from typing import Dict, Any
 
-BASE_URL = "http://localhost:9000"
+BASE_URL = "http://localhost:8000"
 
 def test_endpoint(name: str, method: str, url: str, data: Dict[Any, Any] = None, 
                  headers: Dict[str, str] = None) -> bool:

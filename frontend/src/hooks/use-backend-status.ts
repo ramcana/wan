@@ -33,7 +33,7 @@ export const useBackendStatus = (checkInterval = 30000) => {
         isLoading: false,
         lastCheck: new Date(),
         error: null,
-        port: 9000, // Default port, could be detected dynamically
+        port: 8000, // Default port, could be detected dynamically
         version: response.version || null,
         uptime: response.uptime || null,
       });

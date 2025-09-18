@@ -2,8 +2,8 @@
 
 ## Backend Status: ✅ OPERATIONAL
 
-- **URL**: http://localhost:9000
-- **API Docs**: http://localhost:9000/docs
+- **URL**: http://localhost:8000
+- **API Docs**: http://localhost:8000/docs
 - **Models Root**: D:\AI\models
 - **Models Detected**: 3 (t2v-A14B, i2v-A14B, ti2v-5B)
 
@@ -13,24 +13,24 @@
 
 ```bash
 # Basic health
-curl http://localhost:9000/health
+curl http://localhost:8000/health
 
 # System health with details
-curl http://localhost:9000/api/v1/system/health
+curl http://localhost:8000/api/v1/system/health
 ```
 
 ### Model Status
 
 ```bash
 # Check model detection and status
-curl http://localhost:9000/api/v1/models/status
+curl http://localhost:8000/api/v1/models/status
 ```
 
 ### Prompt Enhancement
 
 ```bash
 # Enhance a text prompt
-curl -X POST http://localhost:9000/api/v1/prompt/enhance \
+curl -X POST http://localhost:8000/api/v1/prompt/enhance \
   -H "Content-Type: application/json" \
   -d '{"prompt": "A beautiful mountain landscape at sunset"}'
 ```
@@ -39,7 +39,7 @@ curl -X POST http://localhost:9000/api/v1/prompt/enhance \
 
 ```bash
 # Check generation queue
-curl http://localhost:9000/api/v1/queue
+curl http://localhost:8000/api/v1/queue
 ```
 
 ## 🔧 Model Recognition Results

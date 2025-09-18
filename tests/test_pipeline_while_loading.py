@@ -11,7 +11,7 @@ import time
 
 async def test_submission_while_loading():
     """Test generation submission while models are loading"""
-    base_url = "http://localhost:9000"
+    base_url = "http://localhost:8000"
     
     print("🔄 Testing Pipeline While Models Are Loading")
     print("=" * 50)
@@ -136,7 +136,7 @@ async def test_submission_while_loading():
 
 async def test_vram_calculation():
     """Test VRAM calculation fix"""
-    base_url = "http://localhost:9000"
+    base_url = "http://localhost:8000"
     
     print(f"\n4. VRAM Calculation Test:")
     try:

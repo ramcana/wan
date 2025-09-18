@@ -113,7 +113,7 @@ HF_TOKEN=your_token_here
 # Optional: Local MinIO for testing
 AWS_ACCESS_KEY_ID=minioadmin
 AWS_SECRET_ACCESS_KEY=minioadmin
-AWS_ENDPOINT_URL=http://localhost:9000
+AWS_ENDPOINT_URL=http://localhost:8000
 ```
 
 #### Running
@@ -451,7 +451,7 @@ sudo systemctl enable minio
 sudo systemctl start minio
 
 # Configure client
-mc alias set local http://localhost:9000 minioadmin minioadmin
+mc alias set local http://localhost:8000 minioadmin minioadmin
 mc mb local/wan22-models
 ```
 

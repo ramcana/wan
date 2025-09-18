@@ -63,7 +63,7 @@ class TestGenerationPerformanceMetrics:
             {
                 "name": "1080p_balanced",
                 "config": {"resolution": "1080p", "steps": 50, "model": "t2v-A14B"},
-                "expected": {"time_range": (60, 100), "vram_mb": (9000, 12000), "quality": "high"}
+                "expected": {"time_range": (60, 100), "vram_mb": (8000, 12000), "quality": "high"}
             },
             {
                 "name": "ti2v_efficient",

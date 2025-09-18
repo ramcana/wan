@@ -99,19 +99,19 @@ describe('ConfigSynchronizer', () => {
     it('should detect changes correctly', () => {
       configSynchronizer.updateConfig({ apiUrl: 'http://localhost:8080' });
       
-      const newConfig = { apiUrl: 'http://localhost:9000', port: 9000 };
+      const newConfig = { apiUrl: 'http://localhost:8000', port: 8000 };
       const changes = configSynchronizer.detectChanges(newConfig);
       
       expect(changes).toHaveLength(2);
       expect(changes[0]).toMatchObject({
         key: 'apiUrl',
         oldValue: 'http://localhost:8080',
-        newValue: 'http://localhost:9000',
+        newValue: 'http://localhost:8000',
       });
       expect(changes[1]).toMatchObject({
         key: 'port',
         oldValue: undefined,
-        newValue: 9000,
+        newValue: 8000,
       });
     });
 

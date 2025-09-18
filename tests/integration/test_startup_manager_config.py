@@ -294,7 +294,7 @@ class TestNewConfigModels:
         
         # Invalid ranges
         with pytest.raises(ValueError):
-            SecurityConfig(trusted_port_range=(9000, 8000))  # start >= end
+            SecurityConfig(trusted_port_range=(8000, 8000))  # start >= end
         
         with pytest.raises(ValueError):
             SecurityConfig(trusted_port_range=(500, 1000))  # start < 1024

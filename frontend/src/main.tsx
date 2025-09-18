@@ -5,8 +5,6 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import App from "./App.tsx";
 import "./index.css";
-import { cacheManager } from "./lib/cache-manager";
-import { configSynchronizer } from "./lib/config-synchronizer";
 
 // Create a client
 const queryClient = new QueryClient({
@@ -19,16 +17,10 @@ const queryClient = new QueryClient({
   },
 });
 
-// Initialize cache manager and register service worker
+// Register service worker
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", async () => {
     try {
-      // Initialize cache manager first
-      await cacheManager.initialize();
-
-      // Initialize configuration synchronizer
-      await configSynchronizer.initialize();
-
       // Register service worker
       const registration = await navigator.serviceWorker.register("/sw.js");
       console.log("SW registered: ", registration);
@@ -44,14 +36,33 @@ if ("serviceWorker" in navigator) {
             ) {
               console.log("New service worker available, clearing caches...");
               // Clear caches when new service worker is available
-              cacheManager.clearAllCaches().then(() => {
-                console.log("Caches cleared, reloading...");
-                window.location.reload();
-              });
+              if ("caches" in window) {
+                caches
+                  .keys()
+                  .then((cacheNames) => {
+                    cacheNames.forEach((cacheName) => {
+                      caches.delete(cacheName);
+                    });
+                  })
+                  .then(() => {
+                    console.log("Caches cleared, reloading...");
+                    window.location.reload();
+                  });
+              }
             }
           });
         }
       });
+
+      // Clear service worker cache on startup to avoid cached configuration issues
+      if ("caches" in window) {
+        caches.keys().then((cacheNames) => {
+          cacheNames.forEach((cacheName) => {
+            caches.delete(cacheName);
+          });
+        });
+        console.log("Service worker caches cleared on startup");
+      }
     } catch (registrationError) {
       console.log("SW registration failed: ", registrationError);
     }

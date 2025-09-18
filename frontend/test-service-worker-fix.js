@@ -37,7 +37,7 @@ async function testServiceWorkerFix() {
     }
   } catch (error) {
     console.log('❌ Backend is not reachable:', error.message);
-    console.log('💡 Make sure the backend server is running on port 9000');
+    console.log('💡 Make sure the backend server is running on port 8000');
     console.log('💡 Check if VITE_API_URL is set correctly in frontend/.env');
   }
   
@@ -126,7 +126,7 @@ async function testServiceWorkerFix() {
   console.log('   1. Run clear-service-worker.js');
   console.log('   2. Refresh the page');
   console.log('   3. Check browser console for errors');
-  console.log('   4. Verify backend is running on port 9000');
+  console.log('   4. Verify backend is running on port 8000');
 }
 
 // Auto-run the test

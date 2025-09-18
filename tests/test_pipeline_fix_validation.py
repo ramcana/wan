@@ -11,7 +11,7 @@ import time
 
 async def test_vram_calculation():
     """Test that VRAM calculations are no longer negative"""
-    base_url = "http://localhost:9000"
+    base_url = "http://localhost:8000"
     
     print("🎮 Testing VRAM Calculation Fix")
     
@@ -34,7 +34,7 @@ async def test_vram_calculation():
 
 async def test_generation_service_startup():
     """Test that generation service starts properly"""
-    base_url = "http://localhost:9000"
+    base_url = "http://localhost:8000"
     
     print("\n⚙️  Testing Generation Service Startup")
     
@@ -61,7 +61,7 @@ async def test_generation_service_startup():
 
 async def test_minimal_generation():
     """Test actual generation with minimal parameters"""
-    base_url = "http://localhost:9000"
+    base_url = "http://localhost:8000"
     
     print("\n🎬 Testing Minimal Generation (Pipeline Wrapper)")
     

@@ -100,14 +100,14 @@ class TestHealthEndpointIntegration:
         assert "http://localhost:3000" in connectivity["allowed_origins"]
         assert data["connectivity"]["request_origin"] == "http://localhost:3000"
 
-    @patch.dict(os.environ, {"PORT": "9000", "NODE_ENV": "production"})
+    @patch.dict(os.environ, {"PORT": "8000", "NODE_ENV": "production"})
     def test_health_endpoint_environment_variables(self):
         """Test health endpoint with environment variables"""
         response = client.get("/api/v1/system/health")
         data = response.json()
         
         server_info = data["server_info"]
-        assert server_info["configured_port"] == 9000
+        assert server_info["configured_port"] == 8000
         assert server_info["environment"] == "production"
 
     def test_health_endpoint_performance(self):

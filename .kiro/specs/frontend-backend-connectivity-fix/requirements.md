@@ -12,7 +12,7 @@ This document outlines the requirements for fixing critical network connectivity
 
 #### Acceptance Criteria
 
-1. WHEN in development mode THEN the system SHALL use Vite's server.proxy to forward /api calls to http://localhost:9000
+1. WHEN in development mode THEN the system SHALL use Vite's server.proxy to forward /api calls to http://localhost:8000
 2. WHEN environment variables are updated THEN the system SHALL unregister service workers via navigator.serviceWorker.getRegistrations() and clear browser cache
 3. WHEN API endpoints are called THEN the system SHALL log the resolved URL on each API call for debugging
 4. WHEN cached configurations conflict with current settings THEN the system SHALL force refresh the service worker using skipWaiting() and clients.claim()

@@ -783,32 +783,32 @@
 <h1 id="wan22-backend-working-curl-commands">WAN22 Backend - Working Curl Commands<a class="headerlink" href="#wan22-backend-working-curl-commands" title="Permanent link">&para;</a></h1>
 <h2 id="backend-status-operational">Backend Status: ✅ OPERATIONAL<a class="headerlink" href="#backend-status-operational" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>URL</strong>: http://localhost:9000</li>
-<li><strong>API Docs</strong>: http://localhost:9000/docs</li>
+<li><strong>URL</strong>: http://localhost:8000</li>
+<li><strong>API Docs</strong>: http://localhost:8000/docs</li>
 <li><strong>Models Root</strong>: D:\AI\models</li>
 <li><strong>Models Detected</strong>: 3 (t2v-A14B, i2v-A14B, ti2v-5B)</li>
 </ul>
 <h2 id="working-endpoints">✅ Working Endpoints<a class="headerlink" href="#working-endpoints" title="Permanent link">&para;</a></h2>
 <h3 id="health-checks">Health Checks<a class="headerlink" href="#health-checks" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># Basic health</span>
-curl<span class="w"> </span>http://localhost:9000/health
+curl<span class="w"> </span>http://localhost:8000/health
 
 <span class="c1"># System health with details</span>
-curl<span class="w"> </span>http://localhost:9000/api/v1/system/health
+curl<span class="w"> </span>http://localhost:8000/api/v1/system/health
 </code></pre></div>
 <h3 id="model-status">Model Status<a class="headerlink" href="#model-status" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># Check model detection and status</span>
-curl<span class="w"> </span>http://localhost:9000/api/v1/models/status
+curl<span class="w"> </span>http://localhost:8000/api/v1/models/status
 </code></pre></div>
 <h3 id="prompt-enhancement">Prompt Enhancement<a class="headerlink" href="#prompt-enhancement" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># Enhance a text prompt</span>
-curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://localhost:9000/api/v1/prompt/enhance<span class="w"> </span><span class="se">\</span>
+curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://localhost:8000/api/v1/prompt/enhance<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;prompt&quot;: &quot;A beautiful mountain landscape at sunset&quot;}&#39;</span>
 </code></pre></div>
 <h3 id="queue-management">Queue Management<a class="headerlink" href="#queue-management" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># Check generation queue</span>
-curl<span class="w"> </span>http://localhost:9000/api/v1/queue
+curl<span class="w"> </span>http://localhost:8000/api/v1/queue
 </code></pre></div>
 <h2 id="model-recognition-results">🔧 Model Recognition Results<a class="headerlink" href="#model-recognition-results" title="Permanent link">&para;</a></h2>
 <p>The backend successfully detects your models but reports them as "missing" due to configuration mismatches:</p>

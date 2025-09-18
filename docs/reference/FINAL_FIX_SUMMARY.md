@@ -151,7 +151,7 @@ python test_backend_startup_fix.py
 Start the backend:
 
 ```bash
-python backend/start_server.py --host 127.0.0.1 --port 9000
+python backend/start_server.py --host 127.0.0.1 --port 8000
 ```
 
 The hardware profile error is now **completely resolved** and the system is ready for production use! 🎊

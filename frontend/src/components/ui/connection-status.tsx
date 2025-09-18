@@ -90,7 +90,7 @@ export const ConnectionStatus: React.FC<ConnectionStatusProps> = ({
             Make sure the backend server is running:
             <br />
             <code className="text-xs bg-muted px-1 py-0.5 rounded">
-              $env:WAN_MODELS_ROOT="D:\AI\models"; python -m backend --host 0.0.0.0 --port 9000
+              $env:WAN_MODELS_ROOT="D:\AI\models"; python -m backend --host 0.0.0.0 --port 8000
             </code>
           </AlertDescription>
         </Alert>

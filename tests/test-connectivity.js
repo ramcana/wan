@@ -8,7 +8,7 @@ async function testBackendConnectivity() {
   // Test 1: Health endpoint
   console.log('1️⃣ Testing health endpoint...');
   try {
-    const healthResponse = await fetch('http://127.0.0.1:9000/api/v1/system/health');
+    const healthResponse = await fetch('http://127.0.0.1:8000/api/v1/system/health');
     if (healthResponse.ok) {
       const healthData = await healthResponse.json();
       console.log('✅ Backend health check passed');
@@ -29,7 +29,7 @@ async function testBackendConnectivity() {
       options: { test: true, timestamp: Date.now() }
     };
     
-    const response = await fetch('http://127.0.0.1:9000/api/v1/prompt/enhance', {
+    const response = await fetch('http://127.0.0.1:8000/api/v1/prompt/enhance', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -27,7 +27,7 @@ class TestS3Store:
     def setup_method(self):
         """Set up test fixtures."""
         self.config = S3Config(
-            endpoint_url="http://localhost:9000",
+            endpoint_url="http://localhost:8000",
             access_key_id="test_key",
             secret_access_key="test_secret",
             region_name="us-east-1",
@@ -83,7 +83,7 @@ class TestS3Store:
         mock_boto3_client.assert_called_once_with(
             service_name="s3",
             region_name="us-east-1",
-            endpoint_url="http://localhost:9000",
+            endpoint_url="http://localhost:8000",
             aws_access_key_id="test_key",
             aws_secret_access_key="test_secret"
         )
@@ -771,7 +771,7 @@ class TestS3Config:
     def test_custom_config(self):
         """Test custom configuration values."""
         config = S3Config(
-            endpoint_url="http://localhost:9000",
+            endpoint_url="http://localhost:8000",
             access_key_id="test_key",
             secret_access_key="test_secret",
             region_name="eu-west-1",
@@ -781,7 +781,7 @@ class TestS3Config:
             retry_backoff=2.0
         )
         
-        assert config.endpoint_url == "http://localhost:9000"
+        assert config.endpoint_url == "http://localhost:8000"
         assert config.access_key_id == "test_key"
         assert config.secret_access_key == "test_secret"
         assert config.region_name == "eu-west-1"

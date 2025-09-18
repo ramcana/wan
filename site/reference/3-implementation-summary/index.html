@@ -1172,7 +1172,7 @@
 <div class="highlight"><pre><span></span><code><span class="nx">server</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">proxy</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="s1">&#39;/api&#39;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">target</span><span class="o">:</span><span class="w"> </span><span class="kt">process.env.VITE_API_URL</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">&#39;http://localhost:9000&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">target</span><span class="o">:</span><span class="w"> </span><span class="kt">process.env.VITE_API_URL</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">&#39;http://localhost:8000&#39;</span><span class="p">,</span>
 <span class="w">      </span><span class="nx">changeOrigin</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span>
 <span class="w">      </span><span class="nx">secure</span><span class="o">:</span><span class="w"> </span><span class="kt">false</span><span class="p">,</span>
 <span class="w">      </span><span class="nx">configure</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">proxy</span><span class="p">,</span><span class="w"> </span><span class="nx">options</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>

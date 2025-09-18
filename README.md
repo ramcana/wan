@@ -135,12 +135,55 @@ cd frontend
 npm run dev
 ```
 
+### Reverse Proxy Setup
+
+For production deployments or simplified access, you can set up a reverse proxy to serve both frontend and backend on the same domain:
+
+#### Nginx Setup
+
+1. Build the frontend:
+   ```bash
+   cd frontend
+   npm run build
+   ```
+
+2. Start services with Nginx reverse proxy:
+   ```bash
+   # On Linux/Mac
+   ./scripts/build-and-proxy.sh
+   
+   # On Windows
+   scripts\build-and-proxy.bat
+   ```
+
+3. Access the application at: http://app.localhost
+
+See [PROXY_SETUP.md](PROXY_SETUP.md) for detailed configuration options.
+
+#### Traefik Setup
+
+1. Build the frontend:
+   ```bash
+   cd frontend
+   npm run build
+   ```
+
+2. Start services with Traefik reverse proxy:
+   ```bash
+   docker-compose -f backend/docker-compose.yml -f docker-compose.traefik.yml up -d
+   ```
+
+3. Access the application at: http://app.localhost
+
+See [TRAEFIK_SETUP.md](TRAEFIK_SETUP.md) for detailed configuration options.
+
 ### Access Points
 
 - **Frontend**: http://localhost:3000
 - **Backend API**: http://localhost:8000
 - **API Documentation**: http://localhost:8000/docs
 - **Gradio UI**: http://localhost:7860
+- **Proxy Setup**: http://app.localhost (when using reverse proxy)
 
 ## Development
 
@@ -267,4 +310,3 @@ For detailed information about the intelligent startup system:
 ## Support
 
 [Support information]
-

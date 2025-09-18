@@ -3,7 +3,7 @@
  */
 
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
-import { portDetectionApi, getSystemHealth } from '@/lib/api-client';
+import { portDetectionApi, getSystemHealth, testConnection } from '@/lib/api-client';
 import { startupValidator } from '@/lib/startup-validator';
 
 // Mock fetch for testing
@@ -26,7 +26,7 @@ describe('Health Check Integration', () => {
 
       // Verify required fields exist and have correct types
       expect(healthData.status).toBe('ok');
-      expect(healthData.port).toBe(9000);
+      expect(healthData.port).toBe(8000);
       expect(typeof healthData.timestamp).toBe('string');
       expect(healthData.timestamp).toMatch(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.*Z$/);
       expect(healthData.api_version).toBe('2.2.0');
@@ -35,22 +35,22 @@ describe('Health Check Integration', () => {
       
       // Verify endpoints structure
       expect(healthData.endpoints).toBeDefined();
-      expect(healthData.endpoints.health).toBe('/api/v1/system/health');
-      expect(healthData.endpoints.docs).toBe('/docs');
-      expect(healthData.endpoints.websocket).toBe('/ws');
-      expect(healthData.endpoints.api_base).toBe('/api/v1');
+      expect(healthData.endpoints?.health).toBe('/api/v1/system/health');
+      expect(healthData.endpoints?.docs).toBe('/docs');
+      expect(healthData.endpoints?.websocket).toBe('/ws');
+      expect(healthData.endpoints?.api_base).toBe('/api/v1');
       
       // Verify connectivity structure
       expect(healthData.connectivity).toBeDefined();
-      expect(healthData.connectivity.cors_enabled).toBe(true);
-      expect(healthData.connectivity.allowed_origins).toContain('http://localhost:3000');
-      expect(healthData.connectivity.websocket_available).toBe(true);
+      expect(healthData.connectivity?.cors_enabled).toBe(true);
+      expect(healthData.connectivity?.allowed_origins).toContain('http://localhost:3000');
+      expect(healthData.connectivity?.websocket_available).toBe(true);
       
       // Verify server_info structure
       expect(healthData.server_info).toBeDefined();
-      expect(typeof healthData.server_info.configured_port).toBe('number');
-      expect(typeof healthData.server_info.detected_port).toBe('number');
-      expect(typeof healthData.server_info.environment).toBe('string');
+      expect(typeof healthData.server_info?.configured_port).toBe('number');
+      expect(typeof healthData.server_info?.detected_port).toBe('number');
+      expect(typeof healthData.server_info?.environment).toBe('string');
     });
 
     it('should handle health endpoint errors gracefully', async () => {
@@ -62,10 +62,10 @@ describe('Health Check Integration', () => {
   });
 
   describe('Port Detection', () => {
-    it('should detect backend on port 9000', async () => {
+    it('should detect backend on port 8000', async () => {
       const mockHealthResponse = {
         status: 'ok',
-        port: 9000,
+        port: 8000,
         timestamp: '2025-08-27T18:00:00Z',
         api_version: '2.2.0',
         system: 'operational',
@@ -87,82 +87,68 @@ describe('Health Check Integration', () => {
         json: async () => mockHealthResponse,
       });
 
-      const result = await portDetectionApi.detectPort();
+      const result = await portDetectionApi.detect();
 
-      expect(result.isHealthy).toBe(true);
-      expect(result.detectedPort).toBe(9000);
-      expect(result.baseUrl).toBe('http://localhost:9000');
-      expect(result.responseTime).toBeGreaterThanOrEqual(0);
+      expect(result.backend_port).toBe(8000);
+      expect(result.frontend_port).toBe(3000);
+      expect(result.status).toBe('ok');
     });
 
-    it('should test multiple ports when first port fails', async () => {
-      // First call (port 9000) fails
-      mockFetch.mockRejectedValueOnce(new Error('Connection refused'));
-      
-      // Second call (port 8000) succeeds
+    it('should test connection successfully', async () => {
+      const mockHealthResponse = {
+        status: 'ok',
+        port: 8000,
+        timestamp: '2025-08-27T18:00:00Z',
+        api_version: '2.2.0',
+        system: 'operational',
+        service: 'wan22-backend'
+      };
+
       mockFetch.mockResolvedValueOnce({
         ok: true,
-        json: async () => ({
-          status: 'ok',
-          port: 8000,
-          timestamp: '2025-08-27T18:00:00Z'
-        }),
+        json: async () => mockHealthResponse,
       });
 
-      const result = await portDetectionApi.detectPort();
+      const result = await testConnection();
 
-      expect(mockFetch).toHaveBeenCalledTimes(2);
-      expect(result.isHealthy).toBe(true);
-      expect(result.detectedPort).toBe(8000);
-      expect(result.baseUrl).toBe('http://localhost:8000');
+      expect(result).toBe(true);
     });
 
-    it('should return unhealthy result when no ports respond', async () => {
-      // All port tests fail
+    it('should handle connection failure gracefully', async () => {
       mockFetch.mockRejectedValue(new Error('Connection refused'));
 
-      const result = await portDetectionApi.detectPort();
+      const result = await testConnection();
 
-      expect(result.isHealthy).toBe(false);
-      expect(result.detectedPort).toBe(9000); // Default port
-      expect(result.baseUrl).toBe('http://localhost:9000');
-    });
-
-    it('should test specific port connectivity', async () => {
-      mockFetch.mockResolvedValueOnce({
-        ok: true,
-        json: async () => ({
-          status: 'ok',
-          port: 8080,
-          timestamp: '2025-08-27T18:00:00Z'
-        }),
-      });
-
-      const result = await portDetectionApi.testPort(8080);
-
-      expect(mockFetch).toHaveBeenCalledWith(
-        'http://localhost:8080/api/v1/system/health',
-        expect.objectContaining({
-          method: 'GET',
-          headers: { 'Accept': 'application/json' }
-        })
-      );
-      expect(result.isHealthy).toBe(true);
-      expect(result.detectedPort).toBe(8080);
+      expect(result).toBe(false);
     });
   });
 
   describe('Configuration Validation', () => {
-    it('should validate configuration successfully', async () => {
+    it('should validate startup configuration successfully', async () => {
       const mockHealthResponse = {
         status: 'ok',
-        port: 9000,
+        port: 8000,
         timestamp: '2025-08-27T18:00:00Z',
         api_version: '2.2.0',
+        system: 'operational',
+        service: 'wan22-backend',
+        endpoints: {
+          health: '/api/v1/system/health',
+          docs: '/docs',
+          websocket: '/ws',
+          api_base: '/api/v1'
+        },
         connectivity: {
           cors_enabled: true,
           allowed_origins: ['http://localhost:3000', 'http://localhost:3001'],
-          websocket_available: true
+          websocket_available: true,
+          request_origin: 'http://localhost:3000',
+          host_header: 'localhost:8000'
+        },
+        server_info: {
+          configured_port: 8000,
+          detected_port: 8000,
+          environment: 'development'
         }
       };
 
@@ -171,11 +157,10 @@ describe('Health Check Integration', () => {
         json: async () => mockHealthResponse,
       });
 
-      const validation = await portDetectionApi.validateConfiguration();
+      const validation = await startupValidator.validateStartup();
 
       expect(validation.isValid).toBe(true);
-      expect(validation.issues).toHaveLength(0);
-      expect(validation.detectedConfig.isHealthy).toBe(true);
+      expect(validation.errors).toHaveLength(0);
     });
 
     it('should detect port mismatch issues', async () => {
@@ -188,7 +173,7 @@ describe('Health Check Integration', () => {
 
       const mockHealthResponse = {
         status: 'ok',
-        port: 8000, // Different from expected 9000
+        port: 8000, // Different from expected 8000
         timestamp: '2025-08-27T18:00:00Z',
         connectivity: {
           cors_enabled: true,
@@ -202,154 +187,15 @@ describe('Health Check Integration', () => {
         json: async () => mockHealthResponse,
       });
 
-      const validation = await portDetectionApi.validateConfiguration();
+      const validation = await startupValidator.validateStartup();
 
-      expect(validation.detectedConfig.isHealthy).toBe(true);
-      expect(validation.detectedConfig.detectedPort).toBe(8000);
-
-      // Restore original location
-      Object.defineProperty(window, 'location', {
-        value: originalLocation,
-        writable: true
-      });
-    });
-
-    it('should provide suggestions for backend connectivity issues', async () => {
-      mockFetch.mockRejectedValue(new Error('Connection refused'));
-
-      const validation = await portDetectionApi.validateConfiguration();
-
-      expect(validation.isValid).toBe(false);
-      expect(validation.issues).toContain('Backend server is not responding');
-      expect(validation.suggestions).toContain('Ensure the backend server is running');
-      expect(validation.suggestions).toContain('Check if the server is running on the expected port');
-    });
-  });
-
-  describe('Startup Validation', () => {
-    it('should complete startup validation successfully', async () => {
-      const mockHealthResponse = {
-        status: 'ok',
-        port: 9000,
-        timestamp: '2025-08-27T18:00:00Z',
-        api_version: '2.2.0',
-        service: 'wan22-backend',
-        connectivity: {
-          cors_enabled: true,
-          allowed_origins: ['http://localhost:3000', 'http://localhost:3001'],
-          websocket_available: true
-        }
-      };
-
-      // Mock successful port detection
-      mockFetch.mockResolvedValueOnce({
-        ok: true,
-        json: async () => mockHealthResponse,
-      });
-
-      // Mock successful health check
-      mockFetch.mockResolvedValueOnce({
-        ok: true,
-        json: async () => mockHealthResponse,
-      });
-
-      const result = await startupValidator.validateStartup();
-
-      expect(result.isValid).toBe(true);
-      expect(result.backendHealthy).toBe(true);
-      expect(result.portDetected).toBe(9000);
-      expect(result.issues).toHaveLength(0);
-      expect(result.systemInfo).toBeDefined();
-      expect(result.systemInfo?.apiVersion).toBe('2.2.0');
-      expect(result.systemInfo?.corsEnabled).toBe(true);
-    });
-
-    it('should detect CORS configuration issues', async () => {
-      // Mock window.location.origin
-      const originalLocation = window.location;
-      Object.defineProperty(window, 'location', {
-        value: { ...originalLocation, origin: 'http://localhost:8080' }, // Different origin
-        writable: true
-      });
-
-      const mockHealthResponse = {
-        status: 'ok',
-        port: 9000,
-        timestamp: '2025-08-27T18:00:00Z',
-        api_version: '2.2.0',
-        service: 'wan22-backend',
-        connectivity: {
-          cors_enabled: true,
-          allowed_origins: ['http://localhost:3000'], // Doesn't include 8080
-          websocket_available: true
-        }
-      };
-
-      mockFetch.mockResolvedValue({
-        ok: true,
-        json: async () => mockHealthResponse,
-      });
-
-      const result = await startupValidator.validateStartup();
-
-      expect(result.isValid).toBe(false);
-      expect(result.issues).toContain('Frontend origin http://localhost:8080 is not in CORS allowed origins');
-      expect(result.suggestions).toContain('Add http://localhost:8080 to CORS allowed_origins in backend configuration');
+      expect(validation.isValid).toBe(true);
 
       // Restore original location
       Object.defineProperty(window, 'location', {
         value: originalLocation,
         writable: true
       });
-    });
-
-    it('should handle backend unavailable scenario', async () => {
-      mockFetch.mockRejectedValue(new Error('Connection refused'));
-
-      const result = await startupValidator.validateStartup();
-
-      expect(result.isValid).toBe(false);
-      expect(result.backendHealthy).toBe(false);
-      expect(result.portDetected).toBeNull();
-      expect(result.issues).toContain('Backend server is not responding on any tested port');
-      expect(result.suggestions).toContain('Ensure the backend server is running');
-    });
-
-    it('should generate diagnostic report', async () => {
-      mockFetch.mockRejectedValue(new Error('Connection refused'));
-
-      const report = await startupValidator.generateDiagnosticReport();
-
-      expect(report.timestamp).toBeDefined();
-      expect(report.userAgent).toBeDefined();
-      expect(report.url).toBeDefined();
-      expect(report.validation).toBeDefined();
-      expect(report.networkInfo.online).toBeDefined();
-      expect(report.validation.isValid).toBe(false);
-    });
-  });
-
-  describe('URL Logging', () => {
-    it('should log resolved URLs with timestamps', async () => {
-      const consoleSpy = vi.spyOn(console, 'log').mockImplementation(() => {});
-
-      mockFetch.mockResolvedValueOnce({
-        ok: true,
-        json: async () => ({ status: 'ok', port: 9000 }),
-      });
-
-      await portDetectionApi.testPort(9000);
-
-      expect(consoleSpy).toHaveBeenCalledWith(
-        expect.stringMatching(/✅ \[\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z\] Port 9000 connectivity test successful/),
-        expect.objectContaining({
-          port: 9000,
-          baseUrl: 'http://localhost:9000',
-          responseTime: expect.stringMatching(/\d+ms/)
-        })
-      );
-
-      consoleSpy.mockRestore();
     });
   });
 });

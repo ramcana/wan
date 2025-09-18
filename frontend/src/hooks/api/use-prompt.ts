@@ -54,27 +54,27 @@ export interface StyleInfo {
 // API functions
 const promptApi = {
   enhance: async (data: PromptEnhanceRequest): Promise<PromptEnhanceResponse> => {
-    return await post('/prompt/enhance', {
+    return await post('/api/v1/prompt/enhance', {
       prompt: data.prompt,
       options: data.options || {}
     });
   },
 
   preview: async (prompt: string): Promise<PromptPreviewResponse> => {
-    return await post('/prompt/preview', {
+    return await post('/api/v1/prompt/preview', {
       prompt: prompt,
       options: {}
     });
   },
 
   validate: async (prompt: string): Promise<PromptValidationResponse> => {
-    return await post('/prompt/validate', {
+    return await post('/api/v1/prompt/validate', {
       prompt: prompt
     });
   },
 
   getStyles: async (): Promise<{ styles: StyleInfo[]; total_count: number }> => {
-    return await get('/prompt/styles');
+    return await get('/api/v1/prompt/styles');
   },
 };
 
@@ -92,7 +92,7 @@ export const usePromptEnhance = () => {
     mutationFn: promptApi.enhance,
     retry: (failureCount, error) => {
       // Don't retry on client errors (4xx)
-      if (error instanceof ApiError && error.status >= 400 && error.status < 500) {
+      if (error instanceof ApiError && error.status !== undefined && error.status >= 400 && error.status < 500) {
         return false;
       }
       return failureCount < 2;
@@ -107,7 +107,7 @@ export const usePromptPreview = (prompt: string, enabled: boolean = true) => {
     enabled: enabled && prompt.length > 0,
     staleTime: 30000, // Cache for 30 seconds
     retry: (failureCount, error) => {
-      if (error instanceof ApiError && error.status >= 400 && error.status < 500) {
+      if (error instanceof ApiError && error.status !== undefined && error.status >= 400 && error.status < 500) {
         return false;
       }
       return failureCount < 2;
@@ -122,7 +122,7 @@ export const usePromptValidation = (prompt: string, enabled: boolean = true) => 
     enabled: enabled && prompt.length > 0,
     staleTime: 10000, // Cache for 10 seconds
     retry: (failureCount, error) => {
-      if (error instanceof ApiError && error.status >= 400 && error.status < 500) {
+      if (error instanceof ApiError && error.status !== undefined && error.status >= 400 && error.status < 500) {
         return false;
       }
       return failureCount < 2;
@@ -136,7 +136,7 @@ export const usePromptStyles = () => {
     queryFn: promptApi.getStyles,
     staleTime: 300000, // Cache for 5 minutes
     retry: (failureCount, error) => {
-      if (error instanceof ApiError && error.status >= 400 && error.status < 500) {
+      if (error instanceof ApiError && error.status !== undefined && error.status >= 400 && error.status < 500) {
         return false;
       }
       return failureCount < 2;

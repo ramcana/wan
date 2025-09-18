@@ -23,7 +23,7 @@
   - Clear service worker cache when VITE_API_URL environment variable changes
   - Implement service worker cache clearing using skipWaiting() and clients.claim()
   - Add browser cache clearing via navigator.serviceWorker.getRegistrations() and unregister
-  - Update vite.config.ts with correct proxy: `server: { proxy: { '/api': { target: 'http://localhost:9000', changeOrigin: true } } }`
+  - Update vite.config.ts with correct proxy: `server: { proxy: { '/api': { target: 'http://localhost:8000', changeOrigin: true } } }`
   - Add Vite plugin integration for auto-reload when environment variables change
   - _Requirements: 1.2, 1.4_
 

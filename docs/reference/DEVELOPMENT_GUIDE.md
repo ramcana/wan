@@ -40,8 +40,8 @@ npm run health:check
 ## Environment Configuration
 
 ### Development (.env.development)
-- API URL: `http://localhost:9000`
-- WebSocket: `ws://localhost:9000`
+- API URL: `http://localhost:8000`
+- WebSocket: `ws://localhost:8000`
 - Mock API: `false`
 - Debug mode: `true`
 
@@ -57,7 +57,7 @@ npm run health:check
 ```powershell
 # From project root
 $env:WAN_MODELS_ROOT="D:\AI\models"
-python -m backend --host 0.0.0.0 --port 9000
+python -m backend --host 0.0.0.0 --port 8000
 ```
 
 ### API Endpoints
@@ -71,7 +71,7 @@ python -m backend --host 0.0.0.0 --port 9000
 
 ### 1. Connection Status Monitoring
 - Real-time backend health checks
-- Automatic port detection (9000, 8000, 3001, 5000)
+- Automatic port detection (8000, 8000, 3001, 5000)
 - Visual connection indicators
 - Retry mechanisms
 
@@ -136,7 +136,7 @@ src/
 ## Troubleshooting
 
 ### Backend Not Detected
-1. Ensure backend is running on port 9000
+1. Ensure backend is running on port 8000
 2. Check Windows firewall settings
 3. Verify CORS configuration
 4. Use `npm run health:check`

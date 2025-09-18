@@ -346,7 +346,7 @@ python -m pytest tests/test_wan_models_phase1.py::TestWANModelsPerformance -v
 
 ```bash
 # Check API connectivity
-curl http://localhost:9000/api/v1/generation/capabilities
+curl http://localhost:8000/api/v1/generation/capabilities
 
 # Validate backend
 wan-cli wan health --detailed
@@ -369,10 +369,10 @@ tail -f backend/logs/generation.log
 
 ```bash
 # Check backend status
-curl http://localhost:9000/health
+curl http://localhost:8000/health
 
 # Validate CORS configuration
-curl http://localhost:9000/api/v1/system/cors/validate
+curl http://localhost:8000/api/v1/system/cors/validate
 ```
 
 ### Performance Issues

@@ -137,82 +137,91 @@ export function StartupValidator({ children }: StartupValidatorProps) {
             <div className="grid grid-cols-2 gap-4">
               <div className="flex items-center gap-2">
                 <Badge
-                  variant={
-                    validationResult.backendHealthy ? "default" : "destructive"
-                  }
+                  variant={validationResult.isValid ? "default" : "destructive"}
                 >
-                  {validationResult.backendHealthy ? (
+                  {validationResult.isValid ? (
                     <CheckCircle className="h-3 w-3 mr-1" />
                   ) : (
                     <AlertCircle className="h-3 w-3 mr-1" />
                   )}
-                  Backend{" "}
-                  {validationResult.backendHealthy ? "Healthy" : "Unhealthy"}
+                  Backend Status
                 </Badge>
               </div>
               <div className="flex items-center gap-2">
                 <Badge variant="outline">
-                  Port: {validationResult.portDetected || "Not detected"}
+                  Validation {validationResult.isValid ? "Passed" : "Failed"}
                 </Badge>
               </div>
             </div>
 
             {/* System Information */}
-            {validationResult.systemInfo && (
+            {validationResult.systemHealth && (
               <div className="space-y-2">
                 <h4 className="font-medium">System Information</h4>
                 <div className="grid grid-cols-2 gap-2 text-sm">
+                  <div>Status: {validationResult.systemHealth.status}</div>
                   <div>
-                    API Version: {validationResult.systemInfo.apiVersion}
+                    GPU:{" "}
+                    {validationResult.systemHealth.gpu_available !== undefined
+                      ? validationResult.systemHealth.gpu_available
+                        ? "Available"
+                        : "Not Available"
+                      : "Unknown"}
                   </div>
-                  <div>Service: {validationResult.systemInfo.service}</div>
                   <div>
-                    CORS:{" "}
-                    {validationResult.systemInfo.corsEnabled
-                      ? "Enabled"
-                      : "Disabled"}
+                    Database:{" "}
+                    {validationResult.systemHealth.database_connected !==
+                    undefined
+                      ? validationResult.systemHealth.database_connected
+                        ? "Connected"
+                        : "Disconnected"
+                      : "Unknown"}
                   </div>
                   <div>
-                    WebSocket:{" "}
-                    {validationResult.systemInfo.websocketAvailable
-                      ? "Available"
-                      : "Unavailable"}
+                    Backend:{" "}
+                    {validationResult.systemHealth.backend_online !== undefined
+                      ? validationResult.systemHealth.backend_online
+                        ? "Online"
+                        : "Offline"
+                      : "Unknown"}
                   </div>
                 </div>
               </div>
             )}
 
             {/* Issues */}
-            {validationResult.issues.length > 0 && (
+            {validationResult.errors && validationResult.errors.length > 0 && (
               <div className="space-y-2">
-                <h4 className="font-medium text-destructive">Issues Found</h4>
+                <h4 className="font-medium text-destructive">Errors Found</h4>
                 <ul className="space-y-1">
-                  {validationResult.issues.map((issue, index) => (
+                  {validationResult.errors.map((error, index) => (
                     <li key={index} className="flex items-start gap-2 text-sm">
                       <AlertCircle className="h-4 w-4 text-destructive mt-0.5 flex-shrink-0" />
-                      {issue}
+                      {error}
                     </li>
                   ))}
                 </ul>
               </div>
             )}
 
-            {/* Suggestions */}
-            {validationResult.suggestions.length > 0 && (
-              <div className="space-y-2">
-                <h4 className="font-medium text-primary">
-                  Suggested Solutions
-                </h4>
-                <ul className="space-y-1">
-                  {validationResult.suggestions.map((suggestion, index) => (
-                    <li key={index} className="flex items-start gap-2 text-sm">
-                      <CheckCircle className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                      {suggestion}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
+            {/* Warnings */}
+            {validationResult.warnings &&
+              validationResult.warnings.length > 0 && (
+                <div className="space-y-2">
+                  <h4 className="font-medium text-primary">Warnings</h4>
+                  <ul className="space-y-1">
+                    {validationResult.warnings.map((warning, index) => (
+                      <li
+                        key={index}
+                        className="flex items-start gap-2 text-sm"
+                      >
+                        <CheckCircle className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                        {warning}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
 
             {/* Actions */}
             <div className="flex gap-2">
@@ -231,16 +240,6 @@ export function StartupValidator({ children }: StartupValidatorProps) {
                 Continue Anyway
               </Button>
             </div>
-
-            <Alert>
-              <Wifi className="h-4 w-4" />
-              <AlertTitle>Development Note</AlertTitle>
-              <AlertDescription>
-                If you're in development mode, ensure the backend server is
-                running on the expected port. Response time:{" "}
-                {validationResult.responseTime}ms
-              </AlertDescription>
-            </Alert>
           </CardContent>
         </Card>
       </div>
@@ -252,15 +251,14 @@ export function StartupValidator({ children }: StartupValidatorProps) {
     <>
       {children}
       {/* Show a subtle indicator that validation passed */}
-      {validationResult && (
+      {validationResult && validationResult.isValid && (
         <div className="fixed bottom-4 right-4 z-50">
           <Badge
             variant="outline"
             className="bg-background/80 backdrop-blur-sm"
           >
             <CheckCircle className="h-3 w-3 mr-1 text-green-500" />
-            Backend: Port {validationResult.portDetected} (
-            {validationResult.responseTime}ms)
+            Backend Validation Passed
           </Badge>
         </div>
       )}

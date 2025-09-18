@@ -1,0 +1,21 @@
+# Traefik configuration for WAN2.2 Video Generation System
+
+entryPoints:
+  web:
+    address: ":80"
+  websecure:
+    address: ":443"
+
+providers:
+  docker:
+    endpoint: "unix:///var/run/docker.sock"
+    exposedByDefault: false
+
+api:
+  dashboard: true
+  debug: true
+
+log:
+  level: DEBUG
+
+accessLog: {}

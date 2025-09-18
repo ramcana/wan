@@ -15,7 +15,7 @@ title: WAN22 Video Generation System - Capabilities Report
 
 **Generated:** December 15, 2024  
 **System Status:** ✅ Operational  
-**Server:** http://127.0.0.1:9000
+**Server:** http://127.0.0.1:8000
 
 ## Executive Summary
 
@@ -243,7 +243,7 @@ $body = @{
   fps = 24
 } | ConvertTo-Json
 
-Invoke-RestMethod -Uri "http://127.0.0.1:9000/api/v1/generation/submit" -Method Post -ContentType "application/json" -Body $body
+Invoke-RestMethod -Uri "http://127.0.0.1:8000/api/v1/generation/submit" -Method Post -ContentType "application/json" -Body $body
 ```
 
 ### Enhanced Generation with Optimizations
@@ -257,7 +257,7 @@ $body = @{
   enable_optimization = $true
 } | ConvertTo-Json
 
-Invoke-RestMethod -Uri "http://127.0.0.1:9000/api/v1/generation/enhanced/submit" -Method Post -ContentType "application/json" -Body $body
+Invoke-RestMethod -Uri "http://127.0.0.1:8000/api/v1/generation/enhanced/submit" -Method Post -ContentType "application/json" -Body $body
 ```
 
 ## Next Steps
@@ -270,10 +270,10 @@ Invoke-RestMethod -Uri "http://127.0.0.1:9000/api/v1/generation/enhanced/submit"
 
 ## Support & Documentation
 
-- **API Documentation:** http://127.0.0.1:9000/docs
-- **System Health:** http://127.0.0.1:9000/health
-- **Dashboard:** http://127.0.0.1:9000/api/v1/dashboard/html
-- **Performance Metrics:** http://127.0.0.1:9000/api/v1/performance/status
+- **API Documentation:** http://127.0.0.1:8000/docs
+- **System Health:** http://127.0.0.1:8000/health
+- **Dashboard:** http://127.0.0.1:8000/api/v1/dashboard/html
+- **Performance Metrics:** http://127.0.0.1:8000/api/v1/performance/status
 
 ---
 

@@ -108,7 +108,7 @@
 
 ### Backend Services Status
 
-- ✅ **Backend Server**: Running on port 9000
+- ✅ **Backend Server**: Running on port 8000
 - ✅ **Hardware Optimization**: RTX 4080 + Threadripper PRO optimizations applied
 - ✅ **WAN Model Integration**: Bridge initialized successfully
 - ✅ **Generation Pipeline**: Real generation pipeline initialized
@@ -165,7 +165,7 @@ The system has passed all critical validation tests and is ready for production 
 | Model Integration Bridge | ✅ PASS | Core functionality      |
 | Hardware Detection       | ✅ PASS | RTX 4080 + Threadripper |
 | Generation Service       | ✅ PASS | Initialized             |
-| Backend API              | ✅ PASS | Running on port 9000    |
+| Backend API              | ✅ PASS | Running on port 8000    |
 | Performance Monitoring   | ✅ PASS | Active                  |
 | Error Handling           | ✅ PASS | Integrated              |
 

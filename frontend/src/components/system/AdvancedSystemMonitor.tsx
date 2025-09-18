@@ -158,7 +158,7 @@ const AdvancedSystemMonitor: React.FC = () => {
     lastMessage,
   } = useWebSocket(
     `ws://${
-      import.meta.env.VITE_API_URL?.replace("http://", "") || "localhost:9000"
+      import.meta.env.VITE_API_URL?.replace("http://", "") || "localhost:8000"
     }/ws`
   );
 

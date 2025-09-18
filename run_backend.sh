@@ -3,8 +3,8 @@
 # Activate virtual environment and start backend
 source venv/bin/activate
 echo "Starting WAN22 Backend Server..."
-echo "Backend will be available at: http://localhost:9000"
-echo "API Documentation: http://localhost:9000/docs"
+echo "Backend will be available at: http://localhost:8000"
+echo "API Documentation: http://localhost:8000/docs"
 echo "Press Ctrl+C to stop the server"
 echo ""
 

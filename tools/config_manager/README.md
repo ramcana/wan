@@ -88,7 +88,7 @@ with ConfigurationAPI(auto_reload=True) as api:
     port = api.get_config('api.port')
 
     # Set configuration values
-    api.set_config('api.port', 9000)
+    api.set_config('api.port', 8000)
 
     # Register change callback
     def on_change(event):
@@ -114,7 +114,7 @@ The configuration management system includes a comprehensive CLI tool:
 python -m tools.config_manager.config_cli get api.port
 
 # Set configuration value
-python -m tools.config_manager.config_cli set api.port 9000 --save
+python -m tools.config_manager.config_cli set api.port 8000 --save
 
 # Get entire configuration
 python -m tools.config_manager.config_cli get --format yaml

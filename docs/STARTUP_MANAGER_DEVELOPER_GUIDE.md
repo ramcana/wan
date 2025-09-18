@@ -401,7 +401,7 @@ def register_custom_strategies(startup_manager):
     smart_strategy = SmartPortStrategy([
         (8000, 8010),  # Backend range
         (3000, 3010),  # Frontend range
-        (9000, 9010)   # Alternative range
+        (8000, 9010)   # Alternative range
     ])
 
     startup_manager.port_manager.register_strategy("smart", smart_strategy)
